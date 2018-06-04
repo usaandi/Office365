@@ -18,6 +18,7 @@
             </button>
             <a class="navbar-brand" href="#">PHP Outlook Sample</a>
         </div>
+
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? 'active' : '');?>"><a href="/">Kodu</a></li>
@@ -31,6 +32,7 @@
             </ul>
             <?php } ?>
         </div><!--/.nav-collapse -->
+
     </div>
 </nav>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use auth;
 
 class AuthController extends Controller
 {
@@ -62,6 +63,8 @@ class AuthController extends Controller
 
             try {
                 // Make the token request
+                $user =$oauthClient->
+
                 $accessToken = $oauthClient->getAccessToken('authorization_code', [
                     'code' => $_GET['code']
                 ]);
@@ -74,6 +77,7 @@ class AuthController extends Controller
                     $accessToken->getExpires());
 
                 // Redirect back to mail page
+
                 return redirect()->route('mail');
             }
             catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
@@ -84,5 +88,8 @@ class AuthController extends Controller
         elseif (isset($_GET['error'])) {
             exit('ERROR: '.$_GET['error'].' - '.$_GET['error_description']);
         }
+
     }
+
+
 }
