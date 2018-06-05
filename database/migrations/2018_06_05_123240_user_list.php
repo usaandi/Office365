@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSocialLoginProfilesTable extends Migration
+class UserList extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateSocialLoginProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_login_profiles', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()
-                ->references('id')->on('users');
-            $table->string('office_id')->nullable();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->longText('token');
+            $table->string ('updated_at');
+            $table->string ('created_at');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateSocialLoginProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_login_profiles');
+        Schema::dropIfExists('users');
     }
 }

@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use auth;
+use Microsoft\Graph\Graph;
+use Microsoft\Graph\Model;
+
 
 class AuthController extends Controller
 {
+    protected $fillable = ['token'];
+
     public function signin()
     {
+
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -32,10 +39,17 @@ class AuthController extends Controller
 
         // Redirect to authorization endpoint
         header('Location: '.$authorizationUrl);
+
         exit();
     }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Microsoft\Graph\Exception\GraphException
+     */
     public function gettoken()
     {
+
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -62,23 +76,42 @@ class AuthController extends Controller
             ]);
 
             try {
+
                 // Make the token request
-                $user =$oauthClient->
+                //$user =$oauthClient->
+
+                $tokenCache = new \App\TokenStore\TokenCache;
+
+                $graph = new Graph();
+                $graph->setAccessToken($tokenCache->getAccessToken());
 
                 $accessToken = $oauthClient->getAccessToken('authorization_code', [
                     'code' => $_GET['code']
+
                 ]);
+
+                $token = $accessToken->getToken();
+
+                $user = $graph->createRequest('GET', '/me')
+                    ->setReturnType(Model\User::class)
+                    ->execute();
+
+                $tokenCache = new \App\TokenStore\TokenCache;
+                $tokenCache->storeTokens($token, $accessToken->getRefreshToken(),
+                    $accessToken->getExpires());
+
+                User::updateOrCreate(['email' => $user->getMail(), 'name' => $user->getDisplayName(), 'token'=> $token]);
 
                 // Save the access token and refresh tokens in session
                 // This is for demo purposes only. A better method would
                 // be to store the refresh token in a secured database
-                $tokenCache = new \App\TokenStore\TokenCache;
-                $tokenCache->storeTokens($accessToken->getToken(), $accessToken->getRefreshToken(),
-                    $accessToken->getExpires());
+
 
                 // Redirect back to mail page
-
                 return redirect()->route('mail');
+
+                auth()->login($oauthClient);
+
             }
             catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
                 exit('ERROR getting tokens: '.$e->getMessage());

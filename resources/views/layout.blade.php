@@ -28,11 +28,11 @@
             </ul>
             <?php if(isset($username)) { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><p class="navbar-text">Hello <?php echo $username ?>!</p></li>
+                <li><p class="navbar-text">Hello {{ $username }} - {{ $email }}</p></li>
             </ul>
             <?php } ?>
         </div><!--/.nav-collapse -->
-
+        @
     </div>
 </nav>
 

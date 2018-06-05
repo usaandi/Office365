@@ -39,6 +39,7 @@ class OutlookController extends Controller
 
         return view('mail', array(
             'username' => $user->getDisplayName(),
+            'email' => $user->getMail(),
             'messages' => $messages
         ));
     }
