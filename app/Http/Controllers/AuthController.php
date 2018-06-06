@@ -7,11 +7,11 @@ use App\User;
 use auth;
 use Microsoft\Graph\Graph;
 use Microsoft\Graph\Model;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AuthController extends Controller
 {
-    protected $fillable = ['token'];
 
     public function signin()
     {
@@ -100,17 +100,21 @@ class AuthController extends Controller
                 $tokenCache->storeTokens($token, $accessToken->getRefreshToken(),
                     $accessToken->getExpires());
 
-                User::updateOrCreate(['email' => $user->getMail(), 'name' => $user->getDisplayName(), 'token'=> $token]);
+
+                $user = User::updateOrCreate(['email' => $user->getMail(), 'name' => $user->getDisplayName(), 'token'=> $token]);
+                $userRole = Role::findByName('User');
+                $user->assignRole($userRole);
+
 
                 // Save the access token and refresh tokens in session
                 // This is for demo purposes only. A better method would
                 // be to store the refresh token in a secured database
 
+                auth()->login($user);
 
                 // Redirect back to mail page
                 return redirect()->route('mail');
 
-                auth()->login($oauthClient);
 
             }
             catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {

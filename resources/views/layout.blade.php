@@ -26,13 +26,12 @@
                 <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/contacts' ? 'active' : '');?>"><a href="/contacts">Kontaktid</a></li>
                 <li><a href="https://login.windows.net/common/oauth2/logout?post_logout_redirect_uri=http://localhost">Logout</a></li>
             </ul>
-            <?php if(isset($username)) { ?>
+            @if (isset($username))
             <ul class="nav navbar-nav navbar-right">
-                <li><p class="navbar-text">Hello {{ $username }} - {{ $email }}</p></li>
+                <li><p class="navbar-text">Hello {{ $username }} - {{ $email }} -</p></li>
             </ul>
-            <?php } ?>
+            @endif
         </div><!--/.nav-collapse -->
-        @
     </div>
 </nav>
 

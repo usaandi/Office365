@@ -8,6 +8,19 @@ use Microsoft\Graph\Model;
 
 class OutlookController extends Controller
 {
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function mail()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -38,7 +51,7 @@ class OutlookController extends Controller
             ->execute();
 
         return view('mail', array(
-            'username' => $user->getDisplayName(),
+            'username' => \Auth::user()->name,
             'email' => $user->getMail(),
             'messages' => $messages
         ));
