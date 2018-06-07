@@ -11,10 +11,22 @@
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
+
                         </div>
                     @endif
+                        User list
+<br>
+                    @foreach ($user as $users)
+                        <a href={{url('user/'.$users->id)}}><br> <li>{{$users->name}}</li></a>
 
-                    You are logged in!
+                            <li>{{$users->id}}</li>
+
+                            <li>{{$users->email}}</li>
+
+                            {{url('user/'.$users->id)}}
+                        <br>
+
+                        @endforeach
                 </div>
             </div>
         </div>
