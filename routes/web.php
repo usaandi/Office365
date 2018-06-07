@@ -21,8 +21,6 @@ Route::get('/authorize', 'AuthController@gettoken',function (){
     echo $value;
 });
 
-Route::get('/mail', 'OutlookController@mail')->name('mail');
-Route::get('/contacts', 'OutlookController@contacts')->name('contacts');
 route::get('/register', 'HomeController@index');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
