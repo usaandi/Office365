@@ -7,33 +7,6 @@
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">PHP Outlook Sample</a>
-        </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/' ? 'active' : '');?>"><a href="/">Kodu</a></li>
-                <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/mail' ? 'active' : '');?>"><a href="/mail">Sinu Mail</a></li>
-                <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/contacts' ? 'active' : '');?>"><a href="/contacts">Kontaktid</a></li>
-                <li><a href="https://login.windows.net/common/oauth2/logout?post_logout_redirect_uri=http://localhost">Logout</a></li>
-            </ul>
-            @if (isset($username))
-            <ul class="nav navbar-nav navbar-right">
-                <li><p class="navbar-text">Hello {{ $username }} - {{ $email }} -</p></li>
-            </ul>
-            @endif
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
 
 <div class="container" role="main">
     @yield('content')
