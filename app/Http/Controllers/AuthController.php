@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\User;
 use auth;
+use Illuminate\Support\Facades\DB;
 use Microsoft\Graph\Graph;
 use Microsoft\Graph\Model;
 use Spatie\Permission\Models\Role;
@@ -77,43 +78,46 @@ class AuthController extends Controller
 
             try {
 
-                // Make the token request
-                //$user =$oauthClient->
-
-                $tokenCache = new \App\TokenStore\TokenCache;
-
-                $graph = new Graph();
-                $graph->setAccessToken($tokenCache->getAccessToken());
-
                 $accessToken = $oauthClient->getAccessToken('authorization_code', [
                     'code' => $_GET['code']
-
                 ]);
 
                 $token = $accessToken->getToken();
 
-                $user = $graph->createRequest('GET', '/me')
+                $graph = new Graph();
+                $graph->setAccessToken($token);
+
+                $officeUser = $graph->createRequest('GET', '/me')
                     ->setReturnType(Model\User::class)
                     ->execute();
+
+                $officeUserEmail = $officeUser->getMail();
 
                 $tokenCache = new \App\TokenStore\TokenCache;
                 $tokenCache->storeTokens($token, $accessToken->getRefreshToken(),
                     $accessToken->getExpires());
 
 
-                $user = User::updateOrCreate(['email' => $user->getMail(), 'name' => $user->getDisplayName(), 'token'=> $token]);
-                $userRole = Role::findByName('User');
-                $user->assignRole($userRole);
+                $user = User::where('email', '=', $officeUserEmail)->first();
 
+                if ($user === NULL) {
 
-                // Save the access token and refresh tokens in session
-                // This is for demo purposes only. A better method would
-                // be to store the refresh token in a secured database
+                    $user = User::create(['email' => $officeUserEmail, 'name' => $officeUser->getDisplayName(), 'token' => $token]);
+                    $userRole = Role::findByName('User');
+                    $user->assignRole($userRole);
+
+                }
+                else {
+
+                    $user->token = $token;
+                    $user->save();
+
+                }
 
                 auth()->login($user);
 
                 // Redirect back to mail page
-                return redirect()->route('mail');
+                return redirect()->route('home');
 
 
             }
