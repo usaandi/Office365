@@ -11,16 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AuthController@signin');
 
-Route::get('/signin', 'AuthController@signin');
+//Route::get('/signin', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken',function (){
     $value = session('key');
     echo $value;
 });
 
-route::get('/register', 'HomeController@index');
+Route::get('/register', 'HomeController@index');
 Auth::routes();
+Route::get('/user/{id}', 'UserController@show');
+
 Route::get('/home', 'HomeController@index')->name('home');
