@@ -15,16 +15,10 @@
                         </div>
                     @endif
                         User list
-<br>
+
                     @foreach ($user as $users)
-                        <a href={{url('user/'.$users->id)}}><br> <li>{{$users->name}}</li></a>
+                        <a href="user/{{$users->id}}"><li>{{$users->name}}</li></a>
 
-                            <li>{{$users->id}}</li>
-
-                            <li>{{$users->email}}</li>
-
-                            {{url('user/'.$users->id)}}
-                        <br>
 
                         @endforeach
                 </div>
