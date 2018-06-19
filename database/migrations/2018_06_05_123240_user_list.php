@@ -22,7 +22,11 @@ class UserList extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+
         });
+
+
+
     }
 
     /**
@@ -33,5 +37,6 @@ class UserList extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('strength_user');
     }
 }

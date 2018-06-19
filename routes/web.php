@@ -1,5 +1,5 @@
 <?php
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +12,12 @@
 */
 
 Route::get('/', 'AuthController@signin');
+
+route::get('/template', function (){
+    return view('template');
+
+
+});
 
 //Route::get('/signin', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken',function (){

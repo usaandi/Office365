@@ -1,29 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+@section('content-header')
+    <!-- begin::Horizontal Menu -->
+    <div class="m-stack__item m-stack__item--middle m-stack__item--fluid">
+        <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn">
+            <i class="la la-close"></i>
+        </button>
+        <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
+            <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+                <li class="m-menu__item  m-menu__item--active "  aria-haspopup="true">
+                    <a  href="index.html" class="m-menu__link ">
+                        <span class="m-menu__item-here"></span>
+                        <span class="m-menu__link-text">
+                                    Dashboard
+                                </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end::Horizontal Menu -->
+@endsection
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-
-                        </div>
-                    @endif
-                        User list
-
-                    @foreach ($user as $users)
-                        <a href="user/{{$users->id}}"><li>{{$users->name}}</li></a>
-
-
-                        @endforeach
-                </div>
+@section('content-body')
+    <!-- begin: Subheader -->
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title ">
+                    Dashboard
+                </h3>
             </div>
         </div>
     </div>
-</div>
+    <!-- end: Subheader -->
 @endsection
