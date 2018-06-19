@@ -7,22 +7,15 @@
 
 <title>{{ config('app.name', 'Laravel') }}</title>
 
-<!--begin::Web font -->
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-<script>
-    WebFont.load({
-        google: {"families":["Montserrat:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-        active: function() {
-            sessionStorage.fonts = true;
-        }
-    });
-</script>
-<!--end::Web font -->
 <!--begin::Base Styles -->
 <!--begin::Page Vendors -->
-<link href="{{ asset('metronic_assets/vendors/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
+<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
 <!--end::Page Vendors -->
-<link href="metronic_assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
-<link href="metronic_assets/demo/demo4/base/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/demo/demo8/base/style.bundle.css" rel="stylesheet" type="text/css" />
 <!--end::Base Styles -->
-<link rel="shortcut icon" href="metronic_assets/demo/demo4/media/img/logo/favicon.ico" />
+<link rel="shortcut icon" href="assets/demo8/demo/media/img/logo/favicon.ico" />
+
+<!--begin::App Styles -->
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<!--end::App Styles -->

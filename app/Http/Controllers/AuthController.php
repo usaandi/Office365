@@ -97,7 +97,6 @@ class AuthController extends Controller
                 $tokenCache->storeTokens($token, $accessToken->getRefreshToken(),
                     $accessToken->getExpires());
 
-
                 $user = User::where('email', '=', $officeUserEmail)->first();
 
                 if ($user === NULL) {

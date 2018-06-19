@@ -18,7 +18,7 @@ route::get('/template', function (){
 
 
 });
-
+route::get('/admin/users/import', '');
 //Route::get('/signin', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken',function (){
     $value = session('key');
