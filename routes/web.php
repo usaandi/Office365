@@ -18,7 +18,7 @@ route::get('/template', function (){
 
 
 });
-route::get('/admin/users/import', '');
+
 //Route::get('/signin', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken',function (){
     $value = session('key');
@@ -26,7 +26,9 @@ Route::get('/authorize', 'AuthController@gettoken',function (){
 });
 
 Route::get('/register', 'HomeController@index');
+
 Auth::routes();
 Route::get('/user/{id}', 'UserController@show');
-
+Route::get('/admin/users/add', 'AddController@add');
+Route::post('/admin/users/add', 'AddController@store')->name('store');
 Route::get('/home', 'HomeController@index')->name('home');
