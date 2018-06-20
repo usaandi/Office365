@@ -17,7 +17,7 @@ class UserController extends Controller
 
         $user=User::findorFail($id);
 
-        return view('userinfo',compact('user'));
+        return view('user.profileview',compact('user'));
 //
     }
 
