@@ -9,12 +9,12 @@
 
 <!--begin::Base Styles -->
 <!--begin::Page Vendors -->
-<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
 <!--end::Page Vendors -->
-<link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
-<link href="assets/demo/demo8/base/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/vendors/base/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/demo/demo8/base/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 <!--end::Base Styles -->
-<link rel="shortcut icon" href="assets/demo8/demo/media/img/logo/favicon.ico" />
+<link rel="shortcut icon" href="{{asset('assets/demo8/demo/media/img/logo/favicon.ico')}}" />
 
 <!--begin::App Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
