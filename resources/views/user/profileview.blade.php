@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content-header')
+
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
@@ -18,16 +19,16 @@
                 </a>
             </span>
         </div>
+        @include('partials.footerscripts')
     </div>
 @endsection
 
 @section('content-body')
-<div>
-    <ul>
-        @foreach($user as $users)
-            <a href={{url('user/'.$users->id)}}><br> <li>{{$users->name}}</li></a>
-        @endforeach
-    </ul>
-
-</div>
+    <div class="card-body">
+        <h1>Kasutaja andmed</h1>
+             <ul>
+                 <li>{{$user->name}}</li>
+                 <li>{{$user->email}}</li>
+             </ul>
+    </div>
 @endsection
