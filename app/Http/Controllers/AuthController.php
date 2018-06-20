@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\User;
 use auth;
-use Illuminate\Support\Facades\DB;
 use Microsoft\Graph\Graph;
 use Microsoft\Graph\Model;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -114,8 +114,7 @@ class AuthController extends Controller
                 }
 
                 auth()->login($user);
-               // return view('home',compact('decode'));
-                // Redirect back to mail page
+
                 return redirect()->route('home');
 
 
