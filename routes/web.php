@@ -11,24 +11,23 @@ use App\User;
 |
 */
 
-Route::get('/', 'AuthController@signin');
-
 route::get('/template', function (){
     return view('template');
-
-
 });
 
+//Route::get('/register', 'HomeController@index');
 //Route::get('/signin', 'AuthController@signin');
-Route::get('/authorize', 'AuthController@gettoken',function (){
-    $value = session('key');
-    echo $value;
-});
-
-Route::get('/register', 'HomeController@index');
+Route::get('/', 'AuthController@signin');
+Route::get('/authorize', 'AuthController@gettoken');
 
 Auth::routes();
+
+Route::get('/user/{id}/update', 'UserController@showedit');
+Route::post('/user/{id}/update', 'UserController@update')->name('update');
+
 Route::get('/user/{id}', 'UserController@show');
+
 Route::get('/admin/users/add', 'AddController@add');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
+
 Route::get('/home', 'HomeController@index')->name('home');
