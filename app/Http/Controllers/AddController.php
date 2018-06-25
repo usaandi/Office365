@@ -15,26 +15,39 @@ class AddController extends Controller
 //        $email =input::get('email');
 
 
-        return view('partials.adduser');
+        return view('user.adduser');
     }
     public function store(Request $request){
 
            $request->validate([
-                'name'=>'required',
-               'email'=> 'required|email',
-               ]
 
+                'name'=>'required',
+                'email'=> 'required|email',
+                'phone'=> 'required|int',
+                'birthday'=> 'required|date',
+                'skype'=>'required',
+                'team'=>'required',
+                'ADMsince'=>'required|date',
+               ]
            );
             $name=$request->input('name');
             $email=$request->input('email');
+            $phone=$request->input('phone');
+            $birthday=$request->input('birthday');
+            $skype=$request->input('skype');
+            $team=$request->input('team');
+            $ADMsince=$request->input('ADMsince');
 
-            $user = User::where('email', '=', $email)->first();
+
+
+        $user = User::where('email', '=', $email)->first();
 
             if($user===null){
 
-                User::create(['email' => $email,'name'=>$name,'token'=>null]);
+                User::create(['email' => $email,'name'=>$name,'token'=>null,'phoneN'=>$phone,
+                    'birthday'=>$birthday, 'skype'=>$skype, 'team'=>$team,'ADMsince'=>$ADMsince]);
 
-                sleep(4);
+
 
                 return view('user.adduser');
             }
