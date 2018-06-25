@@ -8,11 +8,12 @@
                 <div class="card-header"></div>
 
                    <div class="card-body">
-                      <h1>Kasutaja andmed</h1>
+                      <h1>Kasutajaasdasdas andmed</h1>
                        <ul>
-                             <li>Nimi: {{$user->name}}</li>
-                             <li>Email: {{$user->email}}</li>
+                           <li>Nimi: {{$user->name}}</li>
+                           <li>Email: {{$user->email}}</li>
                        </ul>
+
                    </div>
             </div>
         </div>
