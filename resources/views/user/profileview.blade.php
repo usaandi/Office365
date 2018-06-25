@@ -24,11 +24,22 @@
 @endsection
 
 @section('content-body')
+    {{csrf_field()}}
+
     <div class="card-body">
         <h1>Kasutaja andmed</h1>
-             <ul>
-                 <li>{{$user->name}}</li>
-                 <li>{{$user->email}}</li>
-             </ul>
+        <input type="hidden" name="id" value="{{{ $user->id }}}">
+
+        <ul>
+            <li>Email: {{$user->email}}</li>
+            <li>Fullname: {{$user->name}}</li>
+            <li>Phone Number: {{$user->phoneN}}</li>
+            <li>Team: {{$user->team}}</li>
+            <li>Skype: {{$user->skype}}</li>
+            <li>Sünnipäev: {{$user->birthday}}</li>
+            <li>Joined ADM: {{$user->ADMsince}}</li>
+        </ul>
+
+
     </div>
 @endsection
