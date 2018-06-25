@@ -107,10 +107,8 @@ class AuthController extends Controller
 
                 }
                 else {
-
                     $user->token = $token;
                     $user->save();
-
                 }
 
                 auth()->login($user);
@@ -121,10 +119,6 @@ class AuthController extends Controller
                 else {
                     return "error!";
                 }
-
-
-
-
             }
             catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
                 exit('ERROR getting tokens: '.$e->getMessage());
@@ -134,7 +128,6 @@ class AuthController extends Controller
         elseif (isset($_GET['error'])) {
             exit('ERROR: '.$_GET['error'].' - '.$_GET['error_description']);
         }
-
     }
 
 
