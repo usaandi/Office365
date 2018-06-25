@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\User;
-use auth;
 use Microsoft\Graph\Graph;
 use Microsoft\Graph\Model;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
 
     public function signin()
     {
+        if (Auth::check()) {
+            return redirect('home');
+        }
 
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -115,7 +115,14 @@ class AuthController extends Controller
 
                 auth()->login($user);
 
-                return redirect()->route('home');
+                if(Auth::user()){
+                    return redirect()->route('home');
+                }
+                else {
+                    return "error!";
+                }
+
+
 
 
             }
