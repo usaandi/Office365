@@ -6,19 +6,7 @@
 </head>
 <!-- end::Head -->
 <!-- start::Body -->
-<body style="background-color: #00adee;" class="m-page--fluid m-page--loading-enabled m-page--loading m-header--fixed m-header--fixed-mobile m-footer--push m-aside--offcanvas-default">
-    <!-- begin::Page loader -->
-    <div class="m-page-loader m-page-loader--base">
-        <div class="m-blockui">
-                    <span>
-                        Please wait...
-                    </span>
-            <span>
-                        <div class="m-loader m-loader--brand"></div>
-                    </span>
-        </div>
-    </div>
-    <!-- end::Page Loader -->
+<body style="background-color: #00adee;" class="m-page--fluid m-header--fixed m-header--fixed-mobile m-footer--push m-aside--offcanvas-default">
     <!-- begin::Page -->
     <div class="m-grid m-grid--hor m-grid--root m-page">
 
