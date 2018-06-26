@@ -32,12 +32,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user=User::all();
-//       $user= DB::table('users')->get('name');
-//       return view('home')->with('name',$user);
+        $users = User::all();
 
-        return view('home')->with('user',$user,'email',$user,'id',$user);
-
-
+        return view('home')->with('users',$users);
     }
 }

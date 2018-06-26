@@ -19,3 +19,6 @@
 <!--begin::App Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <!--end::App Styles -->
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>

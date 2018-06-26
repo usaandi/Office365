@@ -24,10 +24,11 @@
 @endsection
 
 @section('content-body')
+
     {{csrf_field()}}
 
     <div class="card-body">
-        @role('admin')
+        @role('Admin')
         I AM ADMIN
         @else
             I AM NOT ADMIN
