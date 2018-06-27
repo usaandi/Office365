@@ -47653,7 +47653,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47705,15 +47705,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['users'],
-
+    data: function data() {
+        return {};
+    },
     mounted: function mounted() {
 
         console.log(this.users);
@@ -47728,18 +47726,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    !_vm.users
-      ? _c("div", [_vm._v("Loading please wait...")])
-      : _c(
-          "div",
-          _vm._l(_vm.users, function(user) {
-            return _c("div", [
-              _vm._v("\n            " + _vm._s(user.name) + "\n        ")
-            ])
-          })
-        )
-  ])
+  return _c(
+    "div",
+    _vm._l(_vm.users, function(user) {
+      return _c("div", [_c("user-list-view", { attrs: { user: user } })], 1)
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -47837,7 +47829,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.style-green[data-v-ef3c73b0]{\n        font-size:14px;\n        color:green;\n}\n.text[data-v-ef3c73b0] {\n        padding-right: 10px;\n        padding-top:10px;\n}\n.profiles[data-v-ef3c73b0]{\n        float:left;\n        margin: 10px;\n        width: 400px;\n        height:150px;\n        border: 1px solid #e1e1e1;\n}\n.childcontent[data-v-ef3c73b0] {\n}\n\n\n", ""]);
 
 // exports
 
@@ -47853,9 +47845,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "UserListViewComponent"
+
+    props: ['user']
 });
 
 /***/ }),
@@ -47866,7 +47871,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("user-list")
+  return _c("div", {}, [
+    _c("div", { staticClass: "text-md-center profiles text " }, [
+      _c("img", {
+        attrs: {
+          src: "https://www.w3schools.com/w3images/avatar2.png",
+          width: "100px",
+          height: "100px"
+        }
+      }),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "/user/" + _vm.user.id } }),
+      _vm._v(" "),
+      _c("h4", [_vm._v(_vm._s(_vm.user.name))]),
+      _vm._v(" "),
+      _c("p", [
+        _c("i", { staticClass: "fa fa-envelope style-green " }),
+        _vm._v(" " + _vm._s(_vm.user.email))
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("i", { staticClass: "fa fa-phone style-green" }),
+        _vm._v(_vm._s(_vm.user.phoneN) + " ")
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -27,12 +27,8 @@
 
     {{csrf_field()}}
 
+
     <div class="card-body">
-        @role('Admin')
-        I AM ADMIN
-        @else
-            I AM NOT ADMIN
-        @endrole
         <h1>Kasutaja andmed</h1>
         <input type="hidden" name="id" value="{{{ $user->id }}}">
 

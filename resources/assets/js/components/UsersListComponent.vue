@@ -1,21 +1,19 @@
 <template>
 <div>
-    <div v-if="!users">Loading please wait...</div>
-    <div v-else>
         <div v-for="user in users">
-            {{user.name}}
+            <user-list-view v-bind:user="user"></user-list-view>
         </div>
-    </div>
 </div>
 </template>
 
-
-
 <script>
+
     export default {
         props: ['users'],
-
-
+        data(){
+            return{
+            }
+        },
         mounted() {
 
             console.log(this.users);
@@ -27,5 +25,6 @@
 
 
 <style scoped>
+
 
 </style>

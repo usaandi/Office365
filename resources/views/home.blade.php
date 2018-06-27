@@ -22,19 +22,9 @@
 @endsection
 
 @section('content-body')
-<div>
-
-    {{--<ul>--}}
-        {{--@foreach($users as $user)--}}
-
-            {{--<a href={{url('user/'.$user->id)}}><br> <li>{{$user->name}}</li></a>--}}
-        {{--@endforeach--}}
-    {{--</ul>--}}
 
     <div id="app">
         <user-list :users='@json($users)'></user-list>
-        <user-list-view></user-list-view>
     </div>
 
-</div>
 @endsection
