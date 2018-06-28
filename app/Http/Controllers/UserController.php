@@ -60,15 +60,22 @@ class UserController extends Controller
 
         $userRole = Role::findByName($role);
 
-
+        $user->assignRole($userRole);
 
         $user->update(['email' => $email, 'name' => $name, 'phoneN' => $phone,
             'birthday' => $birthday, 'skype' => $skype, 'team' => $team, 'ADMsince' => $ADMsince]);
         $user->save();
 
+
         if ($user->hasRole($userRole)) {
+
+            $user->removeRole($userRole);
+            $user->assignRole($userRole);
+
             return view('user.userupdate',compact('user'));
-        } else {
+        }
+        else {
+
             $user->assignRole($userRole);
         }
 
