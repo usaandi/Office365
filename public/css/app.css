@@ -18,3 +18,7 @@
   }
 }
 
+.m-page--fluid .m-page .m-page__container {
+  padding: 0;
+}
+

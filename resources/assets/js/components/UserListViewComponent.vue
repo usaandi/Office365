@@ -3,7 +3,7 @@
         <div class="text">
             <a v-bind:href="'/user/' + user.id"><img src="https://www.w3schools.com/w3images/avatar2.png"width="100px" height="100px"></a>
             <h4 class="name">{{ user.name }}</h4>
-            <p class="team-1">{{user.team}} | </p>
+             <h4 class="team-1" ><small>{{user.team}} | </small></h4>
             <p><i class="fa fa-envelope style-green "></i>{{user.email}}</p>
             <p class=""><i class="fa fa-phone style-green"> </i>{{user.phoneN}} </p>
 
@@ -44,16 +44,7 @@ export default {
         margin-left: 10px;
         line-height:3px;
     }
-    /*.profiles{*/
-        /*float:left;*/
-        /*margin: 10px;*/
-        /*width: 400px;*/
-        /*height:150px;*/
-        /*border: 1px solid #e1e1e1;*/
-    /*}*/
-.childcontent {
 
-}
 
 
 </style>

@@ -32,6 +32,9 @@
          box-sizing:border-box;
 
      }
+     .form-group{
+
+     }
      label {
          width: 100px;
      }
@@ -39,7 +42,9 @@
     <form name="form" action="{{route('store')}}" method="post">
         @csrf
 <div class="card-body">
+
         <h1>Lisa kasutaja</h1>
+
         <label for="name"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="name" value="" required>
         <br>
@@ -57,17 +62,21 @@
         <br>
         <label for="team"><b>Your team</b></label>
         <select name="team" placeholder="Your team" required>
-            <option value="team1">team1</option>
-            <option value="team2">team2</option>
-            <option value="team3">team3</option>
-            <option value="team4">team4</option>
+            <option value="Fenomen1">Fenomen1</option>
+            <option value="Fenomen2">Fenomen2</option>
+            <option value="Fenomen3">Fenomen3</option>
+            <option value="Fenomen4">Fenomen4</option>
         </select>
         <br>
         <label for="ADMsince"><b>ADM since</b></label>
         <input type="date" placeholder="ADM Join Date" name="ADMsince" value="" required>
         <br>
 
-        <button type="submit">Submit</button>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
 </div>
     </form>
 

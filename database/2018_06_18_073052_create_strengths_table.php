@@ -21,7 +21,7 @@ class CreateStrengthsTable extends Migration
         schema::create('strengths_user', function (Blueprint $table){
            $table->increments('strengths_id');
            $table->increments('user_id');
-           $table->primary(['strengths_id', 'user_id']);
+
 
         });
     }

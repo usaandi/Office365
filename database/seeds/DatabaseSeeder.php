@@ -16,8 +16,7 @@ class DatabaseSeeder extends Seeder
             'name' => str_random(10),
             'email' => str_random(10).'@adm.com',
             'token' => str_random(1000),
-            'update_at' => getdate(now),
-            'created_at' => getdate(now),
+
         ]);
     }
 }

@@ -58,17 +58,17 @@
         <br>
         <label for="team"><b>Your team: {{$user->team}}</b></label>
         <select name="team" placeholder="{{$user->team}}">
-            <option value="team1">team1</option>
-            <option value="team2">team2</option>
-            <option value="team3">team3</option>
-            <option value="team4">team4</option>
+            <option value="Fenomen1">Fenomen1</option>
+            <option value="Fenomen2">Fenomen2</option>
+            <option value="Fenomen3">Fenomen3</option>
+            <option value="Fenomen4">Fenomen4</option>
         </select>
         <br>
         <label for="role"><b>Your Current role:{{$user->role}} </b></label>
         <select name="role">
             <option value="Admin">Admin</option>
             <option value="User">User</option>
-            <option value="Editor">Editor</option>
+            <option value="Moderator">Moderator</option>
         </select>
         <br>
         <label><b>ADM since</b></label>

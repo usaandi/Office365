@@ -47655,7 +47655,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.profiles-view[data-v-3c4dc7ce]{\n    float:left;\n    width: 29%;\n    margin: 1%;\n    padding: 1%;\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    position: relative;\n}\n\n", ""]);
+exports.push([module.i, "\n.user-list-wrapper[data-v-3c4dc7ce] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    margin: -2rem;\n}\n.profiles-view[data-v-3c4dc7ce] {\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    -webkit-box-flex: 1;\n        -ms-flex: 1 0 100%;\n            flex: 1 0 100%;\n    margin: 1rem;\n}\n@media screen and (min-width: 768px) {\n.profiles-view[data-v-3c4dc7ce] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1 0 50%;\n                flex: 1 0 50%;\n}\n}\n@media screen and (min-width: 1080px) {\n.profiles-view[data-v-3c4dc7ce] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1 0 29%;\n                flex: 1 0 29%;\n        width: 29%;\n}\n}\n", ""]);
 
 // exports
 
@@ -47730,6 +47730,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "user-list-wrapper" },
     _vm._l(_vm.users, function(user) {
       return _c(
         "div",
@@ -47836,7 +47837,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.name[data-v-ef3c73b0]{\n        font-size: 28px;\n}\np[data-v-ef3c73b0]{\n        font-size:18px;\n}\nimg[data-v-ef3c73b0] {\n        border-radius: 50%;\n        float:left;\n        margin-right: 15px;\n        margin-bottom: 5px;\n}\n.style-green[data-v-ef3c73b0]{\n        font-size:14px;\n        color: #98ff6c;\n}\n.text[data-v-ef3c73b0] {\n\n        text-align: justify;\n        margin-top: 10px;\n        margin-left: 10px;\n        line-height:3px;\n}\n    /*.profiles{*/\n        /*float:left;*/\n        /*margin: 10px;*/\n        /*width: 400px;*/\n        /*height:150px;*/\n        /*border: 1px solid #e1e1e1;*/\n    /*}*/\n.childcontent[data-v-ef3c73b0] {\n}\n\n\n", ""]);
+exports.push([module.i, "\n.name[data-v-ef3c73b0]{\n    font-size: 28px;\n}\np[data-v-ef3c73b0]{\n    font-size:18px;\n}\nimg[data-v-ef3c73b0] {\n    border-radius: 50%;\n    float:left;\n    margin-right: 15px;\n    margin-bottom: 5px;\n}\n.style-green[data-v-ef3c73b0]{\n    font-size:14px;\n    color: #98ff6c;\n}\n.text[data-v-ef3c73b0] {\n\n    text-align: justify;\n    margin-top: 10px;\n    margin-left: 10px;\n    line-height:3px;\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -47887,7 +47888,9 @@ var render = function() {
     _vm._v(" "),
     _c("h4", { staticClass: "name" }, [_vm._v(_vm._s(_vm.user.name))]),
     _vm._v(" "),
-    _c("p", { staticClass: "team-1" }, [_vm._v(_vm._s(_vm.user.team) + " | ")]),
+    _c("h4", { staticClass: "team-1" }, [
+      _c("small", [_vm._v(_vm._s(_vm.user.team) + " | ")])
+    ]),
     _vm._v(" "),
     _c("p", [
       _c("i", { staticClass: "fa fa-envelope style-green " }),
@@ -47996,7 +47999,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\ndiv[data-v-506feef2]{\n    /*border: 2px solid black;*/\n}\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.text[data-v-506feef2] {\n    text-align: justify;\n    font-size: 20px;\n    word-wrap: break-word;\n}\n.user-profile[data-v-506feef2]{\n    width: 90%;\n    position: relative;\n    display: block;\n}\n.profile-info-left[data-v-506feef2]{\n    width: 35%;\n    margin: 20px;\n}\n.profile-picture-area[data-v-506feef2]{\n    width:265px;\n    margin:20px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n    margin: 5px;\n}\n.profile-info-right[data-v-506feef2]{\n    width: 50%;\n    margin: 20px;\n    float: right;\n    clear: both;\n    position: relative;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*div{*/\n    /*border: 2px solid black;*/\n/*}*/\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n}\n\n\n", ""]);
 
 // exports
 
@@ -48007,20 +48010,6 @@ exports.push([module.i, "\ndiv[data-v-506feef2]{\n    /*border: 2px solid black;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -48082,98 +48071,62 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "user-profile" }, [
-    _c("div", { staticClass: "profile-info-right text-md-center text-font" }, [
-      _c("h1", { staticClass: "text-font-size" }, [
-        _vm._v(_vm._s(_vm.user.name))
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-3" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("PROFILE")]),
+          _vm._v(" "),
+          _c("p", { staticClass: " text" }, [
+            _c("b", [_vm._v("TEAM:")]),
+            _vm._v(_vm._s(_vm.user.team))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: " text" }, [
+            _c("b", [_vm._v("PHONE:")]),
+            _vm._v(_vm._s(_vm.user.phoneN))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: " text" }, [
+            _c("b", [_vm._v("EMAIL:")]),
+            _vm._v(_vm._s(_vm.user.email))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: " text" }, [
+            _c("b", [_vm._v("SKYPE:")]),
+            _vm._v(_vm._s(_vm.user.skype))
+          ]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Strengths")]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Children")]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Hobbies")]),
+          _vm._v(" "),
+          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Badges")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: " col-md-9" }, [
+          _c("h1", { staticClass: "text-font-size text-md-center text-font" }, [
+            _vm._v(_vm._s(_vm.user.name))
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("ROLE")]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("SKILLS")]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("PROJECTS")]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("TRAINING")])
+        ])
       ])
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _c("div", { staticClass: "text-md-left text profile-info-left" }, [
-      _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("PROFILE")]),
-      _vm._v(" "),
-      _c("p", { staticClass: " text" }, [
-        _c("b", [_vm._v("TEAM:")]),
-        _vm._v(_vm._s(_vm.user.team))
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: " text" }, [
-        _c("b", [_vm._v("PHONE:")]),
-        _vm._v(_vm._s(_vm.user.phoneN))
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: " text" }, [
-        _c("b", [_vm._v("EMAIL:")]),
-        _vm._v(_vm._s(_vm.user.email))
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: " text" }, [
-        _c("b", [_vm._v("SKYPE:")]),
-        _vm._v(_vm._s(_vm.user.skype))
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(5),
-    _vm._v(" "),
-    _vm._m(6),
-    _vm._v(" "),
-    _vm._m(7),
-    _vm._v(" "),
-    _vm._m(8)
+    ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-right" }, [
-      _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("ROLE")]),
-      _vm._v(" "),
-      _c("p", { staticClass: "text" }, [
-        _vm._v(
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n            when an unknown printer took a galley "
-        ),
-        _c("br"),
-        _vm._v(
-          "of type and scrambled it to make a type specimen book.\n            It has survived not only five centuries, but also the leap into electronic typesetting,\n            remaining essentially unchanged.\n            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,\n            and more recently with desktop publishing software\n            like Aldus PageMaker including versions of Lorem Ipsum."
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-right" }, [
-      _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("SKILLS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-right" }, [
-      _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("PROJECTS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-right" }, [
-      _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("TRAINING")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -48195,32 +48148,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-left text" }, [
-      _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Strengths")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-left" }, [
-      _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Children")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-left" }, [
-      _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Hobbies")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-info-left" }, [
-      _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Badges")])
+    return _c("p", { staticClass: "text" }, [
+      _vm._v(
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n                    when an unknown printer took a galley "
+      ),
+      _c("br"),
+      _vm._v(
+        "of type and scrambled it to make a type specimen book.\n                    It has survived not only five centuries, but also the leap into electronic typesetting,\n                    remaining essentially unchanged.\n                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,\n                    and more recently with desktop publishing software\n                    like Aldus PageMaker including versions of Lorem Ipsum."
+      )
     ])
   }
 ]
