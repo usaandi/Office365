@@ -57,7 +57,7 @@
         <input type="text"name="skype" value="{{$user->skype}}"/>
         <br>
         <label for="team"><b>Your team: {{$user->team}}</b></label>
-        <select name="team" placeholder="{{$user->team}}">
+        <select name="team">
             <option value="Fenomen1">Fenomen1</option>
             <option value="Fenomen2">Fenomen2</option>
             <option value="Fenomen3">Fenomen3</option>
@@ -66,9 +66,15 @@
         <br>
         <label for="role"><b>Your Current role:{{$user->role}} </b></label>
         <select name="role">
-            <option value="Admin">Admin</option>
-            <option value="User">User</option>
-            <option value="Moderator">Moderator</option>
+            @foreach($roles as $role)
+            <option value="{{ $role->id }}"
+                @if ($user->roles()->first()->id=== $role->id)
+                selected="selected"
+                @endif
+            >
+                {{ $role->name }}
+            </option>
+            @endforeach
         </select>
         <br>
         <label><b>ADM since</b></label>

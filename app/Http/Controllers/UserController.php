@@ -29,7 +29,8 @@ class UserController extends Controller
     {
 
         $user = User::findorFail($id);
-        return view('user.userupdate', compact('user'));
+        $roles = Role::all();
+        return view('user.userupdate', compact(['user', 'roles']));
     }
 
     public function update(Request $request, $id)
@@ -55,32 +56,21 @@ class UserController extends Controller
         $ADMsince = $request->input('ADMsince');
         $role = $request->input('role');
 
-
         $user = User::findOrFail($id);
 
         $userRole = Role::findByName($role);
 
-        $user->assignRole($userRole);
+        if (!$user->hasRole($userRole)) {
+
+            $user->removeRole($user->roles()->first()->name);
+            $user->assignRole($userRole);
+        }
 
         $user->update(['email' => $email, 'name' => $name, 'phoneN' => $phone,
-            'birthday' => $birthday, 'skype' => $skype, 'team' => $team, 'ADMsince' => $ADMsince]);
+        'birthday' => $birthday, 'skype' => $skype, 'team' => $team, 'ADMsince' => $ADMsince]);
         $user->save();
 
-
-        if ($user->hasRole($userRole)) {
-
-            $user->removeRole($userRole);
-            $user->assignRole($userRole);
-
-            return view('user.userupdate',compact('user'));
-        }
-        else {
-
-            $user->assignRole($userRole);
-        }
-
-
-        return view('user.userupdate', compact('user'));
+        return redirect()->back();
 
 
     }

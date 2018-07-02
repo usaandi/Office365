@@ -13,10 +13,10 @@ class Team extends Model
      * @var array
      */
     protected $fillable = [
-        'team_name', 'team_abbr'
+        'team',
     ];
 
-    public function user() {
-        return $this->hasMany('App\UserTeam');
+    public function team() {
+        return $this->belongsTo('App\TeamDepartment');
     }
 }

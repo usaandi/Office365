@@ -22,6 +22,8 @@ Route::get('/authorize', 'AuthController@gettoken');
 
 Auth::routes();
 
+
+
 Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
 
@@ -31,3 +33,6 @@ Route::get('/admin/users/add', 'AddController@add');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('teams/add', 'DepartmentController@department');
+Route::post('teams/add','DepartmentController@department')->name('adddepartment');
