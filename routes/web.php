@@ -11,14 +11,33 @@ use App\User;
 |
 */
 
-route::get('/template', function (){
-    return view('template');
+route::get('/', function (){
+
 });
 
 //Route::get('/register', 'HomeController@index');
 //Route::get('/signin', 'AuthController@signin');
 Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
+
+
+Route::post('/aaaupload', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'image' => 'required|image64:jpeg,jpg,png'
+    ]);
+    if ($validator->fails()) {
+        return response()->json(['errors'=>$validator->errors()]);
+    } else {
+        $imageData = $request->get('image');
+        $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
+        Image::make($request->get('image'))->save(public_path('images/').$fileName);
+        return response()->json(['error'=>false]);
+    }
+});
+Route::get('/upload', 'ImageController@show');
+Route::post('/upload', 'ImageController@upload')->name('upload');
+
+
 
 Auth::routes();
 
@@ -28,6 +47,7 @@ Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
 
 Route::get('/user/{id}', 'UserController@show');
+
 
 Route::get('/admin/users/add', 'AddController@add');
 Route::post('/admin/users/add', 'AddController@store')->name('store');

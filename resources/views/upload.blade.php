@@ -1,3 +1,5 @@
+
+
 @extends('layouts.master')
 
 @section('content-header')
@@ -24,14 +26,30 @@
 @endsection
 
 @section('content-body')
+    <style>
+        input, select, textarea{
+            width:200px;
+            border:1px solid #babacc;
+            box-sizing:border-box;
 
-    {{csrf_field()}}
+        }
+        .form-group{
 
+        }
+        label {
+            width: 100px;
+        }
+    </style>
+    <form action="{{route('upload')}}" enctype="multipart/form-data" method="post">
+            @csrf
 
-    <div id="app">
-        <profile-view :user='@json($user)'></profile-view>
-        <file-upload></file-upload>
-    </div>
+        <div class="container">
+            <div class="col-8">
+                <input type="file" name="image">
+                <input type="submit" class="btn btn-success" value="upload">
+            </div>
+        </div>
 
+    </form>
 
 @endsection

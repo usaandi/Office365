@@ -18,6 +18,7 @@ window.Vue = require('vue');
 Vue.component('user-list', require('./components/UsersListComponent.vue'));
 Vue.component('user-list-view', require('./components/UserListViewComponent'));
 Vue.component('profile-view', require('./components/ProfileView'));
+Vue.component('file-upload',require('./components/FileUpload.vue'));
 
 const app = new Vue({
     el: '#app'
