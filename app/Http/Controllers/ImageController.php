@@ -9,7 +9,6 @@ class ImageController extends Controller
 {
      public function upload(Request $request) {
 
-
          try {
 
              $rawImage = $request->image;
@@ -22,13 +21,15 @@ class ImageController extends Controller
 
              $allowedMimes = ['image/png'];
 
-             $pos  = strpos($rawImage, ';');
+             $pos = strpos($rawImage, ';');
+             $commaPos = strpos($rawImage, ',')+1;
+             $imageData = base64_decode(substr($rawImage, $commaPos));
              $fileType = explode(':', substr($rawImage, 0, $pos))[1];
 
              if (in_array($fileType, $allowedMimes)) {
                  $fileName = 'image_' . time() . '.png';
                  $storageDisk = Storage::disk('public');
-                 $storageDisk->put($fileName, $request->image);
+                 $storageDisk->put($fileName, $imageData);
 
                  // Save the image URL also to DB.
                  $url = $storageDisk->url($fileName);
