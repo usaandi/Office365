@@ -3942,6 +3942,7 @@ window.Vue = __webpack_require__(39);
 Vue.component('user-list', __webpack_require__(42));
 Vue.component('user-list-view', __webpack_require__(48));
 Vue.component('profile-view', __webpack_require__(53));
+Vue.component('profile-avatar', __webpack_require__(67));
 Vue.component('file-upload', __webpack_require__(58));
 
 var app = new Vue({
@@ -48000,7 +48001,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*div{*/\n    /*border: 2px solid black;*/\n/*}*/\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n}\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*div{*/\n    /*border: 2px solid black;*/\n/*}*/\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n}\n\n\n", ""]);
 
 // exports
 
@@ -48047,20 +48048,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "ProfileView",
-    props: ['user']
+    props: ['user', 'image']
+
 });
 
 /***/ }),
@@ -48074,39 +48066,44 @@ var render = function() {
   return _c("div", { staticClass: "user-profile" }, [
     _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-3" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("PROFILE")]),
-          _vm._v(" "),
-          _c("p", { staticClass: " text" }, [
-            _c("b", [_vm._v("TEAM:")]),
-            _vm._v(_vm._s(_vm.user.team))
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: " text" }, [
-            _c("b", [_vm._v("PHONE:")]),
-            _vm._v(_vm._s(_vm.user.phoneN))
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: " text" }, [
-            _c("b", [_vm._v("EMAIL:")]),
-            _vm._v(_vm._s(_vm.user.email))
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: " text" }, [
-            _c("b", [_vm._v("SKYPE:")]),
-            _vm._v(_vm._s(_vm.user.skype))
-          ]),
-          _vm._v(" "),
-          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Strengths")]),
-          _vm._v(" "),
-          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Children")]),
-          _vm._v(" "),
-          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Hobbies")]),
-          _vm._v(" "),
-          _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Badges")])
-        ]),
+        _c(
+          "div",
+          { staticClass: "col-md-3" },
+          [
+            _c("profile-avatar", { attrs: { image: _vm.user.image } }),
+            _vm._v(" "),
+            _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("PROFILE")]),
+            _vm._v(" "),
+            _c("p", { staticClass: " text" }, [
+              _c("b", [_vm._v("TEAM:")]),
+              _vm._v(_vm._s(_vm.user.team))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: " text" }, [
+              _c("b", [_vm._v("PHONE:")]),
+              _vm._v(_vm._s(_vm.user.phoneN))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: " text" }, [
+              _c("b", [_vm._v("EMAIL:")]),
+              _vm._v(_vm._s(_vm.user.email))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: " text" }, [
+              _c("b", [_vm._v("SKYPE:")]),
+              _vm._v(_vm._s(_vm.user.skype))
+            ]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Strengths")]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Children")]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Hobbies")]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Badges")])
+          ],
+          1
+        ),
         _vm._v(" "),
         _c("div", { staticClass: " col-md-9" }, [
           _c("h1", { staticClass: "text-font-size text-md-center text-font" }, [
@@ -48115,7 +48112,7 @@ var render = function() {
           _vm._v(" "),
           _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("ROLE")]),
           _vm._v(" "),
-          _vm._m(1),
+          _vm._m(0),
           _vm._v(" "),
           _c("h3", { staticClass: "text-color-cyan" }, [_vm._v("SKILLS")]),
           _vm._v(" "),
@@ -48128,23 +48125,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-picture-area" }, [
-      _c("img", {
-        staticClass: "profile-picture",
-        attrs: {
-          src: "https://www.w3schools.com/w3images/avatar2.png",
-          width: "250px",
-          height: "250px"
-        }
-      }),
-      _vm._v(" "),
-      _c("h4", { staticClass: "text-md-center" }, [_vm._v("Level:")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -48174,21 +48154,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(59)
-}
 var normalizeComponent = __webpack_require__(4)
 /* script */
 var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(62)
+var __vue_template__ = __webpack_require__(72)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-12ca9994"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -48221,58 +48197,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(60);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("9e62c968", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12ca9994\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FileUpload.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12ca9994\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FileUpload.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 59 */,
+/* 60 */,
 /* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -48298,6 +48229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.createImage(files[0]);
         },
         createImage: function createImage(file) {
+
             var reader = new FileReader();
             var vm = this;
             reader.onload = function (e) {
@@ -48306,15 +48238,208 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             reader.readAsDataURL(file);
         },
         upload: function upload() {
+            var vm = this;
             axios.post('/upload', { image: this.image }).then(function (response) {
-                console.log(response.data);
+                vm.$emit('file-uploaded', response);
             });
         }
     }
 });
 
 /***/ }),
-/* 62 */
+/* 62 */,
+/* 63 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(68)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(70)
+/* template */
+var __vue_template__ = __webpack_require__(71)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-94a4cf9c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ProfileAvatarComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-94a4cf9c", Component.options)
+  } else {
+    hotAPI.reload("data-v-94a4cf9c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(69);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("56bd8367", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-94a4cf9c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProfileAvatarComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-94a4cf9c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProfileAvatarComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.profile-picture[data-v-94a4cf9c]{\n    border-radius: 50%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "ProfileAvatarComponent",
+    props: ['image'],
+    data: function data() {
+        return {
+            avatarImage: null,
+            edit: false
+        };
+    },
+    mounted: function mounted() {
+        this.avatarImage = this.image;
+    },
+
+    methods: {
+        changeImage: function changeImage() {
+            if (this.edit) {
+                this.edit = false;
+            } else {
+                this.edit = true;
+            }
+        },
+        fileUploaded: function fileUploaded(response) {
+            if (response.status === 200) {
+                this.edit = false;
+                this.avatarImage = response.data;
+            }
+        }
+    }
+
+});
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "profile-picture-area" },
+    [
+      _c("img", {
+        staticClass: "profile-picture",
+        attrs: { src: _vm.avatarImage, width: "250px", height: "250px" },
+        on: { click: _vm.changeImage }
+      }),
+      _vm._v(" "),
+      _c("file-upload", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.edit,
+            expression: "edit"
+          }
+        ],
+        on: { "file-uploaded": _vm.fileUploaded }
+      }),
+      _vm._v(" "),
+      _c("h4", { staticClass: "text-md-center" }, [_vm._v("Level:")])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-94a4cf9c", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48323,26 +48448,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "col-md-4" }, [
-        _c("img", { staticClass: "img-responsive", attrs: { src: _vm.image } })
-      ]),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { id: "imageChoose", type: "file" },
+        on: { change: _vm.onFileChange }
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "file" },
-          on: { change: _vm.onFileChange }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success btn-block",
-            on: { click: _vm.upload }
-          },
-          [_vm._v("Upload")]
-        )
-      ])
+      _c(
+        "button",
+        { staticClass: "btn btn-success btn-block", on: { click: _vm.upload } },
+        [_vm._v("SAVE")]
+      )
     ])
   ])
 }
@@ -48355,12 +48471,6 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-12ca9994", module.exports)
   }
 }
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
