@@ -9,3 +9,7 @@
 <!--begin::Page Snippets -->
 <script src="{{asset('assets/app/js/dashboard.js')}}" type="text/javascript"></script>
 <!--end::Page Snippets -->
+<script>
+    var authUser = {!! auth()->user() !!};
+    var authUserRole = {!! auth()->user()->roles()->first() !!};
+</script>

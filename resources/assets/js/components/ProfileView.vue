@@ -3,16 +3,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
-                    <profile-avatar :image="user.image"></profile-avatar>
-                    <h3 class="text-color-cyan">PROFILE</h3>
-                    <p class=" text"> <b>TEAM:</b>{{user.team}}</p>
-                    <p class=" text"> <b>PHONE:</b>{{user.phoneN}}</p>
-                    <p class=" text"> <b>EMAIL:</b>{{user.email}}</p>
-                    <p class=" text"> <b>SKYPE:</b>{{user.skype}}</p>
-                    <h2 class="text-color-cyan" >Strengths</h2>
-                    <h2 class="text-color-cyan" >Children</h2>
-                    <h2 class="text-color-cyan">Hobbies</h2>
-                    <h2 class="text-color-cyan">Badges</h2>
+                    <profile-avatar :image="user.image" :user-id="user.id"></profile-avatar>
+                    <h2 class="text-color-cyan">PROFILE</h2>
+                    <p class="text"><b>TEAM:</b>{{user.team}}</p>
+                    <p class="text" ><b>PHONE:</b>{{user.phoneN}}</p>
+                    <p class="text"><b>EMAIL:</b>{{user.email}}</p>
+                    <p  class="text" v-on:dblclick="user.edit=true"><b>SKYPE:</b>{{user.skype}}</p>
+                    <h2 class="text-color-cyan" >STRENGTHS</h2>
+                    <h2 class="text-color-cyan" >CHILDREN</h2>
+                    <h2 class="text-color-cyan">HOBBIES</h2>
+                    <h2 class="text-color-cyan">BADGES</h2>
                 </div>
                 <div class=" col-md-9">
                     <h1 class="text-font-size text-md-center text-font">{{user.name}}</h1>
@@ -25,9 +25,9 @@
                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
                         and more recently with desktop publishing software
                         like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <h3 class="text-color-cyan">SKILLS</h3>
-                    <h3 class="text-color-cyan">PROJECTS</h3>
-                    <h3 class="text-color-cyan">TRAINING</h3>
+                    <h2 class="text-color-cyan">SKILLS</h2>
+                    <h2 class="text-color-cyan">PROJECTS</h2>
+                    <h2 class="text-color-cyan">TRAINING</h2>
                 </div>
             </div>
         </div>
@@ -38,27 +38,44 @@
     export default {
         name: "ProfileView",
         props: ['user', 'image'],
+        data(){
+            return{
+                skype: '',
+                edit: false,
+                edittext:''
+            }
+        },
+        mounted() {
+            this.avatarImage = this.image;
+        },
 
+        methods: {
+            changeText() {
+                if (authUser.id === this.userId || Vue.$isAdmin()) {
+                    if (this.edit) {
+                        this.edit = false;
+                    }
+                    else {
+                        this.edit = true;
+                    }
+                }
+            }
+        }
     }
+
 </script>
 
 <style scoped>
-
     /*div{*/
         /*border: 2px solid black;*/
     /*}*/
-
     .text-color-cyan{
         color: #00adee;
     }
     .text-font-size{
         font-size: 60px;
     }
-
     .profile-picture{
         border-radius: 50%;
-
     }
-
-
 </style>

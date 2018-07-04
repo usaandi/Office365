@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style scoped>
-
     .name{
         font-size: 28px;
     }
@@ -38,13 +37,9 @@ export default {
         color: #98ff6c;
     }
     .text {
-
         text-align: justify;
         margin-top: 10px;
         margin-left: 10px;
         line-height:3px;
     }
-
-
-
 </style>

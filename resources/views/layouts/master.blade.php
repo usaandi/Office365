@@ -6,7 +6,7 @@
 </head>
 <!-- end::Head -->
 <!-- start::Body -->
-<body style="background-color: #00adee;" class="m-page--fluid m-header--fixed m-header--fixed-mobile m-footer--push m-aside--offcanvas-default">
+<body class="m-page--fluid m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
     <!-- begin::Page -->
     <div class="m-grid m-grid--hor m-grid--root m-page">
 
@@ -17,9 +17,6 @@
 
                     <!-- BEGIN: Subheader -->
                     <div class="m-subheader ">
-                        @hasanyrole('Admin|Moderator')
-                            asdadasdadsad
-                        @endhasanyrole
                         @yield('content-header')
                     </div>
                     <!-- END: Subheader -->

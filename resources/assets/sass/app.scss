@@ -13,9 +13,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }*/
 
-@media (min-width:1025px){.m-header--fixed .m-header .m-header__bottom{margin-top:0;}}
+/*@media (min-width:1025px){
+  .m-header--fixed .m-header .m-header__bottom{
+    margin-top:0;
+  }
+}*/
 
 /*
 .m-page--fluid .m-page .m-page__container {
   padding: 0;
 }*/
+
+body {
+  background-color: #00adee;
+}

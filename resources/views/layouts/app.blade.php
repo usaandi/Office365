@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="/signin">{{ __('login') }}</a></li>
+                            <li><a class="nav-link" href="/">{{ __('login') }}</a></li>
 
                         @else
                             <li class="nav-item dropdown">

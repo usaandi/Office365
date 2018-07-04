@@ -30,7 +30,6 @@
 
     <div id="app">
         <profile-view :user='@json($user)'></profile-view>
-        <file-upload></file-upload>
     </div>
 
 

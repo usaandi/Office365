@@ -9,7 +9,7 @@
 <script>
     export default {
         name: "ProfileAvatarComponent",
-        props: ['image'],
+        props: ['image', 'userId'],
         data(){
             return{
                 avatarImage: null,
@@ -21,11 +21,13 @@
         },
         methods: {
             changeImage() {
-                if (this.edit) {
-                    this.edit = false;
-                }
-                else {
-                    this.edit = true;
+                if (authUser.id === this.userId || Vue.$isAdmin()) {
+                    if (this.edit) {
+                        this.edit = false;
+                    }
+                    else {
+                        this.edit = true;
+                    }
                 }
             },
             fileUploaded(response) {

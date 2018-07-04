@@ -21,8 +21,6 @@ class UserController extends Controller
         $user = User::findorFail($id);
 
         return view('user.profileview', compact('user'));
-        //->with('user',$user);
-//
     }
 
     public function showedit($id)
