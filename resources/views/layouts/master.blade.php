@@ -12,11 +12,14 @@
 
         @include('partials.header')
 
-        <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-page__container container m-body">
+        <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
             <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
                     <!-- BEGIN: Subheader -->
                     <div class="m-subheader ">
+                        @hasanyrole('Admin|Moderator')
+                            asdadasdadsad
+                        @endhasanyrole
                         @yield('content-header')
                     </div>
                     <!-- END: Subheader -->
