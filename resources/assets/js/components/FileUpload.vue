@@ -1,15 +1,8 @@
 <template>
     <div class="row">
         <div class="col-md-12">
-            <div class="col-md-4">
-                <img :src="image" class="img-responsive">
-            </div>
-            <div class="col-md-4">
-                <input type="file" v-on:change="onFileChange" class="form-control">
-                <button class="btn btn-success btn-block" @click="upload">Upload</button>
-
-            </div>
-
+            <input id="imageChoose" type="file" v-on:change="onFileChange" class="form-control">
+            <button class="btn btn-success btn-block" @click="upload">SAVE</button>
         </div>
     </div>
 </template>
@@ -30,6 +23,7 @@
                 this.createImage(files[0]);
             },
             createImage(file) {
+
                 let reader = new FileReader();
                 let vm = this;
                 reader.onload = (e) => {
@@ -38,14 +32,11 @@
                 reader.readAsDataURL(file);
             },
             upload(){
+                let vm = this;
                 axios.post('/upload',{image: this.image}).then(response => {
-                    console.log(response.data);
+                    vm.$emit('file-uploaded', response);
                 });
             }
         }
     }
 </script>
-
-<style scoped>
-
-</style>
