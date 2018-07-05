@@ -38,12 +38,12 @@ class AddController extends Controller
             $team=$request->input('team');
             $ADMsince=$request->input('ADMsince');
 
-        $userteam= Team::where('team_name', '=', $team);
+        //$userteam= Team::where('team_name', '=', $team);
 
-        if ($userteam===null){
+     /*   if ($userteam===null){
             Team::create(['team_name'=>$team]);
 
-        }
+        }*/
 
         $user = User::where('email', '=', $email)->first();
 
