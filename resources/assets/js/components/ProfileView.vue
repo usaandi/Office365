@@ -5,10 +5,12 @@
                 <div class="col-md-3">
                     <profile-avatar :image="user.image" :user-id="user.id"></profile-avatar>
                     <h2 class="text-color-cyan">PROFILE</h2>
-                    <p class="text"><b>TEAM:</b>{{user.team}}</p>
-                    <p class="text" ><b>PHONE:</b>{{user.phoneN}}</p>
-                    <p class="text"><b>EMAIL:</b>{{user.email}}</p>
-                    <p  class="text" v-on:dblclick="user.edit=true"><b>SKYPE:</b>{{user.skype}}</p>
+
+                    <editable-input-component :user-id="user.id" :data="userdata.team" element-name="TEAM"></editable-input-component>
+                    <editable-input-component :user-id="user.id" :data="userdata.phoneN" element-name="PHONE"></editable-input-component>
+                    <editable-input-component :user-id="user.id" :data="userdata.email" element-name="EMAIL"></editable-input-component>
+                    <editable-input-component :user-id="user.id" :data="userdata.skype" element-name="SKYPE"></editable-input-component>
+
                     <h2 class="text-color-cyan" >STRENGTHS</h2>
                     <h2 class="text-color-cyan" >CHILDREN</h2>
                     <h2 class="text-color-cyan">HOBBIES</h2>
@@ -35,18 +37,24 @@
 </template>
 
 <script>
+    import EditableInputComponent from './EditableInputComponent'
     export default {
         name: "ProfileView",
+        components: {EditableInputComponent},
         props: ['user', 'image'],
-        data(){
+        data: function(){
             return{
-                skype: '',
-                edit: false,
-                edittext:''
+                edit:false,
+                userdata: '',
+                text: '',
+
+
+
             }
         },
         mounted() {
-            this.avatarImage = this.image;
+            this.userdata = this.user;
+
         },
 
         methods: {
@@ -59,7 +67,7 @@
                         this.edit = true;
                     }
                 }
-            }
+            },
         }
     }
 
