@@ -10,6 +10,7 @@
 <script>
     export default {
         name: "FileUpload",
+        props: ['endpoint'],
         data(){
             return {
                 image: ''
@@ -33,7 +34,7 @@
             },
             upload(){
                 let vm = this;
-                axios.post('/upload',{image: this.image}).then(response => {
+                axios.post(this.endpoint,{image: this.image}).then(response => {
                     vm.$emit('file-uploaded', response);
                 });
             }
