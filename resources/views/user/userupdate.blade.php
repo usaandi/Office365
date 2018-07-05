@@ -67,7 +67,7 @@
         <label for="role"><b>Your Current role:{{$user->role}} </b></label>
         <select name="role">
             @foreach($roles as $role)
-            <option value="{{ $role->id }}"
+            <option value="{{ $role->name }}"
                 @if ($user->roles()->first()->id=== $role->id)
                 selected="selected"
                 @endif
