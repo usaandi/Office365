@@ -6,10 +6,17 @@
                     <profile-avatar :image="user.image" :user-id="user.id"></profile-avatar>
                     <h2 class="text-color-cyan">PROFILE</h2>
 
-                    <editable-input-component :user-id="user.id" :data="userdata.team" element-name="TEAM"></editable-input-component>
-                    <editable-input-component :user-id="user.id" :data="userdata.phoneN" element-name="PHONE"></editable-input-component>
-                    <editable-input-component :user-id="user.id" :data="userdata.email" element-name="EMAIL"></editable-input-component>
-                    <editable-input-component :user-id="user.id" :data="userdata.skype" element-name="SKYPE"></editable-input-component>
+                    <p v-show="canedit === false" class="text" @dblclick="changeText"><b>TEAM:</b>{{ user.team }}</p>
+                    <editable-input-component v-show="canedit" :endpoint="'/user/' + user.id + '/update/team'" :data="user.team" element-name="TEAM"></editable-input-component>
+
+                    <p v-show="canedit === false" class="text" @dblclick="changeText"><b>PHONE:</b>{{ user.phoneN }}</p>
+                    <editable-input-component v-show="canedit" :endpoint="'/user/'+ user.id + '/update/phone'" :data="user.phoneN" element-name="PHONE"></editable-input-component>
+
+                    <p v-show="isadmin === false" class="text" @dblclick="changeText"><b>EMAIL:</b>{{ user.email }}</p>
+                    <editable-input-component v-show="isadmin" :endpoint="'/user/' + user.id + '/update/email'" :data="user.email" element-name="EMAIL"></editable-input-component>
+
+                    <p v-show="canedit === false" class="text" @dblclick="changeText"><b>SKYPE:</b>{{ user.skype }}</p>
+                    <editable-input-component v-show="canedit" :endpoint="'/user/' + user.id + '/update/skype'" :data="user.skype" element-name="SKYPE"></editable-input-component>
 
                     <h2 class="text-color-cyan" >STRENGTHS</h2>
                     <h2 class="text-color-cyan" >CHILDREN</h2>
@@ -47,19 +54,24 @@
                 edit:false,
                 userdata: '',
                 text: '',
-
-
-
+                canedit: false
+            }
+        },
+        computed: {
+            isadmin: function () {
+                return Vue.$isAdmin()
             }
         },
         mounted() {
             this.userdata = this.user;
-
+            if (authUser.id === this.user.id || this.isadmin) {
+                this.canedit = true;
+            }
         },
 
         methods: {
             changeText() {
-                if (authUser.id === this.userId || Vue.$isAdmin()) {
+                if (this.canedit) {
                     if (this.edit) {
                         this.edit = false;
                     }
