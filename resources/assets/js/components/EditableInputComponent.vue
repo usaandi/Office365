@@ -1,36 +1,41 @@
 <template>
     <div>
         <div v-show="edit===false">
-            <p  class="text" @dblclick="changeText"><b>{{ elementName }}:</b>{{ data }}</p>
+            <p class="text" @dblclick="changeText"><b>{{ elementName }}:</b>{{ elementdata }}</p>
         </div>
-        <input v-show="this.edit" v-model="data" @keyup.enter="edit=false; upload">
+        <input v-show="edit" v-model="elementdata" @keyup.enter="upload">
     </div>
 </template>
 
 <script>
     export default {
         name: "EditableInputComponent",
-        props: ['userId', 'elementName', 'data'],
+        props: ['endpoint', 'elementName', 'data'],
         data(){
             return{
+                elementdata: null,
                 edit: false
             }
         },
+        mounted() {
+          this.elementdata = this.data;
+        },
         methods: {
             changeText() {
-                if (authUser.id === this.userId || Vue.$isAdmin()) {
-                    if (this.edit) {
-                        this.edit = false;
-                    }
-                    else {
-                        this.edit = true;
-                    }
+                if (this.edit) {
+                    this.edit = false;
+                }
+                else {
+                    this.edit = true;
                 }
             },
             upload(){
+
+                this.edit = false;
+
                 let vm = this;
-                axios.post('/update',{data: this.data}).then(response => {
-                    vm.$emit('file-uploaded', response);
+                axios.post(this.endpoint,{data: this.elementdata}).then(response => {
+                    vm.$emit('input-updated', response);
                 });
             },
         }
