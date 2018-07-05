@@ -35,7 +35,7 @@ Route::post('/aaaupload', function (Request $request) {
     }
 });
 Route::get('/upload', 'ImageController@show');
-Route::post('/upload', 'ImageController@upload')->name('upload');
+Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
 
 
 
@@ -45,6 +45,11 @@ Auth::routes();
 
 Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
+
+Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('updateTeam');
+Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
+Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('updateEmail');
+Route::post('/user/{id}/update/skype', 'UserController@updateSkype')->name('updateSkype');
 
 Route::get('/user/{id}', 'UserController@show');
 
