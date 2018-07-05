@@ -1,7 +1,7 @@
 <template>
     <div class="profile-picture-area">
         <img class="profile-picture" @click="changeImage" :src="avatarImage" width="250px" height="250px">
-        <file-upload @file-uploaded="fileUploaded" v-show="edit"></file-upload>
+        <file-upload :endpoint="'/upload/' + userId" @file-uploaded="fileUploaded" v-show="edit"></file-upload>
         <h4 class="text-md-center">Level:</h4>
     </div>
 </template>
@@ -17,6 +17,7 @@
             }
         },
         mounted() {
+            console.log(this.image);
           this.avatarImage = this.image;
         },
         methods: {
@@ -44,6 +45,5 @@
 <style scoped>
     .profile-picture{
         border-radius: 50%;
-
     }
 </style>
