@@ -26,6 +26,7 @@
 
 <style scoped>
     .user-list-wrapper {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         margin: -2rem;
