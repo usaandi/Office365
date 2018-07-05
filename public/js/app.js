@@ -3941,7 +3941,6 @@ window.Vue = __webpack_require__(39);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-//const ChecksPrivileges = require('./services/ChecksPrivileges');
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0__services_ChecksPrivileges__["a" /* default */]);
 
@@ -47679,7 +47678,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.user-list-wrapper[data-v-3c4dc7ce] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    margin: -2rem;\n}\n.profiles-view[data-v-3c4dc7ce] {\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    -webkit-box-flex: 1;\n        -ms-flex: 1 0 100%;\n            flex: 1 0 100%;\n    margin: 1rem;\n}\n@media screen and (min-width: 768px) {\n.profiles-view[data-v-3c4dc7ce] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1 0 50%;\n                flex: 1 0 50%;\n}\n}\n@media screen and (min-width: 1080px) {\n.profiles-view[data-v-3c4dc7ce] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1 0 29%;\n                flex: 1 0 29%;\n        width: 29%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.user-list-wrapper[data-v-3c4dc7ce] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    margin: -2rem;\n}\n.profiles-view[data-v-3c4dc7ce] {\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 100%;\n            flex: 0 0 100%;\n    margin: 1rem;\n}\n@media screen and (min-width: 768px) {\n.profiles-view[data-v-3c4dc7ce] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1 0 50%;\n                flex: 1 0 50%;\n}\n}\n@media screen and (min-width: 1080px) {\n.profiles-view[data-v-3c4dc7ce] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1 0 29%;\n                flex: 1 0 29%;\n        width: 29%;\n}\n}\n", ""]);
 
 // exports
 
@@ -47902,11 +47901,7 @@ var render = function() {
   return _c("div", { staticClass: "text" }, [
     _c("a", { attrs: { href: "/user/" + _vm.user.id } }, [
       _c("img", {
-        attrs: {
-          src: "https://www.w3schools.com/w3images/avatar2.png",
-          width: "100px",
-          height: "100px"
-        }
+        attrs: { src: _vm.user.image, width: "100px", height: "100px" }
       })
     ]),
     _vm._v(" "),
@@ -48023,7 +48018,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*div{*/\n    /*border: 2px solid black;*/\n/*}*/\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*div{*/\n    /*border: 2px solid black;*/\n/*}*/\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n}\n", ""]);
 
 // exports
 
@@ -48034,6 +48029,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditableInputComponent__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditableInputComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditableInputComponent__);
+//
+//
 //
 //
 //
@@ -48071,18 +48070,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "ProfileView",
+    components: { EditableInputComponent: __WEBPACK_IMPORTED_MODULE_0__EditableInputComponent___default.a },
     props: ['user', 'image'],
     data: function data() {
         return {
-            skype: '',
             edit: false,
-            edittext: ''
+            userdata: '',
+            text: ''
+
         };
     },
     mounted: function mounted() {
-        this.avatarImage = this.image;
+        this.userdata = this.user;
     },
 
 
@@ -48120,33 +48122,37 @@ var render = function() {
             _vm._v(" "),
             _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("PROFILE")]),
             _vm._v(" "),
-            _c("p", { staticClass: "text" }, [
-              _c("b", [_vm._v("TEAM:")]),
-              _vm._v(_vm._s(_vm.user.team))
-            ]),
+            _c("editable-input-component", {
+              attrs: {
+                "user-id": _vm.user.id,
+                data: _vm.userdata.team,
+                "element-name": "TEAM"
+              }
+            }),
             _vm._v(" "),
-            _c("p", { staticClass: "text" }, [
-              _c("b", [_vm._v("PHONE:")]),
-              _vm._v(_vm._s(_vm.user.phoneN))
-            ]),
+            _c("editable-input-component", {
+              attrs: {
+                "user-id": _vm.user.id,
+                data: _vm.userdata.phoneN,
+                "element-name": "PHONE"
+              }
+            }),
             _vm._v(" "),
-            _c("p", { staticClass: "text" }, [
-              _c("b", [_vm._v("EMAIL:")]),
-              _vm._v(_vm._s(_vm.user.email))
-            ]),
+            _c("editable-input-component", {
+              attrs: {
+                "user-id": _vm.user.id,
+                data: _vm.userdata.email,
+                "element-name": "EMAIL"
+              }
+            }),
             _vm._v(" "),
-            _c(
-              "p",
-              {
-                staticClass: "text",
-                on: {
-                  dblclick: function($event) {
-                    _vm.user.edit = true
-                  }
-                }
-              },
-              [_c("b", [_vm._v("SKYPE:")]), _vm._v(_vm._s(_vm.user.skype))]
-            ),
+            _c("editable-input-component", {
+              attrs: {
+                "user-id": _vm.user.id,
+                data: _vm.userdata.skype,
+                "element-name": "SKYPE"
+              }
+            }),
             _vm._v(" "),
             _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("STRENGTHS")]),
             _vm._v(" "),
@@ -48521,6 +48527,221 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(74)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/EditableInputComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2ba21164", Component.options)
+  } else {
+    hotAPI.reload("data-v-2ba21164", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "EditableInputComponent",
+    props: ['userId', 'elementName', 'data'],
+    data: function data() {
+        return {
+            edit: false
+        };
+    },
+
+    methods: {
+        changeText: function changeText() {
+            if (authUser.id === this.userId || Vue.$isAdmin()) {
+                if (this.edit) {
+                    this.edit = false;
+                } else {
+                    this.edit = true;
+                }
+            }
+        },
+        upload: function upload() {
+            var vm = this;
+            axios.post('/update', { data: this.data }).then(function (response) {
+                vm.$emit('file-uploaded', response);
+            });
+        }
+    }
+
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.edit === false,
+            expression: "edit===false"
+          }
+        ]
+      },
+      [
+        _c("p", { staticClass: "text", on: { dblclick: _vm.changeText } }, [
+          _c("b", [_vm._v(_vm._s(_vm.elementName) + ":")]),
+          _vm._v(_vm._s(_vm.data))
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: this.edit,
+          expression: "this.edit"
+        },
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.data,
+          expression: "data"
+        }
+      ],
+      domProps: { value: _vm.data },
+      on: {
+        keyup: function($event) {
+          if (
+            !("button" in $event) &&
+            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+          ) {
+            return null
+          }
+          _vm.edit = false
+          _vm.upload
+        },
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.data = $event.target.value
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2ba21164", module.exports)
+  }
+}
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(75);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("4d2fd43a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2ba21164\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditableInputComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2ba21164\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditableInputComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.inputstyle{\n    border: 1px solid black;\n    border-radius: 12px;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
