@@ -1,7 +1,7 @@
 <template>
 
         <div class="text">
-            <a v-bind:href="'/user/' + user.id"><img src="https://www.w3schools.com/w3images/avatar2.png"width="100px" height="100px"></a>
+            <a v-bind:href="'/user/' + user.id"><img :src="user.image"width="100px" height="100px"></a>
             <h4 class="name">{{ user.name }}</h4>
              <h4 class="team-1" ><small>{{user.team}} | </small></h4>
             <p><i class="fa fa-envelope style-green "></i>{{user.email}}</p>
