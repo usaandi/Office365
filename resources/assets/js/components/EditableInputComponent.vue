@@ -1,26 +1,23 @@
 <template>
-    <div class="profile-picture-area">
-        <img class="profile-picture" @click="changeImage" :src="avatarImage" width="250px" height="250px">
-        <file-upload @file-uploaded="fileUploaded" v-show="edit"></file-upload>
-        <h4 class="text-md-center">Level:</h4>
+    <div>
+        <div v-show="edit===false">
+            <p  class="text" @dblclick="changeText"><b>{{ elementName }}:</b>{{ data }}</p>
+        </div>
+        <input v-show="this.edit" v-model="data" @keyup.enter="edit=false; upload">
     </div>
 </template>
 
 <script>
     export default {
-        name: "ProfileAvatarComponent",
-        props: ['image', 'userId'],
+        name: "EditableInputComponent",
+        props: ['userId', 'elementName', 'data'],
         data(){
             return{
-                avatarImage: null,
                 edit: false
             }
         },
-        mounted() {
-          this.avatarImage = this.image;
-        },
         methods: {
-            changeImage() {
+            changeText() {
                 if (authUser.id === this.userId || Vue.$isAdmin()) {
                     if (this.edit) {
                         this.edit = false;
@@ -30,20 +27,19 @@
                     }
                 }
             },
-            fileUploaded(response) {
-                if (response.status === 200) {
-                    this.edit = false;
-                    this.avatarImage = response.data;
-                }
-            }
+            upload(){
+                let vm = this;
+                axios.post('/update',{data: this.data}).then(response => {
+                    vm.$emit('file-uploaded', response);
+                });
+            },
         }
 
     }
 </script>
-
-<style scoped>
-    .profile-picture{
-        border-radius: 50%;
-
+<style>
+    .inputstyle{
+        border: 1px solid black;
+        border-radius: 12px;
     }
 </style>
