@@ -25,7 +25,7 @@
                 </div>
                 <div class=" col-md-9">
                     <h1 class="text-font-size text-md-center text-font">{{user.name}}</h1>
-                    <h3 class="text-color-cyan">ROLE</h3>
+                    <h2 class="text-color-cyan">ROLE</h2>
                     <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                         when an unknown printer took a galley <br>of type and scrambled it to make a type specimen book.
