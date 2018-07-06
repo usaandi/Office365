@@ -21,19 +21,7 @@ Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
 
 
-Route::post('/aaaupload', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'image' => 'required|image64:jpeg,jpg,png'
-    ]);
-    if ($validator->fails()) {
-        return response()->json(['errors'=>$validator->errors()]);
-    } else {
-        $imageData = $request->get('image');
-        $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
-        Image::make($request->get('image'))->save(public_path('images/').$fileName);
-        return response()->json(['error'=>false]);
-    }
-});
+
 Route::get('/upload', 'ImageController@show');
 Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
 
@@ -51,7 +39,7 @@ Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('upda
 Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('updateEmail');
 Route::post('/user/{id}/update/skype', 'UserController@updateSkype')->name('updateSkype');
 
-Route::get('/user/{id}', 'UserController@show');
+Route::get('/user/{id}', 'UserController@show')->name('profile');
 
 
 Route::get('/admin/users/add', 'AddController@add');
