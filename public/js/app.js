@@ -48940,7 +48940,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.boxstyle[data-v-104a09b8]{\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.text-color-cyan[data-v-104a09b8]{\n    color: #00adee;\n}\n.button[data-v-104a09b8] {\n\n    background-color: white;\n    border-radius: 10px;\n    -moz-border-radius: 10px;\n    -webkit-border-radius: 10px;\n}\n.text-color-black-14[data-v-104a09b8]{\n    font-size:14px;\n    color: black;\n}\n.medium-btn[data-v-104a09b8]{\n        width: 90px;\n        height:30px;\n}\n", ""]);
 
 // exports
 
@@ -48951,6 +48951,33 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""])
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48988,12 +49015,26 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _vm._v("\n            hey\n        ")
+      _c("div", { staticClass: "col-md-2" }, [
+        _c("h2", [_vm._v("TIMELINE COMES HERE")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-11" }, [
-        _vm._v("\n            hey\n        ")
+      _c("div", { staticClass: "col-md-10 boxstyle" }, [
+        _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Goal Title")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-left float-right" }, [
+          _vm._v(
+            "consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.Lorem ipsum dolor sit amet,\n                    consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "d-inline-block text-color-cyan" }, [
+          _vm._v("MILESTONES")
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "button text-color-black-14 medium-btn" }, [
+          _vm._v("+ New")
+        ])
       ])
     ])
   }

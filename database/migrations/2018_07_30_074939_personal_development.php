@@ -14,7 +14,7 @@ class PersonalDevelopment extends Migration
     public function up()
 
     {
-        Schema::create('development', function (Blueprint $table) {
+        Schema::create('developments', function (Blueprint $table) {
 
             $table->increments('id');
             $table->integer('milestone_id');
@@ -27,9 +27,10 @@ class PersonalDevelopment extends Migration
 
             $table->integer('development_id');
             $table->integer('user_id');
-            $table->string('title');
-            $table->text('description');
             $table->timestamps();
+
+            $table->foreign('development_id')->references('development')->on('id');
+            $table->foreign('user_id')->references('users')->on('id');
         });
 
 
@@ -53,7 +54,7 @@ class PersonalDevelopment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('development');
+        Schema::dropIfExists('developments');
         Schema::dropIfExists('milestones');
         Schema::dropIfExists('user_development');
     }

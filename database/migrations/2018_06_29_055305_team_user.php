@@ -13,7 +13,7 @@ class TeamUser extends Migration
      */
     public function up()
     {
-        Schema::create('users_departments', function (Blueprint $table){
+        /*Schema::create('users_departments', function (Blueprint $table){
             $table->integer('department_id');
             $table->integer('user_id');
             $table->timestamp('closed_at');
@@ -22,7 +22,7 @@ class TeamUser extends Migration
             $table->foreign('department_id')->references('departments')->on('id');
             $table->foreign('user_id')->references('users')->on('id');
 
-        });
+        });*/
 
         /*Schema::create('teams_departments', function (Blueprint $table){
             $table->integer('department_id');
