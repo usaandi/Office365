@@ -70,7 +70,7 @@
         },
 
         methods: {
-            changeText() {
+            changeText: function() {
                 if (this.canedit) {
                     if (this.edit) {
                         this.edit = false;
