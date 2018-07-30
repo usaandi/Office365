@@ -23,6 +23,7 @@ Vue.component('profile-view', require('./components/ProfileView'));
 Vue.component('profile-avatar', require('./components/ProfileAvatarComponent'));
 Vue.component('file-upload',require('./components/FileUpload.vue'));
 
+Vue.component('user-development',require('./components/UserDevelopmentComponent.vue'));
 const app = new Vue({
     el: '#app'
 });
