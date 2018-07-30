@@ -21,18 +21,15 @@ Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
 
 
-
 Route::get('/upload', 'ImageController@show');
 Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
 
 
-
 Auth::routes();
-
-
-
 Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
+
+
 
 Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('updateTeam');
 Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
@@ -40,11 +37,11 @@ Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('upda
 Route::post('/user/{id}/update/skype', 'UserController@updateSkype')->name('updateSkype');
 
 Route::get('/user/{id}', 'UserController@show')->name('profile');
+Route::get('/user/{id}/development', 'PersonalDevelopmentController@userDevelopment')->name('development');
 
 
 Route::get('/admin/users/add', 'AddController@add');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('teams/add', 'DepartmentController@department');
