@@ -123,10 +123,10 @@
                                                             </a>
                                                         </li>
                                                         <li class="m-nav__item">
-                                                            <a href="profile.html" class="m-nav__link">
+                                                            <a href="{{route('development',['id'=>auth()->user()])}}" class="m-nav__link">
                                                                 <i class="m-nav__link-icon flaticon-share"></i>
                                                                 <span class="m-nav__link-text">
-																				Activity
+																				Personal Development
 																			</span>
                                                             </a>
                                                         </li>
@@ -184,7 +184,6 @@
             </div>
         </div>
     </div>
-
     <div class="m-header__bottom">
         @hasanyrole('Admin|Moderator')
         <div class="m-container m-container--fluid m-container--full-height m-page__container">
@@ -196,6 +195,7 @@
                     <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
                         <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
                             <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown m-menu__item--hover" m-menu-submenu-toggle="tab" aria-haspopup="true">
+
                                 <a href="index.html" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__link-text">
 													Admin Dashboard
@@ -213,9 +213,9 @@
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="index.html" class="m-menu__link ">
+                                            <a href="{{route('development',['id'=>auth()->user()])}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
-                                                <span class="m-menu__link-text">Reports</span>
+                                                <span class="m-menu__link-text">Development</span>
                                             </a>
                                         </li>
                                     </ul>
