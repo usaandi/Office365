@@ -15,15 +15,10 @@
             }
         },
         mounted() {
-
             console.log(this.users);
-
         },
-
     }
 </script>
-
-
 <style scoped>
     .user-list-wrapper {
         width: 100%;
