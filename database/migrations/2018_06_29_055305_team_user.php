@@ -24,16 +24,6 @@ class TeamUser extends Migration
 
         });*/
 
-        /*Schema::create('teams_departments', function (Blueprint $table){
-            $table->integer('department_id');
-            $table->integer('team_id');
-            $table->timestamp('closed_at');
-            $table->timestamps();
-            $table->primary(['department_id', 'team_id']);
-
-            $table->foreign('team_id')->references('teams')->on('id');
-            $table->foreign('user_id')->references('users')->on('id');
-        });*/
 
         Schema::create('departments', function (Blueprint $table){
            $table->increments('id');
@@ -50,8 +40,8 @@ class TeamUser extends Migration
         });
 
         Schema::create('users_departments', function (Blueprint $table){
-            $table->integer('department_id');
-            $table->integer('user_id');
+            $table->unsignedInteger('department_id');
+            $table->unsignedInteger('user_id');
             $table->timestamp('closed_at');
             $table->timestamps();
 
@@ -59,6 +49,18 @@ class TeamUser extends Migration
             $table->foreign('user_id')->references('users')->on('id');
 
         });
+
+        Schema::create('teams_departments', function (Blueprint $table){
+            $table->unsignedInteger('department_id');
+            $table->unsignedInteger('team_id');
+            $table->timestamp('closed_at');
+            $table->timestamps();
+            $table->primary(['department_id', 'team_id']);
+
+            $table->foreign('team_id')->references('teams')->on('id');
+            $table->foreign('user_id')->references('users')->on('id');
+    });
+
 
     }
 
