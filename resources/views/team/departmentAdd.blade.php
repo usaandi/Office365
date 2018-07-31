@@ -39,27 +39,21 @@
             width: 100px;
         }
     </style>
-    <form name="form" action="{{route('adddepartment')}}" method="post">
+    <form name="form" action="{{route('store')}}" method="post">
         @csrf
         <div class="card-body">
-
-            <h1>Add Department</h1>
-
-            <label for="Department name"><b>Department Fullname</b></label>
-            <input type="text" placeholder="Department Fullname" name="name"  required>
-            <br>
-            <label for="Department abbr"><b>Abbreviation</b></label>
-            <input type="text" placeholder="Department abbreviation"  maxlength=""  required>
-            <br>
-
-            <label for="description"><b>Description</b></label>
-            <br>
-            <textarea name="description" rows="5" cols="3"> </textarea>
-
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </div>
+                <h1>Add Department</h1>
+
+                <label for="Department name"><b>Department Fullname</b></label>
+                <input type="text" placeholder="Department Fullname" name="departmentName"  required>
+                <br>
+                <label for="Department abbr"><b>Abbreviation</b></label>
+                <input type="text" placeholder="Department abbreviation"  name="departmentAbbr"  required>
+                <br>
+                <br><label for="description"><b>Description</b></label>
+                <textarea  rows="5" cols="3" name="description"></textarea>
+                <button type="submit" class="btn btn-default">Submit</button>
             </div>
         </div>
     </form>
