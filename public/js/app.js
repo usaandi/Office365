@@ -3949,7 +3949,8 @@ Vue.component('user-list-view', __webpack_require__(49));
 Vue.component('profile-view', __webpack_require__(54));
 Vue.component('profile-avatar', __webpack_require__(64));
 Vue.component('file-upload', __webpack_require__(69));
-
+Vue.component('department-list', __webpack_require__(86));
+Vue.component('department-list-view', __webpack_require__(91));
 Vue.component('user-development', __webpack_require__(72));
 var app = new Vue({
   el: '#app'
@@ -47739,7 +47740,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {};
     },
     mounted: function mounted() {
-
         console.log(this.users);
     }
 });
@@ -47861,7 +47861,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.name[data-v-ef3c73b0]{\n    font-size: 28px;\n}\np[data-v-ef3c73b0]{\n    font-size:18px;\n}\nimg[data-v-ef3c73b0] {\n    border-radius: 50%;\n    float:left;\n    margin-right: 15px;\n    margin-bottom: 5px;\n}\n.style-green[data-v-ef3c73b0]{\n    font-size:14px;\n    color: #98ff6c;\n}\n.text[data-v-ef3c73b0] {\n    text-align: justify;\n    margin-top: 10px;\n    margin-left: 10px;\n    line-height:3px;\n}\n", ""]);
+exports.push([module.i, "\n.name[data-v-ef3c73b0]{\n    font-size: 28px;\n}\np[data-v-ef3c73b0]{\n    font-size:18px;\n}\nimg[data-v-ef3c73b0] {\n    border-radius: 50%;\n    float:left;\n    margin-right: 15px;\n    margin-bottom: 5px;\n    clear:left;\n}\n.style-green[data-v-ef3c73b0]{\n    font-size:14px;\n    color: #98ff6c;\n}\n.text[data-v-ef3c73b0] {\n    text-align: justify;\n    margin-top: 10px;\n    margin-left: 10px;\n    line-height:3px;\n}\n.black-color[data-v-ef3c73b0]{\n    color:black;\n}\na[data-v-ef3c73b0]:link {\n    text-decoration: none;\n}\na[data-v-ef3c73b0]:visited {\n    text-decoration: none;\n}\na[data-v-ef3c73b0]:hover {\n    text-decoration: none;\n}\na[data-v-ef3c73b0]:active {\n    text-decoration: none;\n}\n\n", ""]);
 
 // exports
 
@@ -47896,27 +47896,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text" }, [
-    _c("a", { attrs: { href: "/user/" + _vm.user.id } }, [
-      _c("img", {
-        attrs: { src: _vm.user.image, width: "100px", height: "100px" }
-      })
-    ]),
-    _vm._v(" "),
-    _c("h4", { staticClass: "name" }, [_vm._v(_vm._s(_vm.user.name))]),
-    _vm._v(" "),
-    _c("h4", { staticClass: "team-1" }, [
-      _c("small", [_vm._v(_vm._s(_vm.user.team) + " | ")])
-    ]),
-    _vm._v(" "),
-    _c("p", [
-      _c("i", { staticClass: "fa fa-envelope style-green " }),
-      _vm._v(_vm._s(_vm.user.email))
-    ]),
-    _vm._v(" "),
-    _c("p", {}, [
-      _c("i", { staticClass: "fa fa-phone style-green" }),
-      _vm._v(_vm._s(_vm.user.phoneN) + " ")
+  return _c("a", { attrs: { href: "/user/" + _vm.user.id } }, [
+    _c("div", { staticClass: "text text-black-50" }, [
+      _c("a", [
+        _c("img", {
+          attrs: { src: _vm.user.image, width: "100px", height: "100px" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "name black-color" }, [
+        _vm._v(_vm._s(_vm.user.name))
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "team-1" }, [
+        _c("small", [_vm._v(_vm._s(_vm.user.team) + " | ")])
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("i", { staticClass: "fa fa-envelope style-green " }),
+        _vm._v(_vm._s(_vm.user.email))
+      ]),
+      _vm._v(" "),
+      _c("p", {}, [
+        _c("i", { staticClass: "fa fa-phone style-green" }),
+        _vm._v(_vm._s(_vm.user.phoneN) + " ")
+      ])
     ])
   ])
 }
@@ -48224,6 +48228,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "EditableInputComponent",
     props: ['endpoint', 'elementName', 'data'],
+
     data: function data() {
         return {
             elementdata: null,
@@ -48940,7 +48945,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.boxstyle[data-v-104a09b8]{\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.text-color-cyan[data-v-104a09b8]{\n    color: #00adee;\n}\n.button[data-v-104a09b8] {\n\n    background-color: white;\n    border-radius: 10px;\n    -moz-border-radius: 10px;\n    -webkit-border-radius: 10px;\n}\n.text-color-black-14[data-v-104a09b8]{\n    font-size:14px;\n    color: black;\n}\n.medium-btn[data-v-104a09b8]{\n        width: 90px;\n        height:30px;\n}\n", ""]);
+exports.push([module.i, "\n.boxstyle[data-v-104a09b8]{\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.text-color-cyan[data-v-104a09b8]{\n    color: #00adee;\n}\n.margin-right-10[data-v-104a09b8]{\n    margin-right:10px;\n}\n.button[data-v-104a09b8] {\n\n    background-color: white;\n    border-radius: 10px;\n    -moz-border-radius: 10px;\n    -webkit-border-radius: 10px;\n}\n.text-color-black-14[data-v-104a09b8]{\n    font-size:14px;\n    color: black;\n}\n.medium-btn[data-v-104a09b8]{\n    width: 90px;\n    height:30px;\n}\n.inline-block[data-v-104a09b8]{\n    display: inline-block;\n}\n", ""]);
 
 // exports
 
@@ -48951,11 +48956,6 @@ exports.push([module.i, "\n.boxstyle[data-v-104a09b8]{\n    border: 1px solid #e
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -49019,18 +49019,22 @@ var staticRenderFns = [
         _c("h2", [_vm._v("TIMELINE COMES HERE")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-10 boxstyle" }, [
-        _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("Goal Title")]),
+      _c("div", { staticClass: "col-md-10 d-inline boxstyle " }, [
+        _c("h2", { staticClass: "text-color-cyan inline-block" }, [
+          _vm._v("Goal Title")
+        ]),
         _vm._v(" "),
-        _c("p", { staticClass: "text-left float-right" }, [
+        _c("p", {}, [
           _vm._v(
-            "consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.Lorem ipsum dolor sit amet,\n                    consectetur adipiscing elit.\n                    Morbi consequat lorem vehicula augue sollicitudin,\n                    vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n                    Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n                    tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.\n                "
+            "consectetur adipiscing elit.\n            Morbi consequat lorem vehicula augue sollicitudin,\n            vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n            Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n            tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.consectetur adipiscing elit.\n            Morbi consequat lorem vehicula augue sollicitudin,\n            vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n            Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n            tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.consectetur adipiscing elit.\n            Morbi consequat lorem vehicula augue sollicitudin,\n            vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n            Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n            tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.Lorem ipsum dolor sit amet,\n            consectetur adipiscing elit.\n            Morbi consequat lorem vehicula augue sollicitudin,\n            vel finibus felis imperdiet. Ut et odio sed risus maximus suscipit.\n            Aliquam faucibus velit eget nunc fringilla tincidunt. Donec nisi nisl,\n            tristique ac sodales quis, efficitur sed enim. Fusce at orci ante.\n        "
           )
         ]),
         _vm._v(" "),
-        _c("h2", { staticClass: "d-inline-block text-color-cyan" }, [
-          _vm._v("MILESTONES")
-        ]),
+        _c(
+          "h2",
+          { staticClass: " text-color-cyan inline-block margin-right-10" },
+          [_vm._v("MILESTONES")]
+        ),
         _vm._v(" "),
         _c("button", { staticClass: "button text-color-black-14 medium-btn" }, [
           _vm._v("+ New")
@@ -49053,6 +49057,290 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(87)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-67af0b66"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DepartmentListComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-67af0b66", Component.options)
+  } else {
+    hotAPI.reload("data-v-67af0b66", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(88);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("0916291e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-67af0b66\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentListComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-67af0b66\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentListComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-wrapper[data-v-67af0b66] {\n    width: 33%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    margin: -2rem;\n}\n.profiles-view[data-v-67af0b66] {\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    -webkit-box-flex: 1;\n        -ms-flex: 1 0 100%;\n            flex: 1 0 100%;\n    margin: 1rem;\n}\n.align-center[data-v-67af0b66]{\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\n@media screen and (max-width: 768px) {\n.list-wrapper[data-v-67af0b66] {\n        width: 100%;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['departments'],
+    name: "DepartmentListComponent.vue"
+});
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "list-wrapper " },
+    _vm._l(_vm.departments, function(department) {
+      return _c(
+        "div",
+        { staticClass: "profiles-view align-center" },
+        [_c("department-list-view", { attrs: { department: department } })],
+        1
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-67af0b66", module.exports)
+  }
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(92)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1f7621cc"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DepartmentListView.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1f7621cc", Component.options)
+  } else {
+    hotAPI.reload("data-v-1f7621cc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(93);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("4fcd2803", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1f7621cc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentListView.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1f7621cc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentListView.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.align-center[data-v-1f7621cc]{\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: ['department'],
+    name: "DepartmentListView"
+});
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", { staticClass: "align-center" }, [
+      _vm._v(_vm._s(_vm.department.department_name))
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1f7621cc", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
