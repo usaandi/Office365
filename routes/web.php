@@ -45,4 +45,5 @@ Route::post('/admin/users/add', 'AddController@store')->name('store');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('team', 'DepartmentController@department');
-Route::post('team','DepartmentController@department')->name('adddepartment');
+Route::post('team/add','DepartmentController@store')->name('store');
+Route::get('team/add','DepartmentController@view');
