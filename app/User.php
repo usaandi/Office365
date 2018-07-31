@@ -32,6 +32,8 @@ class User extends Authenticatable
     ];
 
     public function department() {
-        return $this->hasMany('App\UserDepartment');
+        return $this->belongsTo('App\UserDepartment');
     }
+
+
 }
