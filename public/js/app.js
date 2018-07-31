@@ -49152,7 +49152,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.list-wrapper[data-v-67af0b66] {\n    width: 33%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    margin: -2rem;\n}\n.profiles-view[data-v-67af0b66] {\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    -webkit-box-flex: 1;\n        -ms-flex: 1 0 100%;\n            flex: 1 0 100%;\n    margin: 1rem;\n}\n.align-center[data-v-67af0b66]{\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    text-align: center;\n}\n@media screen and (max-width: 768px) {\n.list-wrapper[data-v-67af0b66] {\n        width: 100%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.list-wrapper[data-v-67af0b66] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    margin: -2rem;\n}\n.profiles-view[data-v-67af0b66] {\n    border: 1px solid #e1e1e1;\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    -webkit-box-flex: 1;\n        -ms-flex: 1 0 33%;\n            flex: 1 0 33%;\n    margin: 1rem;\n}\n.align-center[data-v-67af0b66]{\n\n    text-align: center;\n}\n/*@media screen and (min-width: 768px) {*/\n    /*.list-wrapper {*/\n        /*flex: 1 0 50%;*/\n\n\n    /*}*/\n/*}*/\n/*@media screen and (min-width: 424px) {*/\n    /*.list-wrapper {*/\n        /*width:100%;*/\n        /*display: flex;*/\n        /*flex-wrap: wrap;*/\n\n    /*}*/\n/*}*/\n/*@media screen and (min-width: 1039px) {*/\n    /*.profiles-view {*/\n        /*flex: 1 0 100%;*/\n        /*height: 100px;*/\n    /*}*/\n    /*.list-wrapper {*/\n        /*flex: 1 0 50%;*/\n        /*display: flex;*/\n        /*flex-wrap: wrap;*/\n\n    /*}*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -49187,7 +49187,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "list-wrapper " },
+    { staticClass: "list-wrapper" },
     _vm._l(_vm.departments, function(department) {
       return _c(
         "div",
