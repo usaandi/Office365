@@ -60,7 +60,7 @@
                     <!--end::Search Results -->
                 </div>
                 <!--end::Search-->
-                <!-- begin::Topb ar -->
+                <!-- begin::Top bar -->
                 <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
                     <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
                         <div class="m-stack__item m-topbar__nav-wrapper">
@@ -185,7 +185,7 @@
         </div>
     </div>
     <div class="m-header__bottom">
-        @hasanyrole('Admin|Moderator')
+
         <div class="m-container m-container--fluid m-container--full-height m-page__container">
             <div class="m-stack m-stack--ver m-stack--desktop">
                 <div class="m-stack__item m-stack__item--fluid m-header-menu-wrapper">
@@ -198,7 +198,7 @@
 
                                 <a href="index.html" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__link-text">
-													Admin Dashboard
+													Dashboard
 												</span>
                                     <i class="m-menu__hor-arrow la la-angle-down"></i>
                                     <i class="m-menu__ver-arrow la la-angle-right"></i>
@@ -206,10 +206,10 @@
                                 <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
                                     <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                     <ul class="m-menu__subnav">
-                                        <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-                                            <a href="/admin/users/add" class="m-menu__link ">
-                                                <i class="m-menu__link-icon flaticon-support"></i>
-                                                <span class="m-menu__link-text">Add User</span>
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="{{route('profile',['id'=>auth()->user()])}}" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">My Profile</span>
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
@@ -218,6 +218,26 @@
                                                 <span class="m-menu__link-text">Development</span>
                                             </a>
                                         </li>
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="/team" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">Teams</span>
+                                            </a>
+                                        </li>
+                                        @hasanyrole('Admin|Moderator')
+                                        <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                            <a href="/admin/users/add" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">Add User</span>
+                                            </a>
+                                        </li>
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="/team/add" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">Add Team</span>
+                                            </a>
+                                        </li>
+                                        @endhasanyrole
                                     </ul>
                                 </div>
                             </li>
@@ -226,6 +246,6 @@
                 </div>
             </div>
         </div>
-        @endhasanyrole
+
     </div>
 </header>
