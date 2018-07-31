@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="align-center">{{department.department_name}}</h1>
+             <h1 class="align-center">{{department.department_name}}</h1>
     </div>
 </template>
 
@@ -16,6 +16,7 @@
     .align-center{
         justify-content: center;
         align-items: center;
+
     }
 
 </style>
