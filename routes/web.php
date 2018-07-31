@@ -44,5 +44,5 @@ Route::get('/admin/users/add', 'AddController@add');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('teams/add', 'DepartmentController@department');
-Route::post('teams/add','DepartmentController@department')->name('adddepartment');
+Route::get('team', 'DepartmentController@department');
+Route::post('team','DepartmentController@department')->name('adddepartment');
