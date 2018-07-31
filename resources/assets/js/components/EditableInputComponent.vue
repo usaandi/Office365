@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div >
         <div v-show="edit===false">
             <p class="text" @dblclick="changeText"><b>{{ elementName }}:</b>{{ elementdata }}</p>
         </div>
-        <input v-show="edit" v-model="elementdata" @keyup.enter="upload">
+        <input  v-show="edit" v-model="elementdata" @keyup.enter="upload">
     </div>
 </template>
 
@@ -11,6 +11,7 @@
     export default {
         name: "EditableInputComponent",
         props: ['endpoint', 'elementName', 'data'],
+
         data(){
             return{
                 elementdata: null,
@@ -21,15 +22,16 @@
           this.elementdata = this.data;
         },
         methods: {
-            changeText() {
+            changeText: function() {
                 if (this.edit) {
                     this.edit = false;
                 }
                 else {
                     this.edit = true;
+
                 }
             },
-            upload(){
+            upload: function(){
 
                 this.edit = false;
 
