@@ -16,7 +16,7 @@ class Team extends Model
         'team',
     ];
 
-    public function team() {
+    public function department() {
         return $this->belongsTo('App\DepartmentTeam');
     }
 }
