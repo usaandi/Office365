@@ -13,17 +13,12 @@ class TeamUser extends Migration
      */
     public function up()
     {
-        /*Schema::create('users_departments', function (Blueprint $table){
-            $table->integer('department_id');
-            $table->integer('user_id');
-            $table->timestamp('closed_at');
+
+        Schema::create('teams', function (Blueprint $table){
+            $table->increments('id');
+            $table->string('team');
             $table->timestamps();
-
-            $table->foreign('department_id')->references('departments')->on('id');
-            $table->foreign('user_id')->references('users')->on('id');
-
-        });*/
-
+        });
 
         Schema::create('departments', function (Blueprint $table){
            $table->increments('id');
@@ -33,35 +28,47 @@ class TeamUser extends Migration
            $table->timestamps();
         });
 
-        Schema::create('teams', function (Blueprint $table){
-           $table->increments('id');
-           $table->string('team');
-           $table->timestamps();
-        });
-
         Schema::create('users_departments', function (Blueprint $table){
             $table->unsignedInteger('department_id');
             $table->unsignedInteger('user_id');
-            $table->timestamp('closed_at');
+            $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('department_id')->references('departments')->on('id');
-            $table->foreign('user_id')->references('users')->on('id');
-
+            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
-        Schema::create('teams_departments', function (Blueprint $table){
+        Schema::create('departments_teams', function (Blueprint $table){
             $table->unsignedInteger('department_id');
             $table->unsignedInteger('team_id');
-            $table->timestamp('closed_at');
+            $table->softDeletes();
             $table->timestamps();
             $table->primary(['department_id', 'team_id']);
 
-            $table->foreign('team_id')->references('teams')->on('id');
-            $table->foreign('user_id')->references('users')->on('id');
-    });
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('department_id')->references('id')->on('departments');
+        });
 
+        Schema::create('users_teams', function (Blueprint $table){
+            $table->unsignedInteger('team_id');
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
 
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('user_id')->references('id')->on('users');
+
+        });
+
+        Schema::create('teams_moderators', function (Blueprint $table){
+            $table->increments('id');
+            $table->unsignedInteger('team_id');
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
+
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('user_id')->references('id')->on('users');
+
+        });
     }
 
     /**
@@ -72,8 +79,13 @@ class TeamUser extends Migration
     public function down()
     {
         schema::dropIfExists('teams');
+        Schema::dropIfExists('departments');
+
+        schema::dropIfExists('users_teams');
         Schema::dropIfExists('users_departments');
-        schema::dropIfExists('teams');
-        schema::dropIfExists('teams_departments');
+
+        schema::dropIfExists('departments_teams');
+        schema::dropIfExists('teams_moderators');
+
     }
 }
