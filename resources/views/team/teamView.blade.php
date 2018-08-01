@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                {{ $department->department_name }}
+                Osakond {{ $department->department_name }}
             </h3>
         </div>
         <div>
@@ -29,19 +29,7 @@
 
 
     <div id="app">
-
-        <h2>People</h2>
-        <ul>
-            <li>Taavi</li>
-            <li>Taavi</li>
-            <li>Taavi</li>
-            <li>Taavi</li>
-            <li>Taavi</li>
-        </ul>
-
-        <h2>Teams</h2>
-        <div>{{$teams[0]->team}}</div>
-
+        <team-list :teams='@json($teams)' :users='@json($users)'></team-list>
     </div>
 
 
