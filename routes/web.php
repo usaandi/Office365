@@ -40,10 +40,11 @@ Route::get('/user/{id}', 'UserController@show')->name('profile');
 Route::get('/user/{id}/development', 'PersonalDevelopmentController@userDevelopment')->name('development');
 
 
-Route::get('/admin/users/add', 'AddController@add');
+Route::get('/admin/users/add', 'AddController@add')->name('useradd');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('team', 'DepartmentController@department');
-Route::post('team/add','DepartmentController@store')->name('store');
-Route::get('team/add','DepartmentController@view');
+Route::get('department/add','DepartmentController@view')->name('departmentadd');
+Route::post('department/add','DepartmentController@store')->name('store');
+Route::get('department/{id}', 'DepartmentController@show')->name('team');
+Route::get('department', 'DepartmentController@department')->name('department');
