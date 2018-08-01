@@ -1,11 +1,11 @@
 <template>
-        <a v-bind:href="'/user/' + user.id"><div class="text text-black-50">
-            <a ><img :src="user.image" width="100px" height="100px"></a>
-            <h4 class="name black-color">{{ user.name }}</h4>
-            <h4 class="team-1" ><small>{{user.team}} | </small></h4>
-            <p><i class="fa fa-envelope style-green "></i>{{user.email}}</p>
-            <p class=""><i class="fa fa-phone style-green"> </i>{{user.phoneN}} </p>
-        </div></a>
+    <a v-bind:href="'/user/' + user.id"><div class="text text-black-50">
+        <a ><img :src="user.image" width="100px" height="100px"></a>
+        <h4 class="name black-color">{{ user.name }}</h4>
+        <h4 class="team-1" ><small>{{user.team}} | </small></h4>
+        <p><i class="fa fa-envelope style-green "></i>{{user.email}}</p>
+        <p class=""><i class="fa fa-phone style-green"> </i>{{user.phoneN}} </p>
+    </div></a>
 </template>
 
 <script>
