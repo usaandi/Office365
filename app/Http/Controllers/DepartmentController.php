@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
 use App\Department;
+use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -39,9 +38,23 @@ class DepartmentController extends Controller
             return redirect()->back();
         }
         else {
-            return response('Duplicate Department entry', 400)
+            return response('Duplicate Department entry', 403)
                 ->header('Content-Type', 'application/json');
         }
 
+    }
+
+    public function show($id)
+    {
+        // For some reason the variable name department did not work.
+        $dprtment = Department::findOrFail($id);
+        $teams = $dprtment->teams()->get();
+
+        return view('team.teamView')->with(
+            [
+                'department' => $dprtment,
+                'teams' => $teams
+            ]
+        );
     }
 }

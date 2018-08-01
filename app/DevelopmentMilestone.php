@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class DevelopmentMilestone extends Model
+class DevelopmentMilestone extends Pivot
 {
     protected $table='development_milestone';
 }

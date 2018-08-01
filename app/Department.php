@@ -16,10 +16,13 @@ class Department extends Model
         'department_name', 'department_abbr', 'department_info',
     ];
 
-    public function user() {
+    public function users() {
         return $this->hasMany('App\UserDepartment');
     }
-    public function team() {
-        return $this->hasMany('App\TeamDepartment');
+
+    public function teams() {
+        return $this->belongsToMany('App\Team', 'departments_teams')
+            ->using('App\DepartmentTeam');
     }
+
 }
