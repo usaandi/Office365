@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Department;
 use Illuminate\Http\Request;
 
@@ -47,13 +48,15 @@ class DepartmentController extends Controller
     public function show($id)
     {
         // For some reason the variable name department did not work.
+
         $dprtment = Department::findOrFail($id);
         $teams = $dprtment->teams()->get();
-
+        $users = $dprtment->users()->get();
         return view('team.teamView')->with(
             [
+                'users' => $users,
                 'department' => $dprtment,
-                'teams' => $teams
+                'teams' => $teams,
             ]
         );
     }
