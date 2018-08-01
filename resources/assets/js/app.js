@@ -24,6 +24,8 @@ Vue.component('profile-avatar', require('./components/ProfileAvatarComponent'));
 Vue.component('file-upload',require('./components/FileUpload.vue'));
 Vue.component('department-list',require('./components/DepartmentListComponent.vue'));
 Vue.component('department-list-view',require('./components/DepartmentListView.vue'));
+Vue.component('team-list',require('./components/TeamListComponent.vue'));
+Vue.component('team-list-view',require('./components/TeamListView.vue'));
 Vue.component('user-development',require('./components/UserDevelopmentComponent.vue'));
 const app = new Vue({
     el: '#app'
