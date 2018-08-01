@@ -219,20 +219,20 @@
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="/team" class="m-menu__link ">
+                                            <a href="{{route('department')}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Teams</span>
                                             </a>
                                         </li>
                                         @hasanyrole('Admin|Moderator')
                                         <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-                                            <a href="/admin/users/add" class="m-menu__link ">
+                                            <a href="{{route('useradd')}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Add User</span>
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="/team/add" class="m-menu__link ">
+                                            <a href="{{route('departmentadd')}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Add Team</span>
                                             </a>
