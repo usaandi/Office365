@@ -17,7 +17,8 @@ class Department extends Model
     ];
 
     public function users() {
-        return $this->hasMany('App\UserDepartment');
+        return $this->belongsToMany('App\User', 'users_departments')
+            ->using('App\UserDepartment');
     }
 
     public function teams() {
