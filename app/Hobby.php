@@ -8,7 +8,9 @@ class Hobby extends Model
 {
     protected $table = 'hobbies';
 
-    public function hobby(){
-        return $this ->belongsTo('App\UserHobby');
+    public function users() {
+        return $this->belongsToMany('App\User', 'users_hobbies')
+            ->using('App\UserHobby');
     }
+
 }
