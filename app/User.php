@@ -35,4 +35,13 @@ class User extends Authenticatable
         return $this->belongsTo('App\UserDepartment');
     }
 
+    public function hobbies() {
+        return $this->belongsToMany('App\Hobby', 'users_hobbies')
+            ->using('App\UserHobby');
+    }
+
+    public function children() {
+        return $this->hasMany('App\UserChildren');
+    }
+
 }
