@@ -27,6 +27,10 @@ Vue.component('department-list-view',require('./components/DepartmentListView.vu
 Vue.component('team-list',require('./components/TeamListComponent.vue'));
 Vue.component('team-list-view',require('./components/TeamListView.vue'));
 Vue.component('user-development',require('./components/UserDevelopmentComponent.vue'));
+Vue.component('user-hobbies',require('./components/UserHobby'));
+Vue.component('user-children',require('./components/UserChild'));
+Vue.component('hobby-add',require('./components/HobbyAdd'));
+
 const app = new Vue({
     el: '#app'
 });
