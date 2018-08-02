@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Child extends Model
+class UserChildren extends Model
 {
     protected $table = 'users_children';
 
 
-    public function child(){
+    public function children(){
         return $this->belongsTo('App\User');
     }
 }
