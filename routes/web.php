@@ -28,9 +28,9 @@ Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
 Auth::routes();
 Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
-
-
-
+Route::get('/user/{id}/hobby', 'UserHobbyController@userHobbies');
+Route::get('/user/{id}/child', 'UserChildController@userChild');
+Route::get('/hobbies', 'HobbyController@hobby');
 Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('updateTeam');
 Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
 Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('updateEmail');
