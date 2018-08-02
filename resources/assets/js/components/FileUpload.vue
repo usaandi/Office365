@@ -17,13 +17,13 @@
             }
         },
         methods: {
-            onFileChange(e) {
+            onFileChange: function(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
                     return;
                 this.createImage(files[0]);
             },
-            createImage(file) {
+            createImage: function(file) {
 
                 let reader = new FileReader();
                 let vm = this;
@@ -32,7 +32,7 @@
                 };
                 reader.readAsDataURL(file);
             },
-            upload(){
+            upload: function(){
                 let vm = this;
                 axios.post(this.endpoint,{image: this.image}).then(response => {
                     vm.$emit('file-uploaded', response);
