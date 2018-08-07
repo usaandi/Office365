@@ -41,7 +41,7 @@ class User extends Authenticatable
     }
 
     public function children() {
-        return $this->hasMany('App\UserChildren');
+        return $this->hasMany('App\UserChildren', 'user_id');
     }
 
 }
