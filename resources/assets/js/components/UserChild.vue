@@ -1,31 +1,40 @@
 <template>
     <div>
         <div class="">
-            <div v-for="child in userchildren">
-                <p>{{ child.name }} | {{child.year_born}}</p>
+            <div class="fc-button-group">
+                <button @click="edit=!edit" >Edit</button>
             </div>
-            + Add new
+                <div v-for="(child, index) in userchildren">
+                    <p class="d-inline-block">{{ child.name }} | {{child.year_born}}</p>
+                    <button v-show="edit" class="" @click="deleteRow(child.id,index)">X</button>
+                </div>
+            <label v-show="edit">Year born</label><input  v-show="edit" type="date" v-model="dateborn">
+            <label v-show="edit">Child name</label><input v-show="edit" v-model="childname" placeholder="Child name">
+            <button v-show="edit" @click="upload()" >+Add new</button>
         </div>
-
     </div>
 </template>
 
 <script>
     import axios from 'axios';
 
+
     export default {
-        name: "UserHobby",
+        name: "UserChildren",
         props: ['userid'],
         data() {
             return {
+                edit:false,
                 id: '',
                 userchildren: [],
-                childname: '',
+                dateborn:'',
+                childname:'',
             }
         },
         mounted() {
             this.id = this.userid;
             this.fetchData();
+
         },
         methods:{
             fetchData: function () {
@@ -34,10 +43,51 @@
                         this.userchildren = response.data;
                     });
             },
+            upload: function () {
+
+                let data= JSON.stringify({
+                    childname: this.childname,
+                    dateborn: this.dateborn,
+
+                });
+                let vm = this;
+                axios.post('http://localhost/user/' + this.id + '/update/child',data)
+                    .then(response => {
+                        vm.userchildren.push({
+                            id: response.data.child_id,
+                            name: response.data.child_name,
+                            year_born: response.data.year_born,
+
+                        })
+
+                }).catch(error => {
+
+                });
+
+            },
+
+            deleteRow: function (childId) {
+                let vm =this;
+                axios.delete('http://localhost/user/'+ this.id +'/delete/child', {params: {id: childId}})
+                    .then(function (response) {
+                        let index = vm.userchildren.findIndex(function(obj){
+                            return obj.id === childId;
+                        });
+                        if (index !== -1) {
+                            vm.userchildren.splice(index, 1);
+                        }
+                    } )
+
+
+            },
+
         }
     }
 </script>
 
 <style scoped>
 
+    input{
+        display: block;
+    }
 </style>
