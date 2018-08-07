@@ -30,6 +30,8 @@ Vue.component('user-development',require('./components/UserDevelopmentComponent.
 Vue.component('user-hobbies',require('./components/UserHobby'));
 Vue.component('user-children',require('./components/UserChild'));
 Vue.component('hobby-add',require('./components/HobbyAdd'));
+Vue.component('hobby-add-new',require('./components/HobbyAddNew'));
+Vue.component('select2',require('./components/Select2Component'));
 
 const app = new Vue({
     el: '#app'
