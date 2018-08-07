@@ -9,7 +9,12 @@
     export default {
 
         props:['department'],
-        name: "DepartmentListView"
+        name: "DepartmentListView",
+        data(){
+            return{
+
+            }
+        },
     }
 </script>
 
