@@ -22,7 +22,7 @@
                     <h2 class="text-color-cyan" >CHILDREN</h2>
                     <user-children :userid="user.id"></user-children>
                     <h2 class="text-color-cyan">HOBBIES</h2>
-                    <user-hobbies :userid="user.id"></user-hobbies>
+                    <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
                     <h2 class="text-color-cyan">BADGES</h2>
                 </div>
                 <div class=" col-md-9">
@@ -45,10 +45,10 @@
     </div>
 </template>
 
+
 <script>
     import EditableInputComponent from './EditableInputComponent'
     import UserHobby from "./UserHobby";
-
 
     export default {
         name: "ProfileView",
