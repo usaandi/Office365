@@ -27,7 +27,6 @@
 
     {{csrf_field()}}
 
-
     <div id="app">
         <profile-view :user='@json($user)'></profile-view>
     </div>
