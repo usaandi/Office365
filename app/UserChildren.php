@@ -8,8 +8,9 @@ class UserChildren extends Model
 {
     protected $table = 'users_children';
 
+    protected $fillable=['year_born','name','user_id'];
 
-    public function children(){
+    public function user(){
         return $this->belongsTo('App\User');
     }
 }
