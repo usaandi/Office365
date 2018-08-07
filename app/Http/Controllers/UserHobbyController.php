@@ -13,7 +13,7 @@ class UserHobbyController extends Controller
     {
         $userid=User::findOrFail($id);
 
-        $data=$userid->hobbies()->get(['hobby_name'])->toArray();
+        $data=$userid->hobbies()->get(['users_hobbies.id', 'hobby_name'])->toArray();
 
         if (!empty($data)) {
 
