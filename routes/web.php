@@ -35,10 +35,13 @@ Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('update
 Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
 Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('updateEmail');
 Route::post('/user/{id}/update/skype', 'UserController@updateSkype')->name('updateSkype');
+Route::post('/user/{id}/update/hobby', 'HobbyController@updateHobby')->name('updateHobby');
+Route::post('/user/{id}/update/child', 'UserChildController@updateChild')->name('updateChild');
+Route::delete('user/{id}/delete/child', 'UserChildController@deleteUserChild')->name('deleteUserChild');
 
 Route::get('/user/{id}', 'UserController@show')->name('profile');
 Route::get('/user/{id}/development', 'PersonalDevelopmentController@userDevelopment')->name('development');
-
+Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
 
 Route::get('/admin/users/add', 'AddController@add')->name('useradd');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
