@@ -30,12 +30,14 @@ Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
 Route::get('/user/{id}/hobby', 'UserHobbyController@userHobbies');
 Route::get('/user/{id}/child', 'UserChildController@userChild');
+Route::get('/user/{id}/info', 'UserController@userInfo');
 Route::get('/hobbies', 'HobbyController@hobby');
 Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('updateTeam');
 Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
 Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('updateEmail');
 Route::post('/user/{id}/update/skype', 'UserController@updateSkype')->name('updateSkype');
 Route::post('/user/{id}/update/hobby', 'HobbyController@updateHobby')->name('updateHobby');
+Route::post('/user/{id}/update/info', 'UserController@updateInfo')->name('updateInfo');
 Route::post('/user/{id}/update/child', 'UserChildController@updateChild')->name('updateChild');
 Route::delete('user/{id}/delete/child', 'UserChildController@deleteUserChild')->name('deleteUserChild');
 
@@ -46,8 +48,11 @@ Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name
 Route::get('/admin/users/add', 'AddController@add')->name('useradd');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/usersDepartment','HomeController@userNoDepartment')->name('users');
 Route::get('department/add','DepartmentController@view')->name('departmentadd');
 Route::post('department/add','DepartmentController@store')->name('store');
 Route::get('department/{id}', 'DepartmentController@show')->name('team');
+Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name('user');
+Route::get('department/{id}/team','DepartmentController@teamDepartment')->name('teamGet');
+Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('departmentInfo');
 Route::get('department', 'DepartmentController@department')->name('department');

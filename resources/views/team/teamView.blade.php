@@ -29,7 +29,7 @@
 
 
     <div id="app">
-        <team-list :teams='@json($teams)' :users='@json($users)'></team-list>
+        <team-list :departmentid='@json($department->id)' ></team-list>
     </div>
 
 

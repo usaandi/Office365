@@ -28,7 +28,7 @@
     {{csrf_field()}}
 
     <div id="app">
-        <department-list :departments='@json($departments)'> </department-list>
+        <department-user-list-draggable></department-user-list-draggable>
     </div>
 
 

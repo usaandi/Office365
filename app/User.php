@@ -2,14 +2,20 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
+    use SoftDeletes;
+
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function department() {
-        return $this->belongsTo('App\UserDepartment');
+        return $this->hasOne('App\UserDepartment', 'user_id');
     }
 
     public function hobbies() {
@@ -43,5 +49,10 @@ class User extends Authenticatable
     public function children() {
         return $this->hasMany('App\UserChildren', 'user_id');
     }
+    public function info() {
+        return $this->hasMany('App\UserInfo', 'user_id');
+    }
+
+
 
 }
