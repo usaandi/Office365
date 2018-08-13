@@ -2,8 +2,11 @@
     <div >
         <div v-show="edit===false">
             <p class="text" @dblclick="changeText"><b>{{ elementName }}:</b>{{ elementdata }}</p>
+
         </div>
         <input  v-show="edit" v-model="elementdata" @keyup.enter="upload">
+        <button v-show="edit" v-on:click="setedit">Cancel</button>
+        <button v-show="edit" v-on:click="upload">Save</button>
     </div>
 </template>
 
@@ -15,7 +18,8 @@
         data(){
             return{
                 elementdata: null,
-                edit: false
+                edit: false,
+                showinput:false,
             }
         },
         mounted() {
@@ -31,6 +35,20 @@
 
                 }
             },
+            setedit: function(){
+
+                console.log(this.edit);
+                if (this.edit){
+                    this.edit=false;
+                }
+                else {
+                    this.edit=true;
+                }
+
+                /*this.edit=false;*/
+                console.log(this.edit);
+            },
+
             upload: function(){
 
                 this.edit = false;

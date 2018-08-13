@@ -1,10 +1,16 @@
 <template>
-    <div>hi</div>
+    <div>h</div>
 </template>
 
 <script>
     export default {
-        name: "TeamListView"
+        name: "TeamListView",
+        data() {
+            return {
+
+            }
+        },
+
     }
 </script>
 

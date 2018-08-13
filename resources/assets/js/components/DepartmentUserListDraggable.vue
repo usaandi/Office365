@@ -1,66 +1,90 @@
 <template>
-    <template>
-        <div>
-            <div class="list-wrapper">
-                <div v-for="department in departments" class="profiles-view align-center">
-                    <department-list-view v-bind:department="department"></department-list-view>
-                </div>
+    <div>
+        <h3>Users</h3>
+        <draggable v-model="users">
+            <div class="users" v-for="user in users">
+                {{ user.name }}
             </div>
+        </draggable>
+        <h3>Departments: {{ departments.length }}</h3>
+        <div class="deps" v-for="department in departments">
+            <h4>{{ department.department_name }}</h4>
+            <draggable v-model="department.users" :options="{group:'users'}" style="min-height: 15px">
+                <div class="users" v-for="user in department.users">
+                    {{ user.name }}
+                </div>
+            </draggable>
         </div>
-    </template>
-
-    <script>
-        export default {
-            props: [],
-            name: "DepartmentListComponent.vue",
-
-            data(){
-                return{
-
-                }
-            },
-            mounted:{
-
-
-            },
-        }
-
-    </script>
-
-    <style scoped>
-        .list-wrapper {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            flex-flow: row wrap;
-            margin: -2rem;
-            justify-content: space-around;
-
-
-        }
-        .profiles-view {
-            border: 1px solid #e1e1e1;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            flex: 1 0 33%;
-            margin: 1rem;
-            width:auto;
-            height: 100px;
-
-        }
-        .align-center{
-
-            text-align: center;
-        }
-
-    </style>
+    </div>
 </template>
 
 <script>
+
+    import draggable from 'vuedraggable';
+    import axios from 'axios';
+
     export default {
-        name: "DepartmentUserListView"
-    }
+
+        components: {
+            draggable,
+        },
+        props: [],
+        name: "DepartmentUserListDraggable",
+
+        data(){
+            return{
+                users:[],
+                usersWithoutDepartment: [],
+                departments:[],
+            }
+        },
+        mounted(){
+            this.fetchuser();
+            let vm = this;
+            setTimeout(function() {
+                vm.departments = vm.fetchdepartment();
+            }, 200);
+            setTimeout(function() {
+                vm.departments = vm.departments;
+            }, 1000);
+        },
+        methods:{
+            fetchuser: function () {
+                let vm = this;
+                axios.get('http://localhost/usersDepartment')
+                    .then(response => {
+                        vm.users = response.data;
+                    });
+            },
+            fetchdepartment: function () {
+                let vm = this;
+                axios.get('http://localhost/departmentInfo')
+                    .then(response => {
+                        //this.departments = response.data;
+                        let departmentData = {};
+
+                        for (let i = 0; i < response.data.length; i++) {
+
+                            departmentData = response.data[i];
+                            departmentData.users = [];
+
+                            for (let j = 0; j < vm.users.length; j++) {
+
+                                if (vm.users[j].department_id === response.data[i].id) {
+                                    departmentData.users[departmentData.users.length] = vm.users[j];
+                                }
+                            }
+                            vm.departments[vm.departments.length] = departmentData;
+                            departmentData = {};
+                        }
+                    });
+                return vm.departments;
+            },
+        }
+}
+
 </script>
 
-<style scoped>
+    <style scoped>
 
-</style>
+    </style>

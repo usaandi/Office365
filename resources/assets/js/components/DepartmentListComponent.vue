@@ -1,16 +1,29 @@
 <template>
+<div>
     <div class="list-wrapper">
         <div v-for="department in departments" class="profiles-view align-center">
             <department-list-view v-bind:department="department"></department-list-view>
         </div>
     </div>
+</div>
 </template>
 
 <script>
     export default {
-        props: ['departments'],
-        name: "DepartmentListComponent.vue"
+        props: [],
+        name: "DepartmentListComponent",
+
+        data(){
+            return{
+
+            }
+        },
+        mounted:{
+
+
+        },
     }
+
 </script>
 
 <style scoped>
@@ -37,31 +50,5 @@
 
         text-align: center;
     }
-    /*@media screen and (min-width: 768px) {*/
-        /*.list-wrapper {*/
-            /*flex: 1 0 50%;*/
 
-
-        /*}*/
-    /*}*/
-    /*@media screen and (min-width: 424px) {*/
-        /*.list-wrapper {*/
-            /*width:100%;*/
-            /*display: flex;*/
-            /*flex-wrap: wrap;*/
-
-        /*}*/
-    /*}*/
-    /*@media screen and (min-width: 1039px) {*/
-        /*.profiles-view {*/
-            /*flex: 1 0 100%;*/
-            /*height: 100px;*/
-        /*}*/
-        /*.list-wrapper {*/
-            /*flex: 1 0 50%;*/
-            /*display: flex;*/
-            /*flex-wrap: wrap;*/
-
-        /*}*/
-    /*}*/
 </style>

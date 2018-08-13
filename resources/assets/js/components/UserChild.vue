@@ -5,8 +5,8 @@
                 <button @click="edit=!edit" >Edit</button>
             </div>
                 <div v-for="(child, index) in userchildren">
-                    <p class="d-inline-block">{{ child.name }} | {{child.year_born}}</p>
-                    <button v-show="edit" class="" @click="deleteRow(child.id,index)">X</button>
+                    <p class="d-inline-block">Nimi: {{ child.name }} | Vanus: {{child.age}}</p>
+                    <button v-show="edit"@click="deleteRow(child.id,index)">X</button>
                 </div>
             <label v-show="edit">Year born</label><input  v-show="edit" type="date" v-model="dateborn">
             <label v-show="edit">Child name</label><input v-show="edit" v-model="childname" placeholder="Child name">
@@ -56,7 +56,7 @@
                         vm.userchildren.push({
                             id: response.data.child_id,
                             name: response.data.child_name,
-                            year_born: response.data.year_born,
+                            age: response.data.age,
 
                         })
 

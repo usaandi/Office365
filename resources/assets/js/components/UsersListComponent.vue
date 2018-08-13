@@ -1,8 +1,8 @@
 <template>
 <div class="user-list-wrapper">
-        <div v-for="user in users" class="profiles-view">
-            <user-list-view v-bind:user="user"></user-list-view>
-        </div>
+    <div v-for="user in users" class="profiles-view">
+        <user-list-view v-bind:user="user"></user-list-view>
+    </div>
 </div>
 </template>
 
@@ -15,7 +15,7 @@
             }
         },
         mounted() {
-            console.log(this.users);
+
         },
     }
 </script>
