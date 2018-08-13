@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\UserChildren;
 use Illuminate\Http\Request;
 use App\User;
@@ -16,11 +17,30 @@ class UserChildController extends Controller
         $request->validate([
             'data' => 'string|max:30'
         ]);
-        $userid=User::findOrFail($id);
 
-        $data=$userid->children()->get(['name','year_born','id']);
 
-        return $data;
+        $usr=User::find($id);
+
+        $usrChildAge=$usr->children()->get(['year_born','id','name']);
+        $today=date('Y-m-d');
+        $children = array();
+        if(!empty($usrChildAge)){
+            foreach ($usrChildAge as $i =>$child){
+                $childDateBorn=$child->year_born;
+                $childId=$child->id;
+                $childName=$child->name;
+
+                $childAgeInYears = date_diff(date_create($childDateBorn),
+                    date_create($today))->y;
+
+                $children[$i]['id']=$childId;
+                $children[$i]['age']=$childAgeInYears;
+                $children[$i]['name']=$childName;
+            }
+                unset($childAge);
+        }
+
+        return $children;
     }
     public function updateChild(Request $request, $id){
 
@@ -49,13 +69,21 @@ class UserChildController extends Controller
                     'user_id'=> $userid, 'name'=> $childNameCapitalized,'year_born'=>$yearborn]);
 
 
-                $childid=UserChildren::findOrFail($child)->first()->id;
+
                 $user->children()->save($child);
+
+                $childid=UserChildren::findOrFail($child)->first()->id;
+
+                $today=date('Y-m-d');
+                $childAgeInYears = date_diff(date_create($yearborn),
+                    date_create($today))->y;
+
+
 
 
                 return response()->json([
 
-                    'year_born'=> $yearborn,
+                    'age'=> $childAgeInYears,
                     'child_name'=>$childNameCapitalized,
                     'child_id'=>$childid,
                 ]);
