@@ -2,16 +2,66 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
+    public function teamDepartment($id){
+
+        $departmentid=Department::findOrFail($id);
+
+        $data=$departmentid->teams()->get(['departments_teams.id','team'])->toArray();
+
+        if (!empty($data)) {
+
+            foreach ($data as $key => $val) {
+
+                if (array_key_exists('pivot', $data[$key])) {
+                    unset($data[$key]['pivot']);
+                }
+
+            }
+
+        }
+
+        return $data;
+
+    }
+    public function userDepartment($id){
+
+        $departmentid=Department::findOrFail($id);
+
+        $data=$departmentid->users()->get(['users_departments.id','name'])->toArray();
+
+        if (!empty($data)) {
+
+            foreach ($data as $key => $val) {
+
+                if (array_key_exists('pivot', $data[$key])) {
+                    unset($data[$key]['pivot']);
+                }
+
+            }
+
+        }
+
+        return $data;
+
+    }
     public function department(){
 
+
+        return view('team.departmentView');
+    }
+
+    public function departmentInfo(){
+
         $departments = Department::all();
-        return view('team.departmentView')->with('departments',$departments);
+
+       return $departments;
+
+
     }
     public function view(){
 
