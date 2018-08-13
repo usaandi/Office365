@@ -9,7 +9,7 @@ use App\User;
 
 class UserHobbyController extends Controller
 {
-    public function userHobbies(Request $request, $id)
+    public function userHobbies($id)
     {
         $userid=User::findOrFail($id);
 
