@@ -30,10 +30,38 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function userNoDepartment(){
+
+        $userdata = User::with('department')->get(['users.id','users.name']);
+
+        foreach ($userdata as $key => $user){
+
+            if($user->department !== null){
+                $user->department_id = $user->department->department_id;
+            }
+            else {
+                $user->department_id = NULL;
+            }
+            unset($user->department);
+
+        }
+
+        return $userdata;
+    }
+
     public function index()
     {
-        $users = User::all();
 
-        return view('home')->with('users',$users);
+
+/*
+        $trash=DB::table('users')
+            ->whereNotNull('deleted_at')
+            ->get();*/
+
+
+        $users = User::get();
+
+        return view('home')->with(['users'=>$users]);
     }
 }
