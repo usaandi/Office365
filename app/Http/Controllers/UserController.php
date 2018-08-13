@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\UserInfo;
 use auth;
+use Validator;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +20,12 @@ class UserController extends Controller
     public function show($id)
     {
 
+
+
         $user = User::findorFail($id);
+
+
+
 
         return view('user.profileview', compact('user'));
     }
@@ -104,7 +111,7 @@ class UserController extends Controller
         try {
 
             $request->validate([
-                'data' => 'int'
+                'data' => 'integer'
             ]);
 
             $user = User::findOrFail($id);
@@ -176,6 +183,50 @@ class UserController extends Controller
         }
         return response('Error updating user', 400)
             ->header('Content-Type', 'application/json');
+    }
+    public function updateInfo(Request $request, $id)
+    {
+        try {
+
+            $data=json_decode(key($request->all()), true);
+            $rules = [
+                'user_info' => 'text',
+
+            ];
+            $validator = Validator::make($data, $rules);
+
+
+
+            if ($validator->passes()){
+
+                $userid = User::findOrFail($id)->id;
+                $user = User::findOrFail($id);
+                $newuserinfo = $data['user_info'];
+
+
+
+                $user->info()->get($userid)->save(['user_info' => $newuserinfo,'user_id'=>$userid]);
+                $infoid=UserInfo::findOrFail($newuserinfo)->first()->id;
+
+                return response()->json([
+                    'user_info'=> $newuserinfo,
+                    'info_id'=>$infoid,
+                ]);
+            }
+        }
+        catch(\Exception $e) {
+
+        }
+    }
+    public function userInfo($id){
+
+
+        $userid=User::findOrFail($id);
+
+        $data=$userid->info()->get(['user_info','id']);
+
+
+        return $data;
     }
 
 
