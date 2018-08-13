@@ -29,6 +29,7 @@ class TeamUser extends Migration
         });
 
         Schema::create('users_departments', function (Blueprint $table){
+            $table->increments('id');
             $table->unsignedInteger('department_id');
             $table->unsignedInteger('user_id');
             $table->softDeletes();
@@ -39,17 +40,18 @@ class TeamUser extends Migration
         });
 
         Schema::create('departments_teams', function (Blueprint $table){
+            $table->increments('id');
             $table->unsignedInteger('department_id');
             $table->unsignedInteger('team_id');
             $table->softDeletes();
             $table->timestamps();
-            $table->primary(['department_id', 'team_id']);
 
             $table->foreign('team_id')->references('id')->on('teams');
             $table->foreign('department_id')->references('id')->on('departments');
         });
 
         Schema::create('users_teams', function (Blueprint $table){
+            $table->increments('id');
             $table->unsignedInteger('team_id');
             $table->unsignedInteger('user_id');
             $table->timestamps();

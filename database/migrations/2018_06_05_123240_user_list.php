@@ -21,16 +21,13 @@ class UserList extends Migration
             $table->string('name');
             $table->date('birthday');
             $table->string('skype');
-            $table->string('team');
             $table->string('description');
             $table->date('ADMsince');
             $table->string('pictureLocation');
-
+            $table->softDeletes('deleted_at');
             $table->longText('token');
             $table->rememberToken();
             $table->timestamps();
-
-
         });
 
 
@@ -45,6 +42,5 @@ class UserList extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('strength_user');
     }
 }
