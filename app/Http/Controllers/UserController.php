@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
@@ -20,12 +21,15 @@ class UserController extends Controller
     public function show($id)
     {
 
+        $userModel = User::findorFail($id);
+        $user = $userModel->toArray();
 
+        $userDepartment = $userModel->department()->get(['department_id'])->first();
 
-        $user = User::findorFail($id);
-
-
-
+        if ($userDepartment !== NULL) {
+            $department = Department::find($userDepartment->department_id);
+            $user['department'] = $department->department_name;
+        }
 
         return view('user.profileview', compact('user'));
     }
@@ -118,7 +122,7 @@ class UserController extends Controller
 
             $phone = $request->data;
 
-            $user->phoneN = $phone;
+            $user->phone = $phone;
             $user->save();
 
             return response('success', 200)
