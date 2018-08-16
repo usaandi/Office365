@@ -4424,15 +4424,14 @@ Vue.component('department-list-view', __webpack_require__(83));
 Vue.component('team-list', __webpack_require__(88));
 Vue.component('team-list-view', __webpack_require__(94));
 Vue.component('user-development', __webpack_require__(99));
+Vue.component('user-department', __webpack_require__(151));
 Vue.component('user-hobbies', __webpack_require__(14));
 Vue.component('user-children', __webpack_require__(104));
 Vue.component('hobby-add', __webpack_require__(109));
 Vue.component('hobby-add-new', __webpack_require__(114));
 Vue.component('select2', __webpack_require__(119));
-Vue.component('department-user-list-draggable', __webpack_require__(124));
-Vue.component('department-user-list', __webpack_require__(129));
-Vue.component('department-user-list-view', __webpack_require__(134));
 Vue.component('user-role', __webpack_require__(139));
+Vue.component('v-select', VueSelect.VueSelect);
 
 var app = new Vue({
   el: '#app'
@@ -48494,7 +48493,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*div{*/\n    /*border: 2px solid black;*/\n/*}*/\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*div{*/\n    /*border: 2px solid black;*/\n/*}*/\n.text-color-cyan[data-v-506feef2]{\n    color: #00adee;\n}\n.text-font-size[data-v-506feef2]{\n    font-size: 60px;\n}\n.profile-picture[data-v-506feef2]{\n    border-radius: 50%;\n}\n", ""]);
 
 // exports
 
@@ -48550,6 +48549,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48563,7 +48597,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             edit: false,
             userdata: '',
             text: '',
-            canedit: false
+            canedit: false,
+            editdepartment: false,
+            editphone: false,
+            editemail: false,
+            editskype: false
         };
     },
     computed: {
@@ -48580,14 +48618,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
-        changeText: function changeText() {
+        changeText: function changeText(type) {
             if (this.canedit) {
-                if (this.edit) {
-                    this.edit = false;
-                } else {
-                    this.edit = true;
-                }
+                var name = 'edit' + type;
+                this[name] = true;
             }
+        },
+        personalDataUpdated: function personalDataUpdated(type, data) {
+            this.user[type] = data;
+            this.hideInput(type);
+        },
+        hideInput: function hideInput(type) {
+            var name = 'edit' + type;
+            this[name] = false;
         }
     }
 });
@@ -48698,9 +48741,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "EditableInputComponent",
@@ -48709,7 +48749,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             elementdata: null,
-            edit: false,
+            edit: true,
             showinput: false
         };
     },
@@ -48718,33 +48758,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        changeText: function changeText() {
-            if (this.edit) {
-                this.edit = false;
-            } else {
-                this.edit = true;
-            }
-        },
-        setedit: function setedit() {
-
-            console.log(this.edit);
-            if (this.edit) {
-                this.edit = false;
-            } else {
-                this.edit = true;
-            }
-
-            /*this.edit=false;*/
-            console.log(this.edit);
+        cancel: function cancel() {
+            this.$emit('canceled');
         },
 
         upload: function upload() {
 
-            this.edit = false;
-
             var vm = this;
             axios.post(this.endpoint, { data: this.elementdata }).then(function (response) {
-                vm.$emit('input-updated', response);
+                vm.$emit('input-updated', vm.elementdata);
             });
         }
     }
@@ -48760,34 +48782,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.edit === false,
-            expression: "edit===false"
-          }
-        ]
-      },
-      [
-        _c("p", { staticClass: "text", on: { dblclick: _vm.changeText } }, [
-          _c("b", [_vm._v(_vm._s(_vm.elementName) + ":")]),
-          _vm._v(_vm._s(_vm.elementdata))
-        ])
-      ]
-    ),
+    _c("p", { staticClass: "text" }, [
+      _c("b", [_vm._v(_vm._s(_vm.elementName) + ":")])
+    ]),
     _vm._v(" "),
     _c("input", {
       directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.edit,
-          expression: "edit"
-        },
         {
           name: "model",
           rawName: "v-model",
@@ -48815,37 +48815,9 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.edit,
-            expression: "edit"
-          }
-        ],
-        on: { click: _vm.setedit }
-      },
-      [_vm._v("Cancel")]
-    ),
+    _c("button", { on: { click: _vm.cancel } }, [_vm._v("Cancel")]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.edit,
-            expression: "edit"
-          }
-        ],
-        on: { click: _vm.upload }
-      },
-      [_vm._v("Save")]
-    )
+    _c("button", { on: { click: _vm.upload } }, [_vm._v("Save")])
   ])
 }
 var staticRenderFns = []
@@ -49124,31 +49096,73 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.canedit === false,
-                    expression: "canedit === false"
+                    value: _vm.editdepartment === false,
+                    expression: "editdepartment === false"
                   }
                 ],
                 staticClass: "text",
-                on: { dblclick: _vm.changeText }
+                on: {
+                  dblclick: function($event) {
+                    _vm.changeText("department")
+                  }
+                }
               },
-              [_c("b", [_vm._v("TEAM:")]), _vm._v(_vm._s(_vm.user.team))]
+              [
+                _c("b", [_vm._v("DEPARTMENT:")]),
+                _vm._v(_vm._s(_vm.user.department))
+              ]
             ),
             _vm._v(" "),
-            _c("editable-input-component", {
+            _c("user-department", {
               directives: [
                 {
                   name: "show",
                   rawName: "v-show",
-                  value: _vm.canedit,
-                  expression: "canedit"
+                  value: _vm.isadmin && _vm.editdepartment,
+                  expression: "isadmin && editdepartment"
                 }
               ],
-              attrs: {
-                endpoint: "/user/" + _vm.user.id + "/update/team",
-                data: _vm.user.team,
-                "element-name": "TEAM"
+              attrs: { userid: _vm.user.id },
+              on: {
+                "select-updated": function($event) {
+                  _vm.personalDataUpdated("department", $event)
+                }
               }
             }),
+            _vm._v(" "),
+            _vm.editphone === false
+              ? _c(
+                  "p",
+                  {
+                    staticClass: "text",
+                    on: {
+                      dblclick: function($event) {
+                        _vm.changeText("phone")
+                      }
+                    }
+                  },
+                  [_c("b", [_vm._v("PHONE:")]), _vm._v(_vm._s(_vm.user.phone))]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.editphone
+              ? _c("editable-input-component", {
+                  ref: "phone",
+                  attrs: {
+                    endpoint: "/user/" + _vm.user.id + "/update/phone",
+                    data: _vm.user.phone,
+                    "element-name": "PHONE"
+                  },
+                  on: {
+                    "input-updated": function($event) {
+                      _vm.personalDataUpdated("phone", $event)
+                    },
+                    canceled: function($event) {
+                      _vm.hideInput("phone", $event)
+                    }
+                  }
+                })
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "p",
@@ -49157,45 +49171,16 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.canedit === false,
-                    expression: "canedit === false"
+                    value: _vm.editemail === false,
+                    expression: "editemail === false"
                   }
                 ],
                 staticClass: "text",
-                on: { dblclick: _vm.changeText }
-              },
-              [_c("b", [_vm._v("PHONE:")]), _vm._v(_vm._s(_vm.user.phoneN))]
-            ),
-            _vm._v(" "),
-            _c("editable-input-component", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.canedit,
-                  expression: "canedit"
+                on: {
+                  dblclick: function($event) {
+                    _vm.changeText("email")
+                  }
                 }
-              ],
-              attrs: {
-                endpoint: "/user/" + _vm.user.id + "/update/phone",
-                data: _vm.user.phoneN,
-                "element-name": "PHONE"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.isadmin === false,
-                    expression: "isadmin === false"
-                  }
-                ],
-                staticClass: "text",
-                on: { dblclick: _vm.changeText }
               },
               [_c("b", [_vm._v("EMAIL:")]), _vm._v(_vm._s(_vm.user.email))]
             ),
@@ -49205,14 +49190,23 @@ var render = function() {
                 {
                   name: "show",
                   rawName: "v-show",
-                  value: _vm.isadmin,
-                  expression: "isadmin"
+                  value: _vm.isadmin && _vm.editemail,
+                  expression: "isadmin && editemail"
                 }
               ],
+              ref: "email",
               attrs: {
                 endpoint: "/user/" + _vm.user.id + "/update/email",
                 data: _vm.user.email,
                 "element-name": "EMAIL"
+              },
+              on: {
+                "input-updated": function($event) {
+                  _vm.personalDataUpdated("email", $event)
+                },
+                canceled: function($event) {
+                  _vm.hideInput("email", $event)
+                }
               }
             }),
             _vm._v(" "),
@@ -49223,37 +49217,45 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.canedit === false,
-                    expression: "canedit === false"
+                    value: _vm.editskype === false,
+                    expression: "editskype === false"
                   }
                 ],
                 staticClass: "text",
-                on: { dblclick: _vm.changeText }
+                on: {
+                  dblclick: function($event) {
+                    _vm.changeText("skype")
+                  }
+                }
               },
               [_c("b", [_vm._v("SKYPE:")]), _vm._v(_vm._s(_vm.user.skype))]
             ),
             _vm._v(" "),
-            _c("editable-input-component", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.canedit,
-                  expression: "canedit"
-                }
-              ],
-              attrs: {
-                endpoint: "/user/" + _vm.user.id + "/update/skype",
-                data: _vm.user.skype,
-                "element-name": "SKYPE"
-              }
-            }),
+            _vm.editskype
+              ? _c("editable-input-component", {
+                  attrs: {
+                    endpoint: "/user/" + _vm.user.id + "/update/skype",
+                    data: _vm.user.skype,
+                    "element-name": "SKYPE"
+                  },
+                  on: {
+                    "input-updated": function($event) {
+                      _vm.personalDataUpdated("skype", $event)
+                    },
+                    canceled: function($event) {
+                      _vm.hideInput("skype", $event)
+                    }
+                  }
+                })
+              : _vm._e(),
             _vm._v(" "),
             _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("STRENGTHS")]),
             _vm._v(" "),
             _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("CHILDREN")]),
             _vm._v(" "),
-            _c("user-children", { attrs: { userid: _vm.user.id } }),
+            _c("user-children", {
+              attrs: { canedit: _vm.canedit, userid: _vm.user.id }
+            }),
             _vm._v(" "),
             _c("h2", { staticClass: "text-color-cyan" }, [_vm._v("HOBBIES")]),
             _vm._v(" "),
@@ -52177,12 +52179,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             var vm = this;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('http://localhost/user/' + this.id + '/update/child', data).then(function (response) {
-                vm.userchildren.push({
-                    id: response.data.child_id,
-                    name: response.data.child_name,
-                    age: response.data.age
+                if (vm.childname !== null) {
 
-                });
+                    vm.userchildren.push({
+                        id: response.data.child_id,
+                        name: response.data.child_name,
+                        age: response.data.age
+
+                    });
+                }
             }).catch(function (error) {});
         },
 
@@ -52902,536 +52907,21 @@ if (false) {
 }
 
 /***/ }),
-/* 124 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(125)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(127)
-/* template */
-var __vue_template__ = __webpack_require__(128)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-f8f3302a"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DepartmentUserListDraggable.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f8f3302a", Component.options)
-  } else {
-    hotAPI.reload("data-v-f8f3302a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 125 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(126);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("dae94e6a", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f8f3302a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentUserListDraggable.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f8f3302a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentUserListDraggable.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 126 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 127 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuedraggable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    components: {
-        draggable: __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default.a
-    },
-    props: [],
-    name: "DepartmentUserListDraggable",
-
-    data: function data() {
-        return {
-            users: [],
-            usersWithoutDepartment: [],
-            departments: []
-        };
-    },
-    mounted: function mounted() {
-        this.fetchuser();
-        var vm = this;
-        setTimeout(function () {
-            vm.departments = vm.fetchdepartment();
-        }, 200);
-        setTimeout(function () {
-            vm.departments = vm.departments;
-        }, 1000);
-    },
-
-    methods: {
-        fetchuser: function fetchuser() {
-            var vm = this;
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('http://localhost/usersDepartment').then(function (response) {
-                vm.users = response.data;
-            });
-        },
-        fetchdepartment: function fetchdepartment() {
-            var vm = this;
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('http://localhost/departmentInfo').then(function (response) {
-                //this.departments = response.data;
-                var departmentData = {};
-
-                for (var i = 0; i < response.data.length; i++) {
-
-                    departmentData = response.data[i];
-                    departmentData.users = [];
-
-                    for (var j = 0; j < vm.users.length; j++) {
-
-                        if (vm.users[j].department_id === response.data[i].id) {
-                            departmentData.users[departmentData.users.length] = vm.users[j];
-                        }
-                    }
-                    vm.departments[vm.departments.length] = departmentData;
-                    departmentData = {};
-                }
-            });
-            return vm.departments;
-        }
-    }
-});
-
-/***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h3", [_vm._v("Users")]),
-      _vm._v(" "),
-      _c(
-        "draggable",
-        {
-          model: {
-            value: _vm.users,
-            callback: function($$v) {
-              _vm.users = $$v
-            },
-            expression: "users"
-          }
-        },
-        _vm._l(_vm.users, function(user) {
-          return _c("div", { staticClass: "users" }, [
-            _vm._v("\n            " + _vm._s(user.name) + "\n        ")
-          ])
-        })
-      ),
-      _vm._v(" "),
-      _c("h3", [_vm._v("Departments: " + _vm._s(_vm.departments.length))]),
-      _vm._v(" "),
-      _vm._l(_vm.departments, function(department) {
-        return _c(
-          "div",
-          { staticClass: "deps" },
-          [
-            _c("h4", [_vm._v(_vm._s(department.department_name))]),
-            _vm._v(" "),
-            _c(
-              "draggable",
-              {
-                staticStyle: { "min-height": "15px" },
-                attrs: { options: { group: "users" } },
-                model: {
-                  value: department.users,
-                  callback: function($$v) {
-                    _vm.$set(department, "users", $$v)
-                  },
-                  expression: "department.users"
-                }
-              },
-              _vm._l(department.users, function(user) {
-                return _c("div", { staticClass: "users" }, [
-                  _vm._v(
-                    "\n                " + _vm._s(user.name) + "\n            "
-                  )
-                ])
-              })
-            )
-          ],
-          1
-        )
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f8f3302a", module.exports)
-  }
-}
-
-/***/ }),
-/* 129 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(130)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(132)
-/* template */
-var __vue_template__ = __webpack_require__(133)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-8bf69d1c"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DepartmentUserList.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8bf69d1c", Component.options)
-  } else {
-    hotAPI.reload("data-v-8bf69d1c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(131);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("64bc8c8b", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8bf69d1c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentUserList.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8bf69d1c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentUserList.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 132 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-    name: "DepartmentUserList",
-    props: ['users', 'departments'],
-    data: function data() {
-        return {};
-    }
-});
-
-/***/ }),
-/* 133 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [_c("department-list-view"), _vm._v(" "), _c("department-user-list-view")],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8bf69d1c", module.exports)
-  }
-}
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(135)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(137)
-/* template */
-var __vue_template__ = __webpack_require__(138)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-4dcf78b7"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DepartmentUserListView.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4dcf78b7", Component.options)
-  } else {
-    hotAPI.reload("data-v-4dcf78b7", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 135 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(136);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("6979ee23", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4dcf78b7\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentUserListView.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4dcf78b7\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DepartmentUserListView.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 137 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "DepartmentUserListView"
-});
-
-/***/ }),
-/* 138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4dcf78b7", module.exports)
-  }
-}
-
-/***/ }),
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
 /* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -53725,6 +53215,232 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(152)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(154)
+/* template */
+var __vue_template__ = __webpack_require__(155)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-037d8a19"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/UserDepartmentComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-037d8a19", Component.options)
+  } else {
+    hotAPI.reload("data-v-037d8a19", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(153);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("50dc74d6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-037d8a19\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserDepartmentComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-037d8a19\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserDepartmentComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 154 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['userid', 'canedit'],
+    data: function data() {
+        return {
+            id: '',
+            departments: [],
+            department: '',
+            teams: []
+
+        };
+    },
+    mounted: function mounted() {
+        this.id = this.userid;
+        this.fetchData();
+    },
+
+    methods: {
+
+        fetchData: function fetchData() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/departmentInfo').then(function (response) {
+                _this.departments = response.data;
+            });
+        },
+
+        submit: function submit() {
+            var vm = this;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.id + '/team', { data: this.department.department_name }).then(function (response) {
+                vm.$emit('select-updated', vm.department.department_name);
+                vm.department = '';
+            });
+        },
+
+        updateOptions: function updateOptions(newOption) {
+            this.department = newOption;
+        },
+        selectedValue: function selectedValue(value) {
+            this.department = value;
+            this.submit();
+        }
+    }
+});
+
+/***/ }),
+/* 155 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "p",
+      { staticClass: "text" },
+      [
+        _c("b", [_vm._v("DEPARTMENT:")]),
+        _vm._v(" "),
+        _c("v-select", {
+          attrs: {
+            taggable: "",
+            "push-tags": "",
+            label: "department_name",
+            options: _vm.departments,
+            closeOnSelect: true
+          },
+          on: { "option:created": _vm.updateOptions, input: _vm.selectedValue },
+          nativeOn: {
+            keydown: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              _vm.submit()
+            }
+          }
+        })
+      ],
+      1
+    ),
+    _c("div", [_c("p"), _vm._v(" "), _c("v-select")], 1)
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-037d8a19", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
