@@ -14,6 +14,9 @@
     var authUserRole = {!! auth()->user()->roles()->first() !!};
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="https://unpkg.com/vue@latest"></script>
+<script src="https://unpkg.com/vue-select@latest"></script>
+
 <script>
     $(function() {
         $.fn.select2.defaults.set("theme", "bootstrap");
