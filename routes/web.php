@@ -41,9 +41,10 @@ Route::post('/user/{id}/update/info', 'UserController@updateInfo')->name('update
 Route::post('/user/{id}/update/child', 'UserChildController@updateChild')->name('updateChild');
 Route::delete('user/{id}/delete/child', 'UserChildController@deleteUserChild')->name('deleteUserChild');
 
-Route::get('/user/{id}', 'UserController@show')->name('profile');
+Route::post('/user/{id}/team', 'TeamsController@updateTeam')->name('updateTeam');
 Route::get('/user/{id}/development', 'PersonalDevelopmentController@userDevelopment')->name('development');
 Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
+Route::get('/user/{id}', 'UserController@show')->name('profile');
 
 Route::get('/admin/users/add', 'AddController@add')->name('useradd');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
