@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\UserChildren;
 use Illuminate\Http\Request;
 use App\User;
@@ -18,14 +17,14 @@ class UserChildController extends Controller
             'data' => 'string|max:30'
         ]);
 
-
         $usr=User::find($id);
 
-        $usrChildAge=$usr->children()->get(['year_born','id','name']);
+        $usrChild=$usr->children()->get(['year_born','id','name']);
         $today=date('Y-m-d');
         $children = array();
-        if(!empty($usrChildAge)){
-            foreach ($usrChildAge as $i =>$child){
+        if(!empty($usrChild)){
+            foreach ($usrChild as $i =>$child){
+
                 $childDateBorn=$child->year_born;
                 $childId=$child->id;
                 $childName=$child->name;
@@ -49,8 +48,8 @@ class UserChildController extends Controller
             $data=json_decode(key($request->all()), true);
 
             $rules = [
-                'childname' => 'string|max:30',
-                 'dateborn' => 'date'
+                'childname' => 'required|string|max:30',
+                 'dateborn' => 'required|date'
             ];
             $validator = Validator::make($data, $rules);
 
@@ -64,34 +63,19 @@ class UserChildController extends Controller
                 $childName = $data['childname'];
                 $yearborn = $data['dateborn'];
                 $childNameCapitalized= ucwords($childName);
-
                 $child= UserChildren::create([
                     'user_id'=> $userid, 'name'=> $childNameCapitalized,'year_born'=>$yearborn]);
-
-
-
                 $user->children()->save($child);
-
                 $childid=UserChildren::findOrFail($child)->first()->id;
-
                 $today=date('Y-m-d');
                 $childAgeInYears = date_diff(date_create($yearborn),
                     date_create($today))->y;
-
-
-
-
                 return response()->json([
-
                     'age'=> $childAgeInYears,
                     'child_name'=>$childNameCapitalized,
                     'child_id'=>$childid,
                 ]);
             }
-
-
-
-
         }
         catch(\Exception $e) {
 
