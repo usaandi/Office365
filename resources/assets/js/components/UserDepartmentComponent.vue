@@ -1,18 +1,22 @@
 <template>
     <div>
+        <p class="text"><b>DEPARTMENT:</b>
+        <v-select taggable push-tags
+                  label="department_name"
+                  :options="departments"
+                  :closeOnSelect="true"
+                  @option:created="updateOptions"
+                  @input="selectedValue"
+                  @keydown.native.enter="submit()"
+        ></v-select>
+
         <div>
-            <v-select taggable push-tags
-                      label="department_name"
-                      :options="departments"
-                      :closeOnSelect="true"
-                      @option:created="updateOptions"
-                      @input="selectedValue"
-                      @keydown.native.enter="submit()"
-            ></v-select>
-            <div>
-                <p>{{foo}}</p>
-            </div>
+        <p></p>
+            <v-select>
+
+            </v-select>
         </div>
+
     </div>
 </template>
 
@@ -20,14 +24,14 @@
     import axios from 'axios';
 
     export default {
-        name: "DepartmentUserList",
         props: ['userid','canedit'],
         data() {
             return {
                 id: '',
                 departments: [],
-                foo:'',
-                edit: 'false'
+                department:'',
+                teams:[],
+
             }
         },
         mounted() {
@@ -37,7 +41,7 @@
         methods:{
 
             fetchData: function () {
-                axios.get('http://localhost/departmentInfo')
+                axios.get('/departmentInfo')
                     .then(response => {
                         this.departments = response.data;
                     });
@@ -45,34 +49,21 @@
 
             submit: function(){
                 let vm =this;
-                axios.post('/user/'+ this.id + '/team', {data: this.foo.department_name})
+                axios.post('/user/'+ this.id + '/team', {data: this.department.department_name})
                     .then(response => {
-                        vm.foo = '';
-                        console.log(response.data)
+                        vm.$emit('select-updated', vm.department.department_name);
+                        vm.department = '';
                     });
 
             },
 
-            upload: function () {
-                let vm = this;
-                axios.post('http://localhost/user/' + this.id + '/update/hobby',{data: this.hobbyname})
-                    .then(response => {
-                        vm.userhobbies.push({
-                            id: response.data.user_hobby_id,
-                            hobby_name: response.data.hobby_name
-                        });
-                        vm.edit = false;
-                    }).catch(error => {
-                    console.log(error.response.data);
-                });
-            },
 
             updateOptions(newOption) {
-                this.foo = newOption;
+                this.department = newOption;
             },
 
             selectedValue(value) {
-                this.foo = value;
+                this.department = value;
                 this.submit();
             }
 

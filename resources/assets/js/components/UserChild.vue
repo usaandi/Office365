@@ -53,12 +53,16 @@
                 let vm = this;
                 axios.post('http://localhost/user/' + this.id + '/update/child',data)
                     .then(response => {
-                        vm.userchildren.push({
-                            id: response.data.child_id,
-                            name: response.data.child_name,
-                            age: response.data.age,
+                        if (vm.childname!==null){
 
-                        })
+                            vm.userchildren.push({
+                                id: response.data.child_id,
+                                name: response.data.child_name,
+                                age: response.data.age,
+
+                            })
+                        }
+
 
                 }).catch(error => {
 

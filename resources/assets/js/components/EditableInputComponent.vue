@@ -1,12 +1,9 @@
 <template>
-    <div >
-        <div v-show="edit===false">
-            <p class="text" @dblclick="changeText"><b>{{ elementName }}:</b>{{ elementdata }}</p>
-
-        </div>
-        <input  v-show="edit" v-model="elementdata" @keyup.enter="upload">
-        <button v-show="edit" v-on:click="setedit">Cancel</button>
-        <button v-show="edit" v-on:click="upload">Save</button>
+    <div>
+        <p class="text"><b>{{ elementName }}:</b></p>
+        <input v-model="elementdata" @keyup.enter="upload">
+        <button @click="cancel">Cancel</button>
+        <button @click="upload">Save</button>
     </div>
 </template>
 
@@ -18,7 +15,7 @@
         data(){
             return{
                 elementdata: null,
-                edit: false,
+                edit: true,
                 showinput:false,
             }
         },
@@ -26,36 +23,15 @@
           this.elementdata = this.data;
         },
         methods: {
-            changeText: function() {
-                if (this.edit) {
-                    this.edit = false;
-                }
-                else {
-                    this.edit = true;
-
-                }
-            },
-            setedit: function(){
-
-                console.log(this.edit);
-                if (this.edit){
-                    this.edit=false;
-                }
-                else {
-                    this.edit=true;
-                }
-
-                /*this.edit=false;*/
-                console.log(this.edit);
+            cancel: function(){
+                this.$emit('canceled');
             },
 
             upload: function(){
 
-                this.edit = false;
-
                 let vm = this;
                 axios.post(this.endpoint,{data: this.elementdata}).then(response => {
-                    vm.$emit('input-updated', response);
+                    vm.$emit('input-updated', vm.elementdata);
                 });
             },
         }
