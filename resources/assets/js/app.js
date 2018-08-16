@@ -27,15 +27,15 @@ Vue.component('department-list-view',require('./components/DepartmentListView.vu
 Vue.component('team-list',require('./components/TeamListComponent.vue'));
 Vue.component('team-list-view',require('./components/TeamListView.vue'));
 Vue.component('user-development',require('./components/UserDevelopmentComponent.vue'));
+Vue.component('user-department',require('./components/UserDepartmentComponent.vue'));
 Vue.component('user-hobbies',require('./components/UserHobby'));
 Vue.component('user-children',require('./components/UserChild'));
 Vue.component('hobby-add',require('./components/HobbyAdd'));
 Vue.component('hobby-add-new',require('./components/HobbyAddNew'));
 Vue.component('select2',require('./components/Select2Component'));
-Vue.component('department-user-list-draggable', require('./components/DepartmentUserListDraggable'));
-Vue.component('department-user-list', require('./components/DepartmentUserList'));
-Vue.component('department-user-list-view', require('./components/DepartmentUserListView'));
 Vue.component('user-role', require('./components/UserRole'));
+Vue.component('v-select', VueSelect.VueSelect);
+
 
 const app = new Vue({
     el: '#app'
