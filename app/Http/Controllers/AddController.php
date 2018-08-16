@@ -13,8 +13,6 @@ class AddController extends Controller
 
 //        $name =input::get('name');
 //        $email =input::get('email');
-
-
         return view('user.adduser');
     }
     public function store(Request $request){
@@ -26,7 +24,7 @@ class AddController extends Controller
                 'phone'=> 'required|int',
                 'birthday'=> 'required|date',
                 'skype'=>'required',
-                'team'=>'required',
+                'team'=>'',
                 'ADMsince'=>'required|date',
                ]
            );
@@ -52,24 +50,10 @@ class AddController extends Controller
                 User::create(['email' => $email,'name'=>$name,'token'=>null,'phoneN'=>$phone,
                     'birthday'=>$birthday, 'skype'=>$skype, 'team'=>$team,'ADMsince'=>$ADMsince]);
 
-
-
                 return view('user.adduser');
             }
             else {
                 echo 'Sellise nimega isik: '.$name.' ja Emailiga:'.$email.' On juba andmebaasis';
             }
-
-
-            //return view('partials.adduser');
-
-
-       // var_dump($name,$email);
-
-
-
-
-
-
     }
 }
