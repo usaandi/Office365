@@ -53,9 +53,6 @@ class UserChildController extends Controller
             ];
             $validator = Validator::make($data, $rules);
 
-
-
-
             if ($validator->passes()){
 
                 $userid = User::findOrFail($id)->id;
