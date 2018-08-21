@@ -31,7 +31,7 @@
                 edit:false,
             }
         },
-        mounted() {
+        mounted(){
             this.currentUserId=this.userid;
             this.fetchData();
 

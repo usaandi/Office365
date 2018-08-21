@@ -40,6 +40,9 @@ class User extends Authenticatable
     public function department() {
         return $this->hasOne('App\UserDepartment', 'user_id');
     }
+    public function team(){
+        return $this->hasOne('App\UserTeam','user_id');
+    }
 
     public function hobbies() {
         return $this->belongsToMany('App\Hobby', 'users_hobbies')

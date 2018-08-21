@@ -1,22 +1,12 @@
 <template>
     <div>
-        <p class="text"><b>DEPARTMENT:</b>
         <v-select taggable push-tags
                   label="department_name"
                   :options="departments"
-                  :closeOnSelect="true"
                   @option:created="updateOptions"
                   @input="selectedValue"
                   @keydown.native.enter="submit()"
         ></v-select>
-
-        <div>
-        <p></p>
-            <v-select>
-
-            </v-select>
-        </div>
-
     </div>
 </template>
 
@@ -27,10 +17,12 @@
         props: ['userid','canedit'],
         data() {
             return {
+
                 id: '',
                 departments: [],
                 department:'',
-                teams:[],
+                departmentId:'',
+                test:false,
 
             }
         },
@@ -49,25 +41,26 @@
 
             submit: function(){
                 let vm =this;
-                axios.post('/user/'+ this.id + '/team', {data: this.department.department_name})
+                axios.post('/user/'+ this.id + '/department', {data: this.department.department_name})
                     .then(response => {
                         vm.$emit('select-updated', vm.department.department_name);
                         vm.department = '';
                     });
 
             },
-
-
             updateOptions(newOption) {
                 this.department = newOption;
+
             },
 
             selectedValue(value) {
                 this.department = value;
+                this.departmentId = this.department.id;
                 this.submit();
             }
 
         }
+
     }
 </script>
 

@@ -7,27 +7,8 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    public function teamDepartment($id){
 
-        $departmentid=Department::findOrFail($id);
 
-        $data=$departmentid->teams()->get(['departments_teams.id','team'])->toArray();
-
-        if (!empty($data)) {
-
-            foreach ($data as $key => $val) {
-
-                if (array_key_exists('pivot', $data[$key])) {
-                    unset($data[$key]['pivot']);
-                }
-
-            }
-
-        }
-
-        return $data;
-
-    }
     public function userDepartment($id){
 
         $departmentid=Department::findOrFail($id);
@@ -100,13 +81,12 @@ class DepartmentController extends Controller
         // For some reason the variable name department did not work.
 
         $dprtment = Department::findOrFail($id);
-        $teams = $dprtment->teams()->get();
         $users = $dprtment->users()->get();
         return view('team.teamView')->with(
             [
                 'users' => $users,
                 'department' => $dprtment,
-                'teams' => $teams,
+
             ]
         );
     }

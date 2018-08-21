@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Team;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
 use auth;
+use phpDocumentor\Reflection\Types\Null_;
 use Validator;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
@@ -25,12 +27,16 @@ class UserController extends Controller
         $user = $userModel->toArray();
 
         $userDepartment = $userModel->department()->get(['department_id'])->first();
+        $userTeam =$userModel->team()->get(['team_id'])->first();
 
         if ($userDepartment !== NULL) {
             $department = Department::find($userDepartment->department_id);
             $user['department'] = $department->department_name;
         }
-
+        if($userTeam !== NULL){
+            $team= Team::find($userTeam->team_id);
+            $user['team']=$team->team_name;
+        }
         return view('user.profileview', compact('user'));
     }
 

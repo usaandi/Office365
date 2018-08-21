@@ -20,10 +20,4 @@ class Department extends Model
         return $this->belongsToMany('App\User', 'users_departments')
             ->using('App\UserDepartment');
     }
-
-    public function teams() {
-        return $this->belongsToMany('App\Team', 'departments_teams')
-            ->using('App\DepartmentTeam');
-    }
-
 }

@@ -15,6 +15,15 @@
                             @select-updated="personalDataUpdated('department', $event)"
                     ></user-department>
 
+                    <p v-show="editdepartment === false" class="text"
+                    @dbclick="changeText('team')"
+                    ><b>TEAM:</b>{{user.team}}</p>
+                    <user-team
+                            v-show="isadmin && editdepartment"
+                            :userid="user.id"
+                            @select-updated="personalDataUpdated('team', $event)"
+                    ></user-team>
+
                     <p v-if="editphone === false"
                        class="text" @dblclick="changeText('phone')"
                     ><b>PHONE:</b>{{ user.phone }}</p>
@@ -89,6 +98,7 @@
                 text: '',
                 canedit: false,
                 editdepartment: false,
+                editteam: false,
                 editphone: false,
                 editemail: false,
                 editskype: false
@@ -127,9 +137,7 @@
 </script>
 
 <style scoped>
-    /*div{*/
-        /*border: 2px solid black;*/
-    /*}*/
+
     .text-color-cyan{
         color: #00adee;
     }
