@@ -15,29 +15,31 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import ChecksPrivileges from './services/ChecksPrivileges'
-Vue.use(ChecksPrivileges);
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-Vue.component('user-list', require('./components/UsersListComponent.vue'));
-Vue.component('user-list-view', require('./components/UserListViewComponent'));
-Vue.component('profile-view', require('./components/ProfileView'));
-Vue.component('profile-avatar', require('./components/ProfileAvatarComponent'));
+Vue.use(ChecksPrivileges);
+Vue.component('user-list', require('./components/user/UsersListComponent.vue'));
+Vue.component('user-list-view', require('./components/user/UserListViewComponent'));
+Vue.component('profile-view', require('./components/user/ProfileView'));
+Vue.component('profile-avatar', require('./components/user/ProfileAvatarComponent'));
 Vue.component('file-upload',require('./components/FileUpload.vue'));
-Vue.component('department-list',require('./components/DepartmentListComponent.vue'));
-Vue.component('department-list-view',require('./components/DepartmentListView.vue'));
-Vue.component('team-list',require('./components/TeamListComponent.vue'));
-Vue.component('team-list-view',require('./components/TeamListView.vue'));
-Vue.component('user-development',require('./components/UserDevelopmentComponent.vue'));
-Vue.component('user-department',require('./components/UserDepartmentComponent.vue'));
-Vue.component('user-team',require('./components/UserTeamComponent'));
-Vue.component('user-hobbies',require('./components/UserHobby'));
-Vue.component('user-children',require('./components/UserChild'));
+Vue.component('department-list',require('./components/department/DepartmentListComponent.vue'));
+Vue.component('department-list-view',require('./components/department/DepartmentListView.vue'));
+Vue.component('team-list',require('./components/team/TeamListComponent.vue'));
+Vue.component('team-list-view',require('./components/team/TeamListView.vue'));
+Vue.component('user-development',require('./components/user/UserDevelopmentComponent.vue'));
+Vue.component('user-department',require('./components/user/UserDepartmentComponent.vue'));
+Vue.component('user-team',require('./components/user/UserTeamComponent'));
+Vue.component('user-hobbies',require('./components/user/UserHobby'));
+Vue.component('user-children',require('./components/user/UserChild'));
 Vue.component('hobby-add',require('./components/HobbyAdd'));
 Vue.component('hobby-add-new',require('./components/HobbyAddNew'));
 Vue.component('select2',require('./components/Select2Component'));
-Vue.component('user-role', require('./components/UserRole'));
+Vue.component('user-role', require('./components/user/UserRole'));
+Vue.component('add-career', require('./components/career/AddCareer'));
+Vue.component('user-career', require('./components/career/CareerComponent'));
 Vue.component('v-select', VueSelect.VueSelect);
 
-
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });
