@@ -12,41 +12,48 @@ class PersonalDevelopment extends Migration
      * @return void
      */
     public function up()
-
     {
-        Schema::create('developments', function (Blueprint $table) {
+        Schema::create('career_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('milestone_id')->unsigned();
             $table->string('title');
             $table->text('description');
             $table->timestamps();
         });
 
-        Schema::create('milestones', function (Blueprint $table) {
+        Schema::create('career_roles_milestones', function (Blueprint $table) {
             $table->increments('id');
             $table->text('task');
-            $table->integer('assigned_id');
-            $table->date('reminder');
-            $table->boolean('completed');
+            $table->unsignedInteger('career_role_id');
             $table->timestamps();
+
+            $table->foreign('career_role_id')->references('id')->on('career_roles');
         });
 
-        Schema::create('users_development', function (Blueprint $table) {
+        Schema::create('users_career_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('development_id');
+            $table->unsignedInteger('career_role_id');
             $table->unsignedInteger('user_id');
+            $table->string('title');
+            $table->text('description');
             $table->timestamps();
-            $table->foreign('development_id')->references('id')->on('developments');
+
+            $table->foreign('career_role_id')->references('id')->on('career_roles');
             $table->foreign('user_id')->references('id')->on('users');
         });
 
-        Schema::create('development_milestone', function (Blueprint $table) {
+        Schema::create('users_career_roles_milestones', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('development_id');
             $table->unsignedInteger('milestone_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('assigned_id');
+            $table->text('task');
+            $table->date('reminder');
+            $table->boolean('completed');
             $table->timestamps();
-            $table->foreign('development_id')->references('id')->on('developments');
-            $table->foreign('milestone_id')->references('id')->on('milestones');
+
+            $table->foreign('milestone_id')->references('id')->on('career_roles_milestones');
+            $table->foreign('assigned_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
     }
