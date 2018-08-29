@@ -44,15 +44,17 @@ Route::delete('user/{id}/delete/child', 'UserChildController@deleteUserChild')->
 Route::post('/user/{id}/department', 'TeamsController@updateDepartment')->name('updateDepartment');
 Route::post('/user/{id}/team', 'TeamsController@updateUserTeam')->name('updateUserTeam');
 Route::get('/user/{id}/development', 'PersonalDevelopmentController@userDevelopment')->name('development');
+Route::get('/career/add', 'CareerController@show')->name('career');
+Route::post('/career/add', 'CareerController@create')->name('addCareer');
 Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
 Route::get('/user/{id}', 'UserController@show')->name('profile');
-
 Route::get('/admin/users/add', 'AddController@add')->name('useradd');
 Route::post('/admin/users/add', 'AddController@store')->name('store');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/usersDepartment','HomeController@userNoDepartment')->name('users');
 Route::get('department/add','DepartmentController@view')->name('departmentadd');
 Route::post('department/add','DepartmentController@store')->name('store');
+
 Route::get('department/{id}', 'DepartmentController@show')->name('team');
 Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name('user');
 Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('departmentInfo');
