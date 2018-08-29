@@ -11,6 +11,6 @@ class PersonalDevelopmentController extends Controller
 
         $user = User::findOrFail($id);
 
-        return view('user.userdevelopment', compact('user'));
+        return view('user.usercareer', compact('user'));
     }
 }
