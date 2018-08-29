@@ -40,6 +40,7 @@ class User extends Authenticatable
     public function department() {
         return $this->hasOne('App\UserDepartment', 'user_id');
     }
+
     public function team(){
         return $this->hasOne('App\UserTeam','user_id');
     }
@@ -52,10 +53,13 @@ class User extends Authenticatable
     public function children() {
         return $this->hasMany('App\UserChildren', 'user_id');
     }
-    public function info() {
-        return $this->hasMany('App\UserInfo', 'user_id');
+
+    public function userCareerRole(){
+        return $this->hasMany(UserCareerRole::class);
     }
 
-
+    public function userCareerRoleMilestones(){
+        return $this->hasMany(UserCareerRoleMilestone::class);
+    }
 
 }
