@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                Create Development
+                Create Career template
             </h3>
         </div>
         <div>
@@ -28,9 +28,7 @@
     {{csrf_field()}}
 
     <div id="app">
-        <add-development>
-
-        </add-development>
+        <add-career></add-career>
     </div>
 
 
