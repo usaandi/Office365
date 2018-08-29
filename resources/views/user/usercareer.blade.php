@@ -27,7 +27,7 @@
     {{csrf_field()}}
 
     <div id="app">
-        <user-development></user-development>
+        <user-career></user-career>
     </div>
 
 
