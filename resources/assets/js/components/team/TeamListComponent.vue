@@ -48,7 +48,7 @@
         methods:{
             fetchDataTeams: function(){
 
-                axios.get('http://localhost/department/'+ this.id + '/team')
+                axios.get('/department/'+ this.id + '/team')
                     .then(response=>{
                         /*console.log(response.data);*/
                      this.teams=response.data;
@@ -58,7 +58,7 @@
             },
 
             fetchDataUsers: function () {
-                axios.get('http://localhost/department/' + this.id + '/user')
+                axios.get('/department/' + this.id + '/user')
                     .then(response => {
                         this.users = response.data;
                     });

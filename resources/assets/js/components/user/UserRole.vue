@@ -42,7 +42,7 @@
         methods:{
 
             fetchData: function () {
-                axios.get('http://localhost/user/' + this.currentUserId + '/info')
+                axios.get('/user/' + this.currentUserId + '/info')
                     .then(response => {
 
                         this.currentUserInfo = response.data;
@@ -56,7 +56,7 @@
                 });
                 let vm = this;
                 console.log(this.currentUserId);
-                axios.post('http://localhost/user/' + this.currentUserId + '/update/info',data)
+                axios.post('/user/' + this.currentUserId + '/update/info',data)
                     .then(response => {
                             console.log(response.data())
 

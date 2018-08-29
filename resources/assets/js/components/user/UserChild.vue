@@ -38,7 +38,7 @@
         },
         methods:{
             fetchData: function () {
-                axios.get('http://localhost/user/' + this.id + '/child')
+                axios.get('/user/' + this.id + '/child')
                     .then(response => {
                         this.userchildren = response.data;
                     });
@@ -51,9 +51,9 @@
 
                 });
                 let vm = this;
-                axios.post('http://localhost/user/' + this.id + '/update/child',data)
+                axios.post('/user/' + this.id + '/update/child',data)
                     .then(response => {
-                        if (vm.childname!==null){
+                        if (vm.name!==null){
 
                             vm.userchildren.push({
                                 id: response.data.child_id,
@@ -72,7 +72,7 @@
 
             deleteRow: function (childId) {
                 let vm =this;
-                axios.delete('http://localhost/user/'+ this.id +'/delete/child', {params: {id: childId}})
+                axios.delete('/user/'+ this.id +'/delete/child', {params: {id: childId}})
                     .then(function (response) {
                         let index = vm.userchildren.findIndex(function(obj){
                             return obj.id === childId;

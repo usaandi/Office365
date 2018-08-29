@@ -39,7 +39,7 @@
             deleteRow: function(userHobbyId){
                 console.log(userHobbyId);
                 let vm =this;
-                axios.delete('http://localhost/user/'+ this.id +'/delete/hobby', {params: {userhobbyid: userHobbyId}})
+                axios.delete('/user/'+ this.id +'/delete/hobby', {params: {userhobbyid: userHobbyId}})
                     .then(function (response) {
                         let index = vm.userhobbies.findIndex(function(obj){
                             return obj.id === userHobbyId;
@@ -53,7 +53,7 @@
             },
 
             fetchData: function () {
-                axios.get('http://localhost/user/' + this.id + '/hobby')
+                axios.get('/user/' + this.id + '/hobby')
                     .then(response => {
                         this.userhobbies = response.data;
                     });
@@ -61,7 +61,7 @@
 
             upload: function () {
                 let vm = this;
-                axios.post('http://localhost/user/' + this.id + '/update/hobby',{data: this.hobbyname})
+                axios.post('/user/' + this.id + '/update/hobby',{data: this.hobbyname})
                     .then(response => {
                         vm.userhobbies.push({
                             id: response.data.user_hobby_id,
