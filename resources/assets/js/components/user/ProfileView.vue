@@ -84,7 +84,7 @@
 
 
 <script>
-    import EditableInputComponent from './EditableInputComponent'
+    import EditableInputComponent from '../EditableInputComponent'
     import UserHobby from "./UserHobby";
 
     export default {
