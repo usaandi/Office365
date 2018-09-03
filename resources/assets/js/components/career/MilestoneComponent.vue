@@ -1,5 +1,7 @@
 <template>
-
+<div>
+    <milestone-add></milestone-add>
+</div>
 </template>
 
 <script>
