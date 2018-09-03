@@ -123,7 +123,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="m-nav__item">
-                                                            <a href="{{route('development',['id'=>auth()->user()])}}" class="m-nav__link">
+                                                            <a href="{{route('career',['id'=>auth()->user()])}}" class="m-nav__link">
                                                                 <i class="m-nav__link-icon flaticon-share"></i>
                                                                 <span class="m-nav__link-text">
 																				Personal Development
@@ -213,7 +213,7 @@
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="{{route('development',['id'=>auth()->user()])}}" class="m-menu__link ">
+                                            <a href="{{route('career',['id'=>auth()->user()])}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Development</span>
                                             </a>
