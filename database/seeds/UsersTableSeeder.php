@@ -46,6 +46,7 @@ class UsersTableSeeder extends Seeder
             $roles_array= explode(',',$input_roles);
 
             foreach($roles_array as $role) {
+
                 $role = Role::firstOrCreate(['name' => trim($role)]);
 
                 if( $role->name == 'Admin' ) {
