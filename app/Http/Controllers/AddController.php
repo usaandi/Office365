@@ -47,7 +47,7 @@ class AddController extends Controller
 
             if($user===null){
 
-                User::create(['email' => $email,'name'=>$name,'token'=>null,'phoneN'=>$phone,
+                User::create(['email' => $email,'name'=>$name,'token'=>null,'phone'=>$phone,
                     'birthday'=>$birthday, 'skype'=>$skype, 'team'=>$team,'ADMsince'=>$ADMsince]);
 
                 return view('user.adduser');
