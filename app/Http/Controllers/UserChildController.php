@@ -22,6 +22,7 @@ class UserChildController extends Controller
         $usrChild=$usr->children()->get(['year_born','id','name']);
         $today=date('Y-m-d');
         $children = array();
+
         if(!empty($usrChild)){
             foreach ($usrChild as $i =>$child){
 
@@ -36,7 +37,7 @@ class UserChildController extends Controller
                 $children[$i]['age']=$childAgeInYears;
                 $children[$i]['name']=$childName;
             }
-                unset($childAge);
+                unset($child);
         }
 
         return $children;
