@@ -1,0 +1,44 @@
+//Font
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+//General
+body {
+  background-color: $body-bg;
+  font-family: 'Lato', sans-serif;
+}
+
+//Typo
+.m--font-grey {
+  color: #bbbbbb !important;
+}
+
+.m-subheader .m-subheader__title {
+  @media screen and (max-width: 767px) {
+    padding: 7px 25px 7px 0;
+    font-size: 1.55rem;
+    margin: 0 15px 0 0;
+  }
+}
+
+a {
+  color: $green;
+  &:hover,
+  &:focus {
+    color: #2ca189;
+  }
+}
+
+//Buttons
+.load-more {
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+//Form
+.form-control.focus,
+.form-control:focus {
+  border-color: $body-bg;
+  color: #575962;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

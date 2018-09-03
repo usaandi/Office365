@@ -1,29 +1,8 @@
-
-/*// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
 // Variables
 @import "variables";
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}*/
-
-/*@media (min-width:1025px){
-  .m-header--fixed .m-header .m-header__bottom{
-    margin-top:0;
-  }
-}*/
-
-/*
-.m-page--fluid .m-page .m-page__container {
-  padding: 0;
-}*/
-
-body {
-  background-color: #00adee;
-}
+// Partials
+@import "general";
+@import "header";
+@import "team";
+@import "timeline";
+@import "profile";

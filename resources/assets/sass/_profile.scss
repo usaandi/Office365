@@ -1,0 +1,103 @@
+.profile__avatar {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 260px;
+  width: 260px;
+  padding: 0;
+  margin: 0 auto;
+  border: none;
+  background: white;
+  &--image {
+    display: block;
+    margin: 3px;
+    border-radius: 50%;
+    width: 254px;
+    height: 254px;
+    overflow: hidden;
+    z-index: 100;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &--level {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+
+/**
+* Function to generate procentual progress classes 
+* .p-1 1% -> p-100 100%
+**/
+
+$step: 1;
+$loops: round(100 / $step);
+$increment: 360 / $loops;
+$half: round($loops / 2);
+@for $i from 1 through $loops {
+  .p-#{$i*$step} {
+    @if $i < $half {
+      $nextdeg: 90deg + ( $increment * $i);
+      background-image: linear-gradient(90deg, white 50%, transparent 50%, transparent), linear-gradient($nextdeg, $brand 50%, white 50%, white);
+    }
+    @else {
+      $nextdeg: -90deg + ( $increment * ( $i - $half));
+      background-image: linear-gradient($nextdeg, $brand 50%, transparent 50%, transparent), linear-gradient(270deg, $brand 50%, white 50%, white);
+    }
+  }
+}
+
+.profile {
+  &__name {
+    font-size: 6rem;
+    font-weight: 300;
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+    &:after {
+      content: "";
+      display: block;
+      width: 30%;
+      height: 3px;
+      background-color: #34bfa3;
+      position: absolute;
+      top: calc(100% + 15px);
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+  &__subtitle {
+    color: $brand;
+    margin: 30px 0 15px;
+    text-transform: uppercase;
+  }
+  &__pill {
+    background-color: $body-bg;
+    color: white;
+    font-size: 12px;
+    padding: .45rem .8rem;
+    line-height: 1.5;
+    display: inline-block;
+    border-radius: 60px;
+    &--logo {
+      height: 14px;
+    }
+  }
+  &__role {
+    font-size: 16px;
+    color: $grey;
+    text-align: center;
+    &--current {
+      color: $green;
+      font-size: 30px;
+      vertical-align: middle;
+    }
+    i {
+      margin: 0 5px;
+    }
+  }
+}

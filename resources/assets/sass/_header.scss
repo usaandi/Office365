@@ -1,0 +1,141 @@
+.m-header-search {
+  .m-header-search__wrapper {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .m-header-search__input,
+  .m-header-search__icon-search>i,
+  .m-header-search__icon-cancel>i {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .m-header-search__input {
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    &::-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    &::-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+.m-topbar .m-topbar__nav.m-nav>.m-nav__item>.m-nav__link .m-nav__link-icon.m-nav__link-icon-alt .m-nav__link-icon-wrapper {
+  background: #00c5dc;
+  border: 1px solid #00c5dc;
+}
+
+.m-topbar .m-topbar__nav.m-nav>.m-nav__item>.m-nav__link .m-nav__link-icon.m-nav__link-icon-alt.m-nav__link-icon--active .m-nav__link-icon-wrapper,
+.m-topbar .m-topbar__nav.m-nav>.m-nav__item>.m-nav__link .m-nav__link-icon.m-nav__link-icon-alt:hover .m-nav__link-icon-wrapper {
+  background: #00a3b6;
+  border: 1px solid #00a3b6;
+}
+
+.m-header-menu-wrapper {
+  box-shadow: none;
+}
+
+.m-menu__nav {
+  .m-menu__submenu--classic {
+    box-shadow: 0 9px 30px -10px rgba(0, 0, 0, .07);
+  }
+}
+
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link .m-menu__link-text {
+  color: #575962;
+}
+
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link .m-menu__hor-arrow {
+  color: #575962;
+}
+
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item.m-menu__item--active>.m-menu__link .m-menu__link-text,
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item.m-menu__item--hover>.m-menu__link .m-menu__link-text,
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item:hover:not(.m-menu__item--actions)>.m-menu__link .m-menu__link-text {
+  color: $brand;
+}
+
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item.m-menu__item--active>.m-menu__link .m-menu__hor-arrow,
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item.m-menu__item--hover>.m-menu__link .m-menu__hor-arrow,
+.m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__submenu>.m-menu__subnav>.m-menu__item:hover:not(.m-menu__item--actions)>.m-menu__link .m-menu__hor-arrow {
+  color: $brand;
+}
+
+.m-nav .m-nav__item.m-nav__item--active>.m-nav__link .m-nav__link-arrow,
+.m-nav .m-nav__item.m-nav__item--active>.m-nav__link .m-nav__link-icon,
+.m-nav .m-nav__item.m-nav__item--active>.m-nav__link .m-nav__link-text,
+.m-nav .m-nav__item:hover:not(.m-nav__item--disabled)>.m-nav__link .m-nav__link-arrow,
+.m-nav .m-nav__item:hover:not(.m-nav__item--disabled)>.m-nav__link .m-nav__link-icon,
+.m-nav .m-nav__item:hover:not(.m-nav__item--disabled)>.m-nav__link .m-nav__link-text {
+  color: $brand;
+}
+
+.m--font-brand {
+  color: $brand !important;
+}
+
+.m-menu__submenu--tabs {
+  .m-tabs-profile {
+    margin-bottom: 0;
+    margin-right: 18px;
+    border-bottom: 0;
+    .m-tabs__link {
+      padding: 23px 0;
+    }
+  }
+}
+
+.btn-brand {
+  color: #fff;
+  background-color: $brand;
+  border-color: $brand;
+  &:hover {
+    background-color: $body-bg;
+    border-color: $body-bg;
+  }
+}
+
+.btn-brand:not(:disabled):not(.disabled).active,
+.btn-brand:not(:disabled):not(.disabled):active,
+.show>.btn-brand.dropdown-toggle {
+  background-color: $body-bg;
+  border-color: $body-bg;
+}
+
+.daterangepicker .ranges li.active {
+  background: $brand;
+  color: #fff;
+  border: 1px solid $brand;
+}
+
+.btn.m-btn--label-brand {
+  color: $brand;
+}
+
+.m-header-menu.m-header-menu--submenu-skin-light .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item.m-menu__item--hover>.m-menu__link .m-menu__link-text,
+.m-header-menu.m-header-menu--submenu-skin-light .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item:hover>.m-menu__link .m-menu__link-text {
+  color: $brand;
+}
+
+.m-header-menu.m-header-menu--submenu-skin-light .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item.m-menu__item--hover>.m-menu__link .m-menu__link-icon,
+.m-header-menu.m-header-menu--submenu-skin-light .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item:hover>.m-menu__link .m-menu__link-icon {
+  color: $brand;
+}
+
+.m-header-menu.m-header-menu--submenu-skin-light .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item.m-menu__item--hover>.m-menu__link>.m-menu__hor-arrow,
+.m-header-menu.m-header-menu--submenu-skin-light .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item:hover>.m-menu__link>.m-menu__hor-arrow {
+  color: $brand;
+}
+
+.m-brand .m-brand__tools .m-brand__toggler span {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.m-brand .m-brand__tools .m-brand__toggler span::after,
+.m-brand .m-brand__tools .m-brand__toggler span::before {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.m-brand .m-brand__tools .m-brand__icon>i {
+  color: rgba(255, 255, 255, 0.8);
+}
