@@ -19,11 +19,11 @@ class UserList extends Migration
             $table->string('email')->unique();
             $table->integer('phone')->nullable();
             $table->string('name');
-            $table->date('birthday');
-            $table->string('skype');
-            $table->string('description');
-            $table->date('ADMsince');
-            $table->string('pictureLocation');
+            $table->date('birthday')->nullable();
+            $table->string('skype')->nullable();
+            $table->string('description')->nullable();
+            $table->date('ADMsince')->nullable();
+            $table->string('pictureLocation')->nullable();
             $table->softDeletes('deleted_at');
             $table->longText('token');
             $table->rememberToken();
