@@ -1,11 +1,39 @@
 <template>
-    <a v-bind:href="'/user/' + user.id"><div class="text text-black-50">
+  <div>
+    <!--<a class="remove-tag" v-bind:href="'/user/' + user.id"> </a>-->
+  <div class="profile-view__action">
+    <a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+      <i class="la la-plus"></i>
+    </a>
+  </div>
+  <div class="profile-view__check--wrapper">
+    <div class="profile-view__check">
+    </div>
+    <div class="profile-view__check--icon">
+      <i class="la la-check"></i>
+    </div>
+  </div>
+  <div class="profile-view__photo"><img alt="" :src="user.image" /></div>
+  <div class="profile-view__content">
+    <div class="profile-view__name">
+      {{ user.name }}
+    </div>
+    <div class="profile-view__team">{{user.team}}</div>
+    <div class="profile-view__role">need to import role</div>
+    <div class="profile-view__phone"><i class="la la-phone"></i>{{user.phone}}</div>
+    <div class="profile-view__email"><i class="la la-envelope"></i>{{user.email}}</div>
+  </div>
+
+
+  </div>
+  <!--
+    <div class="text text-black-50">
         <a ><img :src="user.image" width="100px" height="100px"></a>
         <h4 class="name black-color">{{ user.name }}</h4>
         <h4 class="team-1" ><small>{{user.team}} | </small></h4>
         <p><i class="fa fa-envelope style-green "></i>{{user.email}}</p>
         <p class=""><i class="fa fa-phone style-green"> </i>{{user.phoneN}} </p>
-    </div></a>
+    </div></a>-->
 </template>
 
 <script>
@@ -15,45 +43,19 @@ export default {
 }
 </script>
 <style scoped>
-    .name{
-        font-size: 28px;
-    }
-    p{
-        font-size:18px;
-    }
-    img {
-        border-radius: 50%;
-        float:left;
-        margin-right: 15px;
-        margin-bottom: 5px;
-        clear:left;
-    }
-    .style-green{
-        font-size:14px;
-        color: #98ff6c;
-    }
-    .text {
-        text-align: justify;
-        margin-top: 10px;
-        margin-left: 10px;
-        line-height:3px;
-    }
-    .black-color{
-        color:black;
-    }
-    a:link {
+    .remove-tag:link {
         text-decoration: none;
     }
 
-    a:visited {
+    .remove-tag:visited {
         text-decoration: none;
     }
 
-    a:hover {
+    .remove-tag:hover {
         text-decoration: none;
     }
 
-    a:active {
+    .remove-tag:active {
         text-decoration: none;
     }
 
