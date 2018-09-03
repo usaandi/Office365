@@ -32,12 +32,13 @@ Vue.component('user-department',require('./components/user/UserDepartmentCompone
 Vue.component('user-team',require('./components/user/UserTeamComponent'));
 Vue.component('user-hobbies',require('./components/user/UserHobby'));
 Vue.component('user-children',require('./components/user/UserChild'));
-Vue.component('hobby-add',require('./components/HobbyAdd'));
-Vue.component('hobby-add-new',require('./components/HobbyAddNew'));
-Vue.component('select2',require('./components/Select2Component'));
 Vue.component('user-role', require('./components/user/UserRole'));
 Vue.component('add-career', require('./components/career/AddCareer'));
 Vue.component('user-career', require('./components/career/CareerComponent'));
+Vue.component('user-description', require('./components/career/DescriptionComponent'));
+Vue.component('milestone-add', require('./components/career/MilestoneAdd'));
+Vue.component('user-milestone', require('./components/career/MilestoneComponent'));
+Vue.component('user-title', require('./components/career/TitleComponent'));
 Vue.component('v-select', VueSelect.VueSelect);
 
 const app = new Vue({
