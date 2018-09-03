@@ -54112,11 +54112,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "user-list-wrapper" },
+    { staticClass: "user-list__wrapper" },
     _vm._l(_vm.users, function(user) {
       return _c(
         "div",
-        { staticClass: "profiles-view" },
+        { staticClass: "profile-view" },
         [_c("user-list-view", { attrs: { user: user } })],
         1
       )
@@ -54219,7 +54219,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.name[data-v-04ba19c2]{\n    font-size: 28px;\n}\np[data-v-04ba19c2]{\n    font-size:18px;\n}\nimg[data-v-04ba19c2] {\n    border-radius: 50%;\n    float:left;\n    margin-right: 15px;\n    margin-bottom: 5px;\n    clear:left;\n}\n.style-green[data-v-04ba19c2]{\n    font-size:14px;\n    color: #98ff6c;\n}\n.text[data-v-04ba19c2] {\n    text-align: justify;\n    margin-top: 10px;\n    margin-left: 10px;\n    line-height:3px;\n}\n.black-color[data-v-04ba19c2]{\n    color:black;\n}\na[data-v-04ba19c2]:link {\n    text-decoration: none;\n}\na[data-v-04ba19c2]:visited {\n    text-decoration: none;\n}\na[data-v-04ba19c2]:hover {\n    text-decoration: none;\n}\na[data-v-04ba19c2]:active {\n    text-decoration: none;\n}\n\n", ""]);
+exports.push([module.i, "\n.remove-tag[data-v-04ba19c2]:link {\n    text-decoration: none;\n}\n.remove-tag[data-v-04ba19c2]:visited {\n    text-decoration: none;\n}\n.remove-tag[data-v-04ba19c2]:hover {\n    text-decoration: none;\n}\n.remove-tag[data-v-04ba19c2]:active {\n    text-decoration: none;\n}\n\n", ""]);
 
 // exports
 
@@ -54230,6 +54230,34 @@ exports.push([module.i, "\n.name[data-v-04ba19c2]{\n    font-size: 28px;\n}\np[d
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54254,35 +54282,70 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("a", { attrs: { href: "/user/" + _vm.user.id } }, [
-    _c("div", { staticClass: "text text-black-50" }, [
-      _c("a", [
-        _c("img", {
-          attrs: { src: _vm.user.image, width: "100px", height: "100px" }
-        })
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c("div", { staticClass: "profile-view__photo" }, [
+      _c("img", { attrs: { alt: "", src: _vm.user.image } })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "profile-view__content" }, [
+      _c("div", { staticClass: "profile-view__name" }, [
+        _vm._v("\n    " + _vm._s(_vm.user.name) + "\n  ")
       ]),
       _vm._v(" "),
-      _c("h4", { staticClass: "name black-color" }, [
-        _vm._v(_vm._s(_vm.user.name))
+      _c("div", { staticClass: "profile-view__team" }, [
+        _vm._v(_vm._s(_vm.user.team))
       ]),
       _vm._v(" "),
-      _c("h4", { staticClass: "team-1" }, [
-        _c("small", [_vm._v(_vm._s(_vm.user.team) + " | ")])
+      _c("div", { staticClass: "profile-view__role" }, [
+        _vm._v("need to import role")
       ]),
       _vm._v(" "),
-      _c("p", [
-        _c("i", { staticClass: "fa fa-envelope style-green " }),
+      _c("div", { staticClass: "profile-view__phone" }, [
+        _c("i", { staticClass: "la la-phone" }),
+        _vm._v(_vm._s(_vm.user.phone))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "profile-view__email" }, [
+        _c("i", { staticClass: "la la-envelope" }),
         _vm._v(_vm._s(_vm.user.email))
-      ]),
-      _vm._v(" "),
-      _c("p", {}, [
-        _c("i", { staticClass: "fa fa-phone style-green" }),
-        _vm._v(_vm._s(_vm.user.phoneN) + " ")
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "profile-view__action" }, [
+      _c(
+        "a",
+        {
+          staticClass:
+            "btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
+          attrs: { href: "#" }
+        },
+        [_c("i", { staticClass: "la la-plus" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "profile-view__check--wrapper" }, [
+      _c("div", { staticClass: "profile-view__check" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "profile-view__check--icon" }, [
+        _c("i", { staticClass: "la la-check" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
