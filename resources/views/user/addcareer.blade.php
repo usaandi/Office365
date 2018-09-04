@@ -26,10 +26,11 @@
 @section('content-body')
 
     {{csrf_field()}}
-
+<div class="m-content">
     <div id="app">
         <add-career></add-career>
     </div>
+</div>
 
 
 @endsection

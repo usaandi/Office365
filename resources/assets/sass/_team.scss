@@ -100,6 +100,21 @@
   &__phone {
     margin-top: 5px;
   }
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-indent: -9999px;
+    border: 1px solid transparent;
+    transition: border 0.3s ease-in-out;
+    &:hover,
+    &:focus {
+      border: 1px solid $green;
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {

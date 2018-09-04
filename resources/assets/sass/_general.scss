@@ -42,3 +42,58 @@ a {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+//Nav
+.m-nav--icons {
+  .m-nav__item {
+    width: 32%;
+    display: inline-block;
+    text-align: center;
+    padding: 1%;
+    .m-nav__link {
+      display: block;
+      .m-nav__link-text {
+        display: block;
+      }
+      .m-nav__link-icon {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 10px;
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .m-aside-header-menu-mobile .m-menu__nav .m-menu__subnav {
+    margin-top: 15px;
+    padding-bottom: 15px;
+  }
+  .m-menu__toggle {
+    >.m-menu__link-badge {
+      position: absolute;
+      top: 50%;
+      right: 50px;
+      transform: translate(0, -50%);
+    }
+  }
+  .m-tabs-line a.m-tabs__link,
+  .m-tabs-line.nav.nav-tabs .nav-link {
+    padding: 14px 0;
+  }
+  .m-tabs-line.m-tabs-line--success a.m-tabs__link.active,
+  .m-tabs-line.m-tabs-line--success a.m-tabs__link:hover,
+  .m-tabs-line.m-tabs-line--success.nav.nav-tabs .nav-link.active,
+  .m-tabs-line.m-tabs-line--success.nav.nav-tabs .nav-link:hover {
+    color: #34bfa3;
+    border-bottom: none;
+  }
+  .nav.nav-pills .nav-item,
+  .nav.nav-tabs .nav-item {
+    margin-right: 0;
+    display: block;
+    padding: 0 30px 0 45px;
+    margin-left: 0;
+  }
+}
