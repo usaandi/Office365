@@ -38,6 +38,64 @@ a:focus {
   box-shadow: none;
 }
 
+.m-nav--icons .m-nav__item {
+  width: 32%;
+  display: inline-block;
+  text-align: center;
+  padding: 1%;
+}
+
+.m-nav--icons .m-nav__item .m-nav__link {
+  display: block;
+}
+
+.m-nav--icons .m-nav__item .m-nav__link .m-nav__link-text {
+  display: block;
+}
+
+.m-nav--icons .m-nav__item .m-nav__link .m-nav__link-icon {
+  display: inline-block;
+  width: auto;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .m-aside-header-menu-mobile .m-menu__nav .m-menu__subnav {
+    margin-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .m-menu__toggle > .m-menu__link-badge {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+
+  .m-tabs-line a.m-tabs__link,
+  .m-tabs-line.nav.nav-tabs .nav-link {
+    padding: 14px 0;
+  }
+
+  .m-tabs-line.m-tabs-line--success a.m-tabs__link.active,
+  .m-tabs-line.m-tabs-line--success a.m-tabs__link:hover,
+  .m-tabs-line.m-tabs-line--success.nav.nav-tabs .nav-link.active,
+  .m-tabs-line.m-tabs-line--success.nav.nav-tabs .nav-link:hover {
+    color: #34bfa3;
+    border-bottom: none;
+  }
+
+  .nav.nav-pills .nav-item,
+  .nav.nav-tabs .nav-item {
+    margin-right: 0;
+    display: block;
+    padding: 0 30px 0 45px;
+    margin-left: 0;
+  }
+}
+
 .m-header-search .m-header-search__wrapper {
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
@@ -311,6 +369,24 @@ a:focus {
   margin-top: 5px;
 }
 
+.profile-view__link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-indent: -9999px;
+  border: 1px solid transparent;
+  -webkit-transition: border 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out;
+}
+
+.profile-view__link:hover,
+.profile-view__link:focus {
+  border: 1px solid #34bfa3;
+}
+
 @media screen and (min-width: 768px) {
   .profile-view {
     width: 48%;
@@ -509,6 +585,13 @@ a:focus {
   background: white;
 }
 
+@media screen and (max-width: 600px) {
+  .profile__avatar {
+    height: 220px;
+    width: 220px;
+  }
+}
+
 .profile__avatar--image {
   display: block;
   margin: 3px;
@@ -517,6 +600,13 @@ a:focus {
   height: 254px;
   overflow: hidden;
   z-index: 100;
+}
+
+@media screen and (max-width: 600px) {
+  .profile__avatar--image {
+    height: 214px;
+    width: 214px;
+  }
 }
 
 .profile__avatar--image img {
@@ -946,6 +1036,18 @@ a:focus {
   margin-bottom: 30px;
 }
 
+@media screen and (max-width: 992px) {
+  .profile__name {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__name {
+    font-size: 4rem;
+  }
+}
+
 .profile__name:after {
   content: "";
   display: block;
@@ -969,14 +1071,25 @@ a:focus {
   background-color: #00adee;
   color: white;
   font-size: 12px;
-  padding: .45rem .8rem;
+  padding: 0.65rem 1rem;
   line-height: 1.5;
+  min-height: 37px;
   display: inline-block;
   border-radius: 60px;
 }
 
+.profile__pill--small {
+  padding: .15rem .8rem;
+  min-height: initial;
+}
+
 .profile__pill--logo {
   height: 14px;
+}
+
+.profile__pill--logo,
+.profile__pill i {
+  margin-right: 5px;
 }
 
 .profile__role {
@@ -993,5 +1106,180 @@ a:focus {
 
 .profile__role i {
   margin: 0 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__role span {
+    display: block;
+  }
+}
+
+.profile__details--title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 4px 0;
+}
+
+.profile__details--info {
+  font-size: 16px;
+  padding: 4px 0;
+}
+
+.profile__details--pills {
+  margin: 15px 0;
+}
+
+.profile__details--pills .profile__pill {
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.profile__details--pills .profile__pill:last-child {
+  margin-right: 0;
+}
+
+.profile__strenght {
+  position: relative;
+}
+
+.profile__strenght--info {
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  color: white;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.profile__strenght--info .la {
+  vertical-align: middle;
+}
+
+.profile__strenght .m-progress--custom {
+  height: 24px;
+  margin-bottom: 12px;
+}
+
+.profile__strenght .progress {
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.profile__tags {
+  padding: 0;
+  list-style: none;
+}
+
+.profile__tags > li {
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.profile__tags > li a {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.profile__badge {
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 100px;
+}
+
+.profile__badge--circle {
+  width: 100%;
+  background: #34bfa3;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  position: relative;
+}
+
+.profile__badge--icon {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.profile__badge--icon i {
+  font-size: 2.5rem !important;
+  color: white;
+}
+
+.profile__badge--title {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.profile__article {
+  margin-bottom: 30px;
+}
+
+.profile__article--title {
+  font-size: 16px;
+  color: #212529;
+}
+
+.profile__article--tags {
+  padding: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.profile__article--tags > li {
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+.profile__article--tags > li a {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profile__article--date {
+  color: #909090;
+  font-size: 12px;
+}
+
+.profile__article--link {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.profile__text p {
+  margin-bottom: 4px;
+}
+
+.profile__skill {
+  -webkit-box-shadow: 0px 1px 15px 1px rgba(81, 77, 92, 0.08);
+          box-shadow: 0px 1px 15px 1px rgba(81, 77, 92, 0.08);
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.profile__skill--title {
+  float: left;
+  font-size: 14px;
+  color: #212529;
+  font-weight: 500;
+}
+
+.profile__skill--progress {
+  float: right;
+  width: 33%;
+}
+
+.profile__skill--progress .progress {
+  margin-bottom: 0;
+  margin-top: 8px;
 }
 
