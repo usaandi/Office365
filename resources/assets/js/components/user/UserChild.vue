@@ -1,13 +1,24 @@
 <template>
     <div>
-        <div class="">
-            <div class="fc-button-group">
-                <button @click="edit=!edit" >Edit</button>
-            </div>
-                <div v-for="(child, index) in userchildren">
-                    <p class="d-inline-block">Nimi: {{ child.name }} | Vanus: {{child.age}}</p>
-                    <button v-show="edit"@click="deleteRow(child.id,index)">X</button>
+        <h3 class="profile__subtitle">Children</h3>
+        <div class="m-subheader__action">
+            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+              <span>
+										<i class="la la-plus"></i>
+										<span>New</span>
+              </span>
+            </a>
+        </div>
+        <div class="profile__details">
+            <div class="row" v-for="(child,index) in userchildren">
+                <div class="col-xs-3">
+                    <div class="profile__details--title">{{child.name}}</div>
                 </div>
+                <div class="col-xs-9">
+                    <div class="profile__details--info">{{child.age}}a</div>
+                    <button v-show="edit" @click="deleteRow(child.id,index)">X</button>
+                </div>
+            </div>
             <label v-show="edit">Year born</label><input  v-show="edit" type="date" v-model="dateborn">
             <label v-show="edit">Child name</label><input v-show="edit" v-model="childname" placeholder="Child name">
             <button v-show="edit" @click="upload()" >+Add new</button>
@@ -84,6 +95,10 @@
 
 
             },
+
+            reachTest: function () {
+                console.log('hey');
+            }
 
         }
     }
