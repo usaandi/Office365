@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--<a class="remove-tag" v-bind:href="'/user/' + user.id"> </a>-->
+    <a v-bind:href="'/user/' + user.id" class="profile-view__link"></a>
   <div class="profile-view__action">
     <a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
       <i class="la la-plus"></i>
