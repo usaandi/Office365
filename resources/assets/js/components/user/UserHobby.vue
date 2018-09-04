@@ -1,16 +1,20 @@
 <template>
     <div>
-        <div>
-            <div class="fc-button-group">
-                    <button @click="edit=!edit" >Edit</button>
-            </div>
-                <div class="" v-for="hobby in userhobbies">
-                    <p class="d-inline-block">#{{ hobby.hobby_name }}</p>
-                    <button v-show="edit" class="" @click="deleteRow(hobby.id)">X</button>
-                </div>
-            <button v-show="edit" @click="upload()" >+Add new</button>
-            <input v-show="edit" v-model="hobbyname">
+        <h3 class="profile__subtitle">Hobbies</h3>
+        <div class="m-subheader__action">
+            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+              <span>
+                    <i class="la la-plus"></i>
+                    <span>New</span>
+              </span>
+            </a>
         </div>
+        <ul class="profile__tags clearfix" v-for="hobby in userhobbies">
+            <li><a href="#">#{{hobby.hobby_name}}</a></li>
+            <button v-show="edit" class="" @click="deleteRow(hobby.id)">X</button>
+        </ul>
+        <button v-show="edit" @click="upload()" class="btn btn-success m-btn m-btn--icon m-btn--pill" >+Add new</button>
+        <input v-show="edit" v-model="hobbyname">
     </div>
 </template>
 
