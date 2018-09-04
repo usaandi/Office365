@@ -1,9 +1,13 @@
 <template>
-    <div class="profile-picture-area">
-        <img class="profile-picture" @click="changeImage" :src="avatarImage" width="250px" height="250px">
+<div>
+    <div class="profile__avatar p-85">
+        <img class="profile__avatar--image" @click="changeImage" :src="avatarImage" alt="">
         <file-upload :endpoint="'/upload/' + userId" @file-uploaded="fileUploaded" v-show="edit"></file-upload>
-        <h4 class="text-md-center">Level:</h4>
     </div>
+    <div class="profile__avatar--level">
+        <div class="profile__pill profile__pill--small">LVL Black Belt</div>
+    </div>
+</div>
 </template>
 
 <script>
