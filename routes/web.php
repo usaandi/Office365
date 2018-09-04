@@ -24,8 +24,8 @@ Route::get('/authorize', 'AuthController@gettoken');
 
 
 Route::group(['middleware'=> 'auth'], function (){
-    Route::get('/upload', 'ImageController@show');
-    Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
+Route::get('/upload', 'ImageController@show');
+Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
 Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
 Route::get('/user/{id}/hobby', 'UserHobbyController@userHobbies');
