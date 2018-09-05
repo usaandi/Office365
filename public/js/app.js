@@ -10233,6 +10233,7 @@ Vue.component('user-project', __webpack_require__(346));
 Vue.component('user-skill', __webpack_require__(351));
 Vue.component('user-badge', __webpack_require__(46));
 Vue.component('editable-input-component', __webpack_require__(124));
+Vue.component('user-career-milestone', __webpack_require__(358));
 Vue.component('v-select', VueSelect.VueSelect);
 
 var app = new Vue({
@@ -71100,80 +71101,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -71194,428 +71121,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "profile-timeline" }, [
+      _c("div", { staticClass: "m-timeline-2" }, [
+        _c("div", { staticClass: "m-timeline-2__items" }, [
+          _c("div", { staticClass: "m-timeline-2__item" }, [
+            _c("span", { staticClass: "m-timeline-2__item-time" }, [
+              _vm._v("2020 Jan")
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "m-timeline-2__item-text  m--padding-top-5" },
+              [
+                _c(
+                  "div",
+                  { staticClass: "profile-timeline__content" },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("user-career-milestone"),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "profile-timeline" }, [
-        _c("div", { staticClass: "m-timeline-2" }, [
-          _c("div", { staticClass: "m-timeline-2__items" }, [
-            _c("div", { staticClass: "m-timeline-2__item" }, [
-              _c("span", { staticClass: "m-timeline-2__item-time" }, [
-                _vm._v("2020 Jan")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "m-timeline-2__item-cricle" }, [
-                _c("i", { staticClass: "fa fa-genderless m--font-info" })
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "m-timeline-2__item-text  m--padding-top-5" },
-                [
-                  _c("div", { staticClass: "profile-timeline__content" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" },
-                        [
-                          _c("h4", { staticClass: "profile-timeline__title" }, [
-                            _vm._v("FINAL BOSS")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12"
-                        },
-                        [
-                          _c("p", { staticClass: "profile-timeline__text" }, [
-                            _vm._v(
-                              "\n                                        Coordinate with designers and developers to develop various new products and features along with various interactive designs\n                                        within required timeframe. Develop new business initiatives in coordination with UE team and\n                                        design various methodologies and practices for innovative interactive technologies and perform\n                                        quality assurance and browser computability tests. Design style sheets for website and assist\n                                        application programmers in effective implementation and ensure all work according to scripting\n                                        code with help of various technologies. Collaborate with designers and application developer\n                                        to develop various customized websites. Prepare all production documents on Photoshop and translate\n                                        same into HTML templates with help of developers and designers and facilitate to introduce new\n                                        features into same.\n                                    "
-                            )
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" },
-                        [
-                          _c("h4", { staticClass: "profile-timeline__title" }, [
-                            _vm._v("MILESTONES")
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12"
-                        },
-                        [
-                          _c("div", { staticClass: "profile-timeline__add" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "btn btn-success m-btn m-btn--icon m-btn--pill",
-                                attrs: { href: "#" }
-                              },
-                              [
-                                _c("span", [
-                                  _c("i", { staticClass: "la la-plus" }),
-                                  _vm._v(" "),
-                                  _c("span", [_vm._v("New")])
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "profile-timeline__form" },
-                              [
-                                _c("form", { staticClass: "m-form" }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "m-portlet__body" },
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "form-group m-form__group row"
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "col-3 col-form-label",
-                                              attrs: {
-                                                for: "example-text-input"
-                                              }
-                                            },
-                                            [_vm._v("Task")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "col-9" }, [
-                                            _c("input", {
-                                              staticClass:
-                                                "form-control m-input",
-                                              attrs: {
-                                                type: "text",
-                                                placeholder: "Task"
-                                              }
-                                            })
-                                          ])
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "form-group m-form__group row"
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "col-3 col-form-label",
-                                              attrs: {
-                                                for: "example-text-input"
-                                              }
-                                            },
-                                            [_vm._v("Assign")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "col-9" }, [
-                                            _c(
-                                              "select",
-                                              {
-                                                staticClass:
-                                                  "form-control m-input",
-                                                attrs: { id: "exampleSelect1" }
-                                              },
-                                              [_c("option", [_vm._v("me")])]
-                                            )
-                                          ])
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "form-group m-form__group row"
-                                        },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "col-3 col-form-label",
-                                              attrs: {
-                                                for: "example-text-input"
-                                              }
-                                            },
-                                            [_vm._v("Set reminder")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "col-9" }, [
-                                            _c("input", {
-                                              staticClass:
-                                                "form-control m-input",
-                                              attrs: {
-                                                type: "date",
-                                                placeholder: "Task"
-                                              }
-                                            })
-                                          ])
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "m-portlet__foot m-portlet__foot--fit"
-                                    },
-                                    [
-                                      _c(
-                                        "div",
-                                        { staticClass: "m-form__actions" },
-                                        [
-                                          _c("div", { staticClass: "row" }, [
-                                            _c("div", {
-                                              staticClass: "col-sm-3 col-xs-12"
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "col-sm-9 col-xs-12"
-                                              },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "profile-timeline__action"
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "button",
-                                                      {
-                                                        staticClass:
-                                                          "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-                                                        attrs: {
-                                                          type: "button"
-                                                        }
-                                                      },
-                                                      [_vm._v("Cancel")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "button",
-                                                      {
-                                                        staticClass:
-                                                          "btn m-btn--pill btn-success m-btn m-btn--custom",
-                                                        attrs: {
-                                                          type: "button"
-                                                        }
-                                                      },
-                                                      [_vm._v("Save")]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ])
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "profile-timeline__milestone" },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "m-form__group form-group" },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "m-checkbox-list" },
-                                    [
-                                      _c(
-                                        "label",
-                                        {
-                                          staticClass:
-                                            "m-checkbox m-checkbox--air m-checkbox--state-success"
-                                        },
-                                        [
-                                          _c("input", {
-                                            attrs: { type: "checkbox" }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "profile-timeline__milestones--label"
-                                            },
-                                            [_vm._v("CSS Masterclass Course")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("span"),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "profile-timeline__milestones--name"
-                                            },
-                                            [
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "m-list-pics m-list-pics--sm"
-                                                },
-                                                [
-                                                  _c(
-                                                    "a",
-                                                    { attrs: { href: "#" } },
-                                                    [
-                                                      _c("img", {
-                                                        attrs: {
-                                                          src: "",
-                                                          title: ""
-                                                        }
-                                                      })
-                                                    ]
-                                                  ),
-                                                  _vm._v(
-                                                    "\n                                                            Tiina-Maria Liblikas\n                                                        "
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "profile-timeline__milestones--date m--font-danger"
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                        12.12.18\n                                                    "
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "profile-timeline__milestones--action"
-                                            },
-                                            [
-                                              _c(
-                                                "a",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
-                                                  attrs: { href: "#" }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass:
-                                                      "la la-pencil-square"
-                                                  })
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" },
-                        [_c("div", { staticClass: "profile-timeline__notes" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12"
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "profile-timeline__action" },
-                            [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-                                  attrs: { type: "button" }
-                                },
-                                [_vm._v("Edit")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn m-btn--pill btn-success m-btn m-btn--custom",
-                                  attrs: { type: "button" }
-                                },
-                                [_vm._v("Apply as current")]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
+    return _c("div", { staticClass: "m-timeline-2__item-cricle" }, [
+      _c("i", { staticClass: "fa fa-genderless m--font-info" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
+        _c("h4", { staticClass: "profile-timeline__title" }, [
+          _vm._v("FINAL BOSS")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" }, [
+        _c("p", { staticClass: "profile-timeline__text" }, [
+          _vm._v(
+            "\n                                        Coordinate with designers and developers to develop various new products and features along with various interactive designs\n                                        within required timeframe. Develop new business initiatives in coordination with UE team and\n                                        design various methodologies and practices for innovative interactive technologies and perform\n                                        quality assurance and browser computability tests. Design style sheets for website and assist\n                                        application programmers in effective implementation and ensure all work according to scripting\n                                        code with help of various technologies. Collaborate with designers and application developer\n                                        to develop various customized websites. Prepare all production documents on Photoshop and translate\n                                        same into HTML templates with help of developers and designers and facilitate to introduce new\n                                        features into same.\n                                    "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
+        _c("div", { staticClass: "profile-timeline__notes" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" }, [
+        _c("div", { staticClass: "profile-timeline__action" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+              attrs: { type: "button" }
+            },
+            [_vm._v("Edit")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn m-btn--pill btn-success m-btn m-btn--custom",
+              attrs: { type: "button" }
+            },
+            [_vm._v("Apply as current")]
+          )
         ])
       ])
     ])
@@ -73339,6 +72937,429 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 357 */,
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(359)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(361)
+/* template */
+var __vue_template__ = __webpack_require__(362)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-128afd90"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/career/CareerMilestone.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-128afd90", Component.options)
+  } else {
+    hotAPI.reload("data-v-128afd90", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(360);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("b31fea5a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-128afd90\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CareerMilestone.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-128afd90\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CareerMilestone.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 360 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 361 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "CareerMilestone"
+});
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
+          _c("h4", { staticClass: "profile-timeline__title" }, [
+            _vm._v("MILESTONES")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" }, [
+          _c("div", { staticClass: "profile-timeline__add" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
+                attrs: { href: "#" }
+              },
+              [
+                _c("span", [
+                  _c("i", { staticClass: "la la-plus" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("New")])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "profile-timeline__form" }, [
+              _c("form", { staticClass: "m-form" }, [
+                _c("div", { staticClass: "m-portlet__body" }, [
+                  _c("div", { staticClass: "form-group m-form__group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-3 col-form-label",
+                        attrs: { for: "Task" }
+                      },
+                      [_vm._v("Task")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-9" }, [
+                      _c("input", {
+                        staticClass: "form-control m-input",
+                        attrs: { id: "Task", placeholder: "Task" }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group m-form__group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-3 col-form-label",
+                        attrs: { for: "Assign" }
+                      },
+                      [_vm._v("Assign")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-9" }, [
+                      _c(
+                        "select",
+                        {
+                          staticClass: "form-control m-input",
+                          attrs: { id: "Assign" }
+                        },
+                        [_c("option", [_vm._v("me")])]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group m-form__group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-3 col-form-label",
+                        attrs: { for: "Reminder" }
+                      },
+                      [_vm._v("Set reminder")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-9" }, [
+                      _c("input", {
+                        staticClass: "form-control m-input",
+                        attrs: {
+                          type: "date",
+                          id: "Reminder",
+                          placeholder: "Task"
+                        }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                  [
+                    _c("div", { staticClass: "m-form__actions" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                          _c(
+                            "div",
+                            { staticClass: "profile-timeline__action" },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                                  attrs: { type: "button" }
+                                },
+                                [_vm._v("Cancel")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn m-btn--pill btn-success m-btn m-btn--custom",
+                                  attrs: { type: "button" }
+                                },
+                                [_vm._v("Save")]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "profile-timeline__milestone" }, [
+            _c("div", { staticClass: "m-form__group form-group" }, [
+              _c("div", { staticClass: "m-checkbox-list" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "m-checkbox m-checkbox--air m-checkbox--state-success"
+                  },
+                  [
+                    _c("input", { attrs: { type: "checkbox" } }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "profile-timeline__milestones--label" },
+                      [_vm._v("CSS Masterclass Course")]
+                    ),
+                    _vm._v(" "),
+                    _c("span"),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "profile-timeline__milestones--name" },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "m-list-pics m-list-pics--sm" },
+                          [
+                            _c("a", { attrs: { href: "#" } }, [
+                              _c("img", { attrs: { src: "", title: "" } })
+                            ]),
+                            _vm._v(
+                              "\n                                    Tiina-Maria Liblikas\n                                "
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "profile-timeline__milestones--date m--font-danger"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                12.12.18\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "profile-timeline__milestones--action" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
+                            attrs: { href: "#" }
+                          },
+                          [_c("i", { staticClass: "la la-pencil-square" })]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-128afd90", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
