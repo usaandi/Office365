@@ -7,13 +7,13 @@
         </div>
         <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
             <div class="profile-timeline__add">
-                <a href="#" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                <a v-show="!show" @click="show=!show" class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                               <span>
                                                 <i class="la la-plus"></i>
                                                 <span>New</span>
                                               </span>
                 </a>
-                <div class="profile-timeline__form">
+                <div v-show="show" class="profile-timeline__form">
                     <form class="m-form">
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group row">
@@ -43,7 +43,7 @@
                                     <div class="col-sm-3 col-xs-12">
                                     </div>
                                     <div class="col-sm-9 col-xs-12">
-                                        <div class="profile-timeline__action"><button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Cancel</button>
+                                        <div class="profile-timeline__action"><button @click="show=!show" type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Cancel</button>
                                             <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom">Save</button></div>
                                     </div>
                                 </div>
@@ -85,7 +85,12 @@
 
 <script>
     export default {
-        name: "CareerMilestone"
+        name: "CareerMilestone",
+        data(){
+            return {
+               show:false,
+            }
+        },
     }
 </script>
 
