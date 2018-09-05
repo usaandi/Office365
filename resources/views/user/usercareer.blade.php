@@ -12,7 +12,7 @@
                         </h3>
                     </div>
                     <div class="m-subheader__action">
-                        <a href="#" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                        <a href="" class="btn btn-success m-btn m-btn--icon m-btn--pill">
                             <span>
                                 <i class="la la-plus"></i>
                                 <span>New</span>
