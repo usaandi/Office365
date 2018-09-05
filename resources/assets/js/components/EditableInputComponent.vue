@@ -39,8 +39,5 @@
     }
 </script>
 <style>
-    .inputstyle{
-        border: 1px solid black;
-        border-radius: 12px;
-    }
+
 </style>
