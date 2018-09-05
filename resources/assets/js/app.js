@@ -39,6 +39,12 @@ Vue.component('user-description', require('./components/career/DescriptionCompon
 Vue.component('milestone-add', require('./components/career/MilestoneAdd'));
 Vue.component('user-milestone', require('./components/career/MilestoneComponent'));
 Vue.component('user-title', require('./components/career/TitleComponent'));
+Vue.component('user-strenght', require('./components/user/UserStrenght'));
+Vue.component('user-training', require('./components/user/UserTraining'));
+Vue.component('user-project', require('./components/user/UserProject'));
+Vue.component('user-skill', require('./components/user/UserSkill'));
+Vue.component('user-badge', require('./components/user/UserBadge'));
+Vue.component('editable-input-component', require('./components/EditableInputComponent'));
 Vue.component('v-select', VueSelect.VueSelect);
 
 const app = new Vue({
