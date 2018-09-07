@@ -61,9 +61,11 @@ class UserChildController extends Controller
                 $childName = $data['childname'];
                 $yearborn = $data['dateborn'];
                 $childNameCapitalized= ucwords($childName);
+
                 $child= UserChildren::create([
                     'user_id'=> $userid, 'name'=> $childNameCapitalized,'year_born'=>$yearborn]);
                 $user->children()->save($child);
+
                 $childid=UserChildren::findOrFail($child)->first()->id;
                 $today=date('Y-m-d');
                 $childAgeInYears = date_diff(date_create($yearborn),
