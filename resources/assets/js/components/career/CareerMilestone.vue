@@ -18,14 +18,14 @@
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group row">
                                 <label for="Task" class="col-3 col-form-label">Task</label>
-                                <div class="col-9">
-                                    <input id="Task" class="form-control m-input" placeholder="Task">
+                                <div class="col-9" >
+                                    <input v-model="taskName" id="Task" class="form-control m-input" placeholder="Task">
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">
                                 <label for="Assign" class="col-3 col-form-label">Assign</label>
                                 <div class="col-9">
-                                    <select class="form-control m-input" id="Assign">
+                                    <select class="form-control m-input" id="Assign" v-model="assigned">
                                         <option>me</option>
                                     </select>
                                 </div>
@@ -33,7 +33,7 @@
                             <div class="form-group m-form__group row">
                                 <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
                                 <div class="col-9">
-                                    <input type="date" id="Reminder" class="form-control m-input" placeholder="Task">
+                                    <input v-model="reminder" type="date" id="Reminder" class="form-control m-input" placeholder="Task">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,12 @@
         name: "CareerMilestone",
         data(){
             return {
-               show:false,
+
+                show:false,
+                taskName:'',
+                assigned:'',
+                reminder:'',
+
             }
         },
     }
