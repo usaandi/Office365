@@ -43,7 +43,7 @@
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <h1>Add Department</h1>
+                <h1>Department</h1>
 
                 <label for="Department name"><b>Department Fullname</b></label>
                 <input type="text" placeholder="Department Fullname" name="departmentName"  required>
@@ -57,5 +57,6 @@
             </div>
         </div>
     </form>
+
 
 @endsection
