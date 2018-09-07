@@ -228,16 +228,7 @@ class UserController extends Controller
 
         }
     }
-    public function userInfo($id){
 
-
-        $userid=User::findOrFail($id);
-
-        $data=$userid->info()->get(['user_info','id']);
-
-
-        return $data;
-    }
 
 
 }
