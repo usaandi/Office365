@@ -32,21 +32,12 @@
         },
         mounted(){
             this.currentUserId=this.userid;
-            this.fetchData();
 
 
 
 
         },
         methods:{
-
-            fetchData: function () {
-                axios.get('/user/' + this.currentUserId + '/info')
-                    .then(response => {
-
-                        this.currentUserInfo = response.data;
-                    });
-            },
 
             upload: function () {
 
