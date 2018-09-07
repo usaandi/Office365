@@ -61,5 +61,8 @@ class User extends Authenticatable
     public function userCareerRoleMilestones(){
         return $this->hasMany(UserCareerRoleMilestone::class);
     }
+    public function userTeamModerators(){
+        return $this->hasMany(UserTeamModerator::class);
+    }
 
 }
