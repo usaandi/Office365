@@ -6,6 +6,7 @@ use App\Department;
 use App\Team;
 use App\UserDepartment;
 use App\UserTeam;
+use App\UserTeamModerator;
 use Validator;
 use App\User;
 use Illuminate\Http\Request;
@@ -101,5 +102,37 @@ class TeamsController extends Controller
         $team=Team::all();
         return $team;
 
+    }
+    public function returnView(){
+
+        $users=User::all(['id','name']);
+        $teams=Team::all(['id','team_name']);
+
+        return view('team.teamModerator',compact(['users','teams']));
+    }
+    public function addModerator(Request $request){
+
+
+        $data=json_decode(key($request->all()), true);
+
+        $rules = [
+            'userId' => 'required',
+            'teamId' => 'required'
+        ];
+        $validator = Validator::make($data, $rules);
+
+        if ($validator->passes()){
+
+            $userId = $data['userId'];
+            $teamId = $data['teamId'];
+
+            UserTeamModerator::create([
+                'user_id' => $userId,
+                'team_id' => $teamId
+            ]);
+
+        }
+
+        return redirect()->back();
     }
 }
