@@ -64,9 +64,4 @@
 
 <style scoped>
 
-    .border-box{
-      box-sizing: border-box;
-        width:100%;
-        height: 300px;
-    }
 </style>
