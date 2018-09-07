@@ -13,6 +13,16 @@ class TeamUser extends Migration
      */
     public function up()
     {
+        Schema::create('user_teams_moderators', function (Blueprint $table){
+            $table->increments('id');
+            $table->unsignedInteger('team_id');
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
+
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('user_id')->references('id')->on('users');
+
+        });
 
         Schema::create('teams', function (Blueprint $table){
             $table->increments('id');
@@ -51,16 +61,7 @@ class TeamUser extends Migration
 
         });
 
-        Schema::create('teams_moderators', function (Blueprint $table){
-            $table->increments('id');
-            $table->unsignedInteger('team_id');
-            $table->unsignedInteger('user_id');
-            $table->timestamps();
 
-            $table->foreign('team_id')->references('id')->on('teams');
-            $table->foreign('user_id')->references('id')->on('users');
-
-        });
     }
 
     /**
@@ -70,14 +71,13 @@ class TeamUser extends Migration
      */
     public function down()
     {
+        schema::dropIfExists('users_teams_moderators');
         schema::dropIfExists('teams');
         Schema::dropIfExists('departments');
-
         schema::dropIfExists('users_teams');
         Schema::dropIfExists('users_departments');
-
         schema::dropIfExists('departments_teams');
-        schema::dropIfExists('teams_moderators');
+
 
     }
 }
