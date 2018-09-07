@@ -24,13 +24,15 @@ Route::get('/authorize', 'AuthController@gettoken');
 
 
 Route::group(['middleware'=> 'auth'], function (){
+
+
+
 Route::get('/upload', 'ImageController@show');
 Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
 Route::get('/user/{id}/update', 'UserController@showedit');
 Route::post('/user/{id}/update', 'UserController@update')->name('update');
 Route::get('/user/{id}/hobby', 'UserHobbyController@userHobbies');
 Route::get('/user/{id}/child', 'UserChildController@userChild');
-Route::get('/user/{id}/info', 'UserController@userInfo');
 Route::get('/hobbies', 'HobbyController@hobby');
 Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('updateTeam');
 Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
@@ -59,4 +61,7 @@ Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name(
 Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('departmentInfo');
 Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
 Route::get('department', 'DepartmentController@department')->name('department');
+
+Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
+Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
 });
