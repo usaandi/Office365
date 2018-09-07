@@ -29,8 +29,6 @@
                                     </div>
                                 </div>
                                 <user-career-milestone></user-career-milestone>
-
-
                                 <div class="row">
                                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                                         <div class="profile-timeline__notes">
@@ -69,8 +67,5 @@
 </script>
 
 <style scoped>
-.cool-border{
-    border: 1px solid #e1e1e1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 </style>
