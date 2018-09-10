@@ -1,12 +1,12 @@
 <template>
     <div>
         <v-select  taggable push-tags
-                   label="team_name"
+                   v-model="selected"
                    :options="teams"
                    @option:created="updateOptions"
                    @input="selectedValue"
-                   @keydown.native.enter="submit()"
         ></v-select>
+        <button @click="submit">Save</button>
     </div>
 </template>
 
@@ -15,37 +15,58 @@
     import axios from 'axios';
 
     export default {
-        props: ['userid','canedit'],
+        props: {
+            'userdata': {
+                required: true
+            }
+        },
+        watch: {
+            userdata: function (val) {
+                this.userdata = val;
+                this.selected = { label: this.userdata.team, value: this.userdata.team_id };
+            }
+        },
     data(){
         return{
 
-            id:'',
-            teams:[],
-            team:'',
-            teamId:'',
+            selected:null,
+            teams: [],
+            selectedTeamName:'',
 
         }
     },
 
-    mounted(){
-        this.id=this.userid;
+
+    created(){
+        this.selected = { label: this.userdata.department, value: this.userdata.department_id };
         this.fetchData();
     },
-
     methods:{
+
+            onClick1(event){
+                this.$emit('close','false')
+            },
 
         fetchData: function () {
             axios.get('/teamInfo')
                 .then(response=>{
-                    this.teams=response.data;
+                    let teamOptions = [];
+                    for (let i = 0; i < response.data.length; i++){
+                        const data =response.data[i];
+                        teamOptions[teamOptions.length] = {
+                            label: data.team_name,
+                            value: data.id,
+                        }
+                    }
+                    this.teams=teamOptions;
                 });
         },
 
         submit: function(){
             let vm =this;
-            axios.post('/user/'+ this.id + '/team',{data: this.team.team_name})
+            axios.post('/user/'+ this.userdata.id + '/team',{data: this.selectedTeamName})
                 .then(response => {
-                    vm.$emit('select-updated', vm.team.team_name);
+                    vm.$emit('select-updated', vm.selectedTeamName);
                     vm.team = '';
                 });
 
@@ -57,11 +78,11 @@
         },
 
         selectedValue(value) {
+            this.selectedTeamName = value.label;
             this.team = value;
             this.teamId = this.team.id;
-            this.submit();
         }
-        },
+    },
 
 
     }
