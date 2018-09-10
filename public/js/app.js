@@ -54571,7 +54571,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54588,6 +54588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__UserHobby___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__UserHobby__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserBadge__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserBadge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__UserBadge__);
+//
 //
 //
 //
@@ -55450,7 +55451,7 @@ var render = function() {
                         expression: "canedit && editdepartment"
                       }
                     ],
-                    attrs: { userid: _vm.user.id },
+                    attrs: { userid: _vm.user.id, userdata: _vm.userdata },
                     on: {
                       "select-updated": function($event) {
                         _vm.personalDataUpdated("team", $event)
@@ -59120,7 +59121,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59150,37 +59151,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['userid', 'canedit'],
+    props: {
+        'userdata': {
+            required: true
+        }
+    },
+    watch: {
+        userdata: function userdata(val) {
+            this.userdata = val;
+            this.selected = { label: this.userdata.team, value: this.userdata.team_id };
+        }
+    },
     data: function data() {
         return {
 
-            id: '',
+            selected: null,
             teams: [],
-            team: '',
-            teamId: ''
+            selectedTeamName: ''
 
         };
     },
-    mounted: function mounted() {
-        this.id = this.userid;
+    created: function created() {
+        this.selected = { label: this.userdata.department, value: this.userdata.department_id };
         this.fetchData();
     },
 
-
     methods: {
+        onClick1: function onClick1(event) {
+            this.$emit('close', 'false');
+        },
+
 
         fetchData: function fetchData() {
             var _this = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/teamInfo').then(function (response) {
-                _this.teams = response.data;
+                var teamOptions = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    var data = response.data[i];
+                    teamOptions[teamOptions.length] = {
+                        label: data.team_name,
+                        value: data.id
+                    };
+                }
+                _this.teams = teamOptions;
             });
         },
 
         submit: function submit() {
             var vm = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.id + '/team', { data: this.team.team_name }).then(function (response) {
-                vm.$emit('select-updated', vm.team.team_name);
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userdata.id + '/team', { data: this.selectedTeamName }).then(function (response) {
+                vm.$emit('select-updated', vm.selectedTeamName);
                 vm.team = '';
             });
         },
@@ -59189,9 +59210,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.team = newOption;
         },
         selectedValue: function selectedValue(value) {
+            this.selectedTeamName = value.label;
             this.team = value;
             this.teamId = this.team.id;
-            this.submit();
         }
     }
 
@@ -59209,25 +59230,18 @@ var render = function() {
     "div",
     [
       _c("v-select", {
-        attrs: {
-          taggable: "",
-          "push-tags": "",
-          label: "team_name",
-          options: _vm.teams
-        },
+        attrs: { taggable: "", "push-tags": "", options: _vm.teams },
         on: { "option:created": _vm.updateOptions, input: _vm.selectedValue },
-        nativeOn: {
-          keydown: function($event) {
-            if (
-              !("button" in $event) &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            _vm.submit()
-          }
+        model: {
+          value: _vm.selected,
+          callback: function($$v) {
+            _vm.selected = $$v
+          },
+          expression: "selected"
         }
-      })
+      }),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.submit } }, [_vm._v("Save")])
     ],
     1
   )
