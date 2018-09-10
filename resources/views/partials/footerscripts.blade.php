@@ -11,7 +11,7 @@
 <!--end::Page Snippets -->
 <script>
     var authUser = {!! auth()->user() !!};
-    var isAdmin = {!! json_encode(auth()->user()->hasRole('User')) !!};
+    var isAdmin = {!! json_encode(auth()->user()->hasRole('Admin')) !!};
     var userModeratedTeams = {!! auth()->user()->moderator() !!};
 </script>
 <script src="https://unpkg.com/vue@latest"></script>
