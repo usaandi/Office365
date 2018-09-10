@@ -7,6 +7,7 @@ use App\Team;
 use App\UserDepartment;
 use App\UserTeam;
 use App\UserTeamModerator;
+use Spatie\Permission\Models\Role;
 use Validator;
 use App\User;
 use Illuminate\Http\Request;
@@ -112,8 +113,7 @@ class TeamsController extends Controller
     }
     public function addModerator(Request $request){
 
-
-        $data=json_decode(key($request->all()), true);
+        $data = json_decode(key($request->all()), true);
 
         $rules = [
             'userId' => 'required',
@@ -125,11 +125,25 @@ class TeamsController extends Controller
 
             $userId = $data['userId'];
             $teamId = $data['teamId'];
+            $user = User::find($userId);
 
-            UserTeamModerator::create([
-                'user_id' => $userId,
-                'team_id' => $teamId
-            ]);
+            $moderatorRoleName = 'Moderator';
+
+            if (!$user->hasRole($moderatorRoleName)) {
+                $moderatorRole = Role::findByName($moderatorRoleName);
+                $user->assignRole($moderatorRole);
+            }
+
+            $isModeratorOfTeam = (bool) UserTeamModerator::where('user_id', $userId)
+                ->where('team_id', $teamId)
+                ->count();
+
+            if ($isModeratorOfTeam === FALSE) {
+                UserTeamModerator::create([
+                    'user_id' => $userId,
+                    'team_id' => $teamId
+                ]);
+            }
 
         }
 
