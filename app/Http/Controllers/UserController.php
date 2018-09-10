@@ -32,10 +32,12 @@ class UserController extends Controller
         if ($userDepartment !== NULL) {
             $department = Department::find($userDepartment->department_id);
             $user['department'] = $department->department_name;
+            $user['department_id'] = $department->id;
         }
         if($userTeam !== NULL){
-            $team= Team::find($userTeam->team_id);
-            $user['team']=$team->team_name;
+            $team = Team::find($userTeam->team_id);
+            $user['team'] = $team->team_name;
+            $user['team_id'] = $team->id;
         }
         return view('user.profileview', compact('user'));
     }
@@ -50,6 +52,7 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+
 
         $request->validate([
 
@@ -118,6 +121,10 @@ class UserController extends Controller
 
     public function updatePhone(Request $request, $id)
     {
+
+       // $this->authorize('update', $id);
+
+
         try {
 
             $request->validate([
