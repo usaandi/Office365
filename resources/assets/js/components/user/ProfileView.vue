@@ -29,12 +29,12 @@
                             {{user.department}}
                         </div>
                         <user-department
-                                v-show="isadmin && editdepartment"
-                                :userid="user.id"
+                                v-show="canedit && editdepartment"
+                                :userdata="userdata"
                                 @select-updated="personalDataUpdated('department', $event)"
                         ></user-department>
                         <user-team
-                                v-show="isadmin && editdepartment"
+                                v-show="canedit && editdepartment"
                                 :userid="user.id"
                                 @select-updated="personalDataUpdated('team', $event)"
                         ></user-team>
@@ -66,18 +66,7 @@
                         <div class="profile__details--title">Email:</div>
                     </div>
                     <div class="col-xs-9">
-                        <editable-input-component
-                                v-show="isadmin && editemail"
-                                :endpoint="'/user/' + user.id + '/update/email'"
-                                ref="email"
-                                :data="user.email"
-                                element-name="EMAIL"
-                                @input-updated="personalDataUpdated('email', $event)"
-                                @canceled="hideInput('email', $event)"
-                        ></editable-input-component>
-
-                        <div class="profile__details--info" v-if="editemail === false"
-                             @dblclick="changeText('email')">{{user.email}}</div>
+                        <div class="profile__details--info">{{user.email}}</div>
                     </div>
                 </div>
                 <div class="row">
@@ -137,25 +126,26 @@
             return{
                 edit:false,
                 userdata: '',
+                department: 0,
                 text: '',
                 canedit: false,
                 editdepartment: false,
                 editteam: false,
                 editphone: false,
-                editemail: false,
-                editskype: false
-            }
-        },
-        computed: {
-            isadmin: function () {
-                return Vue.$isAdmin()
+                editskype: false,
             }
         },
         mounted() {
+
             this.userdata = this.user;
-            if (authUser.id === this.user.id || this.isadmin) {
+
+            if (authUser.id === this.user.id
+                || Vue.$isAdmin()
+                || Vue.$canModerateTeam(this.userdata.team_id)
+            ) {
                 this.canedit = true;
             }
+
         },
 
         methods: {
