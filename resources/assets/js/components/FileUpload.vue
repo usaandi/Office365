@@ -1,9 +1,7 @@
 <template>
-    <div class="row">
-        <div class="col-md-12">
-            <input id="imageChoose" type="file" v-on:change="onFileChange" class="form-control">
-            <button class="btn btn-success btn-block" @click="upload">SAVE</button>
-        </div>
+    <div>
+        <input id="imageChoose" type="file" v-on:change="onFileChange" class="form-control">
+        <button class="btn btn-success btn-block" @click="upload">SAVE</button>
     </div>
 </template>
 
