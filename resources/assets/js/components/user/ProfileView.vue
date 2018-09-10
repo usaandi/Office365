@@ -26,7 +26,10 @@
                         <div class="profile__details--info"
                              @click="changeText('department')"
                         >
-                            {{user.department}}
+                            <span v-if="user.department">
+                                {{user.department}}
+                                </span>
+                            <span v-else>Choose department</span>
                         </div>
                         <user-department
                                 v-show="canedit && editdepartment"
@@ -55,7 +58,11 @@
                                 @canceled="hideInput('phone', $event)"
                         ></editable-input-component>
                         <div class="profile__details--info" v-if="editphone === false"
-                              @dblclick="changeText('phone')">{{user.phone}}
+                              @dblclick="changeText('phone')">
+                               <span v-if="user.phone">
+                                {{user.phone}}
+                                </span>
+                            <span v-else>Enter Phone number</span>
 
                         </div>
                     </div>
@@ -66,7 +73,8 @@
                         <div class="profile__details--title">Email:</div>
                     </div>
                     <div class="col-xs-9">
-                        <div class="profile__details--info">{{user.email}}</div>
+                        <div class="profile__details--info">
+                            {{user.email}}</div>
                     </div>
                 </div>
                 <div class="row">
@@ -83,7 +91,13 @@
                                 @canceled="hideInput('skype', $event)"
                         ></editable-input-component>
                         <div class="profile__details--info" v-if="editskype === false"
-                             @dblclick="changeText('skype')">{{user.skype}}</div>
+                             @dblclick="changeText('skype')">
+                            <span v-if="user.skype">
+                                {{user.skype}}
+                                </span>
+                            <span v-else>Enter Skype</span>
+
+                        </div>
                     </div>
                 </div>
                 <div class="profile__details--pills">
