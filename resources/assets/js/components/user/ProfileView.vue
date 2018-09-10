@@ -22,7 +22,7 @@
                     <div class="col-xs-3">
                         <div class="profile__details--title" >Department: </div>
                     </div>
-                    <div class="col-xs-9">
+                    <div class="col-xs-9git">
                         <div class="profile__details--info"
                              @click="changeText('department')"
                         >
@@ -37,6 +37,7 @@
                                 :userdata="userdata"
                                 @select-updated="personalDataUpdated('department', $event)"
                         ></user-department>
+
                         <user-team
                                 v-show="canedit && editdepartment"
                                 :userid="user.id"
