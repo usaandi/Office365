@@ -54571,7 +54571,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54588,6 +54588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__UserHobby___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__UserHobby__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserBadge__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserBadge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__UserBadge__);
+//
 //
 //
 //
@@ -55397,7 +55398,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-xs-9" },
+                { staticClass: "col-xs-9git" },
                 [
                   _c(
                     "div",
@@ -55813,7 +55814,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.profile-picture[data-v-77409050]{\n    border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55847,19 +55848,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        console.log(this.image);
         this.avatarImage = this.image;
     },
 
     methods: {
         changeImage: function changeImage() {
-            if (authUser.id === this.userId || Vue.$isAdmin()) {
-                if (this.edit) {
-                    this.edit = false;
-                } else {
-                    this.edit = true;
-                }
+
+            // if (authUser.id === this.userId || Vue.$isAdmin()) {
+            if (this.edit) {
+                this.edit = false;
+            } else {
+                this.edit = true;
             }
+            //}
         },
         fileUploaded: function fileUploaded(response) {
             if (response.status === 200) {
@@ -55879,35 +55880,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "profile__avatar p-85" },
-      [
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "profile__avatar p-50" }, [
         _c("img", {
           staticClass: "profile__avatar--image",
           attrs: { src: _vm.avatarImage, alt: "" },
           on: { click: _vm.changeImage }
-        }),
-        _vm._v(" "),
-        _c("file-upload", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.edit,
-              expression: "edit"
-            }
-          ],
-          attrs: { endpoint: "/upload/" + _vm.userId },
-          on: { "file-uploaded": _vm.fileUploaded }
         })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _vm._m(0)
-  ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("file-upload", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.edit,
+            expression: "edit"
+          }
+        ],
+        attrs: { endpoint: "/upload/" + _vm.userId },
+        on: { "file-uploaded": _vm.fileUploaded }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -55990,8 +55990,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "FileUpload",
@@ -56034,20 +56032,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { id: "imageChoose", type: "file" },
-        on: { change: _vm.onFileChange }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-success btn-block", on: { click: _vm.upload } },
-        [_vm._v("SAVE")]
-      )
-    ])
+  return _c("div", [
+    _c("input", {
+      staticClass: "form-control",
+      attrs: { id: "imageChoose", type: "file" },
+      on: { change: _vm.onFileChange }
+    }),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-success btn-block", on: { click: _vm.upload } },
+      [_vm._v("SAVE")]
+    )
   ])
 }
 var staticRenderFns = []
