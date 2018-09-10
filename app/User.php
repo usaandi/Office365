@@ -61,8 +61,16 @@ class User extends Authenticatable
     public function userCareerRoleMilestones(){
         return $this->hasMany(UserCareerRoleMilestone::class);
     }
-    public function userTeamModerators(){
-        return $this->hasMany(UserTeamModerator::class);
+    public function moderator(){
+
+        $teamIds = [];
+
+        if(\Auth::user()->hasRole('Moderator')){
+            $userId = \Auth::user()->id;
+            $teamIds = UserTeamModerator::where('user_id', $userId)
+                ->get(['team_id'])->toArray();
+        }
+        return json_encode($teamIds);
     }
 
 }
