@@ -53917,7 +53917,22 @@ var ChecksPrivileges = {
     install: function install(Vue, options) {
 
         Vue.$isAdmin = function () {
-            return authUserRole.name === 'Admin';
+            return isAdmin;
+        };
+
+        Vue.$moderatesTeams = function () {
+            return userModeratedTeams;
+        };
+
+        Vue.$canModerateTeam = function (teamId) {
+
+            for (var i = 0; i < userModeratedTeams.length; i++) {
+                if (userModeratedTeams[i].team_id === teamId) {
+                    return true;
+                }
+            }
+
+            return false;
         };
     }
 };
@@ -54556,7 +54571,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54688,17 +54703,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -54712,23 +54716,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             edit: false,
             userdata: '',
+            department: 0,
             text: '',
             canedit: false,
             editdepartment: false,
             editteam: false,
             editphone: false,
-            editemail: false,
             editskype: false
         };
     },
-    computed: {
-        isadmin: function isadmin() {
-            return Vue.$isAdmin();
-        }
-    },
     mounted: function mounted() {
+
         this.userdata = this.user;
-        if (authUser.id === this.user.id || this.isadmin) {
+
+        if (authUser.id === this.user.id || Vue.$isAdmin() || Vue.$canModerateTeam(this.userdata.team_id)) {
             this.canedit = true;
         }
     },
@@ -55403,11 +55404,11 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.isadmin && _vm.editdepartment,
-                        expression: "isadmin && editdepartment"
+                        value: _vm.canedit && _vm.editdepartment,
+                        expression: "canedit && editdepartment"
                       }
                     ],
-                    attrs: { userid: _vm.user.id },
+                    attrs: { userdata: _vm.userdata },
                     on: {
                       "select-updated": function($event) {
                         _vm.personalDataUpdated("department", $event)
@@ -55420,8 +55421,8 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.isadmin && _vm.editdepartment,
-                        expression: "isadmin && editdepartment"
+                        value: _vm.canedit && _vm.editdepartment,
+                        expression: "canedit && editdepartment"
                       }
                     ],
                     attrs: { userid: _vm.user.id },
@@ -55489,52 +55490,11 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _vm._m(3),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-xs-9" },
-                [
-                  _c("editable-input-component", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.isadmin && _vm.editemail,
-                        expression: "isadmin && editemail"
-                      }
-                    ],
-                    ref: "email",
-                    attrs: {
-                      endpoint: "/user/" + _vm.user.id + "/update/email",
-                      data: _vm.user.email,
-                      "element-name": "EMAIL"
-                    },
-                    on: {
-                      "input-updated": function($event) {
-                        _vm.personalDataUpdated("email", $event)
-                      },
-                      canceled: function($event) {
-                        _vm.hideInput("email", $event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.editemail === false
-                    ? _c(
-                        "div",
-                        {
-                          staticClass: "profile__details--info",
-                          on: {
-                            dblclick: function($event) {
-                              _vm.changeText("email")
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.user.email))]
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
+              _c("div", { staticClass: "col-xs-9" }, [
+                _c("div", { staticClass: "profile__details--info" }, [
+                  _vm._v(_vm._s(_vm.user.email))
+                ])
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
@@ -58903,7 +58863,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58932,20 +58892,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['userid', 'canedit'],
+    props: {
+        'userdata': {
+            required: true
+        }
+    },
+    watch: {
+        userdata: function userdata(val) {
+            this.userdata = val;
+            this.selected = { label: this.userdata.department, value: this.userdata.department_id };
+        }
+    },
     data: function data() {
         return {
-
             id: '',
-            departments: [],
-            department: '',
-            departmentId: '',
-            test: false
-
+            selected: null,
+            departments: []
         };
     },
-    mounted: function mounted() {
-        this.id = this.userid;
+    created: function created() {
+        this.id = this.userdata.id;
+        this.selected = { label: this.userdata.department, value: this.userdata.department_id };
         this.fetchData();
     },
 
@@ -58955,7 +58922,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/departmentInfo').then(function (response) {
-                _this.departments = response.data;
+                var departmentOptions = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    var data = response.data[i];
+                    departmentOptions[departmentOptions.length] = {
+                        label: data.department_name,
+                        value: data.id
+                    };
+                }
+                _this.departments = departmentOptions;
             });
         },
 
@@ -58963,7 +58938,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.id + '/department', { data: this.department.department_name }).then(function (response) {
                 vm.$emit('select-updated', vm.department.department_name);
-                vm.department = '';
             });
         },
         updateOptions: function updateOptions(newOption) {
@@ -58990,12 +58964,7 @@ var render = function() {
     "div",
     [
       _c("v-select", {
-        attrs: {
-          taggable: "",
-          "push-tags": "",
-          label: "department_name",
-          options: _vm.departments
-        },
+        attrs: { taggable: "", "push-tags": "", options: _vm.departments },
         on: { "option:created": _vm.updateOptions, input: _vm.selectedValue },
         nativeOn: {
           keydown: function($event) {
@@ -59007,6 +58976,13 @@ var render = function() {
             }
             _vm.submit()
           }
+        },
+        model: {
+          value: _vm.selected,
+          callback: function($$v) {
+            _vm.selected = $$v
+          },
+          expression: "selected"
         }
       })
     ],
@@ -73463,7 +73439,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73476,6 +73452,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
 //
 //
 //
@@ -73564,11 +73542,16 @@ var render = function() {
             attrs: { id: "team", name: "team" },
             on: { change: _vm.onChangeTeam }
           },
-          _vm._l(_vm.teamsList, function(team) {
-            return _c("option", { domProps: { value: team.id } }, [
-              _vm._v(_vm._s(team.team_name))
-            ])
-          })
+          [
+            _c("option"),
+            _vm._v(" "),
+            _vm._l(_vm.teamsList, function(team) {
+              return _c("option", { domProps: { value: team.id } }, [
+                _vm._v(_vm._s(team.team_name))
+              ])
+            })
+          ],
+          2
         ),
         _vm._v(" "),
         _c("br"),
@@ -73581,11 +73564,16 @@ var render = function() {
             attrs: { id: "user", name: "user" },
             on: { change: _vm.onChangeUser }
           },
-          _vm._l(_vm.usersList, function(user) {
-            return _c("option", { domProps: { value: user.id } }, [
-              _vm._v(_vm._s(user.name))
-            ])
-          })
+          [
+            _c("option"),
+            _vm._v(" "),
+            _vm._l(_vm.usersList, function(user) {
+              return _c("option", { domProps: { value: user.id } }, [
+                _vm._v(_vm._s(user.name))
+              ])
+            })
+          ],
+          2
         ),
         _vm._v(" "),
         _c("br"),
