@@ -32,6 +32,7 @@
                             <span v-else>Choose department</span>
                         </div>
                         <user-department
+                                @close="onClose"
                                 v-show="canedit && editdepartment"
                                 :userdata="userdata"
                                 @select-updated="personalDataUpdated('department', $event)"
@@ -163,6 +164,11 @@
         },
 
         methods: {
+
+            onClose(value) {
+
+                this.editdepartment=this.value;
+            },
             changeText(type) {
                 if (this.canedit) {
                     const name = 'edit' + type;
