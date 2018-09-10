@@ -5,6 +5,7 @@
                 <h1>Team Moderators</h1>
                 <label for="Team name"><b>Team Name</b></label>
                 <select id="team" name="team"  @change="onChangeTeam">
+                    <option></option>
                     <option
                             v-for="team in teamsList"
                             :value="team.id"
@@ -13,6 +14,7 @@
                 <br>
                 <label for="Team name"><b>Moderator name</b></label>
                 <select id="user" name="user" @change="onChangeUser" >
+                    <option></option>
                     <option
                             v-for="user in usersList"
                             :value="user.id"
