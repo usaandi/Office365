@@ -5,10 +5,9 @@
                   :options="departments"
                   @option:created="updateOptions"
                   @input="selectedValue"
-                  @keydown.native.enter="submit()"
         ></v-select>
         <button @click="onClick">Cancel</button>
-        <button>Save</button>
+        <button @click="submit">Save</button>
     </div>
 </template>
 
@@ -31,6 +30,7 @@
             return {
                 selected: null,
                 departments: [],
+                selectedDepartmentName:'',
             }
         },
         created() {
@@ -40,7 +40,6 @@
         methods:{
 
             onClick (event) {
-                console.log(this.event, 'hey');
                 this.$emit('close','false')
             },
 
@@ -61,9 +60,10 @@
 
             submit: function(){
                 let vm = this;
-                axios.post('/user/'+ this.userdata.id + '/department', {data: this.department.department_name})
+                this.onClick();
+                axios.post('/user/'+ this.userdata.id + '/department', {data: this.selectedDepartmentName})
                     .then(response => {
-                        vm.$emit('select-updated', vm.department.department_name);
+                        vm.$emit('select-updated', vm.selectedDepartmentName);
                     });
 
             },
@@ -73,9 +73,9 @@
             },
 
             selectedValue(value) {
+                this.selectedDepartmentName = value.label;
                 this.department = value;
                 this.departmentId = this.department.id;
-                //this.submit();
             }
 
         }
