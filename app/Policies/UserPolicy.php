@@ -60,7 +60,6 @@ class UserPolicy
 
     protected function userCanEdit(User $user, User $model) {
 
-
         if ($user->id === $model->id) {
             return TRUE;
         }
