@@ -111,7 +111,7 @@ class AuthController extends Controller
                     $user->save();
                 }
 
-                auth()->login($user);
+                auth()->login($user, TRUE);
 
                 if(Auth::user()){
                     return redirect()->route('home');
