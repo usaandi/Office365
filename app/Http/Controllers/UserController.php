@@ -122,16 +122,17 @@ class UserController extends Controller
     public function updatePhone(Request $request, $id)
     {
 
-       // $this->authorize('update', $id);
-
-
         try {
+
+            $user = User::findOrFail($id);
+
+            // Validate that the current user is authorized to do this request.
+            // authorize will automatically kill the request if auth fails.
+            $this->authorize('update', $user);
 
             $request->validate([
                 'data' => 'integer'
             ]);
-
-            $user = User::findOrFail($id);
 
             $phone = $request->data;
 
@@ -154,11 +155,14 @@ class UserController extends Controller
     {
         try {
 
+            $user = User::findOrFail($id);
+
+            $this->authorize('update', $user);
+
             $request->validate([
                 'data' => 'email'
             ]);
 
-            $user = User::findOrFail($id);
 
             $email = $request->data;
 
@@ -180,11 +184,14 @@ class UserController extends Controller
     {
         try {
 
+            $user = User::findOrFail($id);
+
+            $this->authorize('update', $user);
+
             $request->validate([
                 'data' => 'string'
             ]);
 
-            $user = User::findOrFail($id);
 
             $skype = $request->data;
 
