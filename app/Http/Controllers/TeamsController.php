@@ -21,6 +21,7 @@ class TeamsController extends Controller
             $request->validate([
                 'data' => 'required|max:30'
             ]);
+
             $user = User::findOrFail($id);
 
             $departmentName = $request->data;
