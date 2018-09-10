@@ -41,6 +41,7 @@
                         <user-team
                                 v-show="canedit && editdepartment"
                                 :userid="user.id"
+                                :userdata="userdata"
                                 @select-updated="personalDataUpdated('team', $event)"
                         ></user-team>
                     </div>
