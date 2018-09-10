@@ -1,12 +1,12 @@
 <template>
 <div>
-    <div class="profile__avatar p-85">
+    <div class="profile__avatar p-50">
         <img class="profile__avatar--image" @click="changeImage" :src="avatarImage" alt="">
-        <file-upload :endpoint="'/upload/' + userId" @file-uploaded="fileUploaded" v-show="edit"></file-upload>
     </div>
     <div class="profile__avatar--level">
         <div class="profile__pill profile__pill--small">LVL Black Belt</div>
     </div>
+    <file-upload v-show="edit" :endpoint="'/upload/' + userId" @file-uploaded="fileUploaded" ></file-upload>
 </div>
 </template>
 
@@ -21,19 +21,19 @@
             }
         },
         mounted() {
-            console.log(this.image);
           this.avatarImage = this.image;
         },
         methods: {
             changeImage() {
-                if (authUser.id === this.userId || Vue.$isAdmin()) {
+
+               // if (authUser.id === this.userId || Vue.$isAdmin()) {
                     if (this.edit) {
                         this.edit = false;
                     }
                     else {
                         this.edit = true;
                     }
-                }
+                //}
             },
             fileUploaded(response) {
                 if (response.status === 200) {
@@ -47,7 +47,5 @@
 </script>
 
 <style scoped>
-    .profile-picture{
-        border-radius: 50%;
-    }
+
 </style>
