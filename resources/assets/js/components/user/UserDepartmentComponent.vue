@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-select taggable push-tags
-                  label="department_name"
+                  v-model="selected"
                   :options="departments"
                   @option:created="updateOptions"
                   @input="selectedValue"
@@ -14,20 +14,27 @@
     import axios from 'axios';
 
     export default {
-        props: ['userid','canedit'],
-        data() {
-            return {
-
-                id: '',
-                departments: [],
-                department:'',
-                departmentId:'',
-                test:false,
-
+        props: {
+            'userdata': {
+                required: true
             }
         },
-        mounted() {
-            this.id = this.userid;
+        watch: {
+            userdata: function (val) {
+                this.userdata = val;
+                this.selected = { label: this.userdata.department, value: this.userdata.department_id };
+            }
+        },
+        data() {
+            return {
+                id: '',
+                selected: null,
+                departments: [],
+            }
+        },
+        created() {
+            this.id = this.userdata.id;
+            this.selected = { label: this.userdata.department, value: this.userdata.department_id };
             this.fetchData();
         },
         methods:{
@@ -35,16 +42,23 @@
             fetchData: function () {
                 axios.get('/departmentInfo')
                     .then(response => {
-                        this.departments = response.data;
+                        let departmentOptions = [];
+                        for (let i = 0; i < response.data.length; i++) {
+                            const data = response.data[i];
+                            departmentOptions[departmentOptions.length] = {
+                                label: data.department_name,
+                                value: data.id,
+                            }
+                        }
+                        this.departments = departmentOptions;
                     });
             },
 
             submit: function(){
-                let vm =this;
+                let vm = this;
                 axios.post('/user/'+ this.id + '/department', {data: this.department.department_name})
                     .then(response => {
                         vm.$emit('select-updated', vm.department.department_name);
-                        vm.department = '';
                     });
 
             },
