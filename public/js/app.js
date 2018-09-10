@@ -58930,7 +58930,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -58949,7 +58948,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             selected: null,
-            departments: []
+            departments: [],
+            selectedDepartmentName: ''
         };
     },
     created: function created() {
@@ -58959,7 +58959,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         onClick: function onClick(event) {
-            console.log(this.event, 'hey');
             this.$emit('close', 'false');
         },
 
@@ -58982,17 +58981,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         submit: function submit() {
             var vm = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userdata.id + '/department', { data: this.department.department_name }).then(function (response) {
-                vm.$emit('select-updated', vm.department.department_name);
+            this.onClick();
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userdata.id + '/department', { data: this.selectedDepartmentName }).then(function (response) {
+                vm.$emit('select-updated', vm.selectedDepartmentName);
             });
         },
         updateOptions: function updateOptions(newOption) {
             this.department = newOption;
         },
         selectedValue: function selectedValue(value) {
+            this.selectedDepartmentName = value.label;
             this.department = value;
             this.departmentId = this.department.id;
-            //this.submit();
         }
     }
 
@@ -59012,17 +59012,6 @@ var render = function() {
       _c("v-select", {
         attrs: { taggable: "", "push-tags": "", options: _vm.departments },
         on: { "option:created": _vm.updateOptions, input: _vm.selectedValue },
-        nativeOn: {
-          keydown: function($event) {
-            if (
-              !("button" in $event) &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            _vm.submit()
-          }
-        },
         model: {
           value: _vm.selected,
           callback: function($$v) {
@@ -59034,7 +59023,7 @@ var render = function() {
       _vm._v(" "),
       _c("button", { on: { click: _vm.onClick } }, [_vm._v("Cancel")]),
       _vm._v(" "),
-      _c("button", [_vm._v("Save")])
+      _c("button", { on: { click: _vm.submit } }, [_vm._v("Save")])
     ],
     1
   )
