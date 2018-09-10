@@ -96,11 +96,14 @@ class UserController extends Controller
     {
         try {
 
+            $user = User::findOrFail($id);
+            $this->authorize('update', $user);
+
             $request->validate([
                 'data' => 'string'
             ]);
 
-            $user = User::findOrFail($id);
+
 
             $team = $request->data;
 
