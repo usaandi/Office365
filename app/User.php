@@ -61,6 +61,19 @@ class User extends Authenticatable
     public function userCareerRoleMilestones(){
         return $this->hasMany(UserCareerRoleMilestone::class);
     }
+
+    public function isModeratorOfTeam($teamId)
+    {
+        if (\Auth::user()->hasRole('Moderator')) {
+            $userId = \Auth::user()->id;
+            $moderator = UserTeamModerator::where('user_id', $userId)
+                ->where('team_id', $teamId)
+                ->get(['team_id']);
+            return $moderator->count() === 1;
+        }
+        return FALSE;
+    }
+
     public function moderator(){
 
         $teamIds = [];
