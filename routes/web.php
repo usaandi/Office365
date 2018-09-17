@@ -19,7 +19,7 @@ Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
 
 
-
+route::get('/test','CareerController@careerRoleMilestonesData');
 
 
 
@@ -61,7 +61,6 @@ Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name(
 Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('departmentInfo');
 Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
 Route::get('department', 'DepartmentController@department')->name('department');
-
 Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
 Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
 });
