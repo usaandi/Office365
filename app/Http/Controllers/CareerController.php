@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CareerRole;
+use App\CareerRoleMilestone;
+use PhpParser\Node\Expr\Array_;
 use Validator;
 use App\User;
 
@@ -17,52 +19,66 @@ class CareerController extends Controller
 
 
         try {
+            if (!empty($request->all())) {
 
-            $data=json_decode(key($request->all()), true);
-            $rules = [
-                'title' => 'required|string|max:30',
-                'description' => 'required|'
-            ];
-            $validator = Validator::make($data, $rules);
+                $data = $request->all()[0];
 
+                $rules = [
+                    'title' => 'required|string|max:30',
+                    'description' => 'required|',
+                    'milestoneList'=> 'array',
+                ];
 
-            if ($validator->passes()){
+                $validator = Validator::make($data, $rules);
 
-                $title = $data['title'];
-                $description = $data['description'];
-                $titlecapitalized=ucfirst($title);
+                if ($validator->passes()){
 
-                $career=CareerRole::where([
-                    'title' => $titlecapitalized])->first();
+                    $title = $data['title'];
+                    $description = $data['description'];
 
-                if ($career !== NULL){
-                    return response('Duplicate Title', 409)
-                        ->header('Content-Type', 'application/json');
+                    $titlecapitalized=ucfirst($title);
 
-                }
+                    $refactorTitle = str_replace('_', ' ', $titlecapitalized);
+                    $titleCleared = $refactorTitle;
 
-                if($career === NULL){
-                    $career= CareerRole::create
-                    (['title'=> $titlecapitalized,
-                        'description' => $description]);
+                    $refactorDescription = str_replace('_',' ', $description);
+                    $descriptionCleared = $refactorDescription;
 
+                    $career = CareerRole::where([
+                        'title' => $titleCleared])->get();
 
-                    return response('success', 200)
-                        ->header('Content-Type', 'application/json');
+                    if($career->isEmpty()) {
 
+                        $career= CareerRole::create([
+                            'title'=> $titleCleared,
+                            'description' => $descriptionCleared
+                        ]);
+
+                        foreach ($data['milestonesList'] as $milestone) {
+                            CareerRoleMilestone::create([
+                                'task' => $milestone,
+                                'career_role_id' => $career->id
+                            ]);
+                        }
+                        unset($milestone);
+                    }
 
                 }
 
             }
+
         }
         catch(\Exception $e) {
-
         }
+    }
 
+    public function careerRoleMilestonesData()
+    {
+        $careerRoles=CareerRole::all()->toArray();
+        return $careerRoles;
     }
 
     public function returnUserData( $id){
-
 
         $userCareerRole= array();
         $userCareerRoleMilestone= array();
