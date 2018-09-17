@@ -56,7 +56,8 @@
                 <div class="m-form__group form-group">
                     <div class="m-checkbox-list">
                         <label class="m-checkbox m-checkbox--air m-checkbox--state-success">
-                            <input type="checkbox"> <div class="profile-timeline__milestones--label">CSS Masterclass Course</div>
+                            <input type="checkbox">
+                            <div class="profile-timeline__milestones--label">CSS Masterclass Course</div>
                             <span></span>
                             <div class="profile-timeline__milestones--name">
                                 <div class="m-list-pics m-list-pics--sm">
