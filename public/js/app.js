@@ -59941,7 +59941,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.border-box[data-v-7f3d5525]{\n    border:1px solid black;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59999,24 +59999,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_bootstrap_vue__["a" /* default */]);
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "adddevelopment",
+
     data: function data() {
+
         return {
             desc: '',
             title: '',
             showDismissibleAlert: false,
-            showDismissibleAlert1: false
+            selected: [],
+            careerRoles: [],
+            milestonesList: [],
+            milestoneName: '',
+            careerRoleTitle: ''
+
         };
+    },
+    mounted: function mounted() {
+
+        this.fetchData();
     },
 
     methods: {
+        addList: function addList(value) {
+            console.log(value);
+            this.milestonesList.push(value);
+            this.milestoneName = '';
+        },
+
+
+        fetchData: function fetchData() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/test').then(function (response) {
+                var careerRole = [];
+                for (var i = 0; i < response.data.length; i++) {
+                    var data = response.data[i];
+                    careerRole[careerRole.length] = {
+                        label: data.title,
+                        value: data.id
+                    };
+                }
+                _this.careerRoles = careerRole;
+            });
+        },
 
         clear: function clear() {
             this.desc = '';
@@ -60024,19 +60072,22 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_bootstrap_vue__["a" /* default */]);
         },
 
         submit: function submit() {
-            var _this = this;
+            var _this2 = this;
 
-            var data = JSON.stringify({
+            var data = [{
                 title: this.title,
-                description: this.desc
+                description: this.desc,
+                milestonesList: this.milestonesList
+            }];
 
-            });
             this.desc = '';
             this.title = '';
+            this.milestonesList = '';
             var vm = this;
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/career/add', data).then(function (response) {
                 if (response.status === 200) {
-                    _this.showDismissibleAlert = true;
+
+                    _this2.showDismissibleAlert = true;
                 }
             }).catch(function (error) {});
         }
@@ -60077,7 +60128,7 @@ var VuePlugin = {
 
 Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin);
 
-/* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
+/* unused harmony default export */ var _unused_webpack_default_export = (VuePlugin);
 
 /***/ }),
 /* 198 */
@@ -70798,71 +70849,127 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-6" },
     [
-      _c(
-        "b-form-group",
-        {
-          attrs: {
-            id: "fieldsetHorizontal",
-            horizontal: "",
-            "label-cols": 2,
-            breakpoint: "md",
-            label: "Development Title",
-            "label-for": "inputDevelopmentTitle"
-          }
-        },
-        [
-          _c("b-form-input", {
-            attrs: {
-              id: "inputDevelopmentTitle",
-              type: "text",
-              placeholder: "Title"
-            },
-            model: {
-              value: _vm.title,
-              callback: function($$v) {
-                _vm.title = $$v
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-md-6" },
+          [
+            _c(
+              "b-form-group",
+              {
+                attrs: {
+                  id: "fieldsetHorizontal",
+                  horizontal: "",
+                  "label-cols": 2,
+                  breakpoint: "md",
+                  label: "Career job Title",
+                  "label-for": "inputCareerTitle"
+                }
               },
-              expression: "title"
-            }
-          })
-        ],
-        1
-      ),
+              [
+                _c("b-form-input", {
+                  attrs: {
+                    id: "inputCareertTitle",
+                    type: "text",
+                    placeholder: "Title"
+                  },
+                  model: {
+                    value: _vm.title,
+                    callback: function($$v) {
+                      _vm.title = $$v
+                    },
+                    expression: "title"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "b-form-group",
+              {
+                attrs: {
+                  id: "fieldsetHorizontal",
+                  horizontal: "",
+                  "label-cols": 2,
+                  breakpoint: "md",
+                  label: "Career Description",
+                  "label-for": "careerDesc"
+                }
+              },
+              [
+                _c("b-form-textarea", {
+                  attrs: {
+                    id: "careerDesc",
+                    placeholder: "Description",
+                    rows: 3,
+                    "max-rows": 6,
+                    "no-resize": true
+                  },
+                  model: {
+                    value: _vm.desc,
+                    callback: function($$v) {
+                      _vm.desc = $$v
+                    },
+                    expression: "desc"
+                  }
+                })
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
-      _c(
-        "b-form-group",
-        {
-          attrs: {
-            id: "fieldsetHorizontal",
-            horizontal: "",
-            "label-cols": 2,
-            breakpoint: "md",
-            label: "Development Description",
-            "label-for": "developmentDesc"
-          }
-        },
-        [
-          _c("b-form-textarea", {
-            attrs: {
-              id: "developmentDesc",
-              placeholder: "Description",
-              rows: 3,
-              "max-rows": 6,
-              "no-resize": true
-            },
-            model: {
-              value: _vm.desc,
-              callback: function($$v) {
-                _vm.desc = $$v
+      _c("div", { staticClass: "row m--margin-top-10" }, [
+        _c(
+          "div",
+          { staticClass: "col-6" },
+          [
+            _vm._v("\n            Milestones:\n            "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.milestoneName,
+                  expression: "milestoneName"
+                }
+              ],
+              domProps: { value: _vm.milestoneName },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.milestoneName = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.addList(_vm.milestoneName)
+                  }
+                }
               },
-              expression: "desc"
-            }
-          })
-        ],
-        1
-      ),
+              [_vm._v("Add new")]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.milestonesList, function(milestone, index) {
+              return _c("ul", [
+                _c("li", [_vm._v(_vm._s(index) + " - " + _vm._s(milestone))])
+              ])
+            })
+          ],
+          2
+        )
+      ]),
       _vm._v(" "),
       _c("button", { on: { click: _vm.submit } }, [_vm._v("submit")]),
       _vm._v(" "),
@@ -72966,7 +73073,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -72977,6 +73084,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
