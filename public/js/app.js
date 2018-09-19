@@ -55400,7 +55400,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-xs-9git" },
+                { staticClass: "col-xs-9" },
                 [
                   _c(
                     "div",
@@ -71092,7 +71092,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71105,6 +71105,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73039,7 +73044,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73087,6 +73092,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -73096,15 +73105,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             userId: '',
-            userRoleInfo: ''
+            userRoleInfo: '',
+            milestoneInfo: ''
         };
     },
     mounted: function mounted() {
         this.userRoleInfo = this.userdata;
+        this.milestoneInfo = this.userInfo;
     },
 
 
     methods: {}
+
 });
 
 /***/ }),
@@ -73149,11 +73161,16 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("user-career-milestone"),
+          _vm._l(_vm.userRoleInfo["milestones"], function(milestone) {
+            return _c("user-career-milestone", {
+              key: milestone.id,
+              attrs: { milestoneInfo: milestone }
+            })
+          }),
           _vm._v(" "),
           _vm._m(1)
         ],
-        1
+        2
       )
     ])
   ])
@@ -73296,7 +73313,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73396,15 +73413,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "CareerMilestone",
+    props: ['milestoneInfo'],
     data: function data() {
         return {
 
             show: false,
             taskName: '',
             assigned: '',
-            reminder: ''
+            reminder: '',
+            milestone: ''
 
         };
+    },
+    mounted: function mounted() {
+
+        this.milestone = this.milestoneInfo;
     }
 });
 
@@ -73628,7 +73651,66 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _c("div", { staticClass: "profile-timeline__milestone" }, [
+          _c("div", { staticClass: "m-form__group form-group" }, [
+            _c("div", { staticClass: "m-checkbox-list" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "m-checkbox m-checkbox--air m-checkbox--state-success"
+                },
+                [
+                  _c("input", { attrs: { type: "checkbox" } }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "profile-timeline__milestones--label" },
+                    [_vm._v(_vm._s(_vm.milestone.task))]
+                  ),
+                  _vm._v(" "),
+                  _c("span"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "profile-timeline__milestones--name" },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "m-list-pics m-list-pics--sm" },
+                        [
+                          _vm._m(2),
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.milestone.assigned_username) +
+                              "\n                                "
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "profile-timeline__milestones--date m--font-danger"
+                    },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm.milestone.reminder) +
+                          "\n                            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              )
+            ])
+          ])
+        ])
       ])
     ])
   ])
@@ -73658,69 +73740,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-timeline__milestone" }, [
-      _c("div", { staticClass: "m-form__group form-group" }, [
-        _c("div", { staticClass: "m-checkbox-list" }, [
-          _c(
-            "label",
-            {
-              staticClass:
-                "m-checkbox m-checkbox--air m-checkbox--state-success"
-            },
-            [
-              _c("input", { attrs: { type: "checkbox" } }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "profile-timeline__milestones--label" },
-                [_vm._v("CSS Masterclass Course")]
-              ),
-              _vm._v(" "),
-              _c("span"),
-              _vm._v(" "),
-              _c("div", { staticClass: "profile-timeline__milestones--name" }, [
-                _c("div", { staticClass: "m-list-pics m-list-pics--sm" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _c("img", { attrs: { src: "", title: "" } })
-                  ]),
-                  _vm._v(
-                    "\n                                    Tiina-Maria Liblikas\n                                "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "profile-timeline__milestones--date m--font-danger"
-                },
-                [
-                  _vm._v(
-                    "\n                                12.12.18\n                            "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "profile-timeline__milestones--action" },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
-                      attrs: { href: "#" }
-                    },
-                    [_c("i", { staticClass: "la la-pencil-square" })]
-                  )
-                ]
-              )
-            ]
-          )
-        ])
-      ])
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("img", { attrs: { src: "", title: "" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "profile-timeline__milestones--action" }, [
+      _c(
+        "a",
+        {
+          staticClass:
+            "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
+          attrs: { href: "#" }
+        },
+        [_c("i", { staticClass: "la la-pencil-square" })]
+      )
     ])
   }
 ]
