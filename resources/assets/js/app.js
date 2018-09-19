@@ -44,6 +44,7 @@ Vue.component('user-training', require('./components/user/UserTraining'));
 Vue.component('user-project', require('./components/user/UserProject'));
 Vue.component('user-skill', require('./components/user/UserSkill'));
 Vue.component('user-badge', require('./components/user/UserBadge'));
+Vue.component('career-role', require('./components/career/CareerRole'));
 Vue.component('editable-input-component', require('./components/EditableInputComponent'));
 Vue.component('user-career-milestone', require('./components/career/CareerMilestone'));
 Vue.component('user-team-moderator', require('./components/admin/UserTeamModerator'));
