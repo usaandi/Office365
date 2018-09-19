@@ -1,5 +1,5 @@
 <template>
-    <div  class="profile-timeline__form">
+    <div  class="profile-timeline__form" >
         <form class="m-form">
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row">
@@ -44,7 +44,12 @@
 
 <script>
     export default {
-        name: "CareerMilestoneForm"
+        name: "CareerMilestoneForm",
+        data(){
+            return{
+                show:false,
+            }
+        }
     }
 </script>
 

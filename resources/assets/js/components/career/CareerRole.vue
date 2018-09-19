@@ -23,21 +23,19 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__add">
-                            <a  class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                            <a  class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="show=!show">
                                               <span>
                                                 <i class="la la-plus"></i>
                                                 <span>New</span>
                                               </span>
                             </a>
-                            <milestone-form></milestone-form>
+                            <milestone-form v-show="show"></milestone-form>
                         </div>
-
                 <user-career-milestone
                     v-for="milestone in userRoleInfo['milestones']"
                     :milestoneInfo="milestone"
                     :key="milestone.id"
                 ></user-career-milestone>
-
                     </div>
                 </div>
 
@@ -70,6 +68,7 @@
                 userId:'',
                 userRoleInfo:'',
                 milestoneInfo:'',
+                show:false,
             }
         },
 

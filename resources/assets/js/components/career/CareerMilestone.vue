@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
     <div class="profile-timeline__milestone">
         <div class="m-form__group form-group">
             <div class="m-checkbox-list">
@@ -38,7 +38,7 @@
                 taskName:'',
                 assigned:'',
                 reminder:'',
-                milestone:'',
+                milestone:[],
             }
         },
         mounted(){
