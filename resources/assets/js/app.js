@@ -49,6 +49,7 @@ Vue.component('editable-input-component', require('./components/EditableInputCom
 Vue.component('user-career-milestone', require('./components/career/CareerMilestone'));
 Vue.component('user-team-moderator', require('./components/admin/UserTeamModerator'));
 Vue.component('v-select', VueSelect.VueSelect);
+Vue.component('milestone-form', require('./components/career/CareerMilestoneForm'));
 
 const app = new Vue({
     el: '#app',
