@@ -16,7 +16,11 @@
                         </p>
                     </div>
                 </div>
-                <user-career-milestone></user-career-milestone>
+                <user-career-milestone
+                    v-for="milestone in userRoleInfo['milestones']"
+                    :milestoneInfo="milestone"
+                    :key="milestone.id"
+                ></user-career-milestone>
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <div class="profile-timeline__notes">
@@ -45,17 +49,19 @@
             return{
                 userId:'',
                 userRoleInfo:'',
+                milestoneInfo:'',
             }
         },
 
         mounted(){
             this.userRoleInfo = this.userdata;
+            this.milestoneInfo = this.userInfo;
+        },
+
+        methods: {
 
         },
 
-        methods:{
-
-        },
     }
 </script>
 

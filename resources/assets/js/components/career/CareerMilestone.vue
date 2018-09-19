@@ -57,16 +57,16 @@
                     <div class="m-checkbox-list">
                         <label class="m-checkbox m-checkbox--air m-checkbox--state-success">
                             <input type="checkbox">
-                            <div class="profile-timeline__milestones--label">CSS Masterclass Course</div>
+                            <div class="profile-timeline__milestones--label">{{milestone.task}}</div>
                             <span></span>
                             <div class="profile-timeline__milestones--name">
                                 <div class="m-list-pics m-list-pics--sm">
                                     <a href="#"><img src="" title=""></a>
-                                    Tiina-Maria Liblikas
+                                    {{milestone.assigned_username}}
                                 </div>
                             </div>
                             <div class="profile-timeline__milestones--date m--font-danger">
-                                12.12.18
+                                {{milestone.reminder}}
                             </div>
                             <div class="profile-timeline__milestones--action">
                                 <a href="#" class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill">
@@ -87,6 +87,7 @@
 <script>
     export default {
         name: "CareerMilestone",
+        props:['milestoneInfo'],
         data(){
             return {
 
@@ -94,9 +95,14 @@
                 taskName:'',
                 assigned:'',
                 reminder:'',
+                milestone:'',
 
             }
         },
+        mounted(){
+
+            this.milestone = this.milestoneInfo;
+        }
     }
 </script>
 
