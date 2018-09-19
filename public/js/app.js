@@ -73045,7 +73045,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73115,8 +73115,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -73127,7 +73125,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             userId: '',
             userRoleInfo: '',
-            milestoneInfo: ''
+            milestoneInfo: '',
+            show: false
         };
     },
     mounted: function mounted() {
@@ -73185,7 +73184,32 @@ var render = function() {
               _c(
                 "div",
                 { staticClass: "profile-timeline__add" },
-                [_vm._m(2), _vm._v(" "), _c("milestone-form")],
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "btn btn-success m-btn m-btn--icon m-btn--pill",
+                      on: {
+                        click: function($event) {
+                          _vm.show = !_vm.show
+                        }
+                      }
+                    },
+                    [_vm._m(2)]
+                  ),
+                  _vm._v(" "),
+                  _c("milestone-form", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.show,
+                        expression: "show"
+                      }
+                    ]
+                  })
+                ],
                 1
               ),
               _vm._v(" "),
@@ -73228,17 +73252,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill" },
-      [
-        _c("span", [
-          _c("i", { staticClass: "la la-plus" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("New")])
-        ])
-      ]
-    )
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("New")])
+    ])
   },
   function() {
     var _vm = this
@@ -73420,7 +73438,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             taskName: '',
             assigned: '',
             reminder: '',
-            milestone: ''
+            milestone: []
         };
     },
     mounted: function mounted() {
@@ -73885,7 +73903,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -73942,7 +73960,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "CareerMilestoneForm"
+    name: "CareerMilestoneForm",
+    data: function data() {
+        return {
+            show: false
+        };
+    }
 });
 
 /***/ }),
