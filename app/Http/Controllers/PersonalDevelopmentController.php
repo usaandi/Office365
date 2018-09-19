@@ -9,7 +9,7 @@ class PersonalDevelopmentController extends Controller
 {
     public function userDevelopment($id){
 
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($id)->id;
 
         return view('user.usercareer', compact('user'));
     }
