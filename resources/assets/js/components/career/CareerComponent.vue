@@ -26,7 +26,12 @@
         <div class="m-timeline-2">
             <div class="m-timeline-2__items" >
             <career-role
-                    :authUserId="AuthUserId" v-for="userInfo in userdatas" :userdata="userInfo" :key="userInfo.id">
+
+                :authUserId="AuthUserId"
+                v-for="userInfo in userdatas"
+                :userdata="userInfo"
+                :key="userInfo.id"
+            >
             </career-role>
             </div>
         </div>
