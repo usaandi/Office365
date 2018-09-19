@@ -22,7 +22,7 @@
                     <div class="col-xs-3">
                         <div class="profile__details--title" >Department: </div>
                     </div>
-                    <div class="col-xs-9git">
+                    <div class="col-xs-9">
                         <div class="profile__details--info"
                              @click="changeText('department')"
                         >
