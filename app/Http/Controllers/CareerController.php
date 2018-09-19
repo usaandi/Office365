@@ -17,7 +17,6 @@ class CareerController extends Controller
     }
     public function create(Request $request){
 
-
         try {
             if (!empty($request->all())) {
 
@@ -62,11 +61,8 @@ class CareerController extends Controller
                         }
                         unset($milestone);
                     }
-
                 }
-
             }
-
         }
         catch(\Exception $e) {
         }
@@ -80,11 +76,35 @@ class CareerController extends Controller
 
     public function returnUserData($id){
 
-
-
         $user=User::find($id);
-        $userCareerRoleMilestone = $user->userCareerRole()->with('careerRoleMilestone')->get();
+        $userCareerRoleMilestone = $user->userCareerRole()->with('careerRoleMilestone.assignee')->get();
+        $data = [];
 
-        return $userCareerRoleMilestone;
+        foreach ($userCareerRoleMilestone as $key => $careerRole) {
+
+            $data[$key]['id']=$careerRole->id;
+            $data[$key]['career_role_id']=$careerRole->career_role_id;
+            $data[$key]['user_id']=$careerRole->user_id;
+            $data[$key]['title']=$careerRole->title;
+            $data[$key]['description']=$careerRole->description;
+            $data[$key]['milestones'] = [];
+
+            foreach ($careerRole->careerRoleMilestone as $careerMilestone){
+
+                $data[$key]['milestones'][] = [
+                    'id' => $careerMilestone->id,
+                    'milestone_id' => $careerMilestone->milestone_id,
+                    'user_id' => $careerMilestone->user_id,
+                    'user_career_role_id' => $careerMilestone->user_career_role_id,
+                    'assigned_id' => $careerMilestone->assigned_id,
+                    'assigned_username' => $careerMilestone->assignee->name,
+                    'task' => $careerMilestone->task,
+                    'reminder' => $careerMilestone->reminder,
+                    'completed' => $careerMilestone->completed,
+                ];
+            }
+        }
+        unset($careerRole);
+        return $data;
     }
 }

@@ -1,0 +1,26 @@
+.admin {
+  &__form {
+    box-shadow: 0px 1px 15px 1px rgba(81, 77, 92, 0.08);
+    padding: 30px 30px 0;
+    width: 80%;
+    margin-top: 30px;
+    @media screen and (max-width: 992px) {
+      max-width: 500px;
+      width: 100%;
+    }
+    .m-form__actions {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    &--clear {
+      margin-top: 0;
+      width: 100%;
+      max-width: 500px;
+    }
+    h4 {
+      @media screen and (min-width: 992px) {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
