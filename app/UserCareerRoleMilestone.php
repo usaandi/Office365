@@ -24,4 +24,8 @@ class UserCareerRoleMilestone extends Model
          return $this->hasOne(CareerRoleMilestone::class);
      }
 
+    public function assignee() {
+         return $this->belongsTo(User::class, 'assigned_id');
+    }
+
 }
