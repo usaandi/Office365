@@ -13,6 +13,25 @@ class PersonalDevelopment extends Migration
      */
     public function up()
     {
+
+        Schema::create('users_career_roles_milestones', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('milestone_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('assigned_id');
+            $table->unsignedInteger('user_career_role_id');
+            $table->text('task');
+            $table->date('reminder');
+            $table->boolean('completed');
+            $table->timestamps();
+
+            $table->foreign('milestone_id')->references('id')->on('career_roles_milestones');
+            $table->foreign('assigned_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_career_role_id')->references('id')->on('users_career_roles');
+        });
+
+
         Schema::create('career_roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -38,21 +57,6 @@ class PersonalDevelopment extends Migration
             $table->timestamps();
 
             $table->foreign('career_role_id')->references('id')->on('career_roles');
-            $table->foreign('user_id')->references('id')->on('users');
-        });
-
-        Schema::create('users_career_roles_milestones', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('milestone_id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('assigned_id');
-            $table->text('task');
-            $table->date('reminder');
-            $table->boolean('completed');
-            $table->timestamps();
-
-            $table->foreign('milestone_id')->references('id')->on('career_roles_milestones');
-            $table->foreign('assigned_id')->references('id')->on('users');
             $table->foreign('user_id')->references('id')->on('users');
         });
 
