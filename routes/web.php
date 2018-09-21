@@ -47,6 +47,8 @@ Route::post('/user/{id}/team', 'TeamsController@updateUserTeam')->name('updateUs
 Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
 Route::get('/career/add', 'CareerController@show')->name('addCareer');
 Route::post('/career/add', 'CareerController@create')->name('addCareer');
+Route::post('/user/{id}/career/milestone/create', 'CareerController@createMilestone')->name('createMilestone');
+Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createMilestone');
 Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
 Route::get('/user/{id}', 'UserController@show')->name('profile');
 Route::get('user/{id}/career/info','CareerController@returnUserData')->name('careerInfo');
@@ -63,4 +65,5 @@ Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
 Route::get('department', 'DepartmentController@department')->name('department');
 Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
 Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
+Route::get('/users', 'UserController@userIdName')->name('usersIdName');
 });
