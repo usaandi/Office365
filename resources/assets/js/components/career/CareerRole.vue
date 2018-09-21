@@ -29,7 +29,14 @@
                                                 <span>New</span>
                                               </span>
                             </a>
-                            <milestone-form v-show="show"></milestone-form>
+
+                            <milestone-form v-show="show"
+
+                                        :careerRoleId="userRoleInfo.career_role_id"
+                                        :selectedUserProfileId="selectedUserProfileId"
+                            >
+                            </milestone-form>
+
                         </div>
                 <user-career-milestone
                     v-for="milestone in userRoleInfo['milestones']"
@@ -60,7 +67,7 @@
 <script>
 
     export default {
-        props:['authUserId','userdata'],
+        props:['authUserId','userdata','selectedUserProfileId'],
         name: "CareerRole",
 
         data(){
@@ -69,12 +76,15 @@
                 userRoleInfo:'',
                 milestoneInfo:'',
                 show:false,
+                careerRoleId:'',
             }
         },
 
-        mounted(){
+        created(){
             this.userRoleInfo = this.userdata;
             this.milestoneInfo = this.userInfo;
+        },
+        mounted(){
         },
 
         methods: {
