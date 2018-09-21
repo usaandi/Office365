@@ -89,7 +89,6 @@
         methods:{
 
             addList(value){
-                console.log(value);
                 this.milestonesList.push(value);
                 this.milestoneName='';
             },
