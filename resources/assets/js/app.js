@@ -50,6 +50,7 @@ Vue.component('user-career-milestone', require('./components/career/CareerMilest
 Vue.component('user-team-moderator', require('./components/admin/UserTeamModerator'));
 Vue.component('v-select', VueSelect.VueSelect);
 Vue.component('milestone-form', require('./components/career/CareerMilestoneForm'));
+Vue.component('career-role-form', require('./components/career/AddUserCareerRole'));
 
 const app = new Vue({
     el: '#app',
