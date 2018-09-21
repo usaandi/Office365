@@ -9,6 +9,7 @@ use App\User;
 use App\UserInfo;
 use auth;
 use phpDocumentor\Reflection\Types\Null_;
+use function Sodium\crypto_box_publickey_from_secretkey;
 use Validator;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
@@ -243,8 +244,17 @@ class UserController extends Controller
         }
         catch(\Exception $e) {
 
+
         }
     }
+
+    public function userIdName()
+    {
+        $users = User::get(['id','name']);
+
+        return $users;
+    }
+
 
 
 

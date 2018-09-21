@@ -11,7 +11,7 @@ class HobbyController extends Controller
 {
     public function hobby(){
 
-        $hobbies=Hobby::get(['hobby_name']);
+        $hobbies = Hobby::get(['hobby_name']);
 
         return $hobbies;
 
@@ -27,7 +27,7 @@ class HobbyController extends Controller
 
             $hobbyName = $request->data;
             $capitalizeHobby = ucfirst($hobbyName);
-            $hobby = Hobby::where('hobby_name', $capitalizeHobby)->first();
+            $hobby = Hobby::where('hobby_name', $capitalizeHobby)->get();
 
             if ($user->hobbies()->get()->contains($hobby)) {
                 return response('duplicate entry', 409)

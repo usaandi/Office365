@@ -14,7 +14,8 @@ class UserCareerRoleMilestone extends Model
          'assigned_id',
          'task',
          'reminder',
-         'completed'
+         'completed',
+         'user_career_role_id',
      ];
 
      public function user(){
