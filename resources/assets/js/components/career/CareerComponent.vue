@@ -11,12 +11,18 @@
                         </h3>
                     </div>
                     <div class="m-subheader__action">
-                        <a href="" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                        <a class="btn btn-success m-btn m-btn--icon m-btn--pill"
+                           @click="show=!show" >
                             <span>
                                 <i class="la la-plus"></i>
                                 <span>New</span>
                             </span>
                         </a>
+                        <career-role-form
+                                v-show="show"
+                                :selectedUserProfileId="selectedUserId"
+                                :authUserId="AuthUserId"
+                        ></career-role-form>
                     </div>
                 </div>
             </div>
@@ -31,6 +37,7 @@
                 v-for="userInfo in userdatas"
                 :userdata="userInfo"
                 :key="userInfo.id"
+                :selectedUserProfileId="selectedUserId"
             >
             </career-role>
             </div>
@@ -52,26 +59,24 @@
                 AuthUserId:'',
                 selectedUserId:'',
                 userdatas:null,
+                show:false,
             }
         },
 
-
         mounted(){
             this.AuthUserId = authUser.id;
+            this.selectedUserId = this.currentUserId;
             this.fetchData();
         },
         methods:{
-
 
             fetchData: function () {
                 axios.get('/user/' + this.currentUserId + '/career/info')
                     .then(response => {
                         this.userdatas = response.data;
-                    });
-
+                });
             }
         }
-
     }
 </script>
 
