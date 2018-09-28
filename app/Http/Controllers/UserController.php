@@ -130,7 +130,7 @@ class UserController extends Controller
 
             $user = User::findOrFail($id);
 
-            // Validate that the current user is authorized to do this request.
+            // Validate that the current user is authorized to do this update.
             // authorize will automatically kill the request if auth fails.
             $this->authorize('update', $user);
 
