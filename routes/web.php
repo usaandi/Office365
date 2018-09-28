@@ -48,7 +48,8 @@ Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')
 Route::get('/career/add', 'CareerController@show')->name('addCareer');
 Route::post('/career/add', 'CareerController@create')->name('addCareer');
 Route::post('/user/{id}/career/milestone/create', 'CareerController@createMilestone')->name('createMilestone');
-Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createMilestone');
+Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createCareer');
+Route::post('/user/{id}/career/role/save', 'CareerController@saveCareer')->name('saveCareer');
 Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
 Route::get('/user/{id}', 'UserController@show')->name('profile');
 Route::get('user/{id}/career/info','CareerController@returnUserData')->name('careerInfo');
