@@ -138,8 +138,8 @@ class CareerController extends Controller
 
                 $capitalizeTaskName = ucfirst($taskName);
 
-                $query = $user
-                    ->userCareerRoleMilestones()->where('task', $capitalizeTaskName)
+                $query = $user->userCareerRoleMilestones()
+                    ->where('task', $capitalizeTaskName)
                     ->where('user_career_role_id', $careerRoleId)
                     ->get();
 
@@ -148,20 +148,14 @@ class CareerController extends Controller
                     //TODO
                 }
 
-
                 if ($query->isEmpty() === true) {
-
                     $userCareerMilestone = UserCareerRoleMilestone::create([
-
                         'user_id' => $id,
                         'assigned_id' => $assignerUserId,
                         'user_career_role_id' => $careerRoleId,
                         'task' => $capitalizeTaskName,
                         'reminder' => $reminder,
                         'completed' => 0,
-
-
-
                         //TODO
                         //Return data back to vue so it can display new milestone.
                     ]);
@@ -177,15 +171,124 @@ class CareerController extends Controller
 
     public function createCareer(Request $request, $id)
     {
-
         try {
-            $data = $request->all()[0];
-            $user = User::findOrFail($id);
+            $data = $request->all();
 
-            //TODO create role based on info you get from View;
+            $rules = [
+                'careerRoleId' => 'required|max:6'
+            ];
+            $validator = Validator::make($data, $rules);
+
+            if ($validator->passes()) {
+
+                $careerRoleId = $data['careerRoleId'];
+
+                $careerRoleMilestones = CareerRole::with('careerRoleMilestones')->findOrFail($careerRoleId);
+
+                $milestones = [];
+
+                foreach ($careerRoleMilestones->careerRoleMilestones()->get() as $milestone) {
+                    $milestones[] = [
+                        'id' => '',
+                        'milestone_id' => $milestone->id,
+                        'user_id' => $id,
+                        'user_career_role_id' => '',
+                        'assigned_id' => '',
+                        'assigned_username' => '',
+                        'task' => $milestone->task,
+                        'reminder' => '',
+                        'completed' => '0',
+                    ];
+                }
+
+                $array[] = [
+                    'career_role_id' => $careerRoleMilestones->id,
+                    'title' => $careerRoleMilestones->title,
+                    'description' => $careerRoleMilestones->description,
+                    'user_id' => $id,
+                    'milestones' => $milestones,
+                ];
+
+            }
+
+            return $array;
+
         }
         catch (\Exception $e){
 
         }
+    }
+
+    public function saveCareer(Request $request, $id)
+    {
+
+        $data = $request->all();
+
+
+
+        $rules = [
+
+            'career_role_id' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'user_id' => 'required',
+            'milestones' => 'nullable|array',
+            'milestones.*.id' => 'nullable',
+            'milestones.*.milestone_id' => 'nullable',
+            'milestones.*.user_id' => 'nullable',
+            'milestones.*.user_career_role_id' => 'nullable',
+            'milestones.*.assigned_id' => 'nullable',
+            'milestones.*.assigned_username' => 'nullable',
+            'milestones.*.task' => 'required',
+            'milestones.*.reminder' => 'nullable',
+            'milestones.*.completed' => 'required',
+
+
+
+        ];
+
+        $validator = Validator::make($data, $rules);
+
+        try {
+            if ($validator->passes()) {
+
+                if (empty($data['milestones']) === false) {
+
+                    $milestones = $data['milestones'];
+                }
+
+                $careerRoleId = $data['career_role_id'];
+                $title = $data['title'];
+                $description = $data['description'];
+                $userId = $data['user_id'];
+
+                $ucTitle = ucfirst($title);
+
+                $user = User::findOrFail($id);
+
+                $query = $user->UserCareerRole()
+                    ->where('title', $ucTitle)
+                    ->where('user_id', $userId)
+                    ->get();
+
+                if ($query->isEmpty() === false) {
+                    //Return something that To VUE that it is duplicate entry
+                    //TODO
+                }
+                if ($query->isEmpty() === true) {
+
+                    $userCareerRoleId = $user->UserCareerRole()->create([
+                        'career_role_id' => $careerRoleId,
+                        'title' => $ucTitle,
+                        'description' => $description,
+                        'user_id' => $userId,
+                    ])->id;
+                }
+
+            }
+        }catch (\Exception $e){
+
+        }
+
     }
 }
