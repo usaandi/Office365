@@ -48,7 +48,7 @@
     import axios from 'axios';
 
     export default {
-        props: ['careerRoleId','selectedUserProfileId'],
+        props: ['careerRoleId','selectedUserProfileId','usersList'],
         name: "CareerMilestoneForm",
         data(){
             return{
@@ -62,18 +62,18 @@
 
         mounted(){
 
-          this.usersList();
+            this.users = this.usersList;
+        },
+
+        watch:{
+          usersList(newValue){
+              this.users = newValue;
+          }
+
         },
 
         methods:{
 
-            usersList(){
-                axios.get('/users')
-                    .then(response => {
-
-                        this.users=response.data;
-                })
-            },
             submit(){
 
                 const data = [{
@@ -83,14 +83,13 @@
                 CareerRoleId:this.careerRoleId,
             }];
 
-                // this.task='';
-                // this.reminder='';
-                // this.assignerUserId='';
+                 this.task='';
+                 this.reminder='';
+                 this.assignerUserId='';
 
                 let vm = this;
                 axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/create',data)
                     .then(response => {
-
                     }).catch(error => {
 
                 });

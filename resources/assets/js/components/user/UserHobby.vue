@@ -35,13 +35,11 @@
         mounted() {
             this.id = this.userid;
             this.fetchData();
-            console.log(this.canedit);
             this.edit = this.canedit;
         },
         methods:{
 
             deleteRow: function(userHobbyId){
-                console.log(userHobbyId);
                 let vm =this;
                 axios.delete('/user/'+ this.id +'/delete/hobby', {params: {userhobbyid: userHobbyId}})
                     .then(function (response) {
