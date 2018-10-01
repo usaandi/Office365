@@ -243,19 +243,12 @@ class CareerController extends Controller
             'milestones.*.reminder' => 'nullable',
             'milestones.*.completed' => 'required',
 
-
-
         ];
 
         $validator = Validator::make($data, $rules);
 
         try {
             if ($validator->passes()) {
-
-                if (empty($data['milestones']) === false) {
-
-                    $milestones = $data['milestones'];
-                }
 
                 $careerRoleId = $data['career_role_id'];
                 $title = $data['title'];
@@ -283,7 +276,27 @@ class CareerController extends Controller
                         'description' => $description,
                         'user_id' => $userId,
                     ])->id;
+
+                    if (empty($data['milestones']) === false) {
+                        $milestones = $data['milestones'];
+                        foreach($milestones as  $milestone){
+                            $user->userCareerRoleMilestones()->create([
+
+                                'milestone_id' => $milestone['milestone_id'],
+                                'user_id' => $milestone['user_id'],
+                                'assigned_id' => $milestone['assigned_id'],
+                                'user_career_role_id' => $userCareerRoleId,
+                                'task' => $milestone['task'],
+                                'reminder' => $milestone['reminder'],
+                                'completed' => $milestone['completed'],
+
+                            ]);
+                        }
+                        unset($milestone);
+                    }
                 }
+
+
 
             }
         }catch (\Exception $e){
