@@ -13,16 +13,7 @@ class TeamUser extends Migration
      */
     public function up()
     {
-        Schema::create('user_teams_moderators', function (Blueprint $table){
-            $table->increments('id');
-            $table->unsignedInteger('team_id');
-            $table->unsignedInteger('user_id');
-            $table->timestamps();
 
-            $table->foreign('team_id')->references('id')->on('teams');
-            $table->foreign('user_id')->references('id')->on('users');
-
-        });
 
         Schema::create('teams', function (Blueprint $table){
             $table->increments('id');
@@ -51,6 +42,16 @@ class TeamUser extends Migration
 
 
         Schema::create('users_teams', function (Blueprint $table){
+            $table->increments('id');
+            $table->unsignedInteger('team_id');
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
+
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('user_id')->references('id')->on('users');
+
+        });
+        Schema::create('user_teams_moderators', function (Blueprint $table){
             $table->increments('id');
             $table->unsignedInteger('team_id');
             $table->unsignedInteger('user_id');
