@@ -18,7 +18,6 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        //
     }
 
     /**
@@ -30,6 +29,18 @@ class UserPolicy
     public function create(User $user)
     {
         //
+    }
+    public function admin(User $user)
+    {
+       return $this->userIsAdmin($user);
+    }
+    public function createMilestone(User $user, User $model)
+    {
+        return $this->userCanEditCareer($user, $model);
+    }
+    public function createCareer(User $user, User $model)
+    {
+        return $this->userCanEditCareer($user, $model);
     }
 
     /**
@@ -45,6 +56,18 @@ class UserPolicy
           return $this->userCanEdit($user, $model);
 
     }
+    public function updateMilestone(User $user, User $model)
+    {
+
+        return $this->userCanEditCareer($user, $model);
+
+    }
+    public function updateCareer(User $user, User $model)
+    {
+
+        return $this->userCanEditCareer($user, $model);
+
+    }
 
     /**
      * Determine whether the user can delete the model.
@@ -56,6 +79,12 @@ class UserPolicy
     public function delete(User $user, User $model)
     {
         return $this->userCanEdit($user, $model);
+    }
+
+
+    public function deleteMilestone(User $user, User $model)
+    {
+        return $this->userCanEditCareer($user, $model);
     }
 
     protected function userCanEdit(User $user, User $model) {
@@ -72,6 +101,32 @@ class UserPolicy
         $modelTeamId = $model->team()->first()->team_id;
 
         if($user->isModeratorOfTeam($modelTeamId)){
+            return TRUE;
+        }
+
+        return FALSE;
+
+    }
+    protected function userCanEditCareer(User $user, User $model) {
+
+        if($user->hasRole('Admin'))
+        {
+            return TRUE;
+        }
+
+        $modelTeamId = $model->team()->first()->team_id;
+
+        if($user->isModeratorOfTeam($modelTeamId)){
+            return TRUE;
+        }
+
+        return FALSE;
+
+    }
+    protected function userIsAdmin(User $user) {
+
+        if($user->hasRole('Admin'))
+        {
             return TRUE;
         }
 

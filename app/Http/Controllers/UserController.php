@@ -8,11 +8,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
 use auth;
-use phpDocumentor\Reflection\Types\Null_;
-use function Sodium\crypto_box_publickey_from_secretkey;
 use Validator;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -20,6 +17,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+
 
     public function show($id)
     {
@@ -54,42 +52,45 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
+        try{
+            $authUser = \Auth::user();
+            $this->authorize('admin', $authUser);
 
-        $request->validate([
+            $request->validate([
+                'name' => '',
+                'email' => 'email',
+                'phone' => 'int',
+                'birthday' => 'date',
+                'skype' => '',
+                'team' => '',
+                'ADMsince' => 'date',
+                'role' => '',
+            ]);
+            $name = $request->input('name');
+            $email = $request->input('email');
+            $phone = $request->input('phone');
+            $birthday = $request->input('birthday');
+            $skype = $request->input('skype');
+            $team = $request->input('team');
+            $ADMsince = $request->input('ADMsince');
+            $role = $request->input('role');
 
-            'name' => '',
-            'email' => 'email',
-            'phone' => 'int',
-            'birthday' => 'date',
-            'skype' => '',
-            'team' => '',
-            'ADMsince' => 'date',
-            'role' => '',
-        ]);
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $phone = $request->input('phone');
-        $birthday = $request->input('birthday');
-        $skype = $request->input('skype');
-        $team = $request->input('team');
-        $ADMsince = $request->input('ADMsince');
-        $role = $request->input('role');
+            $user = User::findOrFail($id);
 
-        $user = User::findOrFail($id);
+            $userRole = Role::findByName($role);
 
-        $userRole = Role::findByName($role);
+            if (!$user->hasRole($userRole)) {
 
-        if (!$user->hasRole($userRole)) {
+                $user->removeRole($user->roles()->first()->name);
+                $user->assignRole($userRole);
+            }
 
-            $user->removeRole($user->roles()->first()->name);
-            $user->assignRole($userRole);
-        }
+            $user->update(['email' => $email, 'name' => $name, 'phoneN' => $phone,
+            'birthday' => $birthday, 'skype' => $skype, 'team' => $team, 'ADMsince' => $ADMsince]);
+            $user->save();
 
-        $user->update(['email' => $email, 'name' => $name, 'phoneN' => $phone,
-        'birthday' => $birthday, 'skype' => $skype, 'team' => $team, 'ADMsince' => $ADMsince]);
-        $user->save();
-
-        return redirect()->back();
+            return redirect()->back();
+        }catch(\Exception $e){}
 
     }
 
@@ -103,24 +104,17 @@ class UserController extends Controller
             $request->validate([
                 'data' => 'string'
             ]);
-
-
-
             $team = $request->data;
-
             $user->team = $team;
             $user->save();
 
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
-
         }
         catch(\Exception $e) {
-
         }
         return response('Error updating user', 400)
             ->header('Content-Type', 'application/json');
-
     }
 
     public function updatePhone(Request $request, $id)
@@ -128,10 +122,11 @@ class UserController extends Controller
 
         try {
 
-            $user = User::findOrFail($id);
-
             // Validate that the current user is authorized to do this update.
             // authorize will automatically kill the request if auth fails.
+
+
+            $user = User::findOrFail($id);
             $this->authorize('update', $user);
 
             $request->validate([
@@ -162,7 +157,6 @@ class UserController extends Controller
             $user = User::findOrFail($id);
 
             $this->authorize('update', $user);
-
             $request->validate([
                 'data' => 'email'
             ]);
@@ -188,8 +182,8 @@ class UserController extends Controller
     {
         try {
 
-            $user = User::findOrFail($id);
 
+            $user = User::findOrFail($id);
             $this->authorize('update', $user);
 
             $request->validate([
@@ -211,41 +205,6 @@ class UserController extends Controller
         }
         return response('Error updating user', 400)
             ->header('Content-Type', 'application/json');
-    }
-    public function updateInfo(Request $request, $id)
-    {
-        try {
-
-            $data=json_decode(key($request->all()), true);
-            $rules = [
-                'user_info' => 'text',
-
-            ];
-            $validator = Validator::make($data, $rules);
-
-
-
-            if ($validator->passes()){
-
-                $userid = User::findOrFail($id)->id;
-                $user = User::findOrFail($id);
-                $newuserinfo = $data['user_info'];
-
-
-
-                $user->info()->get($userid)->save(['user_info' => $newuserinfo,'user_id'=>$userid]);
-                $infoid=UserInfo::findOrFail($newuserinfo)->first()->id;
-
-                return response()->json([
-                    'user_info'=> $newuserinfo,
-                    'info_id'=>$infoid,
-                ]);
-            }
-        }
-        catch(\Exception $e) {
-
-
-        }
     }
 
     public function userIdName()
