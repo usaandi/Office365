@@ -51,6 +51,8 @@ Vue.component('user-team-moderator', require('./components/admin/UserTeamModerat
 Vue.component('v-select', VueSelect.VueSelect);
 Vue.component('milestone-form', require('./components/career/CareerMilestoneForm'));
 Vue.component('career-role-form', require('./components/career/AddUserCareerRole'));
+Vue.component('user-child-form', require('./components/user/UserChildrenForm'));
+Vue.component('user-hobby-form', require('./components/user/UserHobbyForm'));
 
 const app = new Vue({
     el: '#app',
