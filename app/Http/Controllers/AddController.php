@@ -16,7 +16,9 @@ class AddController extends Controller
         return view('user.adduser');
     }
     public function store(Request $request){
-
+        try{
+            $user = \Auth::user();
+            $this->authorize('admin', $user);
            $request->validate([
 
                 'name'=>'required',
@@ -55,5 +57,6 @@ class AddController extends Controller
             else {
                 echo 'Sellise nimega isik: '.$name.' ja Emailiga:'.$email.' On juba andmebaasis';
             }
+        }catch (\Exception $e){}
     }
 }
