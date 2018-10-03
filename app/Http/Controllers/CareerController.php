@@ -8,20 +8,21 @@ use App\CareerRole;
 use App\CareerRoleMilestone;
 use PhpParser\Node\Expr\Array_;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class CareerController extends Controller
 {
     public function show()
     {
-
         return view('user.addcareer');
     }
-
     public function create(Request $request)
     {
 
         try {
+            $authUser = \Auth::user();
+            $this->authorize('admin', $authUser);
             if (!empty($request->all())) {
 
                 $data = $request->all()[0];
@@ -70,13 +71,11 @@ class CareerController extends Controller
         } catch (\Exception $e) {
         }
     }
-
     public function careerRoleMilestonesData()
     {
         $careerRoles = CareerRole::all();
         return $careerRoles;
     }
-
     public function returnUserData($id)
     {
 
@@ -112,66 +111,39 @@ class CareerController extends Controller
         return $data;
     }
 
-    public function createMilestone(Request $request, $id)
+    public function updateCareer(Request $request, $id)
     {
         try {
-
-            $data = $request->all()[0];
+            $authUser = \Auth::user();
+            $this->authorize('updateCareer', $authUser);
+            $data = $request->all();
+            $user = User::findOrFail($id);
 
             $rules = [
-                'taskName' => 'required|string|max:30',
-                'reminder' => 'required|',
-                'assignerUserId' => 'required|',
-                'CareerRoleId' => 'required|'
+                'fieldValue' => 'required',
+                'fieldName' => 'required',
+                'id' => 'required'
             ];
-
             $validator = Validator::make($data, $rules);
 
-            if ($validator->passes()) {
-
-                $user = User::findOrFail($id);
-
-                $taskName = $data['taskName'];
-                $reminder = $data['reminder'];
-                $assignerUserId = $data['assignerUserId'];
-                $careerRoleId = $data['CareerRoleId'];
-
-                $capitalizeTaskName = ucfirst($taskName);
-
-                $query = $user->userCareerRoleMilestones()
-                    ->where('task', $capitalizeTaskName)
-                    ->where('user_career_role_id', $careerRoleId)
-                    ->get();
-
-                if ($query->isEmpty() === false) {
-                     //Return something that To VUE that it is duplicate entry
-                    //TODO
-                }
-
-                if ($query->isEmpty() === true) {
-                    $userCareerMilestone = UserCareerRoleMilestone::create([
-                        'user_id' => $id,
-                        'assigned_id' => $assignerUserId,
-                        'user_career_role_id' => $careerRoleId,
-                        'task' => $capitalizeTaskName,
-                        'reminder' => $reminder,
-                        'completed' => 0,
-                        //TODO
-                        //Return data back to vue so it can display new milestone.
+            if($validator->passes()){
+                $user->userCareerRole()
+                    ->where('id', $data['id'])
+                    ->where('user_id', $id)
+                    ->update([
+                        $data['fieldName'] => $data['fieldValue']
                     ]);
-                }
 
             }
-        }
-        catch(\Exception $e) {
 
-        }
-
+        }catch(\Exception $e){}
     }
-
     public function createCareer(Request $request, $id)
     {
         try {
+            $authUser = \Auth::user();
+            $this->authorize('createCareer', $authUser);
+
             $data = $request->all();
 
             $rules = [
@@ -218,36 +190,35 @@ class CareerController extends Controller
 
         }
     }
-
     public function saveCareer(Request $request, $id)
     {
-
-        $data = $request->all();
-
-
-
-        $rules = [
-
-            'career_role_id' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'user_id' => 'required',
-            'milestones' => 'nullable|array',
-            'milestones.*.id' => 'nullable',
-            'milestones.*.milestone_id' => 'nullable',
-            'milestones.*.user_id' => 'nullable',
-            'milestones.*.user_career_role_id' => 'nullable',
-            'milestones.*.assigned_id' => 'nullable',
-            'milestones.*.assigned_username' => 'nullable',
-            'milestones.*.task' => 'required',
-            'milestones.*.reminder' => 'nullable',
-            'milestones.*.completed' => 'required',
-
-        ];
-
-        $validator = Validator::make($data, $rules);
-
         try {
+            $data = $request->all();
+            $authUser = \Auth::user();
+            $this->authorize('createCareer', $authUser);
+
+            $rules = [
+
+                'career_role_id' => 'required',
+                'title' => 'required',
+                'description' => 'required',
+                'user_id' => 'required',
+                'milestones' => 'nullable|array',
+                'milestones.*.id' => 'nullable',
+                'milestones.*.milestone_id' => 'nullable',
+                'milestones.*.user_id' => 'nullable',
+                'milestones.*.user_career_role_id' => 'nullable',
+                'milestones.*.assigned_id' => 'nullable',
+                'milestones.*.assigned_username' => 'nullable',
+                'milestones.*.task' => 'required',
+                'milestones.*.reminder' => 'nullable',
+                'milestones.*.completed' => 'required',
+
+            ];
+
+            $validator = Validator::make($data, $rules);
+
+
             if ($validator->passes()) {
 
                 $careerRoleId = $data['career_role_id'];
@@ -296,12 +267,144 @@ class CareerController extends Controller
                     }
                 }
 
-
-
             }
         }catch (\Exception $e){
 
         }
 
+    }
+
+    public function createMilestone(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $authUser = \Auth::user();
+            $this->authorize('createMilestone', $authUser);
+
+            $data = $request->all()[0];
+
+            $rules = [
+                'taskName' => 'required|string|max:30',
+                'reminder' => 'required|',
+                'assignerUserId' => 'required|',
+                'CareerRoleId' => 'required|'
+            ];
+
+            $validator = Validator::make($data, $rules);
+
+            if ($validator->passes()) {
+
+
+                $taskName = $data['taskName'];
+                $reminder = $data['reminder'];
+                $assignerUserId = $data['assignerUserId'];
+                $careerRoleId = $data['CareerRoleId'];
+
+                $capitalizeTaskName = ucfirst($taskName);
+
+                $query = $user->userCareerRoleMilestones()
+                    ->where('user_id', $id)
+                    ->where('task', $capitalizeTaskName)
+                    ->where('user_career_role_id', $careerRoleId)
+                    ->get();
+
+                if ($query->isEmpty() === false) {
+                    //Return something that To VUE that it is duplicate entry
+                    //TODO
+                }
+
+                if ($query->isEmpty() === true) {
+                    $userCareerMilestone = UserCareerRoleMilestone::create([
+                        'user_id' => $id,
+                        'assigned_id' => $assignerUserId,
+                        'user_career_role_id' => $careerRoleId,
+                        'task' => $capitalizeTaskName,
+                        'reminder' => $reminder,
+                        'completed' => 0,
+                        //TODO
+                        //Return data back to vue so it can display new milestone.
+                    ]);
+                }
+
+            }
+        }
+        catch(\Exception $e) {
+
+        }
+
+    }
+    public function updateMilestone(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $authUser = \Auth::user();
+            $this->authorize('updateMilestone', $authUser);
+
+            $data = $request->all()[0];
+
+            $rules = [
+
+                'id' => 'required',
+                'reminder' => 'required',
+                'task' => 'required',
+                'selected.id' => 'required',
+                'selected.name' => 'required',
+                'userCareerRoleId' => 'required',
+
+
+            ];
+            $validator = Validator::make($data, $rules);
+
+            if($validator->passes()){
+
+                $user->userCareerRoleMilestones()->where('id',  $data['id'])
+                    ->where('user_career_role_id', $data['userCareerRoleId'])
+                    ->where('user_id', $id)
+                    ->update([
+                        'task' => $data['task'],
+                        'reminder' => $data['reminder'],
+                        'assigned_id' => $data['selected']['id'],
+                    ]);
+
+            }
+
+        }catch (\Exception $e){}
+    }
+    public function deleteMilestone(Request $request, $id)
+    {
+        try{
+
+            $user = User::findOrFail($id);
+
+            $authUserId = \Auth::user()->id;
+            $this->authorize('deleteMilestone', $authUserId);
+
+            $data = $request->all();
+
+
+            $rules = [
+                'id' => 'required',
+                'milestone_id' => 'nullable',
+                'user_id' => 'required',
+                'user_career_role_id' => 'required',
+                'task' => 'nullable',
+                'reminder' => 'nullable',
+                'completed' => 'nullable',
+            ];
+            $validator = Validator::make($data, $rules);
+
+            if($validator->passes()){
+                $deleteMilestone = $user->userCareerRoleMilestones()
+                    ->where('id', $data['id'])
+                    ->where('user_id', $data['user_id'])
+                    ->where('user_career_role_id', $data['user_career_role_id'])
+                    ->where('milestone_id', $data['milestone_id']);
+                if($deleteMilestone){
+                    $deleteMilestone->delete();
+                }
+            }
+        }
+        catch(\Exception $e){
+        }
     }
 }
