@@ -19,14 +19,14 @@ Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
 
 
-route::get('/test','CareerController@careerRoleMilestonesData');
+
 
 
 
 Route::group(['middleware'=> 'auth'], function (){
 
-
-
+Route::get('/user/career/info/{id}', 'PersonalDevelopmentController@userInfo');
+Route::get('/career/roles','CareerController@careerRoleMilestonesData');
 Route::get('/upload', 'ImageController@show');
 Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
 Route::get('/user/{id}/update', 'UserController@showedit');
@@ -48,6 +48,9 @@ Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')
 Route::get('/career/add', 'CareerController@show')->name('addCareer');
 Route::post('/career/add', 'CareerController@create')->name('addCareer');
 Route::post('/user/{id}/career/milestone/create', 'CareerController@createMilestone')->name('createMilestone');
+Route::post('/user/{id}/career/milestone/update', 'CareerController@updateMilestone')->name('updateMilestone');
+Route::post('/user/{id}/career/milestone/delete', 'CareerController@deleteMilestone')->name('deleteMilestone');
+Route::post('/user/{id}/career/update', 'CareerController@updateCareer')->name('updateCareer');
 Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createCareer');
 Route::post('/user/{id}/career/role/save', 'CareerController@saveCareer')->name('saveCareer');
 Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
