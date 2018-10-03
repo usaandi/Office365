@@ -13,6 +13,7 @@
             <li><a href="#">#{{hobby.hobby_name}}</a></li>
             <button v-show="edit" class="" @click="deleteRow(hobby.id)">X</button>
         </ul>
+        <user-hobby-form v-show="edit"></user-hobby-form>
         <button v-show="edit" @click="upload()" class="btn btn-success m-btn m-btn--icon m-btn--pill" >+Add new</button>
         <input v-show="edit" v-model="hobbyname">
     </div>

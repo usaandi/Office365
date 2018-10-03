@@ -137,7 +137,7 @@
 
     export default {
         name: "ProfileView",
-        components: {UserBadge, UserHobby, EditableInputComponent},
+        components: { EditableInputComponent},
         props: ['user', 'image'],
         data: function(){
             return{
@@ -158,9 +158,9 @@
 
             if (authUser.id === this.user.id
                 || Vue.$isAdmin()
-                || Vue.$canModerateTeam(this.userdata.team_id)
-            ) {
-                this.canedit = true;
+                || Vue.$canModerateTeam(this.userdata.team_id)){
+
+                 this.canedit = true;
             }
 
         },

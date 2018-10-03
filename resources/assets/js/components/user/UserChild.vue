@@ -2,7 +2,7 @@
     <div>
         <h3 class="profile__subtitle">Children</h3>
         <div class="m-subheader__action">
-            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
               <span>
 										<i class="la la-plus"></i>
 										<span>New</span>
@@ -16,14 +16,16 @@
                 </div>
                 <div class="col-xs-9">
                     <div class="profile__details--info">{{child.age}}a</div>
-                    <button v-show="edit" @click="deleteRow(child.id,index)">X</button>
+                    <button v-show="edit" @click="deleteRow(child.id, index)">X</button>
                 </div>
             </div>
+            <user-child-form v-show="edit"></user-child-form>
             <label v-show="edit">Year born</label><input  v-show="edit" type="date" v-model="dateborn">
             <label v-show="edit">Child name</label><input v-show="edit" v-model="childname" placeholder="Child name">
             <button v-show="edit" @click="upload()" >+Add new</button>
         </div>
     </div>
+
 </template>
 
 <script>
