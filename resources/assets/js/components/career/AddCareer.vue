@@ -60,7 +60,6 @@
 
 <script>
 
-    import BootstrapVue from 'bootstrap-vue';
     import axios from 'axios';
 
 
@@ -95,7 +94,7 @@
 
 
             fetchData: function () {
-                axios.get('/test')
+                axios.get('/career/roles')
                     .then(response => {
                         let careerRole = [];
                         for (let i = 0; i < response.data.length; i++) {

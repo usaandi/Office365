@@ -38,7 +38,7 @@
 
 
     export default {
-        props:['selectedUserProfileId','authUserId'],
+        props:['selectedUserProfileId','authUserId','canEdit'],
         name: "AddUserCareerRole",
         data(){
             return{
@@ -55,19 +55,25 @@
         methods:{
 
             create(){
-                this.$emit('createRole', this.careerRoleId);
+                if(this.canEdit===true){
+                    this.$emit('createRole', this.careerRoleId);
+                }
             },
             remove(){
-                this.$emit('remove');
+                if(this.canEdit===true) {
+                    this.$emit('remove');
+                }
 
             },
             save(){
-                this.$emit('save', true);
+                if(this.canEdit===true){
+                    this.$emit('save', true);
+                }
             },
 
 
             fetch(){
-                axios.get('/test').then(response => {
+                axios.get('/career/roles').then(response => {
                     this.careerRoleTitle = response.data;
                 })
             }

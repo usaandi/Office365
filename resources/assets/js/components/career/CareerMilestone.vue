@@ -53,7 +53,7 @@
 <script>
     export default {
         name: "CareerMilestone",
-        props:['milestoneInfo','usersList'],
+        props:['milestoneInfo','usersList','selectedUserProfileId','canEdit'],
         data(){
             return {
 
@@ -78,25 +78,39 @@
         },
         methods: {
 
-            change(value){
+            change(){
+
             },
-
-            remove(index, ){
-                this.$emit('removeMilestone',index);
-                /*this.milestone[index].pop();*/
-
+            remove(index){
+                if(this.canEdit===true){
+                  this.$emit('removeMilestone',index);
+                }
             },
             submit() {
 
             },
 
             focusField() {
+                if(this.canEdit===true){
+                    this.show === false ? this.show=true : this.show=false;
 
-                this.show === false ? this.show=true : this.show=false;
+                    this.milestone.assigned_id = this.selected.id;
+                    this.milestone.assigned_username = this.selected.name;
 
-                this.milestone.assigned_id = this.selected.id;
-                this.milestone.assigned_username = this.selected.name;
 
+                    if(this.show === false){
+                        const data = [{
+                            id: this.milestone.id,
+                            reminder: this.milestone.reminder,
+                            task: this.milestone.task,
+                            selected: this.selected,
+                            userCareerRoleId: this.milestone.user_career_role_id,
+                        }];
+
+                        axios.post('/user/'+ this.selectedUserProfileId +'/career/milestone/update',data)
+                            .then(response => {});
+                    }
+                }
             },
 
         }

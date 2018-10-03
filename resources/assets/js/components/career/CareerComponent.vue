@@ -12,13 +12,14 @@
                     </div>
                     <div class="m-subheader__action">
                         <a class="btn btn-success m-btn m-btn--icon m-btn--pill"
-                           @click="show=!show" >
+                           @click="showForm" >
                             <span>
                                 <i class="la la-plus"></i>
                                 <span>New</span>
                             </span>
                         </a>
                         <career-role-form
+                                :canEdit="canEdit"
                                 v-show="show"
                                 :selectedUserProfileId="selectedUserId"
                                 :authUserId="AuthUserId"
@@ -35,8 +36,9 @@
         <div class="m-timeline-2">
             <div class="m-timeline-2__items" >
             <career-role
+                :canEdit="canEdit"
                 :authUserId="AuthUserId"
-                v-for="userInfo in userdatas"
+                v-for="userInfo in userDatas"
                 :userdata="userInfo"
                 :key="userInfo.id"
                 :selectedUserProfileId="selectedUserId"
@@ -61,22 +63,47 @@
                 isHidden:false,
                 AuthUserId:'',
                 selectedUserId:'',
-                userdatas:null,
+                userDatas:null,
                 careerRoleId:'',
                 show:false,
                 hasChanged: false,
                 users:null,
+                userInfo:'',
+
+                canEdit:false,
             }
         },
-
         mounted(){
             this.AuthUserId = authUser.id;
             this.selectedUserId = this.currentUserId;
+
             this.fetchData();
             this.usersList();
+            this.fetchUserInfo();
+
+
         },
         methods:{
 
+            showForm(){
+
+                if(this.canEdit===true){
+
+                    this.show === false ? this.show=true : this.show=false;
+                }
+            },
+
+            checkCanEdit(){
+                if (Vue.$isAdmin() || Vue.$canModerateTeam(this.userInfo.team_id)){
+                    this.canEdit = true;
+                }
+            },
+            fetchUserInfo(){
+                axios.get('/user/career/info/'+this.currentUserId).then(response => {
+                    this.userInfo = response.data;
+                    this.checkCanEdit();
+                });
+            },
             usersList(){
                 axios.get('/users')
                     .then(response => {
@@ -85,51 +112,50 @@
             },
 
             saveRole(value){
-
-                if(this.hasChanged){
-
-                const data = this.userdatas[0];
-
-
-                /*console.log(data);*/
-                 axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
-                    .then(response => {});
-                 this.show=false;
-                this.hasChanged=false;
+                if(this.canEdit===true){
+                    if(this.hasChanged){
+                    const data = this.userdatas[0];
+                     axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
+                        .then(response => {});
+                     this.show = false;
+                    this.hasChanged = false;
+                   }
                 }
-
             },
             removeElement(){
 
-                if(this.hasChanged){
-                    this.userdatas.splice(0, 1);
-                    this.hasChanged=false;
+                if(this.canEdit===true){
+                    if(this.hasChanged){
+                        this.userdatas.splice(0, 1);
+                        this.hasChanged = false;
+                    }
                 }
-
             },
             newRole(value){
-                this.careerRoleId = value;
-                const data = {
-                    careerRoleId: this.careerRoleId,
-                };
-                let vm = this;
+                if(this.canEdit===true){
+                    this.careerRoleId = value;
+                    const data = {
+                        careerRoleId: this.careerRoleId,
+                    };
+                    let vm = this;
 
-                axios.post('/user/'+this.selectedUserId+'/career/role/create',data)
-                    .then(response => {
-                        if (vm.hasChanged) {
-                            Vue.set( vm.userdatas, 0, response.data[0] )
-                        }
-                        else {
-                            vm.hasChanged = true;
-                            vm.userdatas.unshift(response.data[0]);
-                        }
-                    }).catch(error => {});
+                    axios.post('/user/'+this.selectedUserId+'/career/role/create',data)
+                        .then(response => {
+                            if (vm.hasChanged) {
+                                Vue.set( vm.userDatas, 0, response.data[0])
+                            }
+                            else {
+                                vm.hasChanged = true;
+                                vm.userDatas.unshift(response.data[0]);
+                            }
+                        }).catch(error => {});
+                }
             },
 
             fetchData: function () {
                 axios.get('/user/' + this.currentUserId + '/career/info')
                     .then(response => {
-                        this.userdatas = response.data;
+                        this.userDatas = response.data;
                 });
             }
         }

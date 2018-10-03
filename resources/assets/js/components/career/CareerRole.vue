@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__add">
-                            <a  class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="show=!show">
+                            <a  class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
                                                 <span>New</span>
@@ -45,14 +45,15 @@
 
                                     :usersList="usersList"
                                     v-show="show"
-                                    :careerRoleId="userRoleInfo.career_role_id"
+                                    :careerRoleId="userRoleInfo.id"
                                     :selectedUserProfileId="selectedUserProfileId"
                             >
                             </milestone-form>
 
                         </div>
                 <user-career-milestone
-
+                    :canEdit="canEdit"
+                    :selectedUserProfileId="selectedUserProfileId"
                     v-for="milestone in userRoleInfo['milestones']"
                     :milestoneInfo="milestone"
                     :key="milestone.id"
@@ -69,7 +70,7 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__action">
-                            <button type="button" @click="isEditing=!isEditing" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit</button>
+                            <button type="button" @click="canEditCareer()" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit</button>
                             <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current</button>
                         </div>
                     </div>
@@ -84,7 +85,7 @@
 
     import axios from 'axios';
     export default {
-        props:['authUserId','userdata','selectedUserProfileId','usersList'],
+        props:['authUserId','userdata','selectedUserProfileId','usersList','canEdit'],
         name: "CareerRole",
 
         data(){
@@ -95,11 +96,12 @@
                 milestoneInfo:'',
                 show:false,
                 careerRoleId:'',
-
                 newRoleTitle:'',
                 newRoleDescription:'',
                 isEditing:false,
                 editField:'',
+                isUpdate:false,
+
             }
         },
         watch: {
@@ -118,53 +120,64 @@
 
         methods: {
 
-            deleteMilestone(value){
-                console.log('emitted id' + value);
-                const data = this.userRoleInfo['milestones'];
+            canEditCareer(){
+                if(this.canEdit===true){
 
-
-                let array = this.userRoleInfo['milestones'];
-                let index = this.userRoleInfo['milestones'].findIndex(function(obj){
-                    return obj.id === value;
-                });
-                if (index !== -1){
-                    array.splice(index,1);
+                    this.isEditing === false ? this.isEditing=true : this.isEditing=false;
                 }
-
-
-            /*    if (index !== -1) {
-                    vm.userRoleInfo.splice(index, 1);
-                }*/
-              // Vue.delete(this.userRoleInfo['milestones'],this.userRoleInfo['milestones']);
-             /*  this.userRoleInfo.splice(this.userRoleInfo.indexOf(index),1);*/
-              /*  console.log(array);
-                if(array.milestone_id === index){
-                    array.splice(array.milestone_id,0);
-                }*/
-
-
             },
+
+            showForm(){
+
+                if(this.canEdit===true){
+
+                    this.show === false ? this.show=true : this.show=false;
+                }
+            },
+
+            deleteMilestone(value){
+
+                if(this.canEdit===true){
+
+                    let array = this.userRoleInfo['milestones'];
+                    let index = array.findIndex(function(obj){
+                        return obj.id === value;
+                    });
+                    const data = this.userRoleInfo['milestones'][index];
+
+                    axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/delete',data).then(response => {});
+                    if (index !== -1){
+                        array.splice(index,1);
+                    }
+                }
+            },
+
 
             focusField(value){
                 if(this.isEditing){
                     this.editField = value;
                 }
-
             },
             blurField(){
 
                 if(this.isEditing){
+                    let fieldName = this.editField;
+                    let fieldValue = this.userRoleInfo[this.editField];
+                    const data =  {
+                        fieldValue:fieldValue,
+                        fieldName:fieldName,
+                        id:this.userRoleInfo.id,
+                    };
+                    axios.post('/user/'+this.selectedUserProfileId +'/career/update',data).then(response => {});
                     this.editField ='';
-
                 }
             },
-
             showField(value){
                 if(this.isEditing){
                     return (this.userRoleInfo[value] === '' || this.editField === value)
-
                 }
-            }
+            },
+
 
 
         },
