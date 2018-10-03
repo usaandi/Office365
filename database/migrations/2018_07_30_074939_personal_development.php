@@ -47,13 +47,13 @@ class PersonalDevelopment extends Migration
 
         Schema::create('users_career_roles_milestones', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('milestone_id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('assigned_id');
-            $table->unsignedInteger('user_career_role_id');
-            $table->text('task');
-            $table->date('reminder');
-            $table->boolean('completed');
+            $table->unsignedInteger('milestone_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('assigned_id')->nullable();
+            $table->unsignedInteger('user_career_role_id')->nullable();
+            $table->text('task')->nullable();
+            $table->date('reminder')->nullable();
+            $table->boolean('completed')->nullable();
             $table->timestamps();
 
             $table->foreign('milestone_id')->references('id')->on('career_roles_milestones');
