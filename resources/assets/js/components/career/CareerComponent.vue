@@ -38,7 +38,7 @@
             <career-role
                 :canEdit="canEdit"
                 :authUserId="AuthUserId"
-                v-for="userInfo in userDatas"
+                v-for="userInfo in sortArray(userDatas)"
                 :userdata="userInfo"
                 :key="userInfo.id"
                 :selectedUserProfileId="selectedUserId"
@@ -85,6 +85,11 @@
         },
         methods:{
 
+            sortArray(userDatas){
+                return _.orderBy(userDatas,'id','desc');
+
+            },
+
             showForm(){
 
                 if(this.canEdit===true){
@@ -113,8 +118,9 @@
 
             saveRole(value){
                 if(this.canEdit===true){
+
                     if(this.hasChanged){
-                    const data = this.userdatas[0];
+                    const data = this.userDatas[0];
                      axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
                         .then(response => {});
                      this.show = false;

@@ -79,7 +79,6 @@
         methods: {
 
             change(){
-
             },
             remove(index){
                 if(this.canEdit===true){
@@ -93,10 +92,8 @@
             focusField() {
                 if(this.canEdit===true){
                     this.show === false ? this.show=true : this.show=false;
-
                     this.milestone.assigned_id = this.selected.id;
                     this.milestone.assigned_username = this.selected.name;
-
 
                     if(this.show === false){
                         const data = [{

@@ -144,7 +144,6 @@
                         return obj.id === value;
                     });
                     const data = this.userRoleInfo['milestones'][index];
-
                     axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/delete',data).then(response => {});
                     if (index !== -1){
                         array.splice(index,1);

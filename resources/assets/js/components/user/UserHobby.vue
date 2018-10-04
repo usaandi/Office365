@@ -10,12 +10,12 @@
             </a>
         </div>
         <ul class="profile__tags clearfix" v-for="hobby in userhobbies">
-            <li><a href="#">#{{hobby.hobby_name}}</a></li>
+            <li><a >#{{hobby.hobby_name}}</a></li>
             <button v-show="edit" class="" @click="deleteRow(hobby.id)">X</button>
         </ul>
-        <user-hobby-form v-show="edit"></user-hobby-form>
-        <button v-show="edit" @click="upload()" class="btn btn-success m-btn m-btn--icon m-btn--pill" >+Add new</button>
-        <input v-show="edit" v-model="hobbyname">
+        <user-hobby-form v-show="edit"
+                         @hobbyName="upload($event)"
+        ></user-hobby-form>
     </div>
 </template>
 
@@ -30,7 +30,7 @@
                 id: '',
                 userhobbies: [],
                 hobbyname: '',
-                edit: 'false'
+                edit: false
             }
         },
         mounted() {
@@ -39,6 +39,10 @@
             this.edit = this.canedit;
         },
         methods:{
+
+            testing(value){
+              console.log(value);
+            },
 
             deleteRow: function(userHobbyId){
                 let vm =this;
@@ -51,10 +55,7 @@
                             vm.userhobbies.splice(index, 1);
                         }
                     } )
-
-
             },
-
             fetchData: function () {
                 axios.get('/user/' + this.id + '/hobby')
                     .then(response => {
@@ -62,13 +63,13 @@
                     });
             },
 
-            upload: function () {
+            upload: function (value) {
                 let vm = this;
-                axios.post('/user/' + this.id + '/update/hobby',{data: this.hobbyname})
+                axios.post('/user/' + this.id + '/update/hobby',{data: value})
                     .then(response => {
                         vm.userhobbies.push({
-                            id: response.data.user_hobby_id,
-                            hobby_name: response.data.hobby_name
+                            id: response.data[0].id,
+                            hobby_name: response.data[0].hobby_name,
                         });
                         vm.edit = false;
                     }).catch(error => {
