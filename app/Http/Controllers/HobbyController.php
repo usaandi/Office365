@@ -26,32 +26,34 @@ class HobbyController extends Controller
             $user = User::findOrFail($id);
 
             $hobbyName = $request->data;
-            $capitalizeHobby = ucfirst($hobbyName);
-            $hobby = Hobby::where('hobby_name', $capitalizeHobby)->get();
-
-            if ($user->hobbies()->get()->contains($hobby)) {
-                return response('duplicate entry', 409)
-                    ->header('Content-Type', 'application/json');
-            }
+            $capitalizeHobby = ucfirst(strtolower($hobbyName));
+            $hobby = Hobby::where('hobby_name', $capitalizeHobby)->first();
 
             if($hobby === NULL) {
                 $hobby = Hobby::create(['hobby_name' => $capitalizeHobby]);
             }
+            $userHobby = UserHobby::where('user_id', $id)->where('hobby_id', $hobby->id)->first();
 
-            $userHobbyId = UserHobby::create([
-                'user_id' => $user->id,
-                'hobby_id' => $hobby->id
-            ])->id;
+            if ($userHobby === NULL){
+                UserHobby::create(['user_id' => $user->id, 'hobby_id' => $hobby->id]);
 
-            return response()->json([
-                'user_hobby_id' => $userHobbyId,
-                'hobby_name' => $capitalizeHobby
-            ]);
+                $data = array([
+                    'hobby_name' => $hobby->hobby_name,
+                    'id' => $hobby->id,
+                ]);
+               $jsonData = json_encode($data);
+
+                return response($jsonData,200)
+                    ->header('Content-Type', 'application/json');
+
+            }
+
+
         }
         catch(\Exception $e) {
 
         }
-        return response('Error updating user', 400)
+        return response('The request could not be completed due to a conflict with the current state of the resource.', 409)
             ->header('Content-Type', 'application/json');
 
     }
