@@ -376,17 +376,17 @@ class CareerController extends Controller
 
             $user = User::findOrFail($id);
 
-            $authUserId = \Auth::user()->id;
+            $authUserId = \Auth::user();
             $this->authorize('deleteMilestone', $authUserId);
 
             $data = $request->all();
 
 
             $rules = [
-                'id' => 'required',
+                'id' => 'nullable',
                 'milestone_id' => 'nullable',
                 'user_id' => 'required',
-                'user_career_role_id' => 'required',
+                'user_career_role_id' => 'nullable',
                 'task' => 'nullable',
                 'reminder' => 'nullable',
                 'completed' => 'nullable',
