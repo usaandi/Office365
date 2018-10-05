@@ -41,20 +41,14 @@ class HobbyController extends Controller
                     'hobby_name' => $hobby->hobby_name,
                     'id' => $hobby->id,
                 ]);
-               $jsonData = json_encode($data);
 
+               $jsonData = json_encode($data);
                 return response($jsonData,200)
                     ->header('Content-Type', 'application/json');
-
             }
 
-
         }
-        catch(\Exception $e) {
-
-        }
-        return response('The request could not be completed due to a conflict with the current state of the resource.', 409)
-            ->header('Content-Type', 'application/json');
+        catch(\Exception $e) {}
 
     }
     public function deleteUserHobby(Request $request, $id)
