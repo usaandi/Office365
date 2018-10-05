@@ -204,14 +204,15 @@ class CareerController extends Controller
                 'description' => 'required',
                 'user_id' => 'required',
                 'milestones' => 'nullable|array',
+
                 'milestones.*.id' => 'nullable',
                 'milestones.*.milestone_id' => 'nullable',
                 'milestones.*.user_id' => 'nullable',
                 'milestones.*.user_career_role_id' => 'nullable',
-                'milestones.*.assigned_id' => 'nullable',
-                'milestones.*.assigned_username' => 'nullable',
+                'milestones.*.assigned_id' => 'required',
+                'milestones.*.assigned_username' => 'required',
                 'milestones.*.task' => 'required',
-                'milestones.*.reminder' => 'nullable',
+                'milestones.*.reminder' => 'required',
                 'milestones.*.completed' => 'required',
 
             ];
@@ -266,12 +267,8 @@ class CareerController extends Controller
                         unset($milestone);
                     }
                 }
-
             }
-        }catch (\Exception $e){
-
-        }
-
+        }catch (\Exception $e){}
     }
 
     public function createMilestone(Request $request, $id)
