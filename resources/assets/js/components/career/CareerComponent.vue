@@ -118,8 +118,9 @@
 
             saveRole(value){
                 if(this.canEdit===true){
-
                     if(this.hasChanged){
+
+
                     const data = this.userDatas[0];
                      axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
                         .then(response => {});
@@ -132,7 +133,7 @@
 
                 if(this.canEdit===true){
                     if(this.hasChanged){
-                        this.userdatas.splice(0, 1);
+                        this.userDatas.splice(0, 1);
                         this.hasChanged = false;
                     }
                 }

@@ -48,52 +48,52 @@
     import axios from 'axios';
 
     export default {
-        props: ['careerRoleId','selectedUserProfileId','usersList'],
+        props: ['careerRoleId', 'selectedUserProfileId', 'usersList'],
         name: "CareerMilestoneForm",
-        data(){
-            return{
-                show:false,
-                task:'',
-                reminder:'',
-                assignerUserId:'',
-                users:[],
+        data() {
+            return {
+                show: false,
+                task: '',
+                reminder: '',
+                assignerUserId: '',
+                users: [],
             }
         },
 
-        mounted(){
+        mounted() {
 
             this.users = this.usersList;
         },
 
-        watch:{
-          usersList(newValue){
-              this.users = newValue;
-          }
+        watch: {
+            usersList(newValue) {
+                this.users = newValue;
+            }
 
         },
 
-        methods:{
+        methods: {
 
-            submit(){
+            submit() {
+
 
                 const data = [{
-                taskName:this.task,
-                reminder:this.reminder,
-                assignerUserId: this.assignerUserId,
-                CareerRoleId:this.careerRoleId,
-            }];
+                    taskName: this.task,
+                    reminder: this.reminder,
+                    assignerUserId: this.assignerUserId,
+                    CareerRoleId: this.careerRoleId,
+                }];
 
-                 this.task='';
-                 this.reminder='';
-                 this.assignerUserId='';
+                this.task = '';
+                this.reminder = '';
+                this.assignerUserId = '';
 
                 let vm = this;
-                axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/create',data)
+                axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data)
                     .then(response => {
                     }).catch(error => {
 
                 });
-
             }
         }
     }

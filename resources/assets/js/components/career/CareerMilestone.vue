@@ -8,16 +8,12 @@
                     <div
                         class="profile-timeline__milestones--label"
                         v-show="!show"
-
                     >{{milestone.task}}</div>
                     <span></span>
                     <div class="profile-timeline__milestones--name">
-
                         <input v-model.trim="milestone.task" v-show="show"
                                 type="text" class="">
-
                         <input type="date" v-show="show" v-model="milestone.reminder">
-
                         <select v-model="selected" v-show="show" >
                             <option></option>
                             <option
@@ -91,7 +87,9 @@
 
             focusField() {
                 if(this.canEdit===true){
+
                     this.show === false ? this.show=true : this.show=false;
+
                     this.milestone.assigned_id = this.selected.id;
                     this.milestone.assigned_username = this.selected.name;
 
