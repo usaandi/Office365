@@ -11,7 +11,7 @@ class HobbyController extends Controller
 {
     public function hobby(){
 
-        $hobbies = Hobby::get(['hobby_name']);
+        $hobbies = Hobby::get(['name']);
 
         return $hobbies;
 
@@ -27,10 +27,10 @@ class HobbyController extends Controller
 
             $hobbyName = $request->data;
             $capitalizeHobby = ucfirst(strtolower($hobbyName));
-            $hobby = Hobby::where('hobby_name', $capitalizeHobby)->first();
+            $hobby = Hobby::where('name', $capitalizeHobby)->first();
 
             if($hobby === NULL) {
-                $hobby = Hobby::create(['hobby_name' => $capitalizeHobby]);
+                $hobby = Hobby::create(['name' => $capitalizeHobby]);
             }
             $userHobby = UserHobby::where('user_id', $id)->where('hobby_id', $hobby->id)->first();
 
@@ -38,7 +38,7 @@ class HobbyController extends Controller
                 UserHobby::create(['user_id' => $user->id, 'hobby_id' => $hobby->id]);
 
                 $data = array([
-                    'hobby_name' => $hobby->hobby_name,
+                    'name' => $hobby->name,
                     'id' => $hobby->id,
                 ]);
 

@@ -68,7 +68,7 @@
                     .then(response => {
                         vm.userhobbies.push({
                             id: response.data[0].id,
-                            hobby_name: response.data[0].hobby_name,
+                            name: response.data[0].name,
                         });
                         vm.edit = false;
                     }).catch(error => {

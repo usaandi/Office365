@@ -49249,7 +49249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.id + '/update/hobby', { data: value }).then(function (response) {
                 vm.userhobbies.push({
                     id: response.data[0].id,
-                    hobby_name: response.data[0].hobby_name
+                    name: response.data[0].name
                 });
                 vm.edit = false;
             }).catch(function (error) {

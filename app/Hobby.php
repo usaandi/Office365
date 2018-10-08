@@ -8,7 +8,7 @@ class Hobby extends Model
 {
     protected $table = 'hobbies';
 
-    protected $fillable = ['hobby_name'];
+    protected $fillable = ['name'];
 
     public function users() {
         return $this->belongsToMany('App\User', 'users_hobbies')
