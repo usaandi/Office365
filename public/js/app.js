@@ -50034,13 +50034,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         changeImage: function changeImage() {
 
-            // if (authUser.id === this.userId || Vue.$isAdmin()) {
-            if (this.edit) {
-                this.edit = false;
-            } else {
-                this.edit = true;
+            if (authUser.id === this.userId || Vue.$isAdmin()) {
+                if (this.edit) {
+                    this.edit = false;
+                } else {
+                    this.edit = true;
+                }
             }
-            //}
         },
         fileUploaded: function fileUploaded(response) {
             if (response.status === 200) {

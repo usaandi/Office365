@@ -26,14 +26,14 @@
         methods: {
             changeImage() {
 
-               // if (authUser.id === this.userId || Vue.$isAdmin()) {
+                if (authUser.id === this.userId || Vue.$isAdmin()) {
                     if (this.edit) {
                         this.edit = false;
                     }
                     else {
                         this.edit = true;
                     }
-                //}
+                }
             },
             fileUploaded(response) {
                 if (response.status === 200) {
