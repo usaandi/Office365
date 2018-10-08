@@ -49994,7 +49994,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50033,7 +50033,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         changeImage: function changeImage() {
-
             if (authUser.id === this.userId || Vue.$isAdmin()) {
                 if (this.edit) {
                     this.edit = false;
@@ -50049,7 +50048,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         }
     }
-
 });
 
 /***/ }),
@@ -58757,7 +58755,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58803,13 +58801,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "UserHobbyForm",
     data: function data() {
         return {
-            hobbyName: ''
+            hobbyName: '',
+            hasError: false
         };
     },
 
     methods: {
+        hobbyNameChange: function hobbyNameChange() {
+
+            if (this.hasError) {
+                this.hasError = false;
+            }
+        },
         submit: function submit() {
-            this.$emit('hobbyName', this.hobbyName);
+
+            if (this.hobbyName !== '') {
+
+                this.$emit('hobbyName', this.hobbyName);
+                this.hasError = false;
+                this.hobbyName = '';
+            } else {
+
+                this.hasError = true;
+            }
+        }
+    },
+    computed: {
+        classObject: function classObject() {
+            return {
+                'border border-danger': this.hasError
+            };
         }
     }
 });
@@ -58840,10 +58861,12 @@ var render = function() {
                   expression: "hobbyName"
                 }
               ],
-              staticClass: "form-control m-input",
-              attrs: { type: "text", placeholder: "Hobbie" },
+              staticClass: "form-control m-input ",
+              class: _vm.classObject,
+              attrs: { type: "text", placeholder: "Hobby" },
               domProps: { value: _vm.hobbyName },
               on: {
+                change: _vm.hobbyNameChange,
                 input: function($event) {
                   if ($event.target.composing) {
                     return

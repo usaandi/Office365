@@ -4,7 +4,7 @@
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row"><label
                                                                  class="col-3 col-form-label">Hobbie</label>
-                    <div class="col-9"><input v-model="hobbyName" type="text" placeholder="Hobbie" class="form-control m-input"></div>
+                    <div class="col-9"><input @change="hobbyNameChange" v-model="hobbyName" :class="classObject" type="text" placeholder="Hobby" class="form-control m-input "></div>
                 </div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
@@ -15,8 +15,8 @@
                             <div class="profile-timeline__action">
                                 <a @click="submit()" class="btn btn-success m-btn m-btn--icon m-btn--pill">
     <span>
-    <i class="la la-plus"></i>
-    <span>Add new</span>
+        <i class="la la-plus"></i>
+        <span>Add new</span>
     </span>
                                 </a>
                             </div>
@@ -34,13 +34,44 @@
         data(){
             return{
                 hobbyName:'',
+                hasError:false,
             }
         },
         methods: {
 
-            submit(){
-                this.$emit('hobbyName',this.hobbyName);
+            hobbyNameChange() {
+
+                if (this.hasError) {
+                    this.hasError = false;
+                }
+
+            },
+
+            submit() {
+
+                if (this.hobbyName !== '') {
+
+                    this.$emit('hobbyName',this.hobbyName);
+                    this.hasError = false;
+                    this.hobbyName = '';
+
+                }
+                else {
+
+                    this.hasError = true;
+
+                }
+
             }
+
+        },
+        computed:{
+            classObject(){
+                return {
+                    'border border-danger': this.hasError
+                }
+
+            },
         }
     }
 </script>

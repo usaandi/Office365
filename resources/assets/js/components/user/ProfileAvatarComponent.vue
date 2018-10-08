@@ -25,7 +25,6 @@
         },
         methods: {
             changeImage() {
-
                 if (authUser.id === this.userId || Vue.$isAdmin()) {
                     if (this.edit) {
                         this.edit = false;
@@ -42,7 +41,6 @@
                 }
             }
         }
-
     }
 </script>
 
