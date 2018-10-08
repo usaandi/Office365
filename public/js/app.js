@@ -49290,7 +49290,7 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.userhobbies, function(hobby) {
         return _c("ul", { staticClass: "profile__tags clearfix" }, [
-          _c("li", [_c("a", [_vm._v("#" + _vm._s(hobby.hobby_name))])]),
+          _c("li", [_c("a", [_vm._v("#" + _vm._s(hobby.name))])]),
           _vm._v(" "),
           _c(
             "button",

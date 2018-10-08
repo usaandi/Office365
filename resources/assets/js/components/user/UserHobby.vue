@@ -10,7 +10,7 @@
             </a>
         </div>
         <ul class="profile__tags clearfix" v-for="hobby in userhobbies">
-            <li><a >#{{hobby.hobby_name}}</a></li>
+            <li><a >#{{hobby.name}}</a></li>
             <button v-show="edit" class="" @click="deleteRow(hobby.id)">X</button>
         </ul>
         <user-hobby-form v-show="edit"
