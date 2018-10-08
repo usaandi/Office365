@@ -11,7 +11,7 @@ class HobbyController extends Controller
 {
     public function hobby(){
 
-        $hobbies[] = Hobby::get(['hobby_name']);
+        $hobbies = Hobby::get(['hobby_name']);
 
         return $hobbies;
 

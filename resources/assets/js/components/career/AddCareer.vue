@@ -2,41 +2,23 @@
 <div>
     <div class="row">
         <div class="col-md-6">
-            <b-form-group
-                  id="fieldsetHorizontal"
-                  horizontal
-                  :label-cols="2"
-                  breakpoint="md"
-                  label="Career job Title"
-                  label-for="inputCareerTitle">
-                <b-form-input id="inputCareertTitle"
-                              v-model="title"
-                              type="text"
-                              placeholder="Title"
-                ></b-form-input>
-            </b-form-group>
-            <b-form-group
-                    id="fieldsetHorizontal"
-                    horizontal
-                    :label-cols="2"
-                    breakpoint="md"
-                    label="Career Description"
-                    label-for="careerDesc">
-                <b-form-textarea
-                    id="careerDesc"
-                    v-model="desc"
-                    placeholder="Description"
-                    :rows="3"
-                    :max-rows="6"
-                    :no-resize="true"
-                ></b-form-textarea>
-            </b-form-group>
+            <input id="inputCareertTitle"
+                   v-model="title"
+                   type="text"
+                   placeholder="Title"
+                   style="display: block;">
 
-        </div>
-    </div>
+            <textarea
+                      id="careerDesc"
+                      v-model="desc"
+                      placeholder="Description"
+                      rows="3"
+                      cols="50"
+              ></textarea>
 
     <div class="row m--margin-top-10">
         <div class="col-6">
+
             Milestones:
             <input v-model="milestoneName">
             <button @click="addList(milestoneName)">Add new</button>
@@ -48,20 +30,14 @@
 
     <button @click="submit">submit</button>
     <button @click="clear">clear</button>
-
-    <b-alert variant="success"
-             dismissible
-             :show="showDismissibleAlert"
-             @dismissed="showDismissibleAlert=false">
-        Success!
-    </b-alert>
+        </div>
+        </div>
 </div>
 </template>
 
 <script>
 
     import axios from 'axios';
-
 
     export default {
         name: "adddevelopment",

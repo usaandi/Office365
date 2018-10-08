@@ -41,7 +41,6 @@
         methods:{
 
             testing(value){
-              console.log(value);
             },
 
             deleteRow: function(userHobbyId){

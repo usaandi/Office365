@@ -49167,7 +49167,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49222,9 +49222,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        testing: function testing(value) {
-            console.log(value);
-        },
+        testing: function testing(value) {},
 
 
         deleteRow: function deleteRow(userHobbyId) {
@@ -54136,7 +54134,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54149,29 +54147,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -54294,153 +54269,115 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-md-6" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  id: "fieldsetHorizontal",
-                  horizontal: "",
-                  "label-cols": 2,
-                  breakpoint: "md",
-                  label: "Career job Title",
-                  "label-for": "inputCareerTitle"
-                }
-              },
-              [
-                _c("b-form-input", {
-                  attrs: {
-                    id: "inputCareertTitle",
-                    type: "text",
-                    placeholder: "Title"
-                  },
-                  model: {
-                    value: _vm.title,
-                    callback: function($$v) {
-                      _vm.title = $$v
-                    },
-                    expression: "title"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  id: "fieldsetHorizontal",
-                  horizontal: "",
-                  "label-cols": 2,
-                  breakpoint: "md",
-                  label: "Career Description",
-                  "label-for": "careerDesc"
-                }
-              },
-              [
-                _c("b-form-textarea", {
-                  attrs: {
-                    id: "careerDesc",
-                    placeholder: "Description",
-                    rows: 3,
-                    "max-rows": 6,
-                    "no-resize": true
-                  },
-                  model: {
-                    value: _vm.desc,
-                    callback: function($$v) {
-                      _vm.desc = $$v
-                    },
-                    expression: "desc"
-                  }
-                })
-              ],
-              1
-            )
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.title,
+              expression: "title"
+            }
           ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row m--margin-top-10" }, [
-        _c(
-          "div",
-          { staticClass: "col-6" },
-          [
-            _vm._v("\n            Milestones:\n            "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.milestoneName,
-                  expression: "milestoneName"
-                }
-              ],
-              domProps: { value: _vm.milestoneName },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.milestoneName = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    _vm.addList(_vm.milestoneName)
-                  }
-                }
-              },
-              [_vm._v("Add new")]
-            ),
-            _vm._v(" "),
-            _vm._l(_vm.milestonesList, function(milestone, index) {
-              return _c("ul", [
-                _c("li", [_vm._v(_vm._s(index) + " - " + _vm._s(milestone))])
-              ])
-            })
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.submit } }, [_vm._v("submit")]),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.clear } }, [_vm._v("clear")]),
-      _vm._v(" "),
-      _c(
-        "b-alert",
-        {
+          staticStyle: { display: "block" },
           attrs: {
-            variant: "success",
-            dismissible: "",
-            show: _vm.showDismissibleAlert
+            id: "inputCareertTitle",
+            type: "text",
+            placeholder: "Title"
           },
+          domProps: { value: _vm.title },
           on: {
-            dismissed: function($event) {
-              _vm.showDismissibleAlert = false
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.title = $event.target.value
             }
           }
-        },
-        [_vm._v("\n        Success!\n    ")]
-      )
-    ],
-    1
-  )
+        }),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.desc,
+              expression: "desc"
+            }
+          ],
+          attrs: {
+            id: "careerDesc",
+            placeholder: "Description",
+            rows: "3",
+            cols: "50"
+          },
+          domProps: { value: _vm.desc },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.desc = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "row m--margin-top-10" }, [
+          _c(
+            "div",
+            { staticClass: "col-6" },
+            [
+              _vm._v("\n\n            Milestones:\n            "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.milestoneName,
+                    expression: "milestoneName"
+                  }
+                ],
+                domProps: { value: _vm.milestoneName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.milestoneName = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.addList(_vm.milestoneName)
+                    }
+                  }
+                },
+                [_vm._v("Add new")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.milestonesList, function(milestone, index) {
+                return _c("ul", [
+                  _c("li", [_vm._v(_vm._s(index) + " - " + _vm._s(milestone))])
+                ])
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("button", { on: { click: _vm.submit } }, [_vm._v("submit")]),
+        _vm._v(" "),
+        _c("button", { on: { click: _vm.clear } }, [_vm._v("clear")])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
