@@ -88,6 +88,7 @@
             clear: function () {
                 this.desc='';
                 this.title='';
+                this.milestonesList=null;
             },
 
             submit: function () {
