@@ -36,6 +36,7 @@
         <div class="m-timeline-2">
             <div class="m-timeline-2__items" >
             <career-role
+                :hasChanged="hasChanged"
                 :canEdit="canEdit"
                 :authUserId="AuthUserId"
                 v-for="userInfo in sortArray(userDatas)"
