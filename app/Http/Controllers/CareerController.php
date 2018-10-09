@@ -320,7 +320,22 @@ class CareerController extends Controller
                         'completed' => 0,
                         //TODO
                         //Return data back to vue so it can display new milestone.
+
+                    ])->id;
+                    $assignedUserName = User::find($assignerUserId)->name;
+                    $data = array([
+                        'user_id' => $id,
+                        'assigned_id' => $assignerUserId,
+                        'assigned_username' => $assignedUserName,
+                        'user_career_role_id' => $careerRoleId,
+                        'task' => $capitalizeTaskName,
+                        'reminder' => $reminder,
+                        'completed' => 0,
+                        'id' => $userCareerMilestone,
                     ]);
+                    $jsonData = json_encode($data);
+                    return response($jsonData,200)
+                        ->header('Content-Type', 'application/json');
                 }
 
             }
@@ -394,8 +409,7 @@ class CareerController extends Controller
                 $deleteMilestone = $user->userCareerRoleMilestones()
                     ->where('id', $data['id'])
                     ->where('user_id', $data['user_id'])
-                    ->where('user_career_role_id', $data['user_career_role_id'])
-                    ->where('milestone_id', $data['milestone_id']);
+                    ->where('user_career_role_id', $data['user_career_role_id']);
                 if($deleteMilestone){
                     $deleteMilestone->delete();
                 }
