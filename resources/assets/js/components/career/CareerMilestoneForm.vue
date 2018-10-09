@@ -5,15 +5,15 @@
                 <div class="form-group m-form__group row">
                     <label for="Task" class="col-3 col-form-label">Task</label>
                     <div class="col-9" >
-                        <input  id="Task" class="form-control m-input" placeholder="Task" v-model="task">
+                        <input @change="thisChanged" id="Task" :class="{'border border-danger': this.errorTask}" class="form-control m-input" placeholder="Task"  v-model="task">
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label for="Assign" class="col-3 col-form-label">Assign</label>
                     <div class="col-9">
-                        <select class="form-control m-input" id="Assign" v-model="assignerUserId">
+                        <select class="form-control m-input" @change="thisChanged" :class="{'border border-danger': this.errorSelected}" id="Assign" v-model="selected">
                             <option></option>
-                            <option  v-for="user in users" :value="user.id"
+                            <option  v-for="user in users" :value="user"
                             >
                                 {{user.name}}
                             </option>
@@ -24,7 +24,7 @@
                 <div class="form-group m-form__group row">
                     <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
                     <div class="col-9">
-                        <input v-model="reminder"  type="date" id="Reminder" class="form-control m-input" placeholder="Task">
+                        <input v-model="reminder" @change="thisChanged" :class="{'border border-danger': this.errorReminder}"  type="date" id="Reminder" class="form-control m-input" placeholder="Task">
                     </div>
                 </div>
             </div>
@@ -34,8 +34,8 @@
                         <div class="col-sm-3 col-xs-12">
                         </div>
                         <div class="col-sm-9 col-xs-12">
-                            <div class="profile-timeline__action"><button  type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Cancel</button>
-                                <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom" @click="submit()">Save</button></div>
+                            <div class="profile-timeline__action"><button  @click="clear()" type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Cancel</button>
+                                <button type="button"  class="btn m-btn--pill btn-success m-btn m-btn--custom" @click="submit()">Save</button></div>
                         </div>
                     </div>
                 </div>
@@ -48,15 +48,23 @@
     import axios from 'axios';
 
     export default {
-        props: ['careerRoleId', 'selectedUserProfileId', 'usersList'],
+        props: ['careerRoleId', 'selectedUserProfileId', 'usersList','hasChanged'],
         name: "CareerMilestoneForm",
         data() {
             return {
+                hasError:false,
+
+
                 show: false,
+                errorTask:false,
+                errorReminder:false,
+                errorSelected:false,
+                selected:'',
                 task: '',
                 reminder: '',
                 assignerUserId: '',
                 users: [],
+                dangerBorder: 'border border-danger'
             }
         },
 
@@ -65,6 +73,9 @@
             this.users = this.usersList;
         },
 
+        computed:{
+
+        },
         watch: {
             usersList(newValue) {
                 this.users = newValue;
@@ -73,28 +84,94 @@
         },
 
         methods: {
+            clear(){
+                this.task = '';
+                this.reminder = '';
+                this.selected = '';
+                this.errorTask=false;
+                this.errorReminder=false;
+                this.errorSelected=false;
+
+            },
+            thisChanged(){
+
+
+                if (this.hasError){
+                    this.hasError = false;
+                }
+                if (this.task !== ''){
+                    this.errorTask=false;
+                }
+                if (this.selected !== ''){
+                    this.errorSelected=false;
+                }
+                if (this.reminder !== ''){
+                    this.errorReminder=false;
+                }
+            },
 
             submit() {
 
 
-                const data = [{
-                    taskName: this.task,
-                    reminder: this.reminder,
-                    assignerUserId: this.assignerUserId,
-                    CareerRoleId: this.careerRoleId,
-                }];
+                this.task === '' ? this.errorTask = true : this.errorTask = false;
 
-                this.task = '';
-                this.reminder = '';
-                this.assignerUserId = '';
+                this.selected === '' ? this.errorSelected = true : this.errorSelected = false;
 
-                let vm = this;
-                axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data)
-                    .then(response => {
-                    }).catch(error => {
+                this.reminder === '' ? this.errorReminder = true : this.errorReminder = false;
 
-                });
-            }
+
+                if( this.task !== '' && this.selected !== '' && this.reminder !== '' ){
+                    this.hasError=false;
+
+                    if(this.hasChanged===false){
+
+                        const data = [{
+                            taskName: this.task,
+                            reminder: this.reminder,
+                            assignerUserId: this.selected.id,
+                            CareerRoleId: this.careerRoleId,
+                        }];
+
+                        this.task = '';
+                        this.reminder = '';
+                        this.assignerUserId = '';
+
+                        let vm = this;
+                        axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data)
+                            .then(response => {
+
+                               this.$emit('addToMilestones',response.data);
+
+
+                            }).catch(error => {
+
+                        });
+                    }
+                    else if (this.hasChanged === true) {
+
+                        const data = [{
+                            task: this.task,
+                            reminder: this.reminder,
+                            assigned_id: this.selected.id,
+                            assigned_username: this.selected.name,
+                            completed: 0,
+                            milestone_id:null,
+                            user_id:this.selectedUserProfileId,
+                        }];
+
+                        this.task = '';
+                        this.reminder = '';
+                        this.assignerUserId = '';
+
+                        this.$emit('pushToMilestones',data);
+                    }
+                }
+                else {
+                    this.hasError=true;
+
+                }
+            },
+
         }
     }
 </script>
