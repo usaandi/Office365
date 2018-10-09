@@ -42,11 +42,13 @@
                                               </span>
                             </a>
                             <milestone-form
-
+                                    :hasChanged="hasChanged"
                                     :usersList="usersList"
                                     v-show="show"
                                     :careerRoleId="userRoleInfo.id"
                                     :selectedUserProfileId="selectedUserProfileId"
+                                    @pushToMilestones="pushMilestone($event)"
+                                    @addToMilestones="addMilestone($event)"
                             >
                             </milestone-form>
 
@@ -85,7 +87,7 @@
 
     import axios from 'axios';
     export default {
-        props:['authUserId','userdata','selectedUserProfileId','usersList','canEdit'],
+        props:['authUserId','userdata','selectedUserProfileId','usersList','canEdit','hasChanged'],
         name: "CareerRole",
 
         data(){
@@ -116,21 +118,30 @@
 
         },
         mounted(){
+
         },
 
         methods: {
+            addMilestone(data){
 
+                this.userRoleInfo['milestones'].push(data[0]);
+            },
+            pushMilestone(data){
+               if(this.hasChanged===true){
+                   this.userRoleInfo['milestones'].push(data[0]);
+
+               }
+
+
+            },
             canEditCareer(){
                 if(this.canEdit===true){
-
                     this.isEditing === false ? this.isEditing=true : this.isEditing=false;
                 }
             },
 
             showForm(){
-
                 if(this.canEdit===true){
-
                     this.show === false ? this.show=true : this.show=false;
                 }
             },
