@@ -174,6 +174,7 @@ class CareerController extends Controller
                 }
 
                 $array[] = [
+                    'id' => 'undefined',
                     'career_role_id' => $careerRoleMilestones->id,
                     'title' => $careerRoleMilestones->title,
                     'description' => $careerRoleMilestones->description,
@@ -226,11 +227,9 @@ class CareerController extends Controller
                 $title = $data['title'];
                 $description = $data['description'];
                 $userId = $data['user_id'];
-
-                $ucTitle = ucfirst($title);
+                $ucTitle = ucfirst(strtolower($title));
 
                 $user = User::findOrFail($id);
-
                 $query = $user->UserCareerRole()
                     ->where('title', $ucTitle)
                     ->where('user_id', $userId)
@@ -242,30 +241,52 @@ class CareerController extends Controller
                 }
                 if ($query->isEmpty() === true) {
 
-                    $userCareerRoleId = $user->UserCareerRole()->create([
+                    $userCareerRole = $user->UserCareerRole()->create([
                         'career_role_id' => $careerRoleId,
                         'title' => $ucTitle,
                         'description' => $description,
                         'user_id' => $userId,
-                    ])->id;
-
+                    ]);
+                    $milestonesArray=[];
                     if (empty($data['milestones']) === false) {
                         $milestones = $data['milestones'];
                         foreach($milestones as  $milestone){
-                            $user->userCareerRoleMilestones()->create([
+                            $milestonesList = $user->userCareerRoleMilestones()->create([
 
                                 'milestone_id' => $milestone['milestone_id'],
                                 'user_id' => $milestone['user_id'],
                                 'assigned_id' => $milestone['assigned_id'],
-                                'user_career_role_id' => $userCareerRoleId,
+                                'user_career_role_id' => $userCareerRole->id,
+                                'task' => $milestone['task'],
+                                'reminder' => $milestone['reminder'],
+                                'completed' => $milestone['completed'],
+                            ]);
+                            $milestonesArray[]=[
+                                'id'=> $milestonesList->id,
+                                'milestone_id' => $milestone['milestone_id'],
+                                'user_id' => $milestone['user_id'],
+                                'assigned_id' => $milestone['assigned_id'],
+                                'user_career_role_id' => $userCareerRole->id,
                                 'task' => $milestone['task'],
                                 'reminder' => $milestone['reminder'],
                                 'completed' => $milestone['completed'],
 
-                            ]);
+                            ];
                         }
                         unset($milestone);
                     }
+                    $career=[
+                        'id' => $userCareerRole->id,
+                        'career_role_id' => $careerRoleId,
+                        'title' => $ucTitle,
+                        'description' => $description,
+                        'user_id' => $id,
+                        'milestones' => $milestonesArray,
+
+                    ];
+                    $jsonData = json_encode($career);
+                    return response($jsonData,200)
+                        ->header('Content-Type', 'application/json');
                 }
             }
         }catch (\Exception $e){}
@@ -321,7 +342,8 @@ class CareerController extends Controller
                         //TODO
                         //Return data back to vue so it can display new milestone.
 
-                    ])->id;
+                    ]);
+
                     $assignedUserName = User::find($assignerUserId)->name;
                     $data = array([
                         'user_id' => $id,
@@ -331,7 +353,7 @@ class CareerController extends Controller
                         'task' => $capitalizeTaskName,
                         'reminder' => $reminder,
                         'completed' => 0,
-                        'id' => $userCareerMilestone,
+                        'id' => $userCareerMilestone->id,
                     ]);
                     $jsonData = json_encode($data);
                     return response($jsonData,200)
