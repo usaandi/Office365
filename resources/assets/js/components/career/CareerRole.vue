@@ -4,8 +4,8 @@
         <div class="m-timeline-2__item-cricle">
             <i class="fa fa-genderless m--font-info"></i>
         </div>
-        <div class="m-timeline-2__item-text  m--padding-top-5">
-            <div class="profile-timeline__content">
+        <div class="m-timeline-2__item-text  m--padding-top-5 ">
+            <div class="profile-timeline__content" >
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title"
@@ -53,15 +53,18 @@
                             </milestone-form>
 
                         </div>
-                <user-career-milestone
-                    :canEdit="canEdit"
-                    :selectedUserProfileId="selectedUserProfileId"
-                    v-for="milestone in userRoleInfo['milestones']"
-                    :milestoneInfo="milestone"
-                    :key="milestone.id"
-                    :usersList="usersList"
-                    @removeMilestone="deleteMilestone($event)"
-                ></user-career-milestone>
+                            <user-career-milestone
+                                :canEdit="canEdit"
+                                :selectedUserProfileId="selectedUserProfileId"
+                                v-for="(milestone, index) in userRoleInfo['milestones']"
+                                :milestoneInfo="milestone"
+                                :key="index+1"
+                                :hasMilestoneError="hasMilestoneError"
+                                :usersList="usersList"
+                                :careerRoleMilestoneIndex="index"
+                                @removeMilestone="deleteMilestone($event)"
+                                @hasError="sendErrorValue($event)"
+                            ></user-career-milestone>
                     </div>
                 </div>
 
@@ -72,8 +75,10 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__action">
-                            <button type="button" @click="canEditCareer()" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit</button>
-                            <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current</button>
+                            <button type="button" @click="canEditCareer()" v-show="!this.hasChanged" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit</button>
+                            <button type="button" v-show="!this.hasChanged" class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current</button>
+                            <button @click="save" v-show="this.userRoleInfo.id === 'undefined'" class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
+                            <button @click="remove"  v-show="this.userRoleInfo.id === 'undefined'" class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
                         </div>
                     </div>
                 </div>
@@ -87,7 +92,9 @@
 
     import axios from 'axios';
     export default {
-        props:['authUserId','userdata','selectedUserProfileId','usersList','canEdit','hasChanged'],
+        props:['authUserId','userdata','selectedUserProfileId',
+            'usersList','canEdit','hasChanged','hasMilestoneError'],
+
         name: "CareerRole",
 
         data(){
@@ -102,11 +109,14 @@
                 newRoleDescription:'',
                 isEditing:false,
                 editField:'',
+                showButton:false,
                 isUpdate:false,
-
             }
         },
         watch: {
+            milestone(){
+
+            },
             userdata(newVal) {
                 this.userRoleInfo = newVal;
             }
@@ -117,48 +127,63 @@
             this.milestoneInfo = this.userInfo;
 
         },
-        mounted(){
-
-        },
 
         methods: {
-            addMilestone(data){
 
+            remove(){
+                if(this.canEdit === true) {
+                    this.$emit('remove');
+                }
+            },
+            save(){
+                if(this.canEdit === true){
+                    this.$emit('save', true);
+                }
+            },
+
+            sendErrorValue(value){
+                this.$emit('errorValue',value);
+            },
+
+            addMilestone(data){
                 this.userRoleInfo['milestones'].push(data[0]);
             },
             pushMilestone(data){
                if(this.hasChanged===true){
                    this.userRoleInfo['milestones'].push(data[0]);
-
                }
-
-
             },
             canEditCareer(){
                 if(this.canEdit===true){
                     this.isEditing === false ? this.isEditing=true : this.isEditing=false;
+                    if(this.isEditing === true){
+                        this.focusField('title');
+                    }
                 }
             },
-
             showForm(){
                 if(this.canEdit===true){
                     this.show === false ? this.show=true : this.show=false;
                 }
             },
-
             deleteMilestone(value){
 
-                if(this.canEdit===true){
 
-                    let array = this.userRoleInfo['milestones'];
-                    let index = array.findIndex(function(obj){
-                        return obj.id === value;
-                    });
-                    const data = this.userRoleInfo['milestones'][index];
-                    axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/delete',data).then(response => {});
-                    if (index !== -1){
-                        array.splice(index,1);
+
+                if(this.canEdit===true){
+                    if(this.hasChanged === true){
+
+                    this.userRoleInfo['milestones'].splice(value, 1);
+
                     }
+                    else if(this.hasChanged === false) {
+
+                        const data = this.userRoleInfo['milestones'][value];
+                        console.log(data);
+                        axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/delete',data).then(response => {});
+                       this.userRoleInfo['milestones'].splice(value, 1);
+                    }
+
                 }
             },
 

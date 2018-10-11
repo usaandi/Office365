@@ -23,9 +23,11 @@
                                 v-show="show"
                                 :selectedUserProfileId="selectedUserId"
                                 :authUserId="AuthUserId"
+                                :hasMilestoneError="hasMilestoneError"
                                 @createRole="newRole($event)"
                                 @remove="removeElement($event)"
                                 @save="saveRole($event)"
+                                @checkMilestoneError="checkErrors($event)"
                         ></career-role-form>
                     </div>
                 </div>
@@ -44,6 +46,10 @@
                 :key="userInfo.id"
                 :selectedUserProfileId="selectedUserId"
                 :usersList="users"
+                :hasMilestoneError="hasMilestoneError"
+                @errorValue="errorValueSend($event)"
+                @remove="removeElement($event)"
+                @save="saveRole($event)"
             >
             </career-role>
             </div>
@@ -70,7 +76,7 @@
                 hasChanged: false,
                 users:null,
                 userInfo:'',
-
+                hasMilestoneError:null,
                 canEdit:false,
             }
         },
@@ -84,11 +90,24 @@
 
 
         },
+        watch:{
+            userDatas(value){
+                this.userDatas = value;
+            }
+        },
         methods:{
+            errorValueSend(value){
+                if(this.hasMilestoneError !== value){
+                    this.hasMilestoneError = value;
+                }
 
+            },
+
+            checkErrors(){
+                this.hasMilestoneError = true;
+            },
             sortArray(userDatas){
                 return _.orderBy(userDatas,'id','desc');
-
             },
 
             showForm(){
@@ -114,17 +133,18 @@
                 axios.get('/users')
                     .then(response => {
                         this.users = response.data;
-                    })
+                    });
             },
 
-            saveRole(value){
-                if(this.canEdit===true){
+            saveRole(){
+                if(this.canEdit){
                     if(this.hasChanged){
-
-
                     const data = this.userDatas[0];
-                     axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
-                        .then(response => {});
+                        this.userDatas.splice(0, 1);
+                        axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
+                        .then(response => {
+                            this.userDatas.push(response.data);
+                        });
                      this.show = false;
                     this.hasChanged = false;
                    }
@@ -132,7 +152,7 @@
             },
             removeElement(){
 
-                if(this.canEdit===true){
+                if(this.canEdit){
                     if(this.hasChanged){
                         this.userDatas.splice(0, 1);
                         this.hasChanged = false;
@@ -140,7 +160,7 @@
                 }
             },
             newRole(value){
-                if(this.canEdit===true){
+                if(this.canEdit){
                     this.careerRoleId = value;
                     const data = {
                         careerRoleId: this.careerRoleId,

@@ -11,10 +11,15 @@
                     >{{milestone.task}}</div>
                     <span></span>
                     <div class="profile-timeline__milestones--name">
+
                         <input v-model.trim="milestone.task" v-show="show"
-                                type="text" class="">
-                        <input type="date" v-show="show" v-model="milestone.reminder">
-                        <select v-model="selected" v-show="show" >
+                              @focus="checkError" @change="checkError"  type="text" class="" :class="{'border border-danger': this.errorTask}">
+
+                        <input type="date" @focus="checkError" @change="checkError" :class="{'border border-danger': this.errorDate}"
+                               v-show="show" v-model="milestone.reminder"  >
+
+                        <select @focus="checkError" v-model="selected" @change="checkError" v-show="show"
+                                :class="{'border border-danger': this.errorSelected}">
                             <option></option>
                             <option
                                     v-for="user in usersList"
@@ -23,7 +28,8 @@
                             >
                                 {{user.name}}</option>
                         </select>
-                        <span v-show="show" @click="remove(milestone.id)">X</span>
+
+                        <span v-show="show" @click="remove()">X</span>
 
                         <div class="m-list-pics m-list-pics--sm">
                             <a href="#"><img src="" title=""></a>
@@ -49,10 +55,9 @@
 <script>
     export default {
         name: "CareerMilestone",
-        props:['milestoneInfo','usersList','selectedUserProfileId','canEdit'],
+        props:['milestoneInfo','usersList','selectedUserProfileId','canEdit','hasMilestoneError', 'careerRoleMilestoneIndex'],
         data(){
             return {
-
                 selected:'',
                 taskName:'',
                 assigned:'',
@@ -62,23 +67,57 @@
                 show:false,
                 assignerId:'',
                 id:'',
+
+                errors:null,
+
+                errorTask:false,
+                errorDate:false,
+                errorSelected:false,
             }
         },
+
         mounted(){
 
             this.milestone = this.milestoneInfo;
+            this.selected = {id: this.milestone.assigned_id, name: this.milestone.assigned_username};
         },
 
-        watch: {
-
+        watch:{
+            hasMilestoneError(errorValue){
+                if(errorValue){
+                    this.change(errorValue);
+                }
+            },
+            milestoneInfo(value){
+                this.milestoneInfo = value;
+                this.milestone = value;
+            }
         },
         methods: {
+            checkError(){
 
-            change(){
+                this.milestone.task === '' ? this.errorTask = true : this.errorTask = false;
+                this.selected === '' ? this.errorSelected = true : this.errorSelected = false;
+                this.milestone.reminder === '' ? this.errorDate = true : this.errorDate = false;
+
+                if(this.errorDate === true || this.errorSelected === true || this.errorTask=== true){
+                    this.errors=true
+                }
+                else{
+                    this.errors=false;
+                }
+                console.log(this.errors);
             },
-            remove(index){
+
+            change(value){
+                if(value === true){
+                    value = false;
+                    this.$emit('hasError',value);
+                }
+            },
+            remove(){
                 if(this.canEdit===true){
-                  this.$emit('removeMilestone',index);
+                  this.$emit('removeMilestone',this.careerRoleMilestoneIndex);
                 }
             },
             submit() {
@@ -86,24 +125,25 @@
             },
 
             focusField() {
-                if(this.canEdit===true){
+                if(this.errorSelected === false && this.errorTask === false && this.errorDate ===false){
 
-                    this.show === false ? this.show=true : this.show=false;
+                    if(this.canEdit===true){
 
-                    this.milestone.assigned_id = this.selected.id;
-                    this.milestone.assigned_username = this.selected.name;
+                        this.show === false ? this.show=true : this.show=false;
+                        this.milestone.assigned_id = this.selected.id;
+                        this.milestone.assigned_username = this.selected.name;
+                        if(this.show === false){
+                            const data = [{
+                                id: this.milestone.id,
+                                reminder: this.milestone.reminder,
+                                task: this.milestone.task,
+                                selected: this.selected,
+                                userCareerRoleId: this.milestone.user_career_role_id,
+                            }];
 
-                    if(this.show === false){
-                        const data = [{
-                            id: this.milestone.id,
-                            reminder: this.milestone.reminder,
-                            task: this.milestone.task,
-                            selected: this.selected,
-                            userCareerRoleId: this.milestone.user_career_role_id,
-                        }];
-
-                        axios.post('/user/'+ this.selectedUserProfileId +'/career/milestone/update',data)
-                            .then(response => {});
+                            axios.post('/user/'+ this.selectedUserProfileId +'/career/milestone/update',data)
+                                .then(response => {});
+                        }
                     }
                 }
             },

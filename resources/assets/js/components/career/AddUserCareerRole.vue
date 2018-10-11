@@ -17,19 +17,6 @@
             </div>
         </div>
     </div>
-
-    <div class="m-portlet__foot m-portlet__foot--fit">
-        <div class="m-form__actions">
-            <div class="row">
-                <div class="col-sm-9 col-xs-12">
-                    <div class="profile-timeline__action">
-                        <button @click="save"  class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
-                        <button @click="remove" class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
-                     </div>
-                </div>
-             </div>
-        </div>
-    </div>
 </div>
 </template>
 
@@ -38,7 +25,7 @@
 
 
     export default {
-        props:['selectedUserProfileId','authUserId','canEdit'],
+        props:['selectedUserProfileId','authUserId','canEdit','hasMilestoneError'],
         name: "AddUserCareerRole",
         data(){
             return{
@@ -46,40 +33,28 @@
                 description:'',
                 title:'',
                 careerRoleTitle:'',
+                hasError:true,
                 careerRoleId:'',
             }
         },
         mounted(){
             this.fetch();
         },
+
         methods:{
 
             create(){
-                if(this.canEdit===true){
+                if(this.canEdit===true && this.careerRoleId !== ''){
+
                     this.$emit('createRole', this.careerRoleId);
                 }
             },
-            remove(){
-                if(this.canEdit===true) {
-                    this.$emit('remove');
-                }
-
-            },
-            save(){
-                if(this.canEdit===true){
-                    this.$emit('save', true);
-                }
-            },
-
 
             fetch(){
                 axios.get('/career/roles').then(response => {
                     this.careerRoleTitle = response.data;
                 })
-            }
-
-
-
+            },
         }
     }
 </script>
