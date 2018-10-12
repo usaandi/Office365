@@ -45,10 +45,8 @@
                     userInfo: this.userInfo
                 });
                 let vm = this;
-                console.log(this.currentUserId);
                 axios.post('/user/' + this.currentUserId + '/update/info',data)
                     .then(response => {
-                            console.log(response.data())
 
 
 

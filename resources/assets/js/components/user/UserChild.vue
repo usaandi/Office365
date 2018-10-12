@@ -99,7 +99,6 @@
             },
 
             reachTest: function () {
-                console.log('hey');
             }
 
         }
