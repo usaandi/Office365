@@ -53,8 +53,10 @@ class UserController extends Controller
     {
 
         try{
-            $authUser = \Auth::user();
-            $this->authorize('admin', $authUser);
+
+            //TODO add back authorize code below if live
+           /* $authUser = \Auth::user();
+            $this->authorize('admin', $authUser);*/
 
             $request->validate([
                 'name' => 'nullable',
