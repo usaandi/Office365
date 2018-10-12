@@ -106,7 +106,6 @@
                 else{
                     this.errors=false;
                 }
-                console.log(this.errors);
             },
 
             change(value){

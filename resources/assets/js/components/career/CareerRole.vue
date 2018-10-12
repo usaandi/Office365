@@ -5,7 +5,7 @@
             <i class="fa fa-genderless m--font-info"></i>
         </div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
-            <div class="profile-timeline__content" >
+            <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]" >
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title"
@@ -76,7 +76,7 @@
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__action">
                             <button type="button" @click="canEditCareer()" v-show="!this.hasChanged" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit</button>
-                            <button type="button" v-show="!this.hasChanged" class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current</button>
+                            <button @click="selectRole(userRoleInfo.id)" type="button" v-show="!this.hasChanged && isActive === 0" class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current</button>
                             <button @click="save" v-show="this.userRoleInfo.id === 'undefined'" class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
                             <button @click="remove"  v-show="this.userRoleInfo.id === 'undefined'" class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
                         </div>
@@ -93,7 +93,7 @@
     import axios from 'axios';
     export default {
         props:['authUserId','userdata','selectedUserProfileId',
-            'usersList','canEdit','hasChanged','hasMilestoneError'],
+            'usersList','canEdit','hasChanged','hasMilestoneError','isActive'],
 
         name: "CareerRole",
 
@@ -104,21 +104,26 @@
                 userRoleInfo:'',
                 milestoneInfo:'',
                 show:false,
+                isCurrent:false,
                 careerRoleId:'',
                 newRoleTitle:'',
                 newRoleDescription:'',
+                selectedActive:undefined,
                 isEditing:false,
                 editField:'',
-                showButton:false,
                 isUpdate:false,
             }
         },
         watch: {
+
             milestone(){
 
             },
             userdata(newVal) {
                 this.userRoleInfo = newVal;
+            },
+            isActive(value){
+             this.isActive = value;
             }
         },
 
@@ -127,8 +132,32 @@
             this.milestoneInfo = this.userInfo;
 
         },
+        mounted(){
+          this.currentlySelected();
+        },
+
+
 
         methods: {
+            showButton(){
+                if(!this.hasChanged ){
+                    return true;
+                }
+            },
+
+            selectRole(value){
+            this.$emit('selectActive',value);
+
+            },
+            currentlySelected(){
+                if(this.userRoleInfo.current_role === 1){
+                   this.isCurrent = true;
+                }
+                else {
+                    this.iscurrent = false;
+                }
+
+            },
 
             remove(){
                 if(this.canEdit === true) {
@@ -179,7 +208,6 @@
                     else if(this.hasChanged === false) {
 
                         const data = this.userRoleInfo['milestones'][value];
-                        console.log(data);
                         axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/delete',data).then(response => {});
                        this.userRoleInfo['milestones'].splice(value, 1);
                     }

@@ -43,6 +43,7 @@
                 :authUserId="AuthUserId"
                 v-for="userInfo in sortArray(userDatas)"
                 :userdata="userInfo"
+                :isActive="userInfo.current_role"
                 :key="userInfo.id"
                 :selectedUserProfileId="selectedUserId"
                 :usersList="users"
@@ -50,6 +51,7 @@
                 @errorValue="errorValueSend($event)"
                 @remove="removeElement($event)"
                 @save="saveRole($event)"
+                @selectActive="selectActive($event)"
             >
             </career-role>
             </div>
@@ -75,7 +77,7 @@
                 show:false,
                 hasChanged: false,
                 users:null,
-                userInfo:'',
+                userModel:'',
                 hasMilestoneError:null,
                 canEdit:false,
             }
@@ -96,6 +98,26 @@
             }
         },
         methods:{
+
+            selectActive(careerRoleId){
+
+                const data = {
+                    userCareerRoleId: careerRoleId,
+                };
+
+                for( let i = 0; i < this.userDatas.length; i++){
+                    let userRole = this.userDatas[i];
+                    if(userRole.id === careerRoleId && userRole.current_role === 0){
+                        userRole.current_role = 1;
+                    }
+                    if(userRole.id !== careerRoleId && userRole.current_role === 1){
+                        userRole.current_role= 0;
+                    }
+                }
+                axios.post('/user/' + this.currentUserId + '/career/role/select', data).then(response => {
+
+                });
+            },
             errorValueSend(value){
                 if(this.hasMilestoneError !== value){
                     this.hasMilestoneError = value;
@@ -119,13 +141,13 @@
             },
 
             checkCanEdit(){
-                if (Vue.$isAdmin() || Vue.$canModerateTeam(this.userInfo.team_id)){
+                if (Vue.$isAdmin() || Vue.$canModerateTeam(this.userModel.team_id)){
                     this.canEdit = true;
                 }
             },
             fetchUserInfo(){
                 axios.get('/user/career/info/'+this.currentUserId).then(response => {
-                    this.userInfo = response.data;
+                    this.userModel = response.data;
                     this.checkCanEdit();
                 });
             },
