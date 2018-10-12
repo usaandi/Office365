@@ -52,6 +52,7 @@ Route::post('/user/{id}/career/milestone/update', 'CareerController@updateMilest
 Route::post('/user/{id}/career/milestone/delete', 'CareerController@deleteMilestone')->name('deleteMilestone');
 Route::post('/user/{id}/career/update', 'CareerController@updateCareer')->name('updateCareer');
 Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createCareer');
+Route::post('/user/{id}/career/role/select', 'CareerController@selectCareer')->name('selectCareer');
 Route::post('/user/{id}/career/role/save', 'CareerController@saveCareer')->name('saveCareer');
 Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
 Route::get('/user/{id}', 'UserController@show')->name('profile');
