@@ -49164,7 +49164,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49249,9 +49249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     name: response.data[0].name
                 });
                 vm.edit = false;
-            }).catch(function (error) {
-                console.log(error.response.data);
-            });
+            }).catch(function (error) {});
         }
 
     }
@@ -50676,7 +50674,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/department/' + this.id + '/team').then(function (response) {
-                /*console.log(response.data);*/
                 _this.teams = response.data;
             });
         },
@@ -53620,9 +53617,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-        reachTest: function reachTest() {
-            console.log('hey');
-        }
+        reachTest: function reachTest() {}
 
     }
 });
@@ -53918,7 +53913,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53973,10 +53968,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 userInfo: this.userInfo
             });
             var vm = this;
-            console.log(this.currentUserId);
-            axios.post('/user/' + this.currentUserId + '/update/info', data).then(function (response) {
-                console.log(response.data());
-            }).catch(function (error) {});
+            axios.post('/user/' + this.currentUserId + '/update/info', data).then(function (response) {}).catch(function (error) {});
         }
 
     }
@@ -54471,7 +54463,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54484,6 +54476,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
 //
 //
 //
@@ -54561,7 +54555,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: false,
             hasChanged: false,
             users: null,
-            userInfo: '',
+            userModel: '',
             hasMilestoneError: null,
             canEdit: false
         };
@@ -54581,6 +54575,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        selectActive: function selectActive(careerRoleId) {
+
+            var data = {
+                userCareerRoleId: careerRoleId
+            };
+
+            for (var i = 0; i < this.userDatas.length; i++) {
+                var userRole = this.userDatas[i];
+                if (userRole.id === careerRoleId && userRole.current_role === 0) {
+                    userRole.current_role = 1;
+                }
+                if (userRole.id !== careerRoleId && userRole.current_role === 1) {
+                    userRole.current_role = 0;
+                }
+            }
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.currentUserId + '/career/role/select', data).then(function (response) {});
+        },
         errorValueSend: function errorValueSend(value) {
             if (this.hasMilestoneError !== value) {
                 this.hasMilestoneError = value;
@@ -54600,7 +54611,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         checkCanEdit: function checkCanEdit() {
-            if (Vue.$isAdmin() || Vue.$canModerateTeam(this.userInfo.team_id)) {
+            if (Vue.$isAdmin() || Vue.$canModerateTeam(this.userModel.team_id)) {
                 this.canEdit = true;
             }
         },
@@ -54608,7 +54619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/career/info/' + this.currentUserId).then(function (response) {
-                _this.userInfo = response.data;
+                _this.userModel = response.data;
                 _this.checkCanEdit();
             });
         },
@@ -54753,6 +54764,7 @@ var render = function() {
                 canEdit: _vm.canEdit,
                 authUserId: _vm.AuthUserId,
                 userdata: userInfo,
+                isActive: userInfo.current_role,
                 selectedUserProfileId: _vm.selectedUserId,
                 usersList: _vm.users,
                 hasMilestoneError: _vm.hasMilestoneError
@@ -54766,6 +54778,9 @@ var render = function() {
                 },
                 save: function($event) {
                   _vm.saveRole($event)
+                },
+                selectActive: function($event) {
+                  _vm.selectActive($event)
                 }
               }
             })
@@ -56007,7 +56022,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56114,7 +56129,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['authUserId', 'userdata', 'selectedUserProfileId', 'usersList', 'canEdit', 'hasChanged', 'hasMilestoneError'],
+    props: ['authUserId', 'userdata', 'selectedUserProfileId', 'usersList', 'canEdit', 'hasChanged', 'hasMilestoneError', 'isActive'],
 
     name: "CareerRole",
 
@@ -56125,12 +56140,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             userRoleInfo: '',
             milestoneInfo: '',
             show: false,
+            isCurrent: false,
             careerRoleId: '',
             newRoleTitle: '',
             newRoleDescription: '',
+            selectedActive: undefined,
             isEditing: false,
             editField: '',
-            showButton: false,
             isUpdate: false
         };
     },
@@ -56139,6 +56155,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         milestone: function milestone() {},
         userdata: function userdata(newVal) {
             this.userRoleInfo = newVal;
+        },
+        isActive: function isActive(value) {
+            this.isActive = value;
         }
     },
 
@@ -56146,9 +56165,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.userRoleInfo = this.userdata;
         this.milestoneInfo = this.userInfo;
     },
+    mounted: function mounted() {
+        this.currentlySelected();
+    },
 
 
     methods: {
+        showButton: function showButton() {
+            if (!this.hasChanged) {
+                return true;
+            }
+        },
+        selectRole: function selectRole(value) {
+            this.$emit('selectActive', value);
+        },
+        currentlySelected: function currentlySelected() {
+            if (this.userRoleInfo.current_role === 1) {
+                this.isCurrent = true;
+            } else {
+                this.iscurrent = false;
+            }
+        },
         remove: function remove() {
             if (this.canEdit === true) {
                 this.$emit('remove');
@@ -56192,7 +56229,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else if (this.hasChanged === false) {
 
                     var data = this.userRoleInfo['milestones'][value];
-                    console.log(data);
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(function (response) {});
                     this.userRoleInfo['milestones'].splice(value, 1);
                 }
@@ -56242,283 +56278,307 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "m-timeline-2__item-text  m--padding-top-5 " }, [
-      _c("div", { staticClass: "profile-timeline__content" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
-            _c(
-              "h4",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.showField("title"),
-                    expression: "!showField('title')"
-                  }
-                ],
-                staticClass: "profile-timeline__title",
-                on: {
-                  click: function($event) {
-                    _vm.focusField("title")
-                  }
-                }
-              },
-              [_vm._v(_vm._s(_vm.userRoleInfo.title))]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userRoleInfo.title,
-                  expression: "userRoleInfo.title"
-                },
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.showField("title"),
-                  expression: "showField('title')"
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.userRoleInfo.title },
-              on: {
-                focus: function($event) {
-                  _vm.focusField("title")
-                },
-                blur: _vm.blurField,
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.userRoleInfo, "title", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" }, [
-            _c(
-              "p",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.showField("description"),
-                    expression: "!showField('description')"
-                  }
-                ],
-                staticClass: "profile-timeline__text",
-                on: {
-                  click: function($event) {
-                    _vm.focusField("description")
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                       " +
-                    _vm._s(_vm.userRoleInfo.description) +
-                    "\n                    "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userRoleInfo.description,
-                  expression: "userRoleInfo.description"
-                },
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.showField("description"),
-                  expression: "showField('description')"
-                }
-              ],
-              domProps: { value: _vm.userRoleInfo.description },
-              on: {
-                focus: function($event) {
-                  _vm.focusField("description")
-                },
-                blur: _vm.blurField,
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.userRoleInfo, "description", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
-            [
+      _c(
+        "div",
+        {
+          staticClass: "profile-timeline__content ",
+          class: [{ "border border-success": _vm.isActive === 1 }]
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
               _c(
-                "div",
-                { staticClass: "profile-timeline__add" },
-                [
-                  _c(
-                    "a",
+                "h4",
+                {
+                  directives: [
                     {
-                      staticClass:
-                        "btn btn-success m-btn m-btn--icon m-btn--pill",
-                      on: { click: _vm.showForm }
-                    },
-                    [_vm._m(2)]
-                  ),
-                  _vm._v(" "),
-                  _c("milestone-form", {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.showField("title"),
+                      expression: "!showField('title')"
+                    }
+                  ],
+                  staticClass: "profile-timeline__title",
+                  on: {
+                    click: function($event) {
+                      _vm.focusField("title")
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.userRoleInfo.title))]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userRoleInfo.title,
+                    expression: "userRoleInfo.title"
+                  },
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.showField("title"),
+                    expression: "showField('title')"
+                  }
+                ],
+                attrs: { type: "text" },
+                domProps: { value: _vm.userRoleInfo.title },
+                on: {
+                  focus: function($event) {
+                    _vm.focusField("title")
+                  },
+                  blur: _vm.blurField,
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.userRoleInfo, "title", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
+              [
+                _c(
+                  "p",
+                  {
                     directives: [
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: _vm.show,
-                        expression: "show"
+                        value: !_vm.showField("description"),
+                        expression: "!showField('description')"
                       }
                     ],
-                    attrs: {
-                      hasChanged: _vm.hasChanged,
-                      usersList: _vm.usersList,
-                      careerRoleId: _vm.userRoleInfo.id,
-                      selectedUserProfileId: _vm.selectedUserProfileId
-                    },
+                    staticClass: "profile-timeline__text",
                     on: {
-                      pushToMilestones: function($event) {
-                        _vm.pushMilestone($event)
-                      },
-                      addToMilestones: function($event) {
-                        _vm.addMilestone($event)
+                      click: function($event) {
+                        _vm.focusField("description")
                       }
                     }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.userRoleInfo["milestones"], function(
-                milestone,
-                index
-              ) {
-                return _c("user-career-milestone", {
-                  key: index + 1,
-                  attrs: {
-                    canEdit: _vm.canEdit,
-                    selectedUserProfileId: _vm.selectedUserProfileId,
-                    milestoneInfo: milestone,
-                    hasMilestoneError: _vm.hasMilestoneError,
-                    usersList: _vm.usersList,
-                    careerRoleMilestoneIndex: index
                   },
-                  on: {
-                    removeMilestone: function($event) {
-                      _vm.deleteMilestone($event)
+                  [
+                    _vm._v(
+                      "\n                       " +
+                        _vm._s(_vm.userRoleInfo.description) +
+                        "\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userRoleInfo.description,
+                      expression: "userRoleInfo.description"
                     },
-                    hasError: function($event) {
-                      _vm.sendErrorValue($event)
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.showField("description"),
+                      expression: "showField('description')"
+                    }
+                  ],
+                  domProps: { value: _vm.userRoleInfo.description },
+                  on: {
+                    focus: function($event) {
+                      _vm.focusField("description")
+                    },
+                    blur: _vm.blurField,
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.userRoleInfo,
+                        "description",
+                        $event.target.value
+                      )
                     }
                   }
                 })
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _vm._m(3),
+              ]
+            )
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" }, [
-            _c("div", { staticClass: "profile-timeline__action" }, [
-              _c(
-                "button",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !this.hasChanged,
-                      expression: "!this.hasChanged"
-                    }
+          _c("div", { staticClass: "row" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
+              [
+                _c(
+                  "div",
+                  { staticClass: "profile-timeline__add" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "btn btn-success m-btn m-btn--icon m-btn--pill",
+                        on: { click: _vm.showForm }
+                      },
+                      [_vm._m(2)]
+                    ),
+                    _vm._v(" "),
+                    _c("milestone-form", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.show,
+                          expression: "show"
+                        }
+                      ],
+                      attrs: {
+                        hasChanged: _vm.hasChanged,
+                        usersList: _vm.usersList,
+                        careerRoleId: _vm.userRoleInfo.id,
+                        selectedUserProfileId: _vm.selectedUserProfileId
+                      },
+                      on: {
+                        pushToMilestones: function($event) {
+                          _vm.pushMilestone($event)
+                        },
+                        addToMilestones: function($event) {
+                          _vm.addMilestone($event)
+                        }
+                      }
+                    })
                   ],
-                  staticClass:
-                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.canEditCareer()
+                  1
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.userRoleInfo["milestones"], function(
+                  milestone,
+                  index
+                ) {
+                  return _c("user-career-milestone", {
+                    key: index + 1,
+                    attrs: {
+                      canEdit: _vm.canEdit,
+                      selectedUserProfileId: _vm.selectedUserProfileId,
+                      milestoneInfo: milestone,
+                      hasMilestoneError: _vm.hasMilestoneError,
+                      usersList: _vm.usersList,
+                      careerRoleMilestoneIndex: index
+                    },
+                    on: {
+                      removeMilestone: function($event) {
+                        _vm.deleteMilestone($event)
+                      },
+                      hasError: function($event) {
+                        _vm.sendErrorValue($event)
+                      }
                     }
-                  }
-                },
-                [_vm._v("Edit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  directives: [
+                  })
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
+              [
+                _c("div", { staticClass: "profile-timeline__action" }, [
+                  _c(
+                    "button",
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !this.hasChanged,
-                      expression: "!this.hasChanged"
-                    }
-                  ],
-                  staticClass:
-                    "btn m-btn--pill btn-success m-btn m-btn--custom",
-                  attrs: { type: "button" }
-                },
-                [_vm._v("Apply as current")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  directives: [
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !this.hasChanged,
+                          expression: "!this.hasChanged"
+                        }
+                      ],
+                      staticClass:
+                        "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.canEditCareer()
+                        }
+                      }
+                    },
+                    [_vm._v("Edit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value: this.userRoleInfo.id === "undefined",
-                      expression: "this.userRoleInfo.id === 'undefined'"
-                    }
-                  ],
-                  staticClass: "btn btn-success m-btn m-btn--pill",
-                  on: { click: _vm.save }
-                },
-                [_vm._m(4)]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  directives: [
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !this.hasChanged && _vm.isActive === 0,
+                          expression: "!this.hasChanged && isActive === 0"
+                        }
+                      ],
+                      staticClass:
+                        "btn m-btn--pill btn-success m-btn m-btn--custom",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.selectRole(_vm.userRoleInfo.id)
+                        }
+                      }
+                    },
+                    [_vm._v("Apply as current")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value: this.userRoleInfo.id === "undefined",
-                      expression: "this.userRoleInfo.id === 'undefined'"
-                    }
-                  ],
-                  staticClass: "btn btn-danger m-btn m-btn--pill",
-                  on: { click: _vm.remove }
-                },
-                [_vm._m(5)]
-              )
-            ])
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: this.userRoleInfo.id === "undefined",
+                          expression: "this.userRoleInfo.id === 'undefined'"
+                        }
+                      ],
+                      staticClass: "btn btn-success m-btn m-btn--pill",
+                      on: { click: _vm.save }
+                    },
+                    [_vm._m(4)]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: this.userRoleInfo.id === "undefined",
+                          expression: "this.userRoleInfo.id === 'undefined'"
+                        }
+                      ],
+                      staticClass: "btn btn-danger m-btn m-btn--pill",
+                      on: { click: _vm.remove }
+                    },
+                    [_vm._m(5)]
+                  )
+                ])
+              ]
+            )
           ])
-        ])
-      ])
+        ]
+      )
     ])
   ])
 }
@@ -56667,7 +56727,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56785,7 +56845,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 this.errors = false;
             }
-            console.log(this.errors);
         },
         change: function change(value) {
             if (value === true) {
@@ -57162,7 +57221,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57236,7 +57295,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 teamId: this.teamId
 
             });
-            console.log(this.teamId + '' + this.userId);
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/team/moderator/add', data).then(function (response) {}).catch(function (error) {
                 console.log(error.response.data);
             });

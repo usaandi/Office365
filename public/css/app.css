@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);body {
-  background-color: #00adee;
+  background-color: #009eed;
   font-family: 'Lato', sans-serif;
 }
 
@@ -99,7 +99,7 @@ a:focus {
 
 .form-control.focus,
 .form-control:focus {
-  border-color: #00adee;
+  border-color: #009eed;
   color: #575962;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -268,15 +268,15 @@ a:focus {
 }
 
 .btn-brand:hover {
-  background-color: #00adee;
-  border-color: #00adee;
+  background-color: #009eed;
+  border-color: #009eed;
 }
 
 .btn-brand:not(:disabled):not(.disabled).active,
 .btn-brand:not(:disabled):not(.disabled):active,
 .show > .btn-brand.dropdown-toggle {
-  background-color: #00adee;
-  border-color: #00adee;
+  background-color: #009eed;
+  border-color: #009eed;
 }
 
 .daterangepicker .ranges li.active {
@@ -493,7 +493,7 @@ a:focus {
 }
 
 .profile-timeline__title {
-  color: #00adee;
+  color: #009eed;
   text-align: center;
 }
 
@@ -1165,7 +1165,7 @@ a:focus {
 }
 
 .profile__pill {
-  background-color: #00adee;
+  background-color: #009eed;
   color: white;
   font-size: 12px;
   padding: 0.65rem 1rem;
