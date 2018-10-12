@@ -57,21 +57,19 @@ class UserController extends Controller
             $this->authorize('admin', $authUser);
 
             $request->validate([
-                'name' => '',
-                'email' => 'email',
-                'phone' => 'int',
-                'birthday' => 'date',
-                'skype' => '',
-                'team' => '',
-                'ADMsince' => 'date',
-                'role' => '',
+                'name' => 'nullable',
+                'email' => 'email|nullable',
+                'phone' => 'int|nullable',
+                'birthday' => 'date|nullable',
+                'skype' => 'nullable',
+                'ADMsince' => 'date|nullable',
+                'role' => 'nullable',
             ]);
             $name = $request->input('name');
             $email = $request->input('email');
             $phone = $request->input('phone');
             $birthday = $request->input('birthday');
             $skype = $request->input('skype');
-            $team = $request->input('team');
             $ADMsince = $request->input('ADMsince');
             $role = $request->input('role');
 
@@ -86,7 +84,7 @@ class UserController extends Controller
             }
 
             $user->update(['email' => $email, 'name' => $name, 'phoneN' => $phone,
-            'birthday' => $birthday, 'skype' => $skype, 'team' => $team, 'ADMsince' => $ADMsince]);
+            'birthday' => $birthday, 'skype' => $skype,  'ADMsince' => $ADMsince]);
             $user->save();
 
             return redirect()->back();

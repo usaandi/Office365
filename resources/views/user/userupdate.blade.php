@@ -29,6 +29,7 @@
             width:200px;
             border:1px solid #babacc;
             box-sizing:border-box;
+            margin-top: 5px;
 
         }
         label {
@@ -48,7 +49,7 @@
         <input type="email" name="email"  value="{{ $user->email }}"/>
         <br>
         <label><b>Phone Number</b></label>
-        <input type="number" name="phone" value="{{$user->phoneN}}"/>
+        <input type="number" name="phone" value="{{$user->phone}}"/>
         <br>
         <label><b>Birthday</b></label>
         <input type="date"name="birthday" value="{{$user->birthday}}"/>
@@ -56,7 +57,7 @@
         <label><b>Skype</b></label>
         <input type="text"name="skype" value="{{$user->skype}}"/>
         <br>
-        <label for="team"><b>Your team: {{$user->team}}</b></label>
+        <label for="team"><b>Your team: does not work</b></label>
         <select name="team">
             <option value="Fenomen1">Fenomen1</option>
             <option value="Fenomen2">Fenomen2</option>

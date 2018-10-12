@@ -154,9 +154,6 @@ class CareerController extends Controller
 
             $inactiveRole=$user->userCareerRole()->where('id', $data['userCareerRoleId'])
                 ->update(['current_role' => 1]);
-
-
-
         }
         catch(\Exception $e){}
     }
