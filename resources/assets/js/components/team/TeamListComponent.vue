@@ -50,7 +50,6 @@
 
                 axios.get('/department/'+ this.id + '/team')
                     .then(response=>{
-                        /*console.log(response.data);*/
                      this.teams=response.data;
 
                     })
