@@ -58,7 +58,6 @@
                     teamId: this.teamId,
 
                 });
-                console.log(this.teamId +''+ this.userId);
                 axios.post('/admin/team/moderator/add',data)
                     .then(response => {
 
