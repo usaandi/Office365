@@ -90,6 +90,7 @@ class CareerController extends Controller
             $data[$key]['user_id'] = $careerRole->user_id;
             $data[$key]['title'] = $careerRole->title;
             $data[$key]['description'] = $careerRole->description;
+            $data[$key]['current_role'] = $careerRole->current_role;
             $data[$key]['milestones'] = [];
 
             foreach ($careerRole->careerRoleMilestone as $careerMilestone) {
@@ -137,6 +138,27 @@ class CareerController extends Controller
             }
 
         }catch(\Exception $e){}
+    }
+
+    public function selectCareer(Request $request, $id)
+    {
+        try{
+            $authUser = \Auth::user();
+            $this->authorize('createCareer', $authUser);
+            $user = User::findOrFail($id);
+
+            $data = $request->all();
+
+            $activeRole = $user->userCareerRole()->where('current_role',1)
+                ->update(['current_role' => 0]);
+
+            $inactiveRole=$user->userCareerRole()->where('id', $data['userCareerRoleId'])
+                ->update(['current_role' => 1]);
+
+
+
+        }
+        catch(\Exception $e){}
     }
     public function createCareer(Request $request, $id)
     {
@@ -246,6 +268,7 @@ class CareerController extends Controller
                         'title' => $ucTitle,
                         'description' => $description,
                         'user_id' => $userId,
+                        'current_role' => 0,
                     ]);
                     $milestonesArray=[];
                     if (empty($data['milestones']) === false) {
