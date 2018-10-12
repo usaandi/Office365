@@ -12,7 +12,8 @@ class UserCareerRole extends Model
         'user_id',
         'career_role_id',
         'title',
-        'description'
+        'description',
+        'current_role',
     ];
 
     public function user(){
