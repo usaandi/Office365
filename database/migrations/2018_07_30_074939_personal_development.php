@@ -39,6 +39,7 @@ class PersonalDevelopment extends Migration
             $table->unsignedInteger('user_id');
             $table->string('title');
             $table->text('description');
+            $table->boolean('current_role')->nullable();
             $table->timestamps();
 
             $table->foreign('career_role_id')->references('id')->on('career_roles');
