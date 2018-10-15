@@ -268,13 +268,13 @@
                                     <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                     <ul class="m-menu__subnav">
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="{{route('profile',['id'=>auth()->user()])}}" class="m-menu__link ">
+                                            <a href="{{route('profile',['id' => auth()->user()])}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">My Profile</span>
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="{{route('career',['id'=>auth()->user()])}}" class="m-menu__link ">
+                                            <a href="{{route('career',['id' => auth()->user()])}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Development</span>
                                             </a>
@@ -300,26 +300,26 @@
                                     <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 54.5px;"></span>
                                     <ul class="m-menu__subnav">
                                         <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="?page=builder&amp;demo=demo8" class="m-menu__link "><i
+                                                    href="{{route('addCareer')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-graphic-2"></i><span
-                                                        class="m-menu__link-text">Orders</span></a></li>
+                                                        class="m-menu__link-text">Add Career template</span></a></li>
                                         <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="?page=builder&amp;demo=demo8" class="m-menu__link "><i
+                                                    href="{{route('departmentadd')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-analytics"></i><span
-                                                        class="m-menu__link-text">Customers</span></a></li>
+                                                        class="m-menu__link-text">Add Department</span></a></li>
                                         <li
                                                 class="m-menu__item " aria-haspopup="true"><a
-                                                    href="?page=inner&amp;demo=demo8" class="m-menu__link "><i
+                                                    href="{{route('useradd')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-notes"></i><span
-                                                        class="m-menu__link-text">Revenue</span></a></li>
+                                                        class="m-menu__link-text">Add User</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="?page=builder&amp;demo=demo8" class="m-menu__link "><i
+                                                    href="" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-clipboard"></i><span
                                                         class="m-menu__link-text">Invoices</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="?page=builder&amp;demo=demo8" class="m-menu__link "><i
+                                                    href="" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Bills</span></a></li>
                                         <li
