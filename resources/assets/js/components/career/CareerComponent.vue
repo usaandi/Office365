@@ -105,17 +105,17 @@
                     userCareerRoleId: careerRoleId,
                 };
 
-                for( let i = 0; i < this.userDatas.length; i++){
-                    let userRole = this.userDatas[i];
-                    if(userRole.id === careerRoleId && userRole.current_role === 0){
-                        userRole.current_role = 1;
-                    }
-                    if(userRole.id !== careerRoleId && userRole.current_role === 1){
-                        userRole.current_role= 0;
-                    }
-                }
-                axios.post('/user/' + this.currentUserId + '/career/role/select', data).then(response => {
 
+                axios.post('/user/' + this.currentUserId + '/career/role/select', data).then(response => {
+                    for( let i = 0; i < this.userDatas.length; i++){
+                        let userRole = this.userDatas[i];
+                        if(userRole.id === careerRoleId && userRole.current_role === 0){
+                            userRole.current_role = 1;
+                        }
+                        if(userRole.id !== careerRoleId && userRole.current_role === 1){
+                            userRole.current_role= 0;
+                        }
+                    }
                 });
             },
             errorValueSend(value){

@@ -54576,21 +54576,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         selectActive: function selectActive(careerRoleId) {
+            var _this = this;
 
             var data = {
                 userCareerRoleId: careerRoleId
             };
 
-            for (var i = 0; i < this.userDatas.length; i++) {
-                var userRole = this.userDatas[i];
-                if (userRole.id === careerRoleId && userRole.current_role === 0) {
-                    userRole.current_role = 1;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.currentUserId + '/career/role/select', data).then(function (response) {
+                for (var i = 0; i < _this.userDatas.length; i++) {
+                    var userRole = _this.userDatas[i];
+                    if (userRole.id === careerRoleId && userRole.current_role === 0) {
+                        userRole.current_role = 1;
+                    }
+                    if (userRole.id !== careerRoleId && userRole.current_role === 1) {
+                        userRole.current_role = 0;
+                    }
                 }
-                if (userRole.id !== careerRoleId && userRole.current_role === 1) {
-                    userRole.current_role = 0;
-                }
-            }
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.currentUserId + '/career/role/select', data).then(function (response) {});
+            });
         },
         errorValueSend: function errorValueSend(value) {
             if (this.hasMilestoneError !== value) {
@@ -54616,29 +54618,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         fetchUserInfo: function fetchUserInfo() {
-            var _this = this;
+            var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/career/info/' + this.currentUserId).then(function (response) {
-                _this.userModel = response.data;
-                _this.checkCanEdit();
+                _this2.userModel = response.data;
+                _this2.checkCanEdit();
             });
         },
         usersList: function usersList() {
-            var _this2 = this;
+            var _this3 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/users').then(function (response) {
-                _this2.users = response.data;
+                _this3.users = response.data;
             });
         },
         saveRole: function saveRole() {
-            var _this3 = this;
+            var _this4 = this;
 
             if (this.canEdit) {
                 if (this.hasChanged) {
                     var data = this.userDatas[0];
                     this.userDatas.splice(0, 1);
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserId + '/career/role/save', data).then(function (response) {
-                        _this3.userDatas.push(response.data);
+                        _this4.userDatas.push(response.data);
                     });
                     this.show = false;
                     this.hasChanged = false;
@@ -54675,10 +54677,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
         fetchData: function fetchData() {
-            var _this4 = this;
+            var _this5 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/' + this.currentUserId + '/career/info').then(function (response) {
-                _this4.userDatas = response.data;
+                _this5.userDatas = response.data;
             });
         }
     }
