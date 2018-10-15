@@ -38,7 +38,7 @@ class UserHobbies extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_hobbies');
         Schema::dropIfExists('hobbies');
+        Schema::dropIfExists('users_hobbies');
     }
 }
