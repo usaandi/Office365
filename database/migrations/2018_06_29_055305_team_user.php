@@ -36,8 +36,8 @@ class TeamUser extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('department_id')->references('id')->on('departments');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
 
@@ -47,8 +47,8 @@ class TeamUser extends Migration
             $table->unsignedInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('team_id')->references('id')->on('teams');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
         Schema::create('user_teams_moderators', function (Blueprint $table){
@@ -57,8 +57,8 @@ class TeamUser extends Migration
             $table->unsignedInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('team_id')->references('id')->on('teams');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
 

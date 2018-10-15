@@ -30,7 +30,7 @@ class PersonalDevelopment extends Migration
             $table->unsignedInteger('career_role_id');
             $table->timestamps();
 
-            $table->foreign('career_role_id')->references('id')->on('career_roles');
+            $table->foreign('career_role_id')->references('id')->on('career_roles')->onDelete('cascade');
         });
 
         Schema::create('users_career_roles', function (Blueprint $table) {
@@ -42,8 +42,8 @@ class PersonalDevelopment extends Migration
             $table->boolean('current_role')->nullable();
             $table->timestamps();
 
-            $table->foreign('career_role_id')->references('id')->on('career_roles');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('career_role_id')->references('id')->on('career_roles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::create('users_career_roles_milestones', function (Blueprint $table) {
@@ -57,10 +57,10 @@ class PersonalDevelopment extends Migration
             $table->boolean('completed')->nullable();
             $table->timestamps();
 
-            $table->foreign('milestone_id')->references('id')->on('career_roles_milestones');
-            $table->foreign('assigned_id')->references('id')->on('users');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('user_career_role_id')->references('id')->on('users_career_roles');
+            $table->foreign('milestone_id')->references('id')->on('career_roles_milestones')->onDelete('cascade');
+            $table->foreign('assigned_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_career_role_id')->references('id')->on('users_career_roles')->onDelete('cascade');
         });
     }
     /**

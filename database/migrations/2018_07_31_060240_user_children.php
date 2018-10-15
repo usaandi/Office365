@@ -20,7 +20,7 @@ class UserChildren extends Migration
             $table->date('year_born');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

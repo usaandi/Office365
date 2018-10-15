@@ -26,8 +26,8 @@ class UserHobbies extends Migration
             $table->unsignedInteger('hobby_id');
             $table->timestamps();
 
-            $table->foreign('hobby_id')->references('id')->on('hobbies');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('hobby_id')->references('id')->on('hobbies')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
