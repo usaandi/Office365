@@ -6,7 +6,7 @@
                     <div class="form-group m-form__group row"><label  class="col-3 col-form-label">Year born</label>
                         <div class="col-9">
                             <div class="input-group date">
-                                <input type="text" class="form-control m-input" readonly="" placeholder="Select date" id="m_datepicker_2">
+                                <input type="text" class="form-control m-input datepicker" data-provide="datepicker" readonly="" placeholder="Select date" id="m_datepicker_2">
                                 <div class="input-group-append">
                                               <span class="input-group-text">
                                    <i class="la la-calendar-check-o"></i>
