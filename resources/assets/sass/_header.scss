@@ -139,3 +139,19 @@
 .m-brand .m-brand__tools .m-brand__icon>i {
   color: rgba(255, 255, 255, 0.8);
 }
+
+@media (min-width: 1025px) {
+  .m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__link {
+    background: $brand;
+  }
+  .m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__link .m-menu__link-text {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs>.m-menu__link:hover .m-menu__link-text {
+    color: white;
+  }
+  .m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs.m-menu__item--active-tab>.m-menu__link .m-menu__link-text,
+  .m-header-menu .m-menu__nav>.m-menu__item.m-menu__item--tabs.m-menu__item--hover>.m-menu__link .m-menu__link-text {
+    color: #382244;
+  }
+}
