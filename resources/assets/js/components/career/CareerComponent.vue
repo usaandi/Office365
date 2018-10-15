@@ -157,7 +157,6 @@
                         this.users = response.data;
                     });
             },
-
             saveRole(){
                 if(this.canEdit){
                     if(this.hasChanged){
@@ -173,7 +172,6 @@
                 }
             },
             removeElement(){
-
                 if(this.canEdit){
                     if(this.hasChanged){
                         this.userDatas.splice(0, 1);
@@ -201,7 +199,6 @@
                         }).catch(error => {});
                 }
             },
-
             fetchData: function () {
                 axios.get('/user/' + this.currentUserId + '/career/info')
                     .then(response => {
