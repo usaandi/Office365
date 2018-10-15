@@ -329,7 +329,7 @@
                                                     <a href="#"
                                                        class="btn btn-primary m-btn m-btn--icon m-btn--pill m-btn--air   dropdown-toggle"
                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                       + aria-expanded="false">
+                                                        aria-expanded="false">
                                                         <i class="la la-cloud-download"></i>&nbsp;&nbsp;Export
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right"><a
