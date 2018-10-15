@@ -257,7 +257,7 @@
                         <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
                             <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown m-menu__item--hover" m-menu-submenu-toggle="tab" aria-haspopup="true">
 
-                                <a href="index.html" class="m-menu__link m-menu__toggle">
+                                <a href="/" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__link-text">
 													Dashboard
 												</span>
@@ -285,7 +285,22 @@
                                                 <span class="m-menu__link-text">Teams</span>
                                             </a>
                                         </li>
-                                        @hasanyrole('Admin|Moderator')
+                                    </ul>
+                                </div>
+                            </li>
+                            @hasanyrole('Admin')
+                            <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown" m-menu-submenu-toggle="tab" aria-haspopup="true">
+
+                                <a href="#" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__link-text">
+													Admin
+												</span>
+                                    <i class="m-menu__hor-arrow la la-angle-down"></i>
+                                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                                </a>
+                                <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                    <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                                    <ul class="m-menu__subnav">
                                         <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
                                             <a href="{{route('useradd')}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
@@ -298,10 +313,10 @@
                                                 <span class="m-menu__link-text">Add Team</span>
                                             </a>
                                         </li>
-                                        @endhasanyrole
                                     </ul>
                                 </div>
                             </li>
+                            @endhasanyrole
                         </ul>
                     </div>
                 </div>

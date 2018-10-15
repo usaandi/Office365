@@ -88,7 +88,7 @@
             clear: function () {
                 this.desc='';
                 this.title='';
-                this.milestonesList=null;
+                this.milestonesList=[];
             },
 
             submit: function () {

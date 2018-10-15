@@ -54223,7 +54223,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clear: function clear() {
             this.desc = '';
             this.title = '';
-            this.milestonesList = null;
+            this.milestonesList = [];
         },
 
         submit: function submit() {
