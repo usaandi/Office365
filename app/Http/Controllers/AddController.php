@@ -26,7 +26,6 @@ class AddController extends Controller
                 'phone'=> 'required|int',
                 'birthday'=> 'required|date',
                 'skype'=>'required',
-                'team'=>'',
                 'ADMsince'=>'required|date',
                ]
            );
@@ -35,7 +34,6 @@ class AddController extends Controller
             $phone=$request->input('phone');
             $birthday=$request->input('birthday');
             $skype=$request->input('skype');
-            $team=$request->input('team');
             $ADMsince=$request->input('ADMsince');
 
         //$userteam= Team::where('team_name', '=', $team);
@@ -50,12 +48,12 @@ class AddController extends Controller
             if($user===null){
 
                 User::create(['email' => $email,'name'=>$name,'token'=>null,'phone'=>$phone,
-                    'birthday'=>$birthday, 'skype'=>$skype, 'team'=>$team,'ADMsince'=>$ADMsince]);
+                    'birthday'=>$birthday, 'skype'=>$skype,'ADMsince'=>$ADMsince]);
 
                 return view('user.adduser');
             }
             else {
-                echo 'Sellise nimega isik: '.$name.' ja Emailiga:'.$email.' On juba andmebaasis';
+                echo 'Sellise nimega isik: '.$name.' ja Emailiga:'.$email.' On juba olemas';
             }
         }catch (\Exception $e){}
     }
