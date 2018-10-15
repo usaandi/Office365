@@ -60,14 +60,6 @@
         <label for="skype"><b>Skype</b></label>
         <input type="text" placeholder="Enter Skype" name="skype" value="" required>
         <br>
-        <label for="team"><b>Your team</b></label>
-        <select name="team" placeholder="Your team" required>
-            <option value="Fenomen1">Fenomen1</option>
-            <option value="Fenomen2">Fenomen2</option>
-            <option value="Fenomen3">Fenomen3</option>
-            <option value="Fenomen4">Fenomen4</option>
-        </select>
-        <br>
         <label for="ADMsince"><b>ADM since</b></label>
         <input type="date" placeholder="ADM Join Date" name="ADMsince" value="" required>
         <br>
