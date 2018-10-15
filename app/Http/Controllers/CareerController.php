@@ -301,6 +301,7 @@ class CareerController extends Controller
                         'title' => $ucTitle,
                         'description' => $description,
                         'user_id' => $id,
+                        'current_role'=> 0,
                         'milestones' => $milestonesArray,
 
                     ];
