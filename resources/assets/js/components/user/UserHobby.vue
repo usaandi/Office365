@@ -40,8 +40,7 @@
         },
         methods:{
 
-            testing(value){
-            },
+
 
             deleteRow: function(userHobbyId){
                 let vm =this;

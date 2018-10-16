@@ -6,7 +6,7 @@
                     <div class="form-group m-form__group row"><label  class="col-3 col-form-label">Year born</label>
                         <div class="col-9">
                             <div class="input-group date">
-                                <input type="text" class="form-control m-input datepicker" data-provide="datepicker" readonly="" placeholder="Select date" id="m_datepicker_2">
+                                <input ref="datePicker" class="form-control m-input" @input="" type="text" v-model="dateBorn" data-provide="datepicker" id="m_datepicker_2">
                                 <div class="input-group-append">
                                               <span class="input-group-text">
                                    <i class="la la-calendar-check-o"></i>
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div  class="form-group m-form__group row"><label  class="col-3 col-form-label">Child name</label>
-                        <div class="col-9"><input type="text" placeholder="Child name" class="form-control m-input"></div>
+                        <div class="col-9"><input v-model="childName" type="text" placeholder="Child name" class="form-control m-input"></div>
                     </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
@@ -43,7 +43,26 @@
 
 <script>
     export default {
-        name: "UserChildrenForm"
+        name: "UserChildrenForm",
+        data(){
+            return {
+                dateBorn:'',
+                childName:'',
+            }
+
+        },
+        watch: {
+            dateBorn() {
+                alert("OK");
+            }
+        },
+        computed: {
+            dateBornValue() {
+
+                return $(this.$refs.datePicker).datepicker.value('update','');
+            }
+        }
+
     }
 </script>
 

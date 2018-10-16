@@ -4,7 +4,9 @@
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row"><label
                                                                  class="col-3 col-form-label">Hobbie</label>
-                    <div class="col-9"><input @change="hobbyNameChange" v-model="hobbyName" :class="classObject" type="text" placeholder="Hobby" class="form-control m-input "></div>
+                    <div class="col-9">
+                        <input @change="hobbyNameChange" v-model="hobbyName" :class="classObject" type="text" placeholder="Hobby" class="form-control m-input ">
+                    </div>
                 </div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
