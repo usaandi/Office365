@@ -44,6 +44,7 @@
             hobbyNameChange() {
 
                 if (this.hasError) {
+
                     this.hasError = false;
                 }
 
@@ -70,7 +71,7 @@
         computed:{
             classObject(){
                 return {
-                    'border border-danger': this.hasError
+                    'border border-danger': this.hasError,
                 }
 
             },
