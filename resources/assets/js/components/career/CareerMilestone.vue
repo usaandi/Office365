@@ -82,11 +82,7 @@
         },
 
         watch:{
-            hasMilestoneError(errorValue){
-                if(errorValue){
-                    this.change(errorValue);
-                }
-            },
+
             milestoneInfo(value){
                 this.milestoneInfo = value;
                 this.milestone = value;
@@ -94,16 +90,17 @@
         },
         methods: {
             checkError(){
+                this.$emit('errorValue',this.errors);
 
                 this.milestone.task === '' ? this.errorTask = true : this.errorTask = false;
                 this.selected === '' ? this.errorSelected = true : this.errorSelected = false;
                 this.milestone.reminder === '' ? this.errorDate = true : this.errorDate = false;
 
                 if(this.errorDate === true || this.errorSelected === true || this.errorTask=== true){
-                    this.errors=true
+                    this.errors = true;
                 }
                 else{
-                    this.errors=false;
+                    this.errors = false;
                 }
             },
 

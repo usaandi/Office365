@@ -113,6 +113,7 @@
                 });
             },
             errorValueSend(value){
+
                 if(this.hasMilestoneError !== value){
                     this.hasMilestoneError = value;
                 }
@@ -148,24 +149,25 @@
                     });
             },
             saveRole(){
-                if(this.canEdit){
-                    if(this.hasChanged){
-                    const data = this.userDatas[0];
-                        this.userDatas.splice(0, 1);
-                        axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
-                        .then(response => {
-                            this.userDatas.push(response.data);
-                        });
-                     this.show = false;
-                    this.hasChanged = false;
-                   }
-                }
+                    if(this.canEdit){
+                        if(this.hasChanged){
+                        const data = this.userDatas[0];
+                            this.userDatas.splice(0, 1);
+                            axios.post('/user/'+this.selectedUserId+'/career/role/save',data)
+                            .then(response => {
+                                this.userDatas.push(response.data);
+                            });
+                         this.show = false;
+                        this.hasChanged = false;
+                       }
+                    }
             },
             removeElement(){
                 if(this.canEdit){
                     if(this.hasChanged){
                         this.userDatas.splice(0, 1);
                         this.hasChanged = false;
+                        this.hasMilestoneError = false;
                     }
                 }
             },

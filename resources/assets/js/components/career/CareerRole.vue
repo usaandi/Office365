@@ -63,7 +63,7 @@
                                 :usersList="usersList"
                                 :careerRoleMilestoneIndex="index"
                                 @removeMilestone="deleteMilestone($event)"
-                                @hasError="sendErrorValue($event)"
+                                @errorValue="sendErrorValue($event)"
                             ></user-career-milestone>
                     </div>
                 </div>
@@ -171,7 +171,9 @@
             },
 
             sendErrorValue(value){
-                this.$emit('errorValue',value);
+
+               /* this.$emit('errorValue',value);*/
+
             },
 
             addMilestone(data){

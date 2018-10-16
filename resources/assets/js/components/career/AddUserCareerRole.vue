@@ -33,7 +33,6 @@
                 description:'',
                 title:'',
                 careerRoleTitle:'',
-                hasError:true,
                 careerRoleId:'',
             }
         },
