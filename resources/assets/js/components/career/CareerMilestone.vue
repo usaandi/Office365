@@ -68,8 +68,7 @@
                 assignerId:'',
                 id:'',
 
-                errors:null,
-
+                errors:false,
                 errorTask:false,
                 errorDate:false,
                 errorSelected:false,
@@ -108,12 +107,6 @@
                 }
             },
 
-            change(value){
-                if(value === true){
-                    value = false;
-                    this.$emit('hasError',value);
-                }
-            },
             remove(){
                 if(this.canEdit===true){
                   this.$emit('removeMilestone',this.careerRoleMilestoneIndex);
@@ -124,8 +117,9 @@
             },
 
             focusField() {
-                if(this.errorSelected === false && this.errorTask === false && this.errorDate ===false){
 
+                if(this.errors === false){
+                    this.checkError();
                     if(this.canEdit===true){
 
                         this.show === false ? this.show=true : this.show=false;
