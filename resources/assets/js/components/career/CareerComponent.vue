@@ -89,8 +89,6 @@
             this.fetchData();
             this.usersList();
             this.fetchUserInfo();
-
-
         },
         watch:{
             userDatas(value){
@@ -98,14 +96,10 @@
             }
         },
         methods:{
-
             selectActive(careerRoleId){
-
                 const data = {
                     userCareerRoleId: careerRoleId,
                 };
-
-
                 axios.post('/user/' + this.currentUserId + '/career/role/select', data).then(response => {
                     for( let i = 0; i < this.userDatas.length; i++){
                         let userRole = this.userDatas[i];
@@ -124,18 +118,14 @@
                 }
 
             },
-
             checkErrors(){
                 this.hasMilestoneError = true;
             },
             sortArray(userDatas){
                 return _.orderBy(userDatas,'id','desc');
             },
-
             showForm(){
-
                 if(this.canEdit===true){
-
                     this.show === false ? this.show=true : this.show=false;
                 }
             },
@@ -186,7 +176,6 @@
                         careerRoleId: this.careerRoleId,
                     };
                     let vm = this;
-
                     axios.post('/user/'+this.selectedUserId+'/career/role/create',data)
                         .then(response => {
                             if (vm.hasChanged) {
