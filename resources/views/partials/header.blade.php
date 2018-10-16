@@ -314,9 +314,9 @@
                                                         class="m-menu__link-text">Add User</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="" class="m-menu__link "><i
+                                                    href="{{route('returnView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-clipboard"></i><span
-                                                        class="m-menu__link-text">Invoices</span></a></li>
+                                                        class="m-menu__link-text">Add moderator to teams</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="" class="m-menu__link "><i
