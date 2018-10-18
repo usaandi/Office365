@@ -64,6 +64,9 @@ class User extends Authenticatable
     public function userCareerRoleMilestones(){
         return $this->hasMany(UserCareerRoleMilestone::class);
     }
+    public function userStrength(){
+        return $this->hasMany(UserStrength::class);
+    }
 
     public function isModeratorOfTeam($teamId)
     {
