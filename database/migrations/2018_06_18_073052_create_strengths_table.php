@@ -15,12 +15,37 @@ class CreateStrengthsTable extends Migration
     {
         Schema::create('strengths', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('strength_description')->nullable();
+            $table->text('strength_name');
             $table->timestamps();
         });
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->text('category_name');
+            $table->text('category_description')->nullable();
+            $table->timestamps();
+        });
+        Schema::create('strengths_categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('strength_id');
+            $table->text('category_description');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('strength_id')->references('id')->on('strengths')->onDelete('cascade');
+        });
 
-        schema::create('strengths_user', function (Blueprint $table){
-           $table->increments('strengths_id');
-           $table->increments('user_id');
+        schema::create('users_strengths', function (Blueprint $table) {
+
+            $table->increments('id');
+            $table->unsignedInteger('strength_id');
+            $table->unsignedInteger('user_id');
+            $table->integer('rank');
+            $table->timestamps();
+
+            $table->foreign('strength_id')->references('id')->on('strengths')
+                ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
 
 
         });
@@ -34,5 +59,8 @@ class CreateStrengthsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('strengths');
+        Schema::dropIfExists('categories');
+        Schema::dropIfExists('strengths_categories');
+        Schema::dropIfExists('users_strengths');
     }
 }
