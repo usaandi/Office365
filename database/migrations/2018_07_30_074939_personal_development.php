@@ -69,9 +69,9 @@ class PersonalDevelopment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('developments');
-        Schema::dropIfExists('milestones');
-        Schema::dropIfExists('user_development');
-        Schema::dropIfExists('development_milestone');
+        Schema::dropIfExists('career_roles');
+        Schema::dropIfExists('career_roles_milestones');
+        Schema::dropIfExists('users_career_roles');
+        Schema::dropIfExists('users_career_roles_milestones');
     }
 }
