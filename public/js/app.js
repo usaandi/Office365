@@ -48781,7 +48781,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48798,6 +48798,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__UserHobby___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__UserHobby__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserBadge__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserBadge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__UserBadge__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48949,7 +48968,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editdepartment: false,
             editteam: false,
             editphone: false,
-            editskype: false
+            editskype: false,
+
+            userStrengths: [{ id: 0, description: 'hello world!', strength_name: 'IDEATION', value: 10 }, { id: 1, strength_name: 'COMMUNICATION', value: 20, description: 'hello mind!' }, { id: 2, strength_name: 'WOO', value: 50, description: 'hello mind!' }, { id: 3, strength_name: 'STRATEGIC', value: 60, description: 'hello mind!' }, { id: 4, strength_name: 'FUTURISTIC', value: 75, description: 'hello mind!' }, { id: 5, strength_name: 'Input', value: 20, description: 'hello mind!' }]
+
         };
     },
     mounted: function mounted() {
@@ -49164,7 +49186,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49219,8 +49241,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        testing: function testing(value) {},
-
 
         deleteRow: function deleteRow(userHobbyId) {
             var vm = this;
@@ -49589,9 +49609,9 @@ var render = function() {
                       _vm.user.department
                         ? _c("span", [
                             _vm._v(
-                              "\n                                " +
+                              "\n                            " +
                                 _vm._s(_vm.user.department) +
-                                "\n                                "
+                                "\n                            "
                             )
                           ])
                         : _c("span", [_vm._v("Choose department")])
@@ -49678,9 +49698,9 @@ var render = function() {
                           _vm.user.phone
                             ? _c("span", [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\n                            " +
                                     _vm._s(_vm.user.phone) +
-                                    "\n                                "
+                                    "\n                            "
                                 )
                               ])
                             : _c("span", [_vm._v("Enter Phone number")])
@@ -49698,7 +49718,9 @@ var render = function() {
               _c("div", { staticClass: "col-xs-9" }, [
                 _c("div", { staticClass: "profile__details--info" }, [
                   _vm._v(
-                    "\n                            " + _vm._s(_vm.user.email)
+                    "\n                            " +
+                      _vm._s(_vm.user.email) +
+                      "\n                        "
                   )
                 ])
               ])
@@ -49744,9 +49766,9 @@ var render = function() {
                           _vm.user.skype
                             ? _c("span", [
                                 _vm._v(
-                                  "\n                                " +
+                                  "\n                            " +
                                     _vm._s(_vm.user.skype) +
-                                    "\n                                "
+                                    "\n                            "
                                 )
                               ])
                             : _c("span", [_vm._v("Enter Skype")])
@@ -49770,9 +49792,22 @@ var render = function() {
             _vm._m(6)
           ]),
           _vm._v(" "),
-          _c("user-strenght", {
-            attrs: { canedit: _vm.canedit, userid: _vm.user.id }
-          }),
+          _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("STRENGTHS")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "profile__strenghts" },
+            _vm._l(_vm.userStrengths, function(strength) {
+              return _c("user-strenght", {
+                key: _vm.userStrengths.id,
+                attrs: {
+                  canedit: _vm.canedit,
+                  userid: _vm.user.id,
+                  strength: strength
+                }
+              })
+            })
+          ),
           _vm._v(" "),
           _c("user-children", {
             attrs: { canedit: _vm.canedit, userid: _vm.user.id }
@@ -49841,7 +49876,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-xs-3" }, [
       _c("div", { staticClass: "profile__details--title" }, [
-        _vm._v("Department: ")
+        _vm._v("Department:")
       ])
     ])
   },
@@ -49888,7 +49923,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "profile__details--text" }, [
       _c("p", [
         _vm._v(
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida\n                        dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque\n                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra\n                        vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget."
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.\n                        Proin gravida\n                        dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.\n                        Sociis natoque\n                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla\n                        luctus pharetra\n                        vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget."
         )
       ])
     ])
@@ -54463,7 +54498,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54581,7 +54616,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var data = {
                 userCareerRoleId: careerRoleId
             };
-
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.currentUserId + '/career/role/select', data).then(function (response) {
                 for (var i = 0; i < _this.userDatas.length; i++) {
                     var userRole = _this.userDatas[i];
@@ -54595,6 +54629,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         errorValueSend: function errorValueSend(value) {
+
             if (this.hasMilestoneError !== value) {
                 this.hasMilestoneError = value;
             }
@@ -54606,9 +54641,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return _.orderBy(userDatas, 'id', 'desc');
         },
         showForm: function showForm() {
-
             if (this.canEdit === true) {
-
                 this.show === false ? this.show = true : this.show = false;
             }
         },
@@ -54652,6 +54685,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.hasChanged) {
                     this.userDatas.splice(0, 1);
                     this.hasChanged = false;
+                    this.hasMilestoneError = false;
                 }
             }
         },
@@ -54662,7 +54696,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     careerRoleId: this.careerRoleId
                 };
                 var vm = this;
-
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserId + '/career/role/create', data).then(function (response) {
                     if (vm.hasChanged) {
                         Vue.set(vm.userDatas, 0, response.data[0]);
@@ -55035,7 +55068,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55067,56 +55100,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "UserStrenght",
-    props: ['userid'],
+    props: ['userid', 'strength'],
     data: function data() {
         return {
 
-            userId: ''
+            progressValue: '',
+            currentUser: '',
+            show: false,
+            admin: false,
+            test: null,
+            userStrength: {}
 
         };
     },
     mounted: function mounted() {
-        this.userId = this.userid;
+        this.currentUser = this.userid;
+        this.checkAdmin();
+        this.userStrength = this.strength;
+        this.progressValue = this.strength.value;
+    },
+
+    methods: {
+        showInput: function showInput() {
+            console.log('hey');
+            this.show === false ? this.show = true : this.show = false;
+        },
+        checkAdmin: function checkAdmin() {
+            Vue.$isAdmin() ? this.admin = true : this.admin = false;
+        },
+        showValue: function showValue(value, id) {
+            console.log(value + ' ' + id);
+        }
     }
+
 });
 
 /***/ }),
@@ -55127,140 +55146,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "profile__strenght",
+        on: {
+          click: function($event) {
+            _vm.showInput()
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "profile__strenght--info" }, [
+          _c("i", { staticClass: "la la-lightbulb-o" }),
+          _vm._v(" " + _vm._s(this.userStrength.strength_name) + "\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "progress m-progress--custom" }, [
+          _c("div", {
+            staticClass: "progress-bar m--bg-info",
+            style: { width: this.progressValue + "%" },
+            attrs: {
+              role: "progressbar",
+              "aria-valuenow": "50",
+              "aria-valuemin": "0",
+              "aria-valuemax": "100"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.admin && _vm.show,
+              expression: "admin && show"
+            },
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.progressValue,
+              expression: "progressValue"
+            }
+          ],
+          attrs: { type: "range" },
+          domProps: { value: _vm.progressValue },
+          on: {
+            change: function($event) {
+              _vm.showValue(_vm.progressValue, _vm.userStrength.id)
+            },
+            __r: function($event) {
+              _vm.progressValue = $event.target.value
+            }
+          }
+        })
+      ]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("Strenghts")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "profile__strenghts" }, [
-        _c("div", { staticClass: "profile__strenght" }, [
-          _c("div", { staticClass: "profile__strenght--info" }, [
-            _c("i", { staticClass: "la la-lightbulb-o" }),
-            _vm._v(" IDEATION\n            ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress m-progress--custom" }, [
-            _c("div", {
-              staticClass: "progress-bar m--bg-info",
-              staticStyle: { width: "90%" },
-              attrs: {
-                role: "progressbar",
-                "aria-valuenow": "50",
-                "aria-valuemin": "0",
-                "aria-valuemax": "100"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "profile__strenght" }, [
-          _c("div", { staticClass: "profile__strenght--info" }, [
-            _c("i", { staticClass: "la la-bullhorn" }),
-            _vm._v(" COMMUNICATION\n            ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress m-progress--custom" }, [
-            _c("div", {
-              staticClass: "progress-bar m--bg-info",
-              staticStyle: { width: "85%" },
-              attrs: {
-                role: "progressbar",
-                "aria-valuenow": "50",
-                "aria-valuemin": "0",
-                "aria-valuemax": "100"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "profile__strenght" }, [
-          _c("div", { staticClass: "profile__strenght--info" }, [
-            _c("i", { staticClass: "la la-bullhorn" }),
-            _vm._v(" WOO\n            ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress m-progress--custom" }, [
-            _c("div", {
-              staticClass: "progress-bar m--bg-info",
-              staticStyle: { width: "75%" },
-              attrs: {
-                role: "progressbar",
-                "aria-valuenow": "50",
-                "aria-valuemin": "0",
-                "aria-valuemax": "100"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "profile__strenght" }, [
-          _c("div", { staticClass: "profile__strenght--info" }, [
-            _c("i", { staticClass: "la la-crosshairs" }),
-            _vm._v(" STRATEGIC\n            ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress m-progress--custom" }, [
-            _c("div", {
-              staticClass: "progress-bar m--bg-info",
-              staticStyle: { width: "70%" },
-              attrs: {
-                role: "progressbar",
-                "aria-valuenow": "50",
-                "aria-valuemin": "0",
-                "aria-valuemax": "100"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "profile__strenght" }, [
-          _c("div", { staticClass: "profile__strenght--info" }, [
-            _c("i", { staticClass: "la la-flask" }),
-            _vm._v(" FUTURISTIC\n            ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress m-progress--custom" }, [
-            _c("div", {
-              staticClass: "progress-bar m--bg-info",
-              staticStyle: { width: "60%" },
-              attrs: {
-                role: "progressbar",
-                "aria-valuenow": "50",
-                "aria-valuemin": "0",
-                "aria-valuemax": "100"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "profile__strenght" }, [
-          _c("div", { staticClass: "profile__strenght--info" }, [
-            _c("i", { staticClass: "la la-flask" }),
-            _vm._v(" Input\n            ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "progress m-progress--custom" }, [
-            _c("div", {
-              staticClass: "progress-bar m--bg-info",
-              staticStyle: { width: "50%" },
-              attrs: {
-                role: "progressbar",
-                "aria-valuenow": "50",
-                "aria-valuemin": "0",
-                "aria-valuemax": "100"
-              }
-            })
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -56022,7 +55968,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56197,7 +56143,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         sendErrorValue: function sendErrorValue(value) {
-            this.$emit('errorValue', value);
+
+            /* this.$emit('errorValue',value);*/
+
         },
         addMilestone: function addMilestone(data) {
             this.userRoleInfo['milestones'].push(data[0]);
@@ -56475,7 +56423,7 @@ var render = function() {
                       removeMilestone: function($event) {
                         _vm.deleteMilestone($event)
                       },
-                      hasError: function($event) {
+                      errorValue: function($event) {
                         _vm.sendErrorValue($event)
                       }
                     }
@@ -56727,7 +56675,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56808,8 +56756,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             assignerId: '',
             id: '',
 
-            errors: null,
-
+            errors: false,
             errorTask: false,
             errorDate: false,
             errorSelected: false
@@ -56823,11 +56770,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     watch: {
-        hasMilestoneError: function hasMilestoneError(errorValue) {
-            if (errorValue) {
-                this.change(errorValue);
-            }
-        },
         milestoneInfo: function milestoneInfo(value) {
             this.milestoneInfo = value;
             this.milestone = value;
@@ -56835,6 +56777,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         checkError: function checkError() {
+            this.$emit('errorValue', this.errors);
 
             this.milestone.task === '' ? this.errorTask = true : this.errorTask = false;
             this.selected === '' ? this.errorSelected = true : this.errorSelected = false;
@@ -56846,12 +56789,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.errors = false;
             }
         },
-        change: function change(value) {
-            if (value === true) {
-                value = false;
-                this.$emit('hasError', value);
-            }
-        },
         remove: function remove() {
             if (this.canEdit === true) {
                 this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
@@ -56859,8 +56796,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         submit: function submit() {},
         focusField: function focusField() {
-            if (this.errorSelected === false && this.errorTask === false && this.errorDate === false) {
 
+            if (this.errors === false) {
+                this.checkError();
                 if (this.canEdit === true) {
 
                     this.show === false ? this.show = true : this.show = false;
@@ -57940,7 +57878,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57987,7 +57925,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             description: '',
             title: '',
             careerRoleTitle: '',
-            hasError: true,
             careerRoleId: ''
         };
     },
@@ -58195,7 +58132,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58251,7 +58188,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "UserChildrenForm"
+    name: "UserChildrenForm",
+    data: function data() {
+        return {
+            dateBorn: '',
+            childName: ''
+        };
+    },
+
+    watch: {
+        dateBorn: function dateBorn() {
+            alert("OK");
+        }
+    },
+    computed: {
+        dateBornValue: function dateBornValue() {
+
+            return $(this.$refs.datePicker).datepicker.value('update', '');
+        }
+    }
+
 });
 
 /***/ }),
@@ -58262,83 +58218,124 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "profile__form" }, [
+      _c("form", { staticClass: "m-form" }, [
+        _c("div", { staticClass: "m-portlet__body" }, [
+          _c("div", { staticClass: "form-group m-form__group row" }, [
+            _c("label", { staticClass: "col-3 col-form-label" }, [
+              _vm._v("Year born")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-9" }, [
+              _c("div", { staticClass: "input-group date" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.dateBorn,
+                      expression: "dateBorn"
+                    }
+                  ],
+                  ref: "datePicker",
+                  staticClass: "form-control m-input",
+                  attrs: {
+                    type: "text",
+                    "data-provide": "datepicker",
+                    id: "m_datepicker_2"
+                  },
+                  domProps: { value: _vm.dateBorn },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.dateBorn = $event.target.value
+                      },
+                      function($event) {}
+                    ]
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group m-form__group row" }, [
+            _c("label", { staticClass: "col-3 col-form-label" }, [
+              _vm._v("Child name")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-9" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.childName,
+                    expression: "childName"
+                  }
+                ],
+                staticClass: "form-control m-input",
+                attrs: { type: "text", placeholder: "Child name" },
+                domProps: { value: _vm.childName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.childName = $event.target.value
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "profile__form" }, [
-        _c("form", { staticClass: "m-form" }, [
-          _c("div", { staticClass: "m-portlet__body" }, [
-            _c("div", { staticClass: "form-group m-form__group row" }, [
-              _c("label", { staticClass: "col-3 col-form-label" }, [
-                _vm._v("Year born")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-9" }, [
-                _c("div", { staticClass: "input-group date" }, [
-                  _c("input", {
-                    staticClass: "form-control m-input datepicker",
-                    attrs: {
-                      type: "text",
-                      "data-provide": "datepicker",
-                      readonly: "",
-                      placeholder: "Select date",
-                      id: "m_datepicker_2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c("span", { staticClass: "input-group-text" }, [
-                      _c("i", { staticClass: "la la-calendar-check-o" })
-                    ])
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group m-form__group row" }, [
-              _c("label", { staticClass: "col-3 col-form-label" }, [
-                _vm._v("Child name")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-9" }, [
-                _c("input", {
-                  staticClass: "form-control m-input",
-                  attrs: { type: "text", placeholder: "Child name" }
-                })
-              ])
-            ])
-          ]),
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _c("i", { staticClass: "la la-calendar-check-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+      _c("div", { staticClass: "m-form__actions" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-3 col-xs-12" }),
           _vm._v(" "),
-          _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-            _c("div", { staticClass: "m-form__actions" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-3 col-xs-12" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                  _c("div", { staticClass: "profile-timeline__action" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "btn btn-success m-btn m-btn--icon m-btn--pill",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _c("span", [
-                          _c("i", { staticClass: "la la-plus" }),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Add new")])
-                        ])
-                      ]
-                    )
+          _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+            _c("div", { staticClass: "profile-timeline__action" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("span", [
+                    _c("i", { staticClass: "la la-plus" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Add new")])
                   ])
-                ])
-              ])
+                ]
+              )
             ])
           ])
         ])
@@ -58441,7 +58438,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58452,6 +58449,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -58496,6 +58495,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         hobbyNameChange: function hobbyNameChange() {
 
             if (this.hasError) {
+
                 this.hasError = false;
             }
         },
