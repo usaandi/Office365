@@ -7,7 +7,7 @@
 
                         <div class="col-9">
                             <input v-model="elementdata" @keyup.enter="upload" type="text"
-                                   placeholder="ElementName" class="form-control m-input">
+                                    class="form-control m-input">
                         </div>
                     </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
