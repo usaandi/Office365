@@ -80,6 +80,7 @@ Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('depar
 Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
 Route::get('department', 'DepartmentController@department')->name('department');
 Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
+Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
 
 Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
 
