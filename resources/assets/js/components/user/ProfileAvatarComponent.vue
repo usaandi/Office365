@@ -6,7 +6,7 @@
     <div class="profile__avatar--level">
         <div class="profile__pill profile__pill--small">LVL Black Belt</div>
     </div>
-    <file-upload v-show="edit" :endpoint="'/upload/' + userId" @file-uploaded="fileUploaded" ></file-upload>
+    <file-upload @close="closeEdit($event)" v-show="edit" :endpoint="'/upload/' + userId" @file-uploaded="fileUploaded" ></file-upload>
 </div>
 </template>
 
@@ -24,6 +24,11 @@
           this.avatarImage = this.image;
         },
         methods: {
+            closeEdit(value){
+                if(this.edit!==value){
+                    this.edit= value;
+                }
+            },
             changeImage() {
                 if (authUser.id === this.userId || Vue.$isAdmin()) {
                     if (this.edit) {

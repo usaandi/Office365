@@ -37,9 +37,14 @@
             },
             upload: function () {
                 let vm = this;
-                axios.post(this.endpoint, {image: this.image}).then(response => {
-                    vm.$emit('file-uploaded', response);
-                });
+                if(vm.image === ''){
+                    vm.$emit('close',false);
+                }
+                else {
+                    axios.post(this.endpoint, {image: this.image}).then(response => {
+                        vm.$emit('file-uploaded', response);
+                    });
+                }
             }
         }
     }
