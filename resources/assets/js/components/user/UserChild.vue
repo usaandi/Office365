@@ -16,13 +16,14 @@
                 </div>
                 <div class="col-xs-9">
                     <div class="profile__details--info">{{child.age}}a</div>
-                    <button v-show="edit" @click="deleteRow(child.id, index)">X</button>
+                    <button v-show="edit" @click="deleteRow(child.id, index)" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"><i
+                            class="la la-close"></i></button>
                 </div>
             </div>
             <user-child-form v-show="edit"></user-child-form>
-            <label v-show="edit">Year born</label><input  v-show="edit" type="date" v-model="dateborn">
+            <label v-show="edit">Year born</label><input v-show="edit" type="date" v-model="dateborn">
             <label v-show="edit">Child name</label><input v-show="edit" v-model="childname" placeholder="Child name">
-            <button v-show="edit" @click="upload()" >+Add new</button>
+            <button v-show="edit" @click="upload()">+Add new</button>
         </div>
     </div>
 
@@ -37,11 +38,11 @@
         props: ['userid'],
         data() {
             return {
-                edit:false,
+                edit: false,
                 id: '',
                 userchildren: [],
-                dateborn:'',
-                childname:'',
+                dateborn: '',
+                childname: '',
             }
         },
         mounted() {
@@ -49,7 +50,7 @@
             this.fetchData();
 
         },
-        methods:{
+        methods: {
             fetchData: function () {
                 axios.get('/user/' + this.id + '/child')
                     .then(response => {
@@ -58,15 +59,15 @@
             },
             upload: function () {
 
-                let data= JSON.stringify({
+                let data = JSON.stringify({
                     childname: this.childname,
                     dateborn: this.dateborn,
 
                 });
                 let vm = this;
-                axios.post('/user/' + this.id + '/update/child',data)
+                axios.post('/user/' + this.id + '/update/child', data)
                     .then(response => {
-                        if (vm.name!==null){
+                        if (vm.name !== null) {
 
                             vm.userchildren.push({
                                 id: response.data.child_id,
@@ -77,23 +78,23 @@
                         }
 
 
-                }).catch(error => {
+                    }).catch(error => {
 
                 });
 
             },
 
             deleteRow: function (childId) {
-                let vm =this;
-                axios.delete('/user/'+ this.id +'/delete/child', {params: {id: childId}})
+                let vm = this;
+                axios.delete('/user/' + this.id + '/delete/child', {params: {id: childId}})
                     .then(function (response) {
-                        let index = vm.userchildren.findIndex(function(obj){
+                        let index = vm.userchildren.findIndex(function (obj) {
                             return obj.id === childId;
                         });
                         if (index !== -1) {
                             vm.userchildren.splice(index, 1);
                         }
-                    } )
+                    })
 
 
             },
@@ -107,7 +108,7 @@
 
 <style scoped>
 
-    input{
+    input {
         display: block;
     }
 </style>
