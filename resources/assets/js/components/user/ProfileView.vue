@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-12 col-lg-4">
                 <h3 class="profile__subtitle">Profile</h3>
                 <div class="profile__details">
                     <div class="row">
