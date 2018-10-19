@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('content-header')
@@ -26,37 +25,55 @@
 
 @section('content-body')
     <style>
-        input, select, textarea{
-            width:200px;
-            border:1px solid #babacc;
-            box-sizing:border-box;
+        input, select, textarea {
+            width: 200px;
+            border: 1px solid #babacc;
+            box-sizing: border-box;
 
         }
-        .form-group{
+
+        .form-group {
 
         }
+
         label {
             width: 100px;
         }
     </style>
-    <form name="form" action="{{route('store')}}" method="post">
+    <div class="admin__form admin__form--clear">
+    <form class="m-form" name="form" action="{{route('store')}}" method="post">
         @csrf
-        <div class="card-body">
-            <div class="form-group">
-                <h1>Department</h1>
-
-                <label for="Department name"><b>Department Fullname</b></label>
-                <input type="text" placeholder="Department Fullname" name="departmentName"  required>
-                <br>
-                <label for="Department abbr"><b>Abbreviation</b></label>
-                <input type="text" placeholder="Department abbreviation"  name="departmentAbbr"  required>
-                <br>
-                <br><label for="description"><b>Description</b></label>
-                <textarea  rows="5" cols="3" name="description"></textarea>
-                <button type="submit" class="btn btn-default">Submit</button>
+        <div class="m-portlet__body">
+            <div class="form-group m-form__group row"><label for="example-text-input"
+                                                             class="col-sm-3 col-xs-12  col-form-label">Fullname</label>
+                <div class="col-sm-9 col-xs-12 "><input name="departmentName" type="text" placeholder="Department Fullname"
+                                                        class="form-control m-input"></div>
+            </div>
+            <div class="form-group m-form__group row"><label for="example-text-input"
+                                                             class="col-sm-3 col-xs-12  col-form-label">Abbreviation</label>
+                <div class="col-sm-9 col-xs-12 "><input name="departmentAbbr" type="text" placeholder="Department abbreviation"
+                                                        class="form-control m-input"></div>
+            </div>
+            <div class="form-group m-form__group row"><label for="exampleTextarea"
+                                                             class="col-sm-3 col-xs-12 col-form-label">Description</label>
+                <div class="col-sm-9 col-xs-12"><textarea id="exampleTextarea" rows="3"
+                                                          class="form-control m-input" name="description"></textarea></div>
+            </div>
+        </div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12"></div>
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="profile-timeline__action">
+                            <button type="submit" class="btn btn-success m-btn m-btn--pill"><span><span>Submit</span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
-
+    </div>
 
 @endsection
