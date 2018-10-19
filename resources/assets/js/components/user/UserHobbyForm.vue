@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="profile__form">
+
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row"><label
                                                                  class="col-3 col-form-label">Hobbie</label>
@@ -47,9 +48,7 @@
 
                     this.hasError = false;
                 }
-
             },
-
             submit() {
 
                 if (this.hobbyName !== '') {
@@ -60,13 +59,9 @@
 
                 }
                 else {
-
                     this.hasError = true;
-
                 }
-
             }
-
         },
         computed:{
             classObject(){
