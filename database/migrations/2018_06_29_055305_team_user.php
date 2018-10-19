@@ -17,7 +17,7 @@ class TeamUser extends Migration
 
         Schema::create('teams', function (Blueprint $table){
             $table->increments('id');
-            $table->string('team');
+            $table->string('team_name');
             $table->timestamps();
         });
 
