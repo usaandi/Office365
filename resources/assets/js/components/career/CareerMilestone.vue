@@ -5,12 +5,16 @@
             <div class="m-checkbox-list">
                 <label :value="milestone.id" class="m-checkbox m-checkbox--air m-checkbox--state-success">
                     <input type="checkbox">
-                    <div
+                <div
                         class="profile-timeline__milestones--label"
                         v-show="!show"
                     >{{milestone.task}}</div>
-                    <span></span>
-                    <div class="profile-timeline__milestones--name">
+
+
+                <span></span>
+                </label>
+
+                <div class="profile-timeline__milestones--name">
 
                         <input v-model.trim="milestone.task" v-show="show"
                               @focus="checkError" @change="checkError"  type="text" class="" :class="{'border border-danger': this.errorTask}">
@@ -32,7 +36,7 @@
                         <span v-show="show" @click="remove()">X</span>
 
                         <div class="m-list-pics m-list-pics--sm">
-                            <a href="#"><img src="" title=""></a>
+                            <a href=""><img src="" title=""></a>
 
                             {{milestone.assigned_username}}
                         </div>
@@ -45,7 +49,6 @@
                             <i class="la la-pencil-square"></i>
                         </a>
                     </div>
-                </label>
             </div>
         </div>
     </div>
