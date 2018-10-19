@@ -46,6 +46,7 @@
                 if(this.canEdit===true && this.careerRoleId !== ''){
 
                     this.$emit('createRole', this.careerRoleId);
+                    this.careerRoleId='';
                 }
             },
 
