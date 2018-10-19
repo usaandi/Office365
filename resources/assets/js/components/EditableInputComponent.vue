@@ -4,8 +4,7 @@
 
                 <div class="m-portlet__body">
                     <div class="form-group m-form__group row">
-                        <label for="ElementName" class="col-3 col-form-label">
-                            {{elementName }}</label>
+
                         <div class="col-9">
                             <input v-model="elementdata" @keyup.enter="upload" type="text"
                                    placeholder="ElementName" class="form-control m-input">
