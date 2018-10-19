@@ -15,7 +15,7 @@
                            @click="showForm" >
                             <span>
                                 <i class="la la-plus"></i>
-                                <span>New</span>
+                                <span>{{buttonTextValue}}</span>
                             </span>
                         </a>
                         <career-role-form
@@ -80,6 +80,7 @@
                 userModel:'',
                 hasMilestoneError:null,
                 canEdit:false,
+                buttonTextValue:'New',
             }
         },
         mounted(){
@@ -127,7 +128,15 @@
             },
             showForm(){
                 if(this.canEdit===true){
-                    this.show === false ? this.show=true : this.show=false;
+                    if(this.hasChanged===false){
+                        this.show === false ? this.show=true: this.show=false;
+                    }
+                    if(this.show===true){
+                        this.buttonTextValue='Close';
+                    }
+                    else{
+                        this.buttonTextValue='New';
+                    }
                 }
             },
 
@@ -173,6 +182,7 @@
             },
             newRole(value){
                 if(this.canEdit){
+
                     this.careerRoleId = value;
                     const data = {
                         careerRoleId: this.careerRoleId,
@@ -188,6 +198,10 @@
                                 vm.userDatas.unshift(response.data[0]);
                             }
                         }).catch(error => {});
+                    if(this.show === true){
+                        this.show=false;
+                        this.buttonTextValue='New';
+                    }
                 }
             },
             fetchData: function () {
