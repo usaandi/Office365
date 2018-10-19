@@ -49142,7 +49142,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control m-input",
-              attrs: { type: "text", placeholder: "ElementName" },
+              attrs: { type: "text" },
               domProps: { value: _vm.elementdata },
               on: {
                 keyup: function($event) {
