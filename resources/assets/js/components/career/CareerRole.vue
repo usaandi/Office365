@@ -38,7 +38,7 @@
                             <a  class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
-                                                <span>New</span>
+                                                <span>{{buttonValue}}</span>
                                               </span>
                             </a>
                             <milestone-form
@@ -110,6 +110,7 @@
                 newRoleDescription:'',
                 selectedActive:undefined,
                 isEditing:false,
+                buttonValue:'New',
                 editField:'',
                 isUpdate:false,
             }
@@ -195,6 +196,11 @@
             showForm(){
                 if(this.canEdit===true){
                     this.show === false ? this.show=true : this.show=false;
+
+                    if(this.show){
+                        this.buttonValue='Close';
+                    }
+                    else this.buttonValue='New';
                 }
             },
             deleteMilestone(value){
