@@ -17,19 +17,24 @@ class CreateStrengthsTable extends Migration
             $table->increments('id');
             $table->text('strength_description')->nullable();
             $table->text('strength_name');
+            $table->text('icon');
             $table->timestamps();
         });
+
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->text('category_name');
             $table->text('category_description')->nullable();
+            $table->text('colour');
             $table->timestamps();
         });
+
         Schema::create('strengths_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('strength_id');
-            $table->text('category_description');
+            $table->text('category_description')->nullable();
+            $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('strength_id')->references('id')->on('strengths')->onDelete('cascade');
         });
