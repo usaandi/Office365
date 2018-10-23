@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
-    protected $fillable=[
+    protected $table = 'categories';
+
+    protected $fillable = [
         'category_name',
         'category_description',
+        'category_colour',
     ];
-    public function strengthCategory(){
+
+    public function strengthCategory()
+    {
         return $this->hasMany(StrengthCategory::class);
     }
 }
