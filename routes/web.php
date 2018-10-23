@@ -81,6 +81,8 @@ Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('ret
 Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
 
 Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
+Route::post('/admin/strength/create/strength', 'StrengthController@createStrength')->name('strengthAdd');
+Route::post('/admin/strength/create/category', 'CategoryController@createCategory')->name('categoryAdd');
 
 Route::get('/users', 'UserController@userIdName')->name('usersIdName');
 
