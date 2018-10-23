@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class StrengthCategory extends Model
 {
+
+    protected $table = 'strengths_categories';
+
     protected $fillable = [
         'strength_id',
         'category_id',
