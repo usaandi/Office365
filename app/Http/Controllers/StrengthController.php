@@ -49,7 +49,7 @@ class StrengthController extends Controller
                     $this->findOrCreateStrengthCategory($strengthId, $categoryId);
                 }
 
-
+                return redirect()->back();
             }
 
         } catch (\Exception $e) {

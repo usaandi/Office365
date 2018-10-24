@@ -16,10 +16,10 @@ class StrengthCategory extends Model
     ];
 
     public function strength(){
-        $this->belongsTo(Strength::class);
+       return $this->belongsTo(Strength::class);
     }
 
     public function category(){
-        $this->belongsTo(Category::class);
+       return $this->belongsTo(Category::class);
     }
 }
