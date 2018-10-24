@@ -96,6 +96,7 @@ class CategoryController extends Controller
                    'category_colour'=> $data['category_colour'],
                 ]);
 
+
                 $jsonCategory = json_encode($category);
 
                 return response($jsonCategory,200);
