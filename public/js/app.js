@@ -4138,7 +4138,7 @@ Vue.component('milestone-form', __webpack_require__(183));
 Vue.component('career-role-form', __webpack_require__(188));
 Vue.component('user-child-form', __webpack_require__(193));
 Vue.component('user-hobby-form', __webpack_require__(198));
-Vue.component('admin-edit-strength-category', __webpack_require__(203));
+Vue.component('admin-view-strength-category', __webpack_require__(203));
 Vue.component('strength-category-view', __webpack_require__(208));
 Vue.component('category-view', __webpack_require__(213));
 Vue.component('category-component', __webpack_require__(218));

@@ -28,7 +28,7 @@
     <div class="m-content">
         {{csrf_field()}}
         <div id="app">
-            <admin-edit-strength-category></admin-edit-strength-category>
+            <admin-view-strength-category></admin-view-strength-category>
         </div>
     </div>
 
