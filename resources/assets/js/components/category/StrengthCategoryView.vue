@@ -60,7 +60,6 @@
                     strengthId: this.strengthsCategories[index].strength_id,
                 };
                 let array = this.strengthsCategories;
-                array.splice(index,1);
 
                 axios.delete('admin/strength/delete', {params:data})
                     .then(function (response) {

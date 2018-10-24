@@ -58972,7 +58972,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59050,7 +59050,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 strengthId: this.strengthsCategories[index].strength_id
             };
             var array = this.strengthsCategories;
-            array.splice(index, 1);
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/strength/delete', { params: data }).then(function (response) {
                 if (response.status === 200) {
