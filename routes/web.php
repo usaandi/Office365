@@ -84,6 +84,12 @@ Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('
 Route::post('/admin/strength/create/strength', 'StrengthController@createStrength')->name('strengthAdd');
 Route::post('/admin/strength/create/category', 'CategoryController@createCategory')->name('categoryAdd');
 
+Route::get('/admin/view/category/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
+Route::get('/admin/category/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('categoryStrengthInfo');
+Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
+Route::delete('/admin/category/delete', 'CategoryController@deleteCategory')->name('deleteCategory');
+Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
+
 Route::get('/users', 'UserController@userIdName')->name('usersIdName');
 
 
