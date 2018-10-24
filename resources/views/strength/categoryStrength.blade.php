@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                Create Category and Strength
+                Category and Strength
             </h3>
         </div>
         <div>
@@ -28,7 +28,7 @@
     <div class="m-content">
         {{csrf_field()}}
         <div id="app">
-
+            <admin-edit-strength-category></admin-edit-strength-category>
         </div>
     </div>
 
