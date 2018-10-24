@@ -4074,7 +4074,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-module.exports = __webpack_require__(223);
+module.exports = __webpack_require__(228);
 
 
 /***/ }),
@@ -4140,8 +4140,9 @@ Vue.component('user-child-form', __webpack_require__(193));
 Vue.component('user-hobby-form', __webpack_require__(198));
 Vue.component('admin-view-strength-category', __webpack_require__(203));
 Vue.component('strength-category-view', __webpack_require__(208));
-Vue.component('category-view', __webpack_require__(213));
-Vue.component('category-component', __webpack_require__(218));
+Vue.component('strength-component', __webpack_require__(213));
+Vue.component('category-view', __webpack_require__(218));
+Vue.component('category-component', __webpack_require__(223));
 var app = new Vue({
   el: '#app'
 });
@@ -55196,7 +55197,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55253,15 +55254,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         showInput: function showInput() {
-            console.log('hey');
             this.show === false ? this.show = true : this.show = false;
         },
         checkAdmin: function checkAdmin() {
             Vue.$isAdmin() ? this.admin = true : this.admin = false;
         },
-        showValue: function showValue(value, id) {
-            console.log(value + ' ' + id);
-        }
+        showValue: function showValue(value, id) {}
     }
 
 });
@@ -57281,7 +57279,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57294,6 +57292,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
 //
 //
 //
@@ -57355,9 +57355,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 teamId: this.teamId
 
             });
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/team/moderator/add', data).then(function (response) {}).catch(function (error) {
-                console.log(error.response.data);
-            });
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/team/moderator/add', data).then(function (response) {}).catch(function (error) {});
         }
     }
 });
@@ -57388,7 +57386,7 @@ var render = function() {
             _vm._v(" "),
             _vm._l(_vm.teamsList, function(team) {
               return _c("option", { domProps: { value: team.id } }, [
-                _vm._v(_vm._s(team.team_name))
+                _vm._v(_vm._s(team.team_name) + "\n                ")
               ])
             })
           ],
@@ -57410,7 +57408,7 @@ var render = function() {
             _vm._v(" "),
             _vm._l(_vm.usersList, function(user) {
               return _c("option", { domProps: { value: user.id } }, [
-                _vm._v(_vm._s(user.name))
+                _vm._v(_vm._s(user.name) + "\n                ")
               ])
             })
           ],
@@ -58823,7 +58821,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58856,24 +58854,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "MainView",
     data: function data() {
-        return {
-            strengthsCategories: []
-
-        };
+        return {};
     },
-    mounted: function mounted() {
-        this.fetchCategoryStrengthData();
-    },
+    mounted: function mounted() {},
 
-    methods: {
-        fetchCategoryStrengthData: function fetchCategoryStrengthData() {
-            var _this = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/admin/category/strength/info').then(function (response) {
-                _this.strengthsCategories = response.data;
-            });
-        }
-    }
+    methods: {}
 
 });
 
@@ -58887,13 +58872,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c("strength-category-view", {
-        attrs: { propStrengthsCategories: _vm.strengthsCategories }
-      }),
-      _vm._v(" "),
-      _c("category-view")
-    ],
+    [_c("strength-category-view"), _vm._v(" "), _c("category-view")],
     1
   )
 }
@@ -58993,13 +58972,270 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 211 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: [],
+    name: "StrengthCategoryView",
+    data: function data() {
+        return {
+            strengthsCategories: '',
+            categories: null
+        };
+    },
+    mounted: function mounted() {
+        this.fetchCategoryStrengthData();
+    },
+
+
+    methods: {
+        fetchCategoryStrengthData: function fetchCategoryStrengthData() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/admin/strength/info').then(function (response) {
+                _this.strengthsCategories = response.data[0];
+                _this.categories = response.data[1];
+            });
+        },
+        deleteStrength: function deleteStrength(index) {
+            var data = {
+                strengthId: this.strengthsCategories[index].strength_id
+            };
+            var array = this.strengthsCategories;
+            array.splice(index, 1);
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/strength/delete', { params: data }).then(function (response) {
+                if (response.status === 200) {
+                    array.splice(index, 1);
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h3", [_vm._v("Table Strength")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "table-responsive" }, [
+      _c("span", { staticClass: "float-left m--margin-bottom-5" }, [
+        _c(
+          "a",
+          { staticClass: "text-success", attrs: { href: "/admin/strength" } },
+          [
+            _c("i", {
+              staticClass: "fa fa-plus fa-2x",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-bordered text-center" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.strengthsCategories, function(strength, index) {
+            return _c("strength-component", {
+              key: strength.strength_id,
+              tag: "tr",
+              attrs: {
+                index: index,
+                "prop-strength": strength,
+                "prop-categories": _vm.categories
+              },
+              on: {
+                deleteStrength: function($event) {
+                  _vm.deleteStrength($event)
+                }
+              }
+            })
+          })
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Strength name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Strength description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Category")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Delete")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6b062f2e", module.exports)
+  }
+}
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(214)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(216)
+/* template */
+var __vue_template__ = __webpack_require__(217)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-a74be978"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/category/StrengthCategoryComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a74be978", Component.options)
+  } else {
+    hotAPI.reload("data-v-a74be978", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(215);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("5d30f491", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a74be978\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./StrengthCategoryComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a74be978\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./StrengthCategoryComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59035,156 +59271,328 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['propStrengthsCategories'],
-    name: "StrengthCategoryView",
+    props: {
+        'propStrength': { type: Object },
+        'index': { type: Number },
+        'propCategories': { required: true }
+    },
+    name: "StrengthCategoryComponent",
     data: function data() {
-        return {};
+        return {
+            strength: {},
+            categories: [],
+            show: false,
+            selected: '',
+            strengthName: '',
+            strengthDescription: '',
+            buttonText: 'Edit',
+            changedFlag: false
+
+        };
     },
 
+    watch: {
+        strength: function strength(value) {}
+    },
+    mounted: function mounted() {
+        this.strength = this.propStrength;
+        this.categories = this.propCategories;
+    },
 
-    methods: {}
+    methods: {
+        remove: function remove(index) {
+            this.$emit('deleteStrength', index);
+        },
+        edit: function edit() {
+
+            if (this.show === false) {
+                this.show = true;
+                this.strengthName = this.strength.strength_name;
+                this.strengthDescription = this.strength.strength_description;
+                this.selected = {
+                    category_name: this.strength.category_name,
+                    category_id: this.strength.category_id
+                };
+                this.buttonText = 'Cancel';
+            } else {
+
+                if (this.changedFlag === true) {
+                    this.update();
+                }
+
+                this.show = false;
+                this.buttonText = 'Edit';
+            }
+        },
+        hasChanged: function hasChanged() {
+            if (this.strengthName !== '' && this.selected !== '' && this.strengthDescription !== '') {
+                this.buttonText = 'Save';
+                this.changedFlag = true;
+            }
+        },
+        update: function update() {
+            var _this = this;
+
+            this.changedFlag = false;
+            var data = {
+                strength_id: this.strength.strength_id,
+                strength_name: this.strengthName,
+                strength_description: this.strengthDescription,
+                category_id: this.selected.category_id,
+                category_name: this.selected.category_name
+            };
+            axios.post('admin/strength/update', data).then(function (response) {
+                if (response.status === 200) {
+                    _this.strength.strength_name = response.data.strength_name;
+                    _this.strength.strength_description = response.data.strength_description;
+                    _this.strength.category_name = response.data.category_name;
+                    _this.strength.category_id = response.data.category_id;
+                }
+            }).catch(function (error) {});
+        }
+    }
 });
 
 /***/ }),
-/* 212 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h3", [_vm._v("Table Strength")]),
+  return _c("tr", [
+    _c("th", { attrs: { scope: "row" } }, [
+      _vm._v(_vm._s(_vm.strength.strength_id))
+    ]),
     _vm._v(" "),
-    _c("div", { staticClass: "table-responsive" }, [
-      _c("span", { staticClass: "float-left m--margin-bottom-5" }, [
-        _c(
-          "a",
-          { staticClass: "text-success", attrs: { href: "/admin/strength" } },
-          [
-            _c("i", {
-              staticClass: "fa fa-plus fa-2x",
-              attrs: { "aria-hidden": "true" }
-            })
+    _c("td", [
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.show,
+              expression: "!show"
+            }
           ]
-        )
-      ]),
+        },
+        [_vm._v(_vm._s(_vm.strength.strength_name))]
+      ),
       _vm._v(" "),
-      _c("table", { staticClass: "table table-bordered text-center" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.propStrengthsCategories, function(strCate) {
-            return _c("tr", [
-              _c("th", { attrs: { scope: "row" } }, [
-                _vm._v(_vm._s(strCate.strength_id))
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(strCate.strength_name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(strCate.strength_description))]),
-              _vm._v(" "),
-              _c("td", { attrs: { value: strCate.category_id } }, [
-                _vm._v(
-                  _vm._s(strCate.category_name) +
-                    "(needs to have select capabilities on edit click)"
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(1, true),
-              _vm._v(" "),
-              _vm._m(2, true)
+      _c("input", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.show,
+            expression: "show"
+          },
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.strengthName,
+            expression: "strengthName"
+          }
+        ],
+        attrs: { type: "text" },
+        domProps: { value: _vm.strengthName },
+        on: {
+          change: function($event) {
+            _vm.hasChanged(_vm.strength.strength_name)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.strengthName = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.show,
+              expression: "!show"
+            }
+          ]
+        },
+        [_vm._v(" " + _vm._s(_vm.strength.strength_description))]
+      ),
+      _vm._v(" "),
+      _c("textarea", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.show,
+            expression: "show"
+          },
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.strengthDescription,
+            expression: "strengthDescription"
+          }
+        ],
+        domProps: { value: _vm.strengthDescription },
+        on: {
+          change: function($event) {
+            _vm.hasChanged(_vm.strength.strength_description)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.strengthDescription = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("td", { attrs: { value: _vm.strength.category_id } }, [
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.show,
+              expression: "!show"
+            }
+          ]
+        },
+        [_vm._v(_vm._s(_vm.strength.category_name))]
+      ),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            },
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selected,
+              expression: "selected"
+            }
+          ],
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              function($event) {
+                _vm.hasChanged(_vm.selected)
+              }
+            ]
+          }
+        },
+        [
+          _c("option"),
+          _vm._v(" "),
+          _vm._l(_vm.categories, function(category) {
+            return _c("option", { domProps: { value: category } }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(category.category_name) +
+                  "\n            "
+              )
             ])
           })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                _vm.edit()
+              }
+            }
+          },
+          [_vm._v(_vm._s(_vm.buttonText))]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-danger",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                _vm.remove(_vm.index)
+              }
+            }
+          },
+          [_vm._v("Remove")]
         )
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Strength name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Strength description")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Category")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Delete")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", [
-        _c(
-          "button",
-          { staticClass: "btn btn-success", attrs: { type: "button" } },
-          [_vm._v("Edit")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", [
-        _c(
-          "button",
-          { staticClass: "btn btn-danger", attrs: { type: "button" } },
-          [_vm._v("Remove")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6b062f2e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-a74be978", module.exports)
   }
 }
 
 /***/ }),
-/* 213 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(214)
+  __webpack_require__(219)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(221)
 /* template */
-var __vue_template__ = __webpack_require__(217)
+var __vue_template__ = __webpack_require__(222)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -59223,13 +59631,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 214 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(215);
+var content = __webpack_require__(220);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -59249,7 +59657,7 @@ if(false) {
 }
 
 /***/ }),
-/* 215 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -59257,19 +59665,20 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 216 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -59339,7 +59748,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 217 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59415,19 +59824,19 @@ if (false) {
 }
 
 /***/ }),
-/* 218 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(219)
+  __webpack_require__(224)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(221)
+var __vue_script__ = __webpack_require__(226)
 /* template */
-var __vue_template__ = __webpack_require__(222)
+var __vue_template__ = __webpack_require__(227)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -59466,13 +59875,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 219 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(220);
+var content = __webpack_require__(225);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -59492,7 +59901,7 @@ if(false) {
 }
 
 /***/ }),
-/* 220 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -59506,7 +59915,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 221 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59615,7 +60024,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 222 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59814,7 +60223,7 @@ if (false) {
 }
 
 /***/ }),
-/* 223 */
+/* 228 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
