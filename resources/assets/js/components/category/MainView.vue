@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <strength-category-view :propStrengthsCategories="strengthsCategories">
+        <strength-category-view>
         </strength-category-view>
 
 
@@ -19,23 +19,15 @@
         name: "MainView",
         data() {
             return {
-                strengthsCategories: [],
 
             }
         },
         mounted() {
-            this.fetchCategoryStrengthData();
 
         },
         methods: {
 
-            fetchCategoryStrengthData() {
-                axios.get('/admin/category/strength/info').then(response => {
-                    this.strengthsCategories = response.data;
 
-
-                });
-            },
 
         }
 

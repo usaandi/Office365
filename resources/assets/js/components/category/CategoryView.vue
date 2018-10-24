@@ -16,7 +16,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr is="category-component" v-for="(category, index) in categories " :propCategory="category"
+            <tr is="category-component" v-for="(category, index) in categories "
+                :propCategory="category"
                 :key="category.id"
                 :index="index"
                 @deleteCategory="deleteCategory($event)"
@@ -62,8 +63,6 @@
                     this.categories = response.data;
                 });
             }
-
-
         }
     }
 

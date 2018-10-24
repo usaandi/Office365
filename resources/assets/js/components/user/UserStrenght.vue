@@ -46,7 +46,6 @@
         },
         methods: {
             showInput() {
-                console.log('hey');
                     this.show === false ? this.show = true : this.show = false;
 
             },
@@ -54,7 +53,6 @@
                 Vue.$isAdmin() ? this.admin = true : this.admin = false;
             },
             showValue(value, id) {
-                console.log(value + ' ' + id);
             }
 
 

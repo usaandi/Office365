@@ -17,18 +17,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="strCate in propStrengthsCategories">
-                    <th scope="row">{{strCate.strength_id}}</th>
+                <tr is="strength-component" v-for="(strength,index) in strengthsCategories"
+                    :key="strength.strength_id"
+                    :index="index"
+                    :prop-strength="strength"
+                    :prop-categories="categories"
+                    @deleteStrength="deleteStrength($event)"
 
-                    <td>{{strCate.strength_name}}</td>
-                    <td>{{strCate.strength_description}}</td>
-                    <td :value="strCate.category_id">{{strCate.category_name}}(needs to have select capabilities on edit click)</td>
-                    <td>
-                        <span><button type="button" class="btn btn-success">Edit</button></span>
-                    </td>
-                    <td>
-                        <span><button type="button" class="btn btn-danger">Remove</button></span>
-                    </td>
+                >
                 </tr>
 
                 </tbody>
@@ -38,17 +34,42 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
-        props:['propStrengthsCategories'],
+        props:[],
         name: "StrengthCategoryView",
         data(){
             return{
-
+                strengthsCategories:'',
+                categories: null,
             }
+        },
+        mounted(){
+            this.fetchCategoryStrengthData();
         },
 
         methods:{
+            fetchCategoryStrengthData() {
+                axios.get('/admin/strength/info').then(response => {
+                    this.strengthsCategories = response.data[0];
+                    this.categories = response.data[1];
+                });
+            },
+            deleteStrength(index){
+                const data = {
+                    strengthId: this.strengthsCategories[index].strength_id,
+                };
+                let array = this.strengthsCategories;
+                array.splice(index,1);
 
+                axios.delete('admin/strength/delete', {params:data})
+                    .then(function (response) {
+                        if(response.status === 200){
+                            array.splice(index, 1);
+                        }
+                    });
+
+            }
         },
     }
 </script>
