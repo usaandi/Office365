@@ -319,7 +319,7 @@
                                                         class="m-menu__link-text">Add moderator to teams</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="{{route('strengthsView')}}" class="m-menu__link "><i
+                                                    href="{{route('returnCategoryStrengthView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Strength</span></a></li>
                                         <li
