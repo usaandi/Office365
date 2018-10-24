@@ -85,7 +85,10 @@ Route::post('/admin/strength/create/strength', 'StrengthController@createStrengt
 Route::post('/admin/strength/create/category', 'CategoryController@createCategory')->name('categoryAdd');
 
 Route::get('/admin/view/category/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
-Route::get('/admin/category/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('categoryStrengthInfo');
+Route::get('/admin/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('strengthInfo');
+Route::delete('/admin/strength/delete', 'CategoryStrengthController@deleteStrength')->name('deleteStrength');
+Route::post('/admin/strength/update', 'CategoryStrengthController@updateStrength')->name('updateStrength');
+
 Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
 Route::delete('/admin/category/delete', 'CategoryController@deleteCategory')->name('deleteCategory');
 Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
