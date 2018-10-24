@@ -50,7 +50,10 @@ Vue.component('milestone-form', require('./components/career/CareerMilestoneForm
 Vue.component('career-role-form', require('./components/career/AddUserCareerRole'));
 Vue.component('user-child-form', require('./components/user/UserChildrenForm'));
 Vue.component('user-hobby-form', require('./components/user/UserHobbyForm'));
-
+Vue.component('admin-edit-strength-category', require('./components/category/MainView'));
+Vue.component('strength-category-view',require('./components/category/StrengthCategoryView'));
+Vue.component('category-view',require('./components/category/CategoryView'));
+Vue.component('category-component',require('./components/category/CategoryComponent'));
 const app = new Vue({
     el: '#app',
 });
