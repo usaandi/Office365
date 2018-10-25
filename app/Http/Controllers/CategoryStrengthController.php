@@ -12,8 +12,15 @@ class CategoryStrengthController extends Controller
 {
     public function view()
     {
+        try {
 
-        return view('strength.categoryStrength');
+            $user = \Auth::user();
+            $this->authorize('admin', $user);
+            return view('strength.categoryStrength');
+
+        } catch (\Exception $e) {
+            return redirect('/unauthorized');
+        }
     }
 
     public function updateStrength(Request $request)

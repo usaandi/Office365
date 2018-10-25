@@ -8,13 +8,25 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Strength;
 
+
+
 class StrengthController extends Controller
 {
     public function view()
     {
-        $categories = Category::get();
+        try {
 
-        return view('strength.strength')->with(['categories' => $categories]);
+            $user = \Auth::user();
+            $this->authorize('admin', $user);
+
+            $categories = Category::get(['id','category_name']);
+            return view('strength.strength')->with(['categories' => $categories]);
+
+        } catch (\Exception $e) {
+            return redirect('/unauthorized');
+        }
+
+
     }
 
     public function createStrength(Request $request)

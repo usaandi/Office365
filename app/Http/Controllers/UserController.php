@@ -21,42 +21,55 @@ class UserController extends Controller
 
     public function show($id)
     {
+        try {
+            $userModel = User::findorFail($id);
+            $user = $userModel->toArray();
 
-        $userModel = User::findorFail($id);
-        $user = $userModel->toArray();
+            $userDepartment = $userModel->department()->get(['department_id'])->first();
+            $userTeam = $userModel->team()->get(['team_id'])->first();
 
-        $userDepartment = $userModel->department()->get(['department_id'])->first();
-        $userTeam =$userModel->team()->get(['team_id'])->first();
-
-        if ($userDepartment !== NULL) {
-            $department = Department::find($userDepartment->department_id);
-            $user['department'] = $department->department_name;
-            $user['department_id'] = $department->id;
+            if ($userDepartment !== NULL) {
+                $department = Department::find($userDepartment->department_id);
+                $user['department'] = $department->department_name;
+                $user['department_id'] = $department->id;
+            }
+            if ($userTeam !== NULL) {
+                $team = Team::find($userTeam->team_id);
+                $user['team'] = $team->team_name;
+                $user['team_id'] = $team->id;
+            }
+            return view('user.profileview', compact('user'));
+        } catch (\Exception $e) {
+            return redirect('/unauthorized');
         }
-        if($userTeam !== NULL){
-            $team = Team::find($userTeam->team_id);
-            $user['team'] = $team->team_name;
-            $user['team_id'] = $team->id;
-        }
-        return view('user.profileview', compact('user'));
+
     }
 
     public function showedit($id)
     {
 
-        $user = User::findorFail($id);
-        $roles = Role::all();
-        return view('user.userupdate', compact(['user', 'roles']));
+        try {
+            //TODO READD THIS COMMENTED OUT LINE
+            /*$user = \Auth::user();
+            $this->authorize('admin', $user);*/
+
+            $user = User::findorFail($id);
+            $roles = Role::all();
+            return view('user.userupdate', compact(['user', 'roles']));
+        } catch (\Exception $e) {
+            return redirect('/unauthorized');
+        }
+
     }
 
     public function update(Request $request, $id)
     {
 
-        try{
+        try {
 
-            //TODO add back authorize code below if live
-           /* $authUser = \Auth::user();
-            $this->authorize('admin', $authUser);*/
+            //TODO READD THIS COMMENTED OUT LINE
+            /*$user = \Auth::user();
+            $this->authorize('admin', $user);*/
 
             $request->validate([
                 'name' => 'nullable',
@@ -86,11 +99,13 @@ class UserController extends Controller
             }
 
             $user->update(['email' => $email, 'name' => $name, 'phoneN' => $phone,
-            'birthday' => $birthday, 'skype' => $skype,  'ADMsince' => $ADMsince]);
+                'birthday' => $birthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
             $user->save();
 
             return redirect()->back();
-        }catch(\Exception $e){}
+        } catch (\Exception $e) {
+            return redirect('/unauthorized');
+        }
 
     }
 
@@ -110,8 +125,7 @@ class UserController extends Controller
 
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
         }
         return response('Error updating user', 400)
             ->header('Content-Type', 'application/json');
@@ -141,8 +155,7 @@ class UserController extends Controller
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
 
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
 
         }
         return response('Error updating user', 400)
@@ -164,14 +177,13 @@ class UserController extends Controller
 
             $email = $request->data;
 
-            $user->email =  $email;
+            $user->email = $email;
             $user->save();
 
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
 
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
 
         }
         return response('Error updating user', 400)
@@ -199,8 +211,7 @@ class UserController extends Controller
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
 
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
 
         }
         return response('Error updating user', 400)
@@ -209,12 +220,10 @@ class UserController extends Controller
 
     public function userIdName()
     {
-        $users = User::get(['id','name']);
+        $users = User::get(['id', 'name']);
 
         return $users;
     }
-
-
 
 
 }
