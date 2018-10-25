@@ -1,5 +1,6 @@
 <?php
-use App\User;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,88 +13,83 @@ use App\User;
 */
 
 
-
 //Route::get('/register', 'HomeController@index');
 //Route::get('/signin', 'AuthController@signin');
 Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
+Route::get('/unauthorized', function (){
+    return view('unauthorized.unauthorized');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'App\Http\Middleware\Admin'], function () {
+
+        Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
+        Route::post('/admin/strength/create/strength', 'StrengthController@createStrength')->name('strengthAdd');
+        Route::post('/admin/strength/create/category', 'CategoryController@createCategory')->name('categoryAdd');
+        Route::delete('/admin/strength/delete', 'CategoryStrengthController@deleteStrength')->name('deleteStrength');
+        Route::post('/admin/strength/update', 'CategoryStrengthController@updateStrength')->name('updateStrength');
+        Route::delete('/admin/category/delete', 'CategoryController@deleteCategory')->name('deleteCategory');
+        Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
+        Route::post('/admin/users/add', 'AddController@store')->name('store');
+    });
+    Route::post('/user/{id}/update', 'UserController@update')->name('update');
+
+    Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
+    Route::get('/admin/users/add', 'AddController@add')->name('useradd');
+    Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
+    Route::get('/admin/view/category/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
+    Route::get('/admin/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('strengthInfo');
+    Route::get('/user/career/info/{id}', 'PersonalDevelopmentController@userInfo');
+    Route::get('/career/roles', 'CareerController@careerRoleMilestonesData');
+    Route::get('/upload', 'ImageController@show');
+    Route::get('/user/{id}/update', 'UserController@showedit');
+
+    Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
+    Route::get('/user/{id}/hobby', 'UserHobbyController@userHobbies');
+    Route::get('/user/{id}/child', 'UserChildController@userChild');
+    Route::get('/hobbies', 'HobbyController@hobby');
+    Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('updateTeam');
+    Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
+    Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('updateEmail');
+    Route::post('/user/{id}/update/skype', 'UserController@updateSkype')->name('updateSkype');
+    Route::post('/user/{id}/update/hobby', 'HobbyController@updateHobby')->name('updateHobby');
+    Route::post('/user/{id}/update/info', 'UserController@updateInfo')->name('updateInfo');
+    Route::post('/user/{id}/update/child', 'UserChildController@updateChild')->name('updateChild');
+    Route::delete('user/{id}/delete/child', 'UserChildController@deleteUserChild')->name('deleteUserChild');
+    Route::post('/user/{id}/department', 'TeamsController@updateDepartment')->name('updateDepartment');
+    Route::post('/user/{id}/team', 'TeamsController@updateUserTeam')->name('updateUserTeam');
+
+    Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
+    Route::get('/career/add', 'CareerController@show')->name('addCareer');
+
+    Route::post('/career/add', 'CareerController@create')->name('addCareer');
+    Route::post('/user/{id}/career/milestone/create', 'CareerController@createMilestone')->name('createMilestone');
+    Route::post('/user/{id}/career/milestone/update', 'CareerController@updateMilestone')->name('updateMilestone');
+    Route::post('/user/{id}/career/milestone/delete', 'CareerController@deleteMilestone')->name('deleteMilestone');
+    Route::post('/user/{id}/career/update', 'CareerController@updateCareer')->name('updateCareer');
+    Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createCareer');
+    Route::post('/user/{id}/career/role/select', 'CareerController@selectCareer')->name('selectCareer');
+    Route::post('/user/{id}/career/role/save', 'CareerController@saveCareer')->name('saveCareer');
+
+    Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
+    Route::get('/user/{id}', 'UserController@show')->name('profile');
+    Route::get('user/{id}/career/info', 'CareerController@returnUserData')->name('careerInfo');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/usersDepartment', 'HomeController@userNoDepartment')->name('users');
+    Route::get('department/add', 'DepartmentController@view')->name('departmentadd');
+    Route::post('department/add', 'DepartmentController@store')->name('store');
+
+    Route::get('department/{id}', 'DepartmentController@show')->name('team');
+    Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name('user');
+    Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('departmentInfo');
+    Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
+    Route::get('department', 'DepartmentController@department')->name('department');
+    Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
 
 
-
-
-
-
-Route::group(['middleware'=> 'auth'], function (){
-
-Route::get('/user/career/info/{id}', 'PersonalDevelopmentController@userInfo');
-Route::get('/career/roles','CareerController@careerRoleMilestonesData');
-Route::get('/upload', 'ImageController@show');
-Route::get('/user/{id}/update', 'UserController@showedit');
-
-Route::post('/upload/{id}', 'ImageController@upload')->name('upload');
-
-
-Route::post('/user/{id}/update', 'UserController@update')->name('update');
-
-Route::get('/user/{id}/hobby', 'UserHobbyController@userHobbies');
-Route::get('/user/{id}/child', 'UserChildController@userChild');
-Route::get('/hobbies', 'HobbyController@hobby');
-
-Route::post('/user/{id}/update/team', 'UserController@updateTeam')->name('updateTeam');
-Route::post('/user/{id}/update/phone', 'UserController@updatePhone')->name('updatePhone');
-Route::post('/user/{id}/update/email', 'UserController@updateEmail')->name('updateEmail');
-Route::post('/user/{id}/update/skype', 'UserController@updateSkype')->name('updateSkype');
-Route::post('/user/{id}/update/hobby', 'HobbyController@updateHobby')->name('updateHobby');
-Route::post('/user/{id}/update/info', 'UserController@updateInfo')->name('updateInfo');
-Route::post('/user/{id}/update/child', 'UserChildController@updateChild')->name('updateChild');
-Route::delete('user/{id}/delete/child', 'UserChildController@deleteUserChild')->name('deleteUserChild');
-Route::post('/user/{id}/department', 'TeamsController@updateDepartment')->name('updateDepartment');
-Route::post('/user/{id}/team', 'TeamsController@updateUserTeam')->name('updateUserTeam');
-
-Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
-Route::get('/career/add', 'CareerController@show')->name('addCareer');
-
-Route::post('/career/add', 'CareerController@create')->name('addCareer');
-Route::post('/user/{id}/career/milestone/create', 'CareerController@createMilestone')->name('createMilestone');
-Route::post('/user/{id}/career/milestone/update', 'CareerController@updateMilestone')->name('updateMilestone');
-Route::post('/user/{id}/career/milestone/delete', 'CareerController@deleteMilestone')->name('deleteMilestone');
-Route::post('/user/{id}/career/update', 'CareerController@updateCareer')->name('updateCareer');
-Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createCareer');
-Route::post('/user/{id}/career/role/select', 'CareerController@selectCareer')->name('selectCareer');
-Route::post('/user/{id}/career/role/save', 'CareerController@saveCareer')->name('saveCareer');
-
-Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
-Route::get('/user/{id}', 'UserController@show')->name('profile');
-Route::get('user/{id}/career/info','CareerController@returnUserData')->name('careerInfo');
-Route::get('/admin/users/add', 'AddController@add')->name('useradd');
-Route::post('/admin/users/add', 'AddController@store')->name('store');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/usersDepartment','HomeController@userNoDepartment')->name('users');
-Route::get('department/add','DepartmentController@view')->name('departmentadd');
-Route::post('department/add','DepartmentController@store')->name('store');
-
-Route::get('department/{id}', 'DepartmentController@show')->name('team');
-Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name('user');
-Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('departmentInfo');
-Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
-Route::get('department', 'DepartmentController@department')->name('department');
-Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
-Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
-
-Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
-Route::post('/admin/strength/create/strength', 'StrengthController@createStrength')->name('strengthAdd');
-Route::post('/admin/strength/create/category', 'CategoryController@createCategory')->name('categoryAdd');
-
-Route::get('/admin/view/category/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
-Route::get('/admin/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('strengthInfo');
-Route::delete('/admin/strength/delete', 'CategoryStrengthController@deleteStrength')->name('deleteStrength');
-Route::post('/admin/strength/update', 'CategoryStrengthController@updateStrength')->name('updateStrength');
-
-Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
-Route::delete('/admin/category/delete', 'CategoryController@deleteCategory')->name('deleteCategory');
-Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
-
-Route::get('/users', 'UserController@userIdName')->name('usersIdName');
+    Route::get('/users', 'UserController@userIdName')->name('usersIdName');
 
 
 });
