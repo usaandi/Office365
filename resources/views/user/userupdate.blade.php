@@ -25,13 +25,14 @@
 
 @section('content-body')
     <style>
-        input, select, textarea{
-            width:200px;
-            border:1px solid #babacc;
-            box-sizing:border-box;
+        input, select, textarea {
+            width: 200px;
+            border: 1px solid #babacc;
+            box-sizing: border-box;
             margin-top: 5px;
 
         }
+
         label {
             width: 150px;
         }
@@ -40,48 +41,55 @@
     <form name="form" action="{{route('update',$user)}}" method="post">
         @csrf
 
-    <div class="card-body">
-        <h1>Muuda Kasutaja andmeid</h1>
-        <label><b>Fullname</b></label>
-        <input type="text" name="name"  value="{{ $user->name }}"/>
-        <br>
-        <label><b>Email</b></label>
-        <input type="email" name="email"  value="{{ $user->email }}"/>
-        <br>
-        <label><b>Phone Number</b></label>
-        <input type="number" name="phone" value="{{$user->phone}}"/>
-        <br>
-        <label><b>Birthday</b></label>
-        <input type="date"name="birthday" value="{{$user->birthday}}"/>
-        <br>
-        <label><b>Skype</b></label>
-        <input type="text"name="skype" value="{{$user->skype}}"/>
-        <br>
-        <label for="team"><b>Your team: does not work</b></label>
-        <select name="team">
-            <option value="Fenomen1">Fenomen1</option>
-            <option value="Fenomen2">Fenomen2</option>
-            <option value="Fenomen3">Fenomen3</option>
-            <option value="Fenomen4">Fenomen4</option>
-        </select>
-        <br>
-        <label for="role"><b>Your Current role:{{$user->role}} </b></label>
-        <select name="role">
-            @foreach($roles as $role)
-            <option value="{{ $role->name }}"
-                @if ($user->roles()->first()->id=== $role->id)
-                selected="selected"
-                @endif
-            >
-                {{ $role->name }}
-            </option>
-            @endforeach
-        </select>
-        <br>
-        <label><b>ADM since</b></label>
-        <input type="date" name="ADMsince" value="{{$user->ADMsince}}">
-        <br>
-        <button type="submit">Save</button>
-    </div>
+        <div class="card-body">
+            <h1>Muuda Kasutaja andmeid</h1>
+            <label><b>Fullname</b></label>
+            <input type="text" name="name" value="{{ $user->name }}"/>
+            <br>
+            <label><b>Email</b></label>
+            <input type="email" name="email" value="{{ $user->email }}"/>
+            <br>
+            <label><b>Phone Number</b></label>
+            <input type="number" name="phone" value="{{$user->phone}}"/>
+            <br>
+            <label><b>Birthday</b></label>
+            <input type="date" name="birthday" value="{{$user->birthday}}"/>
+            <br>
+            <label><b>Skype</b></label>
+            <input type="text" name="skype" value="{{$user->skype}}"/>
+            <br>
+            <label for="team"><b>Your Department: does not work</b></label>
+            <select name="team">
+                <option value="Fenomen1">Fenomen1</option>
+                <option value="Fenomen2">Fenomen2</option>
+                <option value="Fenomen3">Fenomen3</option>
+                <option value="Fenomen4">Fenomen4</option>
+            </select>
+            <br>
+            <label for="role"><b>Your Current role:{{$user->role}} </b></label>
+            <select name="role">
+                @foreach($roles as $role)
+                    <option value="{{ $role->name }}"
+                            @if ($user->roles()->first()->id=== $role->id)
+                            selected="selected"
+                            @endif
+                    >
+                        {{ $role->name }}
+                    </option>
+                @endforeach
+            </select>
+            <br>
+            <label><b>ADM since</b></label>
+            <input type="date" name="ADMsince" value="{{$user->ADMsince}}">
+            <br>
+            <button type="submit">Save</button>
+        </div>
     </form>
+
+    <div id="app">
+        <admin-view-user-strength :user-id='@json($user['id'])'>
+
+        </admin-view-user-strength>
+    </div>
+
 @endsection
