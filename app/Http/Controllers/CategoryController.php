@@ -37,13 +37,13 @@ class CategoryController extends Controller
                         'category_description' => $data['category_description'],
                         'category_colour' => $categoryColour,
                     ]);
-                    return response('created',200);
+                    return redirect()->back();
 
                 }
             }
 
         } catch (\Exception $e) {
-            dd($e);
+
 
         }
         return redirect()->back();
