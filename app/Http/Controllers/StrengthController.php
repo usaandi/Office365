@@ -29,6 +29,15 @@ class StrengthController extends Controller
 
     }
 
+    public function returnStrengthName()
+    {
+        try {
+            $strength = Strength::orderBy('strength_name')->get(['id as strength_id', 'strength_name']);
+            return $strength;
+        } catch (\Exception $e) {
+        }
+    }
+
     public function createStrength(Request $request)
     {
 
