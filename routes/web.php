@@ -22,6 +22,7 @@ Route::get('/unauthorized', function (){
 });
 
 Route::group(['middleware' => 'auth'], function () {
+
     Route::group(['middleware' => 'App\Http\Middleware\Admin'], function () {
 
         Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
@@ -33,8 +34,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
         Route::post('/admin/users/add', 'AddController@store')->name('store');
     });
-    Route::post('/user/{id}/update', 'UserController@update')->name('update');
+    Route::post('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
 
+    Route::post('/user/{id}/update', 'UserController@update')->name('update');
+    Route::get('/strength/list','StrengthController@returnStrengthName')->name('strengthsName');
     Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
     Route::get('/admin/users/add', 'AddController@add')->name('useradd');
     Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
