@@ -43,6 +43,7 @@ class CategoryController extends Controller
             }
 
         } catch (\Exception $e) {
+            dd($e);
 
         }
         return redirect()->back();

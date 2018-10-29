@@ -25,7 +25,7 @@ class CreateStrengthsTable extends Migration
             $table->increments('id');
             $table->text('category_name');
             $table->text('category_description')->nullable();
-            $table->text('colour');
+            $table->text('category_colour');
             $table->timestamps();
         });
 
