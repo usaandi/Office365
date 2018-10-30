@@ -89,10 +89,14 @@ class CategoryController extends Controller
 
             $validator = Validator::make($data,$rules);
 
+
             if($validator->passes()){
+
+                $cleanedCategoryName=ucfirst(strtolower($data['category_name']));
+
                 $category = Category::findOrFail($data['id']);
                  $category->update([
-                   'category_name' => $data['category_name'],
+                   'category_name' => $cleanedCategoryName,
                    'category_description'=> $data['category_description'],
                    'category_colour'=> $data['category_colour'],
                 ]);
