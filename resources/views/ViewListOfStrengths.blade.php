@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                Strength List
+                Departments strengths
             </h3>
         </div>
         <div>
@@ -28,7 +28,7 @@
     {{csrf_field()}}
 
     <div id="app">
-
+        <department-user-strength-category></department-user-strength-category>
     </div>
 
 
