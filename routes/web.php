@@ -93,6 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/users', 'UserController@userIdName')->name('usersIdName');
+    Route::get('/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
 
 
 });
