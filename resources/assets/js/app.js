@@ -57,6 +57,7 @@ Vue.component('category-view',require('./components/category/CategoryView'));
 Vue.component('category-component',require('./components/category/CategoryComponent'));
 Vue.component('admin-view-user-strength', require('./components/UserStrengthView'));
 Vue.component('admin-user-strength', require('./components/UserStrengthComponent'));
+Vue.component('department-user-strength-category', require('./components/departmentUserStrengthCategory'));
 const app = new Vue({
     el: '#app',
 });
