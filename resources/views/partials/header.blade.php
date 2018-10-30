@@ -280,9 +280,9 @@
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="{{route('department')}}" class="m-menu__link ">
+                                            <a href="{{route('departmentStrengths')}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
-                                                <span class="m-menu__link-text">Teams</span>
+                                                <span class="m-menu__link-text">Departments strengths</span>
                                             </a>
                                         </li>
                                     </ul>
