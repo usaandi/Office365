@@ -42,14 +42,6 @@
         methods: {
             pushSelected(obj) {
                 this.selectedStrength.push(obj);
-        /*        console.log(obj);
-                let strengthSize = 11;
-                let array = this.selectedStrength;
-                this.selectedStrength.push(obj);
-                console.log(obj);
-                obj='';
-                console.log(obj);*/
-
             },
             submit(){
               if(this.selectedStrength.length<=12){
