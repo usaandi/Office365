@@ -60801,7 +60801,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchCategories: function fetchCategories() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('test1').then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('categories').then(function (response) {
                 _this.categories = response.data;
                 _this.loopThrough(_this.categories);
             });
@@ -60809,7 +60809,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchDepartment: function fetchDepartment() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('test').then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('departments').then(function (response) {
                 _this2.departments = response.data;
             });
         },
