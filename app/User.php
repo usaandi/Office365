@@ -37,10 +37,18 @@ class User extends Authenticatable
         'password', 'remember_token', 'token',
     ];
 
+    public function strengths()
+    {
+        return $this->hasMany(UserStrength::class);
+    }
+    
     public function department() {
         return $this->hasOne('App\UserDepartment', 'user_id');
     }
 
+    public function userDepartments(){
+        return $this->hasMany(UserDepartment::class);
+    }
     public function team(){
         return $this->hasOne('App\UserTeam','user_id');
     }

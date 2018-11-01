@@ -12,4 +12,6 @@ class UserDepartment extends Pivot
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+
 }

@@ -17,7 +17,17 @@ class Department extends Model
     ];
 
     public function users() {
-        return $this->belongsToMany('App\User', 'users_departments')
+        return $this->belongsToMany(User::class, 'users_departments')
             ->using('App\UserDepartment');
     }
+
+    public function departmentUsers()
+    {
+        return $this->belongsToMany(User::class,'users_departments');
+    }
+
+    /*public function userss()
+    {
+        return $this->hasManyThrough(User::class,UserDepartment::class,'id','user_id','id');
+    }*/
 }
