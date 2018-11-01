@@ -3,7 +3,7 @@
         <label>Strength {{strengthIndex}}</label>
         <select  :disabled="checkDisable" v-model="selected" @change="pushToArray()">
             <option ></option>
-            <option v-for="strength in propStrengths"
+            <option v-for="strength in sortArray(propStrengths)"
                     :value="strength">{{strength.strength_name}}</option>
         </select>
     </div>
@@ -26,6 +26,9 @@
 
         },
         methods:{
+            sortArray(array){
+                return _.orderBy(array,'strength_name');
+            },
             pushToArray(){
                 if(this.selected !== ''){
                     let data = {

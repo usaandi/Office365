@@ -60521,7 +60521,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60558,6 +60558,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {},
 
     methods: {
+        sortArray: function sortArray(array) {
+            return _.orderBy(array, 'strength_name');
+        },
         pushToArray: function pushToArray() {
             if (this.selected !== '') {
                 var data = {
@@ -60623,7 +60626,7 @@ var render = function() {
       [
         _c("option"),
         _vm._v(" "),
-        _vm._l(_vm.propStrengths, function(strength) {
+        _vm._l(_vm.sortArray(_vm.propStrengths), function(strength) {
           return _c("option", { domProps: { value: strength } }, [
             _vm._v(_vm._s(strength.strength_name))
           ])
