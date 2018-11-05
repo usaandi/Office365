@@ -17,7 +17,7 @@ class CreateStrengthsTable extends Migration
             $table->increments('id');
             $table->text('strength_description')->nullable();
             $table->text('strength_name');
-            $table->text('icon');
+            $table->text('icon')->nullable();
             $table->timestamps();
         });
 
