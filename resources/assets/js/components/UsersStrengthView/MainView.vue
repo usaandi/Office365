@@ -4,7 +4,9 @@
             <thead>
             <tr>
                 <th></th>
-                <th v-for="category in categories" :colspan="category.strengths.length" scope="colgroup"
+                <th v-for="category in categories" :colspan="category.strengths.length"
+                    :style="{backgroundColor: category.category_colour}"
+                    scope="colgroup"
                     :id="category.category_id">
                     <span>{{category.category_name}}</span>
                 </th>

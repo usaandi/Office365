@@ -64,6 +64,7 @@ class DepartmentUserCategoryStrengthController extends Controller
                 $strengthCategoryArray[$i] = [
                     'category_name' => $category['category_name'],
                     'category_id' => $category['id'],
+                    'category_colour' =>$category['category_colour']
 
                 ];
                 foreach ($category['strength_category'] as $strength) {
