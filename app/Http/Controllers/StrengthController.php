@@ -76,7 +76,6 @@ class StrengthController extends Controller
 
         } catch (\Exception $e) {
 
-            return var_dump($e);
 
         }
 
