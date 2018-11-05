@@ -39,15 +39,15 @@ class UserStrengthController extends Controller
                 } else {
 
                     $userStrengths = $user->userStrength()->get();
-                   for ($i = 0; $i < count($userStrengths); $i++){
+                    for ($i = 0; $i < count($userStrengths); $i++) {
 
-                       $userStrengths[$i]->update([
-                          'strength_id' => $strengths[$i]['strength_id'],
-                          'user_id' => $id,
-                          'rank' => $strengths[$i]['strength_index'],
-                       ]);
+                        $userStrengths[$i]->update([
+                            'strength_id' => $strengths[$i]['strength_id'],
+                            'user_id' => $id,
+                            'rank' => $strengths[$i]['strength_index'],
+                        ]);
 
-                   }
+                    }
                     return redirect()->back();
 
                 }
@@ -57,5 +57,21 @@ class UserStrengthController extends Controller
 
         } catch (\Exception $e) {
         }
+    }
+
+    public function fetchUserStrength($id)
+    {
+        try {
+
+            $user = User::findOrfail($id);
+            $userStrengths = $user->with('userStrength')->get();
+            $userStrengths = $user->with('userStrength')->get();
+
+            return $userStrengths;
+
+        } catch (\Exception $e) {
+
+        }
+
     }
 }

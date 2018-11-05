@@ -69,6 +69,8 @@ class User extends Authenticatable
         return $this->hasMany(UserCareerRole::class);
     }
 
+
+
     public function userCareerRoleMilestones(){
         return $this->hasMany(UserCareerRoleMilestone::class);
     }
