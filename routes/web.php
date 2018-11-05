@@ -94,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/users', 'UserController@userIdName')->name('usersIdName');
     Route::get('/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
-    
+
     Route::get('/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');

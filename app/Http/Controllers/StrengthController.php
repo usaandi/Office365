@@ -70,10 +70,13 @@ class StrengthController extends Controller
                     $this->findOrCreateStrengthCategory($strengthId, $categoryId);
                 }
 
-                return redirect()->back();
+
             }
+            return redirect()->back();
 
         } catch (\Exception $e) {
+
+            return var_dump($e);
 
         }
 
