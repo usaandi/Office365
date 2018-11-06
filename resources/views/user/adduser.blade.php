@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('content-header')
@@ -6,7 +5,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                Dashboard
+
             </h3>
         </div>
 
@@ -15,51 +14,90 @@
 @endsection
 
 @section('content-body')
- <style>
-     input, select, textarea{
-         width:200px;
-         border:1px solid #babacc;
-         box-sizing:border-box;
 
-     }
-     .form-group{
+    <div class="admin__form admin__form--clear"><h4>Lisa kasutaja</h4>
+        <form name="form" class="m-form" action="{{route('storeUser')}}" method="post">
+            @csrf
+            <div class="m-portlet__body">
 
-     }
-     label {
-         width: 100px;
-     }
- </style>
-    <form name="form" action="{{route('store')}}" method="post">
-        @csrf
-<div class="card-body">
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Username</label>
+                    <div class="col-sm-9 col-xs-12 "><input required type="text" placeholder="Enter Username"
+                                                            name="name" class="form-control m-input"></div>
+                </div>
 
-        <h1>Lisa kasutaja</h1>
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">E-mail</label>
+                    <div class="col-sm-9 col-xs-12 "><input required type="email" placeholder="Enter E-mail"
+                                                            name="email" class="form-control m-input"></div>
+                </div>
 
-        <label for="name"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="name" value="" required>
-        <br>
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" value="" required>
-        <br>
-        <label for="phone"><b>Phone Number</b></label>
-        <input type="number"placeholder="Enter Phone Number" name="phone" value="" required>
-        <br>
-        <label for="birthday"><b>Birthday</b></label>
-        <input type="date" placeholder="Enter Birthday" name="birthday" value="" required>
-        <br>
-        <label for="skype"><b>Skype</b></label>
-        <input type="text" placeholder="Enter Skype" name="skype" value="" required>
-        <br>
-        <label for="ADMsince"><b>ADM since</b></label>
-        <input type="date" placeholder="ADM Join Date" name="ADMsince" value="" required>
-        <br>
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Phone</label>
+                    <div class="col-sm-9 col-xs-12 "><input required type="text" placeholder="Enter Phone"
+                                                           name="phone" class="form-control m-input"></div>
+                </div>
 
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Submit</button>
-        </div>
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
+                    <div class="col-sm-9 col-xs-12 "><input required type="date" placeholder="Enter Skype"
+                                                           name="birthday" class="form-control m-input"></div>
+                </div>
+
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">User Role</label>
+                    <div class="col-sm-9 col-xs-12 "><select  required name="role" class="form-control m-input">
+                            <option></option>
+                            @foreach($roles as $role)
+
+                                <option value="{{ $role->role_id }}">
+
+                                    {{ $role->role_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">User Department</label>
+                    <div class="col-sm-9 col-xs-12 "><select required name="department" class="form-control m-input">
+                            <option></option>
+                            @foreach($departments as $department)
+
+                                <option value="{{ $department->department_id }}">
+
+                                    {{ $department->department_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Skype</label>
+                    <div class="col-sm-9 col-xs-12 "><input required name="skype" type="text" placeholder="Enter Skype"
+                                                            class="form-control m-input"></div>
+                </div>
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">ADM Since</label>
+                    <div class="col-sm-9 col-xs-12 "><input required name="ADMsince" type="date" placeholder="Enter Skype"
+                                                            class="form-control m-input"></div>
+                </div>
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12"></div>
+                        <div class="col-sm-9 col-xs-12">
+                            <div class="profile-timeline__action">
+                                <button type="submit" class="btn btn-success m-btn m-btn--pill">
+                                    <span><span>Submit</span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
-    </form>
 
 @endsection

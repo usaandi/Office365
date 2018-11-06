@@ -36,9 +36,6 @@
             <label><b>Fullname</b></label>
             <input type="text" name="name" value="{{ $user->name }}"/>
             <br>
-            <label><b>Email</b></label>
-            <input type="email" name="email" value="{{ $user->email }}"/>
-            <br>
             <label><b>Phone Number</b></label>
             <input type="number" name="phone" value="{{$user->phone}}"/>
             <br>
@@ -48,21 +45,26 @@
             <label><b>Skype</b></label>
             <input type="text" name="skype" value="{{$user->skype}}"/>
             <br>
-            <label for="team"><b>Your Department: does not work</b></label>
-            <select name="team">
-                <option value="Fenomen1">Fenomen1</option>
-                <option value="Fenomen2">Fenomen2</option>
-                <option value="Fenomen3">Fenomen3</option>
-                <option value="Fenomen4">Fenomen4</option>
+            <label for="department"><b>Your Department: {{$currentDepartment[0]->department_name}} </b></label>
+            <select name="department">
+                <option></option>
+
+                @foreach($departments as $department)
+                    <option value="{{$department->id}}"
+
+                    >{{$department->department_name}}</option>
+                @endforeach
+
             </select>
             <br>
-            <label for="role"><b>Your Current role:{{$user->role}} </b></label>
+            <label for="role"><b>Your Current role: </b></label>
             <select name="role">
                 @foreach($roles as $role)
                     <option value="{{ $role->name }}"
-                            @if ($user->roles()->first()->id=== $role->id)
+                            @if ($user->roles()->first()->id === $role->id)
                             selected="selected"
                             @endif
+
                     >
                         {{ $role->name }}
                     </option>
@@ -78,7 +80,6 @@
 
     <div id="app">
         <admin-view-user-strength :user-id='@json($user['id'])'>
-
         </admin-view-user-strength>
     </div>
 
