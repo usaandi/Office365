@@ -123,36 +123,36 @@
                 </div>
 
                 <h3 class="profile__subtitle">STRENGTHS</h3>
-                <div class="profile__strenghts" >
+                <div class="profile__strenghts">
+                    <h3 v-show="this.noStrengths">This User has no strengths</h3>
                     <user-strenght
-                            :canedit="canedit"
-                            :userid="user.id"
-                            v-for="strength in userStrengths"
+
+                            v-for="(strength,index) in userStrengths"
                             :strength="strength"
-                            :key="userStrengths.id"
+                            :key="index"
                     >
                     </user-strenght>
                 </div>
 
-                    <user-children :canedit="canedit" :userid="user.id"></user-children>
-                    <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
-                    <user-badge :canedit="canedit" :userid="user.id"></user-badge>
-                </div>
-                <div class="col-sm-12 col-md-8">
-                    <user-role :canedit="canedit" :userid="user.id"></user-role>
-                    <user-skill :canedit="canedit" :userid="user.id"></user-skill>
-                    <user-project :canedit="canedit" :userid="user.id"></user-project>
-                    <user-training :canedit="canedit" :userid="user.id"></user-training>
-                </div>
+                <user-children :canedit="canedit" :userid="user.id"></user-children>
+                <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
+                <user-badge :canedit="canedit" :userid="user.id"></user-badge>
+            </div>
+            <div class="col-sm-12 col-md-8">
+                <user-role :canedit="canedit" :userid="user.id"></user-role>
+                <user-skill :canedit="canedit" :userid="user.id"></user-skill>
+                <user-project :canedit="canedit" :userid="user.id"></user-project>
+                <user-training :canedit="canedit" :userid="user.id"></user-training>
             </div>
         </div>
+    </div>
 </template>
 
 
 <script>
-    import EditableInputComponent from '../EditableInputComponent'
-    import UserHobby from "./UserHobby";
-    import UserBadge from "./UserBadge";
+    import EditableInputComponent from '../EditableInputComponent';
+    import axios from 'axios';
+
 
     export default {
         name: "ProfileView",
@@ -169,17 +169,9 @@
                 editteam: false,
                 editphone: false,
                 editskype: false,
+                noStrengths: false,
+                userStrengths: [],
 
-                userStrengths: [
-
-                    {id: 0, description: 'hello world!', strength_name: 'IDEATION', value: 10,},
-                    {id: 1, strength_name: 'COMMUNICATION', value: 20, description: 'hello mind!'},
-                    {id: 2, strength_name: 'WOO', value: 50, description: 'hello mind!'},
-                    {id: 3, strength_name: 'STRATEGIC', value: 60, description: 'hello mind!'},
-                    {id: 4, strength_name: 'FUTURISTIC', value: 75, description: 'hello mind!'},
-                    {id: 5, strength_name: 'Input', value: 20, description: 'hello mind!'},
-
-                ]
 
             }
         },
@@ -187,6 +179,7 @@
 
             this.userdata = this.user;
 
+            this.fetchUserStrength();
             if (authUser.id === this.user.id
                 || Vue.$isAdmin()
                 || Vue.$canModerateTeam(this.userdata.team_id)) {
@@ -194,9 +187,20 @@
                 this.canedit = true;
             }
 
+
         },
 
         methods: {
+
+            fetchUserStrength() {
+                axios.get('/user/' + this.user.id + '/strengths').then(response => {
+                    this.userStrengths = response.data;
+                    if (response.data.length === 0) {
+                        this.noStrengths = true;
+                    }
+                })
+
+            },
 
             onClose(value) {
 

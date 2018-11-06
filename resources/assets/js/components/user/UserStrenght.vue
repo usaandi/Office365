@@ -1,18 +1,15 @@
 <template>
     <div>
 
-        <div class="profile__strenght" @click="showInput()">
+        <div class="profile__strenght" :title="strength.strength_description">
             <div class="profile__strenght--info">
-                <i class="la la-lightbulb-o" ></i> {{this.userStrength.strength_name}}
+                <i class="la la-lightbulb-o"></i>{{strength.strength_name}}
             </div>
-            <div class="progress m-progress--custom" >
-                <div class="progress-bar m--bg-info"  role="progressbar"
-                     :style="{width:this.progressValue+'%'}"
+            <div class="progress m-progress--custom">
+                <div class="progress-bar m--bg-in fo" role="progressbar"
+                     :style="{width: calculateWidth(), backgroundColor: strength.category_colour}"
                      aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-
             </div>
-            <input v-show="admin && show" type="range" v-model="progressValue"
-                   @change="showValue(progressValue,userStrength.id)">
 
         </div>
 
@@ -22,41 +19,19 @@
 <script>
     export default {
         name: "UserStrenght",
-        props: ['userid', 'strength'],
+        props: ['strength'],
         data() {
             return {
-
-                progressValue: '',
-                currentUser: '',
-                show: false,
-                admin: false,
-                test: null,
-                userStrength: {},
-
-
+                userStrength: this.strength,
             }
-        },
-        mounted() {
-            this.currentUser = this.userid;
-            this.checkAdmin();
-            this.userStrength = this.strength;
-            this.progressValue = this.strength.value;
-
-
         },
         methods: {
-            showInput() {
-                    this.show === false ? this.show = true : this.show = false;
 
-            },
-            checkAdmin() {
-                Vue.$isAdmin() ? this.admin = true : this.admin = false;
-            },
-            showValue(value, id) {
+            calculateWidth() {
+                return 100 - (Math.round(90 * this.userStrength.strength_rank / 12)) + '%';
             }
-
-
         },
+
 
     }
 </script>
