@@ -32,7 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/admin/strength/update', 'CategoryStrengthController@updateStrength')->name('updateStrength');
         Route::delete('/admin/category/delete', 'CategoryController@deleteCategory')->name('deleteCategory');
         Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
-        Route::post('/admin/users/add', 'AddController@store')->name('store');
+        Route::post('/admin/users/add', 'AddController@store')->name('storeUser');
+        Route::get('/users', 'UserController@userIdName')->name('usersIdName');
     });
     Route::post('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
 
@@ -90,9 +91,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
     Route::get('department', 'DepartmentController@department')->name('department');
     Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
+    Route::get('/admin/users/list/', 'UserController@AdminUsersListView')->name('returnAdminUserList');
 
 
-    Route::get('/users', 'UserController@userIdName')->name('usersIdName');
+
     Route::get('/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
 
     Route::get('/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
