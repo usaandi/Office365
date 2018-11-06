@@ -13,7 +13,7 @@
 @section('content-body')
 
     <div id="app">
-        <users-list></users-list>
+        <users-list-head></users-list-head>
     </div>
 
 @endsection
