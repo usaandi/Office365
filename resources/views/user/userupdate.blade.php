@@ -51,7 +51,9 @@
 
                 @foreach($departments as $department)
                     <option value="{{$department->id}}"
-
+                            @if($department->id === $currentDepartment[0]->id)
+                            selected="selected"
+                            @endif
                     >{{$department->department_name}}</option>
                 @endforeach
 
