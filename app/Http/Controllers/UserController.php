@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Team;
+use App\UserDepartment;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
@@ -49,13 +50,17 @@ class UserController extends Controller
     {
 
         try {
-            //TODO READD THIS COMMENTED OUT LINE
-            /*$user = \Auth::user();
-            $this->authorize('admin', $user);*/
+            //TODO ReADD THIS COMMENTED OUT LINE
+            /* $user = \Auth::user();
+             $this->authorize('admin', $user);*/
 
             $user = User::findorFail($id);
+            $userDepartment = UserDepartment::where('user_id', $id)->get(['department_id']);
+            $departmentId = $userDepartment[0]->department_id;
+            $currentDepartment = Department::where('id',$departmentId)->get(['id','department_name']);
             $roles = Role::all();
-            return view('user.userupdate', compact(['user', 'roles']));
+            $departments = Department::all();
+            return view('user.userupdate', compact(['user', 'roles', 'departments','currentDepartment']));
         } catch (\Exception $e) {
             return redirect('/unauthorized');
         }
@@ -67,28 +72,36 @@ class UserController extends Controller
 
         try {
 
-            //TODO READD THIS COMMENTED OUT LINE
+            //TODO ReADD THIS COMMENTED OUT LINE
             /*$user = \Auth::user();
             $this->authorize('admin', $user);*/
 
             $request->validate([
                 'name' => 'nullable',
-                'email' => 'email|nullable',
                 'phone' => 'int|nullable',
                 'birthday' => 'date|nullable',
                 'skype' => 'nullable',
                 'ADMsince' => 'date|nullable',
                 'role' => 'nullable',
+                'department' => 'nullable'
             ]);
             $name = $request->input('name');
-            $email = $request->input('email');
             $phone = $request->input('phone');
             $birthday = $request->input('birthday');
             $skype = $request->input('skype');
             $ADMsince = $request->input('ADMsince');
             $role = $request->input('role');
+            $departmentId = $request->input('department');
 
+            $userDepartment = UserDepartment::where('user_id', $id)->get();
+            $userDepartmentId = $userDepartment[0]->department_id;
+
+            if ($userDepartmentId != $departmentId) {
+
+                UserDepartment::where('user_id',$id)->first()->update(['department_id' => $departmentId]);
+            }
             $user = User::findOrFail($id);
+
 
             $userRole = Role::findByName($role);
 
@@ -98,13 +111,15 @@ class UserController extends Controller
                 $user->assignRole($userRole);
             }
 
-            $user->update(['email' => $email, 'name' => $name, 'phoneN' => $phone,
+            $user->update(['name' => $name, 'phoneN' => $phone,
                 'birthday' => $birthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
             $user->save();
 
             return redirect()->back();
         } catch (\Exception $e) {
-            return redirect('/unauthorized');
+            var_dump($e);
+
+            // return redirect('/unauthorized');
         }
 
     }
@@ -223,6 +238,19 @@ class UserController extends Controller
         $users = User::get(['id', 'name']);
 
         return $users;
+    }
+
+    public function AdminUsersListView()
+    {
+        try {
+            $user = \Auth::user();
+            $this->authorize('admin', $user);
+
+            return view('admin.userList');
+
+        } catch (\Exception $exception) {
+            return redirect('/unauthorized');
+        }
     }
 
 

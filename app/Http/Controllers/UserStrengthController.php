@@ -49,10 +49,7 @@ class UserStrengthController extends Controller
 
                     }
                     return redirect()->back();
-
                 }
-
-
             }
 
         } catch (\Exception $e) {
@@ -71,9 +68,9 @@ class UserStrengthController extends Controller
 
                 $array[$i] = [
                     'strength_name' => $strength->strength->strength_name,
-                    'strength_description'=> $strength->strength->strength_description,
-                    'category_colour'=>$strength->strength->strengthCategory[0]->category->category_colour,
-                    'strength_rank'=> $strength->rank,
+                    'strength_description' => $strength->strength->strength_description,
+                    'category_colour' => $strength->strength->strengthCategory[0]->category->category_colour,
+                    'strength_rank' => $strength->rank,
                 ];
 
 
