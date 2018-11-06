@@ -11,12 +11,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Kaur</td>
-                    <td></td>
+                <tr is="users-list-body" v-for="(user, index) in users"
+                :propUser="user"
+                :key="index"
+                >
                 </tr>
-
                 </tbody>
             </table>
         </div>
@@ -24,8 +23,24 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
-        name: "UsersList"
+        name: "UsersList",
+        data(){
+            return{
+                users:''
+            }
+        },
+        mounted(){
+            this.getUsers();
+        },
+        methods:{
+            getUsers(){
+                axios.get('users').then(response => {
+                    this.users=response.data;
+                })
+            }
+        }
     }
 </script>
 
