@@ -45,7 +45,8 @@
                         vm.$emit('file-uploaded', response);
                     });
                 }
-            }
+            },
+           
         }
     }
 </script>

@@ -11,7 +11,7 @@
                       v-show="show">
             </textarea>
         </td>
-        <td>
+        <td :style="{backgroundColor: category.category_colour}">
             <span v-show="!show">{{category.category_colour}}</span>
             <input @change="hasChanged(category.category_colour)" type="color" v-model="categoryColour" v-show="show">
         </td>
