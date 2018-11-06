@@ -63,14 +63,25 @@ class UserStrengthController extends Controller
     {
         try {
 
-            $user = User::findOrfail($id);
-            $userStrengths = $user->with('userStrength')->get();
-            $userStrengths = $user->with('userStrength')->get();
+            $userId = $id;
+            $array = [];
+            $user = User::find($userId);
+            $userStrengths = $user->with('strengths.strength.strengthCategory.category')->where('id', $userId)->get();
+            foreach ($userStrengths[0]->strengths as $i => $strength) {
 
-            return $userStrengths;
+                $array[$i] = [
+                    'strength_name' => $strength->strength->strength_name,
+                    'strength_description'=> $strength->strength->strength_description,
+                    'category_colour'=>$strength->strength->strengthCategory[0]->category->category_colour,
+                    'strength_rank'=> $strength->rank,
+                ];
+
+
+            }
+            return $array;
 
         } catch (\Exception $e) {
-
+            var_dump($e);
         }
 
     }
