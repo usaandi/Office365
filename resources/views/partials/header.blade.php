@@ -322,27 +322,7 @@
                                                     href="{{route('returnCategoryStrengthView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Strength</span></a></li>
-                                        <li
-                                                class="m-menu__item  m-menu__item--actions" aria-haspopup="true">
-                                            <div class="m-menu__link m-menu__link--toggle-skip">
-                                                <div class="dropdown">
-                                                    <a href="#"
-                                                       class="btn btn-primary m-btn m-btn--icon m-btn--pill m-btn--air   dropdown-toggle"
-                                                       data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <i class="la la-cloud-download"></i>&nbsp;&nbsp;Export
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right"><a
-                                                                class="dropdown-item" href="#"><i
-                                                                    class="flaticon-share"></i> Action</a>
-                                                        <a class="dropdown-item" href="#"><i
-                                                                    class="flaticon-settings"></i> Another action</a>
-                                                        <a class="dropdown-item" href="#"><i
-                                                                    class="flaticon-graphic-2"></i> Something else</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
