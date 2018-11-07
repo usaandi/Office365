@@ -16,6 +16,8 @@ window.Vue = require('vue');
  */
 import ChecksPrivileges from './services/ChecksPrivileges'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+Vue.component('modal',{});
+
 
 Vue.use(ChecksPrivileges);
 Vue.component('user-list', require('./components/user/UsersListComponent.vue'));
@@ -60,6 +62,7 @@ Vue.component('category-component',require('./components/category/CategoryCompon
 Vue.component('admin-view-user-strength', require('./components/UserStrengthView'));
 Vue.component('admin-user-strength', require('./components/UserStrengthComponent'));
 Vue.component('department-user-strength-category', require('./components/UsersStrengthView/MainView'));
+Vue.component('modal',require('./components/warning/modal'));
 const app = new Vue({
     el: '#app',
 });
