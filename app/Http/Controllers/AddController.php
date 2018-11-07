@@ -76,12 +76,11 @@ class AddController extends Controller
 
 
 
-                return view('user.adduser');
+                return redirect()->back();
             } else {
-                echo 'Sellise nimega isik: ' . $name . ' ja Emailiga:' . $email . ' On juba olemas';
+                echo 'Sellise nimega isik: '  .$name . ''.' ja Emailiga: ' . $email . ' On juba olemas';
             }
         } catch (\Exception $e) {
-            var_dump($e);
         }
     }
 }
