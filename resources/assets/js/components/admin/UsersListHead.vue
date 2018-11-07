@@ -1,44 +1,129 @@
 <template>
     <div>
-        <div class="table-responsive">
-            <span class="float-left m--margin-bottom-5"></span>
-            <table class="table table-bordered text-center">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Username</th>
-                    <th>Edit</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr is="users-list-body" v-for="(user, index) in users"
-                :propUser="user"
-                :key="index"
-                >
-                </tr>
-                </tbody>
-            </table>
+        <modal v-if="show"
+        >
+            <h3 slot="header">
+                Delete User
+            </h3>
+
+            <div slot="body">
+                <p class="text-center alert alert-danger">
+                    Are you sure you want to delete User: {{userObject.name}}?
+                </p>
+                <p class="">
+                    For confirmation TYPE below: YES
+                </p>
+                <input style="outline: none"
+                       :class="{'border-danger': this.confirmationText!=='YES', 'border-success':this.confirmationText==='YES'}"
+                       class="border " type="text" v-model="confirmationText">
+            </div>
+            <div slot="footer">
+                <button type="button" class="btn btn-success" @click="cancelDeletion">CANCEL</button>
+                <button type="submit" class="btn btn-danger" @click="confirmDeletion(userObject.id)">DELETE</button>
+            </div>
+        </modal>
+
+        <div>
+
+            <div class="table-responsive">
+                <span class="float-left m--margin-bottom-5"></span>
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr is="users-list-body" v-for="(user, index) in users"
+                        :propUser="user"
+                        :key="index"
+                        :index="index"
+                        @deleteUser="deleteUser($event)"
+                    >
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
     import axios from 'axios'
+
     export default {
         name: "UsersList",
-        data(){
-            return{
-                users:''
+        data() {
+            return {
+                users: '',
+                show: false,
+                userObject: {},
+                confirmationText: '',
+                userObjectIndex: ''
             }
         },
-        mounted(){
+        mounted() {
             this.getUsers();
         },
-        methods:{
-            getUsers(){
+        methods: {
+
+            cancelDeletion() {
+                this.userObject = null;
+                this.confirmationText = null;
+                this.show = false;
+                this.userObjectIndex = null;
+
+            },
+
+            confirmDeletion(userId) {
+                if (this.confirmationText === 'YES') {
+
+                    let data = {
+                        userId: userId
+                    };
+
+                    let vm = this;
+                    axios.delete('admin/user/delete', {params: data})
+                        .then(function (response) {
+                            if (response.status === 200) {
+                                vm.users.splice(vm.userObjectIndex, 1);
+                                vm.userObject = null;
+                                vm.confirmationText = null;
+                                vm.show = false;
+                                vm.userObjectIndex = null;
+                                data = null;
+                            }
+                        });
+
+
+                }
+                else {
+
+                }
+
+            },
+
+            getUsers() {
                 axios.get('users').then(response => {
-                    this.users=response.data;
+                    this.users = response.data;
                 })
+            },
+            deleteUser(objectIndex) {
+
+                this.userObject = this.users[objectIndex];
+                this.userObjectIndex = objectIndex;
+                this.show = true;
+
+                /*
+                 axios.delete('admin/user/delete', {params: data})
+                     .then(function (response) {
+                         if (response.status === 200) {
+                             this.users.splice(objectIndex, 1);
+                         }
+                     });*/
             }
         }
     }
