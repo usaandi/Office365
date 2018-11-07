@@ -57,14 +57,40 @@ class UserController extends Controller
             $user = User::findorFail($id);
             $userDepartment = UserDepartment::where('user_id', $id)->get(['department_id']);
             $departmentId = $userDepartment[0]->department_id;
-            $currentDepartment = Department::where('id',$departmentId)->get(['id','department_name']);
+            $currentDepartment = Department::where('id', $departmentId)->get(['id', 'department_name']);
             $roles = Role::all();
             $departments = Department::all();
-            return view('user.userupdate', compact(['user', 'roles', 'departments','currentDepartment']));
+            return view('user.userupdate', compact(['user', 'roles', 'departments', 'currentDepartment']));
         } catch (\Exception $e) {
             return redirect('/unauthorized');
         }
 
+    }
+
+    public function deleteUser(Request $request)
+    {
+        try {
+            $data = $request->all();
+
+            $rules = [
+                'userId' => 'required'
+            ];
+            $validator = Validator::make($data,$rules);
+            if($validator->passes()){
+                $user = User::findOrFail($data['userId']);
+
+
+                //TODO replace delte() with forceDelete() live server
+                $user->delete();
+
+                return response('User'.''.$user->name.''.'deleted',200);
+
+
+            }
+        } catch (\Exception $e) {
+            $errors = 'Did not find User';
+            return response ($errors,500);
+        }
     }
 
     public function update(Request $request, $id)
@@ -98,7 +124,7 @@ class UserController extends Controller
 
             if ($userDepartmentId != $departmentId) {
 
-                UserDepartment::where('user_id',$id)->first()->update(['department_id' => $departmentId]);
+                UserDepartment::where('user_id', $id)->first()->update(['department_id' => $departmentId]);
             }
             $user = User::findOrFail($id);
 
