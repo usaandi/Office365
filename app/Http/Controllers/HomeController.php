@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\User;
 use auth;
+use App\Department;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Microsoft\Graph\Graph;
@@ -31,16 +32,16 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function userNoDepartment(){
+    public function userNoDepartment()
+    {
 
-        $userdata = User::with('department')->get(['users.id','users.name']);
+        $userdata = User::with('department')->get(['users.id', 'users.name']);
 
-        foreach ($userdata as $key => $user){
+        foreach ($userdata as $key => $user) {
 
-            if($user->department !== null){
+            if ($user->department !== null) {
                 $user->department_id = $user->department->department_id;
-            }
-            else {
+            } else {
                 $user->department_id = NULL;
             }
             unset($user->department);
@@ -52,11 +53,22 @@ class HomeController extends Controller
 
     public function index()
     {
-/*
-        $trash=DB::table('users')
-            ->whereNotNull('deleted_at')
-            ->get();*/
+        /*
+                $trash=DB::table('users')
+                    ->whereNotNull('deleted_at')
+                    ->get();*/
         $users = User::get();
-        return view('home')->with(['users'=>$users]);
+        foreach ($users as $i => $user) {
+            $userCareer = $user->userCareerRole()->where('current_role', 1)->first();
+            $userDepartmentId = $user->department()->first();
+            if($userDepartmentId !== null){
+                $departmentName = Department::findOrFail($userDepartmentId)->first()->department_abbr;
+                $users[$i]['current_department'] = $departmentName;
+            }
+            if ($userCareer !== null) {
+                $users[$i]['current_role'] = $userCareer->title;
+            }
+        }
+        return view('home')->with(['users' => $users]);
     }
 }
