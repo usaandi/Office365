@@ -11,9 +11,22 @@ class PersonalDevelopmentController extends Controller
 {
     public function userDevelopment($id){
 
-        $user = User::findOrFail($id)->id;
 
-        return view('user.usercareer', compact('user'));
+        try {
+
+            $authUser = \Auth::user();
+            $this->authorize('view', $authUser);
+
+            $user = User::findOrFail($id)->id;
+
+            return view('user.usercareer', compact('user'));
+
+
+        } catch (\Exception $e) {
+            var_dump($e);
+        }
+
+
     }
     public function userInfo($id)
     {

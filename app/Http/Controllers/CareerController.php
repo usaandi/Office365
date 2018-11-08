@@ -15,8 +15,15 @@ class CareerController extends Controller
 {
     public function show()
     {
-        return view('user.addcareer');
+        try {
+
+            return view('user.addcareer');
+
+        } catch (\Exception $e) {
+        }
+
     }
+
     public function create(Request $request)
     {
 
@@ -71,11 +78,13 @@ class CareerController extends Controller
         } catch (\Exception $e) {
         }
     }
+
     public function careerRoleMilestonesData()
     {
         $careerRoles = CareerRole::all();
         return $careerRoles;
     }
+
     public function returnUserData($id)
     {
 
@@ -127,7 +136,7 @@ class CareerController extends Controller
             ];
             $validator = Validator::make($data, $rules);
 
-            if($validator->passes()){
+            if ($validator->passes()) {
                 $user->userCareerRole()
                     ->where('id', $data['id'])
                     ->where('user_id', $id)
@@ -137,26 +146,28 @@ class CareerController extends Controller
 
             }
 
-        }catch(\Exception $e){}
+        } catch (\Exception $e) {
+        }
     }
 
     public function selectCareer(Request $request, $id)
     {
-        try{
+        try {
             $authUser = \Auth::user();
             $this->authorize('createCareer', $authUser);
             $user = User::findOrFail($id);
 
             $data = $request->all();
 
-            $activeRole = $user->userCareerRole()->where('current_role',1)
+            $activeRole = $user->userCareerRole()->where('current_role', 1)
                 ->update(['current_role' => 0]);
 
-            $inactiveRole=$user->userCareerRole()->where('id', $data['userCareerRoleId'])
+            $inactiveRole = $user->userCareerRole()->where('id', $data['userCareerRoleId'])
                 ->update(['current_role' => 1]);
+        } catch (\Exception $e) {
         }
-        catch(\Exception $e){}
     }
+
     public function createCareer(Request $request, $id)
     {
         try {
@@ -205,11 +216,11 @@ class CareerController extends Controller
 
             return $array;
 
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
 
         }
     }
+
     public function saveCareer(Request $request, $id)
     {
         try {
@@ -267,10 +278,10 @@ class CareerController extends Controller
                         'user_id' => $userId,
                         'current_role' => 0,
                     ]);
-                    $milestonesArray=[];
+                    $milestonesArray = [];
                     if (empty($data['milestones']) === false) {
                         $milestones = $data['milestones'];
-                        foreach($milestones as  $milestone){
+                        foreach ($milestones as $milestone) {
                             $milestonesList = $user->userCareerRoleMilestones()->create([
 
                                 'milestone_id' => $milestone['milestone_id'],
@@ -281,8 +292,8 @@ class CareerController extends Controller
                                 'reminder' => $milestone['reminder'],
                                 'completed' => $milestone['completed'],
                             ]);
-                            $milestonesArray[]=[
-                                'id'=> $milestonesList->id,
+                            $milestonesArray[] = [
+                                'id' => $milestonesList->id,
                                 'milestone_id' => $milestone['milestone_id'],
                                 'user_id' => $milestone['user_id'],
                                 'assigned_id' => $milestone['assigned_id'],
@@ -295,22 +306,23 @@ class CareerController extends Controller
                         }
                         unset($milestone);
                     }
-                    $career=[
+                    $career = [
                         'id' => $userCareerRole->id,
                         'career_role_id' => $careerRoleId,
                         'title' => $ucTitle,
                         'description' => $description,
                         'user_id' => $id,
-                        'current_role'=> 0,
+                        'current_role' => 0,
                         'milestones' => $milestonesArray,
 
                     ];
                     $jsonData = json_encode($career);
-                    return response($jsonData,200)
+                    return response($jsonData, 200)
                         ->header('Content-Type', 'application/json');
                 }
             }
-        }catch (\Exception $e){}
+        } catch (\Exception $e) {
+        }
     }
 
     public function createMilestone(Request $request, $id)
@@ -377,17 +389,17 @@ class CareerController extends Controller
                         'id' => $userCareerMilestone->id,
                     ]);
                     $jsonData = json_encode($data);
-                    return response($jsonData,200)
+                    return response($jsonData, 200)
                         ->header('Content-Type', 'application/json');
                 }
 
             }
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
 
         }
 
     }
+
     public function updateMilestone(Request $request, $id)
     {
         try {
@@ -410,9 +422,9 @@ class CareerController extends Controller
             ];
             $validator = Validator::make($data, $rules);
 
-            if($validator->passes()){
+            if ($validator->passes()) {
 
-                $user->userCareerRoleMilestones()->where('id',  $data['id'])
+                $user->userCareerRoleMilestones()->where('id', $data['id'])
                     ->where('user_career_role_id', $data['userCareerRoleId'])
                     ->where('user_id', $id)
                     ->update([
@@ -423,11 +435,13 @@ class CareerController extends Controller
 
             }
 
-        }catch (\Exception $e){}
+        } catch (\Exception $e) {
+        }
     }
+
     public function deleteMilestone(Request $request, $id)
     {
-        try{
+        try {
 
             $user = User::findOrFail($id);
 
@@ -448,17 +462,16 @@ class CareerController extends Controller
             ];
             $validator = Validator::make($data, $rules);
 
-            if($validator->passes()){
+            if ($validator->passes()) {
                 $deleteMilestone = $user->userCareerRoleMilestones()
                     ->where('id', $data['id'])
                     ->where('user_id', $data['user_id'])
                     ->where('user_career_role_id', $data['user_career_role_id']);
-                if($deleteMilestone){
+                if ($deleteMilestone) {
                     $deleteMilestone->delete();
                 }
             }
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
         }
     }
 }
