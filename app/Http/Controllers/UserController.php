@@ -57,7 +57,7 @@ class UserController extends Controller
 
         try {
             //TODO Re ADD THIS COMMENTED OUT LINE if going live
-            /* $user = \Auth::user();
+             /*$user = \Auth::user();
              $this->authorize('admin', $user);*/
 
             $user = User::findorFail($id);
@@ -104,7 +104,7 @@ class UserController extends Controller
         try {
 
             //TODO ReADD THIS COMMENTED OUT LINE
-            /*$user = \Auth::user();
+           /*$user = \Auth::user();
             $this->authorize('admin', $user);*/
 
             $request->validate([
@@ -148,9 +148,9 @@ class UserController extends Controller
 
             return redirect()->back();
         } catch (\Exception $e) {
-            var_dump($e);
 
-            // return redirect('/unauthorized');
+
+             return view('unauthorized.unauthorized',with(['error' => $e->getMessage()]));
         }
 
     }
