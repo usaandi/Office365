@@ -49,6 +49,7 @@
                                     :selectedUserProfileId="selectedUserProfileId"
                                     @pushToMilestones="pushMilestone($event)"
                                     @addToMilestones="addMilestone($event)"
+                                    @close="show=false"
                             >
                             </milestone-form>
 

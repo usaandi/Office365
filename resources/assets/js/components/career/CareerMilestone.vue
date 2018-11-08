@@ -2,8 +2,8 @@
 <div >
     <div class="profile-timeline__milestone">
         <div class="m-form__group form-group">
-            <div class="m-checkbox-list">
-                <label :value="milestone.id" class="m-checkbox m-checkbox--air m-checkbox--state-success">
+            <div class="m-checkbox-list" >
+                <label v-show="!show"  :value="milestone.id" class="m-checkbox m-checkbox--air m-checkbox--state-success">
                     <input type="checkbox">
                 <div
                         class="profile-timeline__milestones--label"
@@ -33,9 +33,9 @@
                                 {{user.name}}</option>
                         </select>
 
-                        <span v-show="show" @click="remove()">X</span>
+                        <span v-show="show" @click="remove()"><span style="cursor: pointer" class="icon flaticon-delete-1"></span></span>
 
-                        <div class="m-list-pics m-list-pics--sm">
+                        <div v-show="!show" class="m-list-pics m-list-pics--sm">
                             <a href=""><img src="" title=""></a>
 
                             {{milestone.assigned_username}}
