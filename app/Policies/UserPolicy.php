@@ -18,6 +18,8 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
+        return $this->userCanEditCareer($user, $model);
+
     }
 
     /**
