@@ -25,9 +25,15 @@ class UserController extends Controller
         try {
             $userModel = User::findorFail($id);
             $user = $userModel->toArray();
-
+            $userModel->userCareerRole()->get();
+            $userCareer = $userModel->userCareerRole()->where('current_role',1)->first();
             $userDepartment = $userModel->department()->get(['department_id'])->first();
             $userTeam = $userModel->team()->get(['team_id'])->first();
+
+            if($userCareer !==null){
+                $user['career_title'] = $userCareer->title;
+                $user['career_description'] = $userCareer->description;
+            }
 
             if ($userDepartment !== NULL) {
                 $department = Department::find($userDepartment->department_id);
@@ -50,7 +56,7 @@ class UserController extends Controller
     {
 
         try {
-            //TODO ReADD THIS COMMENTED OUT LINE
+            //TODO Re ADD THIS COMMENTED OUT LINE if going live
             /* $user = \Auth::user();
              $this->authorize('admin', $user);*/
 
@@ -80,8 +86,7 @@ class UserController extends Controller
                 $user = User::findOrFail($data['userId']);
 
 
-                //TODO replace delte() with forceDelete() live server
-                $user->delete();
+                $user->forceDelete();
 
                 return response('User'.''.$user->name.''.'deleted',200);
 
