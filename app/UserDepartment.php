@@ -14,4 +14,5 @@ class UserDepartment extends Pivot
     }
 
 
+
 }
