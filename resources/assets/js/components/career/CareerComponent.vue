@@ -86,7 +86,6 @@
         mounted(){
             this.AuthUserId = authUser.id;
             this.selectedUserId = this.currentUserId;
-
             this.fetchData();
             this.usersList();
             this.fetchUserInfo();
@@ -118,7 +117,6 @@
                 if(this.hasMilestoneError !== value){
                     this.hasMilestoneError = value;
                 }
-
             },
             checkErrors(){
                 this.hasMilestoneError = true;

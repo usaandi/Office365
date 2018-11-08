@@ -1,6 +1,8 @@
 <template>
     <div>
+
         <div class="profile">
+
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-4">
                     <profile-avatar :image="user.image" :user-id="user.id"></profile-avatar>
@@ -8,14 +10,14 @@
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <h1 class="profile__name">{{user.name}}</h1>
                     <div class="profile__role">
-                       <!-- <span>Junior UI designer</span><i class="la la-angle-double-right hidden-xs"></i><i
-                            class="la la-angle-double-down hidden-lg hidden-md hidden-sm"></i>-->
+                        <!-- <span>Junior UI designer</span><i class="la la-angle-double-right hidden-xs"></i><i
+                             class="la la-angle-double-down hidden-lg hidden-md hidden-sm"></i>-->
 
                         <span class="profile__role--current">{{user.career_title}}</span>
-                        <span v-if="!user.career_title" >Has no active role</span>
-                      <!--  <i
-                            class="la la-angle-double-right hidden-xs"></i><i
-                            class="la la-angle-double-down hidden-lg hidden-md hidden-sm"></i><span>Team lead</span>-->
+                        <span v-if="!user.career_title">Has no active role</span>
+                        <!--  <i
+                              class="la la-angle-double-right hidden-xs"></i><i
+                              class="la la-angle-double-down hidden-lg hidden-md hidden-sm"></i><span>Team lead</span>-->
                     </div>
                 </div>
             </div>
@@ -24,7 +26,18 @@
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <h3 class="profile__subtitle">Profile</h3>
                 <div class="profile__details">
+                    <div class="row" v-show="canedit">
+                        <div class="col-xs-3">
+                            <div class="profile__details--title">User development</div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="profile__details--info">
+                                <a :href="'user/'+user.id+'/career'"><span><button class="btn btn-success">Development</button></span></a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
+
                         <div class="col-xs-3">
                             <div class="profile__details--title">Department:</div>
                         </div>
@@ -142,7 +155,7 @@
                 <user-badge :canedit="canedit" :userid="user.id"></user-badge>
             </div>
             <div class="col-sm-12 col-md-8">
-                <user-role  :UserRoleDescription="user.career_description"></user-role>
+                <user-role :UserRoleDescription="user.career_description"></user-role>
                 <user-skill :canedit="canedit" :userid="user.id"></user-skill>
                 <user-project :canedit="canedit" :userid="user.id"></user-project>
                 <user-training :canedit="canedit" :userid="user.id"></user-training>
