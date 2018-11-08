@@ -18,8 +18,8 @@
     <div class="profile-view__name">
       {{ user.name }}
     </div>
-    <div class="profile-view__team">{{user.team}}</div>
-    <div class="profile-view__role">need to import role</div>
+    <div class="profile-view__team">{{user.current_department}}</div>
+    <div class="profile-view__role">{{user.current_role}}</div>
     <div class="profile-view__phone"><i class="la la-phone"></i>{{user.phone}}</div>
     <div class="profile-view__email"><i class="la la-envelope"></i>{{user.email}}</div>
   </div>
