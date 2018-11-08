@@ -48546,11 +48546,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "profile-view__team" }, [
-        _vm._v(_vm._s(_vm.user.team))
+        _vm._v(_vm._s(_vm.user.current_department))
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "profile-view__role" }, [
-        _vm._v("need to import role")
+        _vm._v(_vm._s(_vm.user.current_role))
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "profile-view__phone" }, [
@@ -48690,7 +48690,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48705,6 +48705,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditableInputComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditableInputComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
 //
 //
 //
@@ -49165,7 +49168,15 @@ var render = function() {
             _vm._v(_vm._s(_vm.user.name))
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "profile__role" }, [
+            _c("span", { staticClass: "profile__role--current" }, [
+              _vm._v(_vm._s(_vm.user.career_title))
+            ]),
+            _vm._v(" "),
+            !_vm.user.career_title
+              ? _c("span", [_vm._v("Has no active role")])
+              : _vm._e()
+          ])
         ])
       ])
     ]),
@@ -49179,7 +49190,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "profile__details" }, [
             _c("div", { staticClass: "row" }, [
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c(
                 "div",
@@ -49248,7 +49259,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "div",
@@ -49303,7 +49314,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "col-xs-9" }, [
                 _c("div", { staticClass: "profile__details--info" }, [
@@ -49317,7 +49328,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _vm._m(4),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "div",
@@ -49376,10 +49387,10 @@ var render = function() {
                 _vm._v(" " + _vm._s(_vm.user.birthday))
               ]),
               _vm._v(" "),
-              _vm._m(5)
+              _vm._m(4)
             ]),
             _vm._v(" "),
-            _vm._m(6)
+            _vm._m(5)
           ]),
           _vm._v(" "),
           _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("STRENGTHS")]),
@@ -49433,7 +49444,7 @@ var render = function() {
         { staticClass: "col-sm-12 col-md-8" },
         [
           _c("user-role", {
-            attrs: { canedit: _vm.canedit, userid: _vm.user.id }
+            attrs: { UserRoleDescription: _vm.user.career_description }
           }),
           _vm._v(" "),
           _c("user-skill", {
@@ -49454,26 +49465,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile__role" }, [
-      _c("span", [_vm._v("Junior UI designer")]),
-      _c("i", { staticClass: "la la-angle-double-right hidden-xs" }),
-      _c("i", {
-        staticClass: "la la-angle-double-down hidden-lg hidden-md hidden-sm"
-      }),
-      _c("span", { staticClass: "profile__role--current" }, [
-        _vm._v("UX Arhitekt")
-      ]),
-      _c("i", { staticClass: "la la-angle-double-right hidden-xs" }),
-      _c("i", {
-        staticClass: "la la-angle-double-down hidden-lg hidden-md hidden-sm"
-      }),
-      _c("span", [_vm._v("Team lead")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -53868,7 +53859,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53889,43 +53880,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "UserRole",
-    props: ['userid'],
+    props: ['UserRoleDescription'],
 
     data: function data() {
         return {
+            description: this.UserRoleDescription
 
-            currentUserId: '',
-            currentUserInfo: [],
-            userInfo: '',
-
-            edit: false
         };
-    },
-    mounted: function mounted() {
-        this.currentUserId = this.userid;
-    },
-
-    methods: {
-
-        upload: function upload() {
-
-            var data = JSON.stringify({
-                userInfo: this.userInfo
-            });
-            var vm = this;
-            axios.post('/user/' + this.currentUserId + '/update/info', data).then(function (response) {}).catch(function (error) {});
-        }
-
     }
 });
 
@@ -53937,50 +53901,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("Role")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "profile__text" }, [
-        _c("p", [
-          _vm._v(
-            "Coordinate with designers and developers to develop various new products and features along with various\n            interactive designs within required timeframe."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Develop new business initiatives in coordination with UE team and design various methodologies and practices\n            for innovative interactive technologies and perform quality assurance and browser computability tests."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Design style sheets for website and assist application programmers in effective implementation and ensure\n            all work according to scripting code with help of various technologies."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Collaborate with designers and application developer to develop various customized websites."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Prepare all production documents on Photoshop and translate same into HTML templates with help of developers\n            and designers and facilitate to introduce new features into same."
-          )
-        ])
-      ])
+  return _c("div", [
+    _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("Role")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "profile__text" }, [
+      _vm.description
+        ? _c("p", [_vm._v(_vm._s(_vm.description))])
+        : _c("p", [_vm._v("Has no active role")])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
