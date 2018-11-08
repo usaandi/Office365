@@ -34,10 +34,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/admin/user/delete', 'UserController@deleteUser')->name('deleteUser');
         Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
         Route::post('/admin/users/add', 'AddController@store')->name('storeUser');
-        Route::get('/users', 'UserController@userIdName')->name('usersIdName');
+
     });
     Route::post('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
-
+    Route::get('/users', 'UserController@userIdName')->name('usersIdName');
     Route::post('/user/{id}/update', 'UserController@update')->name('update');
     Route::get('/strength/list','StrengthController@returnStrengthName')->name('strengthsName');
     Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
