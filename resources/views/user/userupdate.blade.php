@@ -59,6 +59,7 @@
 
             </select>
             <br>
+            @hasanyrole('Admin')
             <label for="role"><b>Your Current role: </b></label>
             <select name="role">
                 @foreach($roles as $role)
@@ -73,6 +74,7 @@
                 @endforeach
             </select>
             <br>
+            @endhasanyrole
             <label><b>ADM since</b></label>
             <input type="date" name="ADMsince" value="{{$user->ADMsince}}">
             <br>
