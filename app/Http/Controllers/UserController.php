@@ -68,7 +68,8 @@ class UserController extends Controller
             $departments = Department::all();
             return view('user.userupdate', compact(['user', 'roles', 'departments', 'currentDepartment']));
         } catch (\Exception $e) {
-            return redirect('/unauthorized');
+            var_dump($e);
+          //  return redirect('/unauthorized');
         }
 
     }

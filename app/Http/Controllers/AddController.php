@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Department;
 use App\UserDepartment;
 use Illuminate\Http\Request;
 use App\User;
+use auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -17,10 +19,12 @@ class AddController extends Controller
         try {
             $user = \Auth::user();
             $this->authorize('admin', $user);
+
             $roles = Role::get(['name as role_name', 'id as role_id']);
             $departments = Department::get(['department_name', 'id as department_id']);
             return view('user.adduser', with(['departments' => $departments, 'roles' => $roles]));
         } catch (\Exception $e) {
+            var_dump($e);
         }
 
     }
