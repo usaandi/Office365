@@ -42,9 +42,9 @@
                                                             name="birthday" class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Username</label>
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Skype</label>
                     <div class="col-sm-9 col-xs-12 "><input value="{{$user->skype}}" required type="text"
-                                                            placeholder="Enter Birthday"
+                                                            placeholder="Enter Skype"
                                                             name="skype" class="form-control m-input"></div>
                 </div>
 
