@@ -32,7 +32,8 @@
                         </div>
                         <div class="col-xs-9">
                             <div class="profile__details--info">
-                                <a :href="'user/'+user.id+'/career'"><span><button class="btn btn-success">Development</button></span></a>
+                                <a :href="'user/'+user.id+'/career'"><span><button
+                                        class="btn btn-success">Development</button></span></a>
                             </div>
                         </div>
                     </div>
@@ -124,8 +125,8 @@
                         </div>
                     </div>
                     <div class="profile__details--pills">
-                        <div class="profile__pill"><i class="la la-birthday-cake"></i> {{user.birthday}}</div>
-                        <div class="profile__pill"><img alt="" src="" class="profile__pill--logo"> 3y4m</div>
+                        <div class="profile__pill"><i class="la la-birthday-cake"></i> {{birthdayNew}}</div>
+                        <div class="profile__pill"><img alt="" src="" class="profile__pill--logo"> {{admSince}}</div>
                     </div>
                     <div class="profile__details--text">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
@@ -151,7 +152,9 @@
                 </div>
 
                 <user-children :canedit="canedit" :userid="user.id"></user-children>
+
                 <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
+
                 <user-badge :canedit="canedit" :userid="user.id"></user-badge>
             </div>
             <div class="col-sm-12 col-md-8">
@@ -187,13 +190,16 @@
                 editskype: false,
                 noStrengths: false,
                 userStrengths: [],
+                userBirthday: this.user.birthday,
 
 
             }
         },
         mounted() {
 
+
             this.userdata = this.user;
+
 
             this.fetchUserStrength();
             if (authUser.id === this.user.id
@@ -235,7 +241,30 @@
             hideInput(type) {
                 const name = 'edit' + type;
                 this[name] = false;
+            },
+        },
+        computed: {
+
+            birthdayNew() {
+
+                let date = new Date(this.user.birthday);
+                let locale = "en-us";
+                let month = date.toLocaleDateString(locale, {month: "short"});
+                let day = date.getDay();
+                return day + " " + month;
+
+            },
+            admSince() {
+                let vm = this;
+
+                let admDate = new Date(vm.user.ADMsince);
+                let currentDate = new Date();
+                let years = currentDate.getUTCFullYear() - admDate.getUTCFullYear();
+                let months = (currentDate.getMonth() + 1) - (admDate.getMonth() + 1);
+
+                return years + "y" + months + "m";
             }
+
         }
     }
 

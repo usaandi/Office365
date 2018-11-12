@@ -2,15 +2,17 @@
     <div>
         <h3 class="profile__subtitle">Hobbies</h3>
         <div class="m-subheader__action">
-            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill m--margin-bottom-15">
               <span>
                     <i class="la la-plus"></i>
-                    <span>New</span>
+                    <span v-if="edit">Close</span>
+                     <span v-else="!edit">Edit</span>
               </span>
             </a>
         </div>
-        <ul class="profile__tags clearfix" v-for="hobby in userhobbies">
-            <li><a >#{{hobby.name}}</a></li>
+        <ul class="profile__tags clearfix" >
+            <li v-for="hobby in userhobbies"><a style="color: #34bfa3">#{{hobby.name}}</a></li>
+
             <button v-show="edit" @click="deleteRow(hobby.id)" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"><i
                     class="la la-close"></i></button>
         </ul>

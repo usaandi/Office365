@@ -48690,7 +48690,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48705,6 +48705,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditableInputComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditableInputComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
 //
 //
 //
@@ -48892,7 +48895,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editphone: false,
             editskype: false,
             noStrengths: false,
-            userStrengths: []
+            userStrengths: [],
+            userBirthday: this.user.birthday
 
         };
     },
@@ -48936,6 +48940,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         hideInput: function hideInput(type) {
             var name = 'edit' + type;
             this[name] = false;
+        }
+    },
+    computed: {
+        birthdayNew: function birthdayNew() {
+
+            var date = new Date(this.user.birthday);
+            var locale = "en-us";
+            var month = date.toLocaleDateString(locale, { month: "short" });
+            var day = date.getDay();
+            return day + " " + month;
+        },
+        admSince: function admSince() {
+            var vm = this;
+
+            var admDate = new Date(vm.user.ADMsince);
+            var currentDate = new Date();
+            var years = currentDate.getUTCFullYear() - admDate.getUTCFullYear();
+            var months = currentDate.getMonth() + 1 - (admDate.getMonth() + 1);
+
+            return years + "y" + months + "m";
         }
     }
 });
@@ -49425,13 +49449,19 @@ var render = function() {
             _c("div", { staticClass: "profile__details--pills" }, [
               _c("div", { staticClass: "profile__pill" }, [
                 _c("i", { staticClass: "la la-birthday-cake" }),
-                _vm._v(" " + _vm._s(_vm.user.birthday))
+                _vm._v(" " + _vm._s(_vm.birthdayNew))
               ]),
               _vm._v(" "),
-              _vm._m(6)
+              _c("div", { staticClass: "profile__pill" }, [
+                _c("img", {
+                  staticClass: "profile__pill--logo",
+                  attrs: { alt: "", src: "" }
+                }),
+                _vm._v(" " + _vm._s(_vm.admSince))
+              ])
             ]),
             _vm._v(" "),
-            _vm._m(7)
+            _vm._m(6)
           ]),
           _vm._v(" "),
           _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("STRENGTHS")]),
@@ -49556,18 +49586,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-xs-3" }, [
       _c("div", { staticClass: "profile__details--title" }, [_vm._v("Skype:")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile__pill" }, [
-      _c("img", {
-        staticClass: "profile__pill--logo",
-        attrs: { alt: "", src: "" }
-      }),
-      _vm._v(" 3y4m")
     ])
   },
   function() {
@@ -53243,7 +53261,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53256,6 +53274,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
 //
 //
 //
@@ -53350,20 +53370,37 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
+            staticClass:
+              "btn btn-success m-btn m-btn--icon m-btn--pill m--margin-bottom-15",
             on: {
               click: function($event) {
                 _vm.edit = !_vm.edit
               }
             }
           },
-          [_vm._m(0)]
+          [
+            _c("span", [
+              _c("i", { staticClass: "la la-plus" }),
+              _vm._v(" "),
+              _vm.edit
+                ? _c("span", [_vm._v("Close")])
+                : _c("span", [_vm._v("Edit")])
+            ])
+          ]
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.userhobbies, function(hobby) {
-        return _c("ul", { staticClass: "profile__tags clearfix" }, [
-          _c("li", [_c("a", [_vm._v("#" + _vm._s(hobby.name))])]),
+      _c(
+        "ul",
+        { staticClass: "profile__tags clearfix" },
+        [
+          _vm._l(_vm.userhobbies, function(hobby) {
+            return _c("li", [
+              _c("a", { staticStyle: { color: "#34bfa3" } }, [
+                _vm._v("#" + _vm._s(hobby.name))
+              ])
+            ])
+          }),
           _vm._v(" "),
           _c(
             "button",
@@ -53380,14 +53417,15 @@ var render = function() {
                 "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
               on: {
                 click: function($event) {
-                  _vm.deleteRow(hobby.id)
+                  _vm.deleteRow(_vm.hobby.id)
                 }
               }
             },
             [_c("i", { staticClass: "la la-close" })]
           )
-        ])
-      }),
+        ],
+        2
+      ),
       _vm._v(" "),
       _c("user-hobby-form", {
         directives: [
@@ -53405,21 +53443,10 @@ var render = function() {
         }
       })
     ],
-    2
+    1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("i", { staticClass: "la la-plus" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("New")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -59202,7 +59229,7 @@ var render = function() {
       _c("div", { staticClass: "m-portlet__body" }, [
         _c("div", { staticClass: "form-group m-form__group row" }, [
           _c("label", { staticClass: "col-3 col-form-label" }, [
-            _vm._v("Hobbie")
+            _vm._v("Hobby Name")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-9" }, [
