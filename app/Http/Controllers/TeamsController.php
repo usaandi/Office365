@@ -194,11 +194,12 @@ class TeamsController extends Controller
                     ]);
                 }
 
+                return redirect()->back();
+
             }
 
-            return redirect()->back();
         } catch (\Exception $exception) {
-            var_dump($exception);
+            var_dump($exception->getMessage());
         }
 
     }
