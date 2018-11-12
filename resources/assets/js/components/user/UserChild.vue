@@ -5,7 +5,8 @@
             <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
               <span>
 										<i class="la la-plus"></i>
-										<span>New</span>
+										<span v-if="!edit">New</span>
+                                        <span v-else="edit">Close</span>
               </span>
             </a>
         </div>
@@ -20,10 +21,8 @@
                             class="la la-close"></i></button>
                 </div>
             </div>
-            <user-child-form v-show="edit"></user-child-form>
-            <label v-show="edit">Year born</label><input v-show="edit" type="date" v-model="dateborn">
-            <label v-show="edit">Child name</label><input v-show="edit" v-model="childname" placeholder="Child name">
-            <button v-show="edit" @click="upload()">+Add new</button>
+            <user-child-form v-show="edit" :userId="userid"
+            @update="updateData($event)"></user-child-form>
         </div>
     </div>
 
@@ -51,37 +50,20 @@
 
         },
         methods: {
+            updateData(data){
+                this.userchildren.push({
+                    id: data.child_id,
+                    name: data.child_name,
+                    age: data.age,
+                });
+                this.edit=false;
+
+            },
             fetchData: function () {
                 axios.get('/user/' + this.id + '/child')
                     .then(response => {
                         this.userchildren = response.data;
                     });
-            },
-            upload: function () {
-
-                let data = JSON.stringify({
-                    childname: this.childname,
-                    dateborn: this.dateborn,
-
-                });
-                let vm = this;
-                axios.post('/user/' + this.id + '/update/child', data)
-                    .then(response => {
-                        if (vm.name !== null) {
-
-                            vm.userchildren.push({
-                                id: response.data.child_id,
-                                name: response.data.child_name,
-                                age: response.data.age,
-
-                            })
-                        }
-
-
-                    }).catch(error => {
-
-                });
-
             },
 
             deleteRow: function (childId) {
@@ -98,9 +80,6 @@
 
 
             },
-
-            reachTest: function () {
-            }
 
         }
     }

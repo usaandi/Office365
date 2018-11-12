@@ -6,7 +6,7 @@
                     <div class="form-group m-form__group row"><label  class="col-3 col-form-label">Year born</label>
                         <div class="col-9">
                             <div class="input-group date">
-                                <input ref="datePicker" class="form-control m-input" @input="" type="text" v-model="dateBorn" data-provide="datepicker" id="m_datepicker_2">
+                                <input  class="form-control m-input" required type="date" v-model="dateBorn">
                                 <div class="input-group-append">
                                               <span class="input-group-text">
                                    <i class="la la-calendar-check-o"></i>
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div  class="form-group m-form__group row"><label  class="col-3 col-form-label">Child name</label>
-                        <div class="col-9"><input v-model="childName" type="text" placeholder="Child name" class="form-control m-input"></div>
+                        <div class="col-9"><input v-model="childName" required type="text" placeholder="Child name" class="form-control m-input"></div>
                     </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
@@ -25,7 +25,7 @@
                             <div class="col-sm-3 col-xs-12"></div>
                             <div class="col-sm-9 col-xs-12">
                                 <div class="profile-timeline__action">
-                                    <a href="#" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                                    <a @click="upload" class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                             <span>
                                           <i class="la la-plus"></i>
                                           <span>Add new</span>
@@ -44,6 +44,7 @@
 <script>
     export default {
         name: "UserChildrenForm",
+        props:['userId'],
         data(){
             return {
                 dateBorn:'',
@@ -51,15 +52,38 @@
             }
 
         },
+        methods:{
+            upload: function () {
+
+                let data = JSON.stringify({
+                    childname: this.childName,
+                    dateborn: this.dateBorn,
+
+                });
+                let vm = this;
+                axios.post('/user/' + vm.userId + '/update/child', data)
+                    .then(response => {
+                        if (vm.name !== null) {
+                            let data =response.data;
+                            vm.$emit('update',data)
+
+                        }
+
+
+                    }).catch(error => {
+
+                });
+
+            },
+        },
         watch: {
             dateBorn() {
-                alert("OK");
+
             }
         },
         computed: {
             dateBornValue() {
 
-                return $(this.$refs.datePicker).datepicker.value('update','');
             }
         }
 

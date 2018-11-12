@@ -53585,7 +53585,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -53607,32 +53606,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        updateData: function updateData(data) {
+            this.userchildren.push({
+                id: data.child_id,
+                name: data.child_name,
+                age: data.age
+            });
+            this.edit = false;
+        },
+
         fetchData: function fetchData() {
             var _this = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/' + this.id + '/child').then(function (response) {
                 _this.userchildren = response.data;
             });
-        },
-        upload: function upload() {
-
-            var data = JSON.stringify({
-                childname: this.childname,
-                dateborn: this.dateborn
-
-            });
-            var vm = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.id + '/update/child', data).then(function (response) {
-                if (vm.name !== null) {
-
-                    vm.userchildren.push({
-                        id: response.data.child_id,
-                        name: response.data.child_name,
-                        age: response.data.age
-
-                    });
-                }
-            }).catch(function (error) {});
         },
 
         deleteRow: function deleteRow(childId) {
@@ -53645,9 +53633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     vm.userchildren.splice(index, 1);
                 }
             });
-        },
-
-        reachTest: function reachTest() {}
+        }
 
     }
 });
@@ -53675,7 +53661,15 @@ var render = function() {
             }
           }
         },
-        [_vm._m(0)]
+        [
+          _c("span", [
+            _c("i", { staticClass: "la la-plus" }),
+            _vm._v(" "),
+            !_vm.edit
+              ? _c("span", [_vm._v("New")])
+              : _c("span", [_vm._v("Close")])
+          ])
+        ]
       )
     ]),
     _vm._v(" "),
@@ -53729,127 +53723,20 @@ var render = function() {
               value: _vm.edit,
               expression: "edit"
             }
-          ]
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.edit,
-                expression: "edit"
-              }
-            ]
-          },
-          [_vm._v("Year born")]
-        ),
-        _c("input", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.edit,
-              expression: "edit"
-            },
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.dateborn,
-              expression: "dateborn"
-            }
           ],
-          attrs: { type: "date" },
-          domProps: { value: _vm.dateborn },
+          attrs: { userId: _vm.userid },
           on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.dateborn = $event.target.value
+            update: function($event) {
+              _vm.updateData($event)
             }
           }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.edit,
-                expression: "edit"
-              }
-            ]
-          },
-          [_vm._v("Child name")]
-        ),
-        _c("input", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.edit,
-              expression: "edit"
-            },
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.childname,
-              expression: "childname"
-            }
-          ],
-          attrs: { placeholder: "Child name" },
-          domProps: { value: _vm.childname },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.childname = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.edit,
-                expression: "edit"
-              }
-            ],
-            on: {
-              click: function($event) {
-                _vm.upload()
-              }
-            }
-          },
-          [_vm._v("+Add new")]
-        )
+        })
       ],
       2
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("i", { staticClass: "la la-plus" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("New")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -58827,7 +58714,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58884,6 +58771,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "UserChildrenForm",
+    props: ['userId'],
     data: function data() {
         return {
             dateBorn: '',
@@ -58891,16 +58779,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    watch: {
-        dateBorn: function dateBorn() {
-            alert("OK");
+    methods: {
+        upload: function upload() {
+
+            var data = JSON.stringify({
+                childname: this.childName,
+                dateborn: this.dateBorn
+
+            });
+            var vm = this;
+            axios.post('/user/' + vm.userId + '/update/child', data).then(function (response) {
+                if (vm.name !== null) {
+                    var _data = response.data;
+                    vm.$emit('update', _data);
+                }
+            }).catch(function (error) {});
         }
     },
+    watch: {
+        dateBorn: function dateBorn() {}
+    },
     computed: {
-        dateBornValue: function dateBornValue() {
-
-            return $(this.$refs.datePicker).datepicker.value('update', '');
-        }
+        dateBornValue: function dateBornValue() {}
     }
 
 });
@@ -58933,24 +58833,16 @@ var render = function() {
                       expression: "dateBorn"
                     }
                   ],
-                  ref: "datePicker",
                   staticClass: "form-control m-input",
-                  attrs: {
-                    type: "text",
-                    "data-provide": "datepicker",
-                    id: "m_datepicker_2"
-                  },
+                  attrs: { required: "", type: "date" },
                   domProps: { value: _vm.dateBorn },
                   on: {
-                    input: [
-                      function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.dateBorn = $event.target.value
-                      },
-                      function($event) {}
-                    ]
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.dateBorn = $event.target.value
+                    }
                   }
                 }),
                 _vm._v(" "),
@@ -58975,7 +58867,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control m-input",
-                attrs: { type: "text", placeholder: "Child name" },
+                attrs: {
+                  required: "",
+                  type: "text",
+                  placeholder: "Child name"
+                },
                 domProps: { value: _vm.childName },
                 on: {
                   input: function($event) {
@@ -58990,7 +58886,27 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+          _c("div", { staticClass: "m-form__actions" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                _c("div", { staticClass: "profile-timeline__action" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "btn btn-success m-btn m-btn--icon m-btn--pill",
+                      on: { click: _vm.upload }
+                    },
+                    [_vm._m(1)]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
       ])
     ])
   ])
@@ -59010,31 +58926,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-      _c("div", { staticClass: "m-form__actions" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-3 col-xs-12" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-            _c("div", { staticClass: "profile-timeline__action" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
-                  attrs: { href: "#" }
-                },
-                [
-                  _c("span", [
-                    _c("i", { staticClass: "la la-plus" }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("Add new")])
-                  ])
-                ]
-              )
-            ])
-          ])
-        ])
-      ])
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Add new")])
     ])
   }
 ]
