@@ -1,5 +1,5 @@
 <template>
-    <div class="card-body">
+    <div class="m-portlet__body">
         <h1>User Strength</h1>
         <admin-user-strength v-for="(strength,index) in strengthCount"
                              :key="index+1"
@@ -9,8 +9,19 @@
 
         >
         </admin-user-strength>
-
-        <button type="submit" @click="submit()" class="btn btn-success">Save</button>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12"></div>
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="profile-timeline__action">
+                            <button type="submit" @click="submit" class="btn btn-success m-btn m-btn--pill">
+                                <span><span>Submit</span></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

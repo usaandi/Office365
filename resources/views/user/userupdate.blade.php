@@ -15,76 +15,109 @@
 
 @section('content-body')
     <style>
-        input, select, textarea {
-            width: 200px;
-            border: 1px solid #babacc;
-            box-sizing: border-box;
-            margin-top: 5px;
 
-        }
-
-        label {
-            width: 150px;
-        }
     </style>
+    <div class="admin__form admin__form--clear"><h4>Update user: {{$user->name}}</h4>
+        <form name="form" class="m-form" action="{{route('update',$user)}}" method="post">
+            @csrf
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Username</label>
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->name}}" required type="text"
+                                                            placeholder="Enter Username"
+                                                            name="name" class="form-control m-input"></div>
+                </div>
 
-    <form name="form" action="{{route('update',$user)}}" method="post">
-        @csrf
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">phone</label>
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->phone}}" required type="number"
+                                                            placeholder="Enter Phone"
+                                                            name="phone" class="form-control m-input"></div>
+                </div>
 
-        <div class="card-body">
-            <h1>Muuda Kasutaja andmeid</h1>
-            <label><b>Fullname</b></label>
-            <input type="text" name="name" value="{{ $user->name }}"/>
-            <br>
-            <label><b>Phone Number</b></label>
-            <input type="number" name="phone" value="{{$user->phone}}"/>
-            <br>
-            <label><b>Birthday</b></label>
-            <input type="date" name="birthday" value="{{$user->birthday}}"/>
-            <br>
-            <label><b>Skype</b></label>
-            <input type="text" name="skype" value="{{$user->skype}}"/>
-            <br>
-            <label for="department"><b>Your Department: {{$currentDepartment[0]->department_name}} </b></label>
-            <select name="department">
-                <option></option>
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->birthday}}" required type="date"
+                                                            placeholder="Enter Birthday"
+                                                            name="birthday" class="form-control m-input"></div>
+                </div>
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Username</label>
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->skype}}" required type="text"
+                                                            placeholder="Enter Birthday"
+                                                            name="skype" class="form-control m-input"></div>
+                </div>
 
-                @foreach($departments as $department)
-                    <option value="{{$department->id}}"
-                            @if($department->id === $currentDepartment[0]->id)
-                            selected="selected"
-                            @endif
-                    >{{$department->department_name}}</option>
-                @endforeach
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Your
+                        Department: @isset($currentDepartment)
+                            {{$currentDepartment[0]->department_name}} @endisset</label>
 
-            </select>
-            <br>
-            @hasanyrole('Admin')
-            <label for="role"><b>Your Current role: </b></label>
-            <select name="role">
-                @foreach($roles as $role)
-                    <option value="{{ $role->name }}"
-                            @if ($user->roles()->first()->id === $role->id)
-                            selected="selected"
-                            @endif
+                    <div class="col-sm-9 col-xs-12 "><select required name="department" class="form-control m-input">
+                            <option></option>
+                            @foreach($departments as $department)
+                                <option value="{{$department->id}}"
+                                        @isset($currentDepartment)
+                                        @if($department->id === $currentDepartment[0]->id)
+                                        selected="selected"
+                                        @endif
+                                        @endisset
+                                >{{$department->department_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @hasanyrole('Admin')
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Your
+                        Role</label>
+                    <div class="col-sm-9 col-xs-12 "><select required name="role" class="form-control m-input">
+                            <option></option>
+                            @foreach($roles as $role)
+                                <option value="{{ $role->name }}"
+                                        @if ($user->roles()->first()->id === $role->id)
+                                        selected="selected"
+                                        @endif
+                                >
+                                    {{ $role->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @endhasanyrole
+                <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">ADM
+                        since</label>
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" required type="date"
+                                                            placeholder="Enter Join date"
+                                                            name="ADMsince" class="form-control m-input"></div>
+                </div>
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12"></div>
+                        <div class="col-sm-9 col-xs-12">
+                            <div class="profile-timeline__action">
+                                <button type="submit" class="btn btn-success m-btn m-btn--pill">
+                                    <span><span>Submit</span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
-                    >
-                        {{ $role->name }}
-                    </option>
-                @endforeach
-            </select>
-            <br>
-            @endhasanyrole
-            <label><b>ADM since</b></label>
-            <input type="date" name="ADMsince" value="{{$user->ADMsince}}">
-            <br>
-            <button type="submit">Save</button>
-        </div>
-    </form>
 
     <div id="app">
-        <admin-view-user-strength :user-id='@json($user['id'])'>
-        </admin-view-user-strength>
+        <form class="m-form">
+            <div class="admin__form admin__form--clear">
+                <admin-view-user-strength :user-id='@json($user['id'])'>
+                </admin-view-user-strength>
+            </div>
+        </form>
     </div>
 
 @endsection

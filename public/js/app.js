@@ -60775,7 +60775,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60788,6 +60788,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60857,7 +60868,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card-body" },
+    { staticClass: "m-portlet__body" },
     [
       _c("h1", [_vm._v("User Strength")]),
       _vm._v(" "),
@@ -60873,24 +60884,39 @@ var render = function() {
         })
       }),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success",
-          attrs: { type: "submit" },
-          on: {
-            click: function($event) {
-              _vm.submit()
-            }
-          }
-        },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+        _c("div", { staticClass: "m-form__actions" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+              _c("div", { staticClass: "profile-timeline__action" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success m-btn m-btn--pill",
+                    attrs: { type: "submit" },
+                    on: { click: _vm.submit }
+                  },
+                  [_vm._m(0)]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
     ],
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("span", [_vm._v("Submit")])])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -60986,7 +61012,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60997,6 +61023,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61052,53 +61083,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("label", [_vm._v("Strength " + _vm._s(_vm.strengthIndex))]),
-    _vm._v(" "),
+  return _c("div", { staticClass: "form-group m-form__group row" }, [
     _c(
-      "select",
+      "label",
       {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.selected,
-            expression: "selected"
-          }
-        ],
-        attrs: { disabled: _vm.checkDisable },
-        on: {
-          change: [
-            function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.selected = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
-            },
-            function($event) {
-              _vm.pushToArray()
-            }
-          ]
-        }
+        staticClass: "col-sm-3 col-xs-12  col-form-label",
+        attrs: { for: _vm.selected }
       },
-      [
-        _c("option"),
-        _vm._v(" "),
-        _vm._l(_vm.sortArray(_vm.propStrengths), function(strength) {
-          return _c("option", { domProps: { value: strength } }, [
-            _vm._v(_vm._s(strength.strength_name))
-          ])
-        })
-      ],
-      2
-    )
+      [_vm._v("Strength" + _vm._s(_vm.strengthIndex))]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selected,
+              expression: "selected"
+            }
+          ],
+          staticClass: "form-control m-input",
+          attrs: { disabled: _vm.checkDisable },
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              function($event) {
+                _vm.pushToArray()
+              }
+            ]
+          }
+        },
+        [
+          _c("option"),
+          _vm._v(" "),
+          _vm._l(_vm.sortArray(_vm.propStrengths), function(strength) {
+            return _c("option", { domProps: { value: strength } }, [
+              _vm._v(_vm._s(strength.strength_name) + "\n            ")
+            ])
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = []

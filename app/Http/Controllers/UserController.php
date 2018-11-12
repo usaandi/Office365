@@ -14,6 +14,8 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -131,12 +133,26 @@ class UserController extends Controller
             $departmentId = $request->input('department');
 
             $userDepartment = UserDepartment::where('user_id', $id)->get();
-            $userDepartmentId = $userDepartment[0]->department_id;
 
-            if ($userDepartmentId != $departmentId) {
+            if($userDepartment->isEmpty()){
 
-                UserDepartment::where('user_id', $id)->first()->update(['department_id' => $departmentId]);
+                $userDepartments = UserDepartment::create([
+                    'user_id' => $id,
+                    'department_id' => $departmentId
+                ]);
             }
+            else {
+                $userDepartmentId = $userDepartment[0]->department_id;
+                if ($userDepartmentId != $departmentId) {
+
+                    UserDepartment::where('user_id', $id)->first()->update(['department_id' => $departmentId]);
+                }
+            }
+
+
+
+
+
             $user = User::findOrFail($id);
 
 
@@ -148,7 +164,7 @@ class UserController extends Controller
                 $user->assignRole($userRole);
             }
 
-            $user->update(['name' => $name, 'phoneN' => $phone,
+            $user->update(['name' => $name, 'phone' => $phone,
                 'birthday' => $birthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
             $user->save();
 
