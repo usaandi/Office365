@@ -26,11 +26,11 @@ class UserController extends Controller
             $userModel = User::findorFail($id);
             $user = $userModel->toArray();
             $userModel->userCareerRole()->get();
-            $userCareer = $userModel->userCareerRole()->where('current_role',1)->first();
+            $userCareer = $userModel->userCareerRole()->where('current_role', 1)->first();
             $userDepartment = $userModel->department()->get(['department_id'])->first();
             $userTeam = $userModel->team()->get(['team_id'])->first();
 
-            if($userCareer !==null){
+            if ($userCareer !== null) {
                 $user['career_title'] = $userCareer->title;
                 $user['career_description'] = $userCareer->description;
             }
@@ -57,19 +57,24 @@ class UserController extends Controller
 
         try {
             //TODO Re ADD THIS COMMENTED OUT LINE if going live
-             /*$user = \Auth::user();
-             $this->authorize('admin', $user);*/
+            /*$user = \Auth::user();
+            $this->authorize('admin', $user);*/
 
             $user = User::findorFail($id);
             $userDepartment = UserDepartment::where('user_id', $id)->first(['department_id']);
-            $departmentId = $userDepartment->department_id;
-            $currentDepartment = Department::where('id', $departmentId)->get(['id', 'department_name']);
+
+            if ($userDepartment->isEmpty()) {
+                $currentDepartment = null;
+            } else {
+                $departmentId = $userDepartment->department_id;
+                $currentDepartment = Department::where('id', $departmentId)->get(['id', 'department_name']);
+            }
+
             $roles = Role::all();
             $departments = Department::all();
             return view('user.userupdate', compact(['user', 'roles', 'departments', 'currentDepartment']));
         } catch (\Exception $e) {
-            $errorMessage= $e->getMessage();
-            return view('unauthorized.unauthorized', compact(['errorMessage']));
+            return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
         }
 
     }
@@ -82,20 +87,20 @@ class UserController extends Controller
             $rules = [
                 'userId' => 'required'
             ];
-            $validator = Validator::make($data,$rules);
-            if($validator->passes()){
+            $validator = Validator::make($data, $rules);
+            if ($validator->passes()) {
                 $user = User::findOrFail($data['userId']);
 
 
                 $user->forceDelete();
 
-                return response('User'.''.$user->name.''.'deleted',200);
+                return response('User' . '' . $user->name . '' . 'deleted', 200);
 
 
             }
         } catch (\Exception $e) {
             $errors = 'Did not find User';
-            return response ($errors,500);
+            return response($errors, 500);
         }
     }
 
@@ -105,8 +110,8 @@ class UserController extends Controller
         try {
 
             //TODO ReADD THIS COMMENTED OUT LINE
-           /*$user = \Auth::user();
-            $this->authorize('admin', $user);*/
+            /*$user = \Auth::user();
+             $this->authorize('admin', $user);*/
 
             $request->validate([
                 'name' => 'nullable',
@@ -151,7 +156,7 @@ class UserController extends Controller
         } catch (\Exception $e) {
 
 
-             return view('unauthorized.unauthorized',with(['error' => $e->getMessage()]));
+            return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
         }
 
     }
