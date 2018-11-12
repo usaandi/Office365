@@ -50,7 +50,6 @@ class DepartmentUserCategoryStrengthController extends Controller
             return $departmentArray;
 
         } catch (\Exception $e) {
-            var_dump($e);
         }
     }
 
@@ -78,7 +77,7 @@ class DepartmentUserCategoryStrengthController extends Controller
 
             return $strengthCategoryArray;
         } catch (\Exception $e) {
-            var_dump($e);
+            var_dump($e->getMessage());
         }
 
     }

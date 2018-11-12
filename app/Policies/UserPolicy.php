@@ -18,7 +18,13 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $this->userCanEditCareer($user, $model);
+        if($user->id === $model->id){
+            return true;
+        }
+            else {
+                return $this->userCanEditCareer($user, $model);
+
+            }
 
     }
 

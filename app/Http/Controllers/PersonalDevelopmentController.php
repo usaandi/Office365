@@ -14,8 +14,10 @@ class PersonalDevelopmentController extends Controller
 
         try {
 
-            $authUser = \Auth::user();
-            $this->authorize('view', $authUser);
+
+            //$authUser = \Auth::user();
+            $userModel= User::findOrFail($id);
+            $this->authorize('view', $userModel);
 
             $user = User::findOrFail($id)->id;
 
