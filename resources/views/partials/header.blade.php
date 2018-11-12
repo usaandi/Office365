@@ -327,6 +327,11 @@
                                                     href="{{route('returnAdminUserList')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Users list</span></a></li>
+                                        <li
+                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                    href="{{route('returnTeam')}}" class="m-menu__link "><i
+                                                        class="m-menu__link-icon flaticon-alarm-1"></i><span
+                                                        class="m-menu__link-text">Create Team</span></a></li>
 
                                     </ul>
                                 </div>

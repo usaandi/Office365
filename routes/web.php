@@ -93,6 +93,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('department', 'DepartmentController@department')->name('department');
     Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
     Route::get('/admin/users/list/', 'UserController@AdminUsersListView')->name('returnAdminUserList');
+    Route::get('admin/team/create','TeamsController@teamView')->name('returnTeam');
+    Route::post('admin/team/create','TeamsController@createTeam')->name('createTeam');
 
 
 

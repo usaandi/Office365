@@ -14,6 +14,52 @@ use Illuminate\Http\Request;
 
 class TeamsController extends Controller
 {
+    public function teamView()
+    {
+        try {
+
+            return view('team.teamView');
+        } catch (\Exception $e) {
+        }
+    }
+
+    public function createTeam(Request $request)
+    {
+        try {
+            $data = $request->all();
+
+            $rules= [
+              'teamName' => 'required|string'
+            ];
+
+            $validator = Validator::make($data,$rules);
+
+            if($validator->passes()){
+
+                $teamName =ucfirst(strtolower($data['teamName']));
+
+                $findTeam = Team::where('team_name',$teamName)->get();
+
+                if($findTeam->isEmpty()){
+
+                    Team::create([
+                       'team_name' => $teamName
+                    ]);
+
+                    return view('team.teamView');
+                }
+                else {
+                   echo 'Selline nimi on olemas';
+                }
+
+
+            }
+            
+        } catch (\Exception $e) {
+
+            var_dump($e->getMessage());
+        }
+    }
     public function updateDepartment(Request $request, $id)
     {
         try {

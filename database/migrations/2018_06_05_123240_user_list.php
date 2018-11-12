@@ -25,7 +25,7 @@ class UserList extends Migration
             $table->date('ADMsince')->nullable();
             $table->string('pictureLocation')->nullable();
             $table->softDeletes('deleted_at');
-            $table->longText('token');
+            $table->longText('token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
