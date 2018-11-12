@@ -160,40 +160,46 @@ class TeamsController extends Controller
     }
     public function addModerator(Request $request){
 
-        $data = json_decode(key($request->all()), true);
 
-        $rules = [
-            'userId' => 'required',
-            'teamId' => 'required'
-        ];
-        $validator = Validator::make($data, $rules);
+        try {
+            $data = json_decode(key($request->all()), true);
 
-        if ($validator->passes()){
+            $rules = [
+                'userId' => 'required',
+                'teamId' => 'required'
+            ];
+            $validator = Validator::make($data, $rules);
 
-            $userId = $data['userId'];
-            $teamId = $data['teamId'];
-            $user = User::find($userId);
+            if ($validator->passes()){
 
-            $moderatorRoleName = 'Moderator';
+                $userId = $data['userId'];
+                $teamId = $data['teamId'];
+                $user = User::find($userId);
 
-            if (!$user->hasRole($moderatorRoleName)) {
-                $moderatorRole = Role::findByName($moderatorRoleName);
-                $user->assignRole($moderatorRole);
+                $moderatorRoleName = 'Moderator';
+
+                if (!$user->hasRole($moderatorRoleName)) {
+                    $moderatorRole = Role::findByName($moderatorRoleName);
+                    $user->assignRole($moderatorRole);
+                }
+
+                $isModeratorOfTeam = (bool) UserTeamModerator::where('user_id', $userId)
+                    ->where('team_id', $teamId)
+                    ->count();
+
+                if ($isModeratorOfTeam === FALSE) {
+                    UserTeamModerator::create([
+                        'user_id' => $userId,
+                        'team_id' => $teamId
+                    ]);
+                }
+
             }
 
-            $isModeratorOfTeam = (bool) UserTeamModerator::where('user_id', $userId)
-                ->where('team_id', $teamId)
-                ->count();
-
-            if ($isModeratorOfTeam === FALSE) {
-                UserTeamModerator::create([
-                    'user_id' => $userId,
-                    'team_id' => $teamId
-                ]);
-            }
-
+            return redirect()->back();
+        } catch (\Exception $exception) {
+            var_dump($exception);
         }
 
-        return redirect()->back();
     }
 }
