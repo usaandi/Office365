@@ -51,7 +51,7 @@ class TeamUser extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
-        Schema::create('user_teams_moderators', function (Blueprint $table){
+        Schema::create('users_teams_moderators', function (Blueprint $table){
             $table->increments('id');
             $table->unsignedInteger('team_id');
             $table->unsignedInteger('user_id');
