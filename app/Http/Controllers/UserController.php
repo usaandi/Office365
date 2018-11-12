@@ -61,12 +61,12 @@ class UserController extends Controller
             $this->authorize('admin', $user);*/
 
             $user = User::findorFail($id);
-            $userDepartment = UserDepartment::where('user_id', $id)->first(['department_id']);
+            $userDepartment = UserDepartment::where('user_id', $id)->get(['department_id']);
 
             if ($userDepartment->isEmpty()) {
                 $currentDepartment = null;
             } else {
-                $departmentId = $userDepartment->department_id;
+                $departmentId = $userDepartment[0]->department_id;
                 $currentDepartment = Department::where('id', $departmentId)->get(['id', 'department_name']);
             }
 
