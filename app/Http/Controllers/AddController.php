@@ -21,7 +21,7 @@ class AddController extends Controller
             $departments = Department::get(['department_name', 'id as department_id']);
             return view('user.adduser', with(['departments' => $departments, 'roles' => $roles]));
         } catch (\Exception $e) {
-
+            var_dump($e->getMessage());
         }
 
     }
@@ -29,8 +29,10 @@ class AddController extends Controller
     public function store(Request $request)
     {
         try {
+
             $user = \Auth::user();
             $this->authorize('admin', $user);
+
             $data = $request->all();
             $request->validate([
 
@@ -81,6 +83,7 @@ class AddController extends Controller
                 echo 'Sellise nimega isik: '  .$name . ''.' ja Emailiga: ' . $email . ' On juba olemas';
             }
         } catch (\Exception $e) {
+            var_dump($e->getMessage());
         }
     }
 }
