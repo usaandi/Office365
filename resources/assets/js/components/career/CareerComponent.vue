@@ -15,12 +15,13 @@
                            @click="showForm" >
                             <span>
                                 <i class="la la-plus"></i>
-                                <span>{{buttonTextValue}}</span>
+                                <span >{{computeText}}</span>
                             </span>
                         </a>
                         <career-role-form
                                 :canEdit="canEdit"
                                 v-show="show"
+                                @close="show=false"
                                 :selectedUserProfileId="selectedUserId"
                                 :authUserId="AuthUserId"
                                 :hasMilestoneError="hasMilestoneError"
@@ -207,8 +208,17 @@
                     .then(response => {
                         this.userDatas = response.data;
                 });
+            },
+        },
+        computed:{
+            computeText(){
+                if(this.show === false){
+                    return "New";
+                }
+                return "Close";
             }
         }
+
     }
 </script>
 

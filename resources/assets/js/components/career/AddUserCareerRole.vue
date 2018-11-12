@@ -1,11 +1,8 @@
 <template>
 <div>
-    <div class="m-portlet__body">
+    <div class="m-portlet__body m--margin-top-10">
         <div class="form-group m-form__group row">
-            <label class="col-3 col-form-label">Role</label>
-            <div class="col-9">
-                <input type="hidden" placeholder="Title" class="form-control m-input">
-            </div>
+
             <label class="col-3 col-form-label">Select Role</label>
             <div class="col-9">
                 <select class="form-control m-input" id="Assign" v-model="careerRoleId" @change="create(careerRoleId)">

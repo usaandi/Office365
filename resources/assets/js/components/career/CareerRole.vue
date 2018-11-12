@@ -5,7 +5,7 @@
             <i class="fa fa-genderless m--font-info"></i>
         </div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
-            <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]" >
+            <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]">
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title"
@@ -19,11 +19,11 @@
 
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <p class="profile-timeline__text"
-                        v-show="!showField('description')" @click="focusField('description')">
-                           {{userRoleInfo.description}}
+                           v-show="!showField('description')" @click="focusField('description')">
+                            {{userRoleInfo.description}}
                         </p>
                         <textarea v-model="userRoleInfo.description" v-show="showField('description')"
-                            @focus="focusField('description')" @blur="blurField"
+                                  @focus="focusField('description')" @blur="blurField"
                         ></textarea>
 
                     </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__add">
-                            <a  class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
+                            <a class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
                                                 <span>{{buttonValue}}</span>
@@ -54,7 +54,7 @@
                             </milestone-form>
 
                         </div>
-                            <user-career-milestone
+                        <user-career-milestone
                                 :canEdit="canEdit"
                                 :selectedUserProfileId="selectedUserProfileId"
                                 v-for="(milestone, index) in userRoleInfo['milestones']"
@@ -65,7 +65,7 @@
                                 :careerRoleMilestoneIndex="index"
                                 @removeMilestone="deleteMilestone($event)"
                                 @errorValue="sendErrorValue($event)"
-                            ></user-career-milestone>
+                        ></user-career-milestone>
                     </div>
                 </div>
 
@@ -76,10 +76,17 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__action">
-                            <button type="button" @click="canEditCareer()" v-show="!this.hasChanged" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit</button>
-                            <button @click="selectRole(userRoleInfo.id)" type="button" v-show="!this.hasChanged && isActive === 0" class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current</button>
-                            <button @click="save" v-show="this.userRoleInfo.id === 'undefined'" class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
-                            <button @click="remove"  v-show="this.userRoleInfo.id === 'undefined'" class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
+                            <button type="button" @click="canEditCareer()" v-show="!this.hasChanged"
+                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit
+                            </button>
+                            <button @click="selectRole(userRoleInfo.id)" type="button"
+                                    v-show="!this.hasChanged && isActive === 0"
+                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current
+                            </button>
+                            <button @click="save" v-show="this.userRoleInfo.id === 'undefined'"
+                                    class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
+                            <button @click="remove" v-show="this.userRoleInfo.id === 'undefined'"
+                                    class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
                         </div>
                     </div>
                 </div>
@@ -92,68 +99,68 @@
 <script>
 
     import axios from 'axios';
+
     export default {
-        props:['authUserId','userdata','selectedUserProfileId',
-            'usersList','canEdit','hasChanged','hasMilestoneError','isActive'],
+        props: ['authUserId', 'userdata', 'selectedUserProfileId',
+            'usersList', 'canEdit', 'hasChanged', 'hasMilestoneError', 'isActive'],
 
         name: "CareerRole",
 
-        data(){
-            return{
+        data() {
+            return {
 
-                userId:'',
-                userRoleInfo:'',
-                milestoneInfo:'',
-                show:false,
-                isCurrent:false,
-                careerRoleId:'',
-                newRoleTitle:'',
-                newRoleDescription:'',
-                selectedActive:undefined,
-                isEditing:false,
-                buttonValue:'New',
-                editField:'',
-                isUpdate:false,
+                userId: '',
+                userRoleInfo: '',
+                milestoneInfo: '',
+                show: false,
+                isCurrent: false,
+                careerRoleId: '',
+                newRoleTitle: '',
+                newRoleDescription: '',
+                selectedActive: undefined,
+                isEditing: false,
+                buttonValue: 'New',
+                editField: '',
+                isUpdate: false,
             }
         },
         watch: {
 
-            milestone(){
+            milestone() {
 
             },
             userdata(newVal) {
                 this.userRoleInfo = newVal;
             },
-            isActive(value){
-             this.isActive = value;
+            isActive(value) {
+                this.isActive = value;
             }
         },
 
-        created(){
+        created() {
             this.userRoleInfo = this.userdata;
             this.milestoneInfo = this.userInfo;
 
         },
-        mounted(){
-          this.currentlySelected();
+        mounted() {
+            this.currentlySelected();
         },
 
 
-
         methods: {
-            showButton(){
-                if(!this.hasChanged ){
+            showButton() {
+                if (!this.hasChanged) {
                     return true;
                 }
             },
 
-            selectRole(value){
-            this.$emit('selectActive',value);
+            selectRole(value) {
+                this.$emit('selectActive', value);
 
             },
-            currentlySelected(){
-                if(this.userRoleInfo.current_role === 1){
-                   this.isCurrent = true;
+            currentlySelected() {
+                if (this.userRoleInfo.current_role === 1) {
+                    this.isCurrent = true;
                 }
                 else {
                     this.iscurrent = false;
@@ -161,95 +168,95 @@
 
             },
 
-            remove(){
-                if(this.canEdit === true) {
+            remove() {
+                if (this.canEdit === true) {
                     this.$emit('remove');
                 }
             },
-            save(){
-                if(this.canEdit === true){
+            save() {
+                if (this.canEdit === true) {
                     this.$emit('save', true);
                 }
             },
 
-            sendErrorValue(value){
+            sendErrorValue(value) {
 
-               /* this.$emit('errorValue',value);*/
+                /* this.$emit('errorValue',value);*/
 
             },
 
-            addMilestone(data){
+            addMilestone(data) {
                 this.userRoleInfo['milestones'].push(data[0]);
             },
-            pushMilestone(data){
-               if(this.hasChanged===true){
-                   this.userRoleInfo['milestones'].push(data[0]);
-               }
+            pushMilestone(data) {
+                if (this.hasChanged === true) {
+                    this.userRoleInfo['milestones'].push(data[0]);
+                }
             },
-            canEditCareer(){
-                if(this.canEdit===true){
-                    this.isEditing === false ? this.isEditing=true : this.isEditing=false;
-                    if(this.isEditing === true){
+            canEditCareer() {
+                if (this.canEdit === true) {
+                    this.isEditing === false ? this.isEditing = true : this.isEditing = false;
+                    if (this.isEditing === true) {
                         this.focusField('title');
                     }
                 }
             },
-            showForm(){
-                if(this.canEdit===true){
-                    this.show === false ? this.show=true : this.show=false;
+            showForm() {
+                if (this.canEdit === true) {
+                    this.show === false ? this.show = true : this.show = false;
 
-                    if(this.show){
-                        this.buttonValue='Close';
+                    if (this.show) {
+                        this.buttonValue = 'Close';
                     }
-                    else this.buttonValue='New';
+                    else this.buttonValue = 'New';
                 }
             },
-            deleteMilestone(value){
+            deleteMilestone(value) {
 
 
+                if (this.canEdit === true) {
+                    if (this.hasChanged === true) {
 
-                if(this.canEdit===true){
-                    if(this.hasChanged === true){
-
-                    this.userRoleInfo['milestones'].splice(value, 1);
+                        this.userRoleInfo['milestones'].splice(value, 1);
 
                     }
-                    else if(this.hasChanged === false) {
+                    else if (this.hasChanged === false) {
 
                         const data = this.userRoleInfo['milestones'][value];
-                        axios.post('/user/'+this.selectedUserProfileId+'/career/milestone/delete',data).then(response => {});
-                       this.userRoleInfo['milestones'].splice(value, 1);
+                        axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(response => {
+                        });
+                        this.userRoleInfo['milestones'].splice(value, 1);
                     }
 
                 }
             },
 
 
-            focusField(value){
-                if(this.isEditing){
+            focusField(value) {
+                if (this.isEditing) {
                     this.editField = value;
                 }
             },
-            blurField(){
+            blurField() {
 
-                if(this.isEditing){
+                if (this.isEditing) {
                     let fieldName = this.editField;
                     let fieldValue = this.userRoleInfo[this.editField];
-                    const data =  {
-                        fieldValue:fieldValue,
-                        fieldName:fieldName,
-                        id:this.userRoleInfo.id,
+                    const data = {
+                        fieldValue: fieldValue,
+                        fieldName: fieldName,
+                        id: this.userRoleInfo.id,
                     };
-                    axios.post('/user/'+this.selectedUserProfileId +'/career/update',data).then(response => {});
-                    this.editField ='';
+                    axios.post('/user/' + this.selectedUserProfileId + '/career/update', data).then(response => {
+                    });
+                    this.editField = '';
                 }
             },
-            showField(value){
-                if(this.isEditing){
+            showField(value) {
+                if (this.isEditing) {
                     return (this.userRoleInfo[value] === '' || this.editField === value)
                 }
             },
-
 
 
         },

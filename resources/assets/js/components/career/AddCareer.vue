@@ -5,7 +5,7 @@
             <input id="inputCareertTitle"
                    v-model="title"
                    type="text"
-                   placeholder="Title"
+                   placeholder="Role"
                    style="display: block;">
 
             <textarea
