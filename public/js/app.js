@@ -57745,6 +57745,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.task = '';
                     this.reminder = '';
                     this.assignerUserId = '';
+                    this.selected = {};
 
                     var vm = this;
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data).then(function (response) {
@@ -57767,7 +57768,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.task = '';
                     this.reminder = '';
                     this.assignerUserId = '';
-                    this.selected = '';
+                    this.selected = {};
 
                     this.$emit('pushToMilestones', _data);
                 }

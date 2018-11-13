@@ -136,7 +136,7 @@
                         this.task = '';
                         this.reminder = '';
                         this.assignerUserId = '';
-
+                        this.selected = {};
 
                         let vm = this;
                         axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data)
@@ -165,7 +165,7 @@
                         this.task = '';
                         this.reminder = '';
                         this.assignerUserId = '';
-                        this.selected = '';
+                        this.selected = {};
 
                         this.$emit('pushToMilestones',data);
 
