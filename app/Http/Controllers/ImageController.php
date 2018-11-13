@@ -8,48 +8,50 @@ use App\User;
 
 class ImageController extends Controller
 {
-     public function upload(Request $request, $id) {
+    public function upload(Request $request, $id)
+    {
 
-         try {
-             $selectedUser = User::findorFail($id);
+        try {
+            $selectedUser = User::findorFail($id);
 
-             $rawImage = $request->image;
-             $request->image = base64_decode($rawImage);
+            $rawImage = $request->image;
+            $request->image = base64_decode($rawImage);
 
-             $request->validate([
+            $request->validate([
 
-                 'image'=>'required'
-             ]);
+                'image' => 'required'
+            ]);
 
-             $allowedMimes = ['image/png', 'image/jpeg'];
+            $allowedMimes = ['image/png', 'image/jpeg'];
 
-             $pos = strpos($rawImage, ';');
-             $commaPos = strpos($rawImage, ',')+1;
-             $imageData = base64_decode(substr($rawImage, $commaPos));
-             $fileType = explode(':', substr($rawImage, 0, $pos))[1];
+            $pos = strpos($rawImage, ';');
+            $commaPos = strpos($rawImage, ',') + 1;
+            $imageData = base64_decode(substr($rawImage, $commaPos));
+            $fileType = explode(':', substr($rawImage, 0, $pos))[1];
 
-             if (in_array($fileType, $allowedMimes)) {
+            if (in_array($fileType, $allowedMimes)) {
 
-                 $fileName = 'image_' . time() . '.png';
-                 $storageDisk = Storage::disk('public');
-                 $storageDisk->put($fileName, $imageData);
+                $fileName = 'image_' . time() . '.png';
+                $storageDisk = Storage::disk('public');
+                $storageDisk->put($fileName, $imageData);
 
-                 // Save the image URL also to DB.
-                 $url = $storageDisk->url($fileName);
-                 $selectedUser->image = $url;
-                 $selectedUser->save();
+                // Save the image URL also to DB.
+                $url = $storageDisk->url($fileName);
+                $selectedUser->image = $url;
+                $selectedUser->save();
 
-                 return response($url, 200)
-                     ->header('Content-Type', 'application/json');
-             }
-         }
-         catch (\Exception $e) {
-             var_dump($e);
-         }
-         return response('Error uploading image', 400)
-             ->header('Content-Type', 'application/json');
-     }
-     public function show(){
-         return view('upload');
-     }
+                return response($url, 200)
+                    ->header('Content-Type', 'application/json');
+            }
+        } catch (\Exception $e) {
+            return view('unauthorized.unauthorized')->with(['error' => $e->getMessage()]);
+        }
+        return response('Error uploading image', 400)
+            ->header('Content-Type', 'application/json');
+    }
+
+    public function show()
+    {
+        return view('upload');
+    }
 }
