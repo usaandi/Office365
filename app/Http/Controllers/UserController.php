@@ -84,6 +84,9 @@ class UserController extends Controller
     public function deleteUser(Request $request)
     {
         try {
+            $user = \Auth::user();
+            $this->authorize('admin', $user);
+
             $data = $request->all();
 
             $rules = [
@@ -101,8 +104,7 @@ class UserController extends Controller
 
             }
         } catch (\Exception $e) {
-            $errors = 'Did not find User';
-            return response($errors, 500);
+            return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
         }
     }
 
