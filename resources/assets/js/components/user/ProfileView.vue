@@ -127,7 +127,7 @@
                     </div>
                     <div class="profile__details--pills">
                         <div class="profile__pill"><i class="la la-birthday-cake"></i> {{birthdayNew}}</div>
-                        <div class="profile__pill"><img alt="" src="" class="profile__pill--logo"> {{admSince}}</div>
+                        <div class="profile__pill"><img alt="" src="/assets/picture/logoADM.png" class="profile__pill--logo"> {{admSince}}</div>
                     </div>
                     <div class="profile__details--text">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
