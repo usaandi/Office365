@@ -6,9 +6,25 @@
                   @option:created="updateOptions"
                   @input="selectedValue"
         ></v-select>
-        <button @click="onClick">Cancel</button>
-        <button @click="submit">Save</button>
+        <div class="m-portlet__foot m-portlet__foot--fit m--margin-top-10">
+            <div class="m-form__actions">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12"></div>
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="profile-timeline__action">
+                            <button @click="onClick()" type="button"
+                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">Cancel
+                            </button>
+                            <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
+                                    @click="submit()">Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -23,24 +39,24 @@
         watch: {
             userdata: function (val) {
                 this.userdata = val;
-                this.selected = { label: this.userdata.department, value: this.userdata.department_id };
+                this.selected = {label: this.userdata.department, value: this.userdata.department_id};
             }
         },
         data() {
             return {
                 selected: null,
                 departments: [],
-                selectedDepartmentName:'',
+                selectedDepartmentName: '',
             }
         },
         created() {
-            this.selected = { label: this.userdata.department, value: this.userdata.department_id };
+            this.selected = {label: this.userdata.department, value: this.userdata.department_id};
             this.fetchData();
         },
-        methods:{
+        methods: {
 
-            onClick (event) {
-                this.$emit('close','false')
+            onClick() {
+                this.$emit('close', 'false')
             },
 
             fetchData: function () {
@@ -58,10 +74,10 @@
                     });
             },
 
-            submit: function(){
+            submit: function () {
                 let vm = this;
                 this.onClick();
-                axios.post('/user/'+ this.userdata.id + '/department', {data: this.selectedDepartmentName})
+                axios.post('/user/' + this.userdata.id + '/department', {data: this.selectedDepartmentName})
                     .then(response => {
                         vm.$emit('select-updated', vm.selectedDepartmentName);
                     });

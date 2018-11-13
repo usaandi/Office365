@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use Illuminate\Http\Request;
+use Validator;
 
 class DepartmentController extends Controller
 {
 
 
-    public function userDepartment($id){
+    public function userDepartment($id)
+    {
 
-        $departmentid=Department::findOrFail($id);
+        $departmentid = Department::findOrFail($id);
 
-        $data=$departmentid->users()->get(['users_departments.id','name'])->toArray();
+        $data = $departmentid->users()->get(['users_departments.id', 'name'])->toArray();
 
         if (!empty($data)) {
 
@@ -30,48 +32,66 @@ class DepartmentController extends Controller
         return $data;
 
     }
-    public function department(){
+
+    public function department()
+    {
 
 
         return view('team.departmentView');
     }
 
-    public function departmentInfo(){
+    public function departmentInfo()
+    {
 
         $departments = Department::all();
 
-       return $departments;
+        return $departments;
 
 
     }
-    public function view(){
+
+    public function view()
+    {
 
         return view('team.departmentAdd');
     }
-    public function store(Request $request){
 
-        $request->validate([
-            'departmentName'=>'required|string|min:3|max:255',
-            'departmentAbbr'=> 'required|string|min:3|max:10',
-            'description'=> 'required|string|min:3|max:255',
-        ]);
-        $departmentName=$request->input('departmentName');
-        $departmentAbbr=$request->input('departmentAbbr');
-        $description=$request->input('description');
+    public function store(Request $request)
+    {
+
+        try {
+
+            $data = $request->all();
+            $rules = [
+                'departmentName' => 'required|string|min:3|max:255',
+                'departmentAbbr' => 'required|string|min:3|max:10',
+                'description' => 'required|string|min:3|max:2000',
+            ];
+
+            $validation = Validator::make($data, $rules);
+
+            if ($validation->passes()) {
 
 
-        $department = Department::where('department_name', '=', $departmentName)->first();
+                $departmentName = $data['departmentName'];
+                $departmentAbbr = $data['departmentAbbr'];
+                $description = $data['description'];
 
-        if($department===null){
 
-            Department::create(['department_name' => $departmentName,
-            'department_abbr'=>$departmentAbbr, 'department_info' => $description]);
+                $department = Department::where('department_name', '=', $departmentName)->first();
 
-            return redirect()->back();
-        }
-        else {
-            return response('Duplicate Department entry', 403)
-                ->header('Content-Type', 'application/json');
+                if ($department === null) {
+
+                   $newDepartment = Department::create(['department_name' => $departmentName,
+                        'department_abbr' => $departmentAbbr, 'department_info' => $description]);
+                    return view('team.departmentAdd',with(['success' => $newDepartment->department_name]));
+                }
+                    return view('team.departmentAdd', with(['error'=> $department->department_name]));
+
+            }
+
+        } catch (\Exception $e) {
+            return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
         }
 
     }

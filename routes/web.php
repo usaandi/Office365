@@ -84,7 +84,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/usersDepartment', 'HomeController@userNoDepartment')->name('users');
     Route::get('department/add', 'DepartmentController@view')->name('departmentadd');
-    Route::post('department/add', 'DepartmentController@store')->name('store');
+    Route::post('department/store', 'DepartmentController@store')->name('store');
 
     Route::get('department/{id}', 'DepartmentController@show')->name('team');
     Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name('user');

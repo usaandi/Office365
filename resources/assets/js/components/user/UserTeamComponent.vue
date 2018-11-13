@@ -6,7 +6,23 @@
                    @option:created="updateOptions"
                    @input="selectedValue"
         ></v-select>
-        <button @click="submit">Save</button>
+        <div class="m-portlet__foot m-portlet__foot--fit m--margin-top-10">
+            <div class="m-form__actions">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12"></div>
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="profile-timeline__action">
+                            <button @click="onClick1()" type="button"
+                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">Cancel
+                            </button>
+                            <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
+                                    @click="submit()">Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -67,6 +83,7 @@
             axios.post('/user/'+ this.userdata.id + '/team',{data: this.selectedTeamName})
                 .then(response => {
                     vm.$emit('select-updated', vm.selectedTeamName);
+                    vm.$emit('close');
                     vm.team = '';
                 });
 

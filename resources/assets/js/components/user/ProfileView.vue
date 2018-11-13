@@ -58,10 +58,11 @@
                                     @select-updated="personalDataUpdated('department', $event)"
                             ></user-department>
 
-                            <user-team
+                            <user-team class="m--margin-top-5"
                                     v-show="canedit && editdepartment"
                                     :userid="user.id"
                                     :userdata="userdata"
+                                    @close="editdepartment=false"
                                     @select-updated="personalDataUpdated('team', $event)"
                             ></user-team>
                         </div>
