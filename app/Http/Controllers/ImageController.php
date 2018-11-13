@@ -44,6 +44,7 @@ class ImageController extends Controller
              }
          }
          catch (\Exception $e) {
+             var_dump($e);
          }
          return response('Error uploading image', 400)
              ->header('Content-Type', 'application/json');
