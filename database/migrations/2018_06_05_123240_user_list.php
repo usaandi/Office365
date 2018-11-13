@@ -23,7 +23,7 @@ class UserList extends Migration
             $table->string('skype')->nullable();
             $table->string('description')->nullable();
             $table->date('ADMsince')->nullable();
-            $table->string('pictureLocation')->nullable();
+            $table->string('image')->nullable();
             $table->softDeletes('deleted_at');
             $table->longText('token')->nullable();
             $table->rememberToken();
