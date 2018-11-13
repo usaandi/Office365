@@ -54103,7 +54103,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54116,6 +54116,40 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54240,62 +54274,84 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.title,
-              expression: "title"
-            }
-          ],
-          staticStyle: { display: "block" },
-          attrs: { id: "inputCareertTitle", type: "text", placeholder: "Role" },
-          domProps: { value: _vm.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.title = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.desc,
-              expression: "desc"
-            }
-          ],
-          attrs: {
-            id: "careerDesc",
-            placeholder: "Description",
-            rows: "3",
-            cols: "50"
-          },
-          domProps: { value: _vm.desc },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.desc = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "row m--margin-top-10" }, [
-          _c(
-            "div",
-            { staticClass: "col-6" },
-            [
-              _vm._v("\n\n            Milestones:\n            "),
+    _c("div", { staticClass: "profile-timeline__form" }, [
+      _c("form", { staticClass: "m-form" }, [
+        _c("div", { staticClass: "m-portlet__body" }, [
+          _c("div", { staticClass: "form-group m-form__group row" }, [
+            _c(
+              "label",
+              { staticClass: "col-3 col-form-label", attrs: { for: "title" } },
+              [_vm._v("Role")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-9" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  }
+                ],
+                staticClass: "form-control m-input",
+                attrs: { id: "title", placeholder: "Role" },
+                domProps: { value: _vm.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group m-form__group row" }, [
+            _c(
+              "label",
+              { staticClass: "col-3 col-form-label", attrs: { for: "desc" } },
+              [_vm._v("Description")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-9" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.desc,
+                    expression: "desc"
+                  }
+                ],
+                staticClass: "form-control m-input",
+                attrs: { id: "desc", placeholder: "title" },
+                domProps: { value: _vm.desc },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.desc = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group m-form__group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-3 col-form-label",
+                attrs: { for: "milestone" }
+              },
+              [_vm._v("Milestone")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-9" }, [
               _c("input", {
                 directives: [
                   {
@@ -54305,6 +54361,12 @@ var render = function() {
                     expression: "milestoneName"
                   }
                 ],
+                staticClass: "form-control m-input",
+                attrs: {
+                  type: "text",
+                  id: "milestone",
+                  placeholder: "Milestone Name"
+                },
                 domProps: { value: _vm.milestoneName },
                 on: {
                   input: function($event) {
@@ -54314,33 +54376,112 @@ var render = function() {
                     _vm.milestoneName = $event.target.value
                   }
                 }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.addList(_vm.milestoneName)
-                    }
-                  }
-                },
-                [_vm._v("Add new")]
-              ),
-              _vm._v(" "),
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+            _c("div", { staticClass: "m-form__actions" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                  _c("div", { staticClass: "profile-timeline__action" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn m-btn--pill btn-success m-btn m-btn--custom",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.addList(_vm.milestoneName)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "New Milestone\n                                    "
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group m-form__group row" }, [
+            _c(
+              "label",
+              { staticClass: "col-3 col-form-label", attrs: { for: "desc" } },
+              [_vm._v("Milestones:")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-9" },
               _vm._l(_vm.milestonesList, function(milestone, index) {
                 return _c("ul", [
                   _c("li", [_vm._v(_vm._s(index) + " - " + _vm._s(milestone))])
                 ])
               })
-            ],
-            2
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "m-portlet__foot m-portlet__foot--fit m--margin-top-10"
+            },
+            [
+              _c("div", { staticClass: "m-form__actions" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                    _c("div", { staticClass: "profile-timeline__action" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn m-btn--pill btn-success m-btn m-btn--custom",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.clear()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "Clear Milestones\n                                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn m-btn--pill btn-success m-btn m-btn--custom",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.submit()
+                            }
+                          }
+                        },
+                        [_vm._v("Submit\n                                    ")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
           )
-        ]),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.submit } }, [_vm._v("submit")]),
-        _vm._v(" "),
-        _c("button", { on: { click: _vm.clear } }, [_vm._v("clear")])
+        ])
       ])
     ])
   ])
@@ -58723,7 +58864,9 @@ var render = function() {
               }
             },
             [
-              _c("option"),
+              _c("option", { attrs: { Disabled: "", selected: "" } }, [
+                _vm._v("Select Role")
+              ]),
               _vm._v(" "),
               _vm._l(_vm.careerRoleTitle, function(career) {
                 return _c("option", { domProps: { value: career.id } }, [

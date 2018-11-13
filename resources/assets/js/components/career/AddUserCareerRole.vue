@@ -5,8 +5,8 @@
 
             <label class="col-3 col-form-label">Select Role</label>
             <div class="col-9">
-                <select class="form-control m-input" id="Assign" v-model="careerRoleId" @change="create(careerRoleId)">
-                    <option></option>
+                <select class="form-control m-input"  id="Assign" v-model="careerRoleId" @change="create(careerRoleId)">
+                    <option Disabled selected >Select Role</option>
                     <option v-for="career in careerRoleTitle" :value="career.id">
                         {{career.title}}
                     </option>
