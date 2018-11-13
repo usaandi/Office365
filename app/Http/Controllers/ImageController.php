@@ -35,18 +35,17 @@ class ImageController extends Controller
                 $storageDisk = Storage::disk('public');
                 $storageDisk->put($fileName, $imageData);
 
-                $appPort = env('APP_PORT');
-                // Save the image URL also to DB.
+               // $appPort = env('APP_PORT');
 
                 $url = $storageDisk->url($fileName);
-                if($appPort !== null){
-
-                    $url =':'.$appPort.'/'.$url;
-
-                }
                 $selectedUser->image = $url;
                 $selectedUser->save();
 
+                // Save the image URL also to DB.
+            /*    if($appPort !== null){
+                    $url =':'.$appPort.'/'.$url;
+
+                }*/
 
 
 
