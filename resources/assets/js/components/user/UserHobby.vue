@@ -11,10 +11,11 @@
             </a>
         </div>
         <ul class="profile__tags clearfix" >
-            <li v-for="hobby in userhobbies"><a style="color: #34bfa3">#{{hobby.name}}</a></li>
+            <li v-for="hobby in userhobbies"><a style="color: #34bfa3">#{{hobby.name}}</a>
+                <button v-show="edit" @click="deleteRow(hobby.id)" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"><i
+                        class="la la-close"></i></button></li>
 
-            <button v-show="edit" @click="deleteRow(hobby.id)" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"><i
-                    class="la la-close"></i></button>
+
         </ul>
         <user-hobby-form v-show="edit"
                          @hobbyName="upload($event)"

@@ -212,22 +212,22 @@ class UserController extends Controller
             $this->authorize('update', $user);
 
             $request->validate([
-                'data' => 'integer'
+                'data' => 'required:'
             ]);
 
             $phone = $request->data;
-
-            $user->phone = $phone;
+            $phoneTrimmed = str_replace(' ','',trim($phone));
+            $user->phone = $phoneTrimmed;
             $user->save();
 
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
 
         } catch (\Exception $e) {
-
+            return response($e->getMessage(), 400)
+                ->header('Content-Type', 'application/json');
         }
-        return response('Error updating user', 400)
-            ->header('Content-Type', 'application/json');
+
 
     }
 

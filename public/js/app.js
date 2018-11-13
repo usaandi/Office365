@@ -49044,7 +49044,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "EditableInputComponent",
@@ -49062,6 +49061,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+
         cancel: function cancel() {
             this.$emit('canceled');
         },
@@ -49086,7 +49086,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "profile__form profile__form--clear" }, [
+    _c("div", { staticClass: "profile__form profile__form--clear " }, [
       _c("div", { staticClass: "m-portlet__body" }, [
         _c("div", { staticClass: "form-group m-form__group row" }, [
           _c("div", { staticClass: "col-9" }, [
@@ -49128,24 +49128,36 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-3 col-xs-12" }),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                _c("div", { staticClass: "profile-timeline__action" }, [
+              _c("div", { staticClass: "col-sm-9 col-xs-12 m--margin-5" }, [
+                _c("div", { staticClass: "profile-timeline__action " }, [
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-success m-btn m-btn--pill",
-                      on: { click: _vm.upload }
+                      staticClass:
+                        "btn m-btn--pill btn-success m-btn m-btn--custom",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.cancel()
+                        }
+                      }
                     },
-                    [_vm._m(0)]
+                    [_vm._v("Cancel\n                                ")]
                   ),
                   _vm._v(" "),
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-danger m-btn m-btn--pill",
-                      on: { click: _vm.cancel }
+                      staticClass:
+                        "btn m-btn--pill btn-success m-btn m-btn--custom",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.upload()
+                        }
+                      }
                     },
-                    [_vm._m(1)]
+                    [_vm._v("Save\n                                ")]
                   )
                 ])
               ])
@@ -49156,20 +49168,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [_c("span", [_vm._v("Save")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [_c("span", [_vm._v("Cancel")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -53389,7 +53388,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53402,6 +53401,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -53521,38 +53521,35 @@ var render = function() {
       _c(
         "ul",
         { staticClass: "profile__tags clearfix" },
-        [
-          _vm._l(_vm.userhobbies, function(hobby) {
-            return _c("li", [
-              _c("a", { staticStyle: { color: "#34bfa3" } }, [
-                _vm._v("#" + _vm._s(hobby.name))
-              ])
-            ])
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.edit,
-                  expression: "edit"
+        _vm._l(_vm.userhobbies, function(hobby) {
+          return _c("li", [
+            _c("a", { staticStyle: { color: "#34bfa3" } }, [
+              _vm._v("#" + _vm._s(hobby.name))
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.edit,
+                    expression: "edit"
+                  }
+                ],
+                staticClass:
+                  "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
+                on: {
+                  click: function($event) {
+                    _vm.deleteRow(hobby.id)
+                  }
                 }
-              ],
-              staticClass:
-                "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
-              on: {
-                click: function($event) {
-                  _vm.deleteRow(_vm.hobby.id)
-                }
-              }
-            },
-            [_c("i", { staticClass: "la la-close" })]
-          )
-        ],
-        2
+              },
+              [_c("i", { staticClass: "la la-close" })]
+            )
+          ])
+        })
       ),
       _vm._v(" "),
       _c("user-hobby-form", {
@@ -59265,7 +59262,7 @@ var render = function() {
                   expression: "hobbyName"
                 }
               ],
-              staticClass: "form-control m-input ",
+              staticClass: "form-control m-input",
               class: _vm.classObject,
               attrs: { type: "text", placeholder: "Hobby" },
               domProps: { value: _vm.hobbyName },
