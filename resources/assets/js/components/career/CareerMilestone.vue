@@ -48,11 +48,11 @@
                             {{milestone.assigned_username}}
                         </div>
                     </div>
-                    <div class="profile-timeline__milestones--date m--font-danger">
+                    <div class="profile-timeline__milestones--date">
                         {{milestone.reminder}}
                     </div>
                     <div class="profile-timeline__milestones--action">
-                        <a @click="focusField()"
+                        <a tabindex=""  @click="focusField()"
                            class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill">
                             <i class="la la-pencil-square"></i>
                         </a>

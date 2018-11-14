@@ -57406,19 +57406,13 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "profile-timeline__milestones--date m--font-danger"
-            },
-            [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.milestone.reminder) +
-                  "\n                "
-              )
-            ]
-          ),
+          _c("div", { staticClass: "profile-timeline__milestones--date" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.milestone.reminder) +
+                "\n                "
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "profile-timeline__milestones--action" }, [
             _c(
@@ -57426,6 +57420,7 @@ var render = function() {
               {
                 staticClass:
                   "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
+                attrs: { tabindex: "" },
                 on: {
                   click: function($event) {
                     _vm.focusField()
