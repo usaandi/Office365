@@ -14,9 +14,6 @@ class PersonalDevelopment extends Migration
     public function up()
     {
 
-
-
-
         Schema::create('career_roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -63,6 +60,7 @@ class PersonalDevelopment extends Migration
             $table->foreign('user_career_role_id')->references('id')->on('users_career_roles')->onDelete('cascade');
         });
     }
+
     /**
      * Reverse the migrations.
      *

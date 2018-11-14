@@ -1,9 +1,7 @@
 <template>
     <div class="m-timeline-2__item">
         <span class="m-timeline-2__item-time">{{returnDate}}</span>
-        <div class="m-timeline-2__item-cricle">
-            <i class="fa fa-genderless m--font-info"></i>
-        </div>
+        <div class="m-timeline-2__item-cricle"><i class="fa fa-genderless m--font-success"></i></div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
             <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]">
                 <div class="row">
