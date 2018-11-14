@@ -6,6 +6,10 @@
                 :class="[{'m--font-success': isActive === 1,'m--font-info': isActive=== 0 }]"></i></div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
             <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]">
+                <div v-if="isActive === 1" class="profile-timeline__check--wrapper">
+                    <div class="profile-timeline__check"></div>
+                    <div class="profile-timeline__check--icon"><i class="la la-check"></i></div>
+                </div>
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title"
