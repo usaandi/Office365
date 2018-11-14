@@ -316,12 +316,12 @@
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-clipboard"></i><span
-                                                        class="m-menu__link-text">Add moderator to teams</span></a></li>
+                                                        class="m-menu__link-text">Add moderator to team</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnCategoryStrengthView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
-                                                        class="m-menu__link-text">Strength</span></a></li>
+                                                        class="m-menu__link-text">Strength & Category</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnAdminUserList')}}" class="m-menu__link "><i
