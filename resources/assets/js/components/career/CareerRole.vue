@@ -1,6 +1,6 @@
 <template>
     <div class="m-timeline-2__item">
-        <span class="m-timeline-2__item-time">2020 Jan</span>
+        <span class="m-timeline-2__item-time">{{returnDate}}</span>
         <div class="m-timeline-2__item-cricle">
             <i class="fa fa-genderless m--font-info"></i>
         </div>
@@ -120,6 +120,7 @@
                 selectedActive: undefined,
                 isEditing: false,
                 buttonValue: 'New',
+                createdDate:this.userdata.created_at,
                 editField: '',
                 isUpdate: false,
             }
@@ -144,6 +145,20 @@
         },
         mounted() {
             this.currentlySelected();
+        },
+        computed:{
+
+            returnDate(){
+
+                let date = new Date(this.createdDate),
+                    locale = "en-us";
+                let yearCreated = date.getUTCFullYear();
+                let monthCreated = date.toLocaleString(locale,{month:'short'});
+
+                return yearCreated+' '+monthCreated;
+
+            }
+
         },
 
 

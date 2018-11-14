@@ -54,9 +54,9 @@ class HomeController extends Controller
     public function index()
     {
         /*
-                $trash=DB::table('users')
-                    ->whereNotNull('deleted_at')
-                    ->get();*/
+        $trash=DB::table('users')
+            ->whereNotNull('deleted_at')
+            ->get();*/
         $users = User::get();
         foreach ($users as $i => $user) {
             $userCareer = $user->userCareerRole()->where('current_role', 1)->first();

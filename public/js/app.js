@@ -56252,7 +56252,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56386,6 +56386,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selectedActive: undefined,
             isEditing: false,
             buttonValue: 'New',
+            createdDate: this.userdata.created_at,
             editField: '',
             isUpdate: false
         };
@@ -56409,6 +56410,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.currentlySelected();
     },
 
+    computed: {
+        returnDate: function returnDate() {
+
+            var date = new Date(this.createdDate),
+                locale = "en-us";
+            var yearCreated = date.getUTCFullYear();
+            var monthCreated = date.toLocaleString(locale, { month: 'short' });
+
+            return yearCreated + ' ' + monthCreated;
+        }
+    },
 
     methods: {
         showButton: function showButton() {
@@ -56518,7 +56530,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "m-timeline-2__item" }, [
     _c("span", { staticClass: "m-timeline-2__item-time" }, [
-      _vm._v("2020 Jan")
+      _vm._v(_vm._s(_vm.returnDate))
     ]),
     _vm._v(" "),
     _vm._m(0),
@@ -56972,7 +56984,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56983,6 +56995,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -57041,7 +57063,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+
     name: "CareerMilestone",
     props: ['milestoneInfo', 'usersList', 'selectedUserProfileId', 'canEdit', 'hasMilestoneError', 'careerRoleMilestoneIndex'],
     data: function data() {
@@ -57055,6 +57080,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: false,
             assignerId: '',
             id: '',
+            isCompleted: false,
 
             errors: false,
             errorTask: false,
@@ -57075,7 +57101,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.milestone = value;
         }
     },
+
     methods: {
+        changeValue: function changeValue() {
+            if (this.canEdit === true) {
+                var vm = this;
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('update/milestone', { milestoneId: this.milestone.id }).then(function (response) {
+                    if (response.status === 200) {
+                        vm.milestone.completed = response.data.value;
+                    }
+                });
+            }
+        },
         checkError: function checkError() {
             this.$emit('errorValue', this.errors);
 
@@ -57113,7 +57150,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             userCareerRoleId: this.milestone.user_career_role_id
                         }];
 
-                        axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data).then(function (response) {});
+                        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data).then(function (response) {});
                     }
                 }
             }
@@ -57130,7 +57167,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "profile-timeline__milestone" }, [
+    _c("div", { staticClass: "profile-timeline__milestones" }, [
       _c("div", { staticClass: "m-form__group form-group" }, [
         _c("div", { staticClass: "m-checkbox-list" }, [
           _c(
@@ -57149,7 +57186,11 @@ var render = function() {
               attrs: { value: _vm.milestone.id }
             },
             [
-              _c("input", { attrs: { type: "checkbox" } }),
+              _c("input", {
+                attrs: { type: "checkbox" },
+                domProps: { checked: _vm.milestone.completed === 1 },
+                on: { click: _vm.changeValue }
+              }),
               _vm._v(" "),
               _c(
                 "div",
@@ -57164,7 +57205,11 @@ var render = function() {
                   ],
                   staticClass: "profile-timeline__milestones--label"
                 },
-                [_vm._v(_vm._s(_vm.milestone.task))]
+                [
+                  _vm._v(
+                    " " + _vm._s(_vm.milestone.task) + "\n                    "
+                  )
+                ]
               ),
               _vm._v(" "),
               _c("span")
@@ -57280,7 +57325,9 @@ var render = function() {
                 _vm._l(_vm.usersList, function(user) {
                   return _c("option", { domProps: { value: user } }, [
                     _vm._v(
-                      "\n                                " + _vm._s(user.name)
+                      "\n                            " +
+                        _vm._s(user.name) +
+                        "\n                        "
                     )
                   ])
                 })
@@ -57329,9 +57376,9 @@ var render = function() {
               [
                 _vm._m(0),
                 _vm._v(
-                  "\n\n                            " +
+                  "\n\n                        " +
                     _vm._s(_vm.milestone.assigned_username) +
-                    "\n                        "
+                    "\n                    "
                 )
               ]
             )
@@ -57344,9 +57391,9 @@ var render = function() {
             },
             [
               _vm._v(
-                "\n                        " +
+                "\n                    " +
                   _vm._s(_vm.milestone.reminder) +
-                  "\n                    "
+                  "\n                "
               )
             ]
           ),

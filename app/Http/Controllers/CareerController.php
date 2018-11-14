@@ -79,6 +79,48 @@ class CareerController extends Controller
         }
     }
 
+    public function completeMilestone(Request $request)
+    {
+        try {
+            $authUser = \Auth::user();
+            $this->authorize('updateMilestone', $authUser);
+
+            $data = $request->all();
+            $rules = [
+                'milestoneId' => 'required|int'
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->passes()) {
+
+                $userMilestoneId = $data['milestoneId'];
+                $userCareermilestone = UserCareerRoleMilestone::where('id', $userMilestoneId)->first();
+
+                if ($userCareermilestone->completed === 0) {
+                    $userCareermilestone->update(['completed' => 1]);
+                    $newValue = $userCareermilestone->completed;
+                    $dataArray = [
+                        'value' => $newValue,
+                    ];
+                    return response(json_encode($dataArray), 200);
+
+                } else if ($userCareermilestone->completed === 1) {
+                    $userCareermilestone->update(['completed' => 0]);
+                    $newValue = $userCareermilestone->completed;
+
+                    $dataArray = [
+                        'value' => $newValue,
+                    ];
+
+                    return response(json_encode($dataArray), 200);
+                }
+            }
+
+
+        } catch (\Exception $e) {
+            return response('Something went wrong' . ' ' . $e->getMessage(), 403);
+        }
+    }
+
     public function careerRoleMilestonesData()
     {
         $careerRoles = CareerRole::all();
@@ -97,6 +139,7 @@ class CareerController extends Controller
             $data[$key]['id'] = $careerRole->id;
             $data[$key]['career_role_id'] = $careerRole->career_role_id;
             $data[$key]['user_id'] = $careerRole->user_id;
+            $data[$key]['created_at'] = $careerRole->created_at->toDateString();
             $data[$key]['title'] = $careerRole->title;
             $data[$key]['description'] = $careerRole->description;
             $data[$key]['current_role'] = $careerRole->current_role;
