@@ -20,6 +20,8 @@
     <div class="admin__form admin__form--clear"><h4>Update user: {{$user->name}}</h4>
         <form name="form" class="m-form" action="{{route('update',$user)}}" method="post">
             @csrf
+
+
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Username</label>
@@ -48,8 +50,12 @@
                                                             name="skype" class="form-control m-input"></div>
                 </div>
 
+
+
+
+
                 <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Your
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Current
                         Department: @isset($currentDepartment)
                             {{$currentDepartment[0]->department_name}} @endisset</label>
 
@@ -67,10 +73,21 @@
                         </select>
                     </div>
                 </div>
-                @hasanyrole('Admin')
+
+                @hasrole('Admin')
                 <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Your
-                        Role</label>
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Current
+                        Roles: @if($user->hasRole('Moderator'))
+                                 Moderator
+                              @endif
+                        @if($user->hasRole('User'))
+                            User
+                        @endif
+                        @if($user->hasRole('Admin'))
+                            Admin
+                        @endif
+
+                    </label>
                     <div class="col-sm-9 col-xs-12 "><select required name="role" class="form-control m-input">
                             <option></option>
                             @foreach($roles as $role)
@@ -85,7 +102,7 @@
                         </select>
                     </div>
                 </div>
-                @endhasanyrole
+                @endhasrole
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">ADM
                         since</label>
@@ -107,10 +124,11 @@
                     </div>
                 </div>
             </div>
+
         </form>
     </div>
 
-
+    @hasanyrole('Admin|Moderator')
     <div id="app">
         <form class="m-form">
             <div class="admin__form admin__form--clear">
@@ -119,5 +137,6 @@
             </div>
         </form>
     </div>
+    @endhasanyrole
 
 @endsection
