@@ -20,5 +20,10 @@ class Category extends Model
         return $this->hasMany(StrengthCategory::class);
     }
 
+    public function strengths()
+    {
+        return $this->belongsToMany(Strength::class,'strengths_categories');
+    }
+
 
 }
