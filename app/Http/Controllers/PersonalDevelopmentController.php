@@ -25,6 +25,7 @@ class PersonalDevelopmentController extends Controller
 
 
         } catch (\Exception $e) {
+            return view('unauthorized.unauthorized',with(['error'=>'No permission']));
 
         }
 
