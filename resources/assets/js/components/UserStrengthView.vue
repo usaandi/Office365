@@ -1,10 +1,12 @@
 <template>
     <div class="m-portlet__body">
+
         <h1>User Strength</h1>
         <admin-user-strength v-for="(strength,index) in strengthCount"
                              :key="index+1"
                              :strengthIndex="index+1"
                              :propStrengths="strengths"
+                             :propCategories="categories"
                              @pushSelected="pushSelected($event)"
 
         >
@@ -35,8 +37,11 @@
             return {
                 strengthCount: 12,
                 strengths: [],
+                categories:null,
                 selectedStrength: [],
                 isNew: false,
+                showMessage:false,
+                message:null,
 
             }
         },
@@ -47,7 +52,8 @@
         },
         mounted() {
             axios.get('/strength/list').then(response => {
-                this.strengths = response.data;
+
+                this.categories = response.data;
             });
         },
         methods: {
@@ -57,7 +63,13 @@
             submit(){
               if(this.selectedStrength.length<=12){
                   let data = this.selectedStrength;
-                axios.post('/user/'+this.userId+'/update/strength',data)
+                  let vm =this;
+                axios.post('/user/'+this.userId+'/update/strength',data).then(response=>{
+                    if(response.status===200){
+                        vm.showMessage=true;
+                        vm.message=response.data;
+                    }
+                })
               }
             },
         }
