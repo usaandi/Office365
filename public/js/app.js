@@ -56252,7 +56252,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56433,13 +56433,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         selectRole: function selectRole(value) {
-            this.$emit('selectActive', value);
+
+            if (this.canEdit) {
+
+                this.$emit('selectActive', value);
+            }
         },
         currentlySelected: function currentlySelected() {
-            if (this.userRoleInfo.current_role === 1) {
-                this.isCurrent = true;
-            } else {
-                this.iscurrent = false;
+            if (this.canEdit) {
+                if (this.userRoleInfo.current_role === 1) {
+                    this.isCurrent = true;
+                } else {
+                    this.iscurrent = false;
+                }
             }
         },
         remove: function remove() {
@@ -57006,7 +57012,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57125,10 +57131,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        submitChange: function submitChange() {
+            if (this.canEdit) {
+                this.changeValue();
+            }
+        },
         changeValue: function changeValue() {
+
             if (this.canEdit === true) {
                 var vm = this;
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('update/milestone', { milestoneId: this.milestone.id }).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('update/milestone/' + this.selectedUserProfileId, { milestoneId: this.milestone.id }).then(function (response) {
                     if (response.status === 200) {
                         vm.milestone.completed = response.data.value;
                     }
@@ -57211,7 +57223,7 @@ var render = function() {
               _c("input", {
                 attrs: { type: "checkbox" },
                 domProps: { checked: _vm.milestone.completed === 1 },
-                on: { click: _vm.changeValue }
+                on: { click: _vm.submitChange }
               }),
               _vm._v(" "),
               _c(
@@ -61144,7 +61156,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61184,6 +61196,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -61194,8 +61208,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             strengthCount: 12,
             strengths: [],
+            categories: null,
             selectedStrength: [],
-            isNew: false
+            isNew: false,
+            showMessage: false,
+            message: null
 
         };
     },
@@ -61209,7 +61226,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/strength/list').then(function (response) {
-            _this.strengths = response.data;
+
+            _this.categories = response.data;
         });
     },
 
@@ -61220,7 +61238,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submit: function submit() {
             if (this.selectedStrength.length <= 12) {
                 var data = this.selectedStrength;
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userId + '/update/strength', data);
+                var vm = this;
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userId + '/update/strength', data).then(function (response) {
+                    if (response.status === 200) {
+                        vm.showMessage = true;
+                        vm.message = response.data;
+                    }
+                });
             }
         }
     }
@@ -61244,7 +61268,11 @@ var render = function() {
       _vm._l(_vm.strengthCount, function(strength, index) {
         return _c("admin-user-strength", {
           key: index + 1,
-          attrs: { strengthIndex: index + 1, propStrengths: _vm.strengths },
+          attrs: {
+            strengthIndex: index + 1,
+            propStrengths: _vm.strengths,
+            propCategories: _vm.categories
+          },
           on: {
             pushSelected: function($event) {
               _vm.pushSelected($event)
@@ -61381,7 +61409,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61409,9 +61437,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['strengthIndex', 'propStrengths'],
+    props: ['strengthIndex', 'propStrengths', 'propCategories'],
     name: "UserStrengthComponent",
     data: function data() {
         return {
@@ -61497,16 +61531,21 @@ var render = function() {
             ]
           }
         },
-        [
-          _c("option"),
-          _vm._v(" "),
-          _vm._l(_vm.sortArray(_vm.propStrengths), function(strength) {
-            return _c("option", { domProps: { value: strength } }, [
-              _vm._v(_vm._s(strength.strength_name) + "\n            ")
-            ])
-          })
-        ],
-        2
+        _vm._l(_vm.propCategories, function(category) {
+          return _c(
+            "optgroup",
+            { attrs: { label: category.category } },
+            _vm._l(category.strengths, function(strength) {
+              return _c("option", { domProps: { value: strength } }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(strength.strength_name) +
+                    "\n                "
+                )
+              ])
+            })
+          )
+        })
       )
     ])
   ])
