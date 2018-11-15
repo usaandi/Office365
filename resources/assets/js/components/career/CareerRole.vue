@@ -174,17 +174,23 @@
             },
 
             selectRole(value) {
-                this.$emit('selectActive', value);
+
+                if(this.canEdit){
+
+                    this.$emit('selectActive', value);
+                }
+
 
             },
             currentlySelected() {
-                if (this.userRoleInfo.current_role === 1) {
-                    this.isCurrent = true;
+                if (this.canEdit) {
+                    if (this.userRoleInfo.current_role === 1) {
+                        this.isCurrent = true;
+                    }
+                    else {
+                        this.iscurrent = false;
+                    }
                 }
-                else {
-                    this.iscurrent = false;
-                }
-
             },
 
             remove() {
