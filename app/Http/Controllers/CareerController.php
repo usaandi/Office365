@@ -79,11 +79,12 @@ class CareerController extends Controller
         }
     }
 
-    public function completeMilestone(Request $request)
+    public function completeMilestone(Request $request, $id)
     {
         try {
             $authUser = \Auth::user();
-            $this->authorize('updateMilestone', $authUser);
+            $user = User::findOrFail($id);
+            $this->authorize('updateMilestone', $user);
 
             $data = $request->all();
             $rules = [
@@ -167,10 +168,11 @@ class CareerController extends Controller
     public function updateCareer(Request $request, $id)
     {
         try {
-            $authUser = \Auth::user();
-            $this->authorize('updateCareer', $authUser);
-            $data = $request->all();
+            // $authUser = \Auth::user();
             $user = User::findOrFail($id);
+
+            $this->authorize('updateCareer', $user);
+            $data = $request->all();
 
             $rules = [
                 'fieldValue' => 'required',
@@ -197,8 +199,9 @@ class CareerController extends Controller
     {
         try {
             $authUser = \Auth::user();
-            $this->authorize('createCareer', $authUser);
             $user = User::findOrFail($id);
+
+            $this->authorize('createCareer', $user);
 
             $data = $request->all();
 
@@ -215,7 +218,8 @@ class CareerController extends Controller
     {
         try {
             $authUser = \Auth::user();
-            $this->authorize('createCareer', $authUser);
+            $user = User::findOrFail($id);
+            $this->authorize('createCareer', $user);
 
             $data = $request->all();
 
@@ -269,7 +273,8 @@ class CareerController extends Controller
         try {
             $data = $request->all();
             $authUser = \Auth::user();
-            $this->authorize('createCareer', $authUser);
+            $user = User::findOrFail($id);
+            $this->authorize('createCareer', $user);
 
             $rules = [
 
@@ -372,8 +377,9 @@ class CareerController extends Controller
     {
         try {
             $user = User::findOrFail($id);
+
             $authUser = \Auth::user();
-            $this->authorize('createMilestone', $authUser);
+            $this->authorize('createMilestone', $user);
 
             $data = $request->all()[0];
 
@@ -448,7 +454,7 @@ class CareerController extends Controller
         try {
             $user = User::findOrFail($id);
             $authUser = \Auth::user();
-            $this->authorize('updateMilestone', $authUser);
+            $this->authorize('updateMilestone', $user);
 
             $data = $request->all()[0];
 
@@ -489,7 +495,7 @@ class CareerController extends Controller
             $user = User::findOrFail($id);
 
             $authUserId = \Auth::user();
-            $this->authorize('deleteMilestone', $authUserId);
+            $this->authorize('deleteMilestone', $user);
 
             $data = $request->all();
 
