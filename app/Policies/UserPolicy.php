@@ -67,7 +67,22 @@ class UserPolicy
     public function updateMilestone(User $user, User $model)
     {
 
-        return $this->userCanEditCareer($user, $model);
+        if ($user->id === $model->id) {
+            return TRUE;
+        }
+
+        if($user->hasRole('Admin'))
+        {
+            return TRUE;
+        }
+
+        $modelTeamId = $model->team()->first()->team_id;
+
+        if($user->isModeratorOfTeam($modelTeamId)){
+            return TRUE;
+        }
+
+        return FALSE;
 
     }
     public function updateCareer(User $user, User $model)
@@ -123,7 +138,6 @@ class UserPolicy
         }
 
         $modelTeamId = $model->team()->first()->team_id;
-
         if($user->isModeratorOfTeam($modelTeamId)){
             return TRUE;
         }
