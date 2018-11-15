@@ -58,9 +58,8 @@ class UserController extends Controller
     {
 
         try {
-            //TODO Re ADD THIS COMMENTED OUT LINE if going live
-            /*$user = \Auth::user();
-            $this->authorize('admin', $user);*/
+            $userModel = User::findOrFail($id);
+            $this->authorize('update', $userModel);
 
             $user = User::findorFail($id);
             $userDepartment = UserDepartment::where('user_id', $id)->get(['department_id']);
@@ -113,9 +112,8 @@ class UserController extends Controller
 
         try {
 
-            //TODO ReADD THIS COMMENTED OUT LINE
-            /*$user = \Auth::user();
-             $this->authorize('admin', $user);*/
+            $userModel = User::findOrFail($id);
+            $this->authorize('update', $userModel);
 
             $request->validate([
                 'name' => 'nullable',
@@ -136,14 +134,13 @@ class UserController extends Controller
 
             $userDepartment = UserDepartment::where('user_id', $id)->get();
 
-            if($userDepartment->isEmpty()){
+            if ($userDepartment->isEmpty()) {
 
                 $userDepartments = UserDepartment::create([
                     'user_id' => $id,
                     'department_id' => $departmentId
                 ]);
-            }
-            else {
+            } else {
                 $userDepartmentId = $userDepartment[0]->department_id;
                 if ($userDepartmentId != $departmentId) {
 
@@ -152,18 +149,25 @@ class UserController extends Controller
             }
 
 
-
-
-
             $user = User::findOrFail($id);
 
+            $authUser = \Auth::user();
 
-            $userRole = Role::findByName($role);
+            if ($authUser->hasRole('Admin')) {
+                $userRole = Role::findByName($role);
 
-            if (!$user->hasRole($userRole)) {
+                if (!$user->hasRole($userRole)) {
 
-                $user->removeRole($user->roles()->first()->name);
-                $user->assignRole($userRole);
+                        if($user->hasRole('Admin')){
+                            $user->assignRole($userRole);
+                        }
+                        else {
+                            $user->removeRole($user->roles()->first()->name);
+                            $user->assignRole($userRole);
+                        }
+
+                }
+
             }
 
             $user->update(['name' => $name, 'phone' => $phone,
@@ -218,7 +222,7 @@ class UserController extends Controller
             ]);
 
             $phone = $request->data;
-            $phoneTrimmed = str_replace(' ','',trim($phone));
+            $phoneTrimmed = str_replace(' ', '', trim($phone));
             $user->phone = $phoneTrimmed;
             $user->save();
 
