@@ -35,21 +35,21 @@ class UserStrengthController extends Controller
                             'rank' => $strength['strength_index'],
                         ]);
                     }
-
+                    return response($user->name.'updated',200);
                 } else {
 
                     $userStrengths = $user->userStrength()->get();
                     for ($i = 0; $i < count($userStrengths); $i++) {
-
                         $userStrengths[$i]->update([
                             'strength_id' => $strengths[$i]['strength_id'],
                             'user_id' => $id,
                             'rank' => $strengths[$i]['strength_index'],
                         ]);
-
                     }
-                    return redirect()->back();
+                    return response($user->name.'updated',200);
+
                 }
+
             }
 
         } catch (\Exception $e) {

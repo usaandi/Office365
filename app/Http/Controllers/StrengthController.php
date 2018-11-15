@@ -9,7 +9,6 @@ use Validator;
 use App\Strength;
 
 
-
 class StrengthController extends Controller
 {
     public function view()
@@ -19,7 +18,7 @@ class StrengthController extends Controller
             $user = \Auth::user();
             $this->authorize('admin', $user);
 
-            $categories = Category::get(['id','category_name']);
+            $categories = Category::get(['id', 'category_name']);
             return view('strength.strength')->with(['categories' => $categories]);
 
         } catch (\Exception $e) {
@@ -32,8 +31,21 @@ class StrengthController extends Controller
     public function returnStrengthName()
     {
         try {
-            $strength = Strength::orderBy('strength_name')->get(['id as strength_id', 'strength_name']);
-            return $strength;
+            $array=[];
+
+            $categories = Category::with('strengths')->get();
+            foreach ($categories as $i => $category){
+                $array[$i]=[
+                  'category'=> $category->category_name,
+                ];
+                foreach ($category->strengths()->get() as $strength){
+                    $array[$i]['strengths'][]=[
+                      'strength_id' => $strength->id,
+                      'strength_name' => $strength->strength_name,
+                    ];
+                }
+            }
+            return $array;
         } catch (\Exception $e) {
         }
     }
