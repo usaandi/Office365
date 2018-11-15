@@ -21,6 +21,11 @@ class Strength extends Model
         return $this->belongsToMany(UserStrength::class);
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class,'strengths_categories');
+    }
+
 
 
 }
