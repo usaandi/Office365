@@ -30,7 +30,7 @@
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">phone</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->phone}}" required type="number"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->phone}}" required type="text"
                                                             placeholder="Enter Phone"
                                                             name="phone" class="form-control m-input"></div>
                 </div>
