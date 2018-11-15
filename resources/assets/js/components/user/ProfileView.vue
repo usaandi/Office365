@@ -37,6 +37,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row" v-show="canedit">
+                        <div class="col-xs-3">
+                            <div class="profile__details--title">User Update</div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="profile__details--info">
+                                <a :href="'user/'+user.id+'/update'"><span><button
+                                        class="btn btn-success">Update</button></span></a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
 
                         <div class="col-xs-3">
