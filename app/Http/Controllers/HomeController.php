@@ -61,11 +61,11 @@ class HomeController extends Controller
         foreach ($users as $i => $user) {
             $userCareer = $user->userCareerRole()->where('current_role', 1)->first();
             $userDepartmentId = $user->department()->first();
-            if($userDepartmentId !== null){
-                $departmentName = Department::findOrFail($userDepartmentId)->first()->department_abbr;
+            if($userDepartmentId){
+                $departmentName = Department::find($userDepartmentId->department_id)->department_abbr;
                 $users[$i]['current_department'] = $departmentName;
             }
-            if ($userCareer !== null) {
+            if ($userCareer) {
                 $users[$i]['current_role'] = $userCareer->title;
             }
         }
