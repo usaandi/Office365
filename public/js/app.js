@@ -62430,7 +62430,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62447,9 +62447,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "TeamView"
+    props: ['teams'],
+    name: "TeamView",
+    data: function data() {
+        return {
+            show: false
+        };
+    }
 });
 
 /***/ }),
@@ -62460,9 +62523,121 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    hey\n")])
+  return _c(
+    "div",
+    [
+      _c(
+        "modal",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            }
+          ]
+        },
+        [
+          _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+            _vm._v("\n            Department\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "body" }, slot: "body" }),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: { click: function($event) {} }
+              },
+              [_vm._v("CANCEL")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                attrs: { type: "submit" },
+                on: { click: function($event) {} }
+              },
+              [_vm._v("SUBMIT")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+        _c("div", { staticClass: "m-form__actions" }, [
+          _c("div", { staticClass: "row m--margin-bottom-15" }, [
+            _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+              _c("div", { staticClass: "profile-timeline__action " }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn btn-success m-btn m-btn--icon m-btn--pill",
+                    attrs: { href: "admin/team/create" }
+                  },
+                  [_vm._m(0)]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Add Team")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("span", { staticClass: "float-left m--margin-bottom-5" }),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-bordered text-center" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("#")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Department Name")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Department Description")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Department Abbreviation")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Edit")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Delete")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [_c("tr")])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -62558,7 +62733,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62573,10 +62748,74 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['departments'],
-    name: "DepartmentView"
+    name: "DepartmentView",
+    data: function data() {
+        return {
+            show: false
+        };
+    }
 });
 
 /***/ }),
@@ -62587,9 +62826,121 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("hey")])
+  return _c(
+    "div",
+    [
+      _c(
+        "modal",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            }
+          ]
+        },
+        [
+          _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+            _vm._v("\n            Department\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "body" }, slot: "body" }),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: { click: function($event) {} }
+              },
+              [_vm._v("CANCEL")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                attrs: { type: "submit" },
+                on: { click: function($event) {} }
+              },
+              [_vm._v("SUBMIT")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+        _c("div", { staticClass: "m-form__actions" }, [
+          _c("div", { staticClass: "row m--margin-bottom-15" }, [
+            _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+              _c("div", { staticClass: "profile-timeline__action " }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn btn-success m-btn m-btn--icon m-btn--pill",
+                    attrs: { href: "department/add" }
+                  },
+                  [_vm._m(0)]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Add Department")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("span", { staticClass: "float-left m--margin-bottom-5" }),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-bordered text-center" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("#")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Department Name")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Department Description")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Department Abbreviation")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Edit")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Delete")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [_c("tr")])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
