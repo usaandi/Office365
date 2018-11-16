@@ -6,21 +6,24 @@
                     <div class="form-group m-form__group row">
                         <label for="title" class="col-3 col-form-label">Role</label>
                         <div class="col-9">
-                            <input id="title" class="form-control m-input" placeholder="Role" v-model="title">
+                            <input id="title" required class="form-control m-input" placeholder="Role" v-model="title">
                         </div>
                     </div>
 
                     <div class="form-group m-form__group row">
                         <label for="desc" class="col-3 col-form-label">Description</label>
                         <div class="col-9">
-                            <input id="desc" class="form-control m-input" placeholder="title" v-model="desc">
+                            <textarea id="desc" required class="form-control m-input" placeholder="title" v-model="desc"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group m-form__group row">
                         <label for="milestone" class="col-3 col-form-label">Milestone</label>
                         <div class="col-9">
-                            <input v-model="milestoneName"  type="text" id="milestone" class="form-control m-input" placeholder="Milestone Name">
+                            <input
+                                    v-model="milestoneName" type="text"
+                                    id="milestone" class="form-control m-input"
+                                    placeholder="Milestone Name">
                         </div>
                     </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
@@ -87,6 +90,7 @@
                 milestonesList: [],
                 milestoneName: '',
                 careerRoleTitle: '',
+                showError: false,
 
 
             }
@@ -96,10 +100,18 @@
             this.fetchData();
         },
         methods: {
+            checkError() {
+
+            },
 
             addList(value) {
-                this.milestonesList.push(value);
-                this.milestoneName = '';
+
+                if (this.milestoneName) {
+                    this.milestonesList.push(value);
+                    this.milestoneName = '';
+                }
+
+
             },
 
 
@@ -127,26 +139,30 @@
 
             submit: function () {
 
-                const data = [{
-                    title: this.title,
-                    description: this.desc,
-                    milestonesList: this.milestonesList
-                }];
+                if (this.desc && this.title) {
 
-                this.desc = '';
-                this.title = '';
-                this.milestonesList = '';
-                let vm = this;
-                axios.post('/career/add', data)
-                    .then(response => {
-                        if (response.status === 200) {
+                    const data = [{
+                        title: this.title,
+                        description: this.desc,
+                        milestonesList: this.milestonesList
+                    }];
 
-                            this.showDismissibleAlert = true;
-                        }
-                    }).catch(error => {
+                    this.desc = '';
+                    this.title = '';
+                    this.milestonesList = '';
+                    let vm = this;
+                    axios.post('/career/add', data)
+                        .then(response => {
+                            if (response.status === 200) {
 
-                });
+                                this.showDismissibleAlert = true;
+                            }
+                        }).catch(error => {
+
+                    });
+                }
             }
+
         }
     }
 </script>
