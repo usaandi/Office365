@@ -262,7 +262,9 @@
                 let date = new Date(this.user.birthday);
                 let locale = "en-us";
                 let month = date.toLocaleDateString(locale, {month: "short"});
-                let day = date.getDay();
+
+                let day = date.getDate();
+
                 return day + " " + month;
 
             },
