@@ -22,7 +22,24 @@
                 <button type="submit" class="btn btn-danger" @click="confirmDeletion(userObject.id)">DELETE</button>
             </div>
         </modal>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+                <div class="row m--margin-bottom-15">
+                    <div class="col-sm-3 col-xs-12"></div>
+                    <div class="col-sm-9 col-xs-12">
+                        <div class="profile-timeline__action ">
+                            <a :href="'admin/users/add'" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                                    <span>
+                                        <i class="la la-plus"></i>
+                                        <span>Add User</span>
+                                    </span>
+                            </a>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>
 
             <div class="table-responsive">
@@ -48,6 +65,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -118,12 +136,12 @@
                 this.show = true;
 
 
-                 axios.delete('admin/user/delete', {params: data})
-                     .then(function (response) {
-                         if (response.status === 200) {
-                             this.users.splice(objectIndex, 1);
-                         }
-                     });
+                axios.delete('admin/user/delete', {params: data})
+                    .then(function (response) {
+                        if (response.status === 200) {
+                            this.users.splice(objectIndex, 1);
+                        }
+                    });
             }
         }
     }
