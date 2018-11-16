@@ -58522,19 +58522,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         confirmDeletion: function confirmDeletion(userId) {
             if (this.confirmationText === 'YES') {
 
-                var data = {
+                var _data = {
                     userId: userId
                 };
 
                 var vm = this;
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/user/delete', { params: data }).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/user/delete', { params: _data }).then(function (response) {
                     if (response.status === 200) {
                         vm.users.splice(vm.userObjectIndex, 1);
                         vm.userObject = null;
                         vm.confirmationText = null;
                         vm.show = false;
                         vm.userObjectIndex = null;
-                        data = null;
+                        _data = null;
                     }
                 });
             } else {}
@@ -58552,13 +58552,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.userObjectIndex = objectIndex;
             this.show = true;
 
-            /*
-             axios.delete('admin/user/delete', {params: data})
-                 .then(function (response) {
-                     if (response.status === 200) {
-                         this.users.splice(objectIndex, 1);
-                     }
-                 });*/
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/user/delete', { params: data }).then(function (response) {
+                if (response.status === 200) {
+                    this.users.splice(objectIndex, 1);
+                }
+            });
         }
     }
 });

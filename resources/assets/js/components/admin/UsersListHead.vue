@@ -117,13 +117,13 @@
                 this.userObjectIndex = objectIndex;
                 this.show = true;
 
-                /*
+
                  axios.delete('admin/user/delete', {params: data})
                      .then(function (response) {
                          if (response.status === 200) {
                              this.users.splice(objectIndex, 1);
                          }
-                     });*/
+                     });
             }
         }
     }
