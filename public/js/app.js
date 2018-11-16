@@ -53765,6 +53765,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -53833,6 +53835,14 @@ var render = function() {
       _c(
         "a",
         {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.edit,
+              expression: "!edit"
+            }
+          ],
           staticClass:
             "btn btn-success m-btn m-btn--icon m-btn--pill profile__btn",
           on: {
@@ -53841,15 +53851,7 @@ var render = function() {
             }
           }
         },
-        [
-          _c("span", [
-            _c("i", { staticClass: "la la-plus" }),
-            _vm._v(" "),
-            !_vm.edit
-              ? _c("span", [_vm._v("New")])
-              : _c("span", [_vm._v("Close")])
-          ])
-        ]
+        [_vm._m(0)]
       )
     ]),
     _vm._v(" "),
@@ -53908,6 +53910,9 @@ var render = function() {
           on: {
             update: function($event) {
               _vm.updateData($event)
+            },
+            close: function($event) {
+              _vm.edit = false
             }
           }
         })
@@ -53916,7 +53921,18 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("New")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -54160,7 +54176,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54173,6 +54189,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
 //
 //
 //
@@ -54261,7 +54280,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             careerRoles: [],
             milestonesList: [],
             milestoneName: '',
-            careerRoleTitle: ''
+            careerRoleTitle: '',
+            showError: false
 
         };
     },
@@ -54271,9 +54291,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        checkError: function checkError() {},
         addList: function addList(value) {
-            this.milestonesList.push(value);
-            this.milestoneName = '';
+
+            if (this.milestoneName) {
+                this.milestonesList.push(value);
+                this.milestoneName = '';
+            }
         },
 
 
@@ -54302,23 +54326,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submit: function submit() {
             var _this2 = this;
 
-            var data = [{
-                title: this.title,
-                description: this.desc,
-                milestonesList: this.milestonesList
-            }];
+            if (this.desc && this.title) {
 
-            this.desc = '';
-            this.title = '';
-            this.milestonesList = '';
-            var vm = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/career/add', data).then(function (response) {
-                if (response.status === 200) {
+                var data = [{
+                    title: this.title,
+                    description: this.desc,
+                    milestonesList: this.milestonesList
+                }];
 
-                    _this2.showDismissibleAlert = true;
-                }
-            }).catch(function (error) {});
+                this.desc = '';
+                this.title = '';
+                this.milestonesList = '';
+                var vm = this;
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/career/add', data).then(function (response) {
+                    if (response.status === 200) {
+
+                        _this2.showDismissibleAlert = true;
+                    }
+                }).catch(function (error) {});
+            }
         }
+
     }
 });
 
@@ -54352,7 +54380,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control m-input",
-                attrs: { id: "title", placeholder: "Role" },
+                attrs: { id: "title", required: "", placeholder: "Role" },
                 domProps: { value: _vm.title },
                 on: {
                   input: function($event) {
@@ -54374,7 +54402,7 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("div", { staticClass: "col-9" }, [
-              _c("input", {
+              _c("textarea", {
                 directives: [
                   {
                     name: "model",
@@ -54384,7 +54412,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control m-input",
-                attrs: { id: "desc", placeholder: "title" },
+                attrs: { id: "desc", required: "", placeholder: "title" },
                 domProps: { value: _vm.desc },
                 on: {
                   input: function($event) {
@@ -59156,7 +59184,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59210,18 +59238,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "UserChildrenForm",
     props: ['userId'],
     data: function data() {
         return {
-            dateBorn: '',
-            childName: ''
+            dateBorn: null,
+
+            childName: null
+
         };
     },
 
     methods: {
+        closeForm: function closeForm() {
+            this.dateBorn = null;
+            this.childName = null;
+            this.$emit('close');
+        },
+        checkError: function checkError() {
+            if (this.dateBorn && this.childName) {
+
+                this.upload();
+            }
+        },
+
+
         upload: function upload() {
 
             var data = JSON.stringify({
@@ -59229,8 +59283,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 dateborn: this.dateBorn
 
             });
+
             var vm = this;
             axios.post('/user/' + vm.userId + '/update/child', data).then(function (response) {
+                vm.childName = null;
+                vm.errors = null;
+
+                vm.dateBorn = null;
                 if (vm.name !== null) {
                     var _data = response.data;
                     vm.$emit('update', _data);
@@ -59276,6 +59335,10 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control m-input",
+                  class: {
+                    "border border-danger": !this.dateBorn,
+                    "border border-success": this.dateBorn
+                  },
                   attrs: { required: "", type: "date" },
                   domProps: { value: _vm.dateBorn },
                   on: {
@@ -59309,6 +59372,10 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control m-input",
+                class: {
+                  "border border-danger": !this.childName,
+                  "border border-success": this.childName
+                },
                 attrs: {
                   required: "",
                   type: "text",
@@ -59340,9 +59407,27 @@ var render = function() {
                     {
                       staticClass:
                         "btn btn-success m-btn m-btn--icon m-btn--pill",
-                      on: { click: _vm.upload }
+                      on: {
+                        click: function($event) {
+                          _vm.closeForm()
+                        }
+                      }
                     },
                     [_vm._m(1)]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "btn btn-success m-btn m-btn--icon m-btn--pill",
+                      on: {
+                        click: function($event) {
+                          _vm.checkError()
+                        }
+                      }
+                    },
+                    [_vm._m(2)]
                   )
                 ])
               ])
@@ -59362,6 +59447,16 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text" }, [
         _c("i", { staticClass: "la la-calendar-check-o" })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-minus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Close")])
     ])
   },
   function() {
