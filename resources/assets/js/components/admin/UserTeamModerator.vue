@@ -71,18 +71,22 @@
                 this.teamId = event.target.value;
             },
             submit() {
-                let data = JSON.stringify({
-                    userId: this.userId,
-                    teamId: this.teamId,
+                if (this.userId && this.teamId) {
 
-                });
-                axios.post('/admin/team/moderator/add', data)
-                    .then(response => {
+                    let data = JSON.stringify({
+                        userId: this.userId,
+                        teamId: this.teamId,
+
+                    });
+                    axios.post('/admin/team/moderator/add', data)
+                        .then(response => {
 
 
-                    }).catch(error => {
-                });
+                        }).catch(error => {
+                    });
+                }
             }
+
 
         }
     }

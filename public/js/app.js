@@ -57659,7 +57659,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57746,12 +57746,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.teamId = event.target.value;
         },
         submit: function submit() {
-            var data = JSON.stringify({
-                userId: this.userId,
-                teamId: this.teamId
+            if (this.userId && this.teamId) {
 
-            });
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/team/moderator/add', data).then(function (response) {}).catch(function (error) {});
+                var data = JSON.stringify({
+                    userId: this.userId,
+                    teamId: this.teamId
+
+                });
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/team/moderator/add', data).then(function (response) {}).catch(function (error) {});
+            }
         }
     }
 });
