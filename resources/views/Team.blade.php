@@ -13,6 +13,7 @@
 @section('content-body')
 
     <div id="app">
+        <admin-view-team></admin-view-team>
     </div>
 
 @endsection

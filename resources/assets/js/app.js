@@ -59,6 +59,10 @@ Vue.component('strength-category-view',require('./components/category/StrengthCa
 Vue.component('strength-component',require('./components/category/StrengthCategoryComponent'));
 Vue.component('category-view',require('./components/category/CategoryView'));
 Vue.component('category-component',require('./components/category/CategoryComponent'));
+
+Vue.component('admin-view-team', require('./components/admin/team/TeamView'));
+Vue.component('admin-view-department', require('./components/admin/department/DepartmentView'));
+
 Vue.component('admin-view-user-strength', require('./components/UserStrengthView'));
 Vue.component('admin-user-strength', require('./components/UserStrengthComponent'));
 Vue.component('department-user-strength-category', require('./components/UsersStrengthView/MainView'));
