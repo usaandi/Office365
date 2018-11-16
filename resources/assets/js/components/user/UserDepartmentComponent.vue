@@ -75,12 +75,16 @@
             },
 
             submit: function () {
-                let vm = this;
-                this.onClick();
-                axios.post('/user/' + this.userdata.id + '/department', {data: this.selectedDepartmentName})
-                    .then(response => {
-                        vm.$emit('select-updated', vm.selectedDepartmentName);
-                    });
+                if (this.selected) {
+
+                    let vm = this;
+                    this.onClick();
+                    axios.post('/user/' + this.userdata.id + '/department', {data: this.selectedDepartmentName})
+                        .then(response => {
+                            vm.$emit('select-updated', vm.selectedDepartmentName);
+                        });
+                }
+
 
             },
             updateOptions(newOption) {

@@ -52881,7 +52881,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52973,11 +52973,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         submit: function submit() {
-            var vm = this;
-            this.onClick();
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userdata.id + '/department', { data: this.selectedDepartmentName }).then(function (response) {
-                vm.$emit('select-updated', vm.selectedDepartmentName);
-            });
+            if (this.selected) {
+
+                var vm = this;
+                this.onClick();
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userdata.id + '/department', { data: this.selectedDepartmentName }).then(function (response) {
+                    vm.$emit('select-updated', vm.selectedDepartmentName);
+                });
+            }
         },
         updateOptions: function updateOptions(newOption) {
             this.department = newOption;
@@ -53161,7 +53164,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53255,12 +53258,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         submit: function submit() {
-            var vm = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userdata.id + '/team', { data: this.selectedTeamName }).then(function (response) {
-                vm.$emit('select-updated', vm.selectedTeamName);
-                vm.$emit('close');
-                vm.team = '';
-            });
+            if (this.selected) {
+
+                var vm = this;
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.userdata.id + '/team', { data: this.selectedTeamName }).then(function (response) {
+                    vm.$emit('select-updated', vm.selectedTeamName);
+                    vm.$emit('close');
+                    vm.team = '';
+                });
+            }
         },
 
         updateOptions: function updateOptions(newOption) {
