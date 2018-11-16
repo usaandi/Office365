@@ -2,11 +2,10 @@
     <div>
         <h3 class="profile__subtitle">Hobbies</h3>
         <div class="m-subheader__action">
-            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill m--margin-bottom-15">
+            <a @click="edit=!edit" v-show="!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill m--margin-bottom-15">
               <span>
                     <i class="la la-plus"></i>
-                    <span v-if="edit">Close</span>
-                     <span v-else="!edit">Edit</span>
+                    <span >Edit</span>
               </span>
             </a>
         </div>
@@ -16,6 +15,7 @@
                         class="la la-close"></i></button></li>
         </ul>
         <user-hobby-form v-show="edit"
+                         @close="edit=false"
                          @hobbyName="upload($event)"
         ></user-hobby-form>
     </div>

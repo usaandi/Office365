@@ -53561,6 +53561,14 @@ var render = function() {
         _c(
           "a",
           {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.edit,
+                expression: "!edit"
+              }
+            ],
             staticClass:
               "btn btn-success m-btn m-btn--icon m-btn--pill m--margin-bottom-15",
             on: {
@@ -53569,15 +53577,7 @@ var render = function() {
               }
             }
           },
-          [
-            _c("span", [
-              _c("i", { staticClass: "la la-plus" }),
-              _vm._v(" "),
-              _vm.edit
-                ? _c("span", [_vm._v("Close")])
-                : _c("span", [_vm._v("Edit")])
-            ])
-          ]
+          [_vm._m(0)]
         )
       ]),
       _vm._v(" "),
@@ -53625,6 +53625,9 @@ var render = function() {
           }
         ],
         on: {
+          close: function($event) {
+            _vm.edit = false
+          },
           hobbyName: function($event) {
             _vm.upload($event)
           }
@@ -53634,7 +53637,18 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Edit")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -59573,7 +59587,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59584,6 +59598,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59714,11 +59735,25 @@ var render = function() {
                       "btn btn-success m-btn m-btn--icon m-btn--pill",
                     on: {
                       click: function($event) {
-                        _vm.submit()
+                        _vm.$emit("close")
                       }
                     }
                   },
                   [_vm._m(0)]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn btn-success m-btn m-btn--icon m-btn--pill",
+                    on: {
+                      click: function($event) {
+                        _vm.submit()
+                      }
+                    }
+                  },
+                  [_vm._m(1)]
                 )
               ])
             ])
@@ -59729,6 +59764,16 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Close")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
