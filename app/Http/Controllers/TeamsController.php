@@ -18,12 +18,16 @@ class TeamsController extends Controller
     {
         try {
 
+
             return view('team.teamView');
         } catch (\Exception $e) {
         }
     }public function viewAdminTeam()
     {
         try {
+            $auth =\Auth::user();
+            $this->authorize('admin',$auth);
+
 
             return view('Team');
         } catch (\Exception $e) {
