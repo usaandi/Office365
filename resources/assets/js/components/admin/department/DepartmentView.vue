@@ -4,6 +4,7 @@
 
 <script>
     export default {
+        props:['departments'],
         name: "DepartmentView"
     }
 </script>

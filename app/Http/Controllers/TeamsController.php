@@ -27,9 +27,9 @@ class TeamsController extends Controller
         try {
             $auth =\Auth::user();
             $this->authorize('admin',$auth);
+            $teams = Team::get();
 
-
-            return view('Team');
+            return view('Team')->with(['teams'=>$teams]);
         } catch (\Exception $e) {
         }
     }

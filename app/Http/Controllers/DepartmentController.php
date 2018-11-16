@@ -14,8 +14,9 @@ class DepartmentController extends Controller
         try {
             $auth =\Auth::user();
             $this->authorize('admin',$auth);
+            $departments = Department::get();
 
-            return view('Department')->with(['departments'=> []]);
+            return view('Department')->with(['departments'=> $departments]);
 
         } catch (\Exception $e) {
         }

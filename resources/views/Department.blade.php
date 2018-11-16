@@ -13,7 +13,7 @@
 @section('content-body')
 
     <div id="app">
-        <admin-view-department></admin-view-department>
+        <admin-view-department :departments='@json($departments)'></admin-view-department>
     </div>
 
 @endsection
