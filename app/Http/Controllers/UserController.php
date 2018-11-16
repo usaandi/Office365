@@ -158,13 +158,12 @@ class UserController extends Controller
 
                 if (!$user->hasRole($userRole)) {
 
-                        if($user->hasRole('Admin')){
-                            $user->assignRole($userRole);
-                        }
-                        else {
-                            $user->removeRole($user->roles()->first()->name);
-                            $user->assignRole($userRole);
-                        }
+                    if ($user->hasRole('Admin')) {
+                        $user->assignRole($userRole);
+                    } else {
+                        $user->removeRole($user->roles()->first()->name);
+                        $user->assignRole($userRole);
+                    }
 
                 }
 
@@ -309,6 +308,17 @@ class UserController extends Controller
 
         } catch (\Exception $exception) {
             return redirect('/unauthorized');
+        }
+    }
+
+    public function users()
+    {
+        try {
+            $users = User::with('departments')->get();
+
+
+            return $users;
+        } catch (\Exception $e) {
         }
     }
 

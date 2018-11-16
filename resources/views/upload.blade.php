@@ -16,20 +16,7 @@
 @endsection
 
 @section('content-body')
-    <style>
-        input, select, textarea{
-            width:200px;
-            border:1px solid #babacc;
-            box-sizing:border-box;
 
-        }
-        .form-group{
-
-        }
-        label {
-            width: 100px;
-        }
-    </style>
     <form action="{{route('upload')}}" enctype="multipart/form-data" method="post">
             @csrf
 

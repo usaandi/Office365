@@ -32,7 +32,7 @@ class StrengthController extends Controller
     {
         try {
             $array=[];
-
+            //TODO
             $categories = Category::with('strengths')->get();
             foreach ($categories as $i => $category){
                 $array[$i]=[

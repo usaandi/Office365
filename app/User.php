@@ -41,6 +41,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserStrength::class);
     }
+
+    public function departments()
+    {
+        return $this->belongsToMany(Department::class,'users_departments');
+    }
     
     public function department() {
         return $this->hasOne('App\UserDepartment', 'user_id');
