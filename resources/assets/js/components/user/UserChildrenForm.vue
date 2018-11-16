@@ -2,11 +2,12 @@
     <div>
         <div class="profile__form">
             <form class="m-form">
+
                 <div class="m-portlet__body">
-                    <div class="form-group m-form__group row"><label  class="col-3 col-form-label">Year born</label>
+                    <div class="form-group m-form__group row"><label class="col-3 col-form-label">Year born</label>
                         <div class="col-9">
                             <div class="input-group date">
-                                <input  class="form-control m-input" required type="date" v-model="dateBorn">
+                                <input class="form-control m-input"  :class="{'border border-danger':!this.dateBorn,'border border-success': this.dateBorn }" required type="date" v-model="dateBorn">
                                 <div class="input-group-append">
                                               <span class="input-group-text">
                                    <i class="la la-calendar-check-o"></i>
@@ -15,8 +16,10 @@
                             </div>
                         </div>
                     </div>
-                    <div  class="form-group m-form__group row"><label  class="col-3 col-form-label">Child name</label>
-                        <div class="col-9"><input v-model="childName" required type="text" placeholder="Child name" class="form-control m-input"></div>
+                    <div class="form-group m-form__group row"><label class="col-3 col-form-label">Child name</label>
+                        <div class="col-9"><input :class="{'border border-danger':!this.childName,'border border-success': this.childName }" v-model="childName" required type="text"
+                                                  placeholder="Child name"
+                                                  class="form-control m-input"></div>
                     </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
@@ -25,13 +28,21 @@
                             <div class="col-sm-3 col-xs-12"></div>
                             <div class="col-sm-9 col-xs-12">
                                 <div class="profile-timeline__action">
-                                    <a @click="upload" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                                    <a @click="closeForm()" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                                            <span>
+                                          <i class="la la-minus"></i>
+                                          <span>Close</span>
+                                    </span>
+                                    </a>
+                                    <a @click="checkError()" class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                             <span>
                                           <i class="la la-plus"></i>
                                           <span>Add new</span>
                                     </span>
                                     </a>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -44,28 +55,50 @@
 <script>
     export default {
         name: "UserChildrenForm",
-        props:['userId'],
-        data(){
+        props: ['userId'],
+        data() {
             return {
-                dateBorn:'',
-                childName:'',
+                dateBorn: null,
+
+                childName: null,
+
             }
 
         },
-        methods:{
+        methods: {
+            closeForm(){
+              this.dateBorn=null;
+              this.childName=null;
+              this.$emit('close');
+            },
+            checkError(){
+                if(this.dateBorn && this.childName){
+
+                    this.upload();
+                }
+
+            },
+
+
             upload: function () {
+
 
                 let data = JSON.stringify({
                     childname: this.childName,
                     dateborn: this.dateBorn,
 
                 });
+
                 let vm = this;
                 axios.post('/user/' + vm.userId + '/update/child', data)
                     .then(response => {
+                        vm.childName = null;
+                        vm.errors=null;
+
+                        vm.dateBorn = null;
                         if (vm.name !== null) {
-                            let data =response.data;
-                            vm.$emit('update',data)
+                            let data = response.data;
+                            vm.$emit('update', data)
 
                         }
 

@@ -2,11 +2,11 @@
     <div>
         <h3 class="profile__subtitle">Children</h3>
         <div class="m-subheader__action">
-            <a @click="edit=!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
+            <a @click="edit=!edit" v-show="!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
               <span>
 										<i class="la la-plus"></i>
-										<span v-if="!edit">New</span>
-                                        <span v-else="edit">Close</span>
+										<span>New</span>
+
               </span>
             </a>
         </div>
@@ -22,7 +22,9 @@
                 </div>
             </div>
             <user-child-form v-show="edit" :userId="userid"
-            @update="updateData($event)"></user-child-form>
+            @update="updateData($event)"
+                             @close="edit=false"
+            ></user-child-form>
         </div>
     </div>
 
