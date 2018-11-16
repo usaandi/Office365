@@ -9,6 +9,17 @@ use Validator;
 class DepartmentController extends Controller
 {
 
+    public function viewAdminDepartment()
+    {
+        try {
+            $auth =\Auth::user();
+            $this->authorize('admin',$auth);
+
+            return view('Department')->with(['departments'=> []]);
+
+        } catch (\Exception $e) {
+        }
+    }
 
     public function userDepartment($id)
     {

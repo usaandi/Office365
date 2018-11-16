@@ -21,6 +21,13 @@ class TeamsController extends Controller
             return view('team.teamView');
         } catch (\Exception $e) {
         }
+    }public function viewAdminTeam()
+    {
+        try {
+
+            return view('Team');
+        } catch (\Exception $e) {
+        }
     }
 
     public function createTeam(Request $request)
