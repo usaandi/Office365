@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal v-show="show" >
+        <modal v-show="show">
 
             <h3 slot="header">
                 Department
@@ -9,11 +9,10 @@
             <div slot="body">
 
 
-
             </div>
             <div slot="footer">
                 <button type="button" class="btn btn-success" @click="">CANCEL</button>
-                <button type="submit" class="btn btn-danger" @click="">SUBMIT</button>
+                <button type="submit" class="btn btn-success" @click="">SUBMIT</button>
             </div>
         </modal>
         <div class="m-portlet__foot m-portlet__foot--fit">
@@ -50,7 +49,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr is="admin-department-body" v-for="(department, index) in departments"
+
+                        :key="index"
+                        :department="department"
+                        :index="index"
+                        @update="update($event)"
+                    >
 
 
                     </tr>
@@ -65,9 +70,21 @@
     export default {
         props: ['departments'],
         name: "DepartmentView",
-        data(){
-            return{
-                show:false,
+        data() {
+            return {
+                show: false,
+                updateObject: {}
+            }
+        },
+        watch: {
+            updateObject(value) {
+                this.updateObject = value;
+            }
+        },
+        methods: {
+            update(object) {
+                this.updateObject = object;
+                console.log(this.updateObject);
             }
         }
     }
