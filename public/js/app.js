@@ -61720,7 +61720,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61801,12 +61801,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['departments'],
+    props: ['prop'],
     name: "DepartmentView",
     data: function data() {
         return {
             show: false,
-            updateObject: {}
+            updateObject: {},
+            departments: this.prop
         };
     },
 
@@ -61818,7 +61819,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         update: function update(object) {
             this.updateObject = object;
-            console.log(this.updateObject);
+
+            this.show = true;
+        },
+        close: function close() {
+            if (this.show) {
+
+                this.updateObject = {};
+                this.show = false;
+            }
         }
     }
 });
@@ -61848,7 +61857,11 @@ var render = function() {
         },
         [
           _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-            _vm._v("\n            Department\n        ")
+            _vm._v(
+              "\n            " +
+                _vm._s(_vm.updateObject.department_name) +
+                "\n        "
+            )
           ]),
           _vm._v(" "),
           _c("div", { attrs: { slot: "body" }, slot: "body" }),
@@ -61859,7 +61872,7 @@ var render = function() {
               {
                 staticClass: "btn btn-success",
                 attrs: { type: "button" },
-                on: { click: function($event) {} }
+                on: { click: _vm.close }
               },
               [_vm._v("CANCEL")]
             ),
@@ -63026,7 +63039,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask[data-v-3cb774f3] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-3cb774f3] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-3cb774f3] {\n    width: 500px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.modal-header h3[data-v-3cb774f3] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-3cb774f3] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-3cb774f3] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-3cb774f3],\n.modal-leave-active .modal-container[data-v-3cb774f3] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask[data-v-3cb774f3] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-3cb774f3] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-3cb774f3] {\n    width: 400px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.modal-header h3[data-v-3cb774f3] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-3cb774f3] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-3cb774f3] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-3cb774f3],\n.modal-leave-active .modal-container[data-v-3cb774f3] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 

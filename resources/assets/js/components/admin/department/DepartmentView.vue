@@ -3,7 +3,7 @@
         <modal v-show="show">
 
             <h3 slot="header">
-                Department
+                {{updateObject.department_name}}
             </h3>
 
             <div slot="body">
@@ -11,7 +11,7 @@
 
             </div>
             <div slot="footer">
-                <button type="button" class="btn btn-success" @click="">CANCEL</button>
+                <button type="button" class="btn btn-success" @click="close">CANCEL</button>
                 <button type="submit" class="btn btn-success" @click="">SUBMIT</button>
             </div>
         </modal>
@@ -68,12 +68,13 @@
 
 <script>
     export default {
-        props: ['departments'],
+        props: ['prop'],
         name: "DepartmentView",
         data() {
             return {
                 show: false,
-                updateObject: {}
+                updateObject: {},
+                departments:this.prop
             }
         },
         watch: {
@@ -84,7 +85,16 @@
         methods: {
             update(object) {
                 this.updateObject = object;
-                console.log(this.updateObject);
+
+                this.show=true;
+            },
+
+            close(){
+                if(this.show){
+
+                    this.updateObject={};
+                    this.show=false;
+                }
             }
         }
     }
