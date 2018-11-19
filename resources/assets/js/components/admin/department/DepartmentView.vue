@@ -6,7 +6,17 @@
                 {{updateObject.department_name}}
             </h3>
 
-            <div slot="body">
+            <div slot="body" class="profile__form">
+
+                <div class="m-portlet__body">
+                    <div class="form-group m-form__group row">
+                        <div class="m--margin-left-10 col-9">
+                            <input type="text"
+                                   placeholder="Hobby" v-model="updateObject.department_name"
+                                   class="form-control m-input">
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
@@ -74,7 +84,7 @@
             return {
                 show: false,
                 updateObject: {},
-                departments:this.prop
+                departments: this.prop
             }
         },
         watch: {
@@ -84,16 +94,22 @@
         },
         methods: {
             update(object) {
-                this.updateObject = object;
+                for (let i = 0; i < this.departments.length; i++) {
+                    if (this.departments[i].id === object.id) {
+                        this.updateObject = this.departments[i];
+                        console.log('hey im here');
 
-                this.show=true;
+                    }
+                }
+
+                this.show = true;
             },
 
-            close(){
-                if(this.show){
+            close() {
+                if (this.show) {
 
-                    this.updateObject={};
-                    this.show=false;
+                    this.updateObject = {};
+                    this.show = false;
                 }
             }
         }

@@ -61720,7 +61720,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61731,6 +61731,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61818,7 +61828,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         update: function update(object) {
-            this.updateObject = object;
+            for (var i = 0; i < this.departments.length; i++) {
+                if (this.departments[i].id === object.id) {
+                    this.updateObject = this.departments[i];
+                    console.log('hey im here');
+                }
+            }
 
             this.show = true;
         },
@@ -61864,7 +61879,47 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { attrs: { slot: "body" }, slot: "body" }),
+          _c(
+            "div",
+            {
+              staticClass: "profile__form",
+              attrs: { slot: "body" },
+              slot: "body"
+            },
+            [
+              _c("div", { staticClass: "m-portlet__body" }, [
+                _c("div", { staticClass: "form-group m-form__group row" }, [
+                  _c("div", { staticClass: "m--margin-left-10 col-9" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.updateObject.department_name,
+                          expression: "updateObject.department_name"
+                        }
+                      ],
+                      staticClass: "form-control m-input",
+                      attrs: { type: "text", placeholder: "Hobby" },
+                      domProps: { value: _vm.updateObject.department_name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.updateObject,
+                            "department_name",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
             _c(
