@@ -12,11 +12,11 @@ class DepartmentController extends Controller
     public function viewAdminDepartment()
     {
         try {
-            $auth =\Auth::user();
-            $this->authorize('admin',$auth);
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
             $departments = Department::get();
 
-            return view('Department')->with(['departments'=> $departments]);
+            return view('Department')->with(['departments' => $departments]);
 
         } catch (\Exception $e) {
         }
@@ -94,11 +94,11 @@ class DepartmentController extends Controller
 
                 if ($department === null) {
 
-                   $newDepartment = Department::create(['department_name' => $departmentName,
+                    $newDepartment = Department::create(['department_name' => $departmentName,
                         'department_abbr' => $departmentAbbr, 'department_info' => $description]);
-                    return view('team.departmentAdd',with(['success' => $newDepartment->department_name]));
+                    return redirect('admin/department/view');
                 }
-                    return view('team.departmentAdd', with(['error'=> $department->department_name]));
+                return view('team.departmentAdd', with(['error' => $department->department_name]));
 
             }
 
