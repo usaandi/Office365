@@ -304,14 +304,10 @@
                                                         class="m-menu__link-icon flaticon-graphic-2"></i><span
                                                         class="m-menu__link-text">Add Career template</span></a></li>
                                         <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="{{route('departmentadd')}}" class="m-menu__link "><i
+                                                    href="{{route('adminDepartmentView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-analytics"></i><span
-                                                        class="m-menu__link-text">Add Department</span></a></li>
-                                        <li
-                                                class="m-menu__item " aria-haspopup="true"><a
-                                                    href="{{route('useradd')}}" class="m-menu__link "><i
-                                                        class="m-menu__link-icon flaticon-notes"></i><span
-                                                        class="m-menu__link-text">Add User</span></a></li>
+                                                        class="m-menu__link-text">Department List</span></a></li>
+
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnView')}}" class="m-menu__link "><i
