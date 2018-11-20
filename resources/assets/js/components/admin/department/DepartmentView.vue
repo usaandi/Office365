@@ -3,28 +3,30 @@
         <modal v-show="show">
 
             <h3 slot="header">
-                {{updateObject.department_name}}
+                Department: {{departmentName}}
             </h3>
 
-            <div slot="body" class="profile__form">
+            <div slot="body" class="admin__form admin__form--clear">
 
                 <div class="m-portlet__body">
-                    <div class="form-group m-form__group row">
-                        <div class="m--margin-left-10 col-9">
-                            <input type="text"
-                                   placeholder="Hobby" v-model="updateObject.department_name"
-                                   class="form-control m-input">
-                        </div>
+                    <div class="form-group m-form__group row"><label for="example-text-input" class="col-sm-3 col-xs-12  col-form-label">Department</label>
+                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentName" type="text" placeholder="Department Name" class="form-control m-input" v-model="departmentName"></div>
+                    </div>
+                    <div class="form-group m-form__group row"><label for="example-text-input" class="col-sm-3 col-xs-12  col-form-label">Abbreviation</label>
+                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentAbbr" type="text" placeholder="Department abbreviation" v-model="departmentAbbr" class="form-control m-input"></div>
+                    </div>
+                    <div class="form-group m-form__group row"><label for="exampleTextarea" class="col-sm-3 col-xs-12 col-form-label">Description</label>
+                        <div class="col-sm-9 col-xs-12"><textarea required="" maxlength="1000" id="exampleTextarea" rows="3" class="form-control m-input" v-model="departmentDesc" name="description"></textarea></div>
                     </div>
                 </div>
-
 
             </div>
             <div slot="footer">
                 <button type="button" class="btn btn-success" @click="close">CANCEL</button>
-                <button type="submit" class="btn btn-success" @click="">SUBMIT</button>
+                <button type="submit" class="btn btn-success" @click="submit">SUBMIT</button>
             </div>
         </modal>
+
         <div class="m-portlet__foot m-portlet__foot--fit">
             <div class="m-form__actions">
                 <div class="row m--margin-bottom-15">
@@ -37,7 +39,6 @@
                                         <span>Add Department</span>
                                     </span>
                             </a>
-
                         </div>
                     </div>
                 </div>
@@ -64,7 +65,8 @@
                         :key="index"
                         :department="department"
                         :index="index"
-                        @update="update($event)"
+                        @index="getIndex($event)"
+                        @update="edit($event)"
                     >
 
 
@@ -84,23 +86,46 @@
             return {
                 show: false,
                 updateObject: {},
+
+                departmentAbbr: null,
+                departmentDesc: null,
+                departmentName: null,
+                departmentId: null,
+                departmentIndex: null,
+
                 departments: this.prop
             }
         },
         watch: {
             updateObject(value) {
                 this.updateObject = value;
+            },
+            departments(value) {
             }
         },
         methods: {
-            update(object) {
-                for (let i = 0; i < this.departments.length; i++) {
-                    if (this.departments[i].id === object.id) {
-                        this.updateObject = this.departments[i];
-                        console.log('hey im here');
+            getIndex(index) {
+                this.departmentIndex = index;
 
-                    }
+            },
+            submit() {
+                if(this.departmentAbbr&&this.departmentDesc&&this.departmentName){
+                   let departmentUpdate = {
+                       department_abbr: this.departmentAbbr,
+                       department_info:this.departmentDesc,
+                       department_name:this.departmentName
+                            };
+                    this.departments[this.departmentIndex]= departmentUpdate;
+                    this.show=false;
                 }
+
+
+            },
+            edit(object) {
+                this.departmentAbbr = object.department_abbr;
+                this.departmentDesc = object.department_info;
+                this.departmentName = object.department_name;
+                this.departmentId = object.id;
 
                 this.show = true;
             },
@@ -108,6 +133,11 @@
             close() {
                 if (this.show) {
 
+                    this.departmentAbbr = null;
+                    this.departmentDesc = null;
+                    this.departmentName = null;
+                    this.departmentId = null;
+                    this.departmentIndex = null;
                     this.updateObject = {};
                     this.show = false;
                 }

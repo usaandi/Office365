@@ -59676,7 +59676,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59687,6 +59687,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -61753,7 +61754,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61842,6 +61843,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['prop'],
@@ -61850,6 +61853,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             show: false,
             updateObject: {},
+
+            departmentAbbr: null,
+            departmentDesc: null,
+            departmentName: null,
+            departmentId: null,
+            departmentIndex: null,
+
             departments: this.prop
         };
     },
@@ -61857,22 +61867,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         updateObject: function updateObject(value) {
             this.updateObject = value;
-        }
+        },
+        departments: function departments(value) {}
     },
     methods: {
-        update: function update(object) {
-            for (var i = 0; i < this.departments.length; i++) {
-                if (this.departments[i].id === object.id) {
-                    this.updateObject = this.departments[i];
-                    console.log('hey im here');
-                }
+        getIndex: function getIndex(index) {
+            this.departmentIndex = index;
+        },
+        submit: function submit() {
+            if (this.departmentAbbr && this.departmentDesc && this.departmentName) {
+                var departmentUpdate = {
+                    department_abbr: this.departmentAbbr,
+                    department_info: this.departmentDesc,
+                    department_name: this.departmentName
+                };
+                this.departments[this.departmentIndex] = departmentUpdate;
+                this.show = false;
             }
+        },
+        edit: function edit(object) {
+            this.departmentAbbr = object.department_abbr;
+            this.departmentDesc = object.department_info;
+            this.departmentName = object.department_name;
+            this.departmentId = object.id;
 
             this.show = true;
         },
         close: function close() {
             if (this.show) {
 
+                this.departmentAbbr = null;
+                this.departmentDesc = null;
+                this.departmentName = null;
+                this.departmentId = null;
+                this.departmentIndex = null;
                 this.updateObject = {};
                 this.show = false;
             }
@@ -61906,8 +61934,8 @@ var render = function() {
         [
           _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
             _vm._v(
-              "\n            " +
-                _vm._s(_vm.updateObject.department_name) +
+              "\n            Department: " +
+                _vm._s(_vm.departmentName) +
                 "\n        "
             )
           ]),
@@ -61915,36 +61943,127 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "profile__form",
+              staticClass: "admin__form admin__form--clear",
               attrs: { slot: "body" },
               slot: "body"
             },
             [
               _c("div", { staticClass: "m-portlet__body" }, [
                 _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c("div", { staticClass: "m--margin-left-10 col-9" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-xs-12  col-form-label",
+                      attrs: { for: "example-text-input" }
+                    },
+                    [_vm._v("Department")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.updateObject.department_name,
-                          expression: "updateObject.department_name"
+                          value: _vm.departmentName,
+                          expression: "departmentName"
                         }
                       ],
                       staticClass: "form-control m-input",
-                      attrs: { type: "text", placeholder: "Hobby" },
-                      domProps: { value: _vm.updateObject.department_name },
+                      attrs: {
+                        required: "",
+                        name: "departmentName",
+                        type: "text",
+                        placeholder: "Department Name"
+                      },
+                      domProps: { value: _vm.departmentName },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(
-                            _vm.updateObject,
-                            "department_name",
-                            $event.target.value
-                          )
+                          _vm.departmentName = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group m-form__group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-xs-12  col-form-label",
+                      attrs: { for: "example-text-input" }
+                    },
+                    [_vm._v("Abbreviation")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.departmentAbbr,
+                          expression: "departmentAbbr"
+                        }
+                      ],
+                      staticClass: "form-control m-input",
+                      attrs: {
+                        required: "",
+                        name: "departmentAbbr",
+                        type: "text",
+                        placeholder: "Department abbreviation"
+                      },
+                      domProps: { value: _vm.departmentAbbr },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.departmentAbbr = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group m-form__group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-xs-12 col-form-label",
+                      attrs: { for: "exampleTextarea" }
+                    },
+                    [_vm._v("Description")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.departmentDesc,
+                          expression: "departmentDesc"
+                        }
+                      ],
+                      staticClass: "form-control m-input",
+                      attrs: {
+                        required: "",
+                        maxlength: "1000",
+                        id: "exampleTextarea",
+                        rows: "3",
+                        name: "description"
+                      },
+                      domProps: { value: _vm.departmentDesc },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.departmentDesc = $event.target.value
                         }
                       }
                     })
@@ -61970,7 +62089,7 @@ var render = function() {
               {
                 staticClass: "btn btn-success",
                 attrs: { type: "submit" },
-                on: { click: function($event) {} }
+                on: { click: _vm.submit }
               },
               [_vm._v("SUBMIT")]
             )
@@ -62015,8 +62134,11 @@ var render = function() {
                   tag: "tr",
                   attrs: { department: department, index: index },
                   on: {
+                    index: function($event) {
+                      _vm.getIndex($event)
+                    },
                     update: function($event) {
-                      _vm.update($event)
+                      _vm.edit($event)
                     }
                   }
                 })
@@ -62156,7 +62278,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62192,9 +62314,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    watch: {
+        department: function department(value) {
+            this.selectedDepartment = value;
+        }
+    },
     methods: {
         edit: function edit() {
             this.$emit('update', this.selectedDepartment);
+            this.$emit('index', this.index);
         }
     }
 });
@@ -63130,7 +63258,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask[data-v-3cb774f3] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-3cb774f3] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-3cb774f3] {\n    width: 400px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.modal-header h3[data-v-3cb774f3] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-3cb774f3] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-3cb774f3] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-3cb774f3],\n.modal-leave-active .modal-container[data-v-3cb774f3] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask[data-v-3cb774f3] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-3cb774f3] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-3cb774f3] {\n    width: 45%;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.modal-header h3[data-v-3cb774f3] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-3cb774f3] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-3cb774f3] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-3cb774f3],\n.modal-leave-active .modal-container[data-v-3cb774f3] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 
