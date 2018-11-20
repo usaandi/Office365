@@ -133,7 +133,15 @@
                     let vm = this;
 
                     axios.post('/admin/department/update/' + vm.departmentId, data).then(response => {
+                        this.departments[this.departmentIndex]=response.data;
 
+                        this.departmentAbbr = null;
+                        this.departmentDesc = null;
+                        this.departmentName = null;
+                        this.departmentId = null;
+                        this.departmentIndex = null;
+                        this.updateObject = {};
+                        this.show = false;
                     });
 
                     this.show = false;
@@ -152,14 +160,13 @@
 
             close() {
                 if (this.show) {
-
+                    this.show = false;
                     this.departmentAbbr = null;
                     this.departmentDesc = null;
                     this.departmentName = null;
                     this.departmentId = null;
                     this.departmentIndex = null;
                     this.updateObject = {};
-                    this.show = false;
                 }
             }
         }
