@@ -62,6 +62,35 @@ class DepartmentController extends Controller
 
     }
 
+    public function update(Request $request, $id)
+    {
+        try {
+            $data = $request->all();
+
+            $rules = [
+                'department_name'=>'required|max:255',
+                'department_info'=>'required|max:5000',
+                'department_abbr'=>'required|max:255',
+            ];
+            $validator = Validator::make($data,$rules);
+
+            if($validator->passes()){
+
+                $department = Department::find($id);
+
+               $updateDepartment = $department->update([
+                    'department_name'=>$data['department_name'],
+                    'department_info' => $data['department_info'],
+                    'department_abbr'=>$data['department_abbr']
+                ]);
+               return response(json_encode($updateDepartment),200);
+            }
+
+        } catch (\Exception $e) {
+
+        }
+    }
+
     public function view()
     {
 
