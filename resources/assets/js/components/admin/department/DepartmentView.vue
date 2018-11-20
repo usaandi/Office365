@@ -2,21 +2,33 @@
     <div>
         <modal v-show="show">
 
+
             <h3 slot="header">
                 Department: {{departmentName}}
             </h3>
 
             <div slot="body" class="admin__form admin__form--clear">
-
                 <div class="m-portlet__body">
-                    <div class="form-group m-form__group row"><label for="example-text-input" class="col-sm-3 col-xs-12  col-form-label">Department</label>
-                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentName" type="text" placeholder="Department Name" class="form-control m-input" v-model="departmentName"></div>
+                    <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                     class="col-sm-3 col-xs-12  col-form-label">Department</label>
+                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentName" type="text"
+                                                                placeholder="Department Name"
+                                                                class="form-control m-input"
+                                                                v-model="departmentName"></div>
                     </div>
-                    <div class="form-group m-form__group row"><label for="example-text-input" class="col-sm-3 col-xs-12  col-form-label">Abbreviation</label>
-                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentAbbr" type="text" placeholder="Department abbreviation" v-model="departmentAbbr" class="form-control m-input"></div>
+                    <div class="form-group m-form__group row"><label for="example-text-input"
+                                                                     class="col-sm-3 col-xs-12  col-form-label">Abbreviation</label>
+                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentAbbr" type="text"
+                                                                placeholder="Department abbreviation"
+                                                                v-model="departmentAbbr"
+                                                                class="form-control m-input"></div>
                     </div>
-                    <div class="form-group m-form__group row"><label for="exampleTextarea" class="col-sm-3 col-xs-12 col-form-label">Description</label>
-                        <div class="col-sm-9 col-xs-12"><textarea required="" maxlength="1000" id="exampleTextarea" rows="3" class="form-control m-input" v-model="departmentDesc" name="description"></textarea></div>
+                    <div class="form-group m-form__group row"><label for="exampleTextarea"
+                                                                     class="col-sm-3 col-xs-12 col-form-label">Description</label>
+                        <div class="col-sm-9 col-xs-12"><textarea required="" maxlength="1000" id="exampleTextarea"
+                                                                  rows="3" class="form-control m-input"
+                                                                  v-model="departmentDesc"
+                                                                  name="description"></textarea></div>
                     </div>
                 </div>
 
@@ -79,6 +91,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         props: ['prop'],
         name: "DepartmentView",
@@ -109,14 +123,20 @@
 
             },
             submit() {
-                if(this.departmentAbbr&&this.departmentDesc&&this.departmentName){
-                   let departmentUpdate = {
-                       department_abbr: this.departmentAbbr,
-                       department_info:this.departmentDesc,
-                       department_name:this.departmentName
-                            };
-                    this.departments[this.departmentIndex]= departmentUpdate;
-                    this.show=false;
+                if (this.departmentAbbr && this.departmentDesc && this.departmentName) {
+
+                    const data = {
+                        'department_name': this.departmentName,
+                        'department_info': this.departmentDesc,
+                        'department_abbr': this.departmentAbbr,
+                    };
+                    let vm = this;
+
+                    axios.post('/admin/department/update/' + vm.departmentId, data).then(response => {
+
+                    });
+
+                    this.show = false;
                 }
 
 
