@@ -10,7 +10,7 @@
                     <option  v-for="strength in category.strengths"
 
                     :value="strength"
-                    :disabled="true">
+                    >
                         {{strength.strength_name}}
                     </option>
                 </optgroup>

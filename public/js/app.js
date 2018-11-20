@@ -62717,17 +62717,13 @@ var render = function() {
             "optgroup",
             { attrs: { label: category.category } },
             _vm._l(category.strengths, function(strength) {
-              return _c(
-                "option",
-                { attrs: { disabled: true }, domProps: { value: strength } },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(strength.strength_name) +
-                      "\n                "
-                  )
-                ]
-              )
+              return _c("option", { domProps: { value: strength } }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(strength.strength_name) +
+                    "\n                "
+                )
+              ])
             })
           )
         })
