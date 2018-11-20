@@ -17,7 +17,8 @@
         "predis/predis": "^1.1",
         "rootinc/laravel-azure-middleware": "^0.5.1",
         "shipping-docker/vessel": "^3.0",
-        "spatie/laravel-permission": "^2.12"
+        "spatie/laravel-permission": "^2.12",
+        "ext-json": "*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
