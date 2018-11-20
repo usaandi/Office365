@@ -35,7 +35,7 @@ class ImageController extends Controller
                 $storageDisk = Storage::disk('public');
                 $storageDisk->put($fileName, $imageData);
 
-               // $appPort = env('APP_PORT');
+               // $appPort = .env('APP_PORT');
 
                 $url = $storageDisk->url($fileName);
                 $selectedUser->image = $url;

@@ -9,7 +9,8 @@
                 <optgroup v-for="category in propCategories" :label="category.category">
                     <option  v-for="strength in category.strengths"
 
-                    :value="strength" >
+                    :value="strength"
+                    :disabled="true">
                         {{strength.strength_name}}
                     </option>
                 </optgroup>

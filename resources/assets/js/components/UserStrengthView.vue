@@ -5,7 +5,6 @@
         <admin-user-strength v-for="(strength,index) in strengthCount"
                              :key="index+1"
                              :strengthIndex="index+1"
-                             :propStrengths="strengths"
                              :propCategories="categories"
                              @pushSelected="pushSelected($event)"
 
@@ -36,18 +35,17 @@
         data() {
             return {
                 strengthCount: 12,
-                strengths: [],
-                categories:null,
+                categories: null,
                 selectedStrength: [],
                 isNew: false,
-                showMessage:false,
-                message:null,
+                showMessage: false,
+                message: null,
 
             }
         },
         watch: {
             selectedStrength(value) {
-                /*this.selectedStrength=value;*/
+
             }
         },
         mounted() {
@@ -59,18 +57,29 @@
         methods: {
             pushSelected(obj) {
                 this.selectedStrength.push(obj);
-            },
-            submit(){
-              if(this.selectedStrength.length<=12){
-                  let data = this.selectedStrength;
-                  let vm =this;
-                axios.post('/user/'+this.userId+'/update/strength',data).then(response=>{
-                    if(response.status===200){
-                        vm.showMessage=true;
-                        vm.message=response.data;
+
+                /*for (let i = 0; i < this.categories.length; i++) {
+                    for (let j = 0; j < this.categories[i].strengths.length; j++) {
+                        if (obj.strength_id === this.categories[i].strengths[j].strength_id){
+                            this.categories[i].strengths.splice(j,1);
+                        }
+
                     }
-                })
-              }
+
+                }*/
+
+            },
+            submit() {
+                if (this.selectedStrength.length === 12) {
+                    let data = this.selectedStrength;
+                    let vm = this;
+                    axios.post('/user/' + this.userId + '/update/strength', data).then(response => {
+                        if (response.status === 200) {
+                            vm.showMessage = true;
+                            vm.message = response.data;
+                        }
+                    })
+                }
             },
         }
 

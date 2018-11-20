@@ -70,7 +70,10 @@
 
             loopThrough(categories) {
                 for (let i = 0; i < categories.length; i++) {
-                    this.strengths = this.strengths.concat(categories[i].strengths);
+                    if(categories[i].strengths.length > 0){
+                        this.strengths = this.strengths.concat(categories[i].strengths);
+
+                    }
                 }
             },
 

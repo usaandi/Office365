@@ -31,9 +31,9 @@ class DepartmentUserCategoryStrengthController extends Controller
                 $departmentArray[$i] = [
 
                     'department_id' => $department->id,
-                    'department_name' =>$department->department_name,
+                    'department_name' => $department->department_name,
 
-                    ];
+                ];
 
                 foreach ($department->users as $user) {
 
@@ -63,15 +63,21 @@ class DepartmentUserCategoryStrengthController extends Controller
                 $strengthCategoryArray[$i] = [
                     'category_name' => $category['category_name'],
                     'category_id' => $category['id'],
-                    'category_colour' =>$category['category_colour']
+                    'category_colour' => $category['category_colour']
 
                 ];
-                foreach ($category['strength_category'] as $strength) {
-                    $strengthCategoryArray[$i]['strengths'][] = [
-                        'category_id' => $strength['category_id'],
-                        'strength_id' => $strength['strength']['id'],
-                        'strength_name' => $strength['strength']['strength_name'],
-                    ];
+                if (!empty($category['strength_category'])) {
+
+                    foreach ($category['strength_category'] as $strength) {
+                        $strengthCategoryArray[$i]['strengths'][] = [
+                            'category_id' => $strength['category_id'],
+                            'strength_id' => $strength['strength']['id'],
+                            'strength_name' => $strength['strength']['strength_name'],
+                        ];
+                    }
+                }
+                else {
+                    $strengthCategoryArray[$i]['strengths']=[];
                 }
             }
 

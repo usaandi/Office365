@@ -59,14 +59,14 @@ COMPOSE="docker-compose -f docker-compose.yml"
 # If we pass any arguments...
 if [ $# -gt 0 ]; then
 
-    # Source .env, which can over-ride env vars
+    # Source ..env, which can over-ride .env vars
     # such as APP_PORT, MYSQL_PORT, and WWWUSER
     if [ -f .env ]; then
         source .env
     fi
 
 
-    # Edit .env file to set correct hostnames for mysql/redis
+    # Edit ..env file to set correct hostnames for mysql/redis
     if [ "$1" == "init" ]; then
         echo "VESSEL: Initializing Vessel..."
         COMPOSER=$(which composer)
@@ -83,12 +83,12 @@ if [ $# -gt 0 ]; then
         fi
 
         if [ ! -f .env ]; then
-            echo "No .env file found within current working directory $(pwd)"
-            echo "Create a .env file before re-initializing"
+            echo "No ..env file found within current working directory $(pwd)"
+            echo "Create a ..env file before re-initializing"
             exit 0
         fi
 
-        echo "VESSEL: Setting .env Variables"
+        echo "VESSEL: Setting ..env Variables"
         cp .env .env.bak.vessel
         $SEDCMD "s/DB_HOST=.*/DB_HOST=mysql/" .env
         $SEDCMD "s/CACHE_DRIVER=.*/CACHE_DRIVER=redis/" .env
