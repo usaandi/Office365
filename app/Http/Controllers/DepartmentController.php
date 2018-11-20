@@ -78,12 +78,12 @@ class DepartmentController extends Controller
 
                 $department = Department::find($id);
 
-               $updateDepartment = $department->update([
+               $department->update([
                     'department_name'=>$data['department_name'],
                     'department_info' => $data['department_info'],
                     'department_abbr'=>$data['department_abbr']
                 ]);
-               return response(json_encode($updateDepartment),200);
+               return response(json_encode($department),200);
             }
 
         } catch (\Exception $e) {
