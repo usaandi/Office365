@@ -105,7 +105,12 @@ class DepartmentController extends Controller
 
             if ($validator->passes()) {
 
-                return response('success', 200);
+                $department = Department::where('id', $data['departmentId'])->delete();
+
+                if ($department) {
+                    return response('success', 200);
+
+                }
 
             }
 
