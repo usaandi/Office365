@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal v-show="show">
+        <modal v-show="showUpdate">
 
 
             <h3 slot="header">
@@ -44,15 +44,27 @@
             <div class="m-form__actions">
                 <div class="row m--margin-bottom-15">
                     <div class="col-sm-3 col-xs-12">
-                        <div v-show="success" class="alert alert-success alert-dismissible">
-                            <a href="#" @click="success=!success" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Success! Updated Department</strong>
+
+                        <div v-show="success" class="alert alert-success alert-dismissible" >
+                            <a class="close" @click="success=!success"></a>
+                            <strong>Success!</strong>
                         </div>
+
+                        <div v-show="deleteStatus" class="alert alert-danger">
+                            <p><strong>Delete {{departmentName}} ?</strong></p>
+                            <div class="btn-group">
+
+                                <button class="btn btn-primary" @click="deleteFalse"><span>Cancel</span></button>
+
+                                <button class="btn btn-danger" @click="deleteTrue"><span>Submit</span></button>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-sm-9 col-xs-12">
                         <div class="profile-timeline__action ">
 
-                            <a :href="'department/add'" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                            <a :href="'department/add'" class="btn btn-success m-btn m-btn--icon m-btn--pill ">
                                     <span>
                                         <i class="la la-plus"></i>
                                         <span>Add Department</span>
@@ -87,6 +99,7 @@
                         :index="index"
                         @index="getIndex($event)"
                         @update="edit($event)"
+                        @deleteRequest="deleteRequest($event)"
                     >
 
 
@@ -106,9 +119,11 @@
         name: "DepartmentView",
         data() {
             return {
-                show: false,
-                success:false,
+                showUpdate: false,
+                success: false,
                 updateObject: {},
+                showDelete: false,
+                deleteStatus: false,
 
                 departmentAbbr: null,
                 departmentDesc: null,
@@ -127,9 +142,45 @@
             }
         },
         methods: {
+
+            deleteTrue() {
+
+                let data = {
+                    departmentId: this.departmentId,
+                };
+
+                let vm = this;
+                axios.delete('/admin/department/delete', {params: data})
+                    .then(function (response) {
+                        if (response.status === 200) {
+                            vm.departments.splice(vm.departmentIndex, 1);
+                            vm.deleteStatus = false;
+                            vm.departmentId = null;
+                            vm.departmentName = null;
+                            vm.departmentIndex = null;
+                            vm.success = true;
+
+                        }
+                    });
+
+
+            },
+            deleteFalse() {
+                this.deleteStatus = false;
+                this.departmentId = null;
+                this.departmentName = null;
+                this.departmentIndex = null;
+
+            },
+
             getIndex(index) {
                 this.departmentIndex = index;
 
+            },
+            deleteRequest(object) {
+                this.departmentId = object.id;
+                this.departmentName = object.department_name;
+                this.deleteStatus = true;
             },
             submit() {
                 if (this.departmentAbbr && this.departmentDesc && this.departmentName) {
@@ -142,8 +193,8 @@
                     let vm = this;
 
                     axios.post('/admin/department/update/' + vm.departmentId, data).then(response => {
-                        if(response.status===200){
-                            this.departments[this.departmentIndex]=response.data;
+                        if (response.status === 200) {
+                            this.departments[this.departmentIndex] = response.data;
 
                             this.departmentAbbr = null;
                             this.departmentDesc = null;
@@ -151,13 +202,13 @@
                             this.departmentId = null;
                             this.departmentIndex = null;
                             this.updateObject = {};
-                            this.success=true;
-                            this.show = false;
+                            this.success = true;
+                            this.showUpdate = false;
                         }
 
                     });
 
-                    this.show = false;
+                    this.showUpdate = false;
                 }
 
 
@@ -168,12 +219,12 @@
                 this.departmentName = object.department_name;
                 this.departmentId = object.id;
 
-                this.show = true;
+                this.showUpdate = true;
             },
 
             close() {
-                if (this.show) {
-                    this.show = false;
+                if (this.showUpdate) {
+                    this.showUpdate = false;
                     this.departmentAbbr = null;
                     this.departmentDesc = null;
                     this.departmentName = null;

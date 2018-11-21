@@ -61721,7 +61721,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61834,6 +61834,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -61842,9 +61855,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "DepartmentView",
     data: function data() {
         return {
-            show: false,
+            showUpdate: false,
             success: false,
             updateObject: {},
+            showDelete: false,
+            deleteStatus: false,
 
             departmentAbbr: null,
             departmentDesc: null,
@@ -61863,8 +61878,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         departments: function departments(value) {}
     },
     methods: {
+        deleteTrue: function deleteTrue() {
+
+            var data = {
+                departmentId: this.departmentId
+            };
+
+            var vm = this;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/admin/department/delete', { params: data }).then(function (response) {
+                if (response.status === 200) {
+                    vm.departments.splice(vm.departmentIndex, 1);
+                    vm.deleteStatus = false;
+                    vm.departmentId = null;
+                    vm.departmentName = null;
+                    vm.departmentIndex = null;
+                    vm.success = true;
+                }
+            });
+        },
+        deleteFalse: function deleteFalse() {
+            this.deleteStatus = false;
+            this.departmentId = null;
+            this.departmentName = null;
+            this.departmentIndex = null;
+        },
         getIndex: function getIndex(index) {
             this.departmentIndex = index;
+        },
+        deleteRequest: function deleteRequest(object) {
+            this.departmentId = object.id;
+            this.departmentName = object.department_name;
+            this.deleteStatus = true;
         },
         submit: function submit() {
             var _this = this;
@@ -61889,11 +61933,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         _this.departmentIndex = null;
                         _this.updateObject = {};
                         _this.success = true;
-                        _this.show = false;
+                        _this.showUpdate = false;
                     }
                 });
 
-                this.show = false;
+                this.showUpdate = false;
             }
         },
         edit: function edit(object) {
@@ -61902,11 +61946,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.departmentName = object.department_name;
             this.departmentId = object.id;
 
-            this.show = true;
+            this.showUpdate = true;
         },
         close: function close() {
-            if (this.show) {
-                this.show = false;
+            if (this.showUpdate) {
+                this.showUpdate = false;
                 this.departmentAbbr = null;
                 this.departmentDesc = null;
                 this.departmentName = null;
@@ -61936,8 +61980,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.show,
-              expression: "show"
+              value: _vm.showUpdate,
+              expression: "showUpdate"
             }
           ]
         },
@@ -62125,25 +62169,58 @@ var render = function() {
                   staticClass: "alert alert-success alert-dismissible"
                 },
                 [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "close",
-                      attrs: {
-                        href: "#",
-                        "data-dismiss": "alert",
-                        "aria-label": "close"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.success = !_vm.success
-                        }
+                  _c("a", {
+                    staticClass: "close",
+                    on: {
+                      click: function($event) {
+                        _vm.success = !_vm.success
                       }
-                    },
-                    [_vm._v("×")]
-                  ),
+                    }
+                  }),
                   _vm._v(" "),
-                  _c("strong", [_vm._v("Success! Updated Department")])
+                  _c("strong", [_vm._v("Success!")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.deleteStatus,
+                      expression: "deleteStatus"
+                    }
+                  ],
+                  staticClass: "alert alert-danger"
+                },
+                [
+                  _c("p", [
+                    _c("strong", [
+                      _vm._v("Delete " + _vm._s(_vm.departmentName) + " ?")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "btn-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        on: { click: _vm.deleteFalse }
+                      },
+                      [_c("span", [_vm._v("Cancel")])]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: { click: _vm.deleteTrue }
+                      },
+                      [_c("span", [_vm._v("Submit")])]
+                    )
+                  ])
                 ]
               )
             ]),
@@ -62154,7 +62231,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "btn btn-success m-btn m-btn--icon m-btn--pill",
+                      "btn btn-success m-btn m-btn--icon m-btn--pill ",
                     attrs: { href: "department/add" }
                   },
                   [_vm._m(0)]
@@ -62185,6 +62262,9 @@ var render = function() {
                     },
                     update: function($event) {
                       _vm.edit($event)
+                    },
+                    deleteRequest: function($event) {
+                      _vm.deleteRequest($event)
                     }
                   }
                 })
@@ -62324,7 +62404,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62366,6 +62446,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        deleteRequest: function deleteRequest() {
+            this.$emit('deleteRequest', this.selectedDepartment);
+            this.$emit('index', this.index);
+        },
         edit: function edit() {
             this.$emit('update', this.selectedDepartment);
             this.$emit('index', this.index);
@@ -62396,25 +62480,22 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
+    _c("td", [
       _c("span", [
         _c(
           "button",
-          { staticClass: "btn btn-danger", attrs: { type: "button" } },
+          {
+            staticClass: "btn btn-danger",
+            attrs: { type: "button" },
+            on: { click: _vm.deleteRequest }
+          },
           [_vm._v("Delete Department")]
         )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

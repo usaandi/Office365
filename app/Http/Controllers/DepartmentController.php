@@ -68,24 +68,45 @@ class DepartmentController extends Controller
             $data = $request->all();
 
             $rules = [
-                'department_name'=>'required|max:255',
-                'department_info'=>'required|max:5000',
-                'department_abbr'=>'required|max:255',
+                'department_name' => 'required|max:255',
+                'department_info' => 'required|max:5000',
+                'department_abbr' => 'required|max:255',
             ];
-            $validator = Validator::make($data,$rules);
+            $validator = Validator::make($data, $rules);
 
 
-            if($validator->passes()){
+            if ($validator->passes()) {
 
                 $departmentName = ucfirst(strtolower($data['department_name']));
                 $department = Department::find($id);
 
-               $department->update([
-                    'department_name'=>$departmentName,
+                $department->update([
+                    'department_name' => $departmentName,
                     'department_info' => $data['department_info'],
-                    'department_abbr'=>$data['department_abbr']
+                    'department_abbr' => $data['department_abbr']
                 ]);
-               return response(json_encode($department),200);
+                return response(json_encode($department), 200);
+            }
+
+        } catch (\Exception $e) {
+
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        try {
+            $data = $request->all();
+            $rules = [
+                'departmentId' => 'required|int',
+            ];
+
+            $validator = Validator::make($data, $rules);
+
+            if ($validator->passes()) {
+
+                return response('success', 200);
+
             }
 
         } catch (\Exception $e) {

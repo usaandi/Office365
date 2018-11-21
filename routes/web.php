@@ -33,7 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/admin/category/delete', 'CategoryController@deleteCategory')->name('deleteCategory');
         Route::delete('/admin/user/delete', 'UserController@deleteUser')->name('deleteUser');
         Route::post('/admin/category/update', 'CategoryController@updateCategory')->name('updateCategory');
-        Route::post('/admin/department/update/{id}', 'DepartmentController@update')->name('storeUser');;
+        Route::post('/admin/department/update/{id}', 'DepartmentController@update')->name('updateDepartment');
+        Route::delete('/admin/department/delete', 'DepartmentController@delete')->name('deleteDepartment');
 
     });
     Route::post('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
