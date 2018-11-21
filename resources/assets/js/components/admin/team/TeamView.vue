@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal v-show="show" >
+        <modal v-show="show">
 
             <h3 slot="header">
                 Department
@@ -9,13 +9,13 @@
             <div slot="body">
 
 
-
             </div>
             <div slot="footer">
                 <button type="button" class="btn btn-success" @click="">CANCEL</button>
                 <button type="submit" class="btn btn-danger" @click="">SUBMIT</button>
             </div>
         </modal>
+
         <div class="m-portlet__foot m-portlet__foot--fit">
             <div class="m-form__actions">
                 <div class="row m--margin-bottom-15">
@@ -42,15 +42,20 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Department Name</th>
-                        <th>Department Description</th>
-                        <th>Department Abbreviation</th>
+                        <th>Team Name</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr is="admin-team-body"
+                    v-for="(team,index) in teamsList"
+                        :key="index"
+                        :index="index"
+                        :team="team"
+
+                    >
+
 
 
                     </tr>
@@ -63,11 +68,12 @@
 
 <script>
     export default {
-        props:['teams'],
+        props: ['teams'],
         name: "TeamView",
-        data(){
-            return{
-                show:false
+        data() {
+            return {
+                teamsList: this.teams,
+                show: false
             }
         }
     }
