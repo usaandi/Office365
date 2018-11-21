@@ -22,14 +22,16 @@ class TeamsController extends Controller
             return view('team.teamView');
         } catch (\Exception $e) {
         }
-    }public function viewAdminTeam()
+    }
+
+    public function viewAdminTeam()
     {
         try {
-            $auth =\Auth::user();
-            $this->authorize('admin',$auth);
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
             $teams = Team::get();
 
-            return view('Team')->with(['teams'=>$teams]);
+            return view('Team')->with(['teams' => $teams]);
         } catch (\Exception $e) {
         }
     }
@@ -39,38 +41,38 @@ class TeamsController extends Controller
         try {
             $data = $request->all();
 
-            $rules= [
-              'teamName' => 'required|string'
+            $rules = [
+                'teamName' => 'required|string'
             ];
 
-            $validator = Validator::make($data,$rules);
+            $validator = Validator::make($data, $rules);
 
-            if($validator->passes()){
+            if ($validator->passes()) {
 
-                $teamName =ucfirst(strtolower($data['teamName']));
+                $teamName = ucfirst(strtolower($data['teamName']));
 
-                $findTeam = Team::where('team_name',$teamName)->get();
+                $findTeam = Team::where('team_name', $teamName)->get();
 
-                if($findTeam->isEmpty()){
+                if ($findTeam->isEmpty()) {
 
                     Team::create([
-                       'team_name' => $teamName
+                        'team_name' => $teamName
                     ]);
 
                     return view('team.teamView');
-                }
-                else {
-                   echo 'Selline nimi on olemas';
+                } else {
+                    echo 'Selline nimi on olemas';
                 }
 
 
             }
-            
+
         } catch (\Exception $e) {
 
             var_dump($e->getMessage());
         }
     }
+
     public function updateDepartment(Request $request, $id)
     {
         try {
@@ -87,13 +89,13 @@ class TeamsController extends Controller
             $department = Department::where('department_name',
                 $capitalizeTeam)->first();
 
-            if($department === NULL){
-                $departmentAbbr=substr($capitalizeTeam,0,-2);
+            if ($department === NULL) {
+                $departmentAbbr = substr($capitalizeTeam, 0, -2);
                 $department = Department::create
                 ([
-                    'department_name'=>$capitalizeTeam,
-                    'department_abbr'=>$departmentAbbr,
-                    'department_info'=>'This is Department: '.$capitalizeTeam,
+                    'department_name' => $capitalizeTeam,
+                    'department_abbr' => $departmentAbbr,
+                    'department_info' => 'This is Department: ' . $capitalizeTeam,
                 ]);
             }
 
@@ -101,11 +103,10 @@ class TeamsController extends Controller
 
             if ($userDepartment === NULL) {
                 UserDepartment::create([
-                   'department_id' => $department->id,
-                   'user_id' => $id
+                    'department_id' => $department->id,
+                    'user_id' => $id
                 ]);
-            }
-            else if ($userDepartment->department_id !== $department->id) {
+            } else if ($userDepartment->department_id !== $department->id) {
                 $userDepartment->department_id = $department->id;
                 $userDepartment->save();
             }
@@ -113,28 +114,30 @@ class TeamsController extends Controller
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
 
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return response('Error updating user', 400)
                 ->header('Content-Type', 'application/json');
         }
     }
-    public function updateUserTeam(Request $request, $id){
-        try {
-           $request->validate([
-               'data' => 'required|max:30'
-           ]);
-           $user = User::findOrFail($id);
 
-           $teamName = $request->data;
-           $capitalizeTeam = ucfirst($teamName);
+    public function updateUserTeam(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'data' => 'required|max:30'
+            ]);
+            $user = User::findOrFail($id);
+
+            $teamName = $request->data;
+            $capitalizeTeam = ucfirst($teamName);
 
             $team = Team::where('team_name',
                 $capitalizeTeam)->first();
 
-            if($team === NULL){
+            if ($team === NULL) {
                 $team = Team::create
                 ([
-                    'team_name'=>$capitalizeTeam,
+                    'team_name' => $capitalizeTeam,
                 ]);
             }
             $userTeam = $user->team()->first();
@@ -143,33 +146,37 @@ class TeamsController extends Controller
                     'team_id' => $team->id,
                     'user_id' => $id
                 ]);
-            }
-            else if ($userTeam->team_id !== $team->id) {
+            } else if ($userTeam->team_id !== $team->id) {
                 $userTeam->team_id = $team->id;
                 $userTeam->save();
             }
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return response('Error updating user', 400)
                 ->header('Content-Type', 'application/json');
         }
     }
 
-    public function teamInfo(){
+    public function teamInfo()
+    {
 
-        $team=Team::all();
+        $team = Team::all();
         return $team;
 
     }
-    public function returnView(){
 
-        $users=User::all(['id','name']);
-        $teams=Team::all(['id','team_name']);
+    public function returnView()
+    {
 
-        return view('team.teamModerator',compact(['users','teams']));
+        $users = User::all(['id', 'name']);
+        $teams = Team::all(['id', 'team_name']);
+
+        return view('team.teamModerator', compact(['users', 'teams']));
     }
-    public function addModerator(Request $request){
+
+    public function addModerator(Request $request)
+    {
 
 
         try {
@@ -181,7 +188,7 @@ class TeamsController extends Controller
             ];
             $validator = Validator::make($data, $rules);
 
-            if ($validator->passes()){
+            if ($validator->passes()) {
 
                 $userId = $data['userId'];
                 $teamId = $data['teamId'];
@@ -194,7 +201,7 @@ class TeamsController extends Controller
                     $user->assignRole($moderatorRole);
                 }
 
-                $isModeratorOfTeam = (bool) UserTeamModerator::where('user_id', $userId)
+                $isModeratorOfTeam = (bool)UserTeamModerator::where('user_id', $userId)
                     ->where('team_id', $teamId)
                     ->count();
 
