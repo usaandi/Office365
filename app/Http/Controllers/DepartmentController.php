@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use Illuminate\Http\Request;
 use Validator;
+use Auth;
 
 class DepartmentController extends Controller
 {
@@ -65,6 +66,9 @@ class DepartmentController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            $user = \Auth::user();
+            $this->authorize('admin', $user);
+
             $data = $request->all();
 
             $rules = [
@@ -96,6 +100,9 @@ class DepartmentController extends Controller
     public function delete(Request $request)
     {
         try {
+
+            $user = \Auth::user();
+            $this->authorize('admin', $user);
             $data = $request->all();
             $rules = [
                 'departmentId' => 'required|int',
