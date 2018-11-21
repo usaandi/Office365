@@ -74,12 +74,14 @@ class DepartmentController extends Controller
             ];
             $validator = Validator::make($data,$rules);
 
+
             if($validator->passes()){
 
+                $departmentName = ucfirst(strtolower($data['department_name']));
                 $department = Department::find($id);
 
                $department->update([
-                    'department_name'=>$data['department_name'],
+                    'department_name'=>$departmentName,
                     'department_info' => $data['department_info'],
                     'department_abbr'=>$data['department_abbr']
                 ]);

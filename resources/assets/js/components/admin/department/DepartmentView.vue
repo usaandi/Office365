@@ -40,11 +40,18 @@
         </modal>
 
         <div class="m-portlet__foot m-portlet__foot--fit">
+
             <div class="m-form__actions">
                 <div class="row m--margin-bottom-15">
-                    <div class="col-sm-3 col-xs-12"></div>
+                    <div class="col-sm-3 col-xs-12">
+                        <div v-show="success" class="alert alert-success alert-dismissible">
+                            <a href="#" @click="success=!success" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Success! Updated Department</strong>
+                        </div>
+                    </div>
                     <div class="col-sm-9 col-xs-12">
                         <div class="profile-timeline__action ">
+
                             <a :href="'department/add'" class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                     <span>
                                         <i class="la la-plus"></i>
@@ -56,6 +63,7 @@
                 </div>
             </div>
         </div>
+
         <div>
 
             <div class="table-responsive">
@@ -99,6 +107,7 @@
         data() {
             return {
                 show: false,
+                success:false,
                 updateObject: {},
 
                 departmentAbbr: null,
@@ -133,15 +142,19 @@
                     let vm = this;
 
                     axios.post('/admin/department/update/' + vm.departmentId, data).then(response => {
-                        this.departments[this.departmentIndex]=response.data;
+                        if(response.status===200){
+                            this.departments[this.departmentIndex]=response.data;
 
-                        this.departmentAbbr = null;
-                        this.departmentDesc = null;
-                        this.departmentName = null;
-                        this.departmentId = null;
-                        this.departmentIndex = null;
-                        this.updateObject = {};
-                        this.show = false;
+                            this.departmentAbbr = null;
+                            this.departmentDesc = null;
+                            this.departmentName = null;
+                            this.departmentId = null;
+                            this.departmentIndex = null;
+                            this.updateObject = {};
+                            this.success=true;
+                            this.show = false;
+                        }
+
                     });
 
                     this.show = false;

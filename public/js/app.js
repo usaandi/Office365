@@ -61721,7 +61721,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61826,6 +61826,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -61835,6 +61843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             show: false,
+            success: false,
             updateObject: {},
 
             departmentAbbr: null,
@@ -61870,15 +61879,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var vm = this;
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/department/update/' + vm.departmentId, data).then(function (response) {
-                    _this.departments[_this.departmentIndex] = response.data;
+                    if (response.status === 200) {
+                        _this.departments[_this.departmentIndex] = response.data;
 
-                    _this.departmentAbbr = null;
-                    _this.departmentDesc = null;
-                    _this.departmentName = null;
-                    _this.departmentId = null;
-                    _this.departmentIndex = null;
-                    _this.updateObject = {};
-                    _this.show = false;
+                        _this.departmentAbbr = null;
+                        _this.departmentDesc = null;
+                        _this.departmentName = null;
+                        _this.departmentId = null;
+                        _this.departmentIndex = null;
+                        _this.updateObject = {};
+                        _this.success = true;
+                        _this.show = false;
+                    }
                 });
 
                 this.show = false;
@@ -62098,7 +62110,43 @@ var render = function() {
       _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
         _c("div", { staticClass: "m-form__actions" }, [
           _c("div", { staticClass: "row m--margin-bottom-15" }, [
-            _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+            _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.success,
+                      expression: "success"
+                    }
+                  ],
+                  staticClass: "alert alert-success alert-dismissible"
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        href: "#",
+                        "data-dismiss": "alert",
+                        "aria-label": "close"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.success = !_vm.success
+                        }
+                      }
+                    },
+                    [_vm._v("×")]
+                  ),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Success! Updated Department")])
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
               _c("div", { staticClass: "profile-timeline__action " }, [
