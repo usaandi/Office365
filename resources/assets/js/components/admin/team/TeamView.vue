@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal v-show="show">
+        <modal v-show="showUpdate">
 
             <h3 slot="header">
                 Department
@@ -11,7 +11,7 @@
 
             </div>
             <div slot="footer">
-                <button type="button" class="btn btn-success" @click="">CANCEL</button>
+                <button type="button" class="btn btn-success" @click="close">CANCEL</button>
                 <button type="submit" class="btn btn-danger" @click="">SUBMIT</button>
             </div>
         </modal>
@@ -49,13 +49,14 @@
                     </thead>
                     <tbody>
                     <tr is="admin-team-body"
-                    v-for="(team,index) in teamsList"
+                        v-for="(team,index) in teamsList"
                         :key="index"
                         :index="index"
                         :team="team"
-
+                        @index="getIndex($event)"
+                        @update="edit($event)"
+                        @deleteRequest="deleteRequest($event)"
                     >
-
 
 
                     </tr>
@@ -73,7 +74,43 @@
         data() {
             return {
                 teamsList: this.teams,
-                show: false
+                showUpdate: false,
+                teamName: null,
+                teamId: null,
+                teamIndex: null,
+            }
+        },
+        watch: {
+            teamsList(value) {
+
+            },
+
+        },
+        methods: {
+            getIndex(index) {
+
+                this.teamIndex = index;
+
+
+            },
+            edit(object) {
+
+                this.teamName = object.team_name;
+                this.teamId = object.id;
+
+                this.showUpdate = true;
+
+            },
+            deleteRequest() {
+
+            },
+            close() {
+                if (this.showUpdate) {
+                    this.showUpdate = false;
+                    this.teamName = null;
+                    this.teamId = null;
+                    this.teamIndex = null;
+                }
             }
         }
     }

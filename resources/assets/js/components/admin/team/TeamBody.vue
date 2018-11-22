@@ -2,7 +2,7 @@
     <tr>
         <td><span>{{team.id}}</span></td>
         <td><span>{{team.team_name}}</span></td>
-        <td><span class="btn btn-success" > Edit Team</span></td>
+        <td><span class="btn btn-success" @click="edit" > Edit Team</span></td>
         <td>
             <span><button type="button"  class="btn btn-danger"
             >Delete Team</button></span>
@@ -24,6 +24,17 @@
                 this.selectedTeam = value;
             }
         },
+        methods:{
+            deleteRequest() {
+                this.$emit('deleteRequest', this.selectedTeam);
+                this.$emit('index', this.index);
+            },
+            edit() {
+                this.$emit('update', this.selectedTeam);
+                this.$emit('index', this.index);
+
+            }
+        }
     }
 </script>
 

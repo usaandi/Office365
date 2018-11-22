@@ -328,7 +328,6 @@
                                                     href="{{route('viewAdminTeam')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Team List</span></a></li>
-
                                     </ul>
                                 </div>
                             </li>

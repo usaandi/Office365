@@ -61419,7 +61419,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61498,6 +61498,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['teams'],
@@ -61505,8 +61506,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             teamsList: this.teams,
-            show: false
+            showUpdate: false,
+            teamName: null,
+            teamId: null,
+            teamIndex: null
         };
+    },
+
+    watch: {
+        teamsList: function teamsList(value) {}
+    },
+    methods: {
+        getIndex: function getIndex(index) {
+
+            this.teamIndex = index;
+        },
+        edit: function edit(object) {
+
+            this.teamName = object.team_name;
+            this.teamId = object.id;
+
+            this.showUpdate = true;
+        },
+        deleteRequest: function deleteRequest() {},
+        close: function close() {
+            if (this.showUpdate) {
+                this.showUpdate = false;
+                this.teamName = null;
+                this.teamId = null;
+                this.teamIndex = null;
+            }
+        }
     }
 });
 
@@ -61528,8 +61558,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.show,
-              expression: "show"
+              value: _vm.showUpdate,
+              expression: "showUpdate"
             }
           ]
         },
@@ -61546,7 +61576,7 @@ var render = function() {
               {
                 staticClass: "btn btn-success",
                 attrs: { type: "button" },
-                on: { click: function($event) {} }
+                on: { click: _vm.close }
               },
               [_vm._v("CANCEL")]
             ),
@@ -61599,7 +61629,18 @@ var render = function() {
                 return _c("admin-team-body", {
                   key: index,
                   tag: "tr",
-                  attrs: { index: index, team: team }
+                  attrs: { index: index, team: team },
+                  on: {
+                    index: function($event) {
+                      _vm.getIndex($event)
+                    },
+                    update: function($event) {
+                      _vm.edit($event)
+                    },
+                    deleteRequest: function($event) {
+                      _vm.deleteRequest($event)
+                    }
+                  }
                 })
               })
             )
@@ -62603,7 +62644,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62640,6 +62681,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         team: function team(value) {
             this.selectedTeam = value;
         }
+    },
+    methods: {
+        deleteRequest: function deleteRequest() {
+            this.$emit('deleteRequest', this.selectedTeam);
+            this.$emit('index', this.index);
+        },
+        edit: function edit() {
+            this.$emit('update', this.selectedTeam);
+            this.$emit('index', this.index);
+        }
     }
 });
 
@@ -62656,20 +62707,16 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_c("span", [_vm._v(_vm._s(_vm.team.team_name))])]),
     _vm._v(" "),
-    _vm._m(0),
+    _c("td", [
+      _c("span", { staticClass: "btn btn-success", on: { click: _vm.edit } }, [
+        _vm._v(" Edit Team")
+      ])
+    ]),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "btn btn-success" }, [_vm._v(" Edit Team")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
