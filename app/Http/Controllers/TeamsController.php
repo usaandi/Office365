@@ -24,6 +24,48 @@ class TeamsController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        try {
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
+
+            $team =Team::destroy($id);
+
+            return response('Found',200);
+
+
+        } catch (\Exception $e) {
+        }
+    }
+    public function update($id, Request $request)
+    {
+        try {
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
+
+            $data = $request->all();
+            $rules = [
+                'teamName' => 'required'
+            ];
+            $validator = Validator::make($data, $rules);
+
+            if ($validator->passes()) {
+
+                $teamName = ucfirst(strtolower($data['teamName']));
+                $team = Team::findOrFail($id);
+
+                $team->update([
+                    'team_name' => $teamName
+                ]);
+
+                return response(json_encode($team),200);
+
+            }
+        } catch (\Exception $e) {
+        }
+    }
+
     public function viewAdminTeam()
     {
         try {
@@ -217,7 +259,7 @@ class TeamsController extends Controller
             }
 
         } catch (\Exception $exception) {
-            var_dump($exception->getMessage());
+
         }
 
     }

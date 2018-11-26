@@ -17,7 +17,7 @@
 //Route::get('/signin', 'AuthController@signin');
 Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
-Route::get('/unauthorized', function (){
+Route::get('/unauthorized', function () {
     return view('unauthorized.unauthorized');
 });
 
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
     Route::get('/users', 'UserController@userIdName')->name('usersIdName');
     Route::post('/user/{id}/update', 'UserController@update')->name('update');
-    Route::get('/strength/list','StrengthController@returnStrengthName')->name('strengthsName');
+    Route::get('/strength/list', 'StrengthController@returnStrengthName')->name('strengthsName');
     Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
     Route::get('/admin/users/add', 'AddController@add')->name('useradd');
     Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
@@ -88,8 +88,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('department/store', 'DepartmentController@store')->name('store');
     Route::post('update/milestone/{id}', 'CareerController@completeMilestone')->name('updateMilestone');
 
-    Route::get('/admin/department/view','DepartmentController@viewAdminDepartment')->name('adminDepartmentView');
-    Route::get('/admin/team/view','TeamsController@viewAdminTeam')->name('viewAdminTeam');
+    Route::get('/admin/department/view', 'DepartmentController@viewAdminDepartment')->name('adminDepartmentView');
+    Route::get('/admin/team/view', 'TeamsController@viewAdminTeam')->name('viewAdminTeam');
 
     Route::get('department/{id}', 'DepartmentController@show')->name('team');
     Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name('user');
@@ -98,10 +98,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('department', 'DepartmentController@department')->name('department');
     Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
     Route::get('/admin/users/list/', 'UserController@AdminUsersListView')->name('returnAdminUserList');
-    Route::get('admin/team/create','TeamsController@teamView')->name('returnTeam');
-    Route::post('admin/team/create','TeamsController@createTeam')->name('createTeam');
-    Route::get('/users','UserController@users')->name('usersInfo');
+    Route::get('admin/team/create', 'TeamsController@teamView')->name('returnTeam');
+    Route::post('admin/team/create', 'TeamsController@createTeam')->name('createTeam');
+    Route::get('/users', 'UserController@users')->name('usersInfo');
 
+    Route::put('/admin/team/{id}/update', 'TeamsController@update')->name('updateTeam');
+    Route::delete('/admin/team/{id}/delete', 'TeamsController@delete')->name('deleteTeam');
 
 
     Route::get('/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');

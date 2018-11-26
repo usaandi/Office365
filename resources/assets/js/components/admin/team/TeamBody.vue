@@ -4,7 +4,7 @@
         <td><span>{{team.team_name}}</span></td>
         <td><span class="btn btn-success" @click="edit" > Edit Team</span></td>
         <td>
-            <span><button type="button"  class="btn btn-danger"
+            <span><button type="button" @click="deleteRequest"  class="btn btn-danger"
             >Delete Team</button></span>
         </td>
     </tr>

@@ -61419,7 +61419,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61430,6 +61430,32 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61500,6 +61526,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['teams'],
     name: "TeamView",
@@ -61509,7 +61537,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showUpdate: false,
             teamName: null,
             teamId: null,
-            teamIndex: null
+            teamIndex: null,
+            success: false,
+            deleteStatus: false
         };
     },
 
@@ -61521,14 +61551,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.teamIndex = index;
         },
+        submit: function submit() {
+            var _this = this;
+
+            if (teamName) {
+
+                var data = {
+                    teamName: this.teamName
+                };
+
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/admin/team/' + this.teamId + '/update', data).then(function (response) {
+                    if (response.status === 200) {
+                        _this.teamsList[_this.teamIndex] = response.data;
+                        _this.showUpdate = false;
+                        _this.teamName = null;
+                        _this.teamId = null;
+                        _this.teamIndex = null;
+                        _this.success = true;
+                    }
+                });
+            }
+        },
         edit: function edit(object) {
 
             this.teamName = object.team_name;
             this.teamId = object.id;
-
             this.showUpdate = true;
         },
-        deleteRequest: function deleteRequest() {},
+        deleteFalse: function deleteFalse() {
+
+            this.teamName = null;
+            this.deleteStatus = false;
+            this.teamId = null;
+            this.teamIndex = null;
+        },
+        deleteTrue: function deleteTrue() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/admin/team/' + this.teamId + '/delete').then(function (response) {
+                if (response.status === 200) {
+                    _this2.teamsList.splice(_this2.teamIndex, 1);
+                    _this2.teamName = null;
+                    _this2.deleteStatus = false;
+                    _this2.teamId = null;
+                    _this2.teamIndex = null;
+                    _this2.success = true;
+                }
+            });
+        },
+        deleteRequest: function deleteRequest(name) {
+
+            this.deleteStatus = true;
+            this.teamId = name.id;
+            this.teamName = name.team_name;
+        },
         close: function close() {
             if (this.showUpdate) {
                 this.showUpdate = false;
@@ -61565,10 +61641,60 @@ var render = function() {
         },
         [
           _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-            _vm._v("\n            Department\n        ")
+            _vm._v("\n            " + _vm._s(_vm.teamName) + "\n        ")
           ]),
           _vm._v(" "),
-          _c("div", { attrs: { slot: "body" }, slot: "body" }),
+          _c(
+            "div",
+            {
+              staticClass: "admin__form admin__form--clear",
+              attrs: { slot: "body" },
+              slot: "body"
+            },
+            [
+              _c("div", { staticClass: "m-portlet__body" }, [
+                _c("div", { staticClass: "form-group m-form__group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-xs-12  col-form-label",
+                      attrs: { for: "example-text-input" }
+                    },
+                    [_vm._v("Team")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.teamName,
+                          expression: "teamName"
+                        }
+                      ],
+                      staticClass: "form-control m-input",
+                      attrs: {
+                        required: "",
+                        name: "departmentName",
+                        type: "text",
+                        placeholder: "Department Name"
+                      },
+                      domProps: { value: _vm.teamName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.teamName = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
             _c(
@@ -61586,7 +61712,7 @@ var render = function() {
               {
                 staticClass: "btn btn-danger",
                 attrs: { type: "submit" },
-                on: { click: function($event) {} }
+                on: { click: _vm.submit }
               },
               [_vm._v("SUBMIT")]
             )
@@ -61597,7 +61723,76 @@ var render = function() {
       _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
         _c("div", { staticClass: "m-form__actions" }, [
           _c("div", { staticClass: "row m--margin-bottom-15" }, [
-            _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+            _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.success,
+                      expression: "success"
+                    }
+                  ],
+                  staticClass: "alert alert-success alert-dismissible"
+                },
+                [
+                  _c("a", {
+                    staticClass: "close",
+                    on: {
+                      click: function($event) {
+                        _vm.success = !_vm.success
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Success!")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.deleteStatus,
+                      expression: "deleteStatus"
+                    }
+                  ],
+                  staticClass: "alert alert-danger"
+                },
+                [
+                  _c("p", [
+                    _c("strong", [
+                      _vm._v("Delete " + _vm._s(_vm.teamName) + " ?")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "btn-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        on: { click: _vm.deleteFalse }
+                      },
+                      [_c("span", [_vm._v("Cancel")])]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: { click: _vm.deleteTrue }
+                      },
+                      [_c("span", [_vm._v("Submit")])]
+                    )
+                  ])
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
               _c("div", { staticClass: "profile-timeline__action " }, [
@@ -62713,25 +62908,22 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
+    _c("td", [
       _c("span", [
         _c(
           "button",
-          { staticClass: "btn btn-danger", attrs: { type: "button" } },
+          {
+            staticClass: "btn btn-danger",
+            attrs: { type: "button" },
+            on: { click: _vm.deleteRequest }
+          },
           [_vm._v("Delete Team")]
         )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
