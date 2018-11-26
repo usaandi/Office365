@@ -151,7 +151,7 @@
                     this.title = '';
                     this.milestonesList = '';
                     let vm = this;
-                    axios.post('/career/add', data)
+                    axios.post('admin/career/add', data)
                         .then(response => {
                             if (response.status === 200) {
 

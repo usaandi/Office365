@@ -313,10 +313,6 @@ class CareerController extends Controller
                     ->where('user_id', $userId)
                     ->get();
 
-                if ($query->isEmpty() === false) {
-                    //Return something that To VUE that it is duplicate entry
-                    //TODO
-                }
                 if ($query->isEmpty() === true) {
 
                     $userCareerRole = $user->UserCareerRole()->create([

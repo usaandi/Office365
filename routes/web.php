@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}/update', 'UserController@update')->name('update');
     Route::get('/strength/list', 'StrengthController@returnStrengthName')->name('strengthsName');
     Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
-    Route::get('/admin/users/add', 'AddController@add')->name('useradd');
+    Route::get('/admin/users/add', 'AddController@add')->name('userAdd');
     Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
     Route::get('/admin/view/category/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
     Route::get('/admin/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('strengthInfo');
@@ -67,9 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}/team', 'TeamsController@updateUserTeam')->name('updateUserTeam');
 
     Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
-    Route::get('/career/add', 'CareerController@show')->name('addCareer');
+    Route::get('admin/career/add', 'CareerController@show')->name('addCareer');
 
-    Route::post('/career/add', 'CareerController@create')->name('addCareer');
+    Route::post('admin/career/add', 'CareerController@create')->name('addCareer');
     Route::post('/user/{id}/career/milestone/create', 'CareerController@createMilestone')->name('createMilestone');
     Route::post('/user/{id}/career/milestone/update', 'CareerController@updateMilestone')->name('updateMilestone');
     Route::post('/user/{id}/career/milestone/delete', 'CareerController@deleteMilestone')->name('deleteMilestone');

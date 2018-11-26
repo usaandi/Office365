@@ -15,8 +15,8 @@
 
 @section('content-body')
 
-    <div class="admin__form admin__form--clear"><h4>Lisa kasutaja</h4>
-        <form name="form" class="m-form" action="{{route('storeUser')}}" method="post">
+    <div class="admin__form admin__form--clear"><h4>Create account</h4>
+        <form name="form" class="m-form" action="{{route('userAdd')}}" method="post">
             @csrf
             <div class="m-portlet__body">
 
