@@ -10,45 +10,81 @@
                     <div class="profile-timeline__check"></div>
                     <div class="profile-timeline__check--icon"><i class="la la-check"></i></div>
                 </div>
-                <div class="row">
+                <div class="row" v-show="!isEditing">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title"
-                            v-show="!showField('title')" @click="focusField('title')"
                         >{{userRoleInfo.title}}</h4>
 
-                        <input v-model="userRoleInfo.title" v-show="showField('title')" type="text"
-                               @focus="focusField('title')" @blur="blurField">
+
                     </div>
 
 
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
-                        <p class="profile-timeline__text"
-                           v-show="!showField('description')" @click="focusField('description')">
+                        <p class="profile-timeline__text">
+
                             {{userRoleInfo.description}}
                         </p>
-                        <textarea v-model="userRoleInfo.description" v-show="showField('description')"
-                                  @focus="focusField('description')" @blur="blurField"
-                        ></textarea>
+
 
                     </div>
                 </div>
+                <div class="row " v-show="isEditing">
+                    <div class="admin__form admin__form--clear">
+                        <form class="m-form" method="post" action="#">
 
+                            <div class="m-portlet__body">
+
+                                <div class="form-group m-form__group row">
+                                    <label for="title" class="col-3 col-form-label">Title</label>
+
+                                    <div class="col-9"><input id="title" v-model="titleValue" type="text" name="title"
+                                                              placeholder="Title"
+                                                              class="form-control m-input">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group m-form__group row">
+                                    <label for="description" class="col-3 col-form-label">Description</label>
+                                    <div class="col-sm-9 col-xs-12"><textarea v-model="descriptionValue"
+                                                                              id="description" rows="10"
+                                                                              class="form-control m-input"
+                                                                              name="career_description"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                    <div class="row">
+                                        <div class="col-sm-3 col-xs-12"></div>
+                                        <div class="col-sm-9 col-xs-12">
+                                            <div class="profile-timeline__action">
+                                                <button type="submit" class="btn btn-success m-btn m-btn--pill">
+                                                    <span><span>Submit</span></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title">MILESTONES</h4>
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
-                        <div class="profile-timeline__add">
-                            <a class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
+                        <div class="profile-timeline__add" >
+                            <a v-show="!show"   class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
-                                                <span>{{buttonValue}}</span>
+                                                <span>New</span>
                                               </span>
                             </a>
-                            <milestone-form
+                            <milestone-form v-show="show"
                                     :hasChanged="hasChanged"
                                     :usersList="usersList"
-                                    v-show="show"
                                     :careerRoleId="userRoleInfo.id"
                                     :selectedUserProfileId="selectedUserProfileId"
                                     @pushToMilestones="pushMilestone($event)"
@@ -94,7 +130,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -127,6 +162,8 @@
                 createdDate: this.userdata.created_at,
                 editField: '',
                 isUpdate: false,
+                descriptionValue: '',
+                titleValue: '',
             }
         },
         watch: {
@@ -175,7 +212,7 @@
 
             selectRole(value) {
 
-                if(this.canEdit){
+                if (this.canEdit) {
 
                     this.$emit('selectActive', value);
                 }
@@ -222,7 +259,8 @@
                 if (this.canEdit === true) {
                     this.isEditing === false ? this.isEditing = true : this.isEditing = false;
                     if (this.isEditing === true) {
-                        this.focusField('title');
+                        this.descriptionValue = this.userRoleInfo.description;
+                        this.titleValue = this.userRoleInfo.title;
                     }
                 }
             },
@@ -255,34 +293,6 @@
 
                 }
             },
-
-
-            focusField(value) {
-                if (this.isEditing) {
-                    this.editField = value;
-                }
-            },
-            blurField() {
-
-                if (this.isEditing) {
-                    let fieldName = this.editField;
-                    let fieldValue = this.userRoleInfo[this.editField];
-                    const data = {
-                        fieldValue: fieldValue,
-                        fieldName: fieldName,
-                        id: this.userRoleInfo.id,
-                    };
-                    axios.post('/user/' + this.selectedUserProfileId + '/career/update', data).then(response => {
-                    });
-                    this.editField = '';
-                }
-            },
-            showField(value) {
-                if (this.isEditing) {
-                    return (this.userRoleInfo[value] === '' || this.editField === value)
-                }
-            },
-
 
         },
 

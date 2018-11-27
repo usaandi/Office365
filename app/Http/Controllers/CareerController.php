@@ -308,62 +308,57 @@ class CareerController extends Controller
                 $ucTitle = ucfirst(strtolower($title));
 
                 $user = User::findOrFail($id);
-                $query = $user->UserCareerRole()
-                    ->where('title', $ucTitle)
-                    ->where('user_id', $userId)
-                    ->get();
 
-                if ($query->isEmpty() === true) {
 
-                    $userCareerRole = $user->UserCareerRole()->create([
-                        'career_role_id' => $careerRoleId,
-                        'title' => $ucTitle,
-                        'description' => $description,
-                        'user_id' => $userId,
-                        'current_role' => 0,
-                    ]);
-                    $milestonesArray = [];
-                    if (empty($data['milestones']) === false) {
-                        $milestones = $data['milestones'];
-                        foreach ($milestones as $milestone) {
-                            $milestonesList = $user->userCareerRoleMilestones()->create([
+                $userCareerRole = $user->UserCareerRole()->create([
+                    'career_role_id' => $careerRoleId,
+                    'title' => $ucTitle,
+                    'description' => $description,
+                    'user_id' => $userId,
+                    'current_role' => 0,
+                ]);
+                $milestonesArray = [];
+                if (empty($data['milestones']) === false) {
+                    $milestones = $data['milestones'];
+                    foreach ($milestones as $milestone) {
+                        $milestonesList = $user->userCareerRoleMilestones()->create([
 
-                                'milestone_id' => $milestone['milestone_id'],
-                                'user_id' => $milestone['user_id'],
-                                'assigned_id' => $milestone['assigned_id'],
-                                'user_career_role_id' => $userCareerRole->id,
-                                'task' => $milestone['task'],
-                                'reminder' => $milestone['reminder'],
-                                'completed' => $milestone['completed'],
-                            ]);
-                            $milestonesArray[] = [
-                                'id' => $milestonesList->id,
-                                'milestone_id' => $milestone['milestone_id'],
-                                'user_id' => $milestone['user_id'],
-                                'assigned_id' => $milestone['assigned_id'],
-                                'user_career_role_id' => $userCareerRole->id,
-                                'task' => $milestone['task'],
-                                'reminder' => $milestone['reminder'],
-                                'completed' => $milestone['completed'],
+                            'milestone_id' => $milestone['milestone_id'],
+                            'user_id' => $milestone['user_id'],
+                            'assigned_id' => $milestone['assigned_id'],
+                            'user_career_role_id' => $userCareerRole->id,
+                            'task' => $milestone['task'],
+                            'reminder' => $milestone['reminder'],
+                            'completed' => $milestone['completed'],
+                        ]);
+                        $milestonesArray[] = [
+                            'id' => $milestonesList->id,
+                            'milestone_id' => $milestone['milestone_id'],
+                            'user_id' => $milestone['user_id'],
+                            'assigned_id' => $milestone['assigned_id'],
+                            'user_career_role_id' => $userCareerRole->id,
+                            'task' => $milestone['task'],
+                            'reminder' => $milestone['reminder'],
+                            'completed' => $milestone['completed'],
 
-                            ];
-                        }
-                        unset($milestone);
+                        ];
                     }
-                    $career = [
-                        'id' => $userCareerRole->id,
-                        'career_role_id' => $careerRoleId,
-                        'title' => $ucTitle,
-                        'description' => $description,
-                        'user_id' => $id,
-                        'current_role' => 0,
-                        'milestones' => $milestonesArray,
-
-                    ];
-                    $jsonData = json_encode($career);
-                    return response($jsonData, 200)
-                        ->header('Content-Type', 'application/json');
+                    unset($milestone);
                 }
+                $career = [
+                    'id' => $userCareerRole->id,
+                    'career_role_id' => $careerRoleId,
+                    'title' => $ucTitle,
+                    'description' => $description,
+                    'user_id' => $id,
+                    'current_role' => 0,
+                    'milestones' => $milestonesArray,
+
+                ];
+                $jsonData = json_encode($career);
+                return response($jsonData, 200)
+                    ->header('Content-Type', 'application/json');
+
             }
         } catch (\Exception $e) {
         }

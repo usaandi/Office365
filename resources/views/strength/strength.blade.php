@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="admin__form admin__form--clear col-lg-6"><h4>Category</h4>
                     <form class="m-form" action="{{action('CategoryController@createCategory')}}" method="post">
-                        {{csrf_field()}}
+                        @csrf
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group row"><label for="example-text-input"
                                                                              class="col-sm-3 col-xs-12  col-form-label">Category Name</label>
@@ -56,7 +56,7 @@
 
                 <div class="admin__form admin__form--clear col-lg-6"><h4>Strength</h4>
                     <form class="m-form" method="post" action="{{action('StrengthController@createStrength')}}">
-                        {{csrf_field()}}
+                        @csrf
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group row"><label for="example-text-input"
                                                                              class="col-sm-3 col-xs-12  col-form-label">Strength</label>
