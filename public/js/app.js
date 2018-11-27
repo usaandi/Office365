@@ -57328,7 +57328,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57341,6 +57341,44 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -57483,6 +57521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         submit: function submit() {},
         focusField: function focusField() {
+            var _this = this;
 
             if (this.errors === false) {
                 this.checkError();
@@ -57500,7 +57539,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             userCareerRoleId: this.milestone.user_career_role_id
                         }];
 
-                        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data).then(function (response) {});
+                        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data).then(function (response) {
+
+                            _this.show = false;
+                        });
                     }
                 }
             }
@@ -57518,248 +57560,318 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "profile-timeline__milestones" }, [
-      _c("div", { staticClass: "m-form__group form-group" }, [
-        _c("div", { staticClass: "m-checkbox-list" }, [
-          _c(
-            "label",
+      _c(
+        "div",
+        {
+          directives: [
             {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: !_vm.show,
-                  expression: "!show"
-                }
-              ],
-              staticClass:
-                "m-checkbox m-checkbox--air m-checkbox--state-success",
-              attrs: { value: _vm.milestone.id }
-            },
-            [
-              _c("input", {
-                attrs: { type: "checkbox" },
-                domProps: { checked: _vm.milestone.completed === 1 },
-                on: { click: _vm.submitChange }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.show,
-                      expression: "!show"
-                    }
-                  ],
-                  staticClass: "profile-timeline__milestones--label"
-                },
-                [
-                  _vm._v(
-                    " " + _vm._s(_vm.milestone.task) + "\n                    "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("span")
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "profile-timeline__milestones--name" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model.trim",
-                  value: _vm.milestone.task,
-                  expression: "milestone.task",
-                  modifiers: { trim: true }
-                },
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.show,
-                  expression: "show"
-                }
-              ],
-              class: { "border border-danger": this.errorTask },
-              attrs: { type: "text" },
-              domProps: { value: _vm.milestone.task },
-              on: {
-                focus: _vm.checkError,
-                change: _vm.checkError,
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.milestone, "task", $event.target.value.trim())
-                },
-                blur: function($event) {
-                  _vm.$forceUpdate()
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.show,
-                  expression: "show"
-                },
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.milestone.reminder,
-                  expression: "milestone.reminder"
-                }
-              ],
-              class: { "border border-danger": this.errorDate },
-              attrs: { type: "date" },
-              domProps: { value: _vm.milestone.reminder },
-              on: {
-                focus: _vm.checkError,
-                change: _vm.checkError,
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.milestone, "reminder", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
+              name: "show",
+              rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            }
+          ],
+          staticClass: "profile-timeline__form"
+        },
+        [
+          _c("form", { staticClass: "m-form" }, [
+            _c("div", { staticClass: "m-portlet__body" }, [
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.selected,
-                    expression: "selected"
+                    staticClass: "col-3 col-form-label",
+                    attrs: { for: "Task" }
                   },
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.show,
-                    expression: "show"
-                  }
-                ],
-                class: { "border border-danger": this.errorSelected },
-                on: {
-                  focus: _vm.checkError,
-                  change: [
-                    function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.selected = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    },
-                    _vm.checkError
-                  ]
-                }
-              },
-              [
-                _c("option"),
+                  [_vm._v("Task")]
+                ),
                 _vm._v(" "),
-                _vm._l(_vm.usersList, function(user) {
-                  return _c("option", { domProps: { value: user } }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(user.name) +
-                        "\n                        "
-                    )
-                  ])
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                directives: [
+                _c("div", { staticClass: "col-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.trim",
+                        value: _vm.milestone.task,
+                        expression: "milestone.task",
+                        modifiers: { trim: true }
+                      }
+                    ],
+                    staticClass: "form-control m-input",
+                    class: { "border border-danger": this.errorTask },
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.milestone.task },
+                    on: {
+                      focus: _vm.checkError,
+                      change: _vm.checkError,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.milestone,
+                          "task",
+                          $event.target.value.trim()
+                        )
+                      },
+                      blur: function($event) {
+                        _vm.$forceUpdate()
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
                   {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.show,
-                    expression: "show"
-                  }
-                ],
-                on: {
-                  click: function($event) {
-                    _vm.remove()
-                  }
-                }
+                    staticClass: "col-3 col-form-label",
+                    attrs: { for: "Assign" }
+                  },
+                  [_vm._v("Assign")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-9" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selected,
+                          expression: "selected"
+                        }
+                      ],
+                      staticClass: "form-control m-input",
+                      class: { "border border-danger": this.errorSelected },
+                      on: {
+                        focus: _vm.checkError,
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.selected = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          _vm.checkError
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { disabled: "" } }, [
+                        _vm._v(
+                          "current " + _vm._s(_vm.milestone.assigned_username)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.usersList, function(user) {
+                        return _c("option", { domProps: { value: user } }, [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(user.name) +
+                              "\n                                "
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-3 col-form-label",
+                    attrs: { for: "Reminder" }
+                  },
+                  [_vm._v("Set reminder")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-9" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.milestone.reminder,
+                        expression: "milestone.reminder"
+                      }
+                    ],
+                    staticClass: "form-control m-input",
+                    class: { "border border-danger": this.errorDate },
+                    attrs: { id: "Reminder", type: "date" },
+                    domProps: { value: _vm.milestone.reminder },
+                    on: {
+                      focus: _vm.checkError,
+                      change: _vm.checkError,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.milestone, "reminder", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+              _c("div", { staticClass: "m-form__actions" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+                    _c(
+                      "span",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.remove()
+                          }
+                        }
+                      },
+                      [
+                        _c("span", {
+                          staticClass: "icon flaticon-delete-1",
+                          staticStyle: { cursor: "pointer" }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                    _c("div", { staticClass: "profile-timeline__action" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.show = !_vm.show
+                            }
+                          }
+                        },
+                        [_vm._v("Close\n                                    ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn m-btn--pill btn-success m-btn m-btn--custom",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.focusField()
+                            }
+                          }
+                        },
+                        [_vm._v("Save\n                                    ")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.show,
+              expression: "!show"
+            }
+          ],
+          staticClass: "m-form__group form-group"
+        },
+        [
+          _c("div", { staticClass: "m-checkbox-list" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "m-checkbox m-checkbox--air m-checkbox--state-success",
+                attrs: { value: _vm.milestone.id }
               },
               [
-                _c("span", {
-                  staticClass: "icon flaticon-delete-1",
-                  staticStyle: { cursor: "pointer" }
-                })
+                _c("input", {
+                  attrs: { type: "checkbox" },
+                  domProps: { checked: _vm.milestone.completed === 1 },
+                  on: { click: _vm.submitChange }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "profile-timeline__milestones--label" },
+                  [
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm.milestone.task) +
+                        "\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("span")
               ]
             ),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.show,
-                    expression: "!show"
-                  }
-                ],
-                staticClass: "m-list-pics m-list-pics--sm"
-              },
-              [
+            _c("div", { staticClass: "profile-timeline__milestones--name" }, [
+              _c("div", { staticClass: "m-list-pics m-list-pics--sm" }, [
                 _vm._m(0),
                 _vm._v(
                   "\n\n                        " +
                     _vm._s(_vm.milestone.assigned_username) +
                     "\n                    "
                 )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "profile-timeline__milestones--date" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.milestone.reminder) +
-                "\n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "profile-timeline__milestones--action" }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
-                attrs: { tabindex: "" },
-                on: {
-                  click: function($event) {
-                    _vm.focusField()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "profile-timeline__milestones--date" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.milestone.reminder) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "profile-timeline__milestones--action" }, [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
+                  attrs: { tabindex: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.focusField()
+                    }
                   }
-                }
-              },
-              [_c("i", { staticClass: "la la-pencil-square" })]
-            )
+                },
+                [_c("i", { staticClass: "la la-pencil-square" })]
+              )
+            ])
           ])
-        ])
-      ])
+        ]
+      )
     ])
   ])
 }

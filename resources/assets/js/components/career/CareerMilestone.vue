@@ -1,14 +1,74 @@
 <template>
     <div>
         <div class="profile-timeline__milestones">
-            <div class="m-form__group form-group">
+
+            <div class="profile-timeline__form" v-show="show">
+                <form class="m-form">
+                    <div class="m-portlet__body">
+                        <div class="form-group m-form__group row">
+                            <label for="Task" class="col-3 col-form-label">Task</label>
+                            <div class="col-9">
+                                <input v-model.trim="milestone.task" class="form-control m-input"
+                                       @focus="checkError" @change="checkError" type="text"
+                                       :class="{'border border-danger': this.errorTask}">
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="Assign" class="col-3 col-form-label">Assign</label>
+                            <div class="col-9">
+                                <select class="form-control m-input" @focus="checkError" v-model="selected"
+                                        @change="checkError"
+                                        :class="{'border border-danger': this.errorSelected}">
+                                    <option disabled>current {{milestone.assigned_username}}</option>
+                                    <option
+                                            v-for="user in usersList"
+                                            :value="user"
+                                    >
+                                        {{user.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
+                            <div class="col-9">
+                                <input class="form-control m-input" id="Reminder" type="date" @focus="checkError"
+                                       @change="checkError"
+                                       :class="{'border border-danger': this.errorDate}"
+                                       v-model="milestone.reminder">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-portlet__foot m-portlet__foot--fit">
+                        <div class="m-form__actions">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12">
+                                         <span @click="remove()"><span style="cursor: pointer"
+                                                                       class="icon flaticon-delete-1"></span></span>
+                                </div>
+                                <div class="col-sm-9 col-xs-12">
+                                    <div class="profile-timeline__action">
+                                        <button @click="show=!show" type="button"
+                                                class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Close
+                                        </button>
+                                        <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
+                                                @click="focusField()">Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="m-form__group form-group" v-show="!show">
                 <div class="m-checkbox-list">
-                    <label v-show="!show" :value="milestone.id"
+                    <label :value="milestone.id"
                            class="m-checkbox m-checkbox--air m-checkbox--state-success">
                         <input type="checkbox" @click="submitChange" :checked="milestone.completed === 1">
                         <div
                                 class="profile-timeline__milestones--label"
-                                v-show="!show"
                                 style=""
                         > {{milestone.task}}
                         </div>
@@ -19,30 +79,8 @@
 
                     <div class="profile-timeline__milestones--name">
 
-                        <input v-model.trim="milestone.task" v-show="show"
-                               @focus="checkError" @change="checkError" type="text" class=""
-                               :class="{'border border-danger': this.errorTask}">
 
-                        <input type="date" @focus="checkError" @change="checkError"
-                               :class="{'border border-danger': this.errorDate}"
-                               v-show="show" v-model="milestone.reminder">
-
-                        <select @focus="checkError" v-model="selected" @change="checkError" v-show="show"
-                                :class="{'border border-danger': this.errorSelected}">
-                            <option></option>
-                            <option
-                                    v-for="user in usersList"
-                                    :value="user"
-
-                            >
-                                {{user.name}}
-                            </option>
-                        </select>
-
-                        <span v-show="show" @click="remove()"><span style="cursor: pointer"
-                                                                    class="icon flaticon-delete-1"></span></span>
-
-                        <div v-show="!show" class="m-list-pics m-list-pics--sm">
+                        <div class="m-list-pics m-list-pics--sm">
                             <a href=""><img src="" title=""></a>
 
                             {{milestone.assigned_username}}
@@ -52,7 +90,7 @@
                         {{milestone.reminder}}
                     </div>
                     <div class="profile-timeline__milestones--action">
-                        <a tabindex=""  @click="focusField()"
+                        <a tabindex="" @click="focusField()"
                            class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill">
                             <i class="la la-pencil-square"></i>
                         </a>
@@ -107,17 +145,17 @@
 
         methods: {
 
-            submitChange(){
-              if(this.canEdit){
-                  this.changeValue();
-              }
+            submitChange() {
+                if (this.canEdit) {
+                    this.changeValue();
+                }
             },
 
             changeValue() {
 
                 if (this.canEdit === true) {
                     let vm = this;
-                    axios.post('update/milestone/'+this.selectedUserProfileId, {milestoneId: this.milestone.id}).then(response => {
+                    axios.post('update/milestone/' + this.selectedUserProfileId, {milestoneId: this.milestone.id}).then(response => {
                         if (response.status === 200) {
                             vm.milestone.completed = response.data.value;
                         }
@@ -170,6 +208,8 @@
 
                             axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data)
                                 .then(response => {
+
+                                    this.show = false;
                                 });
                         }
                     }
