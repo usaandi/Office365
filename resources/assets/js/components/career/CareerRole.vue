@@ -1,10 +1,15 @@
 <template>
     <div class="m-timeline-2__item">
+
         <span class="m-timeline-2__item-time">{{returnDate}}</span>
         <div class="m-timeline-2__item-cricle"><i
                 class="fa fa-genderless"
                 :class="[{'m--font-success': isActive === 1,'m--font-info': isActive=== 0 }]"></i></div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
+            <div v-show="success" class="alert alert-success alert-dismissible">
+                <a class="close" @click="success=!success"></a>
+                <strong>Success!</strong>
+            </div>
             <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]">
                 <div v-if="isActive === 1" class="profile-timeline__check--wrapper">
                     <div class="profile-timeline__check"></div>
@@ -24,13 +29,11 @@
 
                             {{userRoleInfo.description}}
                         </p>
-
-
                     </div>
                 </div>
+
                 <div class="row " v-show="isEditing">
                     <div class="admin__form">
-                        <input type="hidden" name="_method" value="PATCH">
                         <div class="m-portlet__body">
 
                             <div class="form-group m-form__group row">
@@ -57,7 +60,7 @@
                             <div class="m-form__actions">
                                 <div class="row">
                                     <div class="col-sm-3 col-xs-12">
-                                        <button @click=""
+                                        <button @click="deleteRequest()"
                                                 class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
                                             <i
                                                     class="icon flaticon-delete-1"></i></button>
@@ -177,6 +180,7 @@
                 isUpdate: false,
                 descriptionValue: null,
                 roleValue: null,
+                success: false,
             }
         },
         watch: {
@@ -222,6 +226,20 @@
                     return true;
                 }
             },
+            deleteRequest() {
+                if (this.canEdit) {
+
+                    axios.delete('/user/' + this.selectedUserProfileId + '/career/delete', {params: {careerId: this.userRoleInfo.id}})
+                        .then(response => {
+                            const data = response.data;
+                            this.$emit('deleteRole', data);
+                            this.success = true;
+
+                        })
+                }
+
+
+            },
 
             selectRole(value) {
 
@@ -248,6 +266,7 @@
                                 this.isEditing = false;
                                 this.roleValue = null;
                                 this.descriptionValue = null;
+                                this.success = true;
                             }
                         });
 
@@ -295,11 +314,6 @@
                 }
             },
 
-            sendErrorValue(value) {
-
-                /* this.$emit('errorValue',value);*/
-
-            },
 
             addMilestone(data) {
                 this.userRoleInfo['milestones'].push(data[0]);

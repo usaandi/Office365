@@ -74,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}/career/milestone/update', 'CareerController@updateMilestone')->name('updateMilestone');
     Route::post('/user/{id}/career/milestone/delete', 'CareerController@deleteMilestone')->name('deleteMilestone');
     Route::patch('/user/{id}/career/update', 'CareerController@updateCareer')->name('updateCareer');
+    Route::delete('/user/{id}/career/delete', 'CareerController@deleteCareer')->name('deleteCareer');
+
     Route::post('/user/{id}/career/role/create', 'CareerController@createCareer')->name('createCareer');
     Route::post('/user/{id}/career/role/select', 'CareerController@selectCareer')->name('selectCareer');
     Route::post('/user/{id}/career/role/save', 'CareerController@saveCareer')->name('saveCareer');

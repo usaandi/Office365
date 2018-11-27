@@ -54695,7 +54695,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54708,6 +54708,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -54808,6 +54809,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        deleteRole: function deleteRole(id) {
+
+            for (var i = 0; i < this.userDatas.length; i++) {
+                if (this.userDatas[i].id === id) {
+                    this.userDatas.splice(i, 1);
+                }
+            }
+        },
         selectActive: function selectActive(careerRoleId) {
             var _this = this;
 
@@ -55042,6 +55051,9 @@ var render = function() {
                 },
                 selectActive: function($event) {
                   _vm.selectActive($event)
+                },
+                deleteRole: function($event) {
+                  _vm.deleteRole($event)
                 }
               }
             })
@@ -56365,7 +56377,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56378,6 +56390,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
 //
 //
 //
@@ -56555,7 +56570,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             editField: '',
             isUpdate: false,
             descriptionValue: null,
-            roleValue: null
+            roleValue: null,
+            success: false
         };
     },
 
@@ -56595,6 +56611,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return true;
             }
         },
+        deleteRequest: function deleteRequest() {
+            var _this = this;
+
+            if (this.canEdit) {
+
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/user/' + this.selectedUserProfileId + '/career/delete', { params: { careerId: this.userRoleInfo.id } }).then(function (response) {
+                    var data = response.data;
+                    _this.$emit('deleteRole', data);
+                    _this.success = true;
+                });
+            }
+        },
         selectRole: function selectRole(value) {
 
             if (this.canEdit) {
@@ -56603,7 +56631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         submitChanges: function submitChanges() {
-            var _this = this;
+            var _this2 = this;
 
             if (this.canEdit) {
                 if (this.descriptionValue || this.roleValue) {
@@ -56616,10 +56644,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(function (response) {
                         if (response.status === 200) {
-                            _this.userRoleInfo = response.data;
-                            _this.isEditing = false;
-                            _this.roleValue = null;
-                            _this.descriptionValue = null;
+                            _this2.userRoleInfo = response.data;
+                            _this2.isEditing = false;
+                            _this2.roleValue = null;
+                            _this2.descriptionValue = null;
+                            _this2.success = true;
                         }
                     });
                 }
@@ -56660,11 +56689,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.canEdit === true) {
                 this.$emit('save', true);
             }
-        },
-        sendErrorValue: function sendErrorValue(value) {
-
-            /* this.$emit('errorValue',value);*/
-
         },
         addMilestone: function addMilestone(data) {
             this.userRoleInfo['milestones'].push(data[0]);
@@ -56723,6 +56747,33 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "m-timeline-2__item-text  m--padding-top-5 " }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.success,
+              expression: "success"
+            }
+          ],
+          staticClass: "alert alert-success alert-dismissible"
+        },
+        [
+          _c("a", {
+            staticClass: "close",
+            on: {
+              click: function($event) {
+                _vm.success = !_vm.success
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("strong", [_vm._v("Success!")])
+        ]
+      ),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -56793,10 +56844,6 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "admin__form" }, [
-                _c("input", {
-                  attrs: { type: "hidden", name: "_method", value: "PATCH" }
-                }),
-                _vm._v(" "),
                 _c("div", { staticClass: "m-portlet__body" }, [
                   _c("div", { staticClass: "form-group m-form__group row" }, [
                     _c(
@@ -56890,7 +56937,11 @@ var render = function() {
                             {
                               staticClass:
                                 "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
-                              on: { click: function($event) {} }
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteRequest()
+                                }
+                              }
                             },
                             [_c("i", { staticClass: "icon flaticon-delete-1" })]
                           )

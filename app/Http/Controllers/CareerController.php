@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserCareerRole;
 use App\UserCareerRoleMilestone;
 use Illuminate\Http\Request;
 use App\CareerRole;
@@ -165,6 +166,32 @@ class CareerController extends Controller
         return $data;
     }
 
+    public function deleteCareer(Request $request, $id)
+    {
+        try {
+
+            $user = User::findOrFail($id);
+            $this->authorize('deleteMilestone', $user);
+            $data = $request->all();
+
+            $rules = [
+                'careerId'=> 'required|int'
+            ];
+            $validator=Validator::make($data,$rules);
+
+            if($validator->passes()){
+
+                $careerId = $data['careerId'];
+                $userCareerRole = UserCareerRole::where('id', $careerId)->first();
+               // $userCareerRole->delete();
+
+                return response($careerId,200);
+            }
+
+        } catch (\Exception $e) {
+        }
+    }
+
     public function updateCareer(Request $request, $id)
     {
         try {
@@ -192,7 +219,7 @@ class CareerController extends Controller
                         'title' => $SanitizeInput,
                         'description' => $data['descriptionValue']
                     ]);
-                $newData=$user->userCareerRole()->where('id',$data['careerId'])->where('user_id',$id)->first();
+                $newData = $user->userCareerRole()->where('id', $data['careerId'])->where('user_id', $id)->first();
                 return response(json_encode($newData), 200)
                     ->header('Content-Type', 'application/json');
             }
