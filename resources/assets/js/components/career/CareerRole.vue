@@ -29,45 +29,58 @@
                     </div>
                 </div>
                 <div class="row " v-show="isEditing">
-                    <div class="admin__form admin__form--clear">
-                        <form class="m-form" method="post" action="#">
+                    <div class="admin__form">
+                        <input type="hidden" name="_method" value="PATCH">
+                        <div class="m-portlet__body">
 
-                            <div class="m-portlet__body">
+                            <div class="form-group m-form__group row">
+                                <label for="title" class="col-3 col-form-label">Role</label>
 
-                                <div class="form-group m-form__group row">
-                                    <label for="title" class="col-3 col-form-label">Title</label>
-
-                                    <div class="col-9"><input id="title" v-model="titleValue" type="text" name="title"
-                                                              placeholder="Title"
-                                                              class="form-control m-input">
-                                    </div>
+                                <div class="col-9"><input id="title" v-model="roleValue" type="text" name="title"
+                                                          placeholder="Role"
+                                                          class="form-control m-input">
                                 </div>
-
-
-                                <div class="form-group m-form__group row">
-                                    <label for="description" class="col-3 col-form-label">Description</label>
-                                    <div class="col-sm-9 col-xs-12"><textarea v-model="descriptionValue"
-                                                                              id="description" rows="10"
-                                                                              class="form-control m-input"
-                                                                              name="career_description"></textarea>
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="m-portlet__foot m-portlet__foot--fit">
-                                <div class="m-form__actions">
-                                    <div class="row">
-                                        <div class="col-sm-3 col-xs-12"></div>
-                                        <div class="col-sm-9 col-xs-12">
-                                            <div class="profile-timeline__action">
-                                                <button type="submit" class="btn btn-success m-btn m-btn--pill">
-                                                    <span><span>Submit</span></span></button>
-                                            </div>
+
+
+                            <div class="form-group m-form__group row">
+                                <label for="description" class="col-3 col-form-label">Description</label>
+                                <div class="col-sm-9 col-xs-12"><textarea v-model="descriptionValue"
+                                                                          id="description" rows="10"
+                                                                          class="form-control m-input"
+                                                                          name="career_description"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <button @click=""
+                                                class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+                                            <i
+                                                    class="icon flaticon-delete-1"></i></button>
+
+                                    </div>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <div class="profile-timeline__action">
+
+                                            <button @click="clear()" type="button"
+                                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
+                                                Close
+                                            </button>
+                                            <button type="submit" @click="submitChanges"
+                                                    class="btn btn-success m-btn m-btn--pill">
+                                                <span><span>Submit</span></span></button>
+
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -75,21 +88,21 @@
                         <h4 class="profile-timeline__title">MILESTONES</h4>
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
-                        <div class="profile-timeline__add" >
-                            <a v-show="!show"   class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
+                        <div class="profile-timeline__add">
+                            <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
                                                 <span>New</span>
                                               </span>
                             </a>
                             <milestone-form v-show="show"
-                                    :hasChanged="hasChanged"
-                                    :usersList="usersList"
-                                    :careerRoleId="userRoleInfo.id"
-                                    :selectedUserProfileId="selectedUserProfileId"
-                                    @pushToMilestones="pushMilestone($event)"
-                                    @addToMilestones="addMilestone($event)"
-                                    @close="show=false"
+                                            :hasChanged="hasChanged"
+                                            :usersList="usersList"
+                                            :careerRoleId="userRoleInfo.id"
+                                            :selectedUserProfileId="selectedUserProfileId"
+                                            @pushToMilestones="pushMilestone($event)"
+                                            @addToMilestones="addMilestone($event)"
+                                            @close="show=false"
                             >
                             </milestone-form>
 
@@ -162,8 +175,8 @@
                 createdDate: this.userdata.created_at,
                 editField: '',
                 isUpdate: false,
-                descriptionValue: '',
-                titleValue: '',
+                descriptionValue: null,
+                roleValue: null,
             }
         },
         watch: {
@@ -219,6 +232,28 @@
 
 
             },
+            submitChanges() {
+                if (this.canEdit) {
+                    if (this.descriptionValue || this.roleValue) {
+
+                        const data = {
+                            roleTitle: this.roleValue,
+                            descriptionValue: this.descriptionValue,
+                            careerId: this.userRoleInfo.id,
+                        };
+
+                        axios.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(response => {
+                            if (response.status === 200) {
+                                this.userRoleInfo = response.data;
+                                this.isEditing = false;
+                                this.roleValue = null;
+                                this.descriptionValue = null;
+                            }
+                        });
+
+                    }
+                }
+            },
             currentlySelected() {
                 if (this.canEdit) {
                     if (this.userRoleInfo.current_role === 1) {
@@ -226,6 +261,25 @@
                     }
                     else {
                         this.iscurrent = false;
+                    }
+                }
+            },
+            clear() {
+                if (this.canEdit === true) {
+
+                    this.roleValue = null;
+                    this.descriptionValue = null;
+                    this.isEditing = false;
+
+
+                }
+            },
+            canEditCareer() {
+                if (this.canEdit === true) {
+                    this.isEditing === false ? this.isEditing = true : this.isEditing = false;
+                    if (this.isEditing === true) {
+                        this.descriptionValue = this.userRoleInfo.description;
+                        this.roleValue = this.userRoleInfo.title;
                     }
                 }
             },
@@ -255,23 +309,10 @@
                     this.userRoleInfo['milestones'].push(data[0]);
                 }
             },
-            canEditCareer() {
-                if (this.canEdit === true) {
-                    this.isEditing === false ? this.isEditing = true : this.isEditing = false;
-                    if (this.isEditing === true) {
-                        this.descriptionValue = this.userRoleInfo.description;
-                        this.titleValue = this.userRoleInfo.title;
-                    }
-                }
-            },
+
             showForm() {
                 if (this.canEdit === true) {
                     this.show === false ? this.show = true : this.show = false;
-
-                    if (this.show) {
-                        this.buttonValue = 'Close';
-                    }
-                    else this.buttonValue = 'New';
                 }
             },
             deleteMilestone(value) {

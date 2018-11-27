@@ -123,7 +123,7 @@
             },
             submit() {
 
-                if (teamName) {
+                if (this.teamName) {
 
                     const data = {
                         teamName: this.teamName

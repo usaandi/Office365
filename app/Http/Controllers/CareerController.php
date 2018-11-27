@@ -170,26 +170,33 @@ class CareerController extends Controller
         try {
             // $authUser = \Auth::user();
             $user = User::findOrFail($id);
-
-            $this->authorize('updateCareer', $user);
             $data = $request->all();
 
+            $this->authorize('updateCareer', $user);
+
             $rules = [
-                'fieldValue' => 'required',
-                'fieldName' => 'required',
-                'id' => 'required'
+                'roleTitle' => 'required',
+                'descriptionValue' => 'required',
+                'careerId' => 'required'
             ];
             $validator = Validator::make($data, $rules);
 
             if ($validator->passes()) {
+
+                $SanitizeInput = ucfirst(strtolower($data['roleTitle']));
+
                 $user->userCareerRole()
-                    ->where('id', $data['id'])
+                    ->where('id', $data['careerId'])
                     ->where('user_id', $id)
                     ->update([
-                        $data['fieldName'] => $data['fieldValue']
+                        'title' => $SanitizeInput,
+                        'description' => $data['descriptionValue']
                     ]);
-
+                $newData=$user->userCareerRole()->where('id',$data['careerId'])->where('user_id',$id)->first();
+                return response(json_encode($newData), 200)
+                    ->header('Content-Type', 'application/json');
             }
+
 
         } catch (\Exception $e) {
         }
