@@ -120,7 +120,6 @@
                                 :usersList="usersList"
                                 :careerRoleMilestoneIndex="index"
                                 @removeMilestone="deleteMilestone($event)"
-                                @errorValue="sendErrorValue($event)"
                         ></user-career-milestone>
                     </div>
                 </div>
