@@ -55,7 +55,7 @@
 
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Current
+                                                                 class="col-sm-3 col-xs-12  col-form-label">
                         Department: @isset($currentDepartment)
                             {{$currentDepartment[0]->department_name}} @endisset</label>
 

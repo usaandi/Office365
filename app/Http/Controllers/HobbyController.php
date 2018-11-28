@@ -35,11 +35,11 @@ class HobbyController extends Controller
             $userHobby = UserHobby::where('user_id', $id)->where('hobby_id', $hobby->id)->first();
 
             if ($userHobby === NULL){
-                UserHobby::create(['user_id' => $user->id, 'hobby_id' => $hobby->id]);
+                $userHobby = UserHobby::create(['user_id' => $user->id, 'hobby_id' => $hobby->id]);
 
                 $data = array([
                     'name' => $hobby->name,
-                    'id' => $hobby->id,
+                    'id' => $userHobby->id,
                 ]);
 
                $jsonData = json_encode($data);
