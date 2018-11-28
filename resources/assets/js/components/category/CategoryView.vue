@@ -1,29 +1,30 @@
 <template>
     <div>
         <h3>Table Category</h3>
-        <span class="float-left"><a :href="'/admin/strength'" class="text-success">
-                <i class="fa fa-plus fa-2x"
-                   aria-hidden="true"></i></a></span>
-        <table class="table table-bordered text-center">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Category name</th>
-                <th>Category description</th>
-                <th>Category colour</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr is="category-component" v-for="(category, index) in categories "
-                :propCategory="category"
-                :key="category.id"
-                :index="index"
-                @deleteCategory="deleteCategory($event)"
-            ></tr>
-            </tbody>
-        </table>
+        <span class="float-right m--margin-bottom-5"><a :href="'/admin/strength'" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+        <span>Add Strength</span></a></span>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Category name</th>
+                    <th>Category description</th>
+                    <th>Category colour</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr is="category-component" v-for="(category, index) in categories "
+                    :propCategory="category"
+                    :key="category.id"
+                    :index="index"
+                    @deleteCategory="deleteCategory($event)"
+                ></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -50,12 +51,12 @@
                 };
                 let array = this.categories;
 
-                      axios.delete('admin/category/delete', {params:data})
-                          .then(function (response) {
-                              if(response.status === 200){
-                                  array.splice(index, 1);
-                              }
-                          });
+                axios.delete('admin/category/delete', {params: data})
+                    .then(function (response) {
+                        if (response.status === 200) {
+                            array.splice(index, 1);
+                        }
+                    });
             },
 
             fetchCategoryData() {

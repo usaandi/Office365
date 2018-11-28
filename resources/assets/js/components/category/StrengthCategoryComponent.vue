@@ -3,17 +3,17 @@
         <th scope="row">{{strength.strength_id}}</th>
         <td>
             <span v-show="!show">{{strength.strength_name}}</span>
-            <input @change="hasChanged(strength.strength_name)"
+            <input class="form-control m-input" @change="hasChanged(strength.strength_name)"
                    v-show="show" v-model="strengthName" type="text">
         </td>
         <td>
             <span v-show="!show"> {{strength.strength_description}}</span>
-            <textarea @change="hasChanged(strength.strength_description)"
+            <textarea class="form-control m-input" @change="hasChanged(strength.strength_description)"
                       v-show="show" v-model="strengthDescription" ></textarea>
         </td>
         <td :value="strength.category_id">
             <span v-show="!show">{{strength.category_name}}</span>
-            <select @change="hasChanged(selected)" v-show="show" v-model="selected">
+            <select class="form-control m-input" @change="hasChanged(selected)" v-show="show" v-model="selected">
                 <option></option>
                 <option v-for="category in categories" :value="category">
                     {{category.category_name}}

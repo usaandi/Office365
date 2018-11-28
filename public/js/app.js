@@ -57209,7 +57209,7 @@ var staticRenderFns = [
     return _c("span", [
       _c("i", { staticClass: "la la-plus" }),
       _vm._v(" "),
-      _c("span", [_vm._v("New")])
+      _c("span", [_vm._v("Add Milestone")])
     ])
   },
   function() {
@@ -60400,7 +60400,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60448,6 +60448,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60500,41 +60502,41 @@ var render = function() {
     _c("h3", [_vm._v("Table Strength")]),
     _vm._v(" "),
     _c("div", { staticClass: "table-responsive" }, [
-      _c("span", { staticClass: "float-left m--margin-bottom-5" }, [
+      _c("span", { staticClass: "float-right m--margin-bottom-5" }, [
         _c(
           "a",
-          { staticClass: "text-success", attrs: { href: "/admin/strength" } },
-          [
-            _c("i", {
-              staticClass: "fa fa-plus fa-2x",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
+          {
+            staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
+            attrs: { href: "/admin/strength" }
+          },
+          [_c("span", [_vm._v("Add Department")])]
         )
       ]),
       _vm._v(" "),
-      _c("table", { staticClass: "table table-bordered text-center" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.strengthsCategories, function(strength, index) {
-            return _c("strength-component", {
-              key: strength.strength_id,
-              tag: "tr",
-              attrs: {
-                index: index,
-                "prop-strength": strength,
-                "prop-categories": _vm.categories
-              },
-              on: {
-                deleteStrength: function($event) {
-                  _vm.deleteStrength($event)
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table table-bordered text-center" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.strengthsCategories, function(strength, index) {
+              return _c("strength-component", {
+                key: strength.strength_id,
+                tag: "tr",
+                attrs: {
+                  index: index,
+                  "prop-strength": strength,
+                  "prop-categories": _vm.categories
+                },
+                on: {
+                  deleteStrength: function($event) {
+                    _vm.deleteStrength($event)
+                  }
                 }
-              }
+              })
             })
-          })
-        )
+          )
+        ])
       ])
     ])
   ])
@@ -60826,6 +60828,7 @@ var render = function() {
             expression: "strengthName"
           }
         ],
+        staticClass: "form-control m-input",
         attrs: { type: "text" },
         domProps: { value: _vm.strengthName },
         on: {
@@ -60873,6 +60876,7 @@ var render = function() {
             expression: "strengthDescription"
           }
         ],
+        staticClass: "form-control m-input",
         domProps: { value: _vm.strengthDescription },
         on: {
           change: function($event) {
@@ -60921,6 +60925,7 @@ var render = function() {
               expression: "selected"
             }
           ],
+          staticClass: "form-control m-input",
           on: {
             change: [
               function($event) {
@@ -61092,7 +61097,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61105,6 +61110,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -61185,37 +61191,37 @@ var render = function() {
   return _c("div", [
     _c("h3", [_vm._v("Table Category")]),
     _vm._v(" "),
-    _c("span", { staticClass: "float-left" }, [
+    _c("span", { staticClass: "float-right" }, [
       _c(
         "a",
-        { staticClass: "text-success", attrs: { href: "/admin/strength" } },
-        [
-          _c("i", {
-            staticClass: "fa fa-plus fa-2x",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]
+        {
+          staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
+          attrs: { href: "/admin/strength" }
+        },
+        [_c("span", [_vm._v("Add Strength")])]
       )
     ]),
     _vm._v(" "),
-    _c("table", { staticClass: "table table-bordered text-center" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.categories, function(category, index) {
-          return _c("category-component", {
-            key: category.id,
-            tag: "tr",
-            attrs: { propCategory: category, index: index },
-            on: {
-              deleteCategory: function($event) {
-                _vm.deleteCategory($event)
+    _c("div", { staticClass: "table-responsive" }, [
+      _c("table", { staticClass: "table table-bordered text-center" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.categories, function(category, index) {
+            return _c("category-component", {
+              key: category.id,
+              tag: "tr",
+              attrs: { propCategory: category, index: index },
+              on: {
+                deleteCategory: function($event) {
+                  _vm.deleteCategory($event)
+                }
               }
-            }
+            })
           })
-        })
-      )
+        )
+      ])
     ])
   ])
 }
@@ -61492,6 +61498,7 @@ var render = function() {
             expression: "show"
           }
         ],
+        staticClass: "form-control m-input",
         attrs: { type: "text" },
         domProps: { value: _vm.categoryName },
         on: {
@@ -61539,6 +61546,7 @@ var render = function() {
             expression: "show"
           }
         ],
+        staticClass: "form-control m-input",
         attrs: { type: "text" },
         domProps: { value: _vm.categoryDescription },
         on: {
@@ -61586,6 +61594,7 @@ var render = function() {
             expression: "show"
           }
         ],
+        staticClass: "form-control m-input",
         attrs: { type: "color" },
         domProps: { value: _vm.categoryColour },
         on: {
@@ -62285,7 +62294,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62298,6 +62307,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -62572,7 +62582,7 @@ var render = function() {
                     "label",
                     {
                       staticClass: "col-sm-3 col-xs-12  col-form-label",
-                      attrs: { for: "example-text-input" }
+                      attrs: { for: "department" }
                     },
                     [_vm._v("Department")]
                   ),
@@ -62592,6 +62602,7 @@ var render = function() {
                         required: "",
                         name: "departmentName",
                         type: "text",
+                        id: "department",
                         placeholder: "Department Name"
                       },
                       domProps: { value: _vm.departmentName },
@@ -62612,7 +62623,7 @@ var render = function() {
                     "label",
                     {
                       staticClass: "col-sm-3 col-xs-12  col-form-label",
-                      attrs: { for: "example-text-input" }
+                      attrs: { for: "abbreviation" }
                     },
                     [_vm._v("Abbreviation")]
                   ),
@@ -62632,7 +62643,8 @@ var render = function() {
                         required: "",
                         name: "departmentAbbr",
                         type: "text",
-                        placeholder: "Department abbreviation"
+                        placeholder: "Department abbreviation",
+                        id: "abbreviation"
                       },
                       domProps: { value: _vm.departmentAbbr },
                       on: {
@@ -62652,7 +62664,7 @@ var render = function() {
                     "label",
                     {
                       staticClass: "col-sm-3 col-xs-12 col-form-label",
-                      attrs: { for: "exampleTextarea" }
+                      attrs: { for: "textArea" }
                     },
                     [_vm._v("Description")]
                   ),
@@ -62671,7 +62683,7 @@ var render = function() {
                       attrs: {
                         required: "",
                         maxlength: "1000",
-                        id: "exampleTextarea",
+                        id: "textArea",
                         rows: "3",
                         name: "description"
                       },

@@ -95,7 +95,7 @@
                             <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
-                                                <span>New</span>
+                                                <span>Add Milestone</span>
                                               </span>
                             </a>
                             <milestone-form v-show="show"

@@ -9,23 +9,24 @@
 
             <div slot="body" class="admin__form admin__form--clear">
                 <div class="m-portlet__body">
-                    <div class="form-group m-form__group row"><label for="example-text-input"
+                    <div class="form-group m-form__group row"><label for="department"
                                                                      class="col-sm-3 col-xs-12  col-form-label">Department</label>
-                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentName" type="text"
+                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentName" type="text" id="department"
                                                                 placeholder="Department Name"
                                                                 class="form-control m-input"
                                                                 v-model="departmentName"></div>
                     </div>
-                    <div class="form-group m-form__group row"><label for="example-text-input"
+                    <div class="form-group m-form__group row"><label for="abbreviation"
                                                                      class="col-sm-3 col-xs-12  col-form-label">Abbreviation</label>
                         <div class="col-sm-9 col-xs-12 "><input required="" name="departmentAbbr" type="text"
                                                                 placeholder="Department abbreviation"
+                                                                id="abbreviation"
                                                                 v-model="departmentAbbr"
                                                                 class="form-control m-input"></div>
                     </div>
-                    <div class="form-group m-form__group row"><label for="exampleTextarea"
+                    <div class="form-group m-form__group row"><label for="textArea"
                                                                      class="col-sm-3 col-xs-12 col-form-label">Description</label>
-                        <div class="col-sm-9 col-xs-12"><textarea required="" maxlength="1000" id="exampleTextarea"
+                        <div class="col-sm-9 col-xs-12"><textarea required="" maxlength="1000" id="textArea"
                                                                   rows="3" class="form-control m-input"
                                                                   v-model="departmentDesc"
                                                                   name="description"></textarea></div>

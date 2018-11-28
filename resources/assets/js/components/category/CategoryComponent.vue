@@ -3,17 +3,17 @@
         <td scope="row">{{category.id}}</td>
         <td>
             <span v-show="!show">{{category.category_name}}</span>
-            <input @change="hasChanged(category.category_name)" type="text" v-model="categoryName" v-show="show">
+            <input class="form-control m-input" @change="hasChanged(category.category_name)" type="text" v-model="categoryName" v-show="show">
         </td>
         <td>
             <span v-show="!show">{{category.category_description}}</span>
-            <textarea @change="hasChanged(category.category_description)" type="text" v-model="categoryDescription"
+            <textarea class="form-control m-input" @change="hasChanged(category.category_description)" type="text" v-model="categoryDescription"
                       v-show="show">
             </textarea>
         </td>
         <td :style="{backgroundColor: category.category_colour}">
             <span v-show="!show">{{category.category_colour}}</span>
-            <input @change="hasChanged(category.category_colour)" type="color" v-model="categoryColour" v-show="show">
+            <input @change="hasChanged(category.category_colour)" type="color" v-model="categoryColour" v-show="show" class="form-control m-input">
         </td>
         <td>
             <span><button type="button" class="btn btn-success" @click="edit()">{{editText}}</button></span>
