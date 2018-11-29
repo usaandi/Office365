@@ -11,10 +11,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*TODO Kõiki route mis sa siin näed oleks saanud ka lihtsamini luua ning nii nagu vaja.
+käsuga
+
+php artisan make:controller StrengthController --resource
+loob StrengthControlleri ja kõgi vaja minevate elementidega (index,create,stroe,show,edit,update,destroy)
+Näiteks, typical CRUD kohta oleks saanud kasutada
+Route::resource('strengths', 'StrengthController')
+ning oleks palju vähem messi ja kood oleks arusaadavam. ning lihtsam groupida neid.
+*/
 
 
-//Route::get('/register', 'HomeController@index');
-//Route::get('/signin', 'AuthController@signin');
 Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
 Route::get('/unauthorized', function () {
