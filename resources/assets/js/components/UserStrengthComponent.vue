@@ -51,7 +51,8 @@
                     this.$emit('pushSelected', data);
                     this.checkDisable = true;
                 }
-            }/*,
+            }
+            /*,
             selectedObject(){
                 this.selected={strength}
 

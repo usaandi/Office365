@@ -2,14 +2,17 @@
     <div class="m-timeline-2__item">
 
         <span class="m-timeline-2__item-time">{{returnDate}}</span>
-        <div class="m-timeline-2__item-cricle"><i
-                class="fa fa-genderless"
-                :class="[{'m--font-success': isActive === 1,'m--font-info': isActive=== 0 }]"></i></div>
+        <div class="m-timeline-2__item-cricle">
+            <i class="fa fa-genderless"
+               :class="[{'m--font-success': isActive === 1,'m--font-info': isActive=== 0 }]"></i>
+        </div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
+
             <div v-show="success" class="alert alert-success alert-dismissible">
                 <a class="close" @click="success=!success"></a>
                 <strong>Success!</strong>
             </div>
+
             <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]">
                 <div v-if="isActive === 1" class="profile-timeline__check--wrapper">
                     <div class="profile-timeline__check"></div>
@@ -19,10 +22,7 @@
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title"
                         >{{userRoleInfo.title}}</h4>
-
-
                     </div>
-
 
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <p class="profile-timeline__text">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
 
-                <div class="row " v-show="isEditing">
+                <div v-show="isEditing">
                     <div class="admin__form">
                         <div class="m-portlet__body">
 
@@ -86,6 +86,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title">MILESTONES</h4>
@@ -113,7 +115,7 @@
                         <user-career-milestone
                                 :canEdit="canEdit"
                                 :selectedUserProfileId="selectedUserProfileId"
-                                v-for="(milestone, index) in userRoleInfo['milestones']"
+                                v-for="(milestone, index) in sortArray(userRoleInfo['milestones'])"
                                 :milestoneInfo="milestone"
                                 :key="index+1"
                                 :hasMilestoneError="hasMilestoneError"
@@ -204,6 +206,11 @@
             this.currentlySelected();
         },
         computed: {
+            sortArray(array) {
+                console.table(array);
+                //return _.orderBy(array, 'id', 'desc')
+
+            },
 
             returnDate() {
 

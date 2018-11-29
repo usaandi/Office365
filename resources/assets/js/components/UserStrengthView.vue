@@ -1,6 +1,9 @@
 <template>
     <div class="m-portlet__body">
-
+        <div v-show="success" class="alert alert-success alert-dismissible">
+            <a class="close" @click="success=!success"></a>
+            <strong>You have been successful!</strong>
+        </div>
         <h1>User Strength</h1>
         <admin-user-strength v-for="(strength,index) in strengthCount"
                              :key="index+1"
@@ -40,6 +43,7 @@
                 isNew: false,
                 showMessage: false,
                 message: null,
+                success:false,
 
             }
         },
@@ -77,6 +81,7 @@
                         if (response.status === 200) {
                             vm.showMessage = true;
                             vm.message = response.data;
+                            vm.success=true;
                         }
                     })
                 }
