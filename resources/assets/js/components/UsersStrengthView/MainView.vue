@@ -31,7 +31,9 @@
             </tr>
             <tr v-for="user in department.users">
                 <td><span>{{ user.user_name }}</span></td>
-                <td v-for="strength in strengths"><span>{{checkStrength(strength, user.strengths)}}</span></td>
+                <td v-for="strength in strengths" :style="backGroundColor(strength , user.strengths)"><span
+                        :style="strengthColor(strength ,user.strengths)">{{checkStrength(strength, user.strengths)}}</span>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -44,10 +46,20 @@
     export default {
         name: "department",
         data() {
+
+
             return {
                 categories: '',
                 departments: '',
                 strengths: [],
+                styleText: {
+                    color: 'white',
+                    fontWeight: 'bold',
+
+                },
+                styleBackground: {
+                    backgroundColor: '#009eed',
+                }
             }
         },
         mounted() {
@@ -56,6 +68,37 @@
         },
         computed: {},
         methods: {
+
+            backGroundColor(strength, userStrengths) {
+
+                if (userStrengths.length > 0) {
+                    for (let i = 0; i < userStrengths.length; i++) {
+                        if (strength.strength_id === userStrengths[i].strength_id) {
+                            if (userStrengths[i].strength_rank < 6) {
+                                return this.styleBackground;
+                            }
+                        }
+                    }
+                    return ''
+                }
+
+            },
+            strengthColor(strength, userStrengths) {
+
+                if (userStrengths.length > 0) {
+                    for (let i = 0; i < userStrengths.length; i++) {
+                        if (strength.strength_id === userStrengths[i].strength_id) {
+                            if (userStrengths[i].strength_rank < 6) {
+                                return this.styleText;
+                            }
+                        }
+                    }
+                    return ''
+                }
+
+            },
+
+
             sortArray() {
 
                 this.departments.sort(function (a, b) {
@@ -128,6 +171,5 @@
 </script>
 
 <style scoped>
-
 
 </style>

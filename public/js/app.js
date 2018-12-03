@@ -63925,7 +63925,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63978,16 +63978,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "department",
     data: function data() {
+
         return {
             categories: '',
             departments: '',
-            strengths: []
+            strengths: [],
+            colorCyan: '#009eed',
+
+            styleText: {
+                color: 'white',
+                fontWeight: 'bold'
+
+            },
+            styleBackground: {
+                backgroundColor: '#009eed'
+            }
         };
     },
     mounted: function mounted() {
@@ -63997,6 +64010,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {},
     methods: {
+        backGroundColor: function backGroundColor(strength, userStrengths) {
+
+            if (userStrengths.length > 0) {
+                for (var i = 0; i < userStrengths.length; i++) {
+                    if (strength.strength_id === userStrengths[i].strength_id) {
+                        if (userStrengths[i].strength_rank < 6) {
+                            return this.styleBackground;
+                        }
+                    }
+                }
+                return '';
+            }
+        },
+        strengthColor: function strengthColor(strength, userStrengths) {
+
+            if (userStrengths.length > 0) {
+                for (var i = 0; i < userStrengths.length; i++) {
+                    if (strength.strength_id === userStrengths[i].strength_id) {
+                        if (userStrengths[i].strength_rank < 6) {
+                            return this.styleText;
+                        }
+                    }
+                }
+                return '';
+            }
+        },
         sortArray: function sortArray() {
 
             this.departments.sort(function (a, b) {
@@ -64146,13 +64185,27 @@ var render = function() {
                     _c("td", [_c("span", [_vm._v(_vm._s(user.user_name))])]),
                     _vm._v(" "),
                     _vm._l(_vm.strengths, function(strength) {
-                      return _c("td", [
-                        _c("span", [
-                          _vm._v(
-                            _vm._s(_vm.checkStrength(strength, user.strengths))
+                      return _c(
+                        "td",
+                        {
+                          style: _vm.backGroundColor(strength, user.strengths)
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              style: _vm.strengthColor(strength, user.strengths)
+                            },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.checkStrength(strength, user.strengths)
+                                )
+                              )
+                            ]
                           )
-                        ])
-                      ])
+                        ]
+                      )
                     })
                   ],
                   2
