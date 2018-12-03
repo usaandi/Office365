@@ -57890,11 +57890,15 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "profile-timeline__milestones--name" }, [
               _c("div", { staticClass: "m-list-pics m-list-pics--sm" }, [
-                _c("a", { attrs: { href: "" } }, [
-                  _c("img", {
-                    attrs: { src: _vm.milestone.assigned_image, title: "" }
-                  })
-                ]),
+                _c(
+                  "a",
+                  { attrs: { href: "user/" + _vm.milestone.assigned_id } },
+                  [
+                    _c("img", {
+                      attrs: { src: _vm.milestone.assigned_image, title: "" }
+                    })
+                  ]
+                ),
                 _vm._v(
                   "\n\n                        " +
                     _vm._s(_vm.milestone.assigned_username) +
