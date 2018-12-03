@@ -146,14 +146,17 @@ class CareerController extends Controller
             $data[$key]['title'] = $careerRole->title;
             $data[$key]['description'] = $careerRole->description;
             $data[$key]['current_role'] = $careerRole->current_role;
-            if($careerRole->creation_date){
-            $data[$key]['creation_date'] = $careerRole->creation_date;
+            if ($careerRole->creation_date) {
+                $data[$key]['creation_date'] = $careerRole->creation_date;
+            } else {
+                $data[$key]['creation_date'] = '';
             }
-            else {$data[$key]['creation_date'] = '';}
 
             $data[$key]['milestones'] = [];
 
             foreach ($careerRole->careerRoleMilestone as $careerMilestone) {
+
+
 
                 $data[$key]['milestones'][] = [
                     'id' => $careerMilestone->id,
@@ -162,6 +165,7 @@ class CareerController extends Controller
                     'user_career_role_id' => $careerMilestone->user_career_role_id,
                     'assigned_id' => $careerMilestone->assigned_id,
                     'assigned_username' => $careerMilestone->assignee->name,
+                    'assigned_image' => $careerMilestone->assignee->image,
                     'task' => $careerMilestone->task,
                     'reminder' => $careerMilestone->reminder,
                     'completed' => $careerMilestone->completed,
@@ -181,17 +185,17 @@ class CareerController extends Controller
             $data = $request->all();
 
             $rules = [
-                'careerId'=> 'required|int'
+                'careerId' => 'required|int'
             ];
-            $validator=Validator::make($data,$rules);
+            $validator = Validator::make($data, $rules);
 
-            if($validator->passes()){
+            if ($validator->passes()) {
 
                 $careerId = $data['careerId'];
                 $userCareerRole = UserCareerRole::where('id', $careerId)->first();
-               // $userCareerRole->delete();
+                // $userCareerRole->delete();
 
-                return response($careerId,200);
+                return response($careerId, 200);
             }
 
         } catch (\Exception $e) {
@@ -211,7 +215,7 @@ class CareerController extends Controller
                 'roleTitle' => 'required',
                 'descriptionValue' => 'required',
                 'careerId' => 'required',
-                'creationDate'=>'required'
+                'creationDate' => 'required'
             ];
             $validator = Validator::make($data, $rules);
 

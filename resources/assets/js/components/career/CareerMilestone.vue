@@ -81,7 +81,7 @@
 
 
                         <div class="m-list-pics m-list-pics--sm">
-                            <a href=""><img src="" title=""></a>
+                            <a href=""><img :src="milestone.assigned_image" title=""></a>
 
                             {{milestone.assigned_username}}
                         </div>
