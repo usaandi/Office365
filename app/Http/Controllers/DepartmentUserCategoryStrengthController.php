@@ -32,6 +32,7 @@ class DepartmentUserCategoryStrengthController extends Controller
 
                     'department_id' => $department->id,
                     'department_name' => $department->department_name,
+                    'users' => [],
 
                 ];
 

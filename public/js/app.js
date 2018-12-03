@@ -63925,7 +63925,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63995,7 +63995,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.fetchDepartment();
     },
 
+    computed: {},
     methods: {
+        sortArray: function sortArray() {
+
+            this.departments.sort(function (a, b) {
+
+                var departmentA = a.department_name.toUpperCase();
+                var departmentB = b.department_name.toUpperCase();
+                if (departmentA < departmentB) {
+                    return -1;
+                }
+                if (departmentA > departmentB) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            for (var i = 0; i < this.departments.length; i++) {
+                if (this.departments[i].users.length > 0) {
+
+                    this.departments[i].users.sort(function (a, b) {
+
+                        var userNameA = a.user_name.toUpperCase();
+                        var userNameB = b.user_name.toUpperCase();
+                        if (userNameA < userNameB) {
+                            return -1;
+                        }
+                        if (userNameA > userNameB) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+                }
+            }
+        },
         fetchCategories: function fetchCategories() {
             var _this = this;
 
@@ -64009,6 +64043,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('departments').then(function (response) {
                 _this2.departments = response.data;
+                _this2.sortArray();
             });
         },
         loopThrough: function loopThrough(categories) {

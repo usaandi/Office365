@@ -13,26 +13,26 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td
-                            v-for="strength in strengths"
-                            :id="strength.strength_id"
-                            :headers="strength.category_id"
-                    >
-                        <span>{{strength.strength_name}}</span>
-                    </td>
+            <tr>
+                <td></td>
+                <td
+                        v-for="strength in strengths"
+                        :id="strength.strength_id"
+                        :headers="strength.category_id"
+                >
+                    <span>{{strength.strength_name}}</span>
+                </td>
 
-                </tr>
+            </tr>
             </tbody>
             <tbody v-for="department in departments">
-                <tr>
-                    <th :id="department.department_id" scope="colgroup"><span>{{department.department_name}}</span></th>
-                </tr>
-                <tr v-for="user in department.users">
-                    <td><span>{{ user.user_name }}</span></td>
-                    <td v-for="strength in strengths"><span>{{checkStrength(strength, user.strengths)}}</span></td>
-                </tr>
+            <tr>
+                <th :id="department.department_id" scope="colgroup"><span>{{department.department_name}}</span></th>
+            </tr>
+            <tr v-for="user in department.users">
+                <td><span>{{ user.user_name }}</span></td>
+                <td v-for="strength in strengths"><span>{{checkStrength(strength, user.strengths)}}</span></td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -54,7 +54,44 @@
             this.fetchCategories();
             this.fetchDepartment();
         },
+        computed: {},
         methods: {
+            sortArray() {
+
+                this.departments.sort(function (a, b) {
+
+                    let departmentA = a.department_name.toUpperCase();
+                    let departmentB = b.department_name.toUpperCase();
+                    if (departmentA < departmentB) {
+                        return -1;
+                    }
+                    if (departmentA > departmentB) {
+                        return 1;
+                    }
+                    return 0;
+                });
+
+                for (let i = 0; i < this.departments.length; i++) {
+                    if (this.departments[i].users.length > 0) {
+
+                        this.departments[i].users.sort(function (a, b) {
+
+                            let userNameA = a.user_name.toUpperCase();
+                            let userNameB = b.user_name.toUpperCase();
+                            if (userNameA < userNameB) {
+                                return -1;
+                            }
+                            if (userNameA > userNameB) {
+                                return 1;
+                            }
+                            return 0;
+                        })
+                    }
+
+                }
+
+            },
+
             fetchCategories() {
                 axios.get('categories').then(response => {
                     this.categories = response.data;
@@ -64,13 +101,14 @@
             fetchDepartment() {
                 axios.get('departments').then(response => {
                     this.departments = response.data;
+                    this.sortArray();
 
                 })
             },
 
             loopThrough(categories) {
                 for (let i = 0; i < categories.length; i++) {
-                    if(categories[i].strengths.length > 0){
+                    if (categories[i].strengths.length > 0) {
                         this.strengths = this.strengths.concat(categories[i].strengths);
 
                     }
@@ -78,8 +116,8 @@
             },
 
             checkStrength(strength, userStrengths) {
-                for(let i = 0; i < userStrengths.length; i++ ){
-                    if(strength.strength_id === userStrengths[i].strength_id){
+                for (let i = 0; i < userStrengths.length; i++) {
+                    if (strength.strength_id === userStrengths[i].strength_id) {
                         return userStrengths[i].strength_rank;
                     }
                 }
@@ -90,7 +128,6 @@
 </script>
 
 <style scoped>
-
 
 
 </style>
