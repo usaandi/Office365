@@ -54,6 +54,14 @@
                                                                           name="career_description"></textarea>
                                 </div>
                             </div>
+                            <div class="form-group m-form__group row">
+                                <label for="description" class="col-3 col-form-label">Date</label>
+                                <div class="col-sm-9 col-xs-12"><input type="date" v-model="dateValue"
+                                                                          id="date"
+                                                                          class="form-control m-input"
+                                                                          name="career_description">
+                                </div>
+                            </div>
 
                         </div>
                         <div class="m-portlet__foot m-portlet__foot--fit">
@@ -115,7 +123,7 @@
                         <user-career-milestone
                                 :canEdit="canEdit"
                                 :selectedUserProfileId="selectedUserProfileId"
-                                v-for="(milestone, index) in sortArray(userRoleInfo['milestones'])"
+                                v-for="(milestone, index) in userRoleInfo['milestones']"
                                 :milestoneInfo="milestone"
                                 :key="index+1"
                                 :hasMilestoneError="hasMilestoneError"
@@ -176,12 +184,13 @@
                 selectedActive: undefined,
                 isEditing: false,
                 buttonValue: 'New',
-                createdDate: this.userdata.created_at,
+                createdDate: this.userdata.creation_date,
                 editField: '',
                 isUpdate: false,
                 descriptionValue: null,
                 roleValue: null,
                 success: false,
+                dateValue: null,
             }
         },
         watch: {
@@ -207,8 +216,7 @@
         },
         computed: {
             sortArray(array) {
-                console.table(array);
-                //return _.orderBy(array, 'id', 'desc')
+
 
             },
 
@@ -258,12 +266,13 @@
             },
             submitChanges() {
                 if (this.canEdit) {
-                    if (this.descriptionValue || this.roleValue) {
+                    if (this.descriptionValue || this.roleValue || this.dateValue) {
 
                         const data = {
                             roleTitle: this.roleValue,
                             descriptionValue: this.descriptionValue,
                             careerId: this.userRoleInfo.id,
+                            creationDate: this.dateValue,
                         };
 
                         axios.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(response => {
@@ -271,8 +280,10 @@
                                 this.userRoleInfo = response.data;
                                 this.isEditing = false;
                                 this.roleValue = null;
+                                this.dateValue = null;
                                 this.descriptionValue = null;
                                 this.success = true;
+                                this.returnDate();
                             }
                         });
 
@@ -293,6 +304,7 @@
                 if (this.canEdit === true) {
 
                     this.roleValue = null;
+                    this.dateValue = null;
                     this.descriptionValue = null;
                     this.isEditing = false;
 
@@ -305,6 +317,7 @@
                     if (this.isEditing === true) {
                         this.descriptionValue = this.userRoleInfo.description;
                         this.roleValue = this.userRoleInfo.title;
+                        this.dateValue =this.userRoleInfo.creation_date;
                     }
                 }
             },

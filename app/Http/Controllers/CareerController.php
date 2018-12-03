@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\UserCareerRole;
 use App\UserCareerRoleMilestone;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\CareerRole;
 use App\CareerRoleMilestone;
@@ -145,6 +146,11 @@ class CareerController extends Controller
             $data[$key]['title'] = $careerRole->title;
             $data[$key]['description'] = $careerRole->description;
             $data[$key]['current_role'] = $careerRole->current_role;
+            if($careerRole->creation_date){
+            $data[$key]['creation_date'] = $careerRole->creation_date;
+            }
+            else {$data[$key]['creation_date'] = '';}
+
             $data[$key]['milestones'] = [];
 
             foreach ($careerRole->careerRoleMilestone as $careerMilestone) {
@@ -204,7 +210,8 @@ class CareerController extends Controller
             $rules = [
                 'roleTitle' => 'required',
                 'descriptionValue' => 'required',
-                'careerId' => 'required'
+                'careerId' => 'required',
+                'creationDate'=>'required'
             ];
             $validator = Validator::make($data, $rules);
 
@@ -217,7 +224,8 @@ class CareerController extends Controller
                     ->where('user_id', $id)
                     ->update([
                         'title' => $SanitizeInput,
-                        'description' => $data['descriptionValue']
+                        'description' => $data['descriptionValue'],
+                        'creation_date' => $data['creationDate'],
                     ]);
                 $newData = $user->userCareerRole()->where('id', $data['careerId'])->where('user_id', $id)->first();
                 return response(json_encode($newData), 200)

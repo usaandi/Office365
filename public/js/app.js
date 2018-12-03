@@ -48549,7 +48549,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "profile-view__content" }, [
       _c("div", { staticClass: "profile-view__name" }, [
-        _vm._v("\n    " + _vm._s(_vm.user.name) + "\n  ")
+        _vm._v("\n            " + _vm._s(_vm.user.name) + "\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "profile-view__team" }, [
@@ -56378,7 +56378,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56391,6 +56391,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -56568,12 +56576,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selectedActive: undefined,
             isEditing: false,
             buttonValue: 'New',
-            createdDate: this.userdata.created_at,
+            createdDate: this.userdata.creation_date,
             editField: '',
             isUpdate: false,
             descriptionValue: null,
             roleValue: null,
-            success: false
+            success: false,
+            dateValue: null
         };
     },
 
@@ -56596,10 +56605,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
-        sortArray: function sortArray(array) {
-            console.table(array);
-            //return _.orderBy(array, 'id', 'desc')
-        },
+        sortArray: function sortArray(array) {},
         returnDate: function returnDate() {
 
             var date = new Date(this.createdDate),
@@ -56640,12 +56646,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (this.canEdit) {
-                if (this.descriptionValue || this.roleValue) {
+                if (this.descriptionValue || this.roleValue || this.dateValue) {
 
                     var data = {
                         roleTitle: this.roleValue,
                         descriptionValue: this.descriptionValue,
-                        careerId: this.userRoleInfo.id
+                        careerId: this.userRoleInfo.id,
+                        creationDate: this.dateValue
                     };
 
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(function (response) {
@@ -56653,8 +56660,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             _this2.userRoleInfo = response.data;
                             _this2.isEditing = false;
                             _this2.roleValue = null;
+                            _this2.dateValue = null;
                             _this2.descriptionValue = null;
                             _this2.success = true;
+                            _this2.returnDate();
                         }
                     });
                 }
@@ -56673,6 +56682,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.canEdit === true) {
 
                 this.roleValue = null;
+                this.dateValue = null;
                 this.descriptionValue = null;
                 this.isEditing = false;
             }
@@ -56683,6 +56693,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.isEditing === true) {
                     this.descriptionValue = this.userRoleInfo.description;
                     this.roleValue = this.userRoleInfo.title;
+                    this.dateValue = this.userRoleInfo.creation_date;
                 }
             }
         },
@@ -56927,6 +56938,45 @@ var render = function() {
                         }
                       })
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group m-form__group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-3 col-form-label",
+                        attrs: { for: "description" }
+                      },
+                      [_vm._v("Date")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.dateValue,
+                            expression: "dateValue"
+                          }
+                        ],
+                        staticClass: "form-control m-input",
+                        attrs: {
+                          type: "date",
+                          id: "date",
+                          name: "career_description"
+                        },
+                        domProps: { value: _vm.dateValue },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.dateValue = $event.target.value
+                          }
+                        }
+                      })
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -57057,7 +57107,7 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._l(_vm.sortArray(_vm.userRoleInfo["milestones"]), function(
+                _vm._l(_vm.userRoleInfo["milestones"], function(
                   milestone,
                   index
                 ) {
