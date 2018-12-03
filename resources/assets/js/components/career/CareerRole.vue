@@ -274,16 +274,19 @@
                             careerId: this.userRoleInfo.id,
                             creationDate: this.dateValue,
                         };
+                        let vm = this;
 
                         axios.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(response => {
                             if (response.status === 200) {
                                 this.userRoleInfo = response.data;
+
+                                this.createdDate = response.data.creation_date;
                                 this.isEditing = false;
                                 this.roleValue = null;
                                 this.dateValue = null;
                                 this.descriptionValue = null;
                                 this.success = true;
-                                this.returnDate();
+
                             }
                         });
 
