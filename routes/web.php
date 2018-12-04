@@ -15,10 +15,10 @@
 käsuga
 
 php artisan make:controller StrengthController --resource
-loob StrengthControlleri ja kõgi vaja minevate elementidega (index,create,stroe,show,edit,update,destroy)
+loob StrengthControlleri ja kõgi vaja minevate päringuteha (index,create,stroe,show,edit,update,destroy)
 Näiteks, typical CRUD kohta oleks saanud kasutada
 Route::resource('strengths', 'StrengthController')
-ning oleks palju vähem messi ja kood oleks arusaadavam. ning lihtsam groupida neid.
+ning oleks palju vähem messi ja kood oleks arusaadavam. ning lihtsam grupeerida neid.
 */
 
 
