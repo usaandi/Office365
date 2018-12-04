@@ -120,6 +120,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
+    Route::get('/admin/team/view/{id}', 'AdminTeamController@index')->name('adminTeamView');
 
 
 });

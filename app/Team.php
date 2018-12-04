@@ -19,10 +19,15 @@ class Team extends Model
     ];
 
     public function user() {
-        return $this->belongsTo('App\UserTeam');
+        return $this->belongsTo(UserTeam::class);
     }
 
     public function moderator(){
         return $this->belongsToMany(UserTeamModerator::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'users_teams');
     }
 }
