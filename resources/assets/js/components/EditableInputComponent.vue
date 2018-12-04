@@ -40,7 +40,6 @@
             return {
                 elementdata: null,
                 edit: true,
-                showinput: false,
             }
         },
         mounted() {

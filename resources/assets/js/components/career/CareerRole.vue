@@ -32,6 +32,8 @@
                     </div>
                 </div>
 
+
+
                 <div v-show="isEditing">
                     <div class="admin__form">
                         <div class="m-portlet__body">
@@ -95,6 +97,28 @@
                     </div>
                 </div>
 
+                <div class="row" v-show="!isEditing">
+                    <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
+                        <div class="profile-timeline__notes">
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
+                        <div class="profile-timeline__action">
+                            <button type="button" @click="canEditCareer()" v-show="!this.hasChanged"
+                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit
+                            </button>
+                            <button @click="selectRole(userRoleInfo.id)" type="button"
+                                    v-show="!this.hasChanged && isActive === 0"
+                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current
+                            </button>
+                            <button @click="save" v-show="this.userRoleInfo.id === 'undefined'"
+                                    class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
+                            <button @click="remove" v-show="this.userRoleInfo.id === 'undefined'"
+                                    class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
@@ -134,27 +158,7 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
-                        <div class="profile-timeline__notes">
-                        </div>
-                    </div>
-                    <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
-                        <div class="profile-timeline__action">
-                            <button type="button" @click="canEditCareer()" v-show="!this.hasChanged"
-                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit
-                            </button>
-                            <button @click="selectRole(userRoleInfo.id)" type="button"
-                                    v-show="!this.hasChanged && isActive === 0"
-                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current
-                            </button>
-                            <button @click="save" v-show="this.userRoleInfo.id === 'undefined'"
-                                    class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
-                            <button @click="remove" v-show="this.userRoleInfo.id === 'undefined'"
-                                    class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

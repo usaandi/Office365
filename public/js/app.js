@@ -56378,7 +56378,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56391,6 +56391,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
 //
 //
 //
@@ -57049,8 +57053,114 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.isEditing,
+                  expression: "!isEditing"
+                }
+              ],
+              staticClass: "row"
+            },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
+                [
+                  _c("div", { staticClass: "profile-timeline__action" }, [
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !this.hasChanged,
+                            expression: "!this.hasChanged"
+                          }
+                        ],
+                        staticClass:
+                          "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.canEditCareer()
+                          }
+                        }
+                      },
+                      [_vm._v("Edit\n                        ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !this.hasChanged && _vm.isActive === 0,
+                            expression: "!this.hasChanged && isActive === 0"
+                          }
+                        ],
+                        staticClass:
+                          "btn m-btn--pill btn-success m-btn m-btn--custom",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.selectRole(_vm.userRoleInfo.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Apply as current\n                        ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: this.userRoleInfo.id === "undefined",
+                            expression: "this.userRoleInfo.id === 'undefined'"
+                          }
+                        ],
+                        staticClass: "btn btn-success m-btn m-btn--pill",
+                        on: { click: _vm.save }
+                      },
+                      [_vm._m(3)]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: this.userRoleInfo.id === "undefined",
+                            expression: "this.userRoleInfo.id === 'undefined'"
+                          }
+                        ],
+                        staticClass: "btn btn-danger m-btn m-btn--pill",
+                        on: { click: _vm.remove }
+                      },
+                      [_vm._m(4)]
+                    )
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _vm._m(2),
+            _vm._m(5),
             _vm._v(" "),
             _c(
               "div",
@@ -57075,7 +57185,7 @@ var render = function() {
                           "btn btn-success m-btn m-btn--icon m-btn--pill",
                         on: { click: _vm.showForm }
                       },
-                      [_vm._m(3)]
+                      [_vm._m(6)]
                     ),
                     _vm._v(" "),
                     _c("milestone-form", {
@@ -57133,98 +57243,6 @@ var render = function() {
               ],
               2
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(4),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
-              [
-                _c("div", { staticClass: "profile-timeline__action" }, [
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !this.hasChanged,
-                          expression: "!this.hasChanged"
-                        }
-                      ],
-                      staticClass:
-                        "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.canEditCareer()
-                        }
-                      }
-                    },
-                    [_vm._v("Edit\n                        ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !this.hasChanged && _vm.isActive === 0,
-                          expression: "!this.hasChanged && isActive === 0"
-                        }
-                      ],
-                      staticClass:
-                        "btn m-btn--pill btn-success m-btn m-btn--custom",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.selectRole(_vm.userRoleInfo.id)
-                        }
-                      }
-                    },
-                    [_vm._v("Apply as current\n                        ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: this.userRoleInfo.id === "undefined",
-                          expression: "this.userRoleInfo.id === 'undefined'"
-                        }
-                      ],
-                      staticClass: "btn btn-success m-btn m-btn--pill",
-                      on: { click: _vm.save }
-                    },
-                    [_vm._m(5)]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: this.userRoleInfo.id === "undefined",
-                          expression: "this.userRoleInfo.id === 'undefined'"
-                        }
-                      ],
-                      staticClass: "btn btn-danger m-btn m-btn--pill",
-                      on: { click: _vm.remove }
-                    },
-                    [_vm._m(6)]
-                  )
-                ])
-              ]
-            )
           ])
         ]
       )
@@ -57251,26 +57269,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
-      _c("h4", { staticClass: "profile-timeline__title" }, [
-        _vm._v("MILESTONES")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("i", { staticClass: "la la-plus" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("Add Milestone")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
       _c("div", { staticClass: "profile-timeline__notes" })
     ])
   },
@@ -57285,6 +57283,26 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", [_c("span", [_vm._v("Cancel")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
+      _c("h4", { staticClass: "profile-timeline__title" }, [
+        _vm._v("MILESTONES")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Add Milestone")])
+    ])
   }
 ]
 render._withStripped = true
@@ -59854,7 +59872,7 @@ var render = function() {
                     "a",
                     {
                       staticClass:
-                        "btn btn-success m-btn m-btn--icon m-btn--pill",
+                        "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
                       on: {
                         click: function($event) {
                           _vm.closeForm()
@@ -60159,7 +60177,7 @@ var render = function() {
                   "a",
                   {
                     staticClass:
-                      "btn btn-success m-btn m-btn--icon m-btn--pill",
+                      "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
                     on: {
                       click: function($event) {
                         _vm.$emit("close")
