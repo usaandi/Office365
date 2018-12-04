@@ -63327,7 +63327,11 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c("td", [
+      _c("a", { attrs: { href: "/admin/team/view/" + _vm.team.id } }, [
+        _vm._m(0)
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -63335,12 +63339,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", [
-        _c("span", { staticClass: "btn btn-success" }, [
-          _vm._v("Manage moderators")
-        ])
-      ])
+    return _c("span", [
+      _c("span", { staticClass: "btn btn-success" }, [_vm._v("Manage Team")])
     ])
   }
 ]

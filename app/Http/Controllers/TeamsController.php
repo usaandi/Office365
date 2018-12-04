@@ -7,6 +7,7 @@ use App\Team;
 use App\UserDepartment;
 use App\UserTeam;
 use App\UserTeamModerator;
+use Illuminate\Support\Facades\App;
 use Spatie\Permission\Models\Role;
 use Validator;
 use App\User;
@@ -81,6 +82,9 @@ class TeamsController extends Controller
     public function createTeam(Request $request)
     {
         try {
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
+
             $data = $request->all();
 
             $rules = [
@@ -90,6 +94,7 @@ class TeamsController extends Controller
             $validator = Validator::make($data, $rules);
 
             if ($validator->passes()) {
+                $teams = Team::get();
 
                 $teamName = ucfirst(strtolower($data['teamName']));
 
@@ -101,7 +106,7 @@ class TeamsController extends Controller
                         'team_name' => $teamName
                     ]);
 
-                    return view('team.teamView');
+                    return redirect('/admin/team/view')->with(['teams'=>$teams]);
                 } else {
                     echo 'Selline nimi on olemas';
                 }

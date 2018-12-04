@@ -2,21 +2,21 @@
     <tr>
         <td><span>{{team.id}}</span></td>
         <td><span>{{team.team_name}}</span></td>
-        <td><span class="btn btn-success" @click="edit" > Edit Team</span></td>
+        <td><span class="btn btn-success" @click="edit"> Edit Team</span></td>
         <td>
-            <span><button type="button" @click="deleteRequest"  class="btn btn-danger"
+            <span><button type="button" @click="deleteRequest" class="btn btn-danger"
             >Delete Team</button></span>
         </td>
         <td>
-            <span><span   class="btn btn-success"
-            >Manage </span></span>
+            <a :href="'/admin/team/view/'+team.id"><span><span class="btn btn-success"
+            >Manage Team</span></span></a>
         </td>
     </tr>
 </template>
 
 <script>
     export default {
-        props:['team','index'],
+        props: ['team', 'index'],
         name: "TeamBody",
         data() {
             return {
@@ -28,7 +28,7 @@
                 this.selectedTeam = value;
             }
         },
-        methods:{
+        methods: {
             deleteRequest() {
                 this.$emit('deleteRequest', this.selectedTeam);
                 this.$emit('index', this.index);
