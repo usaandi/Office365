@@ -7,6 +7,10 @@
             <span><button type="button" @click="deleteRequest"  class="btn btn-danger"
             >Delete Team</button></span>
         </td>
+        <td>
+            <span><span   class="btn btn-success"
+            >Manage </span></span>
+        </td>
     </tr>
 </template>
 

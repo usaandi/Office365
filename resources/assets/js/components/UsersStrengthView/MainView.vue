@@ -98,7 +98,6 @@
 
             },
 
-
             sortArray() {
 
                 this.departments.sort(function (a, b) {

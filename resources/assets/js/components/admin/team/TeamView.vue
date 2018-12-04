@@ -69,6 +69,7 @@
                         <th>Team Name</th>
                         <th>Edit</th>
                         <th>Delete</th>
+                        <th>Moderator Manager</th>
                     </tr>
                     </thead>
                     <tbody>
