@@ -10,7 +10,7 @@ namespace App\Services;
 
 use App\UserTeamModerator;
 
-class Moderator
+class ModeratorService
 {
     /**
      *
