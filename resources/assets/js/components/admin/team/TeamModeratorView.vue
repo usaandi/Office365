@@ -6,14 +6,20 @@
 
 <script>
     export default {
-        props:{
-          id:{
-            required:true
-
-          },
+        props: {
+            id: {
+                required: true
+            },
+            teamInfo: {}
 
         },
-        name: "TeamModeratorView"
+        name: "TeamModeratorView",
+        data() {
+            return {
+
+            }
+        }
+
     }
 </script>
 
