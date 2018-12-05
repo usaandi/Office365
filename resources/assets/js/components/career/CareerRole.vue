@@ -1,7 +1,8 @@
 <template>
     <div class="m-timeline-2__item">
 
-        <span class="m-timeline-2__item-time">{{returnDate}}</span>
+        <span v-if="createdDate" class="m-timeline-2__item-time">{{returnDate}}</span>
+        <span v-else="!createdDate" class="m-timeline-2__item-time">Date not set</span>
         <div class="m-timeline-2__item-cricle">
             <i class="fa fa-genderless"
                :class="[{'m--font-success': isActive === 1,'m--font-info': isActive=== 0 }]"></i>
@@ -225,6 +226,7 @@
             },
 
             returnDate() {
+
 
                 let date = new Date(this.createdDate),
                     locale = "en-us";
