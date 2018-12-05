@@ -13,8 +13,7 @@
 @section('content-body')
 
     <div id="app">
-
-        <admin-view-team-moderator :id='@json($id)'></admin-view-team-moderator>
+        <admin-view-team-moderator :id='@json($id)' :team-info='@json($team)'></admin-view-team-moderator>
     </div>
 
 @endsection
