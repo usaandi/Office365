@@ -49,7 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}/update', 'UserController@update')->name('update');
     Route::get('/strength/list', 'StrengthController@returnStrengthName')->name('strengthsName');
     Route::get('/admin/strength', 'StrengthController@view')->name('strengthsView');
-    Route::get('/admin/users/add', 'AddController@add')->name('userAdd');
+    Route::get('/admin/users/add', 'AddController@add')->name('userAddView');
+    Route::post('/admin/users/add', 'AddController@store')->name('userAdd');
     Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
     Route::get('/admin/view/category/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
     Route::get('/admin/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('strengthInfo');
