@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'token' ,'phone', 'birthday',
+        'name', 'email', 'password', 'token', 'phone', 'birthday',
         'skype', 'image', 'description', 'ADMsince',
         'team',
     ];
@@ -44,42 +44,53 @@ class User extends Authenticatable
 
     public function departments()
     {
-        return $this->belongsToMany(Department::class,'users_departments');
+        return $this->belongsToMany(Department::class, 'users_departments');
     }
-    
-    public function department() {
+
+    public function department()
+    {
         return $this->hasOne('App\UserDepartment', 'user_id');
     }
 
-    public function userDepartments(){
+    public function userDepartments()
+    {
         return $this->hasMany(UserDepartment::class);
     }
-    public function team(){
-        return $this->hasOne('App\UserTeam','user_id');
+
+    public function team()
+    {
+        return $this->hasOne('App\UserTeam', 'user_id');
     }
 
-    public function hobbies() {
+    public function hobbies()
+    {
         return $this->belongsToMany('App\Hobby', 'users_hobbies')
             ->using('App\UserHobby');
     }
-    public function userHobbies(){
+
+    public function userHobbies()
+    {
         return $this->hasMany(UserHobby::class);
     }
 
-    public function children() {
+    public function children()
+    {
         return $this->hasMany('App\UserChildren', 'user_id');
     }
 
-    public function userCareerRole(){
+    public function userCareerRole()
+    {
         return $this->hasMany(UserCareerRole::class);
     }
 
 
-
-    public function userCareerRoleMilestones(){
+    public function userCareerRoleMilestones()
+    {
         return $this->hasMany(UserCareerRoleMilestone::class);
     }
-    public function userStrength(){
+
+    public function userStrength()
+    {
         return $this->hasMany(UserStrength::class);
     }
 
@@ -95,16 +106,24 @@ class User extends Authenticatable
         return FALSE;
     }
 
-    public function moderator(){
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'users_teams');
+    }
+
+
+    public function moderator()
+    {
 
         $teamIds = [];
 
-        if(\Auth::user()->hasRole('Moderator')){
+        if (\Auth::user()->hasRole('Moderator')) {
             $userId = \Auth::user()->id;
             $teamIds = UserTeamModerator::where('user_id', $userId)
                 ->get(['team_id'])->toArray();
         }
         return json_encode($teamIds);
+
     }
 
 }
