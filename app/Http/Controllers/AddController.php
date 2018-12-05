@@ -81,7 +81,7 @@ class AddController extends Controller
 
 
 
-                return redirect()->back();
+                return redirect()->back()->with('success',true);
             } else {
                 echo 'Sellise nimega isik: '  .$name . ''.' ja Emailiga: ' . $email . ' On juba olemas';
             }
