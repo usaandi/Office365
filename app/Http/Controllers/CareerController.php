@@ -157,7 +157,6 @@ class CareerController extends Controller
             foreach ($careerRole->careerRoleMilestone as $careerMilestone) {
 
 
-
                 $data[$key]['milestones'][] = [
                     'id' => $careerMilestone->id,
                     'milestone_id' => $careerMilestone->milestone_id,
@@ -193,7 +192,7 @@ class CareerController extends Controller
 
                 $careerId = $data['careerId'];
                 $userCareerRole = UserCareerRole::where('id', $careerId)->first();
-                // $userCareerRole->delete();
+                $userCareerRole->delete();
 
                 return response($careerId, 200);
             }
