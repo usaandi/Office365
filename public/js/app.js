@@ -63964,7 +63964,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63983,14 +63983,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    id: {
-      required: true
+    props: {
+        id: {
+            required: true
+        },
+        teamInfo: {}
 
+    },
+    name: "TeamModeratorView",
+    data: function data() {
+        return {};
     }
-
-  },
-  name: "TeamModeratorView"
 });
 
 /***/ }),
