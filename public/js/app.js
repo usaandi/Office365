@@ -63969,7 +63969,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63989,15 +63989,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        id: {
+        teamId: {
             required: true
         },
-        teamInfo: {}
+        teamInfo: {
+            required: true
+        }
 
     },
     name: "TeamModeratorView",
     data: function data() {
-        return {};
+        return {
+            teamUsers: this.teamInfo
+
+        };
     }
 });
 
@@ -64009,7 +64014,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("p", [_vm._v("hello world . " + _vm._s(_vm.id))])])
+  return _c("div", [
+    _c("p", [_vm._v("hello world . " + _vm._s(_vm.teamUsers.team_name))])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

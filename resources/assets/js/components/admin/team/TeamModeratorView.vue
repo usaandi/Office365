@@ -1,21 +1,24 @@
 <template>
     <div>
-        <p>hello world . {{id}}</p>
+        <p>hello world . {{teamUsers.team_name}}</p>
     </div>
 </template>
 
 <script>
     export default {
         props: {
-            id: {
+            teamId: {
                 required: true
             },
-            teamInfo: {}
+            teamInfo: {
+                required:true
+            }
 
         },
         name: "TeamModeratorView",
         data() {
             return {
+                teamUsers:this.teamInfo,
 
             }
         }
