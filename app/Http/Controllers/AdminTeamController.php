@@ -7,7 +7,6 @@ use App\UserTeamModerator;
 use Illuminate\Http\Request;
 use App\Team;
 use App\User;
-use phpDocumentor\Reflection\Types\Boolean;
 
 
 class AdminTeamController extends Controller
@@ -16,41 +15,64 @@ class AdminTeamController extends Controller
     public function index($id, ModeratorService $moderatorService)
     {
         try {
-
             $auth = \Auth::user();
             $this->authorize('admin', $auth);
-            $teamArray = [];
 
+            $teamArray = [];
             $team = Team::findOrFail($id);
             $teamArray = [
                 'team_name' => $team->team_name,
                 'team_id' => $team->id
             ];
-            $teamUsers = $team->users()->get();
+            $teamList = $team->with(['moderators', 'users'])->where('id', $id)->first();
+            $teamModerators = $teamList->getrelation('moderators');
+            $teamUsers = $teamList->getrelation('users');
 
-            $isModerator = null;
+            if ($teamModerators->isNotEmpty() || $teamUsers->isNotEmpty()) {
 
-            if ($teamUsers->isNotEmpty()) {
+                $Users = array_merge($teamUsers->toArray(), $teamModerators->toArray());
 
-                foreach ($teamUsers as $user) {
+                if (is_array($Users)) {
 
-                    $isModerator =  $moderatorService->isModerator($id,$user->id);
+                    $usersListArray = $this->unique_array($Users, 'id');
 
-                    $teamArray['users'][] = [
-                        'user_name' => $user->name,
-                        'user_id' => $user->id,
-                        'team_moderator' => $isModerator,
-                    ];
+                    foreach ($usersListArray as $user) {
+                        $belongsTeam = $moderatorService->belongsTeam($id, $user['id']);
+                        $isModerator = $moderatorService->isModerator($id, $user['id']);
 
-
+                        $teamArray['users'][] = [
+                            'user_name' => $user['name'],
+                            'user_id' => $user['id'],
+                            'team_moderator' => $isModerator,
+                            'belongs_team' => $belongsTeam,
+                        ];
+                    }
                 }
-            } else {
+            }
+            else {
                 $teamArray ['users'] = [];
             }
+
             return view('admin.adminTeamView', with(['id' => $id, 'team' => $teamArray]));
 
         } catch (\Exception $e) {
         }
+    }
+
+    protected function unique_array($array, $key)
+    {
+        $temp_array = array();
+        $i = 0;
+        $key_array = array();
+
+        foreach ($array as $val) {
+            if (!in_array($val[$key], $key_array)) {
+                $key_array[$i] = $val[$key];
+                $temp_array[$i] = $val;
+            }
+            $i++;
+        }
+        return $temp_array;
     }
 
     public function removeModerator(Request $request)

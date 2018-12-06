@@ -30,4 +30,9 @@ class Team extends Model
     {
         return $this->belongsToMany(User::class,'users_teams');
     }
+
+    public function moderators()
+    {
+        return $this->belongsToMany(User::class,'users_teams_moderators');
+    }
 }

@@ -9,6 +9,7 @@
 namespace App\Services;
 
 use App\UserTeamModerator;
+use App\UserTeam;
 
 class ModeratorService
 {
@@ -32,5 +33,15 @@ class ModeratorService
             }
         }
         return FALSE;
+    }
+
+    function belongsTeam($teamId, $userId)
+    {
+        $belongsTeam = UserTeam::where('user_id',$userId)->where('team_id',$teamId)->get();
+        if($belongsTeam->isEmpty()){
+            return FALSE;
+        }
+        return TRUE;
+
     }
 }
