@@ -14,8 +14,6 @@
     var isAdmin = {!! json_encode(auth()->user()->hasRole('Admin')) !!};
     var userModeratedTeams = {!! auth()->user()->moderator() !!};
 </script>
-<script src="https://unpkg.com/vue@latest"></script>
-<script src="https://unpkg.com/vue-select@latest"></script>
 
 <script>
     $(function() {
