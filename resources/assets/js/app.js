@@ -48,6 +48,7 @@ Vue.component('career-role', require('./components/career/CareerRole'));
 Vue.component('editable-input-component', require('./components/EditableInputComponent'));
 Vue.component('user-career-milestone', require('./components/career/CareerMilestone'));
 Vue.component('user-team-moderator', require('./components/admin/UserTeamModerator'));
+Vue.component('admin-career-template-manager', require('./components/admin/Career/CareerTemplateManager'));
 Vue.component('v-select', VueSelect);
 Vue.component('milestone-form', require('./components/career/CareerMilestoneForm'));
 Vue.component('users-list-head', require('./components/admin/UsersListHead'));

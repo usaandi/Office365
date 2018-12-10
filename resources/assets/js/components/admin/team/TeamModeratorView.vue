@@ -129,6 +129,10 @@
                             this.teamUsers['users'][this.currentUserIndex].belongs_team = response.data.belongs_team;
 
                             this.show = false;
+                            this.belongsTeam = null;
+                            this.isModerator = null;
+                            this.selectedUser = null;
+                            this.currentUserIndex = null;
                             this.finished = true;
                         }
                     }).catch();
