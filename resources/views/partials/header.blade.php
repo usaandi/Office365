@@ -317,6 +317,11 @@
                                                     href="{{route('viewAdminTeam')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Team List</span></a></li>
+                                        <li
+                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                    href="{{route('adminCareerTemplateManagerView')}}" class="m-menu__link "><i
+                                                        class="m-menu__link-icon flaticon-alarm-1"></i><span
+                                                        class="m-menu__link-text">Manage Career Template</span></a></li>
                                     </ul>
                                 </div>
                             </li>
