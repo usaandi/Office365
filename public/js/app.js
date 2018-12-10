@@ -60734,7 +60734,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60745,6 +60745,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -60776,6 +60778,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -60848,7 +60851,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 category_id: this.selected.category_id,
                 category_name: this.selected.category_name
             };
-            axios.post('admin/strength/update', data).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/strength/update', data).then(function (response) {
                 if (response.status === 200) {
                     _this.strength.strength_name = response.data.strength_name;
                     _this.strength.strength_description = response.data.strength_description;
@@ -63969,7 +63972,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\ntbody[data-v-79ec5f72]:before {\n    /* This doesn't work because of border-collapse */\n    line-height: 0.1em;\n    content: \"_\";\n    color: white;\n    display: block;\n}\n.form__body[data-v-79ec5f72] {\n    margin-top: 0;\n    width: 100%;\n}\nlabel[data-v-79ec5f72] {\n    display: block;\n    padding-left: 15px;\n    text-indent: -15px;\n}\ninput[data-v-79ec5f72] {\n    width: 13px;\n    height: 13px;\n    padding: 0;\n    margin: 0;\n    vertical-align: bottom;\n    position: relative;\n    top: -1px;\n    *overflow: hidden;\n}\n\n", ""]);
 
 // exports
 
@@ -63980,6 +63983,72 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -63999,11 +64068,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     name: "TeamModeratorView",
     data: function data() {
+
         return {
-            teamUsers: this.teamInfo
+            teamUsers: this.teamInfo,
+            selectedUser: {},
+            show: false,
+            currentUserIndex: null,
+            isModerator: null,
+            belongsTeam: null
 
         };
+    },
+
+    watch: {
+        selectedUser: function selectedUser(oldValue, newValue) {}
+    },
+    methods: {
+        checkboxEventModerator: function checkboxEventModerator() {
+            if (this.isModerator) {
+                this.isModerator = false;
+            } else {
+                this.isModerator = true;
+            }
+        },
+        submit: function submit() {
+            if (this.show) {
+                var data = {
+                    userId: this.selectedUser.user_id,
+                    isModerator: this.isModerator,
+                    belongsTeam: this.belongsTeam
+
+                };
+
+                console.log(data);
+
+                this.teamUsers['users'][this.currentUserIndex].team_moderator = this.isModerator;
+                this.teamUsers['users'][this.currentUserIndex].belongs_team = this.belongsTeam;
+                this.show = false;
+            }
+        },
+        checkboxEventBelongs: function checkboxEventBelongs() {
+
+            if (this.belongsTeam) {
+                this.belongsTeam = false;
+            } else {
+                this.belongsTeam = true;
+            }
+        },
+        cancel: function cancel() {
+            if (this.show) {
+                this.show = false;
+                this.belongsTeam = null;
+                this.isModerator = null;
+                this.selectedUser = null;
+                this.currentUserIndex = null;
+            }
+        },
+        selectUser: function selectUser(index) {
+            this.selectedUser = this.teamUsers['users'][index];
+            this.currentUserIndex = index;
+            this.isModerator = this.teamUsers['users'][index].team_moderator;
+            this.belongsTeam = this.teamUsers['users'][index].belongs_team;
+            this.show = true;
+        }
     }
+
 });
 
 /***/ }),
@@ -64014,11 +64143,176 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("p", [_vm._v("hello world . " + _vm._s(_vm.teamUsers.team_name))])
-  ])
+  return _c(
+    "div",
+    [
+      _vm.show
+        ? _c("modal", [
+            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.selectedUser.user_name) +
+                  "\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "admin__form form__body",
+                attrs: { slot: "body" },
+                slot: "body"
+              },
+              [
+                _c("div", { staticClass: "m-portlet__body" }, [
+                  _c("div", [
+                    _c("label", [
+                      _c("input", {
+                        attrs: { type: "checkbox" },
+                        domProps: { checked: _vm.isModerator },
+                        on: { click: _vm.checkboxEventModerator }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("User is Moderator")])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("div", [
+                    _c("label", [
+                      _c("input", {
+                        attrs: { type: "checkbox" },
+                        domProps: { checked: _vm.belongsTeam },
+                        on: { click: _vm.checkboxEventBelongs }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("User belongs to team")])
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                  attrs: { type: "button" },
+                  on: { click: _vm.cancel }
+                },
+                [_vm._v("\n                CANCEL\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn m-btn--pill btn-success",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.submit }
+                },
+                [_vm._v("SUBMIT")]
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("span", { staticClass: "float-left m--margin-bottom-5" }),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-bordered text-center" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.teamUsers["users"], function(user, index) {
+              return _c("tr", [
+                _c("td", { key: index, attrs: { index: index } }, [
+                  _c("span", [_vm._v(_vm._s(user.user_name))])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  {
+                    style: [
+                      user.team_moderator
+                        ? { border: "0.2em solid #BEBEBE" }
+                        : ""
+                    ]
+                  },
+                  [
+                    _c("span", [
+                      _c("i", {
+                        class: [
+                          user.team_moderator
+                            ? "fas fa-crown"
+                            : "far fa-times-circle"
+                        ],
+                        staticStyle: { "font-size": "2.3em" }
+                      })
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("td", [
+                  _c("span", [
+                    _c("i", {
+                      class: [
+                        user.belongs_team
+                          ? "far fa-check-circle"
+                          : "far fa-times-circle"
+                      ],
+                      style: "fontSize:2.3em"
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("span", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.selectUser(index)
+                          }
+                        }
+                      },
+                      [_vm._v("Edit User")]
+                    )
+                  ])
+                ])
+              ])
+            })
+          )
+        ])
+      ])
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Username")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Moderator")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Team Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Edit")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
