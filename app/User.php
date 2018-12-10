@@ -94,6 +94,11 @@ class User extends Authenticatable
         return $this->hasMany(UserStrength::class);
     }
 
+    public function userStrengths()
+    {
+        return $this->belongsToMany(Strength::class,'users_strengths')->withPivot('rank');
+    }
+
     public function isModeratorOfTeam($teamId)
     {
         if (\Auth::user()->hasRole('Moderator')) {
