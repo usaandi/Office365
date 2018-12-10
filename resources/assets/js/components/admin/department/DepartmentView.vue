@@ -35,8 +35,8 @@
 
             </div>
             <div slot="footer">
-                <button type="button" class="btn btn-success" @click="close">CANCEL</button>
-                <button type="submit" class="btn btn-success" @click="submit">SUBMIT</button>
+                <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom" @click="close">CANCEL</button>
+                <button type="submit" class="btn m-btn--pill btn-success" @click="submit">SUBMIT</button>
             </div>
         </modal>
 

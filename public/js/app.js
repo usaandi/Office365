@@ -58381,7 +58381,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58398,9 +58398,87 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "CareerTemplateManager"
+    props: {
+        careerList: {
+            required: true
+        }
+    },
+    name: "CareerTemplateManager",
+    data: function data() {
+        return {
+            careers: this.careerList,
+            success: false
+        };
+    },
+
+    computed: {},
+    methods: {
+        milestoneLength: function milestoneLength(milestones) {
+            return milestones.length;
+        }
+    }
 });
 
 /***/ }),
@@ -58411,14 +58489,141 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+      _c("div", { staticClass: "m-form__actions" }, [
+        _c("div", { staticClass: "row m--margin-bottom-15" }, [
+          _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.success,
+                    expression: "success"
+                  }
+                ],
+                staticClass: "alert alert-success alert-dismissible"
+              },
+              [
+                _c("a", {
+                  staticClass: "close",
+                  on: {
+                    click: function($event) {
+                      _vm.success = !_vm.success
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("strong", [_vm._v("Success!")])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+            _c("div", { staticClass: "profile-timeline__action " }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill ",
+                  attrs: { href: "admin/career/add" }
+                },
+                [_vm._m(0)]
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("span", { staticClass: "float-left m--margin-bottom-5" }),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-bordered text-center" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.careers, function(career, index) {
+              return _c("tr", { key: index, attrs: { index: index } }, [
+                _c("td", [_c("span", [_vm._v(_vm._s(career.career_role_id))])]),
+                _vm._v(" "),
+                _c("td", [_c("span", [_vm._v(_vm._s(career.task))])]),
+                _vm._v(" "),
+                _c("td", [_c("span", [_vm._v(_vm._s(career.description))])]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("span", [
+                    _vm._v(_vm._s(_vm.milestoneLength(career["milestones"])))
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(2, true),
+                _vm._v(" "),
+                _vm._m(3, true)
+              ])
+            })
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("p", [_vm._v("Hello world")])])
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Add Career Template")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Career Task")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Career Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Milestone Count")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Delete")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", { staticClass: "btn btn-success" }, [_vm._v("Edit ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", [
+        _c(
+          "button",
+          { staticClass: "btn btn-danger", attrs: { type: "button" } },
+          [_vm._v("Delete")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -62936,7 +63141,8 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-success",
+                staticClass:
+                  "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
                 attrs: { type: "button" },
                 on: { click: _vm.close }
               },
@@ -62946,7 +63152,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-success",
+                staticClass: "btn m-btn--pill btn-success",
                 attrs: { type: "submit" },
                 on: { click: _vm.submit }
               },

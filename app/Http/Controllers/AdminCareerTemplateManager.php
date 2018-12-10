@@ -14,18 +14,27 @@ class AdminCareerTemplateManager extends Controller
             $this->authorize('admin', $auth);
 
             $array = [];
-            $careerRoles = CareerRole::get();
 
-            foreach ($careerRoles as $careerRole) {
-                $careerRoleMilestones = $careerRole->careerRoleMilestones()->get();
 
-                $array[]=[
-                  'title' => $careerRole->title,
-                  'description'=> $careerRole->description
-                ];
+            $careerRoles = CareerRole::with('careerRoleMilestones')->get();
+
+            foreach ($careerRoles as $key => $careerRole) {
+
+                $array[$key]['milestones'] = [];
+                $array[$key]['career_role_id'] = $careerRole->id;
+                $array[$key]['task'] = $careerRole->title;
+                $array[$key]['description'] = $careerRole->description;
+
+                foreach ($careerRole->careerRoleMilestones()->get() as $careerRoleMilestone) {
+                    $array[$key]['milestones'][] = [
+                        'task' => $careerRoleMilestone->task,
+                        'careerRoleMilestoneId' => $careerRoleMilestone->id
+
+                    ];
+                }
             }
 
-            return view('admin.adminManageCareerTemplate')->with(['array'=>$array]);
+            return view('admin.adminManageCareerTemplate')->with(['array' => $array]);
         } catch (\Exception $exception) {
         }
     }

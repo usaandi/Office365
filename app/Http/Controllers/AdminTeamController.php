@@ -121,9 +121,9 @@ class AdminTeamController extends Controller
                     $userTeamModerator->delete();
                     $responseIsModerator = false;
                 }
-                $array = array('belongs_team'=>$responseBelongsTeam,'team_moderator'=>$responseIsModerator);
+                $array = array('belongs_team' => $responseBelongsTeam, 'team_moderator' => $responseIsModerator);
 
-                return response(json_encode($array),200);
+                return response(json_encode($array), 200);
 
             }
         } catch (\Exception $e) {
