@@ -96,7 +96,8 @@ class User extends Authenticatable
 
     public function userStrengths()
     {
-        return $this->belongsToMany(Strength::class,'users_strengths')->withPivot('rank');
+        return $this->belongsToMany(Strength::class,'users_strengths')
+            ->withPivot('rank');
     }
 
     public function isModeratorOfTeam($teamId)
