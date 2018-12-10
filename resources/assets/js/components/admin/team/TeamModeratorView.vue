@@ -75,6 +75,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
 
     export default {
         props: {
@@ -113,8 +114,6 @@
                 } else {
                     this.isModerator = true;
                 }
-
-
             },
             submit() {
                 if (this.show) {
@@ -124,17 +123,20 @@
                         belongsTeam: this.belongsTeam,
 
                     };
+                    axios.patch('/admin/team/view/' + this.teamId, data).then(response => {
+                        if (response.status === 200) {
+                            this.teamUsers['users'][this.currentUserIndex].team_moderator = response.data.team_moderator;
+                            this.teamUsers['users'][this.currentUserIndex].belongs_team = response.data.belongs_team;
 
-                    console.log(data);
+                            this.show = false;
+                            this.finished = true;
+                        }
+                    }).catch();
 
-                    this.teamUsers['users'][this.currentUserIndex].team_moderator = this.isModerator;
-                    this.teamUsers['users'][this.currentUserIndex].belongs_team = this.belongsTeam;
-                    this.show = false;
-                    this.finished = true;
+
                 }
             },
             checkboxEventBelongs() {
-
                 if (this.belongsTeam) {
                     this.belongsTeam = false;
                 } else {
@@ -194,5 +196,4 @@
         top: -1px;
         *overflow: hidden;
     }
-
 </style>

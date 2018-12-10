@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Services\ModeratorService;
+use App\UserTeam;
 use App\UserTeamModerator;
 use Illuminate\Http\Request;
 use App\Team;
+use Validator;
 use App\User;
 
 
@@ -48,8 +50,7 @@ class AdminTeamController extends Controller
                         ];
                     }
                 }
-            }
-            else {
+            } else {
                 $teamArray ['users'] = [];
             }
 
@@ -80,6 +81,51 @@ class AdminTeamController extends Controller
         try {
             $auth = \Auth::user();
             $this->authorize('admin', $auth);
+
+            $data = $request->all();
+            $rules = [
+                'userId' => 'required',
+                'isModerator' => 'required|bool',
+                'belongsTeam' => 'required|bool',
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->passes()) {
+                $userId = $data['userId'];
+                $isModerator = $data['isModerator'];
+                $belongsTeam = $data['belongsTeam'];
+
+                $responseIsModerator = null;
+                $responseBelongsTeam = null;
+
+
+                if ($belongsTeam) {
+                    $isInTeam = UserTeam::where('user_id', $userId)->where('team_id', $id)->get();
+                    if ($isInTeam->isEmpty()) {
+                        UserTeam::create(['user_id' => $userId, 'team_id' => $id]);
+                    }
+                    $responseBelongsTeam = true;
+                } else {
+                    $userTeam = UserTeam::where('user_id', $userId)->where('team_id', $id)->first();
+                    $userTeam->delete();
+                    $responseBelongsTeam = false;
+                }
+
+                if ($isModerator) {
+                    $isTeamModerator = UserTeamModerator::where('user_id', $userId)->where('team_id', $id)->get();
+                    if ($isTeamModerator->isEmpty()) {
+                        UserTeamModerator::create(['user_id' => $userId, 'team_id' => $id]);
+                    }
+                    $responseIsModerator = true;
+                } else {
+                    $userTeamModerator = UserTeamModerator::where('user_id', $userId)->where('team_id', $id)->first();
+                    $userTeamModerator->delete();
+                    $responseIsModerator = false;
+                }
+                $array = array('belongs_team'=>$responseBelongsTeam,'team_moderator'=>$responseIsModerator);
+
+                return response(json_encode($array),200);
+
+            }
         } catch (\Exception $e) {
         }
     }

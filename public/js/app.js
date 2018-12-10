@@ -63983,7 +63983,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\ntbody[data-v-79ec5f72]:before {\n    /* This doesn't work because of border-collapse */\n    line-height: 0.1em;\n    content: \"_\";\n    color: white;\n    display: block;\n}\n.form__body[data-v-79ec5f72] {\n    margin-top: 0;\n    width: 100%;\n}\nlabel[data-v-79ec5f72] {\n    display: block;\n    padding-left: 15px;\n    text-indent: -15px;\n}\ninput[data-v-79ec5f72] {\n    width: 13px;\n    height: 13px;\n    padding: 0;\n    margin: 0;\n    vertical-align: bottom;\n    position: relative;\n    top: -1px;\n    *overflow: hidden;\n}\n\n", ""]);
+exports.push([module.i, "\ntbody[data-v-79ec5f72]:before {\n    /* This doesn't work because of border-collapse */\n    line-height: 0.1em;\n    content: \"_\";\n    color: white;\n    display: block;\n}\n.form__body[data-v-79ec5f72] {\n    margin-top: 0;\n    width: 100%;\n}\nlabel[data-v-79ec5f72] {\n    display: block;\n    padding-left: 15px;\n    text-indent: -15px;\n}\ninput[data-v-79ec5f72] {\n    width: 13px;\n    height: 13px;\n    padding: 0;\n    margin: 0;\n    vertical-align: bottom;\n    position: relative;\n    top: -1px;\n    *overflow: hidden;\n}\n", ""]);
 
 // exports
 
@@ -63994,6 +63994,8 @@ exports.push([module.i, "\ntbody[data-v-79ec5f72]:before {\n    /* This doesn't 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -64070,6 +64072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64116,8 +64119,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     belongsTeam: this.belongsTeam
 
                 };
-
-                console.log(data);
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/admin/team/view/' + this.teamId, data).then(function (response) {
+                    if (response.status === 200) {
+                        console.log(response.data);
+                    }
+                }).catch();
 
                 this.teamUsers['users'][this.currentUserIndex].team_moderator = this.isModerator;
                 this.teamUsers['users'][this.currentUserIndex].belongs_team = this.belongsTeam;
@@ -64126,7 +64132,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         checkboxEventBelongs: function checkboxEventBelongs() {
-
             if (this.belongsTeam) {
                 this.belongsTeam = false;
             } else {
