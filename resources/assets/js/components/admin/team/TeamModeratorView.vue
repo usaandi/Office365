@@ -36,7 +36,11 @@
                 <button type="submit" class="btn m-btn--pill btn-success" @click="submit">SUBMIT</button>
             </div>
         </modal>
+        <div v-show="finished" class="alert alert-success alert-dismissible">
+            <p class="text-center"><strong>Success</strong></p>
+            <a class="close" @click="finished=!finished"></a>
 
+        </div>
         <div class="table-responsive">
             <span class="float-left m--margin-bottom-5"></span>
             <table class="table table-bordered text-center">
@@ -71,6 +75,7 @@
 </template>
 
 <script>
+
     export default {
         props: {
             teamId: {
@@ -90,6 +95,7 @@
                 show: false,
                 currentUserIndex: null,
                 isModerator: null,
+                finished: false,
                 belongsTeam: null,
 
             }
@@ -114,8 +120,8 @@
                 if (this.show) {
                     const data = {
                         userId: this.selectedUser.user_id,
-                        isModerator:this.isModerator,
-                        belongsTeam:this.belongsTeam,
+                        isModerator: this.isModerator,
+                        belongsTeam: this.belongsTeam,
 
                     };
 
@@ -124,6 +130,7 @@
                     this.teamUsers['users'][this.currentUserIndex].team_moderator = this.isModerator;
                     this.teamUsers['users'][this.currentUserIndex].belongs_team = this.belongsTeam;
                     this.show = false;
+                    this.finished = true;
                 }
             },
             checkboxEventBelongs() {

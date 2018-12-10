@@ -64055,6 +64055,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -64075,6 +64080,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: false,
             currentUserIndex: null,
             isModerator: null,
+            finished: false,
             belongsTeam: null
 
         };
@@ -64105,6 +64111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.teamUsers['users'][this.currentUserIndex].team_moderator = this.isModerator;
                 this.teamUsers['users'][this.currentUserIndex].belongs_team = this.belongsTeam;
                 this.show = false;
+                this.finished = true;
             }
         },
         checkboxEventBelongs: function checkboxEventBelongs() {
@@ -64219,11 +64226,38 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.finished,
+              expression: "finished"
+            }
+          ],
+          staticClass: "alert alert-success alert-dismissible"
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("a", {
+            staticClass: "close",
+            on: {
+              click: function($event) {
+                _vm.finished = !_vm.finished
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
         _c("span", { staticClass: "float-left m--margin-bottom-5" }),
         _vm._v(" "),
         _c("table", { staticClass: "table table-bordered text-center" }, [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "tbody",
@@ -64296,6 +64330,14 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("strong", [_vm._v("Success")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
