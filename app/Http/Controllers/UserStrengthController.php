@@ -35,7 +35,7 @@ class UserStrengthController extends Controller
                             'rank' => $strength['strength_index'],
                         ]);
                     }
-                    return response($user->name.'updated',200);
+                    return response($user->name . 'updated', 200);
                 } else {
 
                     $userStrengths = $user->userStrength()->get();
@@ -46,7 +46,7 @@ class UserStrengthController extends Controller
                             'rank' => $strengths[$i]['strength_index'],
                         ]);
                     }
-                    return response($user->name.'updated',200);
+                    return response($user->name . 'updated', 200);
 
                 }
 
@@ -63,22 +63,30 @@ class UserStrengthController extends Controller
             $userId = $id;
             $array = [];
             $user = User::find($userId);
-            $userStrengths = $user->with('strengths.strength.strengthCategory.category')->where('id', $userId)->get();
-            foreach ($userStrengths[0]->strengths as $i => $strength) {
+            $userStrengths = $user->userStrengths()->with('categories')->get();
+            foreach ($userStrengths as $i => $strength) {
+
+                $categoryColour = null;
+
+                $category = $strength->categories()->get();
+                if ($category->isNotEmpty()) {
+                    $categoryColour = $category[0]->category_colour;
+
+                }
 
                 $array[$i] = [
-                    'strength_name' => $strength->strength->strength_name,
-                    'strength_description' => $strength->strength->strength_description,
-                    'category_colour' => $strength->strength->strengthCategory[0]->category->category_colour,
-                    'strength_rank' => $strength->rank,
+                    'strength_name' => $strength->strength_name,
+                    'strength_description' => $strength->strength_description,
+                    'category_colour' => $categoryColour,
+                    'strength_rank' => $strength->pivot->rank,
                 ];
 
 
             }
             return $array;
 
+
         } catch (\Exception $e) {
-            var_dump($e);
         }
 
     }

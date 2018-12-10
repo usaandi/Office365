@@ -75,7 +75,7 @@ class AdminTeamController extends Controller
         return $temp_array;
     }
 
-    public function removeModerator(Request $request)
+    public function updateTeamUser(Request $request, $id)
     {
         try {
             $auth = \Auth::user();
@@ -84,12 +84,5 @@ class AdminTeamController extends Controller
         }
     }
 
-    public function addModerator(Request $request)
-    {
-        try {
-            $auth = \Auth::user();
-            $this->authorize('admin', $auth);
-        } catch (\Exception $e) {
-        }
-    }
+
 }
