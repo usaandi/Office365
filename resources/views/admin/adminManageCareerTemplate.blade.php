@@ -13,7 +13,7 @@
 @section('content-body')
 
     <div id="app">
-        <admin-career-template-manager></admin-career-template-manager>
+        <admin-career-template-manager :career-list='@json($array)'></admin-career-template-manager>
     </div>
 
 @endsection

@@ -6,6 +6,11 @@
 
 <script>
     export default {
+        props: {
+            careerList: {
+                required: true
+            }
+        },
         name: "CareerTemplateManager"
     }
 </script>
