@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group m-form__group row"><label for="careerDescription"
                                                                      class="col-sm-3 col-xs-12 col-form-label">Description</label>
-                        <div class="col-sm-9 col-xs-12"><textarea required="" maxlength="1000" id="careerDescription"
+                        <div class="col-sm-9 col-xs-12"><textarea style="min-height: 200px" required="" maxlength="1000" id="careerDescription"
                                                                   rows="3" class="form-control m-input"
                                                                   v-model="careerDescription"
                                                                   name="description"></textarea></div>

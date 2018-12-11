@@ -58950,6 +58950,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control m-input",
+                        staticStyle: { "min-height": "200px" },
                         attrs: {
                           required: "",
                           maxlength: "1000",
@@ -61674,7 +61675,7 @@ var render = function() {
             staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
             attrs: { href: "/admin/strength" }
           },
-          [_c("span", [_vm._v("Add Department")])]
+          [_c("span", [_vm._v("Add Strength")])]
         )
       ]),
       _vm._v(" "),
@@ -62366,7 +62367,7 @@ var render = function() {
           staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
           attrs: { href: "/admin/strength" }
         },
-        [_c("span", [_vm._v("Add Strength")])]
+        [_c("span", [_vm._v("Add Category")])]
       )
     ]),
     _vm._v(" "),
@@ -63851,6 +63852,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control m-input",
+                      staticStyle: { "min-height": "200px" },
                       attrs: {
                         required: "",
                         maxlength: "1000",

@@ -3,7 +3,7 @@
         <h3>Table Strength</h3>
         <div class="table-responsive">
             <span class="float-right m--margin-bottom-5"><a :href="'/admin/strength'" class="btn btn-success m-btn m-btn--icon m-btn--pill">
-               <span>Add Department</span></a></span>
+               <span>Add Strength</span></a></span>
             <div class="table-responsive">
                 <table class="table table-bordered text-center">
                     <thead>
