@@ -123,6 +123,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
     Route::get('/admin/team/view/{id}', 'AdminTeamController@index')->name('adminTeamView');
     Route::get('admin/career/template/manager', 'AdminCareerTemplateManager@index')->name('adminCareerTemplateManagerView');
+    Route::patch('admin/career/template/manager/{id}', 'AdminCareerTemplateManager@careerUpdate')->name('adminCareerTemplateManagerUpdate');
     Route::patch('/admin/team/view/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
 
 

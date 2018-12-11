@@ -58381,7 +58381,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58392,6 +58392,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -58458,6 +58460,73 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -58469,7 +58538,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             careers: this.careerList,
-            success: false
+            success: false,
+            showModal: false,
+
+            careerTaskTitle: null,
+            careerDescription: null,
+            careerMilestones: null,
+            careerRoleId: null,
+            currentIndex: null,
+            placeHolderTask: null
+
         };
     },
 
@@ -58477,6 +58555,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         milestoneLength: function milestoneLength(milestones) {
             return milestones.length;
+        },
+        clearModalData: function clearModalData() {
+            if (this.showModal) {
+
+                this.careerTaskTitle = null;
+                this.careerDescription = null;
+                this.careerMilestones = null;
+                this.careerRoleId = null;
+                this.currentIndex = null;
+                this.placeHolderTask = null;
+                this.showModal = false;
+            }
+        },
+        editCareerTemplate: function editCareerTemplate(currentCareer, index) {
+
+            this.careerTaskTitle = currentCareer.task;
+            this.careerDescription = currentCareer.description;
+            this.careerRoleId = currentCareer.career_role_id;
+            this.currentIndex = index;
+            this.careerMilestones = currentCareer['milestones'];
+            this.placeHolderTask = currentCareer.task;
+            this.showModal = true;
+        },
+        updateCareer: function updateCareer() {
+            var _this = this;
+
+            if (this.careerTaskTitle && this.careerDescription) {
+                var data = {
+                    careerTask: this.careerTaskTitle,
+                    careerDescription: this.careerDescription
+                };
+
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/manager/' + this.careerRoleId, data).then(function (response) {
+
+                    _this.careerList[_this.currentIndex].task = response.data.title;
+                    _this.careerList[_this.currentIndex].description = response.data.description;
+
+                    _this.careerTaskTitle = null;
+                    _this.careerDescription = null;
+                    _this.careerMilestones = null;
+                    _this.careerRoleId = null;
+                    _this.currentIndex = null;
+                    _this.placeHolderTask = null;
+                    _this.success = true;
+                    _this.showModal = false;
+                });
+            }
         }
     }
 });
@@ -58489,88 +58614,327 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
-      _c("div", { staticClass: "m-form__actions" }, [
-        _c("div", { staticClass: "row m--margin-bottom-15" }, [
-          _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.success,
-                    expression: "success"
-                  }
-                ],
-                staticClass: "alert alert-success alert-dismissible"
-              },
-              [
-                _c("a", {
-                  staticClass: "close",
-                  on: {
-                    click: function($event) {
-                      _vm.success = !_vm.success
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("strong", [_vm._v("Success!")])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-            _c("div", { staticClass: "profile-timeline__action " }, [
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+        _c("div", { staticClass: "m-form__actions" }, [
+          _c("div", { staticClass: "row m--margin-bottom-15" }, [
+            _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
               _c(
-                "a",
+                "div",
                 {
-                  staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill ",
-                  attrs: { href: "admin/career/add" }
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.success,
+                      expression: "success"
+                    }
+                  ],
+                  staticClass: "alert alert-success alert-dismissible"
                 },
-                [_vm._m(0)]
+                [
+                  _c("a", {
+                    staticClass: "close",
+                    on: {
+                      click: function($event) {
+                        _vm.success = !_vm.success
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Success!")])
+                ]
               )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+              _c("div", { staticClass: "profile-timeline__action " }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn btn-success m-btn m-btn--icon m-btn--pill ",
+                    attrs: { href: "admin/career/add" }
+                  },
+                  [_vm._m(0)]
+                )
+              ])
             ])
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", [
-      _c("div", { staticClass: "table-responsive" }, [
-        _c("span", { staticClass: "float-left m--margin-bottom-5" }),
-        _vm._v(" "),
-        _c("table", { staticClass: "table table-bordered text-center" }, [
-          _vm._m(1),
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c("span", { staticClass: "float-left m--margin-bottom-5" }),
           _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.careers, function(career, index) {
-              return _c("tr", { key: index, attrs: { index: index } }, [
-                _c("td", [_c("span", [_vm._v(_vm._s(career.career_role_id))])]),
-                _vm._v(" "),
-                _c("td", [_c("span", [_vm._v(_vm._s(career.task))])]),
-                _vm._v(" "),
-                _c("td", [_c("span", [_vm._v(_vm._s(career.description))])]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("span", [
-                    _vm._v(_vm._s(_vm.milestoneLength(career["milestones"])))
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(2, true),
-                _vm._v(" "),
-                _vm._m(3, true)
-              ])
-            })
-          )
+          _c("table", { staticClass: "table table-bordered text-center" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.careers, function(career, index) {
+                return _c("tr", { key: index, attrs: { index: index } }, [
+                  _c("td", [
+                    _c("span", [_vm._v(_vm._s(career.career_role_id))])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_c("span", [_vm._v(_vm._s(career.task))])]),
+                  _vm._v(" "),
+                  _c("td", [_c("span", [_vm._v(_vm._s(career.description))])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("span", [
+                      _vm._v(_vm._s(_vm.milestoneLength(career["milestones"])))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "btn btn-success",
+                        on: {
+                          click: function($event) {
+                            _vm.editCareerTemplate(career, index)
+                          }
+                        }
+                      },
+                      [_vm._v("Edit ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2, true)
+                ])
+              })
+            )
+          ])
         ])
-      ])
-    ])
-  ])
+      ]),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c("modal", [
+            _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
+              _vm._v(
+                "\n            " + _vm._s(_vm.placeHolderTask) + "\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "admin__form admin__form--clear",
+                attrs: { slot: "body" },
+                slot: "body"
+              },
+              [
+                _c("div", { staticClass: "m-portlet__body" }, [
+                  _c("div", { staticClass: "form-group m-form__group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-sm-3 col-xs-12  col-form-label",
+                        attrs: { for: "careerTask" }
+                      },
+                      [_vm._v("Career\n                    Task")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.careerTaskTitle,
+                            expression: "careerTaskTitle"
+                          }
+                        ],
+                        staticClass: "form-control m-input",
+                        attrs: {
+                          required: "",
+                          name: "CareerName",
+                          type: "text",
+                          id: "careerTask",
+                          placeholder: "Career Task"
+                        },
+                        domProps: { value: _vm.careerTaskTitle },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.careerTaskTitle = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group m-form__group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-sm-3 col-xs-12 col-form-label",
+                        attrs: { for: "careerDescription" }
+                      },
+                      [_vm._v("Description")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.careerDescription,
+                            expression: "careerDescription"
+                          }
+                        ],
+                        staticClass: "form-control m-input",
+                        attrs: {
+                          required: "",
+                          maxlength: "1000",
+                          id: "careerDescription",
+                          rows: "3",
+                          name: "description"
+                        },
+                        domProps: { value: _vm.careerDescription },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.careerDescription = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "form-group m-form__group row m--margin-top-15"
+                    },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-3 col-xs-12  col-form-label",
+                          attrs: { for: "milestoneName" }
+                        },
+                        [_vm._v("Milestone")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                        _c("input", {
+                          staticClass: "form-control m-input",
+                          attrs: {
+                            required: "",
+                            name: "milestoneName",
+                            type: "text",
+                            placeholder: "Milestone Name",
+                            id: "milestoneName"
+                          }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                    [
+                      _c("div", { staticClass: "m-form__actions" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                            _c(
+                              "div",
+                              { staticClass: "profile-timeline__action" },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn m-btn--pill btn-success m-btn m-btn--custom",
+                                    attrs: { type: "button" },
+                                    on: { click: function($event) {} }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "New Milestone\n                                    "
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group m-form__group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-3 col-form-label",
+                        attrs: { for: "Milestones" }
+                      },
+                      [_vm._v("Milestones:")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-9", attrs: { id: "Milestones" } },
+                      _vm._l(_vm.careerMilestones, function(milestone, index) {
+                        return _c("ul", { style: "listStyleType:none" }, [
+                          _c("li", [_vm._v(_vm._s(milestone.task))])
+                        ])
+                      })
+                    )
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", {
+              staticClass:
+                "m-portlet__foot m-portlet__foot--fit m--margin-top-10"
+            }),
+            _vm._v(" "),
+            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                  attrs: { type: "button" },
+                  on: { click: _vm.clearModalData }
+                },
+                [_vm._v("CANCEL\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn m-btn--pill btn-success",
+                  attrs: { type: "submit" },
+                  on: { click: _vm.updateCareer }
+                },
+                [_vm._v("SUBMIT")]
+              )
+            ])
+          ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -58601,14 +58965,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Delete")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "btn btn-success" }, [_vm._v("Edit ")])
     ])
   },
   function() {
