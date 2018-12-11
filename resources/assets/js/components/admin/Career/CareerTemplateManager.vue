@@ -60,7 +60,7 @@
                 </table>
             </div>
         </div>
-        <modal v-if="showModal">
+        <modal v-if="showModal" >
 
 
             <h3 slot="header">
@@ -88,7 +88,8 @@
                     </div>
                     <div class="form-group m-form__group row m--margin-top-15"><label for="milestoneName"
                                                                                       class="col-sm-3 col-xs-12  col-form-label">Milestone</label>
-                        <div class="col-sm-9 col-xs-12 "><input required="" name="milestoneName" type="text"
+                        <div class="col-sm-9 col-xs-12 "><input v-model="newMilestoneName" required=""
+                                                                name="milestoneName" type="text"
                                                                 placeholder="Milestone Name"
                                                                 id="milestoneName"
                                                                 class="form-control m-input"></div>
@@ -99,7 +100,7 @@
                                 <div class="col-sm-3 col-xs-12"></div>
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
-                                        <button @click="" type="button"
+                                        <button @click="createMilestone(newMilestoneName)" type="button"
                                                 class="btn m-btn--pill btn-success m-btn m-btn--custom">New Milestone
                                         </button>
                                     </div>
@@ -152,11 +153,20 @@
                 currentIndex: null,
                 placeHolderTask: null,
 
+                newMilestoneName: null,
+
 
             }
         },
         computed: {},
         methods: {
+            createMilestone() {
+                if (this.newMilestoneName) {
+                    console.log(this.newMilestoneName);
+                    this.careers[this.currentIndex]['milestones'].push({careerRoleMilestoneId:null,task:this.newMilestoneName});
+                }
+            },
+
             milestoneLength(milestones) {
                 return milestones.length;
             },
@@ -191,18 +201,20 @@
                     };
 
                     axios.patch('admin/career/template/manager/' + this.careerRoleId, data).then(response => {
+                        if (response.status === 200) {
+                            this.careerList[this.currentIndex].task = response.data.title;
+                            this.careerList[this.currentIndex].description = response.data.description;
 
-                        this.careerList[this.currentIndex].task = response.data.title;
-                        this.careerList[this.currentIndex].description = response.data.description;
+                            this.careerTaskTitle = null;
+                            this.careerDescription = null;
+                            this.careerMilestones = null;
+                            this.careerRoleId = null;
+                            this.currentIndex = null;
+                            this.placeHolderTask = null;
+                            this.success = true;
+                            this.showModal = false;
+                        }
 
-                        this.careerTaskTitle = null;
-                        this.careerDescription = null;
-                        this.careerMilestones = null;
-                        this.careerRoleId = null;
-                        this.currentIndex = null;
-                        this.placeHolderTask = null;
-                        this.success = true;
-                        this.showModal = false;
                     });
 
                 }

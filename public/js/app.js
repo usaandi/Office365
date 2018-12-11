@@ -58381,7 +58381,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58394,6 +58394,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -58546,13 +58547,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             careerMilestones: null,
             careerRoleId: null,
             currentIndex: null,
-            placeHolderTask: null
+            placeHolderTask: null,
+
+            newMilestoneName: null
 
         };
     },
 
     computed: {},
     methods: {
+        createMilestone: function createMilestone() {
+            if (this.newMilestoneName) {
+                console.log(this.newMilestoneName);
+                this.careers[this.currentIndex]['milestones'].push({ careerRoleMilestoneId: null, task: this.newMilestoneName });
+            }
+        },
         milestoneLength: function milestoneLength(milestones) {
             return milestones.length;
         },
@@ -58588,18 +58597,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 };
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/manager/' + this.careerRoleId, data).then(function (response) {
+                    if (response.status === 200) {
+                        _this.careerList[_this.currentIndex].task = response.data.title;
+                        _this.careerList[_this.currentIndex].description = response.data.description;
 
-                    _this.careerList[_this.currentIndex].task = response.data.title;
-                    _this.careerList[_this.currentIndex].description = response.data.description;
-
-                    _this.careerTaskTitle = null;
-                    _this.careerDescription = null;
-                    _this.careerMilestones = null;
-                    _this.careerRoleId = null;
-                    _this.currentIndex = null;
-                    _this.placeHolderTask = null;
-                    _this.success = true;
-                    _this.showModal = false;
+                        _this.careerTaskTitle = null;
+                        _this.careerDescription = null;
+                        _this.careerMilestones = null;
+                        _this.careerRoleId = null;
+                        _this.currentIndex = null;
+                        _this.placeHolderTask = null;
+                        _this.success = true;
+                        _this.showModal = false;
+                    }
                 });
             }
         }
@@ -58831,6 +58841,14 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.newMilestoneName,
+                              expression: "newMilestoneName"
+                            }
+                          ],
                           staticClass: "form-control m-input",
                           attrs: {
                             required: "",
@@ -58838,6 +58856,15 @@ var render = function() {
                             type: "text",
                             placeholder: "Milestone Name",
                             id: "milestoneName"
+                          },
+                          domProps: { value: _vm.newMilestoneName },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.newMilestoneName = $event.target.value
+                            }
                           }
                         })
                       ])
@@ -58863,7 +58890,13 @@ var render = function() {
                                     staticClass:
                                       "btn m-btn--pill btn-success m-btn m-btn--custom",
                                     attrs: { type: "button" },
-                                    on: { click: function($event) {} }
+                                    on: {
+                                      click: function($event) {
+                                        _vm.createMilestone(
+                                          _vm.newMilestoneName
+                                        )
+                                      }
+                                    }
                                   },
                                   [
                                     _vm._v(
@@ -65491,7 +65524,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3cb774f3"
+var __vue_scopeId__ = "data-v-02374a38"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -65502,7 +65535,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/warning/modal.vue"
+Component.options.__file = "resources/assets/js/components/Modal/modal.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -65511,9 +65544,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3cb774f3", Component.options)
+    hotAPI.createRecord("data-v-02374a38", Component.options)
   } else {
-    hotAPI.reload("data-v-3cb774f3", Component.options)
+    hotAPI.reload("data-v-02374a38", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -65534,13 +65567,13 @@ var content = __webpack_require__(286);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("17303c8d", content, false, {});
+var update = __webpack_require__(2)("4edf0467", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3cb774f3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modal.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3cb774f3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modal.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02374a38\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modal.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02374a38\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./modal.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -65558,7 +65591,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask[data-v-3cb774f3] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-3cb774f3] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-3cb774f3] {\n    width: 45%;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.modal-header h3[data-v-3cb774f3] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-3cb774f3] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-3cb774f3] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-3cb774f3] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-3cb774f3],\n.modal-leave-active .modal-container[data-v-3cb774f3] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask[data-v-02374a38] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-02374a38] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-02374a38] {\n    width: 45%;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n}\n.modal-header h3[data-v-02374a38] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-02374a38] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-02374a38] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-02374a38] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-02374a38] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-02374a38],\n.modal-leave-active .modal-container[data-v-02374a38] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 
@@ -65683,7 +65716,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3cb774f3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-02374a38", module.exports)
   }
 }
 

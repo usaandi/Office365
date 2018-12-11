@@ -71,7 +71,7 @@ Vue.component('admin-view-user-strength', require('./components/UserStrengthView
 Vue.component('admin-user-strength', require('./components/UserStrengthComponent'));
 Vue.component('admin-view-team-moderator', require('./components/admin/team/TeamModeratorView'));
 Vue.component('department-user-strength-category', require('./components/UsersStrengthView/MainView'));
-Vue.component('modal',require('./components/warning/modal'));
+Vue.component('modal',require('./components/Modal/modal'));
 Vue.component('search', require('./components/search/SearchComponent'));
 const app = new Vue({
     el: '#app',
