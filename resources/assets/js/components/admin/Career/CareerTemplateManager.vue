@@ -53,14 +53,15 @@
                         <td><span>{{milestoneLength(career['milestones'])}}</span></td>
                         <td><span class="btn btn-success" @click="editCareerTemplate(career, index)">Edit </span></td>
                         <td><span><button type="button"
-                                          class="btn btn-danger">Delete</button></span></td>
+                                          class="btn btn-danger" @click="deleteCareer(career.career_role_id, index)">Delete</button></span>
+                        </td>
 
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <modal v-if="showModal" >
+        <modal v-if="showModal">
 
 
             <h3 slot="header">
@@ -111,8 +112,10 @@
                     <div class="form-group m-form__group row">
                         <label for="Milestones" class="col-3 col-form-label">Milestones:</label>
                         <div class="col-9" id="Milestones">
-                            <ul v-for="(milestone, index) in careerMilestones" :style="'listStyleType:none'">
-                                <li>{{milestone.task}}</li>
+                            <ul :style="'listStyleType:none'">
+                                <li v-for="(milestone, index) in careerMilestones" :key="index" :milestoneIndex="index">
+                                    {{milestone.task}}
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -160,10 +163,42 @@
         },
         computed: {},
         methods: {
+
+            deleteCareer(careerId, index) {
+
+                axios.delete('admin/career/template/manager/', {params: {careerId: careerId}}).then(response => {
+                    if (response.status === 200) {
+                        this.careers.splice(index, 1);
+                        this.success = true;
+                    }
+                })
+
+            },
+
             createMilestone() {
                 if (this.newMilestoneName) {
-                    console.log(this.newMilestoneName);
-                    this.careers[this.currentIndex]['milestones'].push({careerRoleMilestoneId:null,task:this.newMilestoneName});
+                    const data = {
+                        careerMilestoneTask: this.newMilestoneName
+                    };
+                    this.newMilestoneName = null;
+
+                    axios.post('admin/career/template/manager/milestone/' + this.careerRoleId, data).then(response => {
+                        if (response.status === 200) {
+                            this.careers[this.currentIndex]['milestones'].push({
+                                careerRoleMilestoneId: response.data.careerRoleMilestoneId,
+                                task: response.data.task
+                            });
+
+
+                        }
+                    }).catch(response => {
+
+                    });
+
+                    /* this.careers[this.currentIndex]['milestones'].push({
+                         careerRoleMilestoneId: null,
+                         task: this.newMilestoneName
+                     });*/
                 }
             },
 
@@ -179,6 +214,7 @@
                     this.careerRoleId = null;
                     this.currentIndex = null;
                     this.placeHolderTask = null;
+                    this.newMilestoneName = null;
                     this.showModal = false;
                 }
             },

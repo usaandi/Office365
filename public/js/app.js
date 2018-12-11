@@ -58381,7 +58381,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58394,6 +58394,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
 //
 //
 //
@@ -58556,10 +58559,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {},
     methods: {
+        deleteCareer: function deleteCareer(careerId, index) {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/manager/', { params: { careerId: careerId } }).then(function (response) {
+                if (response.status === 200) {
+                    _this.careers.splice(index, 1);
+                }
+            });
+        },
         createMilestone: function createMilestone() {
+            var _this2 = this;
+
             if (this.newMilestoneName) {
-                console.log(this.newMilestoneName);
-                this.careers[this.currentIndex]['milestones'].push({ careerRoleMilestoneId: null, task: this.newMilestoneName });
+                var data = {
+                    careerMilestoneTask: this.newMilestoneName
+                };
+                this.newMilestoneName = null;
+
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career/template/manager/milestone/' + this.careerRoleId, data).then(function (response) {
+                    if (response.status === 200) {
+                        _this2.careers[_this2.currentIndex]['milestones'].push({
+                            careerRoleMilestoneId: response.data.careerRoleMilestoneId,
+                            task: response.data.task
+                        });
+                    }
+                }).catch(function (response) {});
+
+                /* this.careers[this.currentIndex]['milestones'].push({
+                     careerRoleMilestoneId: null,
+                     task: this.newMilestoneName
+                 });*/
             }
         },
         milestoneLength: function milestoneLength(milestones) {
@@ -58574,6 +58604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.careerRoleId = null;
                 this.currentIndex = null;
                 this.placeHolderTask = null;
+                this.newMilestoneName = null;
                 this.showModal = false;
             }
         },
@@ -58588,7 +58619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.showModal = true;
         },
         updateCareer: function updateCareer() {
-            var _this = this;
+            var _this3 = this;
 
             if (this.careerTaskTitle && this.careerDescription) {
                 var data = {
@@ -58598,17 +58629,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/manager/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
-                        _this.careerList[_this.currentIndex].task = response.data.title;
-                        _this.careerList[_this.currentIndex].description = response.data.description;
+                        _this3.careerList[_this3.currentIndex].task = response.data.title;
+                        _this3.careerList[_this3.currentIndex].description = response.data.description;
 
-                        _this.careerTaskTitle = null;
-                        _this.careerDescription = null;
-                        _this.careerMilestones = null;
-                        _this.careerRoleId = null;
-                        _this.currentIndex = null;
-                        _this.placeHolderTask = null;
-                        _this.success = true;
-                        _this.showModal = false;
+                        _this3.careerTaskTitle = null;
+                        _this3.careerDescription = null;
+                        _this3.careerMilestones = null;
+                        _this3.careerRoleId = null;
+                        _this3.currentIndex = null;
+                        _this3.placeHolderTask = null;
+                        _this3.success = true;
+                        _this3.showModal = false;
                     }
                 });
             }
@@ -58716,7 +58747,23 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(2, true)
+                  _c("td", [
+                    _c("span", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteCareer(career.career_role_id, index)
+                            }
+                          }
+                        },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ])
                 ])
               })
             )
@@ -58925,11 +58972,28 @@ var render = function() {
                     _c(
                       "div",
                       { staticClass: "col-9", attrs: { id: "Milestones" } },
-                      _vm._l(_vm.careerMilestones, function(milestone, index) {
-                        return _c("ul", { style: "listStyleType:none" }, [
-                          _c("li", [_vm._v(_vm._s(milestone.task))])
-                        ])
-                      })
+                      [
+                        _c(
+                          "ul",
+                          { style: "listStyleType:none" },
+                          _vm._l(_vm.careerMilestones, function(
+                            milestone,
+                            index
+                          ) {
+                            return _c(
+                              "li",
+                              { key: index, attrs: { milestoneIndex: index } },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(milestone.task) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          })
+                        )
+                      ]
                     )
                   ])
                 ])
@@ -58997,20 +59061,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Edit")]),
         _vm._v(" "),
         _c("th", [_vm._v("Delete")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", [
-        _c(
-          "button",
-          { staticClass: "btn btn-danger", attrs: { type: "button" } },
-          [_vm._v("Delete")]
-        )
       ])
     ])
   }

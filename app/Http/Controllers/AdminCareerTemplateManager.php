@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CareerRole;
+use App\CareerRoleMilestone;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -62,16 +63,75 @@ class AdminCareerTemplateManager extends Controller
 
 
                 $careerRole = CareerRole::where('id', $careerRoleId)->update([
-                    'title'=> $sanitizeTask, 'description'=>$careerDescription
+                    'title' => $sanitizeTask, 'description' => $careerDescription
                 ]);
 
-                $careerRoleNew = CareerRole::where('id',$careerRoleId)
-                    ->first(['title','description']);
-                return response(json_encode($careerRoleNew),200);
+                $careerRoleNew = CareerRole::where('id', $careerRoleId)
+                    ->first(['title', 'description']);
+                return response(json_encode($careerRoleNew), 200);
             }
 
         } catch (\Exception $e) {
 
+        }
+    }
+
+    public function deleteCareer(Request $request)
+    {
+        try {
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
+            $data = $request->all();
+
+            $rules = [
+                'careerId' => 'required|integer'
+            ];
+            $validator = Validator::make($data, $rules);
+
+            if ($validator->passes()) {
+                $careerRole = CareerRole::findOrFail($data['careerId']);
+               // $careerRole->delete();
+
+                return response('success', 200);
+
+            }
+        } catch (\Exception $e) {
+        }
+    }
+
+    public function createMilestone(Request $request, $careerId)
+    {
+        try {
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
+            $data = $request->all();
+            $rules = [
+                'careerMilestoneTask' => 'required|string'
+            ];
+
+            $validator = Validator::make($data, $rules);
+            if ($validator->passes()) {
+                $task = $data['careerMilestoneTask'];
+                $careerMilestoneTask = ucfirst(strtolower($task));
+                $existsCareerMilestone = CareerRoleMilestone::where('career_role_id', $careerId)->where('task', $careerMilestoneTask)->get();
+
+                if ($existsCareerMilestone->isEmpty()) {
+                    $newCareerMilestone = CareerRoleMilestone::create(['task' => $careerMilestoneTask, 'career_role_id' => $careerId]);
+
+                    $jsonObject = [
+                        'careerRoleMilestoneId' => $newCareerMilestone->id,
+                        'task' => $newCareerMilestone->task,
+                    ];
+
+                    return response(json_encode($jsonObject), 200);
+
+
+                } else {
+
+                }
+            }
+
+        } catch (\Exception $e) {
         }
     }
 }

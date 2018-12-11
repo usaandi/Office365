@@ -13,7 +13,7 @@
                     <div class="form-group m-form__group row">
                         <label for="desc" class="col-3 col-form-label">Description</label>
                         <div class="col-9">
-                            <textarea id="desc" required class="form-control m-input" placeholder="title" v-model="desc"></textarea>
+                            <textarea id="desc" required class="form-control m-input" placeholder="description" v-model="desc"></textarea>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                         <label for="desc" class="col-3 col-form-label">Milestones:</label>
                         <div class="col-9">
                             <ul v-for="(milestone, index) in milestonesList">
-                                <li>{{index}} - {{milestone}}</li>
+                                <li>{{milestone}}</li>
                             </ul>
                         </div>
                     </div>
