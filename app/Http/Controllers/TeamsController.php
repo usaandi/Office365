@@ -106,7 +106,7 @@ class TeamsController extends Controller
                         'team_name' => $teamName
                     ]);
 
-                    return redirect('/admin/team/view')->with(['teams'=>$teams]);
+                    return redirect('/admin/team/list')->with(['teams'=>$teams]);
                 } else {
                     echo 'Selline nimi on olemas';
                 }

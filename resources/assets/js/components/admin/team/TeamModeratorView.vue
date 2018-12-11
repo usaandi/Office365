@@ -36,10 +36,22 @@
                 <button type="submit" class="btn m-btn--pill btn-success" @click="submit">SUBMIT</button>
             </div>
         </modal>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+                <div class="row m--margin-bottom-15">
+                    <div class="col-sm-9 col-xs-12">
+                        <a
+                                :href="'admin/team/moderator/add'"
+                                class="btn btn-success m-btn m-btn--icon m-btn--pill "><span
+                        ><i class="la la-plus"></i> <span
+                        >Add Moderator to Team</span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div v-show="finished" class="alert alert-success alert-dismissible">
             <p class="text-center"><strong>Success</strong></p>
             <a class="close" @click="finished=!finished"></a>
-
         </div>
         <div class="table-responsive">
             <span class="float-left m--margin-bottom-5"></span>
@@ -123,7 +135,7 @@
                         belongsTeam: this.belongsTeam,
 
                     };
-                    axios.patch('/admin/team/view/' + this.teamId, data).then(response => {
+                    axios.patch('/admin/team/list/' + this.teamId, data).then(response => {
                         if (response.status === 200) {
                             this.teamUsers['users'][this.currentUserIndex].team_moderator = response.data.team_moderator;
                             this.teamUsers['users'][this.currentUserIndex].belongs_team = response.data.belongs_team;

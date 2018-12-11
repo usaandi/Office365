@@ -8,7 +8,7 @@
             >Delete Team</button></span>
         </td>
         <td>
-            <a :href="'/admin/team/view/'+team.id"><span><span class="btn btn-success"
+            <a :href="'/admin/team/list/'+team.id"><span><span class="btn btn-success"
             >Manage Team</span></span></a>
         </td>
     </tr>

@@ -64427,7 +64427,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("td", [
-      _c("a", { attrs: { href: "/admin/team/view/" + _vm.team.id } }, [
+      _c("a", { attrs: { href: "/admin/team/list/" + _vm.team.id } }, [
         _vm._m(0)
       ])
     ])
@@ -65151,6 +65151,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -65200,7 +65212,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     belongsTeam: this.belongsTeam
 
                 };
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/admin/team/view/' + this.teamId, data).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/admin/team/list/' + this.teamId, data).then(function (response) {
                     if (response.status === 200) {
                         _this.teamUsers['users'][_this.currentUserIndex].team_moderator = response.data.team_moderator;
                         _this.teamUsers['users'][_this.currentUserIndex].belongs_team = response.data.belongs_team;
@@ -65326,6 +65338,23 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
+      _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
+        _c("div", { staticClass: "m-form__actions" }, [
+          _c("div", { staticClass: "row m--margin-bottom-15" }, [
+            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill ",
+                  attrs: { href: "admin/team/moderator/add" }
+                },
+                [_vm._m(0)]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -65340,7 +65369,7 @@ var render = function() {
           staticClass: "alert alert-success alert-dismissible"
         },
         [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c("a", {
             staticClass: "close",
@@ -65357,7 +65386,7 @@ var render = function() {
         _c("span", { staticClass: "float-left m--margin-bottom-5" }),
         _vm._v(" "),
         _c("table", { staticClass: "table table-bordered text-center" }, [
-          _vm._m(1),
+          _vm._m(2),
           _vm._v(" "),
           _c(
             "tbody",
@@ -65430,6 +65459,16 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Add Moderator to Team")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

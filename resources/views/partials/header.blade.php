@@ -291,7 +291,7 @@
                                                     href="{{route('adminDepartmentView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-analytics"></i><span
                                                         class="m-menu__link-text">Department List</span></a></li>
-                                        
+
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnCategoryStrengthView')}}"

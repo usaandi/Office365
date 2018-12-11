@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/users/add', 'AddController@add')->name('userAddView');
     Route::post('/admin/users/add', 'AddController@store')->name('userAdd');
     Route::get('/admin/category/info', 'CategoryStrengthController@categoryInfo')->name('categoryInfo');
-    Route::get('/admin/view/category/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
+    Route::get('/admin/category/list/', 'CategoryStrengthController@view')->name('returnCategoryStrengthView');
     Route::get('/admin/strength/info', 'CategoryStrengthController@strengthCategoryInfo')->name('strengthInfo');
     Route::get('/user/career/info/{id}', 'PersonalDevelopmentController@userInfo');
     Route::get('/career/roles', 'CareerController@careerRoleMilestonesData');
@@ -98,8 +98,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('department/store', 'DepartmentController@store')->name('store');
     Route::post('update/milestone/{id}', 'CareerController@completeMilestone')->name('updateMilestone');
 
-    Route::get('/admin/department/view', 'DepartmentController@viewAdminDepartment')->name('adminDepartmentView');
-    Route::get('/admin/team/view', 'TeamsController@viewAdminTeam')->name('viewAdminTeam');
+    Route::get('/admin/department/list', 'DepartmentController@viewAdminDepartment')->name('adminDepartmentView');
+    Route::get('/admin/team/list', 'TeamsController@viewAdminTeam')->name('viewAdminTeam');
 
     Route::get('department/{id}', 'DepartmentController@show')->name('team');
     Route::get('department/{id}/user', 'DepartmentController@userDepartment')->name('user');
@@ -121,14 +121,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
-    Route::get('/admin/team/view/{id}', 'AdminTeamController@index')->name('adminTeamView');
+    Route::get('/admin/team/list/{id}', 'AdminTeamController@index')->name('adminTeamView');
     Route::get('admin/career/template/manager', 'AdminCareerTemplateManager@index')->name('adminCareerTemplateManagerView');
     Route::patch('admin/career/template/manager/{id}', 'AdminCareerTemplateManager@careerUpdate')->name('adminCareerTemplateManagerUpdate');
     Route::patch('admin/career/template/manager/milestone/{id}', 'AdminCareerTemplateManager@updateCareerMilestone')->name('adminCareerTemplateManagerUpdateMilestone');
     Route::post('admin/career/template/manager/milestone/{id}', 'AdminCareerTemplateManager@createMilestone')->name('adminCareerTemplateManagerCreateMilestone');
     Route::delete('admin/career/template/manager/', 'AdminCareerTemplateManager@deleteCareer')->name('adminCareerTemplateManagerDeleteCareer');
     Route::delete('admin/career/template/manager/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
-    Route::patch('/admin/team/view/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
+    Route::patch('/admin/team/list/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
 
 
 });

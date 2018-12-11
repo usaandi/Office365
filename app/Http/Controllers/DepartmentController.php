@@ -160,7 +160,7 @@ class DepartmentController extends Controller
 
                     $newDepartment = Department::create(['department_name' => $departmentName,
                         'department_abbr' => $departmentAbbr, 'department_info' => $description]);
-                    return redirect('admin/department/view');
+                    return redirect('admin/department/list');
                 }
                 return view('team.departmentAdd', with(['error' => $department->department_name]));
 
