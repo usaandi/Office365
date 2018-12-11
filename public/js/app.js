@@ -54453,7 +54453,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control m-input",
-                attrs: { id: "desc", required: "", placeholder: "title" },
+                attrs: { id: "desc", required: "", placeholder: "description" },
                 domProps: { value: _vm.desc },
                 on: {
                   input: function($event) {
@@ -54548,9 +54548,7 @@ var render = function() {
               "div",
               { staticClass: "col-9" },
               _vm._l(_vm.milestonesList, function(milestone, index) {
-                return _c("ul", [
-                  _c("li", [_vm._v(_vm._s(index) + " - " + _vm._s(milestone))])
-                ])
+                return _c("ul", [_c("li", [_vm._v(_vm._s(milestone))])])
               })
             )
           ]),
@@ -58381,7 +58379,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58394,6 +58392,64 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -58551,25 +58607,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             careerRoleId: null,
             currentIndex: null,
             placeHolderTask: null,
+            updatingMilestone: false,
 
-            newMilestoneName: null
+            newMilestoneName: null,
+            updateMilestoneName: null,
+            currentMilestoneIndex: null,
+            currentCareerRoleMilestoneId: null
 
         };
     },
 
     computed: {},
     methods: {
-        deleteCareer: function deleteCareer(careerId, index) {
+        editCareerMilestone: function editCareerMilestone() {
             var _this = this;
+
+            if (this.updateMilestoneName) {
+
+                var data = {
+                    careerMilestoneTask: this.updateMilestoneName
+                };
+
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/manager/milestone/' + this.currentCareerRoleMilestoneId, data).then(function (response) {
+                    if (response.status === 200) {
+
+                        _this.careers[_this.currentIndex]['milestones'][_this.currentMilestoneIndex].task = response.data.task;
+                        _this.cancelMilestoneEdit();
+                    }
+                });
+            }
+        },
+        deleteCareerMilestone: function deleteCareerMilestone() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/manager/milestone', { params: { careerMilestoneId: this.currentCareerRoleMilestoneId } }).then(function (response) {
+                if (response.status === 200) {
+                    _this2.careers[_this2.currentIndex]['milestones'].splice(_this2.currentMilestoneIndex, 1);
+                    _this2.cancelMilestoneEdit();
+                }
+            });
+        },
+        cancelMilestoneEdit: function cancelMilestoneEdit() {
+            this.updatingMilestone = false;
+            this.updateMilestoneName = null;
+            this.currentCareerRoleMilestoneId = null;
+            this.currentMilestoneIndex = null;
+        },
+        updateMilestone: function updateMilestone(milestone, index) {
+
+            this.currentMilestoneIndex = index;
+            this.updatingMilestone = true;
+            this.updateMilestoneName = milestone.task;
+            this.currentCareerRoleMilestoneId = milestone.careerRoleMilestoneId;
+        },
+        deleteCareer: function deleteCareer(careerId, index) {
+            var _this3 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/manager/', { params: { careerId: careerId } }).then(function (response) {
                 if (response.status === 200) {
-                    _this.careers.splice(index, 1);
+                    _this3.careers.splice(index, 1);
+                    _this3.success = true;
                 }
             });
         },
         createMilestone: function createMilestone() {
-            var _this2 = this;
+            var _this4 = this;
 
             if (this.newMilestoneName) {
                 var data = {
@@ -58579,7 +58681,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career/template/manager/milestone/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
-                        _this2.careers[_this2.currentIndex]['milestones'].push({
+                        _this4.careers[_this4.currentIndex]['milestones'].push({
                             careerRoleMilestoneId: response.data.careerRoleMilestoneId,
                             task: response.data.task
                         });
@@ -58598,6 +58700,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clearModalData: function clearModalData() {
             if (this.showModal) {
 
+                this.currentCareerRoleMilestoneId = null;
+                this.updateMilestoneName = null;
                 this.careerTaskTitle = null;
                 this.careerDescription = null;
                 this.careerMilestones = null;
@@ -58605,6 +58709,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.currentIndex = null;
                 this.placeHolderTask = null;
                 this.newMilestoneName = null;
+                this.updatingMilestone = false;
                 this.showModal = false;
             }
         },
@@ -58619,7 +58724,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.showModal = true;
         },
         updateCareer: function updateCareer() {
-            var _this3 = this;
+            var _this5 = this;
 
             if (this.careerTaskTitle && this.careerDescription) {
                 var data = {
@@ -58629,17 +58734,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/manager/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
-                        _this3.careerList[_this3.currentIndex].task = response.data.title;
-                        _this3.careerList[_this3.currentIndex].description = response.data.description;
+                        _this5.careerList[_this5.currentIndex].task = response.data.title;
+                        _this5.careerList[_this5.currentIndex].description = response.data.description;
 
-                        _this3.careerTaskTitle = null;
-                        _this3.careerDescription = null;
-                        _this3.careerMilestones = null;
-                        _this3.careerRoleId = null;
-                        _this3.currentIndex = null;
-                        _this3.placeHolderTask = null;
-                        _this3.success = true;
-                        _this3.showModal = false;
+                        _this5.clearModalData();
+
+                        _this5.success = true;
                     }
                 });
             }
@@ -58873,129 +58973,327 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass:
-                        "form-group m-form__group row m--margin-top-15"
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.updatingMilestone,
+                          expression: "updatingMilestone"
+                        }
+                      ]
                     },
                     [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "col-sm-3 col-xs-12  col-form-label",
-                          attrs: { for: "milestoneName" }
-                        },
-                        [_vm._v("Milestone")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.newMilestoneName,
-                              expression: "newMilestoneName"
-                            }
-                          ],
-                          staticClass: "form-control m-input",
-                          attrs: {
-                            required: "",
-                            name: "milestoneName",
-                            type: "text",
-                            placeholder: "Milestone Name",
-                            id: "milestoneName"
+                      _c("div", { staticClass: "m-portlet__body" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "form-group m-form__group row m--margin-top-15"
                           },
-                          domProps: { value: _vm.newMilestoneName },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.newMilestoneName = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "m-portlet__foot m-portlet__foot--fit" },
-                    [
-                      _c("div", { staticClass: "m-form__actions" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-sm-3 col-xs-12" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                          [
                             _c(
-                              "div",
-                              { staticClass: "profile-timeline__action" },
+                              "label",
+                              {
+                                staticClass:
+                                  "col-sm-3 col-xs-12  col-form-label",
+                                attrs: { for: "updateMilestone" }
+                              },
                               [
+                                _vm._v(
+                                  "Update\n                            Milestone"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.updateMilestoneName,
+                                    expression: "updateMilestoneName"
+                                  }
+                                ],
+                                staticClass: "form-control m-input",
+                                attrs: {
+                                  required: "",
+                                  name: "uMilestoneName",
+                                  type: "text",
+                                  placeholder: "Milestone Name",
+                                  id: "updateMilestone"
+                                },
+                                domProps: { value: _vm.updateMilestoneName },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.updateMilestoneName =
+                                      $event.target.value
+                                  }
+                                }
+                              })
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                        [
+                          _c("div", { staticClass: "m-form__actions" }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
                                 _c(
                                   "button",
                                   {
                                     staticClass:
-                                      "btn m-btn--pill btn-success m-btn m-btn--custom",
-                                    attrs: { type: "button" },
+                                      "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
                                     on: {
                                       click: function($event) {
-                                        _vm.createMilestone(
-                                          _vm.newMilestoneName
+                                        _vm.deleteCareerMilestone(
+                                          _vm.currentCareerRoleMilestoneId,
+                                          _vm.currentMilestoneIndex
                                         )
                                       }
                                     }
                                   },
                                   [
-                                    _vm._v(
-                                      "New Milestone\n                                    "
+                                    _c("i", {
+                                      staticClass: "icon flaticon-delete-1"
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "profile-timeline__action" },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                                        attrs: { type: "button" },
+                                        on: { click: _vm.cancelMilestoneEdit }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                            Cancel\n                                        "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-success m-btn m-btn--pill",
+                                        attrs: { type: "submit" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.editCareerMilestone()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("span", [
+                                          _c("span", [_vm._v("Save")])
+                                        ])
+                                      ]
                                     )
                                   ]
                                 )
-                              ]
-                            )
+                              ])
+                            ])
                           ])
-                        ])
-                      ])
+                        ]
+                      )
                     ]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group m-form__group row" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-3 col-form-label",
-                        attrs: { for: "Milestones" }
-                      },
-                      [_vm._v("Milestones:")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-9", attrs: { id: "Milestones" } },
-                      [
-                        _c(
-                          "ul",
-                          { style: "listStyleType:none" },
-                          _vm._l(_vm.careerMilestones, function(
-                            milestone,
-                            index
-                          ) {
-                            return _c(
-                              "li",
-                              { key: index, attrs: { milestoneIndex: index } },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(milestone.task) +
-                                    "\n                            "
-                                )
-                              ]
-                            )
-                          })
-                        )
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.updatingMilestone,
+                          expression: "!updatingMilestone"
+                        }
                       ]
-                    )
-                  ])
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "form-group m-form__group row m--margin-top-15"
+                        },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-3 col-xs-12  col-form-label",
+                              attrs: { for: "milestoneName" }
+                            },
+                            [_vm._v("Milestone")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.newMilestoneName,
+                                  expression: "newMilestoneName"
+                                }
+                              ],
+                              staticClass: "form-control m-input",
+                              attrs: {
+                                required: "",
+                                name: "milestoneName",
+                                type: "text",
+                                placeholder: "Milestone Name",
+                                id: "milestoneName"
+                              },
+                              domProps: { value: _vm.newMilestoneName },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.newMilestoneName = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                        [
+                          _c("div", { staticClass: "m-form__actions" }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "profile-timeline__action" },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn m-btn--pill btn-success m-btn m-btn--custom",
+                                        attrs: { type: "button" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.createMilestone(
+                                              _vm.newMilestoneName
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "New\n                                            Milestone\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group m-form__group row" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-3 col-form-label",
+                              attrs: { for: "Milestones" }
+                            },
+                            [_vm._v("Milestones:")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "col-9",
+                              attrs: { id: "Milestones" }
+                            },
+                            [
+                              _c(
+                                "ul",
+                                { style: "listStyleType:none" },
+                                _vm._l(_vm.careerMilestones, function(
+                                  milestone,
+                                  index
+                                ) {
+                                  return _c(
+                                    "li",
+                                    { key: index, attrs: { index: index } },
+                                    [
+                                      _c("span", [
+                                        _vm._v(_vm._s(milestone.task))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "profile-timeline__milestones--action"
+                                        },
+                                        [
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass:
+                                                "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill",
+                                              attrs: { tabindex: "" },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.updateMilestone(
+                                                    milestone,
+                                                    index
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass:
+                                                  "la la-pencil-square"
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                })
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
                 ])
               ]
             ),

@@ -76,6 +76,61 @@ class AdminCareerTemplateManager extends Controller
         }
     }
 
+    public function deleteCareerMilestone(Request $request)
+    {
+        try {
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
+            $data = $request->all();
+
+            $rules = [
+                'careerMilestoneId' => 'required|integer'
+            ];
+            $validator = Validator::make($data, $rules);
+
+            if ($validator->passes()) {
+                $careerRoleMilestone = CareerRoleMilestone::findOrFail($data['careerMilestoneId']);
+                 $careerRoleMilestone->delete();
+
+                return response('success', 200);
+
+            }
+
+        } catch (\Exception $e) {
+        }
+    }
+
+    public function updateCareerMilestone(Request $request, $careerMilestoneId)
+    {
+        try {
+            $auth = \Auth::user();
+            $this->authorize('admin', $auth);
+
+            $data = $request->all();
+            $rules = [
+                'careerMilestoneTask' => 'required|string',
+            ];
+
+            $validator = Validator::make($data, $rules);
+
+            if ($validator->passes()) {
+                $careerMilestoneTask = $data['careerMilestoneTask'];
+
+                $sanitizeTask = ucfirst(strtolower($careerMilestoneTask));
+
+                $careerRole = CareerRoleMilestone::where('id', $careerMilestoneId)->update([
+                    'task' => $sanitizeTask]);
+
+
+                $careerRoleNew = CareerRoleMilestone::where('id', $careerMilestoneId)
+                    ->first(['task']);
+
+                return response(json_encode($careerRoleNew), 200);
+            }
+        } catch (\Exception $e) {
+        }
+    }
+
     public function deleteCareer(Request $request)
     {
         try {
@@ -90,7 +145,7 @@ class AdminCareerTemplateManager extends Controller
 
             if ($validator->passes()) {
                 $careerRole = CareerRole::findOrFail($data['careerId']);
-               // $careerRole->delete();
+                 $careerRole->delete();
 
                 return response('success', 200);
 

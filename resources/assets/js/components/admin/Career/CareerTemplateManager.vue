@@ -87,38 +87,96 @@
                                                                   v-model="careerDescription"
                                                                   name="description"></textarea></div>
                     </div>
-                    <div class="form-group m-form__group row m--margin-top-15"><label for="milestoneName"
-                                                                                      class="col-sm-3 col-xs-12  col-form-label">Milestone</label>
-                        <div class="col-sm-9 col-xs-12 "><input v-model="newMilestoneName" required=""
-                                                                name="milestoneName" type="text"
-                                                                placeholder="Milestone Name"
-                                                                id="milestoneName"
-                                                                class="form-control m-input"></div>
-                    </div>
-                    <div class="m-portlet__foot m-portlet__foot--fit">
-                        <div class="m-form__actions">
-                            <div class="row">
-                                <div class="col-sm-3 col-xs-12"></div>
-                                <div class="col-sm-9 col-xs-12">
-                                    <div class="profile-timeline__action">
-                                        <button @click="createMilestone(newMilestoneName)" type="button"
-                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">New Milestone
-                                        </button>
+
+                    <div v-show="updatingMilestone">
+                        <div class="m-portlet__body">
+
+                            <div class="form-group m-form__group row m--margin-top-15"><label for="updateMilestone"
+                                                                                              class="col-sm-3 col-xs-12  col-form-label">Update
+                                Milestone</label>
+                                <div class="col-sm-9 col-xs-12 "><input v-model="updateMilestoneName" required=""
+                                                                        name="uMilestoneName" type="text"
+                                                                        placeholder="Milestone Name"
+                                                                        id="updateMilestone"
+                                                                        class="form-control m-input"></div>
+                            </div>
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12">
+                                        <button @click="deleteCareerMilestone(currentCareerRoleMilestoneId,currentMilestoneIndex)"
+                                                class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+                                            <i
+                                                    class="icon flaticon-delete-1"></i></button>
+
+                                    </div>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <div class="profile-timeline__action">
+
+                                            <button @click="cancelMilestoneEdit" type="button"
+                                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
+                                                Cancel
+                                            </button>
+                                            <button type="submit"
+                                                    @click="editCareerMilestone()"
+                                                    class="btn btn-success m-btn m-btn--pill">
+                                                <span><span>Save</span></span></button>
+
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group m-form__group row">
-                        <label for="Milestones" class="col-3 col-form-label">Milestones:</label>
-                        <div class="col-9" id="Milestones">
-                            <ul :style="'listStyleType:none'">
-                                <li v-for="(milestone, index) in careerMilestones" :key="index" :milestoneIndex="index">
-                                    {{milestone.task}}
-                                </li>
-                            </ul>
+
+                    <div v-show="!updatingMilestone">
+                        <div class="form-group m-form__group row m--margin-top-15"><label for="milestoneName"
+                                                                                          class="col-sm-3 col-xs-12  col-form-label">Milestone</label>
+                            <div class="col-sm-9 col-xs-12 "><input v-model="newMilestoneName" required=""
+                                                                    name="milestoneName" type="text"
+                                                                    placeholder="Milestone Name"
+                                                                    id="milestoneName"
+                                                                    class="form-control m-input"></div>
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <div class="row">
+                                    <div class="col-sm-3 col-xs-12"></div>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <div class="profile-timeline__action">
+                                            <button @click="createMilestone(newMilestoneName)" type="button"
+                                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">New
+                                                Milestone
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="Milestones" class="col-3 col-form-label">Milestones:</label>
+                            <div class="col-9" id="Milestones">
+                                <ul :style="'listStyleType:none'">
+                                    <li v-for="(milestone, index) in careerMilestones" :key="index" :index="index">
+
+                                        <span>{{milestone.task}}</span>
+
+                                        <div class="profile-timeline__milestones--action">
+                                            <a @click="updateMilestone(milestone, index)" tabindex=""
+                                               class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill">
+                                                <i class="la la-pencil-square"></i></a>
+                                        </div>
+
+
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit m--margin-top-10">
@@ -155,14 +213,60 @@
                 careerRoleId: null,
                 currentIndex: null,
                 placeHolderTask: null,
+                updatingMilestone: false,
 
                 newMilestoneName: null,
+                updateMilestoneName: null,
+                currentMilestoneIndex: null,
+                currentCareerRoleMilestoneId: null
 
 
             }
         },
         computed: {},
         methods: {
+            editCareerMilestone() {
+
+                if (this.updateMilestoneName) {
+
+                    const data = {
+                        careerMilestoneTask: this.updateMilestoneName
+                    };
+
+                    axios.patch('admin/career/template/manager/milestone/' + this.currentCareerRoleMilestoneId, data).then(response => {
+                        if (response.status === 200) {
+
+                            this.careers[this.currentIndex]['milestones'][this.currentMilestoneIndex].task=response.data.task;
+                            this.cancelMilestoneEdit();
+                        }
+                    });
+                }
+            },
+            deleteCareerMilestone() {
+
+                axios.delete('admin/career/template/manager/milestone', {params: {careerMilestoneId: this.currentCareerRoleMilestoneId}}).then(response => {
+                    if (response.status === 200) {
+                        this.careers[this.currentIndex]['milestones'].splice(this.currentMilestoneIndex, 1);
+                        this.cancelMilestoneEdit();
+                    }
+                })
+
+            },
+
+            cancelMilestoneEdit() {
+                this.updatingMilestone = false;
+                this.updateMilestoneName = null;
+                this.currentCareerRoleMilestoneId = null;
+                this.currentMilestoneIndex = null;
+            },
+
+            updateMilestone(milestone, index) {
+
+                this.currentMilestoneIndex = index;
+                this.updatingMilestone = true;
+                this.updateMilestoneName = milestone.task;
+                this.currentCareerRoleMilestoneId = milestone.careerRoleMilestoneId;
+            },
 
             deleteCareer(careerId, index) {
 
@@ -208,6 +312,8 @@
             clearModalData() {
                 if (this.showModal) {
 
+                    this.currentCareerRoleMilestoneId = null;
+                    this.updateMilestoneName = null;
                     this.careerTaskTitle = null;
                     this.careerDescription = null;
                     this.careerMilestones = null;
@@ -215,6 +321,7 @@
                     this.currentIndex = null;
                     this.placeHolderTask = null;
                     this.newMilestoneName = null;
+                    this.updatingMilestone = false;
                     this.showModal = false;
                 }
             },
@@ -241,14 +348,11 @@
                             this.careerList[this.currentIndex].task = response.data.title;
                             this.careerList[this.currentIndex].description = response.data.description;
 
-                            this.careerTaskTitle = null;
-                            this.careerDescription = null;
-                            this.careerMilestones = null;
-                            this.careerRoleId = null;
-                            this.currentIndex = null;
-                            this.placeHolderTask = null;
+
+                            this.clearModalData();
+
                             this.success = true;
-                            this.showModal = false;
+
                         }
 
                     });

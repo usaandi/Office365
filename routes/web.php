@@ -124,8 +124,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/team/view/{id}', 'AdminTeamController@index')->name('adminTeamView');
     Route::get('admin/career/template/manager', 'AdminCareerTemplateManager@index')->name('adminCareerTemplateManagerView');
     Route::patch('admin/career/template/manager/{id}', 'AdminCareerTemplateManager@careerUpdate')->name('adminCareerTemplateManagerUpdate');
+    Route::patch('admin/career/template/manager/milestone/{id}', 'AdminCareerTemplateManager@updateCareerMilestone')->name('adminCareerTemplateManagerUpdateMilestone');
     Route::post('admin/career/template/manager/milestone/{id}', 'AdminCareerTemplateManager@createMilestone')->name('adminCareerTemplateManagerCreateMilestone');
     Route::delete('admin/career/template/manager/', 'AdminCareerTemplateManager@deleteCareer')->name('adminCareerTemplateManagerDeleteCareer');
+    Route::delete('admin/career/template/manager/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
     Route::patch('/admin/team/view/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
 
 
