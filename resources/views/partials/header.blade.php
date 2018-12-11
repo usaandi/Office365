@@ -291,12 +291,7 @@
                                                     href="{{route('adminDepartmentView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-analytics"></i><span
                                                         class="m-menu__link-text">Department List</span></a></li>
-
-                                        <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="{{route('returnView')}}" class="m-menu__link "><i
-                                                        class="m-menu__link-icon flaticon-clipboard"></i><span
-                                                        class="m-menu__link-text">Add moderator to team</span></a></li>
+                                        
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnCategoryStrengthView')}}"
