@@ -122,12 +122,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
     Route::get('/admin/team/list/{id}', 'AdminTeamController@index')->name('adminTeamView');
-    Route::get('admin/career/template/list', 'AdminCareerTemplateManager@index')->name('adminCareerTemplateManagerView');
-    Route::patch('admin/career/template/list/{id}', 'AdminCareerTemplateManager@careerUpdate')->name('adminCareerTemplateManagerUpdate');
-    Route::patch('admin/career/template/list/milestone/{id}', 'AdminCareerTemplateManager@updateCareerMilestone')->name('adminCareerTemplateManagerUpdateMilestone');
-    Route::post('admin/career/template/list/milestone/{id}', 'AdminCareerTemplateManager@createMilestone')->name('adminCareerTemplateManagerCreateMilestone');
-    Route::delete('admin/career/template/list/', 'AdminCareerTemplateManager@deleteCareer')->name('adminCareerTemplateManagerDeleteCareer');
-    Route::delete('admin/career/template/list/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
+    Route::get('admin/career-template/list', 'AdminCareerTemplateManager@index')->name('adminCareerTemplateManagerView');
+    Route::patch('admin/career-template/list/{id}', 'AdminCareerTemplateManager@careerUpdate')->name('adminCareerTemplateManagerUpdate');
+    Route::patch('admin/career-template/list/milestone/{id}', 'AdminCareerTemplateManager@updateCareerMilestone')->name('adminCareerTemplateManagerUpdateMilestone');
+    Route::post('admin/career-template/list/milestone/{id}', 'AdminCareerTemplateManager@createMilestone')->name('adminCareerTemplateManagerCreateMilestone');
+    Route::delete('admin/career-template/list/', 'AdminCareerTemplateManager@deleteCareer')->name('adminCareerTemplateManagerDeleteCareer');
+    Route::delete('admin/career-template/list/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
     Route::patch('/admin/team/list/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
 
 

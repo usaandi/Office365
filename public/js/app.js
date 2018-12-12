@@ -58639,7 +58639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     careerMilestoneTask: this.updateMilestoneName
                 };
 
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/list/milestone/' + this.currentCareerRoleMilestoneId, data).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career-template/list/milestone/' + this.currentCareerRoleMilestoneId, data).then(function (response) {
                     if (response.status === 200) {
 
                         _this.careers[_this.currentIndex]['milestones'][_this.currentMilestoneIndex].task = response.data.task;
@@ -58651,7 +58651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteCareerMilestone: function deleteCareerMilestone() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/list/milestone', { params: { careerMilestoneId: this.currentCareerRoleMilestoneId } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career-template/list/milestone', { params: { careerMilestoneId: this.currentCareerRoleMilestoneId } }).then(function (response) {
                 if (response.status === 200) {
                     _this2.careers[_this2.currentIndex]['milestones'].splice(_this2.currentMilestoneIndex, 1);
                     _this2.cancelMilestoneEdit();
@@ -58674,7 +58674,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteCareer: function deleteCareer(careerId, index) {
             var _this3 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/list/', { params: { careerId: careerId } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career-template/list/', { params: { careerId: careerId } }).then(function (response) {
                 if (response.status === 200) {
                     _this3.careers.splice(index, 1);
                     _this3.success = true;
@@ -58690,7 +58690,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 };
                 this.newMilestoneName = null;
 
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career/template/list/milestone/' + this.careerRoleId, data).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career-template/list/milestone/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
                         _this4.careers[_this4.currentIndex]['milestones'].push({
                             careerRoleMilestoneId: response.data.careerRoleMilestoneId,
@@ -58743,7 +58743,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     careerDescription: this.careerDescription
                 };
 
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/list/' + this.careerRoleId, data).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career-template/list/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
                         _this5.careerList[_this5.currentIndex].task = response.data.title;
                         _this5.careerList[_this5.currentIndex].description = response.data.description;
