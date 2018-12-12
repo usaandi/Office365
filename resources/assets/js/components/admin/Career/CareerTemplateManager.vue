@@ -233,7 +233,7 @@
                         careerMilestoneTask: this.updateMilestoneName
                     };
 
-                    axios.patch('admin/career/template/manager/milestone/' + this.currentCareerRoleMilestoneId, data).then(response => {
+                    axios.patch('admin/career/template/list/milestone/' + this.currentCareerRoleMilestoneId, data).then(response => {
                         if (response.status === 200) {
 
                             this.careers[this.currentIndex]['milestones'][this.currentMilestoneIndex].task=response.data.task;
@@ -244,7 +244,7 @@
             },
             deleteCareerMilestone() {
 
-                axios.delete('admin/career/template/manager/milestone', {params: {careerMilestoneId: this.currentCareerRoleMilestoneId}}).then(response => {
+                axios.delete('admin/career/template/list/milestone', {params: {careerMilestoneId: this.currentCareerRoleMilestoneId}}).then(response => {
                     if (response.status === 200) {
                         this.careers[this.currentIndex]['milestones'].splice(this.currentMilestoneIndex, 1);
                         this.cancelMilestoneEdit();
@@ -270,7 +270,7 @@
 
             deleteCareer(careerId, index) {
 
-                axios.delete('admin/career/template/manager/', {params: {careerId: careerId}}).then(response => {
+                axios.delete('admin/career/template/list/', {params: {careerId: careerId}}).then(response => {
                     if (response.status === 200) {
                         this.careers.splice(index, 1);
                         this.success = true;
@@ -286,7 +286,7 @@
                     };
                     this.newMilestoneName = null;
 
-                    axios.post('admin/career/template/manager/milestone/' + this.careerRoleId, data).then(response => {
+                    axios.post('admin/career/template/list/milestone/' + this.careerRoleId, data).then(response => {
                         if (response.status === 200) {
                             this.careers[this.currentIndex]['milestones'].push({
                                 careerRoleMilestoneId: response.data.careerRoleMilestoneId,
@@ -343,7 +343,7 @@
                         careerDescription: this.careerDescription,
                     };
 
-                    axios.patch('admin/career/template/manager/' + this.careerRoleId, data).then(response => {
+                    axios.patch('admin/career/template/list/' + this.careerRoleId, data).then(response => {
                         if (response.status === 200) {
                             this.careerList[this.currentIndex].task = response.data.title;
                             this.careerList[this.currentIndex].description = response.data.description;

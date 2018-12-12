@@ -1,32 +1,26 @@
 <template>
     <div>
-        <div class="admin__form admin__form--clear"><h4>Team Moderator</h4>
+        <div v-show="finished" class="alert alert-success alert-dismissible">
+            <p class="text-center"><strong>Success</strong></p>
+            <a class="close" @click="finished=!finished"></a>
+        </div>
+        <div class="admin__form admin__form--clear"><h4>Select User</h4>
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row"><label for="user" class="col-sm-3 col-xs-12  col-form-label">User
                     Name</label>
                     <div class="col-sm-9 col-xs-12 ">
-                        <select @change="onChangeUser" required name="team" id="user" class="form-control m-input">
+                        <select @change="onChangeUser" required name="team" id="user"
+                                class="form-control m-input">
                             <option></option>
-                            <option v-for="user in usersList"
-                                    :value="user.id">{{user.name}}
+                            <option v-for="(user,index) in usersList"
+                                    :value="user.user_id"
+                                    @click="selectIndex(index)">{{user.user_name}}
                             </option>
                         </select>
                     </div>
                 </div>
 
-                <div class="form-group m-form__group row">
-                    <label for="team" class="col-sm-3 col-xs-12  col-form-label">Team Select</label>
-                    <div class="col-sm-9 col-xs-12 "><select @change="onChangeTeam" required name="team" id="team"
-                                                             class="form-control m-input">
-                        <option></option>
-                        <option
-                                v-for="team in teamsList"
-                                :value="team.id">
-                            {{team.team_name}}
-                        </option>
-                    </select>
-                    </div>
-                </div>
+
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions">
@@ -49,38 +43,44 @@
     import axios from 'axios';
 
     export default {
-        props: ['users', 'teams'],
+        props: ['users', 'teamId'],
         name: "TeamModerator",
         data() {
             return {
-                usersList: [],
-                teamsList: [],
+                usersList: this.users,
+
                 userId: '',
-                teamId: '',
+                finished: false,
+                userIndex: null,
+
             }
         },
         mounted() {
-            this.usersList = this.users;
-            this.teamsList = this.teams;
+
+
         },
         methods: {
             onChangeUser(event) {
                 this.userId = event.target.value;
             },
-            onChangeTeam(event) {
-                this.teamId = event.target.value;
+            selectIndex(index) {
+                this.userIndex = index;
             },
+
             submit() {
-                if (this.userId && this.teamId) {
+                if (this.userId) {
 
-                    let data = JSON.stringify({
-                        userId: this.userId,
-                        teamId: this.teamId,
+                    const data = {
+                        userId: this.userId
+                    };
 
-                    });
-                    axios.post('/admin/team/moderator/add', data)
+                    axios.post('/admin/team/moderator/add/' + this.teamId, data)
                         .then(response => {
+                            if (response.status === 200) {
+                                this.userId = null;
+                                this.finished = true;
 
+                            }
 
                         }).catch(error => {
                     });

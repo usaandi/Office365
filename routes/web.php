@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'App\Http\Middleware\Admin'], function () {
 
-        Route::post('/admin/team/moderator/add', 'TeamsController@addModerator')->name('moderatorAdd');
+        Route::post('/admin/team/moderator/add/{id}', 'TeamsController@addModerator')->name('moderatorAdd');
         Route::post('/admin/strength/create/strength', 'StrengthController@createStrength')->name('strengthAdd');
         Route::post('/admin/strength/create/category', 'CategoryController@createCategory')->name('categoryAdd');
         Route::delete('/admin/strength/delete', 'CategoryStrengthController@deleteStrength')->name('deleteStrength');
@@ -106,7 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('departmentInfo', 'DepartmentController@departmentInfo')->name('departmentInfo');
     Route::get('teamInfo', 'TeamsController@teamInfo')->name('teamInfo');
     Route::get('department', 'DepartmentController@department')->name('department');
-    Route::get('/admin/team/moderator/add', 'TeamsController@returnView')->name('returnView');
+    Route::get('/admin/team/moderator/add/{id}', 'TeamsController@returnView')->name('returnView');
     Route::get('/admin/users/list/', 'UserController@AdminUsersListView')->name('returnAdminUserList');
     Route::get('admin/team/create', 'TeamsController@teamView')->name('returnTeam');
     Route::post('admin/team/create', 'TeamsController@createTeam')->name('createTeam');
@@ -122,12 +122,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
     Route::get('/admin/team/list/{id}', 'AdminTeamController@index')->name('adminTeamView');
-    Route::get('admin/career/template/manager', 'AdminCareerTemplateManager@index')->name('adminCareerTemplateManagerView');
-    Route::patch('admin/career/template/manager/{id}', 'AdminCareerTemplateManager@careerUpdate')->name('adminCareerTemplateManagerUpdate');
-    Route::patch('admin/career/template/manager/milestone/{id}', 'AdminCareerTemplateManager@updateCareerMilestone')->name('adminCareerTemplateManagerUpdateMilestone');
-    Route::post('admin/career/template/manager/milestone/{id}', 'AdminCareerTemplateManager@createMilestone')->name('adminCareerTemplateManagerCreateMilestone');
-    Route::delete('admin/career/template/manager/', 'AdminCareerTemplateManager@deleteCareer')->name('adminCareerTemplateManagerDeleteCareer');
-    Route::delete('admin/career/template/manager/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
+    Route::get('admin/career/template/list', 'AdminCareerTemplateManager@index')->name('adminCareerTemplateManagerView');
+    Route::patch('admin/career/template/list/{id}', 'AdminCareerTemplateManager@careerUpdate')->name('adminCareerTemplateManagerUpdate');
+    Route::patch('admin/career/template/list/milestone/{id}', 'AdminCareerTemplateManager@updateCareerMilestone')->name('adminCareerTemplateManagerUpdateMilestone');
+    Route::post('admin/career/template/list/milestone/{id}', 'AdminCareerTemplateManager@createMilestone')->name('adminCareerTemplateManagerCreateMilestone');
+    Route::delete('admin/career/template/list/', 'AdminCareerTemplateManager@deleteCareer')->name('adminCareerTemplateManagerDeleteCareer');
+    Route::delete('admin/career/template/list/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
     Route::patch('/admin/team/list/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
 
 

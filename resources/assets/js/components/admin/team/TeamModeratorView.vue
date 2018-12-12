@@ -2,7 +2,6 @@
     <div>
         <modal v-if="show">
 
-
             <h3 slot="header">
                 {{selectedUser.user_name}}
             </h3>
@@ -41,7 +40,7 @@
                 <div class="row m--margin-bottom-15">
                     <div class="col-sm-9 col-xs-12">
                         <a
-                                :href="'admin/team/moderator/add'"
+                                :href="'admin/team/moderator/add/'+teamId"
                                 class="btn btn-success m-btn m-btn--icon m-btn--pill "><span
                         ><i class="la la-plus"></i> <span
                         >Add Moderator to Team</span></span></a>

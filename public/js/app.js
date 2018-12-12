@@ -58120,47 +58120,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['users', 'teams'],
+    props: ['users', 'teamId'],
     name: "TeamModerator",
     data: function data() {
         return {
-            usersList: [],
-            teamsList: [],
+            usersList: this.users,
+
             userId: '',
-            teamId: ''
+            finished: false,
+            userIndex: null
+
         };
     },
-    mounted: function mounted() {
-        this.usersList = this.users;
-        this.teamsList = this.teams;
-    },
+    mounted: function mounted() {},
 
     methods: {
         onChangeUser: function onChangeUser(event) {
             this.userId = event.target.value;
         },
-        onChangeTeam: function onChangeTeam(event) {
-            this.teamId = event.target.value;
+        selectIndex: function selectIndex(index) {
+            this.userIndex = index;
         },
         submit: function submit() {
-            if (this.userId && this.teamId) {
+            var _this = this;
 
-                var data = JSON.stringify({
-                    userId: this.userId,
-                    teamId: this.teamId
+            if (this.userId) {
 
-                });
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/team/moderator/add', data).then(function (response) {}).catch(function (error) {});
+                var data = {
+                    userId: this.userId
+                };
+
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/team/moderator/add/' + this.teamId, data).then(function (response) {
+                    if (response.status === 200) {
+                        _this.userId = null;
+                        _this.finished = true;
+                    }
+                }).catch(function (error) {});
             }
         }
     }
@@ -58175,8 +58174,35 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.finished,
+            expression: "finished"
+          }
+        ],
+        staticClass: "alert alert-success alert-dismissible"
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("a", {
+          staticClass: "close",
+          on: {
+            click: function($event) {
+              _vm.finished = !_vm.finished
+            }
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "admin__form admin__form--clear" }, [
-      _c("h4", [_vm._v("Team Moderator")]),
+      _c("h4", [_vm._v("Select User")]),
       _vm._v(" "),
       _c("div", { staticClass: "m-portlet__body" }, [
         _c("div", { staticClass: "form-group m-form__group row" }, [
@@ -58200,46 +58226,23 @@ var render = function() {
               [
                 _c("option"),
                 _vm._v(" "),
-                _vm._l(_vm.usersList, function(user) {
-                  return _c("option", { domProps: { value: user.id } }, [
-                    _vm._v(_vm._s(user.name) + "\n                        ")
-                  ])
-                })
-              ],
-              2
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group m-form__group row" }, [
-          _c(
-            "label",
-            {
-              staticClass: "col-sm-3 col-xs-12  col-form-label",
-              attrs: { for: "team" }
-            },
-            [_vm._v("Team Select")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
-            _c(
-              "select",
-              {
-                staticClass: "form-control m-input",
-                attrs: { required: "", name: "team", id: "team" },
-                on: { change: _vm.onChangeTeam }
-              },
-              [
-                _c("option"),
-                _vm._v(" "),
-                _vm._l(_vm.teamsList, function(team) {
-                  return _c("option", { domProps: { value: team.id } }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(team.team_name) +
-                        "\n                    "
-                    )
-                  ])
+                _vm._l(_vm.usersList, function(user, index) {
+                  return _c(
+                    "option",
+                    {
+                      domProps: { value: user.user_id },
+                      on: {
+                        click: function($event) {
+                          _vm.selectIndex(index)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(user.user_name) + "\n                        "
+                      )
+                    ]
+                  )
                 })
               ],
               2
@@ -58266,7 +58269,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._m(0)]
+                  [_vm._m(1)]
                 )
               ])
             ])
@@ -58277,6 +58280,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("strong", [_vm._v("Success")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -58628,7 +58639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     careerMilestoneTask: this.updateMilestoneName
                 };
 
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/manager/milestone/' + this.currentCareerRoleMilestoneId, data).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/list/milestone/' + this.currentCareerRoleMilestoneId, data).then(function (response) {
                     if (response.status === 200) {
 
                         _this.careers[_this.currentIndex]['milestones'][_this.currentMilestoneIndex].task = response.data.task;
@@ -58640,7 +58651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteCareerMilestone: function deleteCareerMilestone() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/manager/milestone', { params: { careerMilestoneId: this.currentCareerRoleMilestoneId } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/list/milestone', { params: { careerMilestoneId: this.currentCareerRoleMilestoneId } }).then(function (response) {
                 if (response.status === 200) {
                     _this2.careers[_this2.currentIndex]['milestones'].splice(_this2.currentMilestoneIndex, 1);
                     _this2.cancelMilestoneEdit();
@@ -58663,7 +58674,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteCareer: function deleteCareer(careerId, index) {
             var _this3 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/manager/', { params: { careerId: careerId } }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('admin/career/template/list/', { params: { careerId: careerId } }).then(function (response) {
                 if (response.status === 200) {
                     _this3.careers.splice(index, 1);
                     _this3.success = true;
@@ -58679,7 +58690,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 };
                 this.newMilestoneName = null;
 
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career/template/manager/milestone/' + this.careerRoleId, data).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career/template/list/milestone/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
                         _this4.careers[_this4.currentIndex]['milestones'].push({
                             careerRoleMilestoneId: response.data.careerRoleMilestoneId,
@@ -58732,7 +58743,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     careerDescription: this.careerDescription
                 };
 
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/manager/' + this.careerRoleId, data).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career/template/list/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
                         _this5.careerList[_this5.currentIndex].task = response.data.title;
                         _this5.careerList[_this5.currentIndex].description = response.data.description;
@@ -65164,7 +65175,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -65348,7 +65358,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill ",
-                  attrs: { href: "admin/team/moderator/add" }
+                  attrs: { href: "admin/team/moderator/add/" + _vm.teamId }
                 },
                 [_vm._m(0)]
               )

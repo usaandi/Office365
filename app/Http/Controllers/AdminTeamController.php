@@ -8,6 +8,7 @@ use App\UserTeamModerator;
 use Illuminate\Http\Request;
 use App\Team;
 use Validator;
+use Spatie\Permission\Models\Role;
 use App\User;
 
 
@@ -109,11 +110,19 @@ class AdminTeamController extends Controller
                     $userTeam->delete();
                     $responseBelongsTeam = false;
                 }
+                $user = User::find($userId);
+
+
 
                 if ($isModerator) {
                     $isTeamModerator = UserTeamModerator::where('user_id', $userId)->where('team_id', $id)->get();
                     if ($isTeamModerator->isEmpty()) {
                         UserTeamModerator::create(['user_id' => $userId, 'team_id' => $id]);
+                        $moderatorRoleName = 'Moderator';
+                        if (!$user->hasRole($moderatorRoleName)) {
+                            $moderatorRole = Role::findByName($moderatorRoleName);
+                            $user->assignRole($moderatorRole);
+                        }
                     }
                     $responseIsModerator = true;
                 } else {

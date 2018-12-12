@@ -28,7 +28,7 @@
         }
     </style>
     <div id="app">
-        <user-team-moderator :users='@json($users)' :teams='@json($teams)' ></user-team-moderator>
+        <user-team-moderator :users='@json($userArray)' :team-id='@json($teamId)' ></user-team-moderator>
     </div>
 
 @endsection

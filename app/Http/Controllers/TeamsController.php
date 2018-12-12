@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Services\ModeratorService;
 use App\Team;
 use App\UserDepartment;
 use App\UserTeam;
@@ -31,14 +32,15 @@ class TeamsController extends Controller
             $auth = \Auth::user();
             $this->authorize('admin', $auth);
 
-            $team =Team::destroy($id);
+            $team = Team::destroy($id);
 
-            return response('Found',200);
+            return response('Found', 200);
 
 
         } catch (\Exception $e) {
         }
     }
+
     public function update($id, Request $request)
     {
         try {
@@ -60,7 +62,7 @@ class TeamsController extends Controller
                     'team_name' => $teamName
                 ]);
 
-                return response(json_encode($team),200);
+                return response(json_encode($team), 200);
 
             }
         } catch (\Exception $e) {
@@ -106,7 +108,7 @@ class TeamsController extends Controller
                         'team_name' => $teamName
                     ]);
 
-                    return redirect('/admin/team/list')->with(['teams'=>$teams]);
+                    return redirect('/admin/team/list')->with(['teams' => $teams]);
                 } else {
                     echo 'Selline nimi on olemas';
                 }
@@ -213,32 +215,51 @@ class TeamsController extends Controller
 
     }
 
-    public function returnView()
+    public function returnView($teamId, ModeratorService $checkModerator)
     {
 
-        $users = User::all(['id', 'name']);
-        $teams = Team::all(['id', 'team_name']);
 
-        return view('team.teamModerator', compact(['users', 'teams']));
+        $teams = Team::where('id', $teamId)->get();
+
+        $userArray = [];
+
+        foreach ($teams as $team) {
+            $userTeam = $team->users()->get();
+            foreach ($userTeam as $key => $user) {
+                $userId = $user->id;
+
+                $alreadyModerator = $checkModerator->isModerator($teamId, $userId);
+
+                if (!$alreadyModerator) {
+                    $userArray[] = [
+                        'user_id' => $user->id,
+                        'user_name' => $user->name,
+                    ];
+                }
+            }
+        }
+
+
+        return view('team.teamModerator', compact(['userArray', 'teamId']));
     }
 
-    public function addModerator(Request $request)
+    public function addModerator(Request $request ,$teamId)
     {
 
 
         try {
-            $data = json_decode(key($request->all()), true);
+            $data = $request->all();
 
             $rules = [
                 'userId' => 'required',
-                'teamId' => 'required'
+
             ];
             $validator = Validator::make($data, $rules);
 
             if ($validator->passes()) {
 
                 $userId = $data['userId'];
-                $teamId = $data['teamId'];
+
                 $user = User::find($userId);
 
                 $moderatorRoleName = 'Moderator';
@@ -259,7 +280,7 @@ class TeamsController extends Controller
                     ]);
                 }
 
-                return redirect()->back();
+                return response(true,200);
 
             }
 
