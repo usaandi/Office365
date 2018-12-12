@@ -58202,7 +58202,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "admin__form admin__form--clear" }, [
-      _c("h4", [_vm._v("Select User")]),
+      _c("h4", [_vm._v("User list")]),
       _vm._v(" "),
       _c("div", { staticClass: "m-portlet__body" }, [
         _c("div", { staticClass: "form-group m-form__group row" }, [

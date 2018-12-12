@@ -4,7 +4,7 @@
             <p class="text-center"><strong>Success</strong></p>
             <a class="close" @click="finished=!finished"></a>
         </div>
-        <div class="admin__form admin__form--clear"><h4>Select User</h4>
+        <div class="admin__form admin__form--clear"><h4>User list</h4>
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row"><label for="user" class="col-sm-3 col-xs-12  col-form-label">User
                     Name</label>

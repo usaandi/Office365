@@ -219,13 +219,11 @@ class TeamsController extends Controller
     {
 
 
-        $teams = Team::where('id', $teamId)->get();
-
         $userArray = [];
 
-        foreach ($teams as $team) {
-            $userTeam = $team->users()->get();
-            foreach ($userTeam as $key => $user) {
+            $users = User::get();
+
+            foreach ($users as $key => $user) {
                 $userId = $user->id;
 
                 $alreadyModerator = $checkModerator->isModerator($teamId, $userId);
@@ -237,7 +235,7 @@ class TeamsController extends Controller
                     ];
                 }
             }
-        }
+
 
 
         return view('team.teamModerator', compact(['userArray', 'teamId']));

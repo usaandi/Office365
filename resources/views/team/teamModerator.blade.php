@@ -6,7 +6,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                Select Team And User
+                Select User To Moderate Team
             </h3>
         </div>
 
