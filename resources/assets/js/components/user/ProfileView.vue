@@ -70,11 +70,11 @@
                             ></user-department>
 
                             <user-team class="m--margin-top-5"
-                                    v-show="canedit && editdepartment"
-                                    :userid="user.id"
-                                    :userdata="userdata"
-                                    @close="editdepartment=false"
-                                    @select-updated="personalDataUpdated('team', $event)"
+                                       v-show="canedit && editdepartment"
+                                       :userid="user.id"
+                                       :userdata="userdata"
+                                       @close="editdepartment=false"
+                                       @select-updated="personalDataUpdated('team', $event)"
                             ></user-team>
                         </div>
                     </div>
@@ -138,7 +138,9 @@
                     </div>
                     <div class="profile__details--pills">
                         <div class="profile__pill"><i class="la la-birthday-cake"></i> {{birthdayNew}}</div>
-                        <div class="profile__pill"><img alt="" src="/assets/picture/logoADM.png" class="profile__pill--logo"> {{admSince}}</div>
+                        <div class="profile__pill"><img alt="" src="/assets/picture/logoADM.png"
+                                                        class="profile__pill--logo"> {{admSince}}
+                        </div>
                     </div>
                     <div class="profile__details--text">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
@@ -167,15 +169,25 @@
 
                 <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
 
+
                 <user-badge :canedit="canedit" :userid="user.id"></user-badge>
+
+
             </div>
             <div class="col-sm-12 col-md-8">
                 <user-role :UserRoleDescription="user.career_description"></user-role>
+
+
                 <user-skill :canedit="canedit" :userid="user.id"></user-skill>
+
+
                 <user-project :canedit="canedit" :userid="user.id"></user-project>
+
+
                 <user-training :canedit="canedit" :userid="user.id"></user-training>
             </div>
         </div>
+    </div>
     </div>
 </template>
 
@@ -285,4 +297,13 @@
 </script>
 
 <style scoped>
+    .wip {
+
+        font-size: 24px;
+        font-style: oblique;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.55);
+        display: flex;
+
+    }
 </style>

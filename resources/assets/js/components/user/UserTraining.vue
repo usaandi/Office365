@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="overlay-wrapper">
         <h3 class="profile__subtitle">Training</h3>
         <div class="profile__article clearfix">
             <a href="#">

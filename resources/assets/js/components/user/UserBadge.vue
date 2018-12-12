@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="overlay-wrapper">
     <h3 class="profile__subtitle">Badges</h3>
     <div class="profile__badges row">
         <div class="profile__badge">

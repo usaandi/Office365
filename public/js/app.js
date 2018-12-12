@@ -48710,7 +48710,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.wip[data-v-9f2596be] {\n\n    font-size: 24px;\n    font-style: oblique;\n    color: white;\n    background-color: rgba(0, 0, 0, 0.55);\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n", ""]);
 
 // exports
 
@@ -48725,6 +48725,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__EditableInputComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__EditableInputComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49521,7 +49533,7 @@ var render = function() {
                   staticClass: "profile__pill--logo",
                   attrs: { alt: "", src: "/assets/picture/logoADM.png" }
                 }),
-                _vm._v(" " + _vm._s(_vm.admSince))
+                _vm._v(" " + _vm._s(_vm.admSince) + "\n                    ")
               ])
             ]),
             _vm._v(" "),
@@ -55560,7 +55572,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "overlay-wrapper" }, [
       _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("Training")]),
       _vm._v(" "),
       _c("div", { staticClass: "profile__article clearfix" }, [
@@ -55778,7 +55790,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "overlay-wrapper" }, [
       _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("Projects")]),
       _vm._v(" "),
       _c("div", { staticClass: "profile__article clearfix" }, [
@@ -56010,7 +56022,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "overlay-wrapper" }, [
       _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("Skills")]),
       _vm._v(" "),
       _c("div", { staticClass: "profile__skills row" }, [
@@ -56240,7 +56252,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "overlay-wrapper" }, [
       _c("h3", { staticClass: "profile__subtitle" }, [_vm._v("Badges")]),
       _vm._v(" "),
       _c("div", { staticClass: "profile__badges row" }, [

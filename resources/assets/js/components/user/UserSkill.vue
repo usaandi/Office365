@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="overlay-wrapper">
     <h3 class="profile__subtitle">Skills</h3>
     <div class="profile__skills row">
         <div class="col-sm-6">
