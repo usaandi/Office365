@@ -33,8 +33,6 @@
                     </div>
                 </div>
 
-
-
                 <div v-show="isEditing">
                     <div class="admin__form">
                         <div class="m-portlet__body">
@@ -75,7 +73,6 @@
                                                 class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
                                             <i
                                                     class="icon flaticon-delete-1"></i></button>
-
                                     </div>
                                     <div class="col-sm-9 col-xs-12">
                                         <div class="profile-timeline__action">
@@ -97,7 +94,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row" v-show="!isEditing">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <div class="profile-timeline__notes">
@@ -119,8 +115,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <h4 class="profile-timeline__title">MILESTONES</h4>
