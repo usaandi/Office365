@@ -53602,6 +53602,7 @@ var render = function() {
             ],
             staticClass:
               "btn btn-success m-btn m-btn--icon m-btn--pill m--margin-bottom-15",
+            attrs: { tabindex: "" },
             on: {
               click: function($event) {
                 _vm.edit = !_vm.edit
@@ -53898,6 +53899,7 @@ var render = function() {
           ],
           staticClass:
             "btn btn-success m-btn m-btn--icon m-btn--pill profile__btn",
+          attrs: { tabindex: "" },
           on: {
             click: function($event) {
               _vm.edit = !_vm.edit
@@ -57210,6 +57212,7 @@ var render = function() {
                         ],
                         staticClass:
                           "btn btn-success m-btn m-btn--icon m-btn--pill",
+                        attrs: { tabindex: "" },
                         on: { click: _vm.showForm }
                       },
                       [_vm._m(6)]
@@ -60768,7 +60771,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60779,6 +60782,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -60833,6 +60838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "UserChildrenForm",
@@ -60869,7 +60875,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             var vm = this;
-            axios.post('/user/' + vm.userId + '/update/child', data).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + vm.userId + '/update/child', data).then(function (response) {
                 vm.childName = null;
                 vm.errors = null;
 
@@ -61005,6 +61011,7 @@ var render = function() {
                     {
                       staticClass:
                         "btn btn-success m-btn m-btn--icon m-btn--pill",
+                      attrs: { tabindex: "" },
                       on: {
                         click: function($event) {
                           _vm.checkError()
@@ -61310,6 +61317,7 @@ var render = function() {
                   {
                     staticClass:
                       "btn btn-success m-btn m-btn--icon m-btn--pill",
+                    attrs: { tabindex: "" },
                     on: {
                       click: function($event) {
                         _vm.submit()
@@ -62388,7 +62396,7 @@ var render = function() {
         "a",
         {
           staticClass: "btn btn-success m-btn m-btn--icon m-btn--pill",
-          attrs: { href: "/admin/strength" }
+          attrs: { tabindex: "", href: "/admin/strength" }
         },
         [_c("span", [_vm._v("Add Category")])]
       )

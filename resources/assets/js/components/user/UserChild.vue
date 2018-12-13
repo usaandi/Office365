@@ -2,7 +2,7 @@
     <div>
         <h3 class="profile__subtitle">Children</h3>
         <div class="m-subheader__action">
-            <a @click="edit=!edit" v-show="!edit" class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
+            <a @click="edit=!edit" v-show="!edit" tabindex="" class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
               <span>
 										<i class="la la-plus"></i>
 										<span>New</span>

@@ -127,7 +127,7 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__add">
-                            <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" @click="showForm">
+                            <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" tabindex="" @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
                                                 <span>Add Milestone</span>

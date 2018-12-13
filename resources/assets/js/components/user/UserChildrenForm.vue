@@ -34,7 +34,7 @@
                                           <span>Close</span>
                                     </span>
                                     </a>
-                                    <a @click="checkError()" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                                    <a @click="checkError()" tabindex="" class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                             <span>
                                           <i class="la la-plus"></i>
                                           <span>Add new</span>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         name: "UserChildrenForm",
         props: ['userId'],
