@@ -136,7 +136,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile__details--pills">
+                    <div class="profile__details--pills" >
                         <div class="profile__pill"><i class="la la-birthday-cake"></i> {{birthdayNew}}</div>
                         <div class="profile__pill"><img alt="" src="/assets/picture/logoADM.png"
                                                         class="profile__pill--logo"> {{admSince}}
@@ -219,27 +219,23 @@
 
             }
         },
+
         mounted() {
-
-
             this.userdata = this.user;
-
-
             this.fetchUserStrength();
+
             if (authUser.id === this.user.id
                 || Vue.$isAdmin()
                 || Vue.$canModerateTeam(this.userdata.team_id)) {
 
                 this.canedit = true;
             }
-
-
         },
 
         methods: {
 
             fetchUserStrength() {
-                axios.get('/user/' + this.user.id + '/strengths').then(response => {
+                axios.get('/user/' + this.user.id + '/strengths').then((response) => {
                     this.userStrengths = response.data;
                     if (response.data.length === 0) {
                         this.noStrengths = true;
