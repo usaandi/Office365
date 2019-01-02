@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <table class="table table-bordered text-center table-responsive ">
+        <table v-if="categories && departments" class="table table-bordered text-center table-responsive ">
             <thead>
             <tr>
                 <th></th>
@@ -37,6 +37,11 @@
             </tr>
             </tbody>
         </table>
+        <div v-if="departments === null && categories === null" class="text-center text-body m--font-bold">
+            There is no information about Departments and Users
+        </div>
+
+
     </div>
 </template>
 
@@ -63,8 +68,10 @@
             }
         },
         mounted() {
+
             this.fetchCategories();
             this.fetchDepartment();
+
         },
         computed: {},
         methods: {
@@ -135,6 +142,7 @@
             },
 
             fetchCategories() {
+
                 axios.get('categories').then(response => {
                     this.categories = response.data;
                     this.loopThrough(this.categories);

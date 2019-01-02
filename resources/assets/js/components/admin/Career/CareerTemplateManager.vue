@@ -49,7 +49,7 @@
 
                         <td><span>{{career.career_role_id}}</span></td>
                         <td><span>{{career.task}}</span></td>
-                        <td><span>{{career.description}}</span></td>
+                        <td class="text-left"><span >{{career.description}}</span></td>
                         <td><span>{{milestoneLength(career['milestones'])}}</span></td>
                         <td><span class="btn btn-success" @click="editCareerTemplate(career, index)">Edit </span></td>
                         <td><span><button type="button"
@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group m-form__group row"><label for="careerDescription"
                                                                      class="col-sm-3 col-xs-12 col-form-label">Description</label>
-                        <div class="col-sm-9 col-xs-12"><textarea style="min-height: 200px" required="" maxlength="1000" id="careerDescription"
+                        <div class="col-sm-9 col-xs-12"><textarea style="min-height: 200px" required="" maxlength="3000" id="careerDescription"
                                                                   rows="3" class="form-control m-input"
                                                                   v-model="careerDescription"
                                                                   name="description"></textarea></div>
@@ -98,6 +98,7 @@
                                                                         name="uMilestoneName" type="text"
                                                                         placeholder="Milestone Name"
                                                                         id="updateMilestone"
+                                                                        maxlength="30"
                                                                         class="form-control m-input"></div>
                             </div>
                         </div>
@@ -192,6 +193,7 @@
 </template>
 
 <script>
+
     import axios from 'axios';
 
     export default {
