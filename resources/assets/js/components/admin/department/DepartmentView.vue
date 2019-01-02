@@ -7,26 +7,26 @@
                 Department: {{departmentName}}
             </h3>
 
-            <div slot="body" class="admin__form admin__form--clear">
+            <div slot="body" class="">
                 <div class="m-portlet__body">
                     <div class="form-group m-form__group row"><label for="department"
-                                                                     class="col-sm-3 col-xs-12  col-form-label">Department</label>
-                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentName" type="text" id="department"
+                                                                     class="col-sm-2 col-xs-12  col-form-label">Department</label>
+                        <div class="col-sm-10 col-xs-12 "><input required="" name="departmentName" type="text" id="department"
                                                                 placeholder="Department Name"
                                                                 class="form-control m-input"
                                                                 v-model="departmentName"></div>
                     </div>
                     <div class="form-group m-form__group row"><label for="abbreviation"
-                                                                     class="col-sm-3 col-xs-12  col-form-label">Abbreviation</label>
-                        <div class="col-sm-9 col-xs-12 "><input required="" name="departmentAbbr" type="text"
+                                                                     class="col-sm-2 col-xs-12  col-form-label">Abbreviation</label>
+                        <div class="col-sm-10 col-xs-12 "><input required="" name="departmentAbbr" type="text"
                                                                 placeholder="Department abbreviation"
                                                                 id="abbreviation"
                                                                 v-model="departmentAbbr"
                                                                 class="form-control m-input"></div>
                     </div>
                     <div class="form-group m-form__group row"><label for="textArea"
-                                                                     class="col-sm-3 col-xs-12 col-form-label">Description</label>
-                        <div class="col-sm-9 col-xs-12"><textarea style="min-height: 200px" required="" maxlength="1000" id="textArea"
+                                                                     class="col-sm-2 col-xs-12 col-form-label">Description</label>
+                        <div class="col-sm-10 col-xs-12"><textarea style="min-height: 200px" required="" maxlength="1000" id="textArea"
                                                                   rows="3" class="form-control m-input"
                                                                   v-model="departmentDesc"
                                                                   name="description"></textarea></div>
@@ -35,8 +35,8 @@
 
             </div>
             <div slot="footer">
-                <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom" @click="close">CANCEL</button>
-                <button type="submit" class="btn m-btn--pill btn-success" @click="submit">SUBMIT</button>
+                <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom" @click="close">Cancel</button>
+                <button type="submit" class="btn m-btn--pill btn-success" @click="submit">Submit</button>
             </div>
         </modal>
 

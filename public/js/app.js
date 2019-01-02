@@ -63741,141 +63741,133 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "admin__form admin__form--clear",
-              attrs: { slot: "body" },
-              slot: "body"
-            },
-            [
-              _c("div", { staticClass: "m-portlet__body" }, [
-                _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-3 col-xs-12  col-form-label",
-                      attrs: { for: "department" }
-                    },
-                    [_vm._v("Department")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.departmentName,
-                          expression: "departmentName"
-                        }
-                      ],
-                      staticClass: "form-control m-input",
-                      attrs: {
-                        required: "",
-                        name: "departmentName",
-                        type: "text",
-                        id: "department",
-                        placeholder: "Department Name"
-                      },
-                      domProps: { value: _vm.departmentName },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.departmentName = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
+          _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+            _c("div", { staticClass: "m-portlet__body" }, [
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 col-xs-12  col-form-label",
+                    attrs: { for: "department" }
+                  },
+                  [_vm._v("Department")]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-3 col-xs-12  col-form-label",
-                      attrs: { for: "abbreviation" }
-                    },
-                    [_vm._v("Abbreviation")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.departmentAbbr,
-                          expression: "departmentAbbr"
-                        }
-                      ],
-                      staticClass: "form-control m-input",
-                      attrs: {
-                        required: "",
-                        name: "departmentAbbr",
-                        type: "text",
-                        placeholder: "Department abbreviation",
-                        id: "abbreviation"
-                      },
-                      domProps: { value: _vm.departmentAbbr },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.departmentAbbr = $event.target.value
-                        }
+                _c("div", { staticClass: "col-sm-10 col-xs-12 " }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.departmentName,
+                        expression: "departmentName"
                       }
-                    })
-                  ])
-                ]),
+                    ],
+                    staticClass: "form-control m-input",
+                    attrs: {
+                      required: "",
+                      name: "departmentName",
+                      type: "text",
+                      id: "department",
+                      placeholder: "Department Name"
+                    },
+                    domProps: { value: _vm.departmentName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.departmentName = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 col-xs-12  col-form-label",
+                    attrs: { for: "abbreviation" }
+                  },
+                  [_vm._v("Abbreviation")]
+                ),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-3 col-xs-12 col-form-label",
-                      attrs: { for: "textArea" }
-                    },
-                    [_vm._v("Description")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.departmentDesc,
-                          expression: "departmentDesc"
-                        }
-                      ],
-                      staticClass: "form-control m-input",
-                      staticStyle: { "min-height": "200px" },
-                      attrs: {
-                        required: "",
-                        maxlength: "1000",
-                        id: "textArea",
-                        rows: "3",
-                        name: "description"
-                      },
-                      domProps: { value: _vm.departmentDesc },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.departmentDesc = $event.target.value
-                        }
+                _c("div", { staticClass: "col-sm-10 col-xs-12 " }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.departmentAbbr,
+                        expression: "departmentAbbr"
                       }
-                    })
-                  ])
+                    ],
+                    staticClass: "form-control m-input",
+                    attrs: {
+                      required: "",
+                      name: "departmentAbbr",
+                      type: "text",
+                      placeholder: "Department abbreviation",
+                      id: "abbreviation"
+                    },
+                    domProps: { value: _vm.departmentAbbr },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.departmentAbbr = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 col-xs-12 col-form-label",
+                    attrs: { for: "textArea" }
+                  },
+                  [_vm._v("Description")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.departmentDesc,
+                        expression: "departmentDesc"
+                      }
+                    ],
+                    staticClass: "form-control m-input",
+                    staticStyle: { "min-height": "200px" },
+                    attrs: {
+                      required: "",
+                      maxlength: "1000",
+                      id: "textArea",
+                      rows: "3",
+                      name: "description"
+                    },
+                    domProps: { value: _vm.departmentDesc },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.departmentDesc = $event.target.value
+                      }
+                    }
+                  })
                 ])
               ])
-            ]
-          ),
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
             _c(
@@ -63886,7 +63878,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: { click: _vm.close }
               },
-              [_vm._v("CANCEL")]
+              [_vm._v("Cancel")]
             ),
             _vm._v(" "),
             _c(
@@ -63896,7 +63888,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: { click: _vm.submit }
               },
-              [_vm._v("SUBMIT")]
+              [_vm._v("Submit")]
             )
           ])
         ]
