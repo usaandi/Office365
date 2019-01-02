@@ -64,6 +64,20 @@
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
         transition: all .3s ease;
+
+
+    }
+
+    @media screen and (min-width: 500px) {
+        .modal-container {
+            width: 99%;
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        .modal-container {
+            width: 66%;
+        }
     }
 
     .modal-header h3 {

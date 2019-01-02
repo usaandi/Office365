@@ -166,7 +166,7 @@
 
                                         <div class="profile-timeline__milestones--action">
                                             <a @click="updateMilestone(milestone, index)" tabindex=""
-                                               class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill">
+                                               class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill m--margin-left-10">
                                                 <i class="la la-pencil-square"></i></a>
                                         </div>
 
@@ -182,10 +182,10 @@
             <div class="m-portlet__foot m-portlet__foot--fit m--margin-top-10">
             </div>
             <div slot="footer">
-                <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom"
-                        @click="clearModalData">CANCEL
+                <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-5"
+                        @click="clearModalData">Cancel
                 </button>
-                <button type="submit" class="btn m-btn--pill btn-success" @click="updateCareer">SUBMIT</button>
+                <button type="submit" class="btn m-btn--pill btn-success m--margin-5" @click="updateCareer">Submit</button>
             </div>
         </modal>
     </div>
