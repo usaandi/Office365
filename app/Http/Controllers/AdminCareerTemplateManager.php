@@ -50,7 +50,7 @@ class AdminCareerTemplateManager extends Controller
             $data = $request->all();
             $rules = [
                 'careerDescription' => 'required|string',
-                'careerTask' => 'required|string',
+                'careerTask' => 'required|string|max:20',
             ];
 
             $validator = Validator::make($data, $rules);
@@ -75,6 +75,7 @@ class AdminCareerTemplateManager extends Controller
                     ->first(['title', 'description']);
                 return response(json_encode($careerRoleNew), 200);
             }
+
         } catch (\Exception $e) {
 
 
