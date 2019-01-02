@@ -234,6 +234,9 @@ class CareerController extends Controller
                 return response(json_encode($newData), 200)
                     ->header('Content-Type', 'application/json');
             }
+            if($validator->fails()){
+                return response ('bad request',400);
+            }
 
 
         } catch (\Exception $e) {
