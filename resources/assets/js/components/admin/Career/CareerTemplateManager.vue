@@ -3,7 +3,7 @@
         <div class="m-portlet__foot m-portlet__foot--fit">
             <div class="m-form__actions">
                 <div class="row m--margin-bottom-15">
-                    <div class="col-sm-3 col-xs-12">
+                    <div class="col-sm-12 col-xs-12">
 
                         <div v-show="success" class="alert alert-success alert-dismissible">
                             <a class="close" @click="success=!success"></a>
@@ -12,7 +12,7 @@
 
 
                     </div>
-                    <div class="col-sm-9 col-xs-12">
+                    <div class="col-sm-12 col-xs-12">
                         <div class="profile-timeline__action ">
 
                             <a :href="'admin/career/add'" class="btn btn-success m-btn m-btn--icon m-btn--pill ">
@@ -345,6 +345,7 @@
 
                     axios.patch('admin/career-template/list/' + this.careerRoleId, data).then(response => {
                         if (response.status === 200) {
+                            console.log(response.status);
                             this.careerList[this.currentIndex].task = response.data.title;
                             this.careerList[this.currentIndex].description = response.data.description;
 

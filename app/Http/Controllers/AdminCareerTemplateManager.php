@@ -55,7 +55,12 @@ class AdminCareerTemplateManager extends Controller
 
             $validator = Validator::make($data, $rules);
 
+            if($validator->fails()){
+                return response('Bad Request', 400);
+            }
+
             if ($validator->passes()) {
+
                 $careerTask = $data['careerTask'];
                 $careerDescription = $data['careerDescription'];
 
@@ -70,8 +75,8 @@ class AdminCareerTemplateManager extends Controller
                     ->first(['title', 'description']);
                 return response(json_encode($careerRoleNew), 200);
             }
-
         } catch (\Exception $e) {
+
 
         }
     }
