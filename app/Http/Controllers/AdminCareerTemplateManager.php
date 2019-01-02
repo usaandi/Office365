@@ -113,7 +113,7 @@ class AdminCareerTemplateManager extends Controller
 
             $data = $request->all();
             $rules = [
-                'careerMilestoneTask' => 'required|string',
+                'careerMilestoneTask' => 'required|string|max:20',
             ];
 
             $validator = Validator::make($data, $rules);
