@@ -58399,7 +58399,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58605,6 +58605,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
@@ -58845,7 +58847,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_c("span", [_vm._v(_vm._s(career.task))])]),
                   _vm._v(" "),
-                  _c("td", [_c("span", [_vm._v(_vm._s(career.description))])]),
+                  _c("td", { staticClass: "text-left" }, [
+                    _c("span", [_vm._v(_vm._s(career.description))])
+                  ]),
                   _vm._v(" "),
                   _c("td", [
                     _c("span", [
@@ -58967,7 +58971,7 @@ var render = function() {
                       staticStyle: { "min-height": "200px" },
                       attrs: {
                         required: "",
-                        maxlength: "1000",
+                        maxlength: "3000",
                         id: "careerDescription",
                         rows: "3",
                         name: "description"
@@ -59035,7 +59039,8 @@ var render = function() {
                                 name: "uMilestoneName",
                                 type: "text",
                                 placeholder: "Milestone Name",
-                                id: "updateMilestone"
+                                id: "updateMilestone",
+                                maxlength: "30"
                               },
                               domProps: { value: _vm.updateMilestoneName },
                               on: {
@@ -65584,7 +65589,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65597,6 +65602,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -65661,6 +65671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
+
         this.fetchCategories();
         this.fetchDepartment();
     },
@@ -65769,112 +65780,136 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c(
-      "table",
-      { staticClass: "table table-bordered text-center table-responsive " },
-      [
-        _c("thead", [
-          _c(
-            "tr",
-            [
-              _c("th"),
-              _vm._v(" "),
-              _vm._l(_vm.categories, function(category) {
-                return _c(
-                  "th",
-                  {
-                    style: { backgroundColor: category.category_colour },
-                    attrs: {
-                      colspan: category.strengths.length,
-                      scope: "colgroup",
-                      id: category.category_id
-                    }
-                  },
-                  [_c("span", [_vm._v(_vm._s(category.category_name))])]
-                )
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("tbody", [
-          _c(
-            "tr",
-            [
-              _c("td"),
-              _vm._v(" "),
-              _vm._l(_vm.strengths, function(strength) {
-                return _c(
-                  "td",
-                  {
-                    attrs: {
-                      id: strength.strength_id,
-                      headers: strength.category_id
-                    }
-                  },
-                  [_c("span", [_vm._v(_vm._s(strength.strength_name))])]
-                )
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.departments, function(department) {
-          return _c(
-            "tbody",
-            [
-              _c("tr", [
-                _c(
-                  "th",
-                  {
-                    attrs: { id: department.department_id, scope: "colgroup" }
-                  },
-                  [_c("span", [_vm._v(_vm._s(department.department_name))])]
-                )
-              ]),
-              _vm._v(" "),
-              _vm._l(department.users, function(user) {
-                return _c(
-                  "tr",
-                  [
-                    _c("td", [_c("span", [_vm._v(_vm._s(user.user_name))])]),
-                    _vm._v(" "),
-                    _vm._l(_vm.strengths, function(strength) {
-                      return _c(
-                        "td",
-                        {
-                          style: _vm.backGroundColor(strength, user.strengths)
-                        },
-                        [
-                          _c(
-                            "span",
+    _vm.categories && _vm.departments
+      ? _c(
+          "table",
+          { staticClass: "table table-bordered text-center table-responsive " },
+          [
+            _c("thead", [
+              _c(
+                "tr",
+                [
+                  _c("th"),
+                  _vm._v(" "),
+                  _vm._l(_vm.categories, function(category) {
+                    return _c(
+                      "th",
+                      {
+                        style: { backgroundColor: category.category_colour },
+                        attrs: {
+                          colspan: category.strengths.length,
+                          scope: "colgroup",
+                          id: category.category_id
+                        }
+                      },
+                      [_c("span", [_vm._v(_vm._s(category.category_name))])]
+                    )
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c(
+                "tr",
+                [
+                  _c("td"),
+                  _vm._v(" "),
+                  _vm._l(_vm.strengths, function(strength) {
+                    return _c(
+                      "td",
+                      {
+                        attrs: {
+                          id: strength.strength_id,
+                          headers: strength.category_id
+                        }
+                      },
+                      [_c("span", [_vm._v(_vm._s(strength.strength_name))])]
+                    )
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.departments, function(department) {
+              return _c(
+                "tbody",
+                [
+                  _c("tr", [
+                    _c(
+                      "th",
+                      {
+                        attrs: {
+                          id: department.department_id,
+                          scope: "colgroup"
+                        }
+                      },
+                      [_c("span", [_vm._v(_vm._s(department.department_name))])]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(department.users, function(user) {
+                    return _c(
+                      "tr",
+                      [
+                        _c("td", [
+                          _c("span", [_vm._v(_vm._s(user.user_name))])
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.strengths, function(strength) {
+                          return _c(
+                            "td",
                             {
-                              style: _vm.strengthColor(strength, user.strengths)
+                              style: _vm.backGroundColor(
+                                strength,
+                                user.strengths
+                              )
                             },
                             [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.checkStrength(strength, user.strengths)
-                                )
+                              _c(
+                                "span",
+                                {
+                                  style: _vm.strengthColor(
+                                    strength,
+                                    user.strengths
+                                  )
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.checkStrength(
+                                        strength,
+                                        user.strengths
+                                      )
+                                    )
+                                  )
+                                ]
                               )
                             ]
                           )
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                )
-              })
-            ],
-            2
+                        })
+                      ],
+                      2
+                    )
+                  })
+                ],
+                2
+              )
+            })
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.departments === null && _vm.categories === null
+      ? _c("div", { staticClass: "text-center text-body m--font-bold" }, [
+          _vm._v(
+            "\n        There is no information about Departments and Users\n    "
           )
-        })
-      ],
-      2
-    )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
