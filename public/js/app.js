@@ -58399,7 +58399,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58412,6 +58412,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -58906,88 +58907,92 @@ var render = function() {
             _vm._v(" "),
             _c("div", { attrs: { slot: "body" }, slot: "body" }, [
               _c("div", { staticClass: "m-portlet__body" }, [
-                _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-3 col-xs-12  col-form-label",
-                      attrs: { for: "careerTask" }
-                    },
-                    [_vm._v("Career\n                    Task")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
-                    _c("input", {
-                      directives: [
+                !_vm.updatingMilestone
+                  ? _c("div", { staticClass: "form-group m-form__group row" }, [
+                      _c(
+                        "label",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.careerTaskTitle,
-                          expression: "careerTaskTitle"
-                        }
-                      ],
-                      staticClass: "form-control m-input",
-                      attrs: {
-                        required: "",
-                        name: "CareerName",
-                        type: "text",
-                        id: "careerTask",
-                        placeholder: "Career Task"
-                      },
-                      domProps: { value: _vm.careerTaskTitle },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                          staticClass: "col-sm-3 col-xs-12  col-form-label",
+                          attrs: { for: "careerTask" }
+                        },
+                        [_vm._v("Career\n                    Task")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.careerTaskTitle,
+                              expression: "careerTaskTitle"
+                            }
+                          ],
+                          staticClass: "form-control m-input",
+                          attrs: {
+                            required: "",
+                            name: "CareerName",
+                            type: "text",
+                            id: "careerTask",
+                            placeholder: "Career Task"
+                          },
+                          domProps: { value: _vm.careerTaskTitle },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.careerTaskTitle = $event.target.value
+                            }
                           }
-                          _vm.careerTaskTitle = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
+                        })
+                      ])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-3 col-xs-12 col-form-label",
-                      attrs: { for: "careerDescription" }
-                    },
-                    [_vm._v("Description")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                    _c("textarea", {
-                      directives: [
+                !_vm.updatingMilestone
+                  ? _c("div", { staticClass: "form-group m-form__group row" }, [
+                      _c(
+                        "label",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.careerDescription,
-                          expression: "careerDescription"
-                        }
-                      ],
-                      staticClass: "form-control m-input",
-                      staticStyle: { "min-height": "200px" },
-                      attrs: {
-                        required: "",
-                        maxlength: "3000",
-                        id: "careerDescription",
-                        rows: "3",
-                        name: "description"
-                      },
-                      domProps: { value: _vm.careerDescription },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                          staticClass: "col-sm-3 col-xs-12 col-form-label",
+                          attrs: { for: "careerDescription" }
+                        },
+                        [_vm._v("Description")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.careerDescription,
+                              expression: "careerDescription"
+                            }
+                          ],
+                          staticClass: "form-control m-input",
+                          staticStyle: { "min-height": "200px" },
+                          attrs: {
+                            required: "",
+                            maxlength: "3000",
+                            id: "careerDescription",
+                            rows: "3",
+                            name: "description"
+                          },
+                          domProps: { value: _vm.careerDescription },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.careerDescription = $event.target.value
+                            }
                           }
-                          _vm.careerDescription = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
+                        })
+                      ])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -59301,33 +59306,52 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", {
-              staticClass:
-                "m-portlet__foot m-portlet__foot--fit m--margin-top-10"
-            }),
-            _vm._v(" "),
-            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-5",
-                  attrs: { type: "button" },
-                  on: { click: _vm.clearModalData }
-                },
-                [_vm._v("Cancel\n            ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn m-btn--pill btn-success m--margin-5",
-                  attrs: { type: "submit" },
-                  on: { click: _vm.updateCareer }
-                },
-                [_vm._v("Submit")]
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "m-portlet__foot m-portlet__foot--fit m--margin-top-10",
+                attrs: { slot: "footer" },
+                slot: "footer"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updatingMilestone,
+                        expression: "!updatingMilestone"
+                      }
+                    ]
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-5",
+                        attrs: { type: "button" },
+                        on: { click: _vm.clearModalData }
+                      },
+                      [_vm._v("Cancel\n                ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn m-btn--pill btn-success m--margin-5",
+                        attrs: { type: "submit" },
+                        on: { click: _vm.updateCareer }
+                      },
+                      [_vm._v("Submit")]
+                    )
+                  ]
+                )
+              ]
+            )
           ])
         : _vm._e()
     ],
@@ -66008,7 +66032,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-mask[data-v-02374a38] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-02374a38] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-02374a38] {\n    width: 45%;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n@media screen and (min-width: 500px) {\n.modal-container[data-v-02374a38] {\n        width: 99%;\n}\n}\n@media screen and (min-width: 1000px) {\n.modal-container[data-v-02374a38] {\n        width: 66%;\n}\n}\n.modal-header h3[data-v-02374a38] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-02374a38] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-02374a38] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-02374a38] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-02374a38] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-02374a38],\n.modal-leave-active .modal-container[data-v-02374a38] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-mask[data-v-02374a38] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, .5);\n    display: table;\n    -webkit-transition: opacity .3s ease;\n    transition: opacity .3s ease;\n}\n.modal-wrapper[data-v-02374a38] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-02374a38] {\n    width: 45%;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n            box-shadow: 0 2px 8px rgba(0, 0, 0, .33);\n    -webkit-transition: all .3s ease;\n    transition: all .3s ease;\n    -webkit-overflow-scrolling: touch;\n    max-height: calc(100vh - 210px);\n    overflow-y: auto;\n}\n@media screen and (min-width: 500px) {\n.modal-container[data-v-02374a38] {\n        width: 99%;\n}\n}\n@media screen and (min-width: 1000px) {\n.modal-container[data-v-02374a38] {\n        width: 66%;\n}\n}\n.modal-header h3[data-v-02374a38] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-02374a38] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-02374a38] {\n    float: right;\n}\n\n/*\n * The following styles are auto-applied to elements with\n * transition=\"modal\" when their visibility is toggled\n * by Vue.js.\n *\n * You can easily play with the modal transition by editing\n * these styles.\n */\n.modal-enter[data-v-02374a38] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-02374a38] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-02374a38],\n.modal-leave-active .modal-container[data-v-02374a38] {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n\n", ""]);
 
 // exports
 

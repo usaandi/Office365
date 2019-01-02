@@ -49,7 +49,7 @@
 
                         <td><span>{{career.career_role_id}}</span></td>
                         <td><span>{{career.task}}</span></td>
-                        <td class="text-left"><span >{{career.description}}</span></td>
+                        <td class="text-left"><span>{{career.description}}</span></td>
                         <td><span>{{milestoneLength(career['milestones'])}}</span></td>
                         <td><span class="btn btn-success" @click="editCareerTemplate(career, index)">Edit </span></td>
                         <td><span><button type="button"
@@ -70,8 +70,8 @@
 
             <div slot="body" class="">
                 <div class="m-portlet__body">
-                    <div class="form-group m-form__group row"><label for="careerTask"
-                                                                     class="col-sm-3 col-xs-12  col-form-label">Career
+                    <div class="form-group m-form__group row" v-if="!updatingMilestone"><label for="careerTask"
+                                                                                               class="col-sm-3 col-xs-12  col-form-label">Career
                         Task</label>
                         <div class="col-sm-9 col-xs-12 "><input v-model="careerTaskTitle" required=""
                                                                 name="CareerName" type="text"
@@ -80,9 +80,10 @@
                                                                 class="form-control m-input"
                         ></div>
                     </div>
-                    <div class="form-group m-form__group row"><label for="careerDescription"
-                                                                     class="col-sm-3 col-xs-12 col-form-label">Description</label>
-                        <div class="col-sm-9 col-xs-12"><textarea style="min-height: 200px" required="" maxlength="3000" id="careerDescription"
+                    <div class="form-group m-form__group row" v-if="!updatingMilestone"><label for="careerDescription"
+                                                                                               class="col-sm-3 col-xs-12 col-form-label">Description</label>
+                        <div class="col-sm-9 col-xs-12"><textarea style="min-height: 200px" required="" maxlength="3000"
+                                                                  id="careerDescription"
                                                                   rows="3" class="form-control m-input"
                                                                   v-model="careerDescription"
                                                                   name="description"></textarea></div>
@@ -180,14 +181,16 @@
 
                 </div>
             </div>
-            <div class="m-portlet__foot m-portlet__foot--fit m--margin-top-10">
+            <div slot="footer" class="m-portlet__foot m-portlet__foot--fit m--margin-top-10">
+                <div v-show="!updatingMilestone">
+                    <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-5"
+                            @click="clearModalData">Cancel
+                    </button>
+                    <button type="submit" class="btn m-btn--pill btn-success m--margin-5" @click="updateCareer">Submit
+                    </button>
+                </div>
             </div>
-            <div slot="footer">
-                <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-5"
-                        @click="clearModalData">Cancel
-                </button>
-                <button type="submit" class="btn m-btn--pill btn-success m--margin-5" @click="updateCareer">Submit</button>
-            </div>
+
         </modal>
     </div>
 </template>
@@ -238,7 +241,7 @@
                     axios.patch('admin/career-template/list/milestone/' + this.currentCareerRoleMilestoneId, data).then(response => {
                         if (response.status === 200) {
 
-                            this.careers[this.currentIndex]['milestones'][this.currentMilestoneIndex].task=response.data.task;
+                            this.careers[this.currentIndex]['milestones'][this.currentMilestoneIndex].task = response.data.task;
                             this.cancelMilestoneEdit();
                         }
                     });
