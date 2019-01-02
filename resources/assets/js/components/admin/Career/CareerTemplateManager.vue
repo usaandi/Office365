@@ -275,12 +275,19 @@
 
             deleteCareer(careerId, index) {
 
-                axios.delete('admin/career-template/list/', {params: {careerId: careerId}}).then(response => {
-                    if (response.status === 200) {
-                        this.careers.splice(index, 1);
-                        this.success = true;
-                    }
-                })
+
+                let confirmation = confirm("Are you sure you want to delete this Career Template?");
+
+                if(confirmation){
+
+                    axios.delete('admin/career-template/list/', {params: {careerId: careerId}}).then(response => {
+                        if (response.status === 200) {
+                            this.careers.splice(index, 1);
+                            this.success = true;
+                        }
+                    })
+                }
+
 
             },
 
@@ -316,7 +323,6 @@
             },
             clearModalData() {
                 if (this.showModal) {
-
                     this.currentCareerRoleMilestoneId = null;
                     this.updateMilestoneName = null;
                     this.careerTaskTitle = null;
