@@ -58899,257 +58899,105 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "admin__form admin__form--clear",
-                attrs: { slot: "body" },
-                slot: "body"
-              },
-              [
-                _c("div", { staticClass: "m-portlet__body" }, [
-                  _c("div", { staticClass: "form-group m-form__group row" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-sm-3 col-xs-12  col-form-label",
-                        attrs: { for: "careerTask" }
-                      },
-                      [_vm._v("Career\n                    Task")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.careerTaskTitle,
-                            expression: "careerTaskTitle"
-                          }
-                        ],
-                        staticClass: "form-control m-input",
-                        attrs: {
-                          required: "",
-                          name: "CareerName",
-                          type: "text",
-                          id: "careerTask",
-                          placeholder: "Career Task"
-                        },
-                        domProps: { value: _vm.careerTaskTitle },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.careerTaskTitle = $event.target.value
-                          }
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group m-form__group row" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-sm-3 col-xs-12 col-form-label",
-                        attrs: { for: "careerDescription" }
-                      },
-                      [_vm._v("Description")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.careerDescription,
-                            expression: "careerDescription"
-                          }
-                        ],
-                        staticClass: "form-control m-input",
-                        staticStyle: { "min-height": "200px" },
-                        attrs: {
-                          required: "",
-                          maxlength: "1000",
-                          id: "careerDescription",
-                          rows: "3",
-                          name: "description"
-                        },
-                        domProps: { value: _vm.careerDescription },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.careerDescription = $event.target.value
-                          }
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
+            _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+              _c("div", { staticClass: "m-portlet__body" }, [
+                _c("div", { staticClass: "form-group m-form__group row" }, [
                   _c(
-                    "div",
+                    "label",
                     {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.updatingMilestone,
-                          expression: "updatingMilestone"
-                        }
-                      ]
+                      staticClass: "col-sm-3 col-xs-12  col-form-label",
+                      attrs: { for: "careerTask" }
                     },
-                    [
-                      _c("div", { staticClass: "m-portlet__body" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "form-group m-form__group row m--margin-top-15"
-                          },
-                          [
-                            _c(
-                              "label",
-                              {
-                                staticClass:
-                                  "col-sm-3 col-xs-12  col-form-label",
-                                attrs: { for: "updateMilestone" }
-                              },
-                              [
-                                _vm._v(
-                                  "Update\n                            Milestone"
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.updateMilestoneName,
-                                    expression: "updateMilestoneName"
-                                  }
-                                ],
-                                staticClass: "form-control m-input",
-                                attrs: {
-                                  required: "",
-                                  name: "uMilestoneName",
-                                  type: "text",
-                                  placeholder: "Milestone Name",
-                                  id: "updateMilestone"
-                                },
-                                domProps: { value: _vm.updateMilestoneName },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.updateMilestoneName =
-                                      $event.target.value
-                                  }
-                                }
-                              })
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "m-portlet__foot m-portlet__foot--fit" },
-                        [
-                          _c("div", { staticClass: "m-form__actions" }, [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass:
-                                      "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
-                                    on: {
-                                      click: function($event) {
-                                        _vm.deleteCareerMilestone(
-                                          _vm.currentCareerRoleMilestoneId,
-                                          _vm.currentMilestoneIndex
-                                        )
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c("i", {
-                                      staticClass: "icon flaticon-delete-1"
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "profile-timeline__action" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-                                        attrs: { type: "button" },
-                                        on: { click: _vm.cancelMilestoneEdit }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                            Cancel\n                                        "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "btn btn-success m-btn m-btn--pill",
-                                        attrs: { type: "submit" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.editCareerMilestone()
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("span", [
-                                          _c("span", [_vm._v("Save")])
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ])
-                            ])
-                          ])
-                        ]
-                      )
-                    ]
+                    [_vm._v("Career\n                    Task")]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
+                  _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                    _c("input", {
                       directives: [
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.updatingMilestone,
-                          expression: "!updatingMilestone"
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.careerTaskTitle,
+                          expression: "careerTaskTitle"
                         }
-                      ]
+                      ],
+                      staticClass: "form-control m-input",
+                      attrs: {
+                        required: "",
+                        name: "CareerName",
+                        type: "text",
+                        id: "careerTask",
+                        placeholder: "Career Task"
+                      },
+                      domProps: { value: _vm.careerTaskTitle },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.careerTaskTitle = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group m-form__group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-3 col-xs-12 col-form-label",
+                      attrs: { for: "careerDescription" }
                     },
-                    [
+                    [_vm._v("Description")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.careerDescription,
+                          expression: "careerDescription"
+                        }
+                      ],
+                      staticClass: "form-control m-input",
+                      staticStyle: { "min-height": "200px" },
+                      attrs: {
+                        required: "",
+                        maxlength: "1000",
+                        id: "careerDescription",
+                        rows: "3",
+                        name: "description"
+                      },
+                      domProps: { value: _vm.careerDescription },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.careerDescription = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.updatingMilestone,
+                        expression: "updatingMilestone"
+                      }
+                    ]
+                  },
+                  [
+                    _c("div", { staticClass: "m-portlet__body" }, [
                       _c(
                         "div",
                         {
@@ -59161,9 +59009,13 @@ var render = function() {
                             "label",
                             {
                               staticClass: "col-sm-3 col-xs-12  col-form-label",
-                              attrs: { for: "milestoneName" }
+                              attrs: { for: "updateMilestone" }
                             },
-                            [_vm._v("Milestone")]
+                            [
+                              _vm._v(
+                                "Update\n                            Milestone"
+                              )
+                            ]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
@@ -59172,152 +59024,276 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.newMilestoneName,
-                                  expression: "newMilestoneName"
+                                  value: _vm.updateMilestoneName,
+                                  expression: "updateMilestoneName"
                                 }
                               ],
                               staticClass: "form-control m-input",
                               attrs: {
                                 required: "",
-                                name: "milestoneName",
+                                name: "uMilestoneName",
                                 type: "text",
                                 placeholder: "Milestone Name",
-                                id: "milestoneName"
+                                id: "updateMilestone"
                               },
-                              domProps: { value: _vm.newMilestoneName },
+                              domProps: { value: _vm.updateMilestoneName },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.newMilestoneName = $event.target.value
+                                  _vm.updateMilestoneName = $event.target.value
                                 }
                               }
                             })
                           ])
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "m-portlet__foot m-portlet__foot--fit" },
-                        [
-                          _c("div", { staticClass: "m-form__actions" }, [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-sm-3 col-xs-12" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "profile-timeline__action" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "btn m-btn--pill btn-success m-btn m-btn--custom",
-                                        attrs: { type: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.createMilestone(
-                                              _vm.newMilestoneName
-                                            )
-                                          }
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                      [
+                        _c("div", { staticClass: "m-form__actions" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.deleteCareerMilestone(
+                                        _vm.currentCareerRoleMilestoneId,
+                                        _vm.currentMilestoneIndex
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "icon flaticon-delete-1"
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                              _c(
+                                "div",
+                                { staticClass: "profile-timeline__action" },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                                      attrs: { type: "button" },
+                                      on: { click: _vm.cancelMilestoneEdit }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                            Cancel\n                                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn btn-success m-btn m-btn--pill",
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.editCareerMilestone()
                                         }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "New\n                                            Milestone\n                                        "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ])
+                                      }
+                                    },
+                                    [_c("span", [_c("span", [_vm._v("Save")])])]
+                                  )
+                                ]
+                              )
                             ])
                           ])
-                        ]
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updatingMilestone,
+                        expression: "!updatingMilestone"
+                      }
+                    ]
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "form-group m-form__group row m--margin-top-15"
+                      },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-sm-3 col-xs-12  col-form-label",
+                            attrs: { for: "milestoneName" }
+                          },
+                          [_vm._v("Milestone")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newMilestoneName,
+                                expression: "newMilestoneName"
+                              }
+                            ],
+                            staticClass: "form-control m-input",
+                            attrs: {
+                              required: "",
+                              name: "milestoneName",
+                              type: "text",
+                              placeholder: "Milestone Name",
+                              id: "milestoneName"
+                            },
+                            domProps: { value: _vm.newMilestoneName },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.newMilestoneName = $event.target.value
+                              }
+                            }
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                      [
+                        _c("div", { staticClass: "m-form__actions" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-sm-3 col-xs-12" }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                              _c(
+                                "div",
+                                { staticClass: "profile-timeline__action" },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "btn m-btn--pill btn-success m-btn m-btn--custom",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.createMilestone(
+                                            _vm.newMilestoneName
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "New\n                                            Milestone\n                                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group m-form__group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-3 col-form-label",
+                          attrs: { for: "Milestones" }
+                        },
+                        [_vm._v("Milestones:")]
                       ),
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "form-group m-form__group row" },
+                        { staticClass: "col-9", attrs: { id: "Milestones" } },
                         [
                           _c(
-                            "label",
-                            {
-                              staticClass: "col-3 col-form-label",
-                              attrs: { for: "Milestones" }
-                            },
-                            [_vm._v("Milestones:")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "col-9",
-                              attrs: { id: "Milestones" }
-                            },
-                            [
-                              _c(
-                                "ul",
-                                { style: "listStyleType:none" },
-                                _vm._l(_vm.careerMilestones, function(
-                                  milestone,
-                                  index
-                                ) {
-                                  return _c(
-                                    "li",
-                                    { key: index, attrs: { index: index } },
+                            "ul",
+                            { style: "listStyleType:none" },
+                            _vm._l(_vm.careerMilestones, function(
+                              milestone,
+                              index
+                            ) {
+                              return _c(
+                                "li",
+                                { key: index, attrs: { index: index } },
+                                [
+                                  _c("span", [_vm._v(_vm._s(milestone.task))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "profile-timeline__milestones--action"
+                                    },
                                     [
-                                      _c("span", [
-                                        _vm._v(_vm._s(milestone.task))
-                                      ]),
-                                      _vm._v(" "),
                                       _c(
-                                        "div",
+                                        "a",
                                         {
                                           staticClass:
-                                            "profile-timeline__milestones--action"
+                                            "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill m--margin-left-10",
+                                          attrs: { tabindex: "" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.updateMilestone(
+                                                milestone,
+                                                index
+                                              )
+                                            }
+                                          }
                                         },
                                         [
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill m--margin-left-10",
-                                              attrs: { tabindex: "" },
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.updateMilestone(
-                                                    milestone,
-                                                    index
-                                                  )
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _c("i", {
-                                                staticClass:
-                                                  "la la-pencil-square"
-                                              })
-                                            ]
-                                          )
+                                          _c("i", {
+                                            staticClass: "la la-pencil-square"
+                                          })
                                         ]
                                       )
                                     ]
                                   )
-                                })
+                                ]
                               )
-                            ]
+                            })
                           )
                         ]
                       )
-                    ]
-                  )
-                ])
-              ]
-            ),
+                    ])
+                  ]
+                )
+              ])
+            ]),
             _vm._v(" "),
             _c("div", {
               staticClass:

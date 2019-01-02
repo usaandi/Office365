@@ -68,7 +68,7 @@
                 {{placeHolderTask}}
             </h3>
 
-            <div slot="body" class="admin__form admin__form--clear">
+            <div slot="body" class="">
                 <div class="m-portlet__body">
                     <div class="form-group m-form__group row"><label for="careerTask"
                                                                      class="col-sm-3 col-xs-12  col-form-label">Career
