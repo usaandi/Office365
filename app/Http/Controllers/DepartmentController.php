@@ -91,6 +91,9 @@ class DepartmentController extends Controller
                 ]);
                 return response(json_encode($department), 200);
             }
+            if($validator->fails()){
+                return response('Something went wrong',400);
+            }
 
         } catch (\Exception $e) {
 
