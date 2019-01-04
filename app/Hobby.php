@@ -10,8 +10,9 @@ class Hobby extends Model
 
     protected $fillable = ['name'];
 
+
     public function users() {
-        return $this->belongsToMany('App\User', 'users_hobbies')
+        return $this->belongsToMany(User::class, 'users_hobbies')
             ->using('App\UserHobby');
     }
 
