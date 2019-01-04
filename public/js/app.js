@@ -53484,7 +53484,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53497,6 +53497,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
 //
 //
 //
@@ -53543,15 +53546,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
 
         deleteRow: function deleteRow(userHobbyId) {
-            var vm = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/user/' + this.id + '/delete/hobby', { params: { userhobbyid: userHobbyId } }).then(function (response) {
-                var index = vm.userhobbies.findIndex(function (obj) {
-                    return obj.id === userHobbyId;
+            if (this.canedit) {
+                var vm = this;
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/user/' + this.id + '/delete/hobby', { params: { userhobbyid: userHobbyId } }).then(function (response) {
+                    var index = vm.userhobbies.findIndex(function (obj) {
+                        return obj.id === userHobbyId;
+                    });
+                    if (index !== -1) {
+                        vm.userhobbies.splice(index, 1);
+                    }
                 });
-                if (index !== -1) {
-                    vm.userhobbies.splice(index, 1);
-                }
-            });
+            }
         },
         fetchData: function fetchData() {
             var _this = this;
@@ -53562,14 +53567,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         upload: function upload(value) {
-            var vm = this;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.id + '/update/hobby', { data: value }).then(function (response) {
-                vm.userhobbies.push({
-                    id: response.data[0].id,
-                    name: response.data[0].name
-                });
-                vm.edit = false;
-            }).catch(function (error) {});
+            if (this.canedit) {
+
+                var vm = this;
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.id + '/update/hobby', { data: value }).then(function (response) {
+                    vm.userhobbies.push({
+                        id: response.data[0].id,
+                        name: response.data[0].name
+                    });
+                    vm.edit = false;
+                }).catch(function (error) {});
+            }
         }
 
     }
@@ -53596,8 +53604,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: !_vm.edit,
-                expression: "!edit"
+                value: !_vm.edit && _vm.canedit,
+                expression: "!edit && canedit"
               }
             ],
             staticClass:
@@ -53821,12 +53829,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "UserChildren",
-    props: ['userid'],
+    props: ['userid', 'canedit'],
     data: function data() {
         return {
             edit: false,
@@ -53893,8 +53903,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: !_vm.edit,
-              expression: "!edit"
+              value: !_vm.edit && _vm.canedit,
+              expression: "!edit && canedit"
             }
           ],
           staticClass:
@@ -53912,7 +53922,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "profile__details" },
+      {},
       [
         _vm._l(_vm.userchildren, function(child, index) {
           return _c("div", { staticClass: "row" }, [
@@ -54231,7 +54241,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54244,6 +54254,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -54332,7 +54343,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             title: '',
             showDismissibleAlert: false,
             selected: [],
-            careerRoles: [],
             milestonesList: [],
             milestoneName: '',
             careerRoleTitle: '',
@@ -54340,10 +54350,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         };
     },
-    mounted: function mounted() {
-
-        this.fetchData();
-    },
+    mounted: function mounted() {},
 
     methods: {
         checkError: function checkError() {},
@@ -54356,22 +54363,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
 
-        fetchData: function fetchData() {
-            var _this = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/career/roles').then(function (response) {
-                var careerRole = [];
-                for (var i = 0; i < response.data.length; i++) {
-                    var data = response.data[i];
-                    careerRole[careerRole.length] = {
-                        label: data.title,
-                        value: data.id
-                    };
-                }
-                _this.careerRoles = careerRole;
-            });
-        },
-
         clear: function clear() {
             this.desc = '';
             this.title = '';
@@ -54379,7 +54370,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         submit: function submit() {
-            var _this2 = this;
 
             if (this.desc && this.title) {
 
@@ -54389,14 +54379,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     milestonesList: this.milestonesList
                 }];
 
-                this.desc = '';
-                this.title = '';
-                this.milestonesList = '';
+                this.clear();
                 var vm = this;
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career/add', data).then(function (response) {
                     if (response.status === 200) {
-
-                        _this2.showDismissibleAlert = true;
+                        window.location.href = "/admin/career-template/list";
                     }
                 }).catch(function (error) {});
             }
@@ -58399,7 +58386,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58729,7 +58716,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         clearModalData: function clearModalData() {
             if (this.showModal) {
-
                 this.currentCareerRoleMilestoneId = null;
                 this.updateMilestoneName = null;
                 this.careerTaskTitle = null;
@@ -60778,7 +60764,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60845,6 +60831,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61000,7 +60991,7 @@ var render = function() {
               _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
                 _c("div", { staticClass: "profile-timeline__action" }, [
                   _c(
-                    "a",
+                    "button",
                     {
                       staticClass:
                         "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
@@ -61010,7 +61001,11 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._m(1)]
+                    [
+                      _vm._v(
+                        "\n                                    Close\n                                "
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
@@ -61025,7 +61020,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._m(2)]
+                    [_vm._m(1)]
                   )
                 ])
               ])
@@ -61045,16 +61040,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text" }, [
         _c("i", { staticClass: "la la-calendar-check-o" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("i", { staticClass: "la la-minus" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("Close")])
     ])
   },
   function() {
@@ -61163,7 +61148,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61174,8 +61159,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -61306,7 +61289,7 @@ var render = function() {
             _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
               _c("div", { staticClass: "profile-timeline__action" }, [
                 _c(
-                  "a",
+                  "button",
                   {
                     staticClass:
                       "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
@@ -61316,7 +61299,11 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._m(0)]
+                  [
+                    _vm._v(
+                      "\n                                Close\n                            "
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -61331,7 +61318,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._m(1)]
+                  [_vm._m(0)]
                 )
               ])
             ])
@@ -61342,16 +61329,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("i", { staticClass: "la la-plus" }),
-      _vm._v(" "),
-      _c("span", [_vm._v("Close")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
