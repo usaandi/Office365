@@ -58,9 +58,9 @@
                             <div class="form-group m-form__group row">
                                 <label for="description" class="col-3 col-form-label">Date</label>
                                 <div class="col-sm-9 col-xs-12"><input type="date" v-model="dateValue"
-                                                                          id="date"
-                                                                          class="form-control m-input"
-                                                                          name="career_description">
+                                                                       id="date"
+                                                                       class="form-control m-input"
+                                                                       name="career_description">
                                 </div>
                             </div>
 
@@ -121,7 +121,8 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__add">
-                            <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" tabindex="" @click="showForm">
+                            <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" tabindex=""
+                               @click="showForm">
                                               <span>
                                                 <i class="la la-plus"></i>
                                                 <span>Add Milestone</span>
@@ -173,8 +174,8 @@
             return {
 
                 userId: '',
-                userRoleInfo: '',
-                milestoneInfo: '',
+                userRoleInfo: this.userdata,
+                milestoneInfo: this.userInfo,
                 show: false,
                 isCurrent: false,
                 careerRoleId: '',
@@ -206,8 +207,6 @@
         },
 
         created() {
-            this.userRoleInfo = this.userdata;
-            this.milestoneInfo = this.userInfo;
 
         },
         mounted() {
@@ -243,13 +242,18 @@
             deleteRequest() {
                 if (this.canEdit) {
 
-                    axios.delete('/user/' + this.selectedUserProfileId + '/career/delete', {params: {careerId: this.userRoleInfo.id}})
-                        .then(response => {
-                            const data = response.data;
-                            this.$emit('deleteRole', data);
-                            this.success = true;
+                    let confirmation = confirm("Are you sure you want to delete this Career: " + this.userRoleInfo.title);
 
-                        })
+                    if (confirmation) {
+                        axios.delete('/user/' + this.selectedUserProfileId + '/career/delete', {params: {careerId: this.userRoleInfo.id}})
+                            .then(response => {
+                                const data = response.data;
+                                this.$emit('deleteRole', data);
+                                this.success = true;
+
+                            })
+                    }
+
                 }
 
 
@@ -320,7 +324,7 @@
                     if (this.isEditing === true) {
                         this.descriptionValue = this.userRoleInfo.description;
                         this.roleValue = this.userRoleInfo.title;
-                        this.dateValue =this.userRoleInfo.creation_date;
+                        this.dateValue = this.userRoleInfo.creation_date;
                     }
                 }
             },
