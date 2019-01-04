@@ -37,6 +37,11 @@ class User extends Authenticatable
         'password', 'remember_token', 'token',
     ];
 
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'users_skills');
+    }
+
     public function strengths()
     {
         return $this->hasMany(UserStrength::class);
@@ -96,7 +101,7 @@ class User extends Authenticatable
 
     public function userStrengths()
     {
-        return $this->belongsToMany(Strength::class,'users_strengths')
+        return $this->belongsToMany(Strength::class, 'users_strengths')
             ->withPivot('rank');
     }
 
