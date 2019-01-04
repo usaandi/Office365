@@ -13,7 +13,8 @@
                     <div class="form-group m-form__group row">
                         <label for="desc" class="col-3 col-form-label">Description</label>
                         <div class="col-9">
-                            <textarea id="desc" required class="form-control m-input" placeholder="description" v-model="desc"></textarea>
+                            <textarea id="desc" required class="form-control m-input" placeholder="description"
+                                      v-model="desc"></textarea>
                         </div>
                     </div>
 
@@ -86,7 +87,6 @@
                 title: '',
                 showDismissibleAlert: false,
                 selected: [],
-                careerRoles: [],
                 milestonesList: [],
                 milestoneName: '',
                 careerRoleTitle: '',
@@ -97,7 +97,6 @@
         },
         mounted() {
 
-            this.fetchData();
         },
         methods: {
             checkError() {
@@ -113,23 +112,6 @@
 
 
             },
-
-
-            fetchData: function () {
-                axios.get('/career/roles')
-                    .then(response => {
-                        let careerRole = [];
-                        for (let i = 0; i < response.data.length; i++) {
-                            const data = response.data[i];
-                            careerRole[careerRole.length] = {
-                                label: data.title,
-                                value: data.id,
-                            }
-                        }
-                        this.careerRoles = careerRole;
-                    });
-            },
-
 
             clear: function () {
                 this.desc = '';
@@ -147,15 +129,12 @@
                         milestonesList: this.milestonesList
                     }];
 
-                    this.desc = '';
-                    this.title = '';
-                    this.milestonesList = '';
+                    this.clear();
                     let vm = this;
                     axios.post('admin/career/add', data)
                         .then(response => {
                             if (response.status === 200) {
-
-                                this.showDismissibleAlert = true;
+                                window.location.href = "/admin/career-template/list";
                             }
                         }).catch(error => {
 
