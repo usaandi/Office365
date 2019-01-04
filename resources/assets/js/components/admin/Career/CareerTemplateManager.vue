@@ -311,10 +311,7 @@
 
                     });
 
-                    /* this.careers[this.currentIndex]['milestones'].push({
-                         careerRoleMilestoneId: null,
-                         task: this.newMilestoneName
-                     });*/
+
                 }
             },
 
@@ -356,7 +353,6 @@
 
                     axios.patch('admin/career-template/list/' + this.careerRoleId, data).then(response => {
                         if (response.status === 200) {
-                            console.log(response.status);
                             this.careerList[this.currentIndex].task = response.data.title;
                             this.careerList[this.currentIndex].description = response.data.description;
 
