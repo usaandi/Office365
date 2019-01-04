@@ -64227,7 +64227,9 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_c("span", [_vm._v(_vm._s(_vm.department.department_name))])]),
     _vm._v(" "),
-    _c("td", [_c("span", [_vm._v(_vm._s(_vm.department.department_info))])]),
+    _c("td", { staticClass: "text-left" }, [
+      _c("span", [_vm._v(_vm._s(_vm.department.department_info))])
+    ]),
     _vm._v(" "),
     _c("td", [_c("span", [_vm._v(_vm._s(_vm.department.department_abbr))])]),
     _vm._v(" "),
