@@ -74,6 +74,8 @@ class CareerController extends Controller
                             ]);
                         }
                         unset($milestone);
+
+                        return response('Success',200);
                     }
                 }
             }
