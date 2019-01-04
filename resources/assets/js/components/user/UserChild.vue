@@ -2,7 +2,8 @@
     <div>
         <h3 class="profile__subtitle">Children</h3>
         <div class="m-subheader__action">
-            <a @click="edit=!edit" v-show="!edit" tabindex="" class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
+            <a @click="edit=!edit" v-show="!edit && canedit" tabindex=""
+               class="btn btn-success m-btn m-btn--icon m-btn--pill profile__btn">
               <span>
 										<i class="la la-plus"></i>
 										<span>New</span>
@@ -10,19 +11,20 @@
               </span>
             </a>
         </div>
-        <div class="profile__details">
+        <div class="">
             <div class="row" v-for="(child,index) in userchildren">
                 <div class="col-xs-3">
                     <div class="profile__details--title">{{child.name}}</div>
                 </div>
                 <div class="col-xs-9">
                     <div class="profile__details--info">{{child.age}}a</div>
-                    <button v-show="edit" @click="deleteRow(child.id, index)" class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"><i
+                    <button v-show="edit" @click="deleteRow(child.id, index)"
+                            class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"><i
                             class="la la-close"></i></button>
                 </div>
             </div>
             <user-child-form v-show="edit" :userId="userid"
-            @update="updateData($event)"
+                             @update="updateData($event)"
                              @close="edit=false"
             ></user-child-form>
         </div>
@@ -36,7 +38,7 @@
 
     export default {
         name: "UserChildren",
-        props: ['userid'],
+        props: ['userid','canedit'],
         data() {
             return {
                 edit: false,
@@ -52,13 +54,13 @@
 
         },
         methods: {
-            updateData(data){
+            updateData(data) {
                 this.userchildren.push({
                     id: data.child_id,
                     name: data.child_name,
                     age: data.age,
                 });
-                this.edit=false;
+                this.edit = false;
 
             },
             fetchData: function () {
