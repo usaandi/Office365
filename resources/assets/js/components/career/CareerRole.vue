@@ -178,7 +178,7 @@
                 milestoneInfo: this.userInfo,
                 show: false,
                 isCurrent: false,
-                userMilestones:this.userdata['milestones'],
+                userMilestones: this.userdata['milestones'],
                 careerRoleId: '',
                 newRoleTitle: '',
                 newRoleDescription: '',
@@ -362,14 +362,21 @@
                     if (this.hasChanged === true) {
 
                         this.userMilestones.splice(value, 1);
+                        this.show = false;
+
 
                     }
                     else if (this.hasChanged === false) {
 
                         const data = this.userMilestones[value];
                         axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(response => {
+                            if (response.status === 200) {
+                                this.userMilestones.splice(value, 1);
+                                this.show = false;
+                            }
+
                         });
-                        this.userMilestones.splice(value, 1);
+
                     }
 
                 }

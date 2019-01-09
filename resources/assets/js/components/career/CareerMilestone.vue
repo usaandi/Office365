@@ -181,6 +181,7 @@
 
             remove() {
                 if (this.canEdit === true) {
+                    this.show = false;
                     this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
                 }
             },

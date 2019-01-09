@@ -559,6 +559,8 @@ class CareerController extends Controller
                     ->where('user_career_role_id', $data['user_career_role_id']);
                 if ($deleteMilestone) {
                     $deleteMilestone->delete();
+                    return response('success', 200);
+
                 }
             }
         } catch (\Exception $e) {
