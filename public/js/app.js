@@ -57419,7 +57419,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57535,6 +57535,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -57545,9 +57546,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             selected: '',
-            taskName: '',
-            assigned: '',
-            reminder: '',
+            taskName: this.milestoneInfo['task'],
+            assigned: {
+                'id': this.milestoneInfo['assigned_id'],
+                'name': this.milestoneInfo['assigned_username']
+            },
+            reminder: this.milestoneInfo['reminder'],
             milestone: [],
             editField: '',
             show: false,
@@ -57576,13 +57580,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        cancelMilestoneUpdate: function cancelMilestoneUpdate() {
+            this.taskName = this.milestoneInfo['task'];
+            this.assigned = {
+                'id': this.milestoneInfo['assigned_id'],
+                'name': this.milestoneInfo['assigned_username']
+            };
+            this.reminder = this.milestoneInfo['reminder'];
+            this.show = false;
+        },
+        updateMilestone: function updateMilestone() {
+            var _this = this;
+
+            if (this.canEdit) {
+
+                this.show = true;
+
+                if (this.checkError()) {
+
+                    var data = {
+                        id: this.milestone.id,
+                        reminder: this.reminder,
+                        task: this.taskName,
+                        selected: this.assigned,
+                        userCareerRoleId: this.milestone.user_career_role_id
+                    };
+
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data).then(function (response) {
+                        if (response.status === 200) {
+                            _this.milestone.reminder = response.data['reminder'];
+                            _this.milestone.task = response.data['task'];
+                            _this.show = false;
+                            for (var i = 0; i < _this.usersList.length; i++) {
+                                if (_this.usersList[i].id === response.data.assigned_id) {
+                                    _this.milestone.assigned_username = _this.usersList[i].name;
+                                    _this.milestone.assigned_id = _this.usersList[i].id;
+                                }
+                            }
+                            _this.show = false;
+                        }
+                    });
+                }
+            }
+        },
         submitChange: function submitChange() {
             if (this.canEdit) {
                 this.changeValue();
             }
         },
         changeValue: function changeValue() {
-
             if (this.canEdit === true) {
                 var vm = this;
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('update/milestone/' + this.selectedUserProfileId, { milestoneId: this.milestone.id }).then(function (response) {
@@ -57593,53 +57639,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         checkError: function checkError() {
-            this.$emit('errorValue', this.errors);
 
-            this.milestone.task === '' ? this.errorTask = true : this.errorTask = false;
-            this.selected === '' ? this.errorSelected = true : this.errorSelected = false;
-            this.milestone.reminder === '' ? this.errorDate = true : this.errorDate = false;
+            this.taskName === '' ? this.errorTask = true : this.errorTask = false;
+            this.assigned === '' ? this.errorSelected = true : this.errorSelected = false;
+            this.reminder === '' ? this.errorDate = true : this.errorDate = false;
 
-            if (this.errorDate === true || this.errorSelected === true || this.errorTask === true) {
-                this.errors = true;
+            if (this.errorDate || this.errorSelected || this.errorTask) {
+                return false;
             } else {
-                this.errors = false;
-            }
-        },
-        remove: function remove() {
-            if (this.canEdit === true) {
-                this.show = false;
-                this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
-            }
-        },
-        submit: function submit() {},
-        focusField: function focusField() {
-            var _this = this;
-
-            if (this.errors === false) {
-                this.checkError();
-                if (this.canEdit === true) {
-
-                    this.show === false ? this.show = true : this.show = false;
-                    this.milestone.assigned_id = this.selected.id;
-                    this.milestone.assigned_username = this.selected.name;
-                    if (this.show === false) {
-                        var data = [{
-                            id: this.milestone.id,
-                            reminder: this.milestone.reminder,
-                            task: this.milestone.task,
-                            selected: this.selected,
-                            userCareerRoleId: this.milestone.user_career_role_id
-                        }];
-
-                        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data).then(function (response) {
-
-                            _this.show = false;
-                        });
-                    }
+                if (this.taskName !== this.milestoneInfo['task'] || this.reminder !== this.milestoneInfo['reminder'] || this.assigned['id'] !== this.milestoneInfo['assigned_id']) {
+                    return true;
                 }
             }
         }
-    }
+    },
+
+    remove: function remove() {
+        if (this.canEdit === true) {
+            this.show = false;
+            this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
+        }
+    },
+    submit: function submit() {}
 });
 
 /***/ }),
@@ -57684,15 +57705,15 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model.trim",
-                        value: _vm.milestone.task,
-                        expression: "milestone.task",
+                        value: _vm.taskName,
+                        expression: "taskName",
                         modifiers: { trim: true }
                       }
                     ],
                     staticClass: "form-control m-input",
                     class: { "border border-danger": this.errorTask },
                     attrs: { type: "text" },
-                    domProps: { value: _vm.milestone.task },
+                    domProps: { value: _vm.taskName },
                     on: {
                       focus: _vm.checkError,
                       change: _vm.checkError,
@@ -57700,11 +57721,7 @@ var render = function() {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(
-                          _vm.milestone,
-                          "task",
-                          $event.target.value.trim()
-                        )
+                        _vm.taskName = $event.target.value.trim()
                       },
                       blur: function($event) {
                         _vm.$forceUpdate()
@@ -57732,8 +57749,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.selected,
-                          expression: "selected"
+                          value: _vm.assigned,
+                          expression: "assigned"
                         }
                       ],
                       staticClass: "form-control m-input",
@@ -57750,7 +57767,7 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.selected = $event.target.multiple
+                            _vm.assigned = $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
                           },
@@ -57761,7 +57778,8 @@ var render = function() {
                     [
                       _c("option", { attrs: { disabled: "" } }, [
                         _vm._v(
-                          "current " + _vm._s(_vm.milestone.assigned_username)
+                          "Current " +
+                            _vm._s(_vm.milestoneInfo["assigned_username"])
                         )
                       ]),
                       _vm._v(" "),
@@ -57796,14 +57814,14 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.milestone.reminder,
-                        expression: "milestone.reminder"
+                        value: _vm.reminder,
+                        expression: "reminder"
                       }
                     ],
                     staticClass: "form-control m-input",
                     class: { "border border-danger": this.errorDate },
                     attrs: { id: "Reminder", type: "date" },
-                    domProps: { value: _vm.milestone.reminder },
+                    domProps: { value: _vm.reminder },
                     on: {
                       focus: _vm.checkError,
                       change: _vm.checkError,
@@ -57811,7 +57829,7 @@ var render = function() {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.milestone, "reminder", $event.target.value)
+                        _vm.reminder = $event.target.value
                       }
                     }
                   })
@@ -57849,11 +57867,7 @@ var render = function() {
                           staticClass:
                             "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
                           attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.show = !_vm.show
-                            }
-                          }
+                          on: { click: _vm.cancelMilestoneUpdate }
                         },
                         [_vm._v("Close\n                                    ")]
                       ),
@@ -57866,7 +57880,7 @@ var render = function() {
                           attrs: { type: "button" },
                           on: {
                             click: function($event) {
-                              _vm.focusField()
+                              _vm.updateMilestone()
                             }
                           }
                         },
@@ -57962,7 +57976,7 @@ var render = function() {
                   attrs: { tabindex: "" },
                   on: {
                     click: function($event) {
-                      _vm.focusField()
+                      _vm.show = true
                     }
                   }
                 },

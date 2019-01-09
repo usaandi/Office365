@@ -497,7 +497,7 @@ class CareerController extends Controller
             $authUser = \Auth::user();
             $this->authorize('updateMilestone', $user);
 
-            $data = $request->all()[0];
+            $data = $request->all();
 
             $rules = [
 
@@ -514,7 +514,7 @@ class CareerController extends Controller
 
             if ($validator->passes()) {
 
-                $user->userCareerRoleMilestones()->where('id', $data['id'])
+                $update = $user->userCareerRoleMilestones()->where('id', $data['id'])
                     ->where('user_career_role_id', $data['userCareerRoleId'])
                     ->where('user_id', $id)
                     ->update([
@@ -522,7 +522,14 @@ class CareerController extends Controller
                         'reminder' => $data['reminder'],
                         'assigned_id' => $data['selected']['id'],
                     ]);
+                if ($update === 1) {
+                    $jsonData = $user->userCareerRoleMilestones()->where('id', $data['id'])
+                        ->where('user_career_role_id', $data['userCareerRoleId'])
+                        ->where('user_id', $id)->first(['id','assigned_id','task','reminder']);
+                    return response(json_encode($jsonData), 200);
+                }
 
+                return response('failure', 400);
             }
 
         } catch (\Exception $e) {

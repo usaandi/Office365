@@ -8,7 +8,7 @@
                         <div class="form-group m-form__group row">
                             <label for="Task" class="col-3 col-form-label">Task</label>
                             <div class="col-9">
-                                <input v-model.trim="milestone.task" class="form-control m-input"
+                                <input v-model.trim="taskName" class="form-control m-input"
                                        @focus="checkError" @change="checkError" type="text"
                                        :class="{'border border-danger': this.errorTask}">
                             </div>
@@ -16,10 +16,10 @@
                         <div class="form-group m-form__group row">
                             <label for="Assign" class="col-3 col-form-label">Assign</label>
                             <div class="col-9">
-                                <select class="form-control m-input" @focus="checkError" v-model="selected"
+                                <select class="form-control m-input" @focus="checkError" v-model="assigned"
                                         @change="checkError"
                                         :class="{'border border-danger': this.errorSelected}">
-                                    <option disabled>current {{milestone.assigned_username}}</option>
+                                    <option disabled>Current {{milestoneInfo['assigned_username']}}</option>
                                     <option
                                             v-for="user in usersList"
                                             :value="user"
@@ -35,7 +35,7 @@
                                 <input class="form-control m-input" id="Reminder" type="date" @focus="checkError"
                                        @change="checkError"
                                        :class="{'border border-danger': this.errorDate}"
-                                       v-model="milestone.reminder">
+                                       v-model="reminder">
                             </div>
                         </div>
                     </div>
@@ -48,11 +48,11 @@
                                 </div>
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
-                                        <button @click="show=!show" type="button"
+                                        <button @click="cancelMilestoneUpdate" type="button"
                                                 class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Close
                                         </button>
                                         <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
-                                                @click="focusField()">Save
+                                                @click="updateMilestone()">Save
                                         </button>
                                     </div>
                                 </div>
@@ -60,6 +60,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
 
             <div class="m-form__group form-group" v-show="!show">
@@ -90,7 +91,7 @@
                         {{milestone.reminder}}
                     </div>
                     <div class="profile-timeline__milestones--action">
-                        <a tabindex="" @click="focusField()"
+                        <a tabindex="" @click="show=true"
                            class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill">
                             <i class="la la-pencil-square"></i>
                         </a>
@@ -112,9 +113,12 @@
         data() {
             return {
                 selected: '',
-                taskName: '',
-                assigned: '',
-                reminder: '',
+                taskName: this.milestoneInfo['task'],
+                assigned: {
+                    'id': this.milestoneInfo['assigned_id'],
+                    'name': this.milestoneInfo['assigned_username'],
+                },
+                reminder: this.milestoneInfo['reminder'],
                 milestone: [],
                 editField: '',
                 show: false,
@@ -145,6 +149,50 @@
 
         methods: {
 
+            cancelMilestoneUpdate() {
+                this.taskName = this.milestoneInfo['task'];
+                this.assigned = {
+                    'id': this.milestoneInfo['assigned_id'],
+                    'name': this.milestoneInfo['assigned_username'],
+                };
+                this.reminder = this.milestoneInfo['reminder'];
+                this.show = false;
+            },
+
+
+            updateMilestone() {
+                if (this.canEdit) {
+
+                    this.show = true;
+
+                    if (this.checkError()) {
+
+                        const data = {
+                            id: this.milestone.id,
+                            reminder: this.reminder,
+                            task: this.taskName,
+                            selected: this.assigned,
+                            userCareerRoleId: this.milestone.user_career_role_id,
+                        };
+
+                        axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data)
+                            .then(response => {
+                                if (response.status === 200) {
+                                    this.milestone.reminder = response.data['reminder'];
+                                    this.milestone.task = response.data['task'];
+                                    this.show = false;
+                                    for (let i = 0; i < this.usersList.length; i++) {
+                                        if (this.usersList[i].id === response.data.assigned_id) {
+                                            this.milestone.assigned_username = this.usersList[i].name;
+                                            this.milestone.assigned_id = this.usersList[i].id;
+                                        }
+                                    }
+                                    this.show = false;
+                                }
+                            });
+                    }
+                }
+            },
             submitChange() {
                 if (this.canEdit) {
                     this.changeValue();
@@ -152,7 +200,6 @@
             },
 
             changeValue() {
-
                 if (this.canEdit === true) {
                     let vm = this;
                     axios.post('update/milestone/' + this.selectedUserProfileId, {milestoneId: this.milestone.id}).then(response => {
@@ -161,63 +208,39 @@
                         }
                     });
                 }
-
             },
 
             checkError() {
-                this.$emit('errorValue', this.errors);
 
-                this.milestone.task === '' ? this.errorTask = true : this.errorTask = false;
-                this.selected === '' ? this.errorSelected = true : this.errorSelected = false;
-                this.milestone.reminder === '' ? this.errorDate = true : this.errorDate = false;
+                this.taskName === '' ? this.errorTask = true : this.errorTask = false;
+                this.assigned === '' ? this.errorSelected = true : this.errorSelected = false;
+                this.reminder === '' ? this.errorDate = true : this.errorDate = false;
 
-                if (this.errorDate === true || this.errorSelected === true || this.errorTask === true) {
-                    this.errors = true;
+                if (this.errorDate || this.errorSelected || this.errorTask) {
+                    return false;
                 }
+
                 else {
-                    this.errors = false;
-                }
-            },
-
-            remove() {
-                if (this.canEdit === true) {
-                    this.show = false;
-                    this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
-                }
-            },
-            submit() {
-
-            },
-
-            focusField() {
-
-                if (this.errors === false) {
-                    this.checkError();
-                    if (this.canEdit === true) {
-
-                        this.show === false ? this.show = true : this.show = false;
-                        this.milestone.assigned_id = this.selected.id;
-                        this.milestone.assigned_username = this.selected.name;
-                        if (this.show === false) {
-                            const data = [{
-                                id: this.milestone.id,
-                                reminder: this.milestone.reminder,
-                                task: this.milestone.task,
-                                selected: this.selected,
-                                userCareerRoleId: this.milestone.user_career_role_id,
-                            }];
-
-                            axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data)
-                                .then(response => {
-
-                                    this.show = false;
-                                });
-                        }
+                    if (this.taskName !== this.milestoneInfo['task'] ||
+                        this.reminder !== this.milestoneInfo['reminder'] || this.assigned['id'] !== this.milestoneInfo['assigned_id']) {
+                        return true;
                     }
                 }
-            },
+            }
 
-        }
+        },
+
+        remove() {
+            if (this.canEdit === true) {
+                this.show = false;
+                this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
+            }
+        },
+        submit() {
+
+        },
+
+
     }
 </script>
 
