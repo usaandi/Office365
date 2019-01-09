@@ -54707,7 +54707,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54720,6 +54720,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -54864,11 +54865,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.hasChanged === false) {
                     this.show === false ? this.show = true : this.show = false;
                 }
-                if (this.show === true) {
-                    this.buttonTextValue = 'Close';
-                } else {
-                    this.buttonTextValue = 'New';
-                }
             }
         },
         checkCanEdit: function checkCanEdit() {
@@ -54945,14 +54941,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this5.userDatas = response.data;
             });
         }
-    },
-    computed: {
-        computeText: function computeText() {
-            if (this.show === false) {
-                return "New";
-            }
-            return "Close";
-        }
     }
 
 });
@@ -54979,17 +54967,20 @@ var render = function() {
                 _c(
                   "a",
                   {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.show,
+                        expression: "!show"
+                      }
+                    ],
                     staticClass:
                       "btn btn-success m-btn m-btn--icon m-btn--pill",
+                    attrs: { tabindex: "" },
                     on: { click: _vm.showForm }
                   },
-                  [
-                    _c("span", [
-                      _c("i", { staticClass: "la la-plus" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(_vm.computeText))])
-                    ])
-                  ]
+                  [_vm._m(1)]
                 ),
                 _vm._v(" "),
                 _c("career-role-form", {
@@ -55008,6 +54999,7 @@ var render = function() {
                     hasMilestoneError: _vm.hasMilestoneError
                   },
                   on: {
+                    cancel: _vm.showForm,
                     close: function($event) {
                       _vm.show = false
                     },
@@ -55086,6 +55078,16 @@ var staticRenderFns = [
           "\n                            Personal development\n                        "
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("New")])
     ])
   }
 ]
@@ -60523,7 +60525,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60536,6 +60538,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60588,6 +60598,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/career/roles').then(function (response) {
                 _this.careerRoleTitle = response.data;
             });
+        },
+        cancel: function cancel() {
+            this.$emit('cancel');
         }
     }
 });
@@ -60603,11 +60616,11 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "m-portlet__body m--margin-top-10" }, [
       _c("div", { staticClass: "form-group m-form__group row" }, [
-        _c("label", { staticClass: "col-3 col-form-label" }, [
+        _c("label", { staticClass: "col-2 col-form-label" }, [
           _vm._v("Select Role")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-9" }, [
+        _c("div", { staticClass: "col-8" }, [
           _c(
             "select",
             {
@@ -60659,6 +60672,25 @@ var render = function() {
             ],
             2
           )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2" }, [
+          _c("div", { staticClass: "profile-timeline__action" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.cancel()
+                  }
+                }
+              },
+              [_vm._v("Close\n                    ")]
+            )
+          ])
         ])
       ])
     ])

@@ -10,18 +10,19 @@
                                 Personal development
                             </h3>
                         </div>
-                        <div class="m-subheader__action">
-                            <a class="btn btn-success m-btn m-btn--icon m-btn--pill"
+                        <div class="m-subheader__action" >
+                            <a v-show="!show" tabindex="" class="btn btn-success m-btn m-btn--icon m-btn--pill"
                                @click="showForm">
                             <span>
                                 <i class="la la-plus"></i>
-                                <span>{{computeText}}</span>
+                                <span>New</span>
                             </span>
                             </a>
                             <career-role-form
                                     :canEdit="canEdit"
                                     v-show="show"
-                                    @close="show=false"
+                                    @cancel="showForm"
+                                    @close="show = false"
                                     :selectedUserProfileId="selectedUserId"
                                     :authUserId="AuthUserId"
                                     :hasMilestoneError="hasMilestoneError"
@@ -141,12 +142,6 @@
                     if (this.hasChanged === false) {
                         this.show === false ? this.show = true : this.show = false;
                     }
-                    if (this.show === true) {
-                        this.buttonTextValue = 'Close';
-                    }
-                    else {
-                        this.buttonTextValue = 'New';
-                    }
                 }
             },
 
@@ -222,14 +217,7 @@
                     });
             },
         },
-        computed: {
-            computeText() {
-                if (this.show === false) {
-                    return "New";
-                }
-                return "Close";
-            }
-        }
+
 
     }
 </script>
