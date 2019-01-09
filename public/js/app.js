@@ -56391,7 +56391,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56404,6 +56404,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
 //
 //
 //
@@ -57074,6 +57078,93 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
+              [
+                _vm._l(_vm.userMilestones, function(milestone, index) {
+                  return _c("user-career-milestone", {
+                    key: index + 1,
+                    attrs: {
+                      canEdit: _vm.canEdit,
+                      selectedUserProfileId: _vm.selectedUserProfileId,
+                      milestoneInfo: milestone,
+                      hasMilestoneError: _vm.hasMilestoneError,
+                      usersList: _vm.usersList,
+                      careerRoleMilestoneIndex: index
+                    },
+                    on: {
+                      removeMilestone: function($event) {
+                        _vm.deleteMilestone($event)
+                      }
+                    }
+                  })
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "profile-timeline__add" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.show,
+                            expression: "!show"
+                          }
+                        ],
+                        staticClass:
+                          "btn btn-success m-btn m-btn--icon m-btn--pill",
+                        attrs: { tabindex: "" },
+                        on: { click: _vm.showForm }
+                      },
+                      [_vm._m(3)]
+                    ),
+                    _vm._v(" "),
+                    _c("milestone-form", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.show,
+                          expression: "show"
+                        }
+                      ],
+                      attrs: {
+                        hasChanged: _vm.hasChanged,
+                        usersList: _vm.usersList,
+                        careerRoleId: _vm.userRoleInfo.id,
+                        selectedUserProfileId: _vm.selectedUserProfileId
+                      },
+                      on: {
+                        pushToMilestones: function($event) {
+                          _vm.pushMilestone($event)
+                        },
+                        addToMilestones: function($event) {
+                          _vm.addMilestone($event)
+                        },
+                        close: function($event) {
+                          _vm.show = false
+                        },
+                        removeMilestone: function($event) {
+                          _vm.deleteMilestone($event)
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
           _c(
             "div",
             {
@@ -57088,7 +57179,7 @@ var render = function() {
               staticClass: "row"
             },
             [
-              _vm._m(2),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "div",
@@ -57155,7 +57246,7 @@ var render = function() {
                         staticClass: "btn btn-success m-btn m-btn--pill",
                         on: { click: _vm.save }
                       },
-                      [_vm._m(3)]
+                      [_vm._m(5)]
                     ),
                     _vm._v(" "),
                     _c(
@@ -57172,97 +57263,13 @@ var render = function() {
                         staticClass: "btn btn-danger m-btn m-btn--pill",
                         on: { click: _vm.remove }
                       },
-                      [_vm._m(4)]
+                      [_vm._m(6)]
                     )
                   ])
                 ]
               )
             ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(5),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm-9 col-md-9 col-lg-10 col-xs-12" },
-              [
-                _c(
-                  "div",
-                  { staticClass: "profile-timeline__add" },
-                  [
-                    _c(
-                      "a",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: !_vm.show,
-                            expression: "!show"
-                          }
-                        ],
-                        staticClass:
-                          "btn btn-success m-btn m-btn--icon m-btn--pill",
-                        attrs: { tabindex: "" },
-                        on: { click: _vm.showForm }
-                      },
-                      [_vm._m(6)]
-                    ),
-                    _vm._v(" "),
-                    _c("milestone-form", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.show,
-                          expression: "show"
-                        }
-                      ],
-                      attrs: {
-                        hasChanged: _vm.hasChanged,
-                        usersList: _vm.usersList,
-                        careerRoleId: _vm.userRoleInfo.id,
-                        selectedUserProfileId: _vm.selectedUserProfileId
-                      },
-                      on: {
-                        pushToMilestones: function($event) {
-                          _vm.pushMilestone($event)
-                        },
-                        addToMilestones: function($event) {
-                          _vm.addMilestone($event)
-                        },
-                        close: function($event) {
-                          _vm.show = false
-                        }
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.userMilestones, function(milestone, index) {
-                  return _c("user-career-milestone", {
-                    key: index + 1,
-                    attrs: {
-                      canEdit: _vm.canEdit,
-                      selectedUserProfileId: _vm.selectedUserProfileId,
-                      milestoneInfo: milestone,
-                      hasMilestoneError: _vm.hasMilestoneError,
-                      usersList: _vm.usersList,
-                      careerRoleMilestoneIndex: index
-                    },
-                    on: {
-                      removeMilestone: function($event) {
-                        _vm.deleteMilestone($event)
-                      }
-                    }
-                  })
-                })
-              ],
-              2
-            )
-          ])
+          )
         ]
       )
     ])
@@ -57288,26 +57295,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
-      _c("div", { staticClass: "profile-timeline__notes" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [_c("span", [_vm._v("Save")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [_c("span", [_vm._v("Cancel")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
       _c("h4", { staticClass: "profile-timeline__title" }, [
         _vm._v("MILESTONES")
       ])
@@ -57322,6 +57309,26 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", [_vm._v("Add Milestone")])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
+      _c("div", { staticClass: "profile-timeline__notes" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("span", [_vm._v("Save")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("span", [_vm._v("Cancel")])])
   }
 ]
 render._withStripped = true
@@ -57419,7 +57426,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57651,16 +57658,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return true;
                 }
             }
-        }
-    },
+        },
+        removeMilestone: function removeMilestone() {
+            console.log('here');
 
-    remove: function remove() {
-        if (this.canEdit === true) {
-            this.show = false;
-            this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
-        }
-    },
-    submit: function submit() {}
+            if (this.canEdit) {
+                this.show = false;
+                this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
+            }
+        },
+        submit: function submit() {}
+    }
+
 });
 
 /***/ }),
@@ -57846,7 +57855,7 @@ var render = function() {
                       {
                         on: {
                           click: function($event) {
-                            _vm.remove()
+                            _vm.removeMilestone()
                           }
                         }
                       },

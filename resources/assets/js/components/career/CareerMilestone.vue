@@ -43,7 +43,7 @@
                         <div class="m-form__actions">
                             <div class="row">
                                 <div class="col-sm-3 col-xs-12">
-                                         <span @click="remove()"><span style="cursor: pointer"
+                                         <span @click="removeMilestone()"><span style="cursor: pointer"
                                                                        class="icon flaticon-delete-1"></span></span>
                                 </div>
                                 <div class="col-sm-9 col-xs-12">
@@ -226,19 +226,22 @@
                         return true;
                     }
                 }
-            }
+            },
+            removeMilestone() {
+                console.log('here');
+
+                if (this.canEdit) {
+                    this.show = false;
+                    this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
+                }
+            },
+            submit() {
+
+            },
 
         },
 
-        remove() {
-            if (this.canEdit === true) {
-                this.show = false;
-                this.$emit('removeMilestone', this.careerRoleMilestoneIndex);
-            }
-        },
-        submit() {
 
-        },
 
 
     }

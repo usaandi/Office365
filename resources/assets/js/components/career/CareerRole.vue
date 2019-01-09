@@ -94,6 +94,49 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
+                        <h4 class="profile-timeline__title">MILESTONES</h4>
+                    </div>
+                    <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
+
+                        <user-career-milestone
+                                :canEdit="canEdit"
+                                :selectedUserProfileId="selectedUserProfileId"
+                                v-for="(milestone, index) in userMilestones"
+                                :milestoneInfo="milestone"
+                                :key="index+1"
+                                :hasMilestoneError="hasMilestoneError"
+                                :usersList="usersList"
+                                :careerRoleMilestoneIndex="index"
+                                @removeMilestone="deleteMilestone($event)"
+
+                        ></user-career-milestone>
+                        <div class="profile-timeline__add">
+                            <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" tabindex=""
+                               @click="showForm">
+                                              <span>
+                                                <i class="la la-plus"></i>
+                                                <span>Add Milestone</span>
+                                              </span>
+                            </a>
+                            <milestone-form v-show="show"
+                                            :hasChanged="hasChanged"
+                                            :usersList="usersList"
+                                            :careerRoleId="userRoleInfo.id"
+                                            :selectedUserProfileId="selectedUserProfileId"
+                                            @pushToMilestones="pushMilestone($event)"
+                                            @addToMilestones="addMilestone($event)"
+                                            @close="show=false"
+                                            @removeMilestone="deleteMilestone($event)"
+
+                            >
+                            </milestone-form>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="row" v-show="!isEditing">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <div class="profile-timeline__notes">
@@ -115,45 +158,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
-                        <h4 class="profile-timeline__title">MILESTONES</h4>
-                    </div>
-                    <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
-                        <div class="profile-timeline__add">
-                            <a v-show="!show" class="btn btn-success m-btn m-btn--icon m-btn--pill" tabindex=""
-                               @click="showForm">
-                                              <span>
-                                                <i class="la la-plus"></i>
-                                                <span>Add Milestone</span>
-                                              </span>
-                            </a>
-                            <milestone-form v-show="show"
-                                            :hasChanged="hasChanged"
-                                            :usersList="usersList"
-                                            :careerRoleId="userRoleInfo.id"
-                                            :selectedUserProfileId="selectedUserProfileId"
-                                            @pushToMilestones="pushMilestone($event)"
-                                            @addToMilestones="addMilestone($event)"
-                                            @close="show=false"
-                            >
-                            </milestone-form>
-
-                        </div>
-                        <user-career-milestone
-                                :canEdit="canEdit"
-                                :selectedUserProfileId="selectedUserProfileId"
-                                v-for="(milestone, index) in userMilestones"
-                                :milestoneInfo="milestone"
-                                :key="index+1"
-                                :hasMilestoneError="hasMilestoneError"
-                                :usersList="usersList"
-                                :careerRoleMilestoneIndex="index"
-                                @removeMilestone="deleteMilestone($event)"
-                        ></user-career-milestone>
-                    </div>
-                </div>
-
 
             </div>
         </div>
