@@ -62025,7 +62025,7 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("td", [
+    _c("td", { staticClass: "text-left" }, [
       _c(
         "span",
         {
@@ -62695,7 +62695,7 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("td", [
+    _c("td", { staticClass: "text-left" }, [
       _c(
         "span",
         {

@@ -6,8 +6,8 @@
             <input class="form-control m-input" @change="hasChanged(strength.strength_name)"
                    v-show="show" v-model="strengthName" type="text">
         </td>
-        <td>
-            <span v-show="!show"> {{strength.strength_description}}</span>
+        <td class="text-left">
+            <span  v-show="!show"> {{strength.strength_description}}</span>
             <textarea class="form-control m-input" @change="hasChanged(strength.strength_description)"
                       v-show="show" v-model="strengthDescription" ></textarea>
         </td>
