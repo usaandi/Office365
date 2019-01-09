@@ -75,7 +75,7 @@ class CareerController extends Controller
                         }
                         unset($milestone);
 
-                        return response('Success',200);
+                        return response('Success', 200);
                     }
                 }
             }
@@ -208,15 +208,15 @@ class CareerController extends Controller
         try {
             // $authUser = \Auth::user();
             $user = User::findOrFail($id);
-            $data = $request->all();
 
             $this->authorize('updateCareer', $user);
+            $data = $request->all();
 
             $rules = [
                 'roleTitle' => 'required',
                 'descriptionValue' => 'required',
                 'careerId' => 'required',
-                'creationDate' => 'required'
+                'creationDate' => 'nullable'
             ];
             $validator = Validator::make($data, $rules);
 
@@ -236,8 +236,8 @@ class CareerController extends Controller
                 return response(json_encode($newData), 200)
                     ->header('Content-Type', 'application/json');
             }
-            if($validator->fails()){
-                return response ('bad request',400);
+            if ($validator->fails()) {
+                return response('bad request', 400);
             }
 
 
