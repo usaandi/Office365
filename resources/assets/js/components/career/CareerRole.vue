@@ -143,7 +143,7 @@
                         <user-career-milestone
                                 :canEdit="canEdit"
                                 :selectedUserProfileId="selectedUserProfileId"
-                                v-for="(milestone, index) in userRoleInfo['milestones']"
+                                v-for="(milestone, index) in userMilestones"
                                 :milestoneInfo="milestone"
                                 :key="index+1"
                                 :hasMilestoneError="hasMilestoneError"
@@ -178,6 +178,7 @@
                 milestoneInfo: this.userInfo,
                 show: false,
                 isCurrent: false,
+                userMilestones:this.userdata['milestones'],
                 careerRoleId: '',
                 newRoleTitle: '',
                 newRoleDescription: '',
@@ -250,7 +251,6 @@
                                 const data = response.data;
                                 this.$emit('deleteRole', data);
                                 this.success = true;
-
                             })
                     }
 
@@ -342,11 +342,11 @@
 
 
             addMilestone(data) {
-                this.userRoleInfo['milestones'].push(data[0]);
+                this.userMilestones.push(data[0]);
             },
             pushMilestone(data) {
                 if (this.hasChanged === true) {
-                    this.userRoleInfo['milestones'].push(data[0]);
+                    this.userMilestones.push(data[0]);
                 }
             },
 
@@ -361,15 +361,15 @@
                 if (this.canEdit === true) {
                     if (this.hasChanged === true) {
 
-                        this.userRoleInfo['milestones'].splice(value, 1);
+                        this.userMilestones.splice(value, 1);
 
                     }
                     else if (this.hasChanged === false) {
 
-                        const data = this.userRoleInfo['milestones'][value];
+                        const data = this.userMilestones[value];
                         axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(response => {
                         });
-                        this.userRoleInfo['milestones'].splice(value, 1);
+                        this.userMilestones.splice(value, 1);
                     }
 
                 }

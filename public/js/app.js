@@ -56583,6 +56583,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             milestoneInfo: this.userInfo,
             show: false,
             isCurrent: false,
+            userMilestones: this.userdata['milestones'],
             careerRoleId: '',
             newRoleTitle: '',
             newRoleDescription: '',
@@ -56724,11 +56725,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         addMilestone: function addMilestone(data) {
-            this.userRoleInfo['milestones'].push(data[0]);
+            this.userMilestones.push(data[0]);
         },
         pushMilestone: function pushMilestone(data) {
             if (this.hasChanged === true) {
-                this.userRoleInfo['milestones'].push(data[0]);
+                this.userMilestones.push(data[0]);
             }
         },
         showForm: function showForm() {
@@ -56741,12 +56742,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.canEdit === true) {
                 if (this.hasChanged === true) {
 
-                    this.userRoleInfo['milestones'].splice(value, 1);
+                    this.userMilestones.splice(value, 1);
                 } else if (this.hasChanged === false) {
 
-                    var data = this.userRoleInfo['milestones'][value];
+                    var data = this.userMilestones[value];
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(function (response) {});
-                    this.userRoleInfo['milestones'].splice(value, 1);
+                    this.userMilestones.splice(value, 1);
                 }
             }
         }
@@ -57234,10 +57235,7 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._l(_vm.userRoleInfo["milestones"], function(
-                  milestone,
-                  index
-                ) {
+                _vm._l(_vm.userMilestones, function(milestone, index) {
                   return _c("user-career-milestone", {
                     key: index + 1,
                     attrs: {
