@@ -110,7 +110,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/users/list/', 'UserController@AdminUsersListView')->name('returnAdminUserList');
     Route::get('admin/team/create', 'TeamsController@teamView')->name('returnTeam');
     Route::post('admin/team/create', 'TeamsController@createTeam')->name('createTeam');
-    Route::get('/users', 'UserController@users')->name('usersInfo');
+    /*Route::get('/users', 'UserController@users')->name('usersInfo');
+        Võibolla vaja see ära kustada (See annab kõigi kasutajate kõik andmed tabelist users)
+    */
 
     Route::put('/admin/team/{id}/update', 'TeamsController@update')->name('updateTeam');
     Route::delete('/admin/team/{id}/delete', 'TeamsController@delete')->name('deleteTeam');
