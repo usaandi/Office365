@@ -63142,7 +63142,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: { click: _vm.close }
               },
-              [_vm._v("CANCEL")]
+              [_vm._v("Cancel")]
             ),
             _vm._v(" "),
             _c(
@@ -63152,7 +63152,7 @@ var render = function() {
                 attrs: { type: "submit" },
                 on: { click: _vm.submit }
               },
-              [_vm._v("SUBMIT")]
+              [_vm._v("Submit")]
             )
           ])
         ]
@@ -65260,7 +65260,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: { click: _vm.cancel }
                 },
-                [_vm._v("\n                CANCEL\n            ")]
+                [_vm._v("\n                Cancel\n            ")]
               ),
               _vm._v(" "),
               _c(
@@ -65270,7 +65270,7 @@ var render = function() {
                   attrs: { type: "submit" },
                   on: { click: _vm.submit }
                 },
-                [_vm._v("SUBMIT")]
+                [_vm._v("Submit")]
               )
             ])
           ])
