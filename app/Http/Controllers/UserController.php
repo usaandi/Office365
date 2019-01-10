@@ -173,7 +173,7 @@ class UserController extends Controller
                 'birthday' => $birthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
             $user->save();
 
-            return redirect()->back();
+            return redirect()->back()->with('success', true);
         } catch (\Exception $e) {
 
 
