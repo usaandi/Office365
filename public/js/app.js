@@ -54800,7 +54800,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             userDatas: null,
             careerRoleId: '',
             show: false,
-            hasChanged: false,
+
             users: null,
             userModel: '',
             hasMilestoneError: null,
@@ -54862,9 +54862,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         showForm: function showForm() {
             if (this.canEdit === true) {
-                if (this.hasChanged === false) {
-                    this.show === false ? this.show = true : this.show = false;
-                }
+
+                this.show === false ? this.show = true : this.show = false;
             }
         },
         checkCanEdit: function checkCanEdit() {
@@ -55006,7 +55005,6 @@ var render = function() {
             return _c("career-role", {
               key: userInfo.id,
               attrs: {
-                hasChanged: _vm.hasChanged,
                 canEdit: _vm.canEdit,
                 authUserId: _vm.AuthUserId,
                 userdata: userInfo,
@@ -56363,7 +56361,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56543,7 +56541,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['authUserId', 'userdata', 'selectedUserProfileId', 'usersList', 'canEdit', 'hasChanged', 'hasMilestoneError', 'isActive'],
+    props: ['authUserId', 'userdata', 'selectedUserProfileId', 'usersList', 'canEdit', 'hasMilestoneError', 'isActive'],
 
     name: "CareerRole",
 
@@ -56601,11 +56599,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        showButton: function showButton() {
-            if (!this.hasChanged) {
-                return true;
-            }
-        },
         deleteRequest: function deleteRequest() {
             var _this = this;
 
@@ -56698,11 +56691,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         addMilestone: function addMilestone(data) {
             this.userMilestones.push(data[0]);
-        },
-        pushMilestone: function pushMilestone(data) {
-            if (this.hasChanged === true) {
-                this.userMilestones.push(data[0]);
-            }
         },
         showForm: function showForm() {
             if (this.canEdit === true) {
@@ -57099,7 +57087,6 @@ var render = function() {
                         }
                       ],
                       attrs: {
-                        hasChanged: _vm.hasChanged,
                         usersList: _vm.usersList,
                         careerRoleId: _vm.userRoleInfo.id,
                         selectedUserProfileId: _vm.selectedUserProfileId
@@ -57151,14 +57138,6 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: !this.hasChanged,
-                            expression: "!this.hasChanged"
-                          }
-                        ],
                         staticClass:
                           "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
                         attrs: { type: "button" },
@@ -57178,8 +57157,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: !this.hasChanged && _vm.isActive === 0,
-                            expression: "!this.hasChanged && isActive === 0"
+                            value: _vm.isActive === 0,
+                            expression: "isActive === 0"
                           }
                         ],
                         staticClass:
@@ -59420,7 +59399,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59484,7 +59463,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['careerRoleId', 'selectedUserProfileId', 'usersList', 'hasChanged'],
+    props: ['careerRoleId', 'selectedUserProfileId', 'usersList'],
     name: "CareerMilestoneForm",
     data: function data() {
         return {
@@ -59552,45 +59531,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.task !== '' && this.selected !== '' && this.reminder !== '') {
                 this.hasError = false;
 
-                if (this.hasChanged === false) {
+                var data = [{
+                    taskName: this.task,
+                    reminder: this.reminder,
+                    assignerUserId: this.selected.id,
+                    CareerRoleId: this.careerRoleId
+                }];
 
-                    var data = [{
-                        taskName: this.task,
-                        reminder: this.reminder,
-                        assignerUserId: this.selected.id,
-                        CareerRoleId: this.careerRoleId
-                    }];
+                this.task = '';
+                this.reminder = '';
+                this.assignerUserId = '';
+                this.selected = {};
 
-                    this.task = '';
-                    this.reminder = '';
-                    this.assignerUserId = '';
-                    this.selected = {};
+                var vm = this;
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data).then(function (response) {
 
-                    var vm = this;
-                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data).then(function (response) {
-
-                        _this.$emit('addToMilestones', response.data);
-                        vm.$emit('close');
-                    }).catch(function (error) {});
-                } else if (this.hasChanged === true) {
-
-                    var _data = [{
-                        task: this.task,
-                        reminder: this.reminder,
-                        assigned_id: this.selected.id,
-                        assigned_username: this.selected.name,
-                        completed: 0,
-                        milestone_id: null,
-                        user_id: this.selectedUserProfileId
-                    }];
-
-                    this.task = '';
-                    this.reminder = '';
-                    this.assignerUserId = '';
-                    this.selected = {};
-
-                    this.$emit('pushToMilestones', _data);
-                }
+                    _this.$emit('addToMilestones', response.data);
+                    vm.$emit('close');
+                }).catch(function (error) {});
             } else {
                 this.hasError = true;
             }
