@@ -63917,7 +63917,7 @@ var render = function() {
                   {
                     staticClass:
                       "btn btn-success m-btn m-btn--icon m-btn--pill ",
-                    attrs: { href: "department/add" }
+                    attrs: { href: "admin/department/add" }
                   },
                   [_vm._m(0)]
                 )

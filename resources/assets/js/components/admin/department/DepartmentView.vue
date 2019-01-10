@@ -65,7 +65,7 @@
                     <div class="col-sm-9 col-xs-12">
                         <div class="profile-timeline__action ">
 
-                            <a :href="'department/add'" class="btn btn-success m-btn m-btn--icon m-btn--pill ">
+                            <a :href="'admin/department/add'" class="btn btn-success m-btn m-btn--icon m-btn--pill ">
                                     <span>
                                         <i class="la la-plus"></i>
                                         <span>Add Department</span>
