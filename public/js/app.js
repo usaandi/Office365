@@ -60052,7 +60052,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: { click: _vm.cancelDeletion }
                 },
-                [_vm._v("CANCEL")]
+                [_vm._v("Cancel")]
               ),
               _vm._v(" "),
               _c(
@@ -60066,7 +60066,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("DELETE")]
+                [_vm._v("Delete")]
               )
             ])
           ])
