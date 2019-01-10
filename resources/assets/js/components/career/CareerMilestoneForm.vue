@@ -49,7 +49,7 @@
     import axios from 'axios';
 
     export default {
-        props: ['careerRoleId', 'selectedUserProfileId', 'usersList','hasChanged'],
+        props: ['careerRoleId', 'selectedUserProfileId', 'usersList'],
         name: "CareerMilestoneForm",
         data() {
             return {
@@ -125,7 +125,7 @@
                 if( this.task !== '' && this.selected !== '' && this.reminder !== '' ){
                     this.hasError=false;
 
-                    if(this.hasChanged===false){
+
 
                         const data = [{
                             taskName: this.task,
@@ -150,28 +150,8 @@
                             }).catch(error => {
 
                         });
-                    }
-                    else if (this.hasChanged === true) {
-
-                        const data = [{
-                            task: this.task,
-                            reminder: this.reminder,
-                            assigned_id: this.selected.id,
-                            assigned_username: this.selected.name,
-                            completed: 0,
-                            milestone_id:null,
-                            user_id:this.selectedUserProfileId,
-                        }];
-
-                        this.task = '';
-                        this.reminder = '';
-                        this.assignerUserId = '';
-                        this.selected = {};
-
-                        this.$emit('pushToMilestones',data);
 
 
-                    }
                 }
                 else {
                     this.hasError=true;

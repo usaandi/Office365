@@ -40,7 +40,7 @@
             <div class="m-timeline-2">
                 <div class="m-timeline-2__items">
                     <career-role
-                            :hasChanged="hasChanged"
+
                             :canEdit="canEdit"
                             :authUserId="AuthUserId"
                             v-for="userInfo in sortArray(userDatas)"
@@ -78,7 +78,7 @@
                 userDatas: null,
                 careerRoleId: '',
                 show: false,
-                hasChanged: false,
+
                 users: null,
                 userModel: '',
                 hasMilestoneError: null,
@@ -139,9 +139,9 @@
             },
             showForm() {
                 if (this.canEdit === true) {
-                    if (this.hasChanged === false) {
+
                         this.show === false ? this.show = true : this.show = false;
-                    }
+
                 }
             },
 

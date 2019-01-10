@@ -122,7 +122,7 @@
                                               </span>
                             </a>
                             <milestone-form v-show="show"
-                                            :hasChanged="hasChanged"
+
                                             :usersList="usersList"
                                             :careerRoleId="userRoleInfo.id"
                                             :selectedUserProfileId="selectedUserProfileId"
@@ -144,11 +144,11 @@
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__action">
-                            <button type="button" @click="canEditCareer()" v-show="!this.hasChanged"
+                            <button type="button" @click="canEditCareer()"
                                     class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit
                             </button>
                             <button @click="selectRole(userRoleInfo.id)" type="button"
-                                    v-show="!this.hasChanged && isActive === 0"
+                                    v-show="isActive === 0"
                                     class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current
                             </button>
                         </div>
@@ -166,7 +166,7 @@
 
     export default {
         props: ['authUserId', 'userdata', 'selectedUserProfileId',
-            'usersList', 'canEdit', 'hasChanged', 'hasMilestoneError', 'isActive'],
+            'usersList', 'canEdit', 'hasMilestoneError', 'isActive'],
 
         name: "CareerRole",
 
@@ -235,11 +235,7 @@
 
 
         methods: {
-            showButton() {
-                if (!this.hasChanged) {
-                    return true;
-                }
-            },
+
             deleteRequest() {
                 if (this.canEdit) {
 
@@ -341,11 +337,7 @@
             addMilestone(data) {
                 this.userMilestones.push(data[0]);
             },
-            pushMilestone(data) {
-                if (this.hasChanged === true) {
-                    this.userMilestones.push(data[0]);
-                }
-            },
+
 
             showForm() {
                 if (this.canEdit === true) {
