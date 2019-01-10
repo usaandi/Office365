@@ -139,12 +139,15 @@
                 <div class="row" v-show="!isEditing">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <div class="profile-timeline__notes">
+                            <a  class="btn btn-secondary m-btn m-btn--icon m-btn--pill"><span><i
+                                    class="la la-sticky-note"></i> <span>Notes <span class="m-menu__link-badge"><span
+                                    class="m-badge m-badge--danger"></span></span></span></span></a>
                         </div>
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
                         <div class="profile-timeline__action">
                             <button type="button" @click="canEditCareer()"
-                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Edit
+                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom left">Edit
                             </button>
                             <button @click="selectRole(userRoleInfo.id)" type="button"
                                     v-show="isActive === 0"
