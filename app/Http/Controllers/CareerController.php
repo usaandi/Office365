@@ -536,11 +536,12 @@ class CareerController extends Controller
 
             if ($validator->passes()) {
 
+                $task = ucfirst(strtolower($data['task']));
                 $update = $user->userCareerRoleMilestones()->where('id', $data['id'])
                     ->where('user_career_role_id', $data['userCareerRoleId'])
                     ->where('user_id', $id)
                     ->update([
-                        'task' => $data['task'],
+                        'task' => $task,
                         'reminder' => $data['reminder'],
                         'assigned_id' => $data['selected']['id'],
                     ]);
@@ -551,10 +552,11 @@ class CareerController extends Controller
                     return response(json_encode($jsonData), 200);
                 }
 
-                return response('failure', 400);
+
             }
 
         } catch (\Exception $e) {
+            return response('failure', 400);
         }
     }
 
