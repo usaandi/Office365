@@ -308,6 +308,7 @@ class CareerController extends Controller
                     ]);
 
                     $milestones[] = [
+                        'id' => $userCareerRoleMilestones->id,
                         'milestone_id' => $userCareerRoleMilestones->id,
                         'user_id' => $id,
                         'assigned_id' => $authUser->id,
@@ -412,7 +413,6 @@ class CareerController extends Controller
                             'task' => $milestone['task'],
                             'reminder' => $milestone['reminder'],
                             'completed' => $milestone['completed'],
-
                         ];
                     }
                     unset($milestone);
@@ -425,7 +425,6 @@ class CareerController extends Controller
                     'user_id' => $id,
                     'current_role' => 0,
                     'milestones' => $milestonesArray,
-
                 ];
                 $jsonData = json_encode($career);
                 return response($jsonData, 200)
@@ -524,7 +523,7 @@ class CareerController extends Controller
             $rules = [
 
                 'id' => 'required',
-                'reminder' => 'required',
+                'reminder' => 'nullable',
                 'task' => 'required',
                 'selected.id' => 'required',
                 'selected.name' => 'required',
@@ -553,7 +552,6 @@ class CareerController extends Controller
                 }
 
 
-                return response('failure', 403);
             }
 
         } catch (\Exception $e) {
