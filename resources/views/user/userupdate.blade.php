@@ -39,7 +39,7 @@
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->birthday}}"type="date"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->birthday}}" type="date"
                                                             placeholder="Enter Birthday"
                                                             name="birthday" class="form-control m-input"></div>
                 </div>
@@ -49,9 +49,6 @@
                                                             placeholder="Enter Skype"
                                                             name="skype" class="form-control m-input"></div>
                 </div>
-
-
-
 
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
@@ -78,8 +75,8 @@
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Current
                         Roles: @if($user->hasRole('Moderator'))
-                                 Moderator
-                              @endif
+                            Moderator
+                        @endif
                         @if($user->hasRole('User'))
                             User
                         @endif
@@ -92,8 +89,10 @@
                             <option></option>
                             @foreach($roles as $role)
                                 <option value="{{ $role->name }}"
+                                        @if(isset($user->roles()->first()->id))
                                         @if ($user->roles()->first()->id === $role->id)
                                         selected="selected"
+                                        @endif
                                         @endif
                                 >
                                     {{ $role->name }}

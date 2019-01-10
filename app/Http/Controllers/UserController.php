@@ -157,7 +157,7 @@ class UserController extends Controller
                 $userRole = Role::findByName($role);
 
                 if (!$user->hasRole($userRole)) {
-
+                    $user->assignRole($userRole);
                     if ($user->hasRole('Admin')) {
                         $user->assignRole($userRole);
                     } else {

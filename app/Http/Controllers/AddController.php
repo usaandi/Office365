@@ -88,6 +88,7 @@ class AddController extends Controller
                 return redirect()->back()->with('errors', [$email]);
             }
         } catch (\Exception $e) {
+            return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
         }
     }
 }
