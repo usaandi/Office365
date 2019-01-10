@@ -14,9 +14,12 @@
 @endsection
 
 @section('content-body')
-    <style>
-
-    </style>
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible text-center">
+            <a href="" class="close " data-dismiss="alert" aria-label="close"></a>
+            <strong>User updated</strong>
+        </div>
+    @endif
     <div class="admin__form admin__form--clear"><h4>Update user: {{$user->name}}</h4>
         <form name="form" class="m-form" action="{{route('update',$user)}}" method="post">
             @csrf
