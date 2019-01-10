@@ -69,7 +69,7 @@
 
     export default {
         props: ['currentUserId'],
-        name: "CareerModal",
+        name: "CareerComponent",
         data() {
             return {
                 isHidden: false,
@@ -162,29 +162,6 @@
                         this.users = response.data;
                     });
             },
-            saveRole() {
-                if (this.canEdit) {
-                    if (this.hasChanged) {
-                        const data = this.userDatas[0];
-                        this.userDatas.splice(0, 1);
-                        axios.post('/user/' + this.selectedUserId + '/career/role/save', data)
-                            .then(response => {
-                                this.userDatas.push(response.data);
-                            });
-                        this.show = false;
-                        this.hasChanged = false;
-                    }
-                }
-            },
-            removeElement() {
-                if (this.canEdit) {
-                    if (this.hasChanged) {
-                        this.userDatas.splice(0, 1);
-                        this.hasChanged = false;
-                        this.hasMilestoneError = false;
-                    }
-                }
-            },
             newRole(value) {
                 if (this.canEdit) {
 
@@ -195,18 +172,13 @@
                     let vm = this;
                     axios.post('/user/' + this.selectedUserId + '/career/role/create', data)
                         .then(response => {
-                            if (vm.hasChanged) {
-                                Vue.set(vm.userDatas, 0, response.data[0])
-                            }
-                            else {
-                                vm.hasChanged = true;
-                                vm.userDatas.unshift(response.data[0]);
-                            }
+                            this.userDatas.unshift(response.data[0]);
+
                         }).catch(error => {
                     });
                     if (this.show === true) {
                         this.show = false;
-                        this.buttonTextValue = 'New';
+
                     }
                 }
             },

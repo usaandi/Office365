@@ -151,10 +151,6 @@
                                     v-show="!this.hasChanged && isActive === 0"
                                     class="btn m-btn--pill btn-success m-btn m-btn--custom">Apply as current
                             </button>
-                            <button @click="save" v-show="this.userRoleInfo.id === 'undefined'"
-                                    class="btn btn-success m-btn m-btn--pill"><span><span>Save</span></span></button>
-                            <button @click="remove" v-show="this.userRoleInfo.id === 'undefined'"
-                                    class="btn btn-danger m-btn m-btn--pill"><span><span>Cancel</span></span></button>
                         </div>
                     </div>
                 </div>
@@ -259,10 +255,7 @@
                     }
 
                 }
-
-
             },
-
             selectRole(value) {
 
                 if (this.canEdit) {
@@ -363,25 +356,16 @@
 
 
                 if (this.canEdit === true) {
-                    if (this.hasChanged === true) {
 
-                        this.userMilestones.splice(value, 1);
-                        this.show = false;
+                    const data = this.userMilestones[value];
+                    axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(response => {
+                        if (response.status === 200) {
+                            this.userMilestones.splice(value, 1);
+                            this.show = false;
+                        }
 
+                    });
 
-                    }
-                    else if (this.hasChanged === false) {
-
-                        const data = this.userMilestones[value];
-                        axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(response => {
-                            if (response.status === 200) {
-                                this.userMilestones.splice(value, 1);
-                                this.show = false;
-                            }
-
-                        });
-
-                    }
 
                 }
             },
