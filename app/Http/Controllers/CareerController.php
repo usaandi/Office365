@@ -267,14 +267,14 @@ class CareerController extends Controller
     public function createCareer(Request $request, $id)
     {
         try {
-            $authUser = \Auth::user();
             $user = User::findOrFail($id);
             $this->authorize('createCareer', $user);
-
+            $authUser = \Auth::user();
+            $array = [];
             $data = $request->all();
 
             $rules = [
-                'careerRoleId' => 'required|max:6'
+                'careerRoleId' => 'required'
             ];
             $validator = Validator::make($data, $rules);
 
@@ -286,26 +286,46 @@ class CareerController extends Controller
 
                 $milestones = [];
 
+                $userCareerRole = UserCareerRole::create([
+                    'career_role_id' => $careerRoleId,
+                    'user_id' => $id,
+                    'title' => $careerRoleMilestones['title'],
+                    'description' => $careerRoleMilestones['description'],
+                    'current_role' => 0,
+                ]);
+
                 foreach ($careerRoleMilestones->careerRoleMilestones()->get() as $milestone) {
-                    $milestones[] = [
-                        'id' => '',
+                    $userCareerRoleMilestones = UserCareerRoleMilestone::create([
                         'milestone_id' => $milestone->id,
                         'user_id' => $id,
-                        'user_career_role_id' => '',
-                        'assigned_id' => '',
-                        'assigned_username' => '',
+                        'assigned_id' => $authUser->id,
+
+                        'assigned_username' => $authUser->name,
+                        'user_career_role_id' => $userCareerRole->id,
                         'task' => $milestone->task,
-                        'reminder' => '',
-                        'completed' => '0',
+                        'reminder' => null,
+                        'completed' => 0,
+                    ]);
+
+                    $milestones[] = [
+                        'milestone_id' => $userCareerRoleMilestones->id,
+                        'user_id' => $id,
+                        'assigned_id' => $authUser->id,
+                        'assigned_username' => $authUser->name,
+                        'user_career_role_id' => $userCareerRole->id,
+                        'task' => $milestone->task,
+                        'reminder' => null,
+                        'completed' => 0,
                     ];
                 }
 
                 $array[] = [
-                    'id' => 'undefined',
-                    'career_role_id' => $careerRoleMilestones->id,
-                    'title' => $careerRoleMilestones->title,
-                    'description' => $careerRoleMilestones->description,
+                    'id' => $userCareerRole['id'],
+                    'career_role_id' => $careerRoleId,
+                    'title' => $userCareerRole['title'],
+                    'description' => $userCareerRole['description'],
                     'user_id' => $id,
+                    'current_role' => 0,
                     'milestones' => $milestones,
                 ];
 
@@ -525,7 +545,7 @@ class CareerController extends Controller
                 if ($update === 1) {
                     $jsonData = $user->userCareerRoleMilestones()->where('id', $data['id'])
                         ->where('user_career_role_id', $data['userCareerRoleId'])
-                        ->where('user_id', $id)->first(['id','assigned_id','task','reminder']);
+                        ->where('user_id', $id)->first(['id', 'assigned_id', 'task', 'reminder']);
                     return response(json_encode($jsonData), 200);
                 }
 
