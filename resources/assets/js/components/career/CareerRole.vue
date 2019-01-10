@@ -122,7 +122,6 @@
                                               </span>
                             </a>
                             <milestone-form v-show="show"
-
                                             :usersList="usersList"
                                             :careerRoleId="userRoleInfo.id"
                                             :selectedUserProfileId="selectedUserProfileId"
@@ -238,7 +237,6 @@
 
             deleteRequest() {
                 if (this.canEdit) {
-
                     let confirmation = confirm("Are you sure you want to delete this Career: " + this.userRoleInfo.title);
 
                     if (confirmation) {
@@ -249,7 +247,6 @@
                                 this.success = true;
                             })
                     }
-
                 }
             },
             selectRole(value) {

@@ -41,11 +41,11 @@ class AddController extends Controller
 
                     'name' => 'required',
                     'email' => 'required|email',
-                    'phone' => 'required|int',
-                    'birthday' => 'required|date',
-                    'skype' => 'required',
-                    'ADMsince' => 'required|date',
-                    'department' => 'required',
+                    'phone' => 'nullable|int',
+                    'birthday' => 'nullable|date',
+                    'skype' => 'nullable',
+                    'ADMsince' => 'nullable|date',
+                    'department' => 'nullable',
                     'role' => 'required',
                 ]
             );
@@ -67,23 +67,25 @@ class AddController extends Controller
 
                 $userFind = User::findOrFail($userId);
 
-                UserDepartment::create([
-                   'user_id'=> $userId,
-                   'department_id'=> $departmentId,
-                ]);
+                if ($departmentId) {
+
+                    UserDepartment::create([
+                        'user_id' => $userId,
+                        'department_id' => $departmentId,
+                    ]);
+                }
+
                 $roleName = Role::findById($request->input('role'));
 
                 $userFind->assignRole($roleName);
 
 
-
                 $userFind->save();
 
 
-
-                return redirect()->back()->with('success',true);
+                return redirect()->back()->with('success', true);
             } else {
-                echo 'Sellise nimega isik: '  .$name . ''.' ja Emailiga: ' . $email . ' On juba olemas';
+                return redirect()->back()->with('errors', [$email]);
             }
         } catch (\Exception $e) {
         }
