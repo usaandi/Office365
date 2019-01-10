@@ -116,7 +116,7 @@ class UserController extends Controller
             $this->authorize('update', $userModel);
 
             $request->validate([
-                'name' => 'nullable',
+                'name' => 'required',
                 'phone' => 'int|nullable',
                 'birthday' => 'date|nullable',
                 'skype' => 'nullable',

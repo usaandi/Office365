@@ -32,20 +32,20 @@
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">phone</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->phone}}" required type="text"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->phone}}" type="text"
                                                             placeholder="Enter Phone"
                                                             name="phone" class="form-control m-input"></div>
                 </div>
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->birthday}}" required type="date"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->birthday}}"type="date"
                                                             placeholder="Enter Birthday"
                                                             name="birthday" class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Skype</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->skype}}" required type="text"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->skype}}" type="text"
                                                             placeholder="Enter Skype"
                                                             name="skype" class="form-control m-input"></div>
                 </div>
@@ -88,7 +88,7 @@
                         @endif
 
                     </label>
-                    <div class="col-sm-9 col-xs-12 "><select required name="role" class="form-control m-input">
+                    <div class="col-sm-9 col-xs-12 "><select name="role" class="form-control m-input">
                             <option></option>
                             @foreach($roles as $role)
                                 <option value="{{ $role->name }}"
@@ -106,7 +106,7 @@
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">ADM
                         since</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" required type="date"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" type="date"
                                                             placeholder="Enter Join date"
                                                             name="ADMsince" class="form-control m-input"></div>
                 </div>
