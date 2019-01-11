@@ -145,7 +145,7 @@
     <script>
         $('#form').submit(e => {
             let phone = $('#phoneNumber');
-            if (phone.val().length >= 11) {
+            if (phone.val().length > 11) {
                 phone.addClass('border border-danger');
                 return false;
             }
