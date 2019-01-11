@@ -21,7 +21,7 @@
         </div>
     @endif
     <div class="admin__form admin__form--clear"><h4>Update user: {{$user->name}}</h4>
-        <form name="form" class="m-form" action="{{route('update',$user)}}" method="post">
+        <form id="form" name="form" class="m-form" action="{{route('update',$user)}}" method="post">
             @csrf
 
 
@@ -34,8 +34,9 @@
                 </div>
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">phone</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->phone}}" type="text"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Phone</label>
+                    <div class="col-sm-9 col-xs-12 "><input id="phoneNumber" value="{{$user->phone}}" type="number"
+                                                            maxlength="12"
                                                             placeholder="Enter Phone"
                                                             name="phone" class="form-control m-input"></div>
                 </div>
@@ -141,4 +142,17 @@
     </div>
     @endhasanyrole
 
+    <script>
+        $('#form').submit(e => {
+            let phone = $('#phoneNumber');
+            if (phone.val().length >= 11) {
+                phone.addClass('border border-danger');
+                return false;
+            }
+            else {
+                phone.removeClass('border border-danger')
+                return true;
+            }
+        })
+    </script>
 @endsection

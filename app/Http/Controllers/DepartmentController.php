@@ -142,8 +142,8 @@ class DepartmentController extends Controller
 
             $data = $request->all();
             $rules = [
-                'departmentName' => 'required|string|min:3|max:255',
-                'departmentAbbr' => 'required|string|min:3|max:10',
+                'departmentName' => 'required|string|max:255',
+                'departmentAbbr' => 'required|string|max:10',
                 'description' => 'required|string|min:3|max:2000',
             ];
 

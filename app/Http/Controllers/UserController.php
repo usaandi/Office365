@@ -117,7 +117,7 @@ class UserController extends Controller
 
             $request->validate([
                 'name' => 'required',
-                'phone' => 'int|nullable',
+                'phone' => 'numeric|nullable',
                 'birthday' => 'date|nullable',
                 'skype' => 'nullable',
                 'ADMsince' => 'date|nullable',
@@ -177,7 +177,7 @@ class UserController extends Controller
         } catch (\Exception $e) {
 
 
-            return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
+            return view('unauthorized.unauthorized', with(['error' => 'Something went Wrong']));
         }
 
     }
@@ -212,12 +212,11 @@ class UserController extends Controller
             // Validate that the current user is authorized to do this update.
             // authorize will automatically kill the request if auth fails.
 
-
             $user = User::findOrFail($id);
             $this->authorize('update', $user);
 
             $request->validate([
-                'data' => 'required:'
+                'data' => 'required|max:15'
             ]);
 
             $phone = $request->data;
@@ -229,7 +228,7 @@ class UserController extends Controller
                 ->header('Content-Type', 'application/json');
 
         } catch (\Exception $e) {
-            return response($e->getMessage(), 400)
+            return response('Invalid number', 400)
                 ->header('Content-Type', 'application/json');
         }
 

@@ -31,19 +31,19 @@
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Fullname</label>
-                    <div class="col-sm-9 col-xs-12 "><input required name="departmentName" type="text"
+                    <div class="col-sm-9 col-xs-12 "><input   required name="departmentName" type="text"
                                                             placeholder="Department Fullname"
                                                             class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Abbreviation</label>
-                    <div class="col-sm-9 col-xs-12 "><input required name="departmentAbbr" type="text"
+                    <div class="col-sm-9 col-xs-12 "><input  required name="departmentAbbr" type="text"
                                                             placeholder="Department abbreviation"
                                                             class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="exampleTextarea"
                                                                  class="col-sm-3 col-xs-12 col-form-label">Description</label>
-                    <div class="col-sm-9 col-xs-12"><textarea required maxlength="1000" id="exampleTextarea" rows="3"
+                    <div class="col-sm-9 col-xs-12"><textarea required maxlength="2000" id="exampleTextarea" rows="3"
                                                               class="form-control m-input"
                                                               name="description"></textarea></div>
                 </div>
