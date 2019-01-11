@@ -103,7 +103,7 @@ class UserChildController extends Controller
         catch(\Exception $e) {
 
         }
-        return response('Error Deleting Hobby', 400)
+        return response('Error Deleting child', 400)
             ->header('Content-Type', 'application/json');
 
     }

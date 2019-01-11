@@ -102,11 +102,9 @@
                         vm.errors = null;
 
                         vm.dateBorn = null;
-                        if (vm.name !== null) {
-                            let data = response.data;
-                            vm.$emit('update', data)
 
-                        }
+                        let data = response.data;
+                        vm.$emit('update', data)
 
 
                     }).catch(error => {
