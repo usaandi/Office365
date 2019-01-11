@@ -3981,12 +3981,14 @@ module.exports = __webpack_require__(294);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_ChecksPrivileges__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_vue_dist_bootstrap_vue_css__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_vue_dist_bootstrap_vue_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_bootstrap_vue_dist_bootstrap_vue_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_select__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_select__);
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventBus", function() { return EventBus; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_ChecksPrivileges__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap_vue_dist_bootstrap_vue_css__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap_vue_dist_bootstrap_vue_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_bootstrap_vue_dist_bootstrap_vue_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_select__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -3995,7 +3997,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __webpack_require__(17);
 
-window.Vue = __webpack_require__(40);
+
+var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -4005,62 +4008,63 @@ window.Vue = __webpack_require__(40);
 
 
 
-Vue.component('modal', {});
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0__services_ChecksPrivileges__["a" /* default */]);
-Vue.component('user-list', __webpack_require__(49));
-Vue.component('user-list-view', __webpack_require__(55));
-Vue.component('profile-view', __webpack_require__(60));
-Vue.component('profile-avatar', __webpack_require__(69));
-Vue.component('file-upload', __webpack_require__(74));
-Vue.component('department-list', __webpack_require__(77));
-Vue.component('department-list-view', __webpack_require__(82));
-Vue.component('team-list', __webpack_require__(87));
-Vue.component('team-list-view', __webpack_require__(94));
-Vue.component('user-development', __webpack_require__(99));
-Vue.component('user-department', __webpack_require__(104));
-Vue.component('user-team', __webpack_require__(109));
-Vue.component('user-hobbies', __webpack_require__(114));
-Vue.component('user-children', __webpack_require__(119));
-Vue.component('user-role', __webpack_require__(124));
-Vue.component('add-career', __webpack_require__(129));
-Vue.component('user-career', __webpack_require__(134));
-Vue.component('user-description', __webpack_require__(139));
-Vue.component('user-strenght', __webpack_require__(144));
-Vue.component('user-training', __webpack_require__(149));
-Vue.component('user-project', __webpack_require__(154));
-Vue.component('user-skill', __webpack_require__(159));
-Vue.component('user-badge', __webpack_require__(164));
-Vue.component('career-role', __webpack_require__(169));
-Vue.component('editable-input-component', __webpack_require__(14));
-Vue.component('user-career-milestone', __webpack_require__(174));
-Vue.component('user-team-moderator', __webpack_require__(179));
-Vue.component('admin-career-template-manager', __webpack_require__(184));
-Vue.component('v-select', __WEBPACK_IMPORTED_MODULE_2_vue_select___default.a);
-Vue.component('milestone-form', __webpack_require__(189));
-Vue.component('users-list-head', __webpack_require__(194));
-Vue.component('users-list-body', __webpack_require__(199));
-Vue.component('career-role-form', __webpack_require__(204));
-Vue.component('user-child-form', __webpack_require__(209));
-Vue.component('user-hobby-form', __webpack_require__(214));
-Vue.component('admin-view-strength-category', __webpack_require__(219));
-Vue.component('strength-category-view', __webpack_require__(224));
-Vue.component('strength-component', __webpack_require__(229));
-Vue.component('category-view', __webpack_require__(234));
-Vue.component('category-component', __webpack_require__(239));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', {});
 
-Vue.component('admin-view-team', __webpack_require__(244));
-Vue.component('admin-view-department', __webpack_require__(249));
-Vue.component('admin-department-body', __webpack_require__(254));
-Vue.component('admin-team-body', __webpack_require__(259));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1__services_ChecksPrivileges__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-list', __webpack_require__(49));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-list-view', __webpack_require__(55));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('profile-view', __webpack_require__(60));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('profile-avatar', __webpack_require__(69));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('file-upload', __webpack_require__(74));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('department-list', __webpack_require__(77));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('department-list-view', __webpack_require__(82));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('team-list', __webpack_require__(87));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('team-list-view', __webpack_require__(94));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-development', __webpack_require__(99));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-department', __webpack_require__(104));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-team', __webpack_require__(109));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-hobbies', __webpack_require__(114));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-children', __webpack_require__(119));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-role', __webpack_require__(124));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('add-career', __webpack_require__(129));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-career', __webpack_require__(134));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-description', __webpack_require__(139));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-strenght', __webpack_require__(144));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-training', __webpack_require__(149));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-project', __webpack_require__(154));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-skill', __webpack_require__(159));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-badge', __webpack_require__(164));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('career-role', __webpack_require__(169));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('editable-input-component', __webpack_require__(14));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-career-milestone', __webpack_require__(174));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-team-moderator', __webpack_require__(179));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-career-template-manager', __webpack_require__(184));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('v-select', __WEBPACK_IMPORTED_MODULE_3_vue_select___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('milestone-form', __webpack_require__(189));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('users-list-head', __webpack_require__(194));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('users-list-body', __webpack_require__(199));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('career-role-form', __webpack_require__(204));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-child-form', __webpack_require__(209));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-hobby-form', __webpack_require__(214));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-view-strength-category', __webpack_require__(219));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('strength-category-view', __webpack_require__(224));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('strength-component', __webpack_require__(229));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('category-view', __webpack_require__(234));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('category-component', __webpack_require__(239));
 
-Vue.component('admin-view-user-strength', __webpack_require__(264));
-Vue.component('admin-user-strength', __webpack_require__(269));
-Vue.component('admin-view-team-moderator', __webpack_require__(274));
-Vue.component('department-user-strength-category', __webpack_require__(279));
-Vue.component('modal', __webpack_require__(284));
-Vue.component('search', __webpack_require__(289));
-var app = new Vue({
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-view-team', __webpack_require__(244));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-view-department', __webpack_require__(249));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-department-body', __webpack_require__(254));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-team-body', __webpack_require__(259));
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-view-user-strength', __webpack_require__(264));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-user-strength', __webpack_require__(269));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('admin-view-team-moderator', __webpack_require__(274));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('department-user-strength-category', __webpack_require__(279));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', __webpack_require__(284));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('search', __webpack_require__(289));
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
 });
 
