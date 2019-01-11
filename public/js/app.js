@@ -49045,7 +49045,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49056,6 +49056,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -49089,6 +49091,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "EditableInputComponent",
@@ -49113,7 +49116,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         upload: function upload() {
 
             var vm = this;
-            axios.post(this.endpoint, { data: this.elementdata }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(this.endpoint, { data: this.elementdata }).then(function (response) {
                 vm.$emit('input-updated', vm.elementdata);
             });
         }
@@ -60712,7 +60715,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60826,10 +60829,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 vm.errors = null;
 
                 vm.dateBorn = null;
-                if (vm.name !== null) {
-                    var _data = response.data;
-                    vm.$emit('update', _data);
-                }
+
+                var data = response.data;
+                vm.$emit('update', data);
             }).catch(function (error) {});
         }
     },
@@ -63859,7 +63861,7 @@ var render = function() {
       _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
         _c("div", { staticClass: "m-form__actions" }, [
           _c("div", { staticClass: "row m--margin-bottom-15" }, [
-            _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+            _c("div", { staticClass: "col-lg-12 col-sm-3 col-xs-12 " }, [
               _c(
                 "div",
                 {
@@ -63930,7 +63932,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+            _c("div", { staticClass: "col-lg-12 col-sm-9 col-xs-12 " }, [
               _c("div", { staticClass: "profile-timeline__action " }, [
                 _c(
                   "a",

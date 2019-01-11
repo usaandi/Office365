@@ -68,10 +68,8 @@
                                                     </div>
                                                     <div class="m-card-user__details">
                               <span class="m-card-user__name m--font-weight-500">
-																		Mark Andre
 																	</span>
                                                         <a href="" class="m-card-user__email m--font-weight-300 m-link">
-                                                            mark.andre@gmail.com
                                                         </a>
                                                     </div>
                                                 </div>
@@ -310,7 +308,8 @@
                                                         class="m-menu__link-text">Team List</span></a></li>
                                         <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="{{route('adminCareerTemplateManagerView')}}" class="m-menu__link "><i
+                                                    href="{{route('adminCareerTemplateManagerView')}}"
+                                                    class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Manage Career Template</span></a></li>
                                     </ul>
