@@ -13,7 +13,11 @@ class DepartmentUserCategoryStrengthController extends Controller
     {
         try {
 
-            return view('ViewListOfStrengths');
+            $user = $this->departmentUserStrength();
+            $category = $this->categoryStrength();
+
+
+            return view('ViewListOfStrengths')->with(['user' => $user, 'category' => $category]);
 
         } catch (\Exception $e) {
         }
@@ -76,9 +80,8 @@ class DepartmentUserCategoryStrengthController extends Controller
                             'strength_name' => $strength['strength']['strength_name'],
                         ];
                     }
-                }
-                else {
-                    $strengthCategoryArray[$i]['strengths']=[];
+                } else {
+                    $strengthCategoryArray[$i]['strengths'] = [];
                 }
             }
 
