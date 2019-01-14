@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/admin/department/delete', 'DepartmentController@delete')->name('deleteDepartment');
 
     });
-    Route::post('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
+    Route::patch('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
     Route::get('/users', 'UserController@userIdName')->name('usersIdName');
     Route::post('/user/{id}/update', 'UserController@update')->name('update');
     Route::get('/strength/list', 'StrengthController@returnStrengthName')->name('strengthsName');
