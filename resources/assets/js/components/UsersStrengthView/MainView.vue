@@ -49,13 +49,17 @@
     import axios from 'axios';
 
     export default {
+        props: {
+            'user': {required: true},
+            'category': {require: true}
+        },
         name: "department",
         data() {
 
 
             return {
-                categories: '',
-                departments: '',
+                categories: this.category,
+                departments: this.user,
                 strengths: [],
                 styleText: {
                     color: 'white',
@@ -69,8 +73,10 @@
         },
         mounted() {
 
-            this.fetchCategories();
-            this.fetchDepartment();
+            /*        this.fetchCategories();
+                    this.fetchDepartment();*/
+            this.loopThrough(this.categories);
+            this.sortArray();
 
         },
         computed: {},
