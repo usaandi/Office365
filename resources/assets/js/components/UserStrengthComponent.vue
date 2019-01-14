@@ -52,11 +52,7 @@
                     this.checkDisable = true;
                 }
             }
-            /*,
-            selectedObject(){
-                this.selected={strength}
 
-            }*/
         }
     }
 </script>
