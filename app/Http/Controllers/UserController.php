@@ -131,6 +131,9 @@ class UserController extends Controller
             $ADMsince = $request->input('ADMsince');
             $role = $request->input('role');
             $departmentId = $request->input('department');
+            if ($role === null) {
+                $role = 'User';
+            }
 
             $userDepartment = UserDepartment::where('user_id', $id)->get();
 
