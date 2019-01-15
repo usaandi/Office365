@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <table v-if="categories && departments" class="table table-bordered text-center table-responsive ">
+        <table class="table table-bordered text-center table-responsive ">
             <thead>
             <tr>
                 <th></th>
@@ -37,9 +37,6 @@
             </tr>
             </tbody>
         </table>
-        <div v-if="departments === null && categories === null" class="text-center text-body m--font-bold">
-            There is no information about Departments and Users
-        </div>
 
 
     </div>
@@ -84,29 +81,33 @@
 
             backGroundColor(strength, userStrengths) {
 
-                if (userStrengths.length > 0) {
-                    for (let i = 0; i < userStrengths.length; i++) {
+                let length = userStrengths.length;
+
+                if (length > 0) {
+                    for (let i = 0; i < length; i++) {
                         if (strength.strength_id === userStrengths[i].strength_id) {
                             if (userStrengths[i].strength_rank < 6) {
                                 return this.styleBackground;
                             }
                         }
                     }
-                    return ''
+                    return '';
                 }
 
             },
             strengthColor(strength, userStrengths) {
 
-                if (userStrengths.length > 0) {
-                    for (let i = 0; i < userStrengths.length; i++) {
+                let length = userStrengths.length;
+
+                if (length > 0) {
+                    for (let i = 0; i < length; i++) {
                         if (strength.strength_id === userStrengths[i].strength_id) {
                             if (userStrengths[i].strength_rank < 6) {
                                 return this.styleText;
                             }
                         }
                     }
-                    return ''
+                    return '';
                 }
 
             },
@@ -174,10 +175,14 @@
             checkStrength(strength, userStrengths) {
                 for (let i = 0; i < userStrengths.length; i++) {
                     if (strength.strength_id === userStrengths[i].strength_id) {
-                        return userStrengths[i].strength_rank;
+                        console.log(true+' '+ userStrengths[i]['strength_rank']);
+                        return userStrengths[i]['strength_rank'];
                     }
+
                 }
+                console.log(false);
                 return '';
+
             },
         }
     }
