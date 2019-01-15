@@ -10,7 +10,7 @@
                                 Personal development
                             </h3>
                         </div>
-                        <div class="m-subheader__action" >
+                        <div class="m-subheader__action">
                             <a v-show="!show" tabindex="" class="btn btn-success m-btn m-btn--icon m-btn--pill"
                                @click="showForm">
                             <span>
@@ -65,7 +65,9 @@
 </template>
 
 <script>
+
     import axios from 'axios';
+    import Vue from 'vue';
 
     export default {
         props: ['currentUserId'],
@@ -139,8 +141,7 @@
             },
             showForm() {
                 if (this.canEdit === true) {
-
-                        this.show === false ? this.show = true : this.show = false;
+                    this.show === false ? this.show = true : this.show = false;
 
                 }
             },

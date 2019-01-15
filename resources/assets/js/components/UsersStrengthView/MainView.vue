@@ -175,12 +175,10 @@
             checkStrength(strength, userStrengths) {
                 for (let i = 0; i < userStrengths.length; i++) {
                     if (strength.strength_id === userStrengths[i].strength_id) {
-                        console.log(true+' '+ userStrengths[i]['strength_rank']);
                         return userStrengths[i]['strength_rank'];
                     }
 
                 }
-                console.log(false);
                 return '';
 
             },

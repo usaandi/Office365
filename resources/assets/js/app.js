@@ -5,9 +5,7 @@
  */
 
 require('./bootstrap');
-
 import Vue from 'vue';
-export const EventBus = new Vue();
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -22,6 +20,7 @@ Vue.component('modal', {});
 
 
 Vue.use(ChecksPrivileges);
+Vue.component('user-career', require('./components/career/CareerComponent'));
 Vue.component('user-list', require('./components/user/UsersListComponent.vue'));
 Vue.component('user-list-view', require('./components/user/UserListViewComponent'));
 Vue.component('profile-view', require('./components/user/ProfileView'));
@@ -38,7 +37,6 @@ Vue.component('user-hobbies', require('./components/user/UserHobby'));
 Vue.component('user-children', require('./components/user/UserChild'));
 Vue.component('user-role', require('./components/user/UserRole'));
 Vue.component('add-career', require('./components/career/AddCareer'));
-Vue.component('user-career', require('./components/career/CareerComponent'));
 Vue.component('user-description', require('./components/career/DescriptionComponent'));
 Vue.component('user-strenght', require('./components/user/UserStrenght'));
 Vue.component('user-training', require('./components/user/UserTraining'));
@@ -74,6 +72,7 @@ Vue.component('admin-view-team-moderator', require('./components/admin/team/Team
 Vue.component('department-user-strength-category', require('./components/UsersStrengthView/MainView'));
 Vue.component('modal', require('./components/Modal/modal'));
 Vue.component('search', require('./components/search/SearchComponent'));
+
 const app = new Vue({
     el: '#app',
 });
