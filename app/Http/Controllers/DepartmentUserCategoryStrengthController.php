@@ -53,7 +53,6 @@ class DepartmentUserCategoryStrengthController extends Controller
                 }
             }
             return $departmentArray;
-
         } catch (\Exception $e) {
         }
     }
@@ -84,7 +83,6 @@ class DepartmentUserCategoryStrengthController extends Controller
                     $strengthCategoryArray[$i]['strengths'] = [];
                 }
             }
-
             return $strengthCategoryArray;
         } catch (\Exception $e) {
 
