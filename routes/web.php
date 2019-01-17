@@ -113,13 +113,9 @@ Route::group(['middleware' => 'auth'], function () {
     /*Route::get('/users', 'UserController@users')->name('usersInfo');
         Võibolla vaja see ära kustada (See annab kõigi kasutajate kõik andmed tabelist users)
     */
-
     Route::put('/admin/team/{id}/update', 'TeamsController@update')->name('updateTeam');
     Route::delete('/admin/team/{id}/delete', 'TeamsController@delete')->name('deleteTeam');
-
-
     Route::get('/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
-
     Route::get('/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
@@ -131,6 +127,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('admin/career-template/list/', 'AdminCareerTemplateManager@deleteCareer')->name('adminCareerTemplateManagerDeleteCareer');
     Route::delete('admin/career-template/list/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
     Route::patch('/admin/team/list/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
+
+    //Notes
+    Route::get('/user/{id}/career/note/{roleId}', 'NoteController@index')->name('userNote');
 
 
 });

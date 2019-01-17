@@ -48792,7 +48792,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48813,12 +48813,89 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "CareerNotes",
     data: function data() {
         return {
-            hello: 'world'
+            edit: false,
+            description: 'fdkjasfdais Lorem ipsum dolor sit amet, ' + 'consectetur adipiscing elit. fdkjasfdais Lorem ipsum dolor sit amet, ' + 'consectetur adipiscing elit. fdkjasfdais Lorem ipsum dolor sit amet,' + ' consectetur adipiscing elit. fdkjasfdais Lorem ipsum dolor sit amet, ' + 'consectetur adipiscing elit. Aenean euismod'
+
         };
     },
     created: function () {
@@ -48827,7 +48904,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                 while (1) {
                     switch (_context.prev = _context.next) {
                         case 0:
-                        case "end":
+                        case 'end':
                             return _context.stop();
                     }
                 }
@@ -49631,9 +49708,239 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("div", { staticClass: "m-portlet__body" }, [
+      _c(
+        "div",
+        {
+          staticClass: "career__note--border m--margin-bottom-15",
+          staticStyle: { padding: "10px 10px 0" }
+        },
+        [
+          _c("div", { staticClass: "row " }, [
+            _c("div", { staticClass: "col-lg-12 col-sm-12  " }, [
+              _c("div", { staticClass: "m--margin-20" }, [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.edit,
+                        expression: "edit"
+                      }
+                    ]
+                  },
+                  [
+                    _c("div", [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                        [
+                          _c("div", { staticClass: "m-form__actions" }, [
+                            _c("div", { staticClass: "row" }, [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "col-sm-9 col-xs-12 col-lg-10" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "profile-timeline__action" },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.edit = !_vm.edit
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                        Close\n                                                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm._m(2)
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.edit,
+                        expression: "!edit"
+                      }
+                    ]
+                  },
+                  [
+                    _c("div", { staticClass: "career__note--title" }, [
+                      _vm._v("Q12 Tagasiside")
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(_vm.description))])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.edit,
+                  expression: "!edit"
+                }
+              ],
+              staticClass: "profile-timeline__action m--margin-15"
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10",
+                  on: {
+                    click: function($event) {
+                      _vm.edit = !_vm.edit
+                    }
+                  }
+                },
+                [_vm._v("Edit\n                ")]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "m-portlet__body" }, [
+      _c("div", { staticClass: "form-group m-form__group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-lg-2 col-sm-3 col-xs-12 col-form-label",
+            attrs: { for: "title" }
+          },
+          [_vm._v("Title")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-10" }, [
+          _c("input", {
+            staticClass: "form-control m-input",
+            attrs: {
+              id: "title",
+              type: "text",
+              name: "title",
+              placeholder: "Title"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group m-form__group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: " col-2 col-form-label",
+            attrs: { for: "description" }
+          },
+          [_vm._v("Description")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-9 col-xs-12 col-lg-10" }, [
+          _c("textarea", {
+            staticClass: "form-control m-input",
+            attrs: { id: "description", rows: "10", name: "career_description" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-3 col-xs-12 col-lg-2" }, [
+      _c(
+        "button",
+        {
+          staticClass:
+            "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"
+        },
+        [_c("i", { staticClass: "icon flaticon-delete-1" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-success m-btn m-btn--pill",
+        attrs: { type: "submit" }
+      },
+      [_c("span", [_c("span", [_vm._v("Submit")])])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "m--margin-bottom-5 career__note--info" }, [
+      _c(
+        "div",
+        { staticClass: "career__note--info__date m--margin-right-10" },
+        [
+          _vm._v(
+            "\n                                    01.01.2007\n                                "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "career__note--info__assigner" }, [
+        _vm._v("Ain Arend")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -57307,7 +57614,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57320,6 +57627,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -57514,7 +57822,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             descriptionValue: null,
             roleValue: null,
             success: false,
-            dateValue: null
+            dateValue: null,
+            noteRoute: '/user/' + this.selectedUserProfileId + '/career/note/' + this.userdata.id
         };
     },
 
@@ -57787,191 +58096,201 @@ var render = function() {
               ]
             },
             [
-              _c("div", { staticClass: "admin__form" }, [
-                _c("div", { staticClass: "m-portlet__body" }, [
-                  _c("div", { staticClass: "form-group m-form__group row" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-3 col-form-label",
-                        attrs: { for: "title" }
-                      },
-                      [_vm._v("Role")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-9" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.roleValue,
-                            expression: "roleValue"
-                          }
-                        ],
-                        staticClass: "form-control m-input",
-                        attrs: {
-                          id: "title",
-                          type: "text",
-                          name: "title",
-                          placeholder: "Role"
+              _c(
+                "div",
+                {
+                  staticStyle: { padding: "30px 30px 0", "margin-top": "30px" }
+                },
+                [
+                  _c("div", { staticClass: "m-portlet__body" }, [
+                    _c("div", { staticClass: "form-group m-form__group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-3 col-form-label",
+                          attrs: { for: "title" }
                         },
-                        domProps: { value: _vm.roleValue },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.roleValue = $event.target.value
-                          }
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group m-form__group row" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-3 col-form-label",
-                        attrs: { for: "description" }
-                      },
-                      [_vm._v("Description")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.descriptionValue,
-                            expression: "descriptionValue"
-                          }
-                        ],
-                        staticClass: "form-control m-input",
-                        attrs: {
-                          id: "description",
-                          rows: "10",
-                          name: "career_description"
-                        },
-                        domProps: { value: _vm.descriptionValue },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.descriptionValue = $event.target.value
-                          }
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group m-form__group row" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-3 col-form-label",
-                        attrs: { for: "description" }
-                      },
-                      [_vm._v("Date")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.dateValue,
-                            expression: "dateValue"
-                          }
-                        ],
-                        staticClass: "form-control m-input",
-                        attrs: {
-                          type: "date",
-                          id: "date",
-                          name: "career_description"
-                        },
-                        domProps: { value: _vm.dateValue },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.dateValue = $event.target.value
-                          }
-                        }
-                      })
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "m-portlet__foot m-portlet__foot--fit" },
-                  [
-                    _c("div", { staticClass: "m-form__actions" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
-                          _c(
-                            "button",
+                        [_vm._v("Role")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-9" }, [
+                        _c("input", {
+                          directives: [
                             {
-                              staticClass:
-                                "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
-                              on: {
-                                click: function($event) {
-                                  _vm.deleteRequest()
-                                }
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.roleValue,
+                              expression: "roleValue"
+                            }
+                          ],
+                          staticClass: "form-control m-input",
+                          attrs: {
+                            id: "title",
+                            type: "text",
+                            name: "title",
+                            placeholder: "Role"
+                          },
+                          domProps: { value: _vm.roleValue },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
                               }
-                            },
-                            [_c("i", { staticClass: "icon flaticon-delete-1" })]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                          _c(
-                            "div",
-                            { staticClass: "profile-timeline__action" },
-                            [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.clear()
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                            Close\n                                        "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-success m-btn m-btn--pill",
-                                  attrs: { type: "submit" },
-                                  on: { click: _vm.submitChanges }
-                                },
-                                [_vm._m(1)]
-                              )
-                            ]
-                          )
-                        ])
+                              _vm.roleValue = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group m-form__group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-3 col-form-label",
+                          attrs: { for: "description" }
+                        },
+                        [_vm._v("Description")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.descriptionValue,
+                              expression: "descriptionValue"
+                            }
+                          ],
+                          staticClass: "form-control m-input",
+                          attrs: {
+                            id: "description",
+                            rows: "10",
+                            name: "career_description"
+                          },
+                          domProps: { value: _vm.descriptionValue },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.descriptionValue = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group m-form__group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-3 col-form-label",
+                          attrs: { for: "description" }
+                        },
+                        [_vm._v("Date")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.dateValue,
+                              expression: "dateValue"
+                            }
+                          ],
+                          staticClass: "form-control m-input",
+                          attrs: {
+                            type: "date",
+                            id: "date",
+                            name: "career_description"
+                          },
+                          domProps: { value: _vm.dateValue },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.dateValue = $event.target.value
+                            }
+                          }
+                        })
                       ])
                     ])
-                  ]
-                )
-              ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "m-portlet__foot m-portlet__foot--fit" },
+                    [
+                      _c("div", { staticClass: "m-form__actions" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
+                                on: {
+                                  click: function($event) {
+                                    _vm.deleteRequest()
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "icon flaticon-delete-1"
+                                })
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                            _c(
+                              "div",
+                              { staticClass: "profile-timeline__action" },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.clear()
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Close\n                                        "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-success m-btn m-btn--pill",
+                                    attrs: { type: "submit" },
+                                    on: { click: _vm.submitChanges }
+                                  },
+                                  [_vm._m(1)]
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ]
+              )
             ]
           ),
           _vm._v(" "),
@@ -58075,7 +58394,23 @@ var render = function() {
               staticClass: "row"
             },
             [
-              _vm._m(4),
+              _c(
+                "div",
+                { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" },
+                [
+                  _c("div", { staticClass: "profile-timeline__notes" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "btn btn-secondary m-btn m-btn--icon m-btn--pill",
+                        attrs: { href: _vm.noteRoute }
+                      },
+                      [_vm._m(4)]
+                    )
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -58168,24 +58503,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-3 col-md-3 col-lg-2 col-xs-12" }, [
-      _c("div", { staticClass: "profile-timeline__notes" }, [
-        _c(
-          "a",
-          { staticClass: "btn btn-secondary m-btn m-btn--icon m-btn--pill" },
-          [
-            _c("span", [
-              _c("i", { staticClass: "la la-sticky-note" }),
-              _vm._v(" "),
-              _c("span", [
-                _vm._v("Notes "),
-                _c("span", { staticClass: "m-menu__link-badge" }, [
-                  _c("span", { staticClass: "m-badge m-badge--danger" })
-                ])
-              ])
-            ])
-          ]
-        )
+    return _c("span", [
+      _c("i", { staticClass: "la la-sticky-note" }),
+      _vm._v(" "),
+      _c("span", [
+        _vm._v("Notes "),
+        _c("span", { staticClass: "m-menu__link-badge" }, [
+          _c("span", { staticClass: "m-badge m-badge--danger" })
+        ])
       ])
     ])
   }
