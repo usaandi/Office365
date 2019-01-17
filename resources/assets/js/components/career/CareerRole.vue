@@ -34,7 +34,7 @@
                 </div>
 
                 <div v-show="isEditing">
-                    <div class="admin__form">
+                    <div class="" style="padding:30px 30px 0; margin-top: 30px">
                         <div class="m-portlet__body">
 
                             <div class="form-group m-form__group row">
@@ -139,9 +139,10 @@
                 <div class="row" v-show="!isEditing">
                     <div class="col-sm-3 col-md-3 col-lg-2 col-xs-12">
                         <div class="profile-timeline__notes">
-                            <a  class="btn btn-secondary m-btn m-btn--icon m-btn--pill"><span><i
+                            <a class="btn btn-secondary m-btn m-btn--icon m-btn--pill" :href="noteRoute"><span
+                            ><i
                                     class="la la-sticky-note"></i> <span>Notes <span class="m-menu__link-badge"><span
-                                    class="m-badge m-badge--danger"></span></span></span></span></a>
+                                    class="m-badge m-badge--danger"> </span></span></span></span></a>
                         </div>
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
@@ -194,6 +195,7 @@
                 roleValue: null,
                 success: false,
                 dateValue: null,
+                noteRoute: '/user/' + this.selectedUserProfileId + '/career/note/' + this.userdata.id,
             }
         },
         watch: {
@@ -216,6 +218,8 @@
             this.currentlySelected();
         },
         computed: {
+
+
             sortArray(array) {
 
 
@@ -237,7 +241,6 @@
 
 
         methods: {
-
             deleteRequest() {
                 if (this.canEdit) {
                     let confirmation = confirm("Are you sure you want to delete this Career: " + this.userRoleInfo.title);
