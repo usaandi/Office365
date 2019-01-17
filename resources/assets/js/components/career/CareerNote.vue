@@ -1,9 +1,15 @@
 <template>
-    $END$
+
 </template>
 
 <script>
+
     export default {
+        props: {
+            note: {
+                required: true
+            }
+        }
         name: "CareerNote"
     }
 </script>

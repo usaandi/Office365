@@ -13,8 +13,8 @@
                                                 for="title"
                                                 class="col-lg-1 col-sm-3 col-xs-12 col-form-label">Title</label>
                                             <div class="col-lg-11"><input id="title" type="text"
-                                                                         name="title" placeholder="Title"
-                                                                         class="form-control m-input"></div>
+                                                                          name="title" placeholder="Title"
+                                                                          class="form-control m-input"></div>
                                         </div>
                                         <div class="form-group m-form__group row"><label
                                                 for="description"
@@ -60,7 +60,7 @@
                                     <div class="career__note--info__assigner">Ain Arend</div>
                                 </div>
 
-                                <p>{{description}}</p>
+                                <p></p>
                             </div>
                         </div>
                     </div>
@@ -79,20 +79,17 @@
 
 <script>
     export default {
+        props: {
+            notes: {
+                required: true
+            },
+        },
         name: "CareerNotes",
         data: () => ({
             edit: false,
-            description: 'fdkjasfdais Lorem ipsum dolor sit amet, ' +
-                'consectetur adipiscing elit. fdkjasfdais Lorem ipsum dolor sit amet, ' +
-                'consectetur adipiscing elit. fdkjasfdais Lorem ipsum dolor sit amet,' +
-                ' consectetur adipiscing elit. fdkjasfdais Lorem ipsum dolor sit amet, ' +
-                'consectetur adipiscing elit. Aenean euismod',
 
         }),
-        async created() {
 
-
-        }
     }
 </script>
 
