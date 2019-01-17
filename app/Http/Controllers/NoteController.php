@@ -24,4 +24,12 @@ class NoteController extends Controller
 
         }
     }
+
+    protected function noteInfo($userId, $careerRoleId)
+    {
+        try {
+
+        } catch (\Exception $e) {
+        }
+    }
 }

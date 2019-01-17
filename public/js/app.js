@@ -49854,13 +49854,13 @@ var staticRenderFns = [
         _c(
           "label",
           {
-            staticClass: "col-lg-2 col-sm-3 col-xs-12 col-form-label",
+            staticClass: "col-lg-1 col-sm-3 col-xs-12 col-form-label",
             attrs: { for: "title" }
           },
           [_vm._v("Title")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-10" }, [
+        _c("div", { staticClass: "col-lg-11" }, [
           _c("input", {
             staticClass: "form-control m-input",
             attrs: {
@@ -49877,13 +49877,13 @@ var staticRenderFns = [
         _c(
           "label",
           {
-            staticClass: " col-2 col-form-label",
+            staticClass: " col-1 col-form-label",
             attrs: { for: "description" }
           },
           [_vm._v("Description")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-9 col-xs-12 col-lg-10" }, [
+        _c("div", { staticClass: "col-sm-9 col-xs-12 col-lg-11" }, [
           _c("textarea", {
             staticClass: "form-control m-input",
             attrs: { id: "description", rows: "10", name: "career_description" }

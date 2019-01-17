@@ -11,15 +11,15 @@
                                     <div class="m-portlet__body">
                                         <div class="form-group m-form__group row"><label
                                                 for="title"
-                                                class="col-lg-2 col-sm-3 col-xs-12 col-form-label">Title</label>
-                                            <div class="col-lg-10"><input id="title" type="text"
+                                                class="col-lg-1 col-sm-3 col-xs-12 col-form-label">Title</label>
+                                            <div class="col-lg-11"><input id="title" type="text"
                                                                          name="title" placeholder="Title"
                                                                          class="form-control m-input"></div>
                                         </div>
                                         <div class="form-group m-form__group row"><label
                                                 for="description"
-                                                class=" col-2 col-form-label">Description</label>
-                                            <div class="col-sm-9 col-xs-12 col-lg-10"><textarea
+                                                class=" col-1 col-form-label">Description</label>
+                                            <div class="col-sm-9 col-xs-12 col-lg-11"><textarea
                                                     id="description" rows="10"
                                                     name="career_description"
                                                     class="form-control m-input"></textarea>
