@@ -29,4 +29,10 @@ class UserCareerRole extends Model
     {
         return $this->hasMany(UserCareerRoleMilestone::class, 'user_career_role_id');
     }
+
+    public function careerNotes()
+    {
+        return $this->hasMany(Note::class,'user_career_role_id');
+
+    }
 }
