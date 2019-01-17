@@ -13,7 +13,7 @@
 @section('content-body')
 
     <div id="app">
-        <career-note :notes='@json($notes)'></career-note>
+        <career-notes :notes='@json($notes)'></career-notes>
     </div>
 
 @endsection

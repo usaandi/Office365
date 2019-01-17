@@ -9,7 +9,7 @@
             note: {
                 required: true
             }
-        }
+        },
         name: "CareerNote"
     }
 </script>

@@ -20,8 +20,11 @@ Vue.component('modal', {});
 
 
 Vue.use(ChecksPrivileges);
+//Career Notes
+Vue.component('career-notes', require('./components/career/CareerNotes'));
+Vue.component('career-note', require('./components/career/CareerNote'));
+//End career Notes
 Vue.component('user-career', require('./components/career/CareerComponent'));
-Vue.component('career-note', require('./components/career/CareerNotes'));
 Vue.component('user-list', require('./components/user/UsersListComponent.vue'));
 Vue.component('user-list-view', require('./components/user/UserListViewComponent'));
 Vue.component('profile-view', require('./components/user/ProfileView'));
