@@ -6,6 +6,7 @@ use App\Note;
 use App\User;
 use App\UserCareerRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
@@ -20,11 +21,39 @@ class NoteController extends Controller
             $notes = $this->noteInfo($roleId);
 
 
-            return view('career.notes')->with('notes', $notes);
+            return view('career.notes')->with('notes', $notes)->with('careerId', $roleId);
 
         } catch (\Exception $e) {
             return view('unauthorized.unauthorized', with(['error' => 'No permission']));
 
+        }
+    }
+
+    public function create(Request $request, $careerId)
+    {
+        try {
+
+
+            $validateData = $this->validate($request, [
+                'noteDescription' => 'required|string',
+                'noteTitle' => 'required|string'
+            ]);
+
+            $createNote = Note::createNote($careerId, $validateData);
+
+            $userName = User::findOrFail($createNote['assigner_id'])->name;
+
+            $array = [
+                'id' => $createNote['id'],
+                'assigner_id' => $createNote['assigner_id'],
+                'assigner_name' => $userName,
+                'created_at' => $createNote->created_at->toDateString(),
+                'description' => $createNote['description'],
+                'title' => $createNote['title'],
+            ];
+            return response($array, 200);
+
+        } catch (\Exception $e) {
         }
     }
 
@@ -42,9 +71,9 @@ class NoteController extends Controller
 
             $update = Note::updateNote($noteId, $validateData);
 
-            if($update){
-                $note = Note::findOrFail($noteId)->first(['title','description'])->toArray(['description','title']);
-                return response($note,200);
+            if ($update) {
+                $note = Note::findOrFail($noteId)->first(['title', 'description'])->toArray(['description', 'title']);
+                return response($note, 200);
 
             }
 
@@ -63,7 +92,7 @@ class NoteController extends Controller
 
             foreach ($notes as $key => $note) {
 
-                $assignerId = $note['id'];
+                $assignerId = $note['assigner_id'];
                 $array[$key]['id'] = $note->id;
                 $array[$key]['title'] = $note->title;
                 $array[$key]['description'] = $note->description;

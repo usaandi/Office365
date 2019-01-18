@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Note extends Model
 {
@@ -27,6 +28,21 @@ class Note extends Model
         $updated = $note->update(['description' => $data['noteDescription'], 'title' => $title]);
 
         return $updated;
+
+    }
+
+    public static function createNote($careerId, $data)
+    {
+        $title = strtolower($data['noteTitle']);
+        $userId = Auth::user()['id'];
+        $newNote = Note::create([
+            'title' => $title,
+            'description' => $data['noteDescription'],
+            'user_career_role_id' => $careerId,
+            'assigner_id' => $userId,
+        ]);
+
+        return $newNote;
 
     }
 

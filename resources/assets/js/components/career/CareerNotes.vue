@@ -1,7 +1,25 @@
 <template>
     <div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+                <div class="row m--margin-bottom-15">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="alert alert-success alert-dismissible" style="display: none;"><a
+                                class="close"></a> <strong>Success!</strong></div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="profile-timeline__action "><a
+                                tabindex="0"
+                                @click="noteCreate()"
+                                class="btn btn-success m-btn m-btn--icon m-btn--pill "><span
+                        ><i class="la la-plus"></i> <span
+                        >Add Career Template</span></span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="m-portlet__body">
-            <career-note v-show="!show" v-for="(note, index) in notesList "
+            <career-note v-show="!show" v-for="(note, index) in sortArray(notesList)"
                          :propNote="note"
                          :key="index"
                          :index="index"
@@ -22,6 +40,7 @@
                         <div class="col-sm-9 col-xs-12 col-lg-11"><textarea
                                 id="description" rows="10"
                                 name="career_description"
+                                placeholder="Description"
                                 class="form-control m-input" v-model.trim="noteDescription"></textarea>
                         </div>
                     </div>
@@ -30,19 +49,29 @@
                     <div class="m-form__actions">
                         <div class="row">
                             <div class="col-sm-3 col-xs-12 col-lg-2">
-                                <button
+                                <button v-show="!creating"
                                         class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
                                     <i class="icon flaticon-delete-1"></i></button>
                             </div>
                             <div class="col-sm-9 col-xs-12 col-lg-10">
-                                <div class="profile-timeline__action">
-                                    <button type="button" @click="closeNoteEditView()"
+                                <div class="profile-timeline__action" v-show="!creating">
+                                    <button type="button" @click="closeNoteView()"
                                             class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
                                         Close
                                     </button>
                                     <button type="submit" @click="submit()"
                                             class="btn btn-success m-btn m-btn--pill"><span><span
                                     >Submit</span></span></button>
+                                </div>
+
+                                <div class="profile-timeline__action" v-show="creating">
+                                    <button type="button" @click="closeNoteView()"
+                                            class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
+                                        Close
+                                    </button>
+                                    <button type="submit" @click="noteCreate()"
+                                            class="btn btn-success m-btn m-btn--pill"><span><span
+                                    >Create</span></span></button>
                                 </div>
                             </div>
                         </div>
@@ -63,6 +92,10 @@
             notes: {
                 required: true
             },
+            careerId: {
+                required: true,
+                text: 'career id',
+            }
         },
         name: "CareerNotes",
         data() {
@@ -71,6 +104,7 @@
                 notesList: this.notes,
                 activeNote: null,
                 activeIndex: null,
+                creating: false,
                 show: false,
                 noteDescription: null,
                 noteTitle: null,
@@ -85,13 +119,38 @@
 
             }
         },
+
         methods: {
-            closeNoteEditView() {
+
+            sortArray(array) {
+                return _.orderBy(array, 'id','desc');
+            },
+
+            noteCreate() {
+                this.creating = true;
+                this.show = true;
+                if (this.checkIfEmpty()) {
+                    const data = {
+                        noteDescription: this.noteDescription,
+                        noteTitle: this.noteTitle
+                    };
+
+                    axios.post('/career/note/' + this.careerId, data).then(response => {
+                        if (response.status === 200) {
+                            this.notesList.push(response.data);
+                            this.closeNoteView();
+                        }
+
+                    })
+                }
+            },
+            closeNoteView() {
                 this.activeNote = null;
                 this.noteDescription = null;
                 this.noteTitle = null;
                 this.currenIndex = null;
                 this.assignerId = null;
+                this.creating = false;
                 this.show = false;
 
             },
@@ -106,8 +165,17 @@
                 this.show = true;
 
             },
-            submit() {
+            checkIfEmpty() {
+
                 if (this.noteDescription && this.noteTitle) {
+
+                    return true
+                }
+
+                return false
+            },
+            submit() {
+                if (this.checkIfEmpty()) {
 
                     const data = {
                         noteDescription: this.noteDescription,
@@ -119,7 +187,7 @@
                         if (response.status === 200) {
                             this.notesList[this.currenIndex].title = response.data.title;
                             this.notesList[this.currenIndex].description = response.data.description;
-                            this.closeNoteEditView();
+                            this.closeNoteView();
                         }
                     });
 
