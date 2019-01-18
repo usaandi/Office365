@@ -48814,7 +48814,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48860,6 +48860,7 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -49099,7 +49100,27 @@ var render = function() {
               ],
               staticClass: "col-sm-12 col-xs-12"
             },
-            [_vm._m(0)]
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "alert alert-success alert-dismissible text-center"
+                },
+                [
+                  _c("a", {
+                    staticClass: "close",
+                    on: {
+                      click: function($event) {
+                        _vm.success = !_vm.success
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Everything is done! Success!")])
+                ]
+              )
+            ]
           ),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
@@ -49115,7 +49136,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._m(1)]
+                [_vm._m(0)]
               )
             ])
           ])
@@ -49318,7 +49339,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._m(2)]
+                          [_vm._m(1)]
                         )
                       ]
                     ),
@@ -49367,7 +49388,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._m(3)]
+                          [_vm._m(2)]
                         )
                       ]
                     )
@@ -49383,20 +49404,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "alert alert-success alert-dismissible text-center" },
-      [
-        _c("a", { staticClass: "close" }),
-        _vm._v(" "),
-        _c("strong", [_vm._v("Everything is done! Success!")])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -66919,7 +66926,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("strong", [_vm._v("SUCCESS!")])
+          _c("strong", [_vm._v("Success!")])
         ]
       ),
       _vm._v(" "),

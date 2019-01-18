@@ -2,7 +2,7 @@
     <div class="m-portlet__body">
         <div v-show="success" class="alert alert-success alert-dismissible text-center">
             <a class="close" @click="success=!success"></a>
-            <strong>SUCCESS!</strong>
+            <strong>Success!</strong>
         </div>
         <h1>User Strength</h1>
         <admin-user-strength v-for="(strength,index) in strengthCount"

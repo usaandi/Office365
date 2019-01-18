@@ -5,6 +5,7 @@
                 <div class="row m--margin-bottom-15">
                     <div class="col-sm-12 col-xs-12" v-show="success">
                         <div class="alert alert-success alert-dismissible text-center" style=""><a
+                                @click="success=!success"
                                 class="close"></a> <strong>Everything is done! Success!</strong></div>
                     </div>
                     <div class="col-sm-12 col-xs-12">
