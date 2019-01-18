@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="m-portlet__body">
-            <career-note v-show="!show" v-for="(note, index) in notes "
+            <career-note v-show="!show" v-for="(note, index) in notesList "
                          :propNote="note"
                          :key="index"
                          :index="index"
@@ -14,7 +14,7 @@
                             class="col-lg-1 col-sm-3 col-xs-12 col-form-label">Title</label>
                         <div class="col-lg-11"><input id="title" type="text"
                                                       name="title" placeholder="Title"
-                                                      class="form-control m-input"></div>
+                                                      class="form-control m-input" v-model.trim="noteTitle"></div>
                     </div>
                     <div class="form-group m-form__group row"><label
                             for="description"
@@ -22,7 +22,7 @@
                         <div class="col-sm-9 col-xs-12 col-lg-11"><textarea
                                 id="description" rows="10"
                                 name="career_description"
-                                class="form-control m-input"></textarea>
+                                class="form-control m-input" v-model.trim="noteDescription"></textarea>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                                             class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
                                         Close
                                     </button>
-                                    <button type="submit"
+                                    <button type="submit" @click="submit()"
                                             class="btn btn-success m-btn m-btn--pill"><span><span
                                     >Submit</span></span></button>
                                 </div>
@@ -55,6 +55,9 @@
 </template>
 
 <script>
+
+    import axios from 'axios';
+
     export default {
         props: {
             notes: {
@@ -64,9 +67,16 @@
         name: "CareerNotes",
         data() {
             return {
+
+                notesList: this.notes,
                 activeNote: null,
                 activeIndex: null,
                 show: false,
+                noteDescription: null,
+                noteTitle: null,
+                currentIndex: null,
+                assignerId: null,
+
             }
         },
         computed: {},
@@ -78,15 +88,43 @@
         methods: {
             closeNoteEditView() {
                 this.activeNote = null;
+                this.noteDescription = null;
+                this.noteTitle = null;
+                this.currenIndex = null;
+                this.assignerId = null;
                 this.show = false;
 
             },
             startUpdate(index) {
 
-                this.activeNote = this.notes[index];
+                this.currenIndex = index;
+                this.activeNote = this.notes[this.currenIndex];
+                this.assignerId = this.activeNote.assigner_id;
+                this.noteDescription = this.activeNote.description;
+                this.noteTitle = this.activeNote.title;
+
                 this.show = true;
 
-                console.log(index)
+            },
+            submit() {
+                if (this.noteDescription && this.noteTitle) {
+
+                    const data = {
+                        noteDescription: this.noteDescription,
+                        noteTitle: this.noteTitle
+                    };
+
+
+                    axios.patch(this.activeNote.id, data).then(response => {
+                        if (response.status === 200) {
+                            this.notesList[this.currenIndex].title = response.data.title;
+                            this.notesList[this.currenIndex].description = response.data.description;
+                            this.closeNoteEditView();
+                        }
+                    });
+
+
+                }
             }
         }
 

@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="profile-timeline__action m--margin-15">
-            <button class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10"
+            <button class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10" v-show="canEdit()"
                     @click="emitEdit(index)"
             >Edit
             </button>
@@ -40,14 +40,22 @@
         name: "CareerNote",
         data() {
             return {
-                note: this.propNote
+                note: this.propNote,
+                admin: isAdmin,
+                authUserId: authUser['id'],
 
             }
         },
         methods: {
             emitEdit(index) {
                 this.$emit('update', index);
-            }
+            },
+            canEdit() {
+                if (this.note.assigner_id === this.authUserId || this.admin) {
+                    return true;
+                }
+                return false;
+            },
         }
     }
 </script>
