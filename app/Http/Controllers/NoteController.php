@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class NoteController extends Controller
 {
 
+
     public function index($id, $roleId)
     {
         try {
@@ -25,6 +26,31 @@ class NoteController extends Controller
             return view('unauthorized.unauthorized', with(['error' => 'No permission']));
 
         }
+    }
+
+    public function update($noteId, Request $request)
+    {
+        try {
+
+            $noteCheck = Note::findOrFail($noteId);
+            $this->authorize('updateNote', $noteCheck);
+
+            $validateData = $this->validate($request, [
+                'noteDescription' => 'required|string',
+                'noteTitle' => 'required|string'
+            ]);
+
+            $update = Note::updateNote($noteId, $validateData);
+
+            if($update){
+                $note = Note::findOrFail($noteId)->first(['title','description'])->toArray(['description','title']);
+                return response($note,200);
+
+            }
+
+        } catch (\Exception $e) {
+        }
+
     }
 
     protected function noteInfo($careerRoleId)

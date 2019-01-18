@@ -20,4 +20,14 @@ class Note extends Model
         return User::where('id', $id)->first()->name;
     }
 
+    public static function updateNote($id, $data)
+    {
+        $note = Note::findOrfail($id);
+        $title = strtolower($data['noteTitle']);
+        $updated = $note->update(['description' => $data['noteDescription'], 'title' => $title]);
+
+        return $updated;
+
+    }
+
 }
