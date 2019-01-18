@@ -12,6 +12,13 @@ class NoteController extends Controller
 {
 
 
+    public function count($id)
+    {
+        $Count = Note::where('user_career_role_id',$id)->get()->toArray();
+
+        return count($Count);
+    }
+
     public function index($id, $roleId)
     {
         try {

@@ -58628,7 +58628,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58837,7 +58837,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             roleValue: null,
             success: false,
             dateValue: null,
-            noteRoute: '/user/' + this.selectedUserProfileId + '/career/note/' + this.userdata.id
+            noteRoute: '/user/' + this.selectedUserProfileId + '/career/note/' + this.userdata.id,
+            notesCount: null
         };
     },
 
@@ -58851,7 +58852,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
-    created: function created() {},
+    created: function created() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/note/count/' + this.userRoleInfo.id).then(function (response) {
+            _this.notesCount = response.data;
+        });
+    },
     mounted: function mounted() {
         this.currentlySelected();
     },
@@ -58871,7 +58878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         deleteRequest: function deleteRequest() {
-            var _this = this;
+            var _this2 = this;
 
             if (this.canEdit) {
                 var confirmation = confirm("Are you sure you want to delete this Career: " + this.userRoleInfo.title);
@@ -58879,8 +58886,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (confirmation) {
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/user/' + this.selectedUserProfileId + '/career/delete', { params: { careerId: this.userRoleInfo.id } }).then(function (response) {
                         var data = response.data;
-                        _this.$emit('deleteRole', data);
-                        _this.success = true;
+                        _this2.$emit('deleteRole', data);
+                        _this2.success = true;
                     });
                 }
             }
@@ -58893,7 +58900,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         submitChanges: function submitChanges() {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.canEdit) {
                 if (this.descriptionValue || this.roleValue || this.dateValue) {
@@ -58908,14 +58915,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(function (response) {
                         if (response.status === 200) {
-                            _this2.userRoleInfo = response.data;
+                            _this3.userRoleInfo = response.data;
 
-                            _this2.createdDate = response.data.creation_date;
-                            _this2.isEditing = false;
-                            _this2.roleValue = null;
-                            _this2.dateValue = null;
-                            _this2.descriptionValue = null;
-                            _this2.success = true;
+                            _this3.createdDate = response.data.creation_date;
+                            _this3.isEditing = false;
+                            _this3.roleValue = null;
+                            _this3.dateValue = null;
+                            _this3.descriptionValue = null;
+                            _this3.success = true;
                         }
                     });
                 }
@@ -58968,15 +58975,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         deleteMilestone: function deleteMilestone(value) {
-            var _this3 = this;
+            var _this4 = this;
 
             if (this.canEdit === true) {
 
                 var data = this.userMilestones[value];
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(function (response) {
                     if (response.status === 200) {
-                        _this3.userMilestones.splice(value, 1);
-                        _this3.show = false;
+                        _this4.userMilestones.splice(value, 1);
+                        _this4.show = false;
                     }
                 });
             }
@@ -59420,7 +59427,22 @@ var render = function() {
                           "btn btn-secondary m-btn m-btn--icon m-btn--pill",
                         attrs: { href: _vm.noteRoute }
                       },
-                      [_vm._m(4)]
+                      [
+                        _c("span", [
+                          _c("i", { staticClass: "la la-sticky-note" }),
+                          _vm._v(" "),
+                          _c("span", [
+                            _vm._v("Notes "),
+                            _c("span", { staticClass: "m-menu__link-badge" }, [
+                              _c(
+                                "span",
+                                { staticClass: "m-badge m-badge--danger" },
+                                [_vm._v(_vm._s(_vm.notesCount))]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
                     )
                   ])
                 ]
@@ -59511,21 +59533,6 @@ var staticRenderFns = [
       _c("i", { staticClass: "la la-plus" }),
       _vm._v(" "),
       _c("span", [_vm._v("Add Milestone")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("i", { staticClass: "la la-sticky-note" }),
-      _vm._v(" "),
-      _c("span", [
-        _vm._v("Notes "),
-        _c("span", { staticClass: "m-menu__link-badge" }, [
-          _c("span", { staticClass: "m-badge m-badge--danger" })
-        ])
-      ])
     ])
   }
 ]

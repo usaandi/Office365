@@ -142,7 +142,7 @@
                             <a class="btn btn-secondary m-btn m-btn--icon m-btn--pill" :href="noteRoute"><span
                             ><i
                                     class="la la-sticky-note"></i> <span>Notes <span class="m-menu__link-badge"><span
-                                    class="m-badge m-badge--danger"> </span></span></span></span></a>
+                                    class="m-badge m-badge--danger">{{notesCount}}</span></span></span></span></a>
                         </div>
                     </div>
                     <div class="col-sm-9 col-md-9 col-lg-10 col-xs-12">
@@ -196,6 +196,7 @@
                 success: false,
                 dateValue: null,
                 noteRoute: '/user/' + this.selectedUserProfileId + '/career/note/' + this.userdata.id,
+                notesCount: null,
             }
         },
         watch: {
@@ -213,6 +214,10 @@
 
         created() {
 
+            axios.get('/note/count/' + this.userRoleInfo.id).then(response => {
+                this.notesCount = response.data;
+            })
+
         },
         mounted() {
             this.currentlySelected();
@@ -221,7 +226,6 @@
 
 
             sortArray(array) {
-
 
             },
 
