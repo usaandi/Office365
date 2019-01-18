@@ -56803,7 +56803,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56856,7 +56856,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "CareerNote",
     data: function data() {
         return {
-            note: this.propNote
+            note: this.propNote,
+            admin: isAdmin,
+            authUserId: authUser['id']
 
         };
     },
@@ -56864,6 +56866,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         emitEdit: function emitEdit(index) {
             this.$emit('update', index);
+        },
+        canEdit: function canEdit() {
+            if (this.note.assigner_id === this.authUserId || this.admin) {
+                return true;
+            }
+            return false;
         }
     }
 });
@@ -56927,6 +56935,14 @@ var render = function() {
         _c(
           "button",
           {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.canEdit(),
+                expression: "canEdit()"
+              }
+            ],
             staticClass:
               "btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10",
             on: {
@@ -57037,7 +57053,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57048,6 +57064,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -57104,6 +57122,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -57114,9 +57135,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "CareerNotes",
     data: function data() {
         return {
+
+            notesList: this.notes,
             activeNote: null,
             activeIndex: null,
-            show: false
+            show: false,
+            noteDescription: null,
+            noteTitle: null,
+            currentIndex: null,
+            assignerId: null
+
         };
     },
 
@@ -57127,14 +57155,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         closeNoteEditView: function closeNoteEditView() {
             this.activeNote = null;
+            this.noteDescription = null;
+            this.noteTitle = null;
+            this.currenIndex = null;
+            this.assignerId = null;
             this.show = false;
         },
         startUpdate: function startUpdate(index) {
 
-            this.activeNote = this.notes[index];
-            this.show = true;
+            this.currenIndex = index;
+            this.activeNote = this.notes[this.currenIndex];
+            this.assignerId = this.activeNote.assigner_id;
+            this.noteDescription = this.activeNote.description;
+            this.noteTitle = this.activeNote.title;
 
-            console.log(index);
+            this.show = true;
+        },
+        submit: function submit() {
+            var _this = this;
+
+            if (this.noteDescription && this.noteTitle) {
+
+                var data = {
+                    noteDescription: this.noteDescription,
+                    noteTitle: this.noteTitle
+                };
+
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch(this.activeNote.id, data).then(function (response) {
+                    if (response.status === 200) {
+                        _this.notesList[_this.currenIndex].title = response.data.title;
+                        _this.notesList[_this.currenIndex].description = response.data.description;
+                        _this.closeNoteEditView();
+                    }
+                });
+            }
         }
     }
 
@@ -57153,7 +57207,7 @@ var render = function() {
       "div",
       { staticClass: "m-portlet__body" },
       [
-        _vm._l(_vm.notes, function(note, index) {
+        _vm._l(_vm.notesList, function(note, index) {
           return _c("career-note", {
             directives: [
               {
@@ -57186,12 +57240,99 @@ var render = function() {
             ]
           },
           [
-            _vm._m(0),
+            _c("div", { staticClass: "m-portlet__body" }, [
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-lg-1 col-sm-3 col-xs-12 col-form-label",
+                    attrs: { for: "title" }
+                  },
+                  [_vm._v("Title")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-11" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.trim",
+                        value: _vm.noteTitle,
+                        expression: "noteTitle",
+                        modifiers: { trim: true }
+                      }
+                    ],
+                    staticClass: "form-control m-input",
+                    attrs: {
+                      id: "title",
+                      type: "text",
+                      name: "title",
+                      placeholder: "Title"
+                    },
+                    domProps: { value: _vm.noteTitle },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.noteTitle = $event.target.value.trim()
+                      },
+                      blur: function($event) {
+                        _vm.$forceUpdate()
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: " col-1 col-form-label",
+                    attrs: { for: "description" }
+                  },
+                  [_vm._v("Description")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-9 col-xs-12 col-lg-11" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model.trim",
+                        value: _vm.noteDescription,
+                        expression: "noteDescription",
+                        modifiers: { trim: true }
+                      }
+                    ],
+                    staticClass: "form-control m-input",
+                    attrs: {
+                      id: "description",
+                      rows: "10",
+                      name: "career_description"
+                    },
+                    domProps: { value: _vm.noteDescription },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.noteDescription = $event.target.value.trim()
+                      },
+                      blur: function($event) {
+                        _vm.$forceUpdate()
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
               _c("div", { staticClass: "m-form__actions" }, [
                 _c("div", { staticClass: "row" }, [
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-9 col-xs-12 col-lg-10" }, [
                     _c("div", { staticClass: "profile-timeline__action" }, [
@@ -57214,7 +57355,19 @@ var render = function() {
                         ]
                       ),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success m-btn m-btn--pill",
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              _vm.submit()
+                            }
+                          }
+                        },
+                        [_vm._m(1)]
+                      )
                     ])
                   ])
                 ])
@@ -57228,53 +57381,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-portlet__body" }, [
-      _c("div", { staticClass: "form-group m-form__group row" }, [
-        _c(
-          "label",
-          {
-            staticClass: "col-lg-1 col-sm-3 col-xs-12 col-form-label",
-            attrs: { for: "title" }
-          },
-          [_vm._v("Title")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-11" }, [
-          _c("input", {
-            staticClass: "form-control m-input",
-            attrs: {
-              id: "title",
-              type: "text",
-              name: "title",
-              placeholder: "Title"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group m-form__group row" }, [
-        _c(
-          "label",
-          {
-            staticClass: " col-1 col-form-label",
-            attrs: { for: "description" }
-          },
-          [_vm._v("Description")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-9 col-xs-12 col-lg-11" }, [
-          _c("textarea", {
-            staticClass: "form-control m-input",
-            attrs: { id: "description", rows: "10", name: "career_description" }
-          })
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -57294,14 +57400,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-success m-btn m-btn--pill",
-        attrs: { type: "submit" }
-      },
-      [_c("span", [_c("span", [_vm._v("Submit")])])]
-    )
+    return _c("span", [_c("span", [_vm._v("Submit")])])
   }
 ]
 render._withStripped = true
