@@ -6,18 +6,23 @@
 
 require('./bootstrap');
 import Vue from 'vue';
+import ChecksPrivileges from './services/ChecksPrivileges'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueSelect from 'vue-select'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import ChecksPrivileges from './services/ChecksPrivileges'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import VueSelect from 'vue-select'
 
-Vue.component('modal', {});
 
+/*const files = require.context('./', true, /\.vue$/i);
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));*/
+
+Vue.component('v-select', VueSelect);
+
+Vue.component('modal', {}.default);
 
 Vue.use(ChecksPrivileges);
 //Career Notes
@@ -52,7 +57,6 @@ Vue.component('editable-input-component', require('./components/EditableInputCom
 Vue.component('user-career-milestone', require('./components/career/CareerMilestone'));
 Vue.component('user-team-moderator', require('./components/admin/UserTeamModerator'));
 Vue.component('admin-career-template-manager', require('./components/admin/Career/CareerTemplateManager'));
-Vue.component('v-select', VueSelect);
 Vue.component('milestone-form', require('./components/career/CareerMilestoneForm'));
 Vue.component('users-list-head', require('./components/admin/UsersListHead'));
 Vue.component('users-list-body', require('./components/admin/UsersListBody'));

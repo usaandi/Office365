@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-sm-9 col-xs-12 col-lg-10">
                                 <div class="profile-timeline__action">
-                                    <button type="button" @click="show=!show"
+                                    <button type="button" @click="closeNoteEditView()"
                                             class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
                                         Close
                                     </button>
@@ -76,6 +76,11 @@
             }
         },
         methods: {
+            closeNoteEditView() {
+                this.activeNote = null;
+                this.show = false;
+
+            },
             startUpdate(index) {
 
                 this.activeNote = this.notes[index];

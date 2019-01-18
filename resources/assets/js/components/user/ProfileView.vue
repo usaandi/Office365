@@ -136,7 +136,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile__details--pills" >
+                    <div class="profile__details--pills">
                         <div class="profile__pill"><i class="la la-birthday-cake"></i> {{birthdayNew}}</div>
                         <div class="profile__pill"><img alt="" src="/assets/picture/logoADM.png"
                                                         class="profile__pill--logo"> {{admSince}}
@@ -195,6 +195,7 @@
 <script>
     import EditableInputComponent from '../EditableInputComponent';
     import axios from 'axios';
+    import Vue from 'vue';
 
 
     export default {
