@@ -48814,7 +48814,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48965,13 +48965,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             notesList: this.notes,
             activeNote: null,
-            activeIndex: null,
             creating: false,
             show: false,
             noteDescription: null,
             noteTitle: null,
-            currentIndex: null,
-            assignerId: null
+            assignerId: null,
+            noteId: null,
+            index: null,
+            success: false
 
         };
     },
@@ -48982,11 +48983,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        sortArray: function sortArray(array) {
-            return _.orderBy(array, 'id', 'desc');
+        noteDelete: function noteDelete() {
+            var _this = this;
+
+            var confirmation = confirm('Are you sure? ' + 'you want to delete Note?');
+
+            if (confirmation) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/note/delete', { params: { id: this.noteId } }).then(function (response) {
+                    if (response.status === 200) {
+                        _this.notesList.splice(_this.index, 1);
+                        _this.closeNoteView();
+                        _this.success = true;
+                    }
+                });
+            }
+
+            if (!confirmation) {
+                this.closeNoteView();
+            }
         },
         noteCreate: function noteCreate() {
-            var _this = this;
+            var _this2 = this;
 
             this.creating = true;
             this.show = true;
@@ -48998,42 +49015,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/career/note/' + this.careerId, data).then(function (response) {
                     if (response.status === 200) {
-                        _this.notesList.push(response.data);
-                        _this.closeNoteView();
+                        _this2.notesList.push(response.data);
+                        _this2.closeNoteView();
+                        _this2.success = true;
                     }
                 });
             }
         },
         closeNoteView: function closeNoteView() {
+            this.show = false;
             this.activeNote = null;
             this.noteDescription = null;
             this.noteTitle = null;
-            this.currenIndex = null;
             this.assignerId = null;
             this.creating = false;
-            this.show = false;
+            this.noteId = null;
+            this.index = null;
         },
         startUpdate: function startUpdate(index) {
 
-            this.currenIndex = index;
-            this.activeNote = this.notes[this.currenIndex];
-            this.assignerId = this.activeNote.assigner_id;
+            this.index = index;
+
+            this.activeNote = this.notesList[index];
+            this.assignerId = this.activeNote['assigner_id'];
             this.noteDescription = this.activeNote.description;
             this.noteTitle = this.activeNote.title;
+            this.noteId = this.activeNote.id;
 
             this.show = true;
         },
         checkIfEmpty: function checkIfEmpty() {
 
             if (this.noteDescription && this.noteTitle) {
-
                 return true;
             }
-
             return false;
         },
         submit: function submit() {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.checkIfEmpty()) {
 
@@ -49041,12 +49060,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     noteDescription: this.noteDescription,
                     noteTitle: this.noteTitle
                 };
-
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch(this.activeNote.id, data).then(function (response) {
                     if (response.status === 200) {
-                        _this2.notesList[_this2.currenIndex].title = response.data.title;
-                        _this2.notesList[_this2.currenIndex].description = response.data.description;
-                        _this2.closeNoteView();
+                        _this3.notesList[_this3.index].title = response.data.title;
+                        _this3.notesList[_this3.index].description = response.data.description;
+                        _this3.closeNoteView();
+                        _this3.success = true;
                     }
                 });
             }
@@ -49067,7 +49086,21 @@ var render = function() {
     _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
       _c("div", { staticClass: "m-form__actions" }, [
         _c("div", { staticClass: "row m--margin-bottom-15" }, [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.success,
+                  expression: "success"
+                }
+              ],
+              staticClass: "col-sm-12 col-xs-12"
+            },
+            [_vm._m(0)]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
             _c("div", { staticClass: "profile-timeline__action " }, [
@@ -49094,7 +49127,7 @@ var render = function() {
       "div",
       { staticClass: "m-portlet__body" },
       [
-        _vm._l(_vm.sortArray(_vm.notesList), function(note, index) {
+        _vm._l(_vm.notesList, function(note, index) {
           return _c("career-note", {
             directives: [
               {
@@ -49233,7 +49266,8 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"
+                          "btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill",
+                        on: { click: _vm.noteDelete }
                       },
                       [_c("i", { staticClass: "icon flaticon-delete-1" })]
                     )
@@ -49353,20 +49387,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
-      _c(
-        "div",
-        {
-          staticClass: "alert alert-success alert-dismissible",
-          staticStyle: { display: "none" }
-        },
-        [
-          _c("a", { staticClass: "close" }),
-          _vm._v(" "),
-          _c("strong", [_vm._v("Success!")])
-        ]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "alert alert-success alert-dismissible text-center" },
+      [
+        _c("a", { staticClass: "close" }),
+        _vm._v(" "),
+        _c("strong", [_vm._v("Everything is done! Success!")])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -49375,7 +49404,7 @@ var staticRenderFns = [
     return _c("span", [
       _c("i", { staticClass: "la la-plus" }),
       _vm._v(" "),
-      _c("span", [_vm._v("Add Career Template")])
+      _c("span", [_vm._v("Create Note")])
     ])
   },
   function() {

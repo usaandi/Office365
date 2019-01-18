@@ -57,6 +57,24 @@ class NoteController extends Controller
         }
     }
 
+    public function delete(Request $request)
+    {
+        try {
+
+            $data = $request->all();
+            $noteCheck = Note::findOrFail($data['id']);
+
+            $this->authorize('delete', $noteCheck);
+
+            $noteCheck->delete();
+
+            return response('Success', 200);
+
+        } catch (\Exception $e) {
+        }
+
+    }
+
     public function update($noteId, Request $request)
     {
         try {
@@ -72,7 +90,7 @@ class NoteController extends Controller
             $update = Note::updateNote($noteId, $validateData);
 
             if ($update) {
-                $note = Note::findOrFail($noteId)->first(['title', 'description'])->toArray(['description', 'title']);
+                $note = Note::where('id', $noteId)->first(['title', 'description'])->toArray(['description', 'title']);
                 return response($note, 200);
 
             }

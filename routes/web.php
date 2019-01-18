@@ -132,6 +132,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/{id}/career/note/{roleId}', 'NoteController@index')->name('userNote');
     Route::patch('/{roleId}', 'NoteController@update')->name('updateNote');
     Route::post('/career/note/{id}', 'NoteController@create')->name('createNote');
+    Route::delete('/note/delete', 'NoteController@delete')->name('deleteNote');
 
     /*Will be deleted
     Route::get('/user/career/note/{roleId}/test', 'NoteController@noteInfo')->name('userNote');*/

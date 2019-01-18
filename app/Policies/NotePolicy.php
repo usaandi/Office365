@@ -63,6 +63,14 @@ class NotePolicy
      */
     public function delete(User $user, Note $note)
     {
-        //
+        if ($user->hasRole('Admin')) {
+            return TRUE;
+        }
+
+        if ($note['assigner_id'] === $user['id']) {
+            return TRUE;
+        }
+
+        return FALSE;
     }
 }

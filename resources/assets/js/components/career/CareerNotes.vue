@@ -3,9 +3,9 @@
         <div class="m-portlet__foot m-portlet__foot--fit">
             <div class="m-form__actions">
                 <div class="row m--margin-bottom-15">
-                    <div class="col-sm-12 col-xs-12">
-                        <div class="alert alert-success alert-dismissible" style="display: none;"><a
-                                class="close"></a> <strong>Success!</strong></div>
+                    <div class="col-sm-12 col-xs-12" v-show="success">
+                        <div class="alert alert-success alert-dismissible text-center" style=""><a
+                                class="close"></a> <strong>Everything is done! Success!</strong></div>
                     </div>
                     <div class="col-sm-12 col-xs-12">
                         <div class="profile-timeline__action "><a
@@ -13,13 +13,13 @@
                                 @click="noteCreate()"
                                 class="btn btn-success m-btn m-btn--icon m-btn--pill "><span
                         ><i class="la la-plus"></i> <span
-                        >Add Career Template</span></span></a></div>
+                        >Create Note</span></span></a></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="m-portlet__body">
-            <career-note v-show="!show" v-for="(note, index) in sortArray(notesList)"
+            <career-note v-show="!show" v-for="(note, index) in notesList"
                          :propNote="note"
                          :key="index"
                          :index="index"
@@ -49,7 +49,7 @@
                     <div class="m-form__actions">
                         <div class="row">
                             <div class="col-sm-3 col-xs-12 col-lg-2">
-                                <button v-show="!creating"
+                                <button v-show="!creating" @click="noteDelete"
                                         class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
                                     <i class="icon flaticon-delete-1"></i></button>
                             </div>
@@ -103,13 +103,15 @@
 
                 notesList: this.notes,
                 activeNote: null,
-                activeIndex: null,
                 creating: false,
                 show: false,
                 noteDescription: null,
                 noteTitle: null,
-                currentIndex: null,
                 assignerId: null,
+                noteId: null,
+                index: null,
+                success: false,
+
 
             }
         },
@@ -120,11 +122,29 @@
             }
         },
 
-        methods: {
 
-            sortArray(array) {
-                return _.orderBy(array, 'id','desc');
+        methods: {
+            noteDelete() {
+                let confirmation = confirm('Are you sure? ' +
+                    'you want to delete Note?');
+
+
+                if (confirmation) {
+                    axios.delete('/note/delete', {params: {id: this.noteId}}).then(response => {
+                        if (response.status === 200) {
+                            this.notesList.splice(this.index, 1);
+                            this.closeNoteView();
+                            this.success = true;
+                        }
+
+                    })
+                }
+
+                if (!confirmation) {
+                    this.closeNoteView();
+                }
             },
+
 
             noteCreate() {
                 this.creating = true;
@@ -139,28 +159,32 @@
                         if (response.status === 200) {
                             this.notesList.push(response.data);
                             this.closeNoteView();
+                            this.success = true;
                         }
 
                     })
                 }
             },
             closeNoteView() {
+                this.show = false;
                 this.activeNote = null;
                 this.noteDescription = null;
                 this.noteTitle = null;
-                this.currenIndex = null;
                 this.assignerId = null;
                 this.creating = false;
-                this.show = false;
+                this.noteId = null;
+                this.index = null;
 
             },
             startUpdate(index) {
 
-                this.currenIndex = index;
-                this.activeNote = this.notes[this.currenIndex];
-                this.assignerId = this.activeNote.assigner_id;
+                this.index = index;
+
+                this.activeNote = this.notesList[index];
+                this.assignerId = this.activeNote['assigner_id'];
                 this.noteDescription = this.activeNote.description;
                 this.noteTitle = this.activeNote.title;
+                this.noteId = this.activeNote.id;
 
                 this.show = true;
 
@@ -168,26 +192,24 @@
             checkIfEmpty() {
 
                 if (this.noteDescription && this.noteTitle) {
-
                     return true
                 }
-
                 return false
             },
             submit() {
+
                 if (this.checkIfEmpty()) {
 
                     const data = {
                         noteDescription: this.noteDescription,
                         noteTitle: this.noteTitle
                     };
-
-
                     axios.patch(this.activeNote.id, data).then(response => {
                         if (response.status === 200) {
-                            this.notesList[this.currenIndex].title = response.data.title;
-                            this.notesList[this.currenIndex].description = response.data.description;
+                            this.notesList[this.index].title = response.data.title;
+                            this.notesList[this.index].description = response.data.description;
                             this.closeNoteView();
+                            this.success = true;
                         }
                     });
 

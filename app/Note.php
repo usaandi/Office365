@@ -25,6 +25,7 @@ class Note extends Model
     {
         $note = Note::findOrfail($id);
         $title = strtolower($data['noteTitle']);
+        $description = $data['noteDescription'];
         $updated = $note->update(['description' => $data['noteDescription'], 'title' => $title]);
 
         return $updated;
