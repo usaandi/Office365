@@ -38,9 +38,9 @@
                         <div class="m-portlet__body">
 
                             <div class="form-group m-form__group row">
-                                <label for="title" class="col-3 col-form-label">Role</label>
+                                <label for="title" class="col-lg-2 col-form-label">Role</label>
 
-                                <div class="col-9"><input id="title" v-model="roleValue" type="text" name="title"
+                                <div class="col-lg-10"><input id="title" v-model="roleValue" type="text" name="title"
                                                           placeholder="Role"
                                                           class="form-control m-input">
                                 </div>
@@ -48,16 +48,16 @@
 
 
                             <div class="form-group m-form__group row">
-                                <label for="description" class="col-3 col-form-label">Description</label>
-                                <div class="col-sm-9 col-xs-12"><textarea v-model="descriptionValue"
+                                <label for="description" class="col-lg-2 col-form-label">Description</label>
+                                <div class="col-sm-9 col-xs-12 col-lg-10"><textarea v-model="descriptionValue"
                                                                           id="description" rows="10"
                                                                           class="form-control m-input"
                                                                           name="career_description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">
-                                <label for="description" class="col-3 col-form-label">Date</label>
-                                <div class="col-sm-9 col-xs-12"><input type="date" v-model="dateValue"
+                                <label for="description" class="col-lg-2 col-form-label">Date</label>
+                                <div class="col-sm-9 col-xs-12 col-lg-10"><input type="date" v-model="dateValue"
                                                                        id="date"
                                                                        class="form-control m-input"
                                                                        name="career_description">

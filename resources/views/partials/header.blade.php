@@ -238,12 +238,13 @@
                     <div id="m_header_menu"
                          class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
                         <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
-                            <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown {{ Request::is('admin/*') ? '' : 'm-menu__item--hover'}}"
+
+                            <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown {{ Request::is('user/*') ? 'm-menu__item--hover' : ''}}"
                                 m-menu-submenu-toggle="tab" aria-haspopup="true">
 
                                 <a href="/" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__link-text">
-													Dashboard
+													{{auth()->user()->name}}
 												</span>
                                     <i class="m-menu__hor-arrow la la-angle-down"></i>
                                     <i class="m-menu__ver-arrow la la-angle-right"></i>
@@ -265,12 +266,43 @@
                                                 <span class="m-menu__link-text">Development</span>
                                             </a>
                                         </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown {{ Request::is('adm/*') ? 'm-menu__item--hover' : ''}}"
+                                m-menu-submenu-toggle="tab" aria-haspopup="true">
+
+                                <a href="/" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__link-text">
+													ADM
+												</span>
+                                    <i class="m-menu__hor-arrow la la-angle-down"></i>
+                                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                                </a>
+                                <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                    <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                                    <ul class="m-menu__subnav">
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="{{route('home')}}"
+                                               class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">People</span>
+                                            </a>
+                                        </li>
                                         <li class="m-menu__item " aria-haspopup="true">
                                             <a href="{{route('departmentStrengths')}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
-                                                <span class="m-menu__link-text">Departments strengths</span>
+                                                <span class="m-menu__link-text">Strengths</span>
                                             </a>
                                         </li>
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="{{route('career',['id' => auth()->user()])}}"
+                                               class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">Projects</span>
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </li>

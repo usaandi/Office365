@@ -59128,13 +59128,13 @@ var render = function() {
                       _c(
                         "label",
                         {
-                          staticClass: "col-3 col-form-label",
+                          staticClass: "col-lg-2 col-form-label",
                           attrs: { for: "title" }
                         },
                         [_vm._v("Role")]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-9" }, [
+                      _c("div", { staticClass: "col-lg-10" }, [
                         _c("input", {
                           directives: [
                             {
@@ -59168,78 +59168,86 @@ var render = function() {
                       _c(
                         "label",
                         {
-                          staticClass: "col-3 col-form-label",
+                          staticClass: "col-lg-2 col-form-label",
                           attrs: { for: "description" }
                         },
                         [_vm._v("Description")]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.descriptionValue,
-                              expression: "descriptionValue"
-                            }
-                          ],
-                          staticClass: "form-control m-input",
-                          attrs: {
-                            id: "description",
-                            rows: "10",
-                            name: "career_description"
-                          },
-                          domProps: { value: _vm.descriptionValue },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-9 col-xs-12 col-lg-10" },
+                        [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.descriptionValue,
+                                expression: "descriptionValue"
                               }
-                              _vm.descriptionValue = $event.target.value
+                            ],
+                            staticClass: "form-control m-input",
+                            attrs: {
+                              id: "description",
+                              rows: "10",
+                              name: "career_description"
+                            },
+                            domProps: { value: _vm.descriptionValue },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.descriptionValue = $event.target.value
+                              }
                             }
-                          }
-                        })
-                      ])
+                          })
+                        ]
+                      )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group m-form__group row" }, [
                       _c(
                         "label",
                         {
-                          staticClass: "col-3 col-form-label",
+                          staticClass: "col-lg-2 col-form-label",
                           attrs: { for: "description" }
                         },
                         [_vm._v("Date")]
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.dateValue,
-                              expression: "dateValue"
-                            }
-                          ],
-                          staticClass: "form-control m-input",
-                          attrs: {
-                            type: "date",
-                            id: "date",
-                            name: "career_description"
-                          },
-                          domProps: { value: _vm.dateValue },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-9 col-xs-12 col-lg-10" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.dateValue,
+                                expression: "dateValue"
                               }
-                              _vm.dateValue = $event.target.value
+                            ],
+                            staticClass: "form-control m-input",
+                            attrs: {
+                              type: "date",
+                              id: "date",
+                              name: "career_description"
+                            },
+                            domProps: { value: _vm.dateValue },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.dateValue = $event.target.value
+                              }
                             }
-                          }
-                        })
-                      ])
+                          })
+                        ]
+                      )
                     ])
                   ]),
                   _vm._v(" "),

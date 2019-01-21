@@ -91,8 +91,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
     Route::get('/user/{id}', 'UserController@show')->name('profile');
     Route::get('user/{id}/career/info', 'CareerController@returnUserData')->name('careerInfo');
-
-    Route::get('/home', 'HomeController@index')->name('home');
+    //Main page
+    Route::get('adm/people', 'HomeController@index')->name('home');
+    //End Main Page
     Route::get('/usersDepartment', 'HomeController@userNoDepartment')->name('users');
     Route::get('/admin/department/add', 'DepartmentController@view')->name('departmentadd');
     Route::post('department/store', 'DepartmentController@store')->name('store');
@@ -115,8 +116,11 @@ Route::group(['middleware' => 'auth'], function () {
     */
     Route::put('/admin/team/{id}/update', 'TeamsController@update')->name('updateTeam');
     Route::delete('/admin/team/{id}/delete', 'TeamsController@delete')->name('deleteTeam');
-    Route::get('/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
-    Route::get('/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
+
+    Route::get('adm/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
+
+    //api
+    Route::get('adm/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
     Route::get('/admin/team/list/{id}', 'AdminTeamController@index')->name('adminTeamView');
