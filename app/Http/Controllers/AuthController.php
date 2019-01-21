@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function signin()
     {
         if (Auth::check()) {
-            return redirect('home');
+            return redirect()->route('home');
         }
 
         if (session_status() == PHP_SESSION_NONE) {
