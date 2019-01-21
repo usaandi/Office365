@@ -296,7 +296,7 @@
                                             </a>
                                         </li>
                                         <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="{{route('career',['id' => auth()->user()])}}"
+                                            <a href="{{route('projectIndex')}}"
                                                class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Projects</span>

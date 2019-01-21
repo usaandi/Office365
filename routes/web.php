@@ -119,8 +119,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('adm/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
 
+    //Projects view
+    Route::get('/adm/projects', 'ProjectsController@index')->name('projectIndex');
+    //
+
+
     //api
     Route::get('adm/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
+    //end api
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
     Route::get('/admin/team/list/{id}', 'AdminTeamController@index')->name('adminTeamView');
