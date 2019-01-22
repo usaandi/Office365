@@ -2,7 +2,8 @@
     <div>
         <div class="profile__avatar--overlay">
             <div class="profile__avatar--action"><span class="btn m-btn--pill btn-success fileinput-button"><i
-                    class="la la-plus"></i> <span> Add image... </span> <input id="imageChoose" type="file" v-on:change="onFileChange"></span>
+                    class="la la-plus"></i> <span> Add image... </span> <input id="imageChoose" type="file"
+                                                                               v-on:change="onFileChange"></span>
                 <button @click="upload" type="submit" class="btn m-btn--pill btn-info"><i class="la la-upload"></i>
                     <span> Upload image </span></button>
             </div>
@@ -11,6 +12,8 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+
     export default {
         name: "FileUpload",
         props: ['endpoint'],
@@ -37,16 +40,15 @@
             },
             upload: function () {
                 let vm = this;
-                if(vm.image === ''){
-                    vm.$emit('close',false);
-                }
-                else {
+                if (vm.image === '') {
+                    vm.$emit('close', false);
+                } else {
                     axios.post(this.endpoint, {image: this.image}).then(response => {
                         vm.$emit('file-uploaded', response);
                     });
                 }
             },
-           
+
         }
     }
 </script>
