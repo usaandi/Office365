@@ -69306,7 +69306,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.row-counter-15[data-v-72dc241d] {\n    margin: 0 15px;\n}\n.row-counter-15-l[data-v-72dc241d] {\n    margin-left: 15px;\n}\n", ""]);
+exports.push([module.i, "\n.font\n.row-counter-15[data-v-72dc241d] {\n    margin: 0 15px;\n}\n.row-counter-15-l[data-v-72dc241d] {\n    margin-left: 15px;\n}\n", ""]);
 
 // exports
 
@@ -69317,6 +69317,11 @@ exports.push([module.i, "\n.row-counter-15[data-v-72dc241d] {\n    margin: 0 15p
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69544,50 +69549,72 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-xs-12 m--font-brand",
-                attrs: { for: "searchName" }
-              },
-              [_vm._v("\n                    Search People\n                ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "input-group  col-xs-12 position-relative" },
-              [
-                _c("input", {
-                  staticClass: "form-control row-counter-15-l",
-                  attrs: {
-                    type: "text",
-                    id: "searchName",
-                    placeholder: "Search People..."
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "input-group-append" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
-                      attrs: { type: "button" }
-                    },
-                    [_vm._v("Search\n                        ")]
-                  )
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
           _c("div", { staticClass: "m-form__actions" }, [
             _c("div", { staticClass: "row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-xs-12 m--font-brand",
+                  attrs: { for: "searchName" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Search People\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "input-group  col-xs-12 position-relative" },
+                [
+                  _c("input", {
+                    staticClass: "form-control row-counter-15-l",
+                    attrs: {
+                      type: "text",
+                      id: "searchName",
+                      placeholder: "Search People..."
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
+                        attrs: { type: "button" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Search\n                            "
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "m-form__actions m--margin-top-15" }, [
+            _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
-                _c("div", { staticClass: "border border-danger" }, [
-                  _vm._v("Add people")
-                ])
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                    attrs: { tabindex: "" }
+                  },
+                  [
+                    _c("span", [
+                      _c("i", { staticClass: "la la-plus" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Add Peoples")])
+                    ])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-9 col-xs-12" }, [

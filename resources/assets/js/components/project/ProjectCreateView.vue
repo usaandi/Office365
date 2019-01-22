@@ -46,25 +46,30 @@
 
                 </div>
 
-                <div class="form-group row">
+                <div class="m-form__actions">
+                    <div class="row">
+                        <label for="searchName" class="col-xs-12 m--font-brand">
+                            Search People
+                        </label>
 
-                    <label for="searchName" class="col-xs-12 m--font-brand">
-                        Search People
-                    </label>
-
-                    <div class="input-group  col-xs-12 position-relative">
-                        <input type="text" class="form-control row-counter-15-l" id="searchName"
-                               placeholder="Search People..."/>
-                        <div class="input-group-append">
-                            <button class="btn m-btn--pill btn-outline-info m-btn m-btn--custom" type="button">Search
-                            </button>
+                        <div class="input-group  col-xs-12 position-relative">
+                            <input type="text" class="form-control row-counter-15-l" id="searchName"
+                                   placeholder="Search People..."/>
+                            <div class="input-group-append">
+                                <button class="btn m-btn--pill btn-outline-info m-btn m-btn--custom" type="button">
+                                    Search
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="m-form__actions">
+                <div class="m-form__actions m--margin-top-15">
                     <div class="row">
                         <div class="col-sm-3 col-xs-12">
-                            <div class="border border-danger">Add people</div>
+                            <a tabindex=""
+                               class="btn m-btn--pill btn-outline-success m-btn m-btn--custom"><span><i
+                                    class="la la-plus"></i> <span
+                            >Add Peoples</span></span></a>
                         </div>
                         <div class="col-sm-9 col-xs-12">
                             <div class="profile-timeline__action">
@@ -91,7 +96,7 @@
 
 <style scoped>
 
-
+    .font
     .row-counter-15 {
         margin: 0 15px;
     }
