@@ -58825,6 +58825,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.closeNoteView();
             }
         },
+        checkIfEmpty: function checkIfEmpty() {
+
+            if (this.noteDescription && this.noteTitle) {
+                return true;
+            }
+            return false;
+        },
         noteCreate: function noteCreate() {
             var _this2 = this;
 
@@ -58866,13 +58873,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.noteId = this.activeNote.id;
 
             this.show = true;
-        },
-        checkIfEmpty: function checkIfEmpty() {
-
-            if (this.noteDescription && this.noteTitle) {
-                return true;
-            }
-            return false;
         },
         submit: function submit() {
             var _this3 = this;
@@ -69306,7 +69306,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.font\n.row-counter-15[data-v-72dc241d] {\n    margin: 0 15px;\n}\n.row-counter-15-l[data-v-72dc241d] {\n    margin-left: 15px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -69317,6 +69317,29 @@ exports.push([module.i, "\n.font\n.row-counter-15[data-v-72dc241d] {\n    margin
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69430,126 +69453,200 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-xs-12 m--font-brand",
-                attrs: { for: "projectName" }
-              },
-              [_vm._v("\n                    Project name\n                ")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control col-xs-12 row-counter-15",
-              attrs: {
-                type: "text",
-                id: "projectName",
-                placeholder: "Project name"
-              }
-            })
+          _c("div", { staticClass: "m-form__actions m--margin-top-15" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-xs-12 m--font-brand",
+                  attrs: { for: "projectName" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Project name\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control col-xs-12",
+                attrs: {
+                  type: "text",
+                  id: "projectName",
+                  placeholder: "Project name"
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-xs-12 m--font-brand",
-                attrs: { for: "projectClient" }
-              },
-              [_vm._v("\n                    Client\n                ")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control col-xs-12 row-counter-15",
-              attrs: {
-                type: "text",
-                id: "projectClient",
-                placeholder: "Client"
-              }
-            })
+          _c("div", { staticClass: "m-form__actions m--margin-top-15" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-xs-12 col-lg-2 m--font-brand",
+                  attrs: { for: "from" }
+                },
+                [_vm._v("Begin date")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "input-group date col-lg-4",
+                  attrs: { "data-provide": "datepicker" }
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "from" }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-addon" })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "col-xs-12 col-lg-2 m--font-brand",
+                  attrs: { for: "from" }
+                },
+                [_vm._v("End date")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "input-group date col-lg-4",
+                  attrs: { "data-provide": "datepicker" }
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "from" }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-addon" })
+                ]
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-xs-12 m--font-brand",
-                attrs: { for: "description" }
-              },
-              [_vm._v("Description")]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              staticClass: "form-control col-xs-12 row-counter-15",
-              attrs: {
-                id: "description",
-                rows: "10",
-                placeholder: "Description"
-              }
-            })
+          _c("div", { staticClass: "m-form__actions m--margin-top-15" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-xs-12 m--font-brand",
+                  attrs: { for: "projectClient" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Client\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control col-xs-12",
+                attrs: {
+                  type: "text",
+                  id: "projectClient",
+                  placeholder: "Client"
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: " col-xs-12 m--font-brand",
-                attrs: { for: "button-addon6" }
-              },
-              [_vm._v("\n                    Inimesed\n                ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "input-group  col-xs-12 position-relative" },
-              [
-                _c("div", { staticClass: "form-control row-counter-15-l" }, [
-                  _vm._v(" Ain Arend")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "input-group-append",
-                    staticStyle: { "margin-right": "30px" },
-                    attrs: { id: "button-addon6" }
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn m-btn--pill btn-outline-danger m-btn m-btn--custom",
-                        attrs: { type: "button" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Remove\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn m-btn--pill btn-outline-warning m-btn m-btn--custom",
-                        attrs: { type: "button" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Edit\n                        "
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
+          _c("div", { staticClass: "m-form__actions m--margin-top-15" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-xs-12 m--font-brand",
+                  attrs: { for: "description" }
+                },
+                [_vm._v("Description")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                staticClass: "form-control col-xs-12",
+                attrs: {
+                  id: "description",
+                  rows: "10",
+                  placeholder: "Description"
+                }
+              })
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "m-form__actions" }, [
+          _c("div", { staticClass: "m-form__actions m--margin-top-15" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: " col-xs-12 m--font-brand",
+                  attrs: { for: "button-addon6" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Inimesed\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "input-group col-xs-12 position-relative" },
+                [
+                  _c("div", { staticClass: "form-control row-counter-15-l" }, [
+                    _vm._v(" Ain Arend")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "input-group-append",
+                      staticStyle: { "margin-right": "30px" },
+                      attrs: { id: "button-addon6" }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn m-btn--pill btn-outline-danger m-btn m-btn--custom",
+                          attrs: { type: "button" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Remove\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn m-btn--pill btn-outline-warning m-btn m-btn--custom",
+                          attrs: { type: "button" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Edit\n                            "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "m-form__actions m--margin-top-15" }, [
             _c("div", { staticClass: "row" }, [
               _c(
                 "label",
@@ -69569,7 +69666,7 @@ var staticRenderFns = [
                 { staticClass: "input-group  col-xs-12 position-relative" },
                 [
                   _c("input", {
-                    staticClass: "form-control row-counter-15-l",
+                    staticClass: "form-control ",
                     attrs: {
                       type: "text",
                       id: "searchName",
