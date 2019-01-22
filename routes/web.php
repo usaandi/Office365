@@ -121,6 +121,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Projects view
     Route::get('/adm/projects', 'ProjectsController@index')->name('projectIndex');
+    Route::get('/admin/project-create', 'ProjectsController@indexCreate')->name('adminProjectCreateIndex');
     //
 
 

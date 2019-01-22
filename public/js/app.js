@@ -17758,12 +17758,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('v-select', __WEBPACK_IMPO
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal', {}.default);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1__services_ChecksPrivileges__["a" /* default */]);
+
 //Career Notes
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('career-notes', __webpack_require__(36));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('career-note', __webpack_require__(35));
 //End career Notes
+
 //Project
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('project-view', __webpack_require__(46));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('project-create-view', __webpack_require__(312));
 //End Project
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-career', __webpack_require__(32));
@@ -51370,6 +51373,7 @@ var map = {
 	"./components/category/StrengthCategoryView.vue": 43,
 	"./components/department/DepartmentListComponent.vue": 44,
 	"./components/department/DepartmentListView.vue": 45,
+	"./components/project/ProjectCreateView.vue": 312,
 	"./components/project/ProjectView.vue": 46,
 	"./components/search/SearchComponent.vue": 47,
 	"./components/team/TeamListComponent.vue": 48,
@@ -69214,6 +69218,416 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 311 */,
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(313)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(315)
+/* template */
+var __vue_template__ = __webpack_require__(316)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-72dc241d"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/project/ProjectCreateView.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-72dc241d", Component.options)
+  } else {
+    hotAPI.reload("data-v-72dc241d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(314);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("2779740a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72dc241d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProjectCreateView.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-72dc241d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProjectCreateView.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.row-counter-15[data-v-72dc241d] {\n    margin: 0 15px;\n}\n.row-counter-15-l[data-v-72dc241d] {\n    margin-left: 15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 315 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "ProjectCreateView"
+});
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-xs-12 m--font-brand",
+                attrs: { for: "projectName" }
+              },
+              [_vm._v("\n                    Project name\n                ")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control col-xs-12 row-counter-15",
+              attrs: {
+                type: "text",
+                id: "projectName",
+                placeholder: "Project name"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-xs-12 m--font-brand",
+                attrs: { for: "projectClient" }
+              },
+              [_vm._v("\n                    Client\n                ")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control col-xs-12 row-counter-15",
+              attrs: {
+                type: "text",
+                id: "projectClient",
+                placeholder: "Client"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-xs-12 m--font-brand",
+                attrs: { for: "description" }
+              },
+              [_vm._v("Description")]
+            ),
+            _vm._v(" "),
+            _c("textarea", {
+              staticClass: "form-control col-xs-12 row-counter-15",
+              attrs: {
+                id: "description",
+                rows: "10",
+                placeholder: "Description"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: " col-xs-12 m--font-brand",
+                attrs: { for: "button-addon6" }
+              },
+              [_vm._v("\n                    Inimesed\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "input-group  col-xs-12 position-relative" },
+              [
+                _c("div", { staticClass: "form-control row-counter-15-l" }, [
+                  _vm._v(" Ain Arend")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "input-group-append",
+                    staticStyle: { "margin-right": "30px" },
+                    attrs: { id: "button-addon6" }
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn m-btn--pill btn-outline-danger m-btn m-btn--custom",
+                        attrs: { type: "button" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Remove\n                        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn m-btn--pill btn-outline-warning m-btn m-btn--custom",
+                        attrs: { type: "button" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Edit\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-xs-12 m--font-brand",
+                attrs: { for: "searchName" }
+              },
+              [_vm._v("\n                    Search People\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "input-group  col-xs-12 position-relative" },
+              [
+                _c("input", {
+                  staticClass: "form-control row-counter-15-l",
+                  attrs: {
+                    type: "text",
+                    id: "searchName",
+                    placeholder: "Search People..."
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("Search\n                        ")]
+                  )
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "m-form__actions" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+                _c("div", { staticClass: "border border-danger" }, [
+                  _vm._v("Add people")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+                _c("div", { staticClass: "profile-timeline__action" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("Cancel\n                            ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("Save\n                            ")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-72dc241d", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
