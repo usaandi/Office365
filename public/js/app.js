@@ -61938,7 +61938,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                                    Close\n                                "
+                        "\n                                    Cancel\n                                "
                       )
                     ]
                   ),
@@ -61984,7 +61984,7 @@ var staticRenderFns = [
     return _c("span", [
       _c("i", { staticClass: "la la-plus" }),
       _vm._v(" "),
-      _c("span", [_vm._v("Add new")])
+      _c("span", [_vm._v("Save")])
     ])
   }
 ]

@@ -34,14 +34,14 @@
                                 <div class="profile-timeline__action">
                                     <button @click="closeForm()"
                                             class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
-                                        Close
+                                        Cancel
                                     </button>
 
                                     <a @click="checkError()" tabindex=""
                                        class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                             <span>
                                           <i class="la la-plus"></i>
-                                          <span>Add new</span>
+                                          <span>Save</span>
                                     </span>
                                     </a>
 

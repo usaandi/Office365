@@ -62,7 +62,8 @@ class UserChildController extends Controller
                 $user = User::findOrFail($id);
                 $childName = $data['childname'];
                 $yearborn = $data['dateborn'];
-                $childNameCapitalized = ucwords($childName);
+                $childNameFixed = str_replace('_', ' ', $childName);
+                $childNameCapitalized = ucwords(strtolower($childNameFixed));
 
                 $child = UserChildren::create([
                     'user_id' => $userid, 'name' => $childNameCapitalized, 'year_born' => $yearborn]);
