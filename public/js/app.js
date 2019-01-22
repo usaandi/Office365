@@ -61700,7 +61700,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61780,13 +61780,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             dateBorn: null,
-
-            childName: null
-
+            childName: null,
+            dateBornError: false,
+            childNameError: false
         };
     },
 
     methods: {
+        inputChange: function inputChange(e) {
+            console.log(e);
+            if (this.dateBorn) {
+                this.dateBornError = false;
+            }
+            if (this.childName) {
+                this.childNameError = false;
+            }
+        },
         closeForm: function closeForm() {
             this.dateBorn = null;
             this.childName = null;
@@ -61794,8 +61803,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         checkError: function checkError() {
             if (this.dateBorn && this.childName) {
-
                 this.upload();
+            }
+            if (!this.dateBorn) {
+                this.dateBornError = true;
+            }
+            if (!this.childName) {
+                this.childNameError = true;
             }
         },
 
@@ -61858,19 +61872,21 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control m-input",
-                  class: {
-                    "border border-danger": !this.dateBorn,
-                    "border border-success": this.dateBorn
-                  },
+                  class: { "border border-danger": this.dateBornError },
                   attrs: { required: "", type: "date" },
                   domProps: { value: _vm.dateBorn },
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.dateBorn = $event.target.value
+                      },
+                      function($event) {
+                        _vm.inputChange($event)
                       }
-                      _vm.dateBorn = $event.target.value
-                    }
+                    ]
                   }
                 }),
                 _vm._v(" "),
@@ -61895,10 +61911,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control m-input",
-                class: {
-                  "border border-danger": !this.childName,
-                  "border border-success": this.childName
-                },
+                class: { "border border-danger": this.childNameError },
                 attrs: {
                   required: "",
                   type: "text",
@@ -61906,12 +61919,17 @@ var render = function() {
                 },
                 domProps: { value: _vm.childName },
                 on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  input: [
+                    function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.childName = $event.target.value
+                    },
+                    function($event) {
+                      _vm.inputChange($event)
                     }
-                    _vm.childName = $event.target.value
-                  }
+                  ]
                 }
               })
             ])

@@ -7,8 +7,8 @@
                     <div class="form-group m-form__group row"><label class="col-3 col-form-label">Year born</label>
                         <div class="col-9">
                             <div class="input-group date">
-                                <input class="form-control m-input"
-                                       :class="{'border border-danger':!this.dateBorn,'border border-success': this.dateBorn }"
+                                <input class="form-control m-input" @input="inputChange($event)"
+                                       :class="{'border border-danger':this.dateBornError }"
                                        required type="date" v-model="dateBorn">
                                 <div class="input-group-append">
                                               <span class="input-group-text">
@@ -19,8 +19,8 @@
                         </div>
                     </div>
                     <div class="form-group m-form__group row"><label class="col-3 col-form-label">Child name</label>
-                        <div class="col-9"><input
-                                :class="{'border border-danger':!this.childName,'border border-success': this.childName }"
+                        <div class="col-9"><input @input="inputChange($event)"
+                                :class="{'border border-danger':this.childNameError}"
                                 v-model="childName" required type="text"
                                 placeholder="Child name"
                                 class="form-control m-input"></div>
@@ -65,13 +65,23 @@
         data() {
             return {
                 dateBorn: null,
-
                 childName: null,
-
+                dateBornError: false,
+                childNameError: false,
             }
 
         },
         methods: {
+
+            inputChange(e){
+              console.log(e);
+                if (this.dateBorn) {
+                    this.dateBornError = false;
+                }
+                if (this.childName) {
+                    this.childNameError = false;
+                }
+            },
             closeForm() {
                 this.dateBorn = null;
                 this.childName = null;
@@ -79,8 +89,13 @@
             },
             checkError() {
                 if (this.dateBorn && this.childName) {
-
                     this.upload();
+                }
+                if (!this.dateBorn) {
+                    this.dateBornError = true;
+                }
+                if (!this.childName) {
+                    this.childNameError = true;
                 }
 
             },
