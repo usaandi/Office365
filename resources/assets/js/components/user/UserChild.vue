@@ -7,20 +7,21 @@
               <span>
 										<i class="la la-plus"></i>
 										<span>New</span>
-
               </span>
             </a>
         </div>
         <div class="">
             <div class="row" v-for="(child,index) in userchildren">
                 <div class="col-xs-3">
-                    <div class="profile__details--title">{{child.name}}</div>
+                    <div class="profile__details--info">{{child.name}}</div>
                 </div>
                 <div class="col-xs-9">
-                    <div class="profile__details--info">{{child.age}}a</div>
+                    <div class="profile__details--info col-lg-1">{{child.age}}a
+
+                    </div>
                     <button v-show="edit" @click="deleteRow(child.id, index)"
                             class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill"><i
-                            class="la la-close"></i></button>
+                            class="icon flaticon-delete-1"></i></button>
                 </div>
             </div>
             <user-child-form v-show="edit" :userId="userid"
@@ -38,7 +39,7 @@
 
     export default {
         name: "UserChildren",
-        props: ['userid','canedit'],
+        props: ['userid', 'canedit'],
         data() {
             return {
                 edit: false,
