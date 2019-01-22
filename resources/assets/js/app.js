@@ -28,12 +28,15 @@ Vue.component('v-select', VueSelect);
 Vue.component('modal', {}.default);
 
 Vue.use(ChecksPrivileges);
+
 //Career Notes
 Vue.component('career-notes', require('./components/career/CareerNotes'));
 Vue.component('career-note', require('./components/career/CareerNote'));
 //End career Notes
+
 //Project
 Vue.component('project-view', require('./components/project/ProjectView'));
+Vue.component('project-create-view', require('./components/project/ProjectCreateView'));
 //End Project
 
 Vue.component('user-career', require('./components/career/CareerComponent'));
