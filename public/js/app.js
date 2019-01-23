@@ -61810,7 +61810,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61823,6 +61823,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
 //
 //
 //
@@ -61957,7 +61959,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showSearch: false,
             searching: false,
             query: null,
+            currentUser: [],
             resultUser: []
+
         };
     },
 
@@ -62107,91 +62111,136 @@ var render = function() {
     _vm._v(" "),
     _vm._m(3),
     _vm._v(" "),
-    _c("div", { staticClass: "m-form__group row m--margin-top-15" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-xs-12 m--font-brand",
-          attrs: { for: "searchName" }
-        },
-        [_vm._v("\n            Search People\n        ")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group  col-xs-12 position-relative" }, [
-        _c("input", {
-          directives: [
+    _vm.showSearch
+      ? _c("div", { staticClass: "m-form__group row m--margin-top-15" }, [
+          _c(
+            "label",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.query,
-              expression: "query"
-            }
-          ],
-          staticClass: "form-control ",
-          attrs: {
-            type: "text",
-            id: "searchName",
-            placeholder: "Search People..."
-          },
-          domProps: { value: _vm.query },
-          on: {
-            input: [
-              function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.query = $event.target.value
-              },
-              _vm.searchPeople
-            ]
-          }
-        }),
-        _vm._v(" "),
-        _vm._m(4)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row m--margin-top-15" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _vm.resultUser.length > 0
-            ? _c(
-                "ul",
-                { staticClass: "list-unstyled list-group-item " },
-                _vm._l(_vm.userList, function(user, index) {
-                  return _c(
-                    "li",
-                    {
-                      key: index,
-                      staticClass: "list-inline-item ",
-                      attrs: { id: user.id }
-                    },
-                    [
-                      _vm._v(_vm._s(user.name) + "\n                        "),
-                      _c("i", {
-                        staticClass: "fas fa-arrow-up fa-1x m--margin-right-10"
-                      })
-                    ]
-                  )
-                }),
-                0
-              )
-            : _vm._e(),
+              staticClass: "col-xs-12 m--font-brand",
+              attrs: { for: "searchName" }
+            },
+            [_vm._v("\n            Search People\n        ")]
+          ),
           _vm._v(" "),
-          _vm.searching
-            ? _c("div", { staticClass: "list-group-item" }, [
-                _vm.resultUser.length <= 0
-                  ? _c("div", { staticClass: "list-inline-item" }, [
-                      _vm._v(
-                        "\n                        Nothing found\n                    "
-                      )
-                    ])
-                  : _vm._e()
+          _c(
+            "div",
+            { staticClass: "input-group  col-xs-12 position-relative" },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query,
+                    expression: "query"
+                  }
+                ],
+                staticClass: "form-control ",
+                attrs: {
+                  type: "text",
+                  id: "searchName",
+                  placeholder: "Search People..."
+                },
+                domProps: { value: _vm.query },
+                on: {
+                  input: [
+                    function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.query = $event.target.value
+                    },
+                    _vm.searchPeople
+                  ]
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.showSearch = !_vm.showSearch
+                      }
+                    }
+                  },
+                  [_vm._v("\n                    Close\n                ")]
+                )
               ])
-            : _vm._e()
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "row m--margin-top-15" }, [
+            _c("div", { staticClass: "col-lg-12" }, [
+              _vm.resultUser.length > 0
+                ? _c(
+                    "ul",
+                    { staticClass: "list-unstyled list-group-item " },
+                    _vm._l(_vm.userList, function(user, index) {
+                      return _c(
+                        "li",
+                        {
+                          key: index,
+                          staticClass: "list-inline-item ",
+                          attrs: { id: user.id }
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(user.name) + "\n                        "
+                          ),
+                          _c("i", {
+                            staticClass:
+                              "fas fa-arrow-up fa-1x m--margin-right-10"
+                          })
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.searching
+                ? _c("div", { staticClass: "list-group-item" }, [
+                    _vm.resultUser.length <= 0
+                      ? _c("div", { staticClass: "list-inline-item " }, [
+                          _vm._v(
+                            "\n                        Nothing found\n                    "
+                          )
+                        ])
+                      : _vm._e()
+                  ])
+                : _vm._e()
+            ])
+          ])
         ])
-      ])
-    ]),
+      : _vm._e(),
     _vm._v(" "),
-    _vm._m(5)
+    !_vm.showSearch
+      ? _c("div", { staticClass: "m-form__group row m--margin-top-15" }, [
+          _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
+                attrs: { tabindex: "" },
+                on: {
+                  click: function($event) {
+                    _vm.showSearch = !_vm.showSearch
+                  }
+                }
+              },
+              [_vm._m(4)]
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(5)
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -62308,62 +62357,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-append" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
-          attrs: { type: "button" }
-        },
-        [_vm._v("\n                    Search\n                ")]
-      )
+    return _c("span", [
+      _c("i", { staticClass: "la la-plus" }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Add Peoples")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-form__group row m--margin-top-15" }, [
-      _c("div", { staticClass: "col-sm-3 col-xs-12" }, [
+    return _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
+      _c("div", { staticClass: "profile-timeline__action" }, [
         _c(
-          "a",
+          "button",
+          {
+            staticClass: "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
+            attrs: { type: "button" }
+          },
+          [_vm._v("Cancel\n                ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
           {
             staticClass:
               "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-            attrs: { tabindex: "" }
+            attrs: { type: "button" }
           },
-          [
-            _c("span", [
-              _c("i", { staticClass: "la la-plus" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("Add Peoples")])
-            ])
-          ]
+          [_vm._v("Save\n                ")]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-9 col-xs-12" }, [
-        _c("div", { staticClass: "profile-timeline__action" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "btn m-btn--pill btn-outline-info m-btn m-btn--custom",
-              attrs: { type: "button" }
-            },
-            [_vm._v("Cancel\n                ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "btn m-btn--pill btn-outline-success m-btn m-btn--custom",
-              attrs: { type: "button" }
-            },
-            [_vm._v("Save\n                ")]
-          )
-        ])
       ])
     ])
   }
