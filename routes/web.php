@@ -21,7 +21,6 @@ Route::resource('strengths', 'StrengthController')
 ning oleks palju vähem messi ja kood oleks arusaadavam. ning lihtsam grupeerida neid.
 */
 
-
 Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
 Route::get('/unauthorized', function () {
@@ -132,13 +131,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('admin/career-template/list/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
     Route::patch('/admin/team/list/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
 
+    //Image Delete
+    Route::patch('adm/user/image/{id}', 'ImageController@delete')->name('imageDelete');
+    //End Image
+
     //Notes
     Route::get('/user/{id}/career/note/{roleId}', 'NoteController@index')->name('userNote');
     Route::patch('/{roleId}', 'NoteController@update')->name('updateNote');
     Route::post('/career/note/{id}', 'NoteController@create')->name('createNote');
     Route::delete('/note/delete', 'NoteController@delete')->name('deleteNote');
     Route::get('/note/count/{id}','NoteController@count')->name('noteCount');
-
+    //End notes
     /*Will be deleted
     Route::get('/user/career/note/{roleId}/test', 'NoteController@noteInfo')->name('userNote');*/
 
