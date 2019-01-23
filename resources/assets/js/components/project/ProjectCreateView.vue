@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="m-form__group row m--margin-top-15">
+        <div class="m-form__group row m--margin-top-15" v-if="showSearch">
 
             <label for="searchName" class="col-xs-12 m--font-brand">
                 Search People
@@ -73,11 +73,12 @@
                 <input type="text" class="form-control " id="searchName" @input="searchPeople" v-model="query"
                        placeholder="Search People..."/>
                 <div class="input-group-append">
-                    <button class="btn m-btn--pill btn-outline-info m-btn m-btn--custom" type="button">
-                        Search
+                    <button class="btn m-btn--pill btn-outline-info m-btn m-btn--custom" @click="showSearch=!showSearch" type="button">
+                        Close
                     </button>
                 </div>
             </div>
+
             <div class="row m--margin-top-15">
                 <div class="col-lg-12">
                     <ul class="list-unstyled list-group-item " v-if="resultUser.length > 0">
@@ -89,17 +90,18 @@
                         </li>
                     </ul>
                     <div v-if="searching" class="list-group-item">
-                        <div v-if="resultUser.length <= 0" class="list-inline-item">
+                        <div v-if="resultUser.length <= 0" class="list-inline-item ">
                             Nothing found
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="m-form__group row m--margin-top-15">
+
+        <div class="m-form__group row m--margin-top-15" v-if="!showSearch">
 
             <div class="col-sm-3 col-xs-12">
-                <a tabindex=""
+                <a tabindex="" @click="showSearch=!showSearch"
                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom"><span><i
                         class="la la-plus"></i> <span
                 >Add Peoples</span></span></a>
@@ -132,7 +134,10 @@
                 showSearch: false,
                 searching: false,
                 query: null,
-                resultUser: []
+                currentUser: [],
+                resultUser: [],
+
+
             }
         },
         mounted: function () {
