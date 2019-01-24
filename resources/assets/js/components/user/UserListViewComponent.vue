@@ -13,7 +13,7 @@
                 <i class="la la-check"></i>
             </div>
         </div>
-        <div class="profile-view__photo"><img alt="" :src="user.image"/></div>
+        <div class="profile-view__photo"><img alt="" :src="userImage"/></div>
         <div class="profile-view__content">
             <div class="profile-view__name">
                 {{ user.name }}
@@ -40,7 +40,21 @@
     export default {
 
         props: ['user'],
+        data() {
+            return {
+                userImage: this.user['image'],
+        }
+        },
+
+        mounted() {
+
+            if (!this.userImage) {
+                this.userImage = './assets/default/avatar.png';
+            }
+        }
     }
+
+
 </script>
 <style scoped>
     .remove-tag:link {
