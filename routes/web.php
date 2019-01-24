@@ -118,8 +118,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('adm/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
 
+    //Projects view
+    Route::get('/adm/projects', 'ProjectsController@index')->name('projectIndex');
+    Route::get('/admin/project-create', 'ProjectsController@indexCreate')->name('adminProjectCreateIndex');
+    //
+
+
     //api
     Route::get('adm/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
+    //end api
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
     Route::get('/admin/team/list/{id}', 'AdminTeamController@index')->name('adminTeamView');
@@ -140,10 +147,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/{roleId}', 'NoteController@update')->name('updateNote');
     Route::post('/career/note/{id}', 'NoteController@create')->name('createNote');
     Route::delete('/note/delete', 'NoteController@delete')->name('deleteNote');
+
+
     Route::get('/note/count/{id}','NoteController@count')->name('noteCount');
     //End notes
+
+
+
+
+
     /*Will be deleted
     Route::get('/user/career/note/{roleId}/test', 'NoteController@noteInfo')->name('userNote');*/
 
-
+    Route::post('/search', 'PeopleSearchController@search')->name('search');
 });
