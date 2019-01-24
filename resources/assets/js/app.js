@@ -20,15 +20,25 @@ import VueSelect from 'vue-select'
 /*const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));*/
 
+const files = require.context('./', true, /\.vue$/i);
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+
 Vue.component('v-select', VueSelect);
 
 Vue.component('modal', {}.default);
 
 Vue.use(ChecksPrivileges);
+
 //Career Notes
 Vue.component('career-notes', require('./components/career/CareerNotes'));
 Vue.component('career-note', require('./components/career/CareerNote'));
 //End career Notes
+
+//Project
+Vue.component('project-view', require('./components/project/ProjectView'));
+Vue.component('project-create-view', require('./components/project/ProjectCreateView'));
+//End Project
+
 Vue.component('user-career', require('./components/career/CareerComponent'));
 Vue.component('user-list', require('./components/user/UsersListComponent.vue'));
 Vue.component('user-list-view', require('./components/user/UserListViewComponent'));

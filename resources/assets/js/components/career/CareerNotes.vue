@@ -145,7 +145,13 @@
                     this.closeNoteView();
                 }
             },
+            checkIfEmpty() {
 
+                if (this.noteDescription && this.noteTitle) {
+                    return true
+                }
+                return false
+            },
 
             noteCreate() {
                 this.creating = true;
@@ -190,13 +196,7 @@
                 this.show = true;
 
             },
-            checkIfEmpty() {
 
-                if (this.noteDescription && this.noteTitle) {
-                    return true
-                }
-                return false
-            },
             submit() {
 
                 if (this.checkIfEmpty()) {
