@@ -148,8 +148,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/career/note/{id}', 'NoteController@create')->name('createNote');
     Route::delete('/note/delete', 'NoteController@delete')->name('deleteNote');
 
+
     Route::get('/note/count/{id}','NoteController@count')->name('noteCount');
     //End notes
+
 
 
 
