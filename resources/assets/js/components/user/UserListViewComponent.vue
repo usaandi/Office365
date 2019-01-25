@@ -1,11 +1,11 @@
 <template>
     <div>
         <a v-bind:href="'/user/' + user.id" class="profile-view__link"></a>
-        <div class="profile-view__action">
-            <a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+       <!-- <div class="profile-view__action">
+            <a href="#" class="btn btn-success m-btn m-btn&#45;&#45;icon btn-sm m-btn&#45;&#45;icon-only m-btn&#45;&#45;pill">
                 <i class="la la-plus"></i>
             </a>
-        </div>
+        </div>-->
         <div class="profile-view__check--wrapper">
             <div class="profile-view__check">
             </div>

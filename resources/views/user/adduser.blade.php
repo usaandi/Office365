@@ -50,18 +50,6 @@
                 </div>
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Phone</label>
-                    <div class="col-sm-9 col-xs-12 "><input type="text" placeholder="Enter Phone"
-                                                            name="phone" class="form-control m-input"></div>
-                </div>
-
-                <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
-                    <div class="col-sm-9 col-xs-12 "><input type="date" placeholder="Enter Skype"
-                                                            name="birthday" class="form-control m-input"></div>
-                </div>
-
-                <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">User
                         Role</label>
                     <div class="col-sm-9 col-xs-12 "><select required name="role" class="form-control m-input">
@@ -92,19 +80,12 @@
                     </div>
                 </div>
 
-                <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Skype</label>
-                    <div class="col-sm-9 col-xs-12 ">
-                        <inputname
-                        ="skype" type="text" placeholder="Enter Skype"
-                        class="form-control m-input">
-                    </div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">ADM
                         Since</label>
                     <div class="col-sm-9 col-xs-12 "><input name="ADMsince" type="date"
-                                                            placeholder="Enter Skype"
+
                                                             class="form-control m-input"></div>
                 </div>
             </div>
