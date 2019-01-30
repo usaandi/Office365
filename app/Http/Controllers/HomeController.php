@@ -26,18 +26,14 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
 
     public function userNoDepartment()
     {
 
-        $userdata = User::with('department')->get(['users.id', 'users.name']);
+        $userData = User::with('department')->get(['users.id', 'users.name']);
 
-        foreach ($userdata as $key => $user) {
+        foreach ($userData as $key => $user) {
 
             if ($user->department !== null) {
                 $user->department_id = $user->department->department_id;
@@ -48,7 +44,7 @@ class HomeController extends Controller
 
         }
 
-        return $userdata;
+        return $userData;
     }
 
     public function index()
@@ -58,17 +54,37 @@ class HomeController extends Controller
             ->whereNotNull('deleted_at')
             ->get();*/
         $users = User::get();
+
         foreach ($users as $i => $user) {
+
+            $userPhone = $this->getPhoneNumber($user['phone']);
+
+            $users[$i]['phone'] = $userPhone;
             $userCareer = $user->userCareerRole()->where('current_role', 1)->first();
             $userDepartmentId = $user->department()->first();
-            if($userDepartmentId){
+
+            if ($userDepartmentId) {
                 $departmentName = Department::find($userDepartmentId->department_id)->department_abbr;
                 $users[$i]['current_department'] = $departmentName;
+
             }
             if ($userCareer) {
                 $users[$i]['current_role'] = $userCareer->title;
             }
+
         }
         return view('home')->with(['users' => $users]);
+    }
+
+    protected function getPhoneNumber($phone)
+    {
+
+        $length = strlen($phone);
+
+        $parts = str_split($phone, 4);
+
+        return $numberFormatted = join(' ', $parts);
+
+
     }
 }
