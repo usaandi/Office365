@@ -38,6 +38,9 @@
                     <div class="col-sm-9 col-xs-12 "><input id="phoneNumber" value="{{$user->phone}}" type="number"
                                                             maxlength="12"
                                                             placeholder="Enter Phone"
+
+
+
                                                             name="phone" class="form-control m-input"></div>
                 </div>
 
