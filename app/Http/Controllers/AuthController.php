@@ -23,13 +23,13 @@ class AuthController extends Controller
 
         // Initialize the OAuth client
         $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-            'clientId'                => env('OAUTH_APP_ID'),
-            'clientSecret'            => env('OAUTH_APP_PASSWORD'),
-            'redirectUri'             => env('OAUTH_REDIRECT_URI'),
-            'urlAuthorize'            => env('OAUTH_AUTHORITY').env('OAUTH_AUTHORIZE_ENDPOINT'),
-            'urlAccessToken'          => env('OAUTH_AUTHORITY').env('OAUTH_TOKEN_ENDPOINT'),
+            'clientId' => env('OAUTH_APP_ID'),
+            'clientSecret' => env('OAUTH_APP_PASSWORD'),
+            'redirectUri' => env('OAUTH_REDIRECT_URI'),
+            'urlAuthorize' => env('OAUTH_AUTHORITY') . env('OAUTH_AUTHORIZE_ENDPOINT'),
+            'urlAccessToken' => env('OAUTH_AUTHORITY') . env('OAUTH_TOKEN_ENDPOINT'),
             'urlResourceOwnerDetails' => '',
-            'scopes'                  => env('OAUTH_SCOPES')
+            'scopes' => env('OAUTH_SCOPES')
         ]);
 
         // Generate the auth URL
@@ -39,7 +39,7 @@ class AuthController extends Controller
         $_SESSION['oauth_state'] = $oauthClient->getState();
 
         // Redirect to authorization endpoint
-        header('Location: '.$authorizationUrl);
+        header('Location: ' . $authorizationUrl);
 
         exit();
     }
@@ -67,16 +67,17 @@ class AuthController extends Controller
 
             // Initialize the OAuth client
             $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
-                'clientId'                => env('OAUTH_APP_ID'),
-                'clientSecret'            => env('OAUTH_APP_PASSWORD'),
-                'redirectUri'             => env('OAUTH_REDIRECT_URI'),
-                'urlAuthorize'            => env('OAUTH_AUTHORITY').env('OAUTH_AUTHORIZE_ENDPOINT'),
-                'urlAccessToken'          => env('OAUTH_AUTHORITY').env('OAUTH_TOKEN_ENDPOINT'),
+                'clientId' => env('OAUTH_APP_ID'),
+                'clientSecret' => env('OAUTH_APP_PASSWORD'),
+                'redirectUri' => env('OAUTH_REDIRECT_URI'),
+                'urlAuthorize' => env('OAUTH_AUTHORITY') . env('OAUTH_AUTHORIZE_ENDPOINT'),
+                'urlAccessToken' => env('OAUTH_AUTHORITY') . env('OAUTH_TOKEN_ENDPOINT'),
                 'urlResourceOwnerDetails' => '',
-                'scopes'                  => env('OAUTH_SCOPES')
+                'scopes' => env('OAUTH_SCOPES')
             ]);
 
             try {
+                $acceptedDomains = ['adm.ee'];
 
                 $accessToken = $oauthClient->getAccessToken('authorization_code', [
                     'code' => $_GET['code']
@@ -92,6 +93,10 @@ class AuthController extends Controller
                     ->execute();
 
                 $officeUserEmail = $officeUser->getMail();
+                if (!in_array(substr($officeUserEmail, strrpos($officeUserEmail, '@') + 1), $acceptedDomains)) {
+                    return 'Unauthorized Email'. $officeUserEmail;
+                }
+
 
                 $tokenCache = new \App\TokenStore\TokenCache;
                 $tokenCache->storeTokens($token, $accessToken->getRefreshToken(),
@@ -105,28 +110,24 @@ class AuthController extends Controller
                     $userRole = Role::findByName('User');
                     $user->assignRole($userRole);
 
-                }
-                else {
+                } else {
                     $user->token = $token;
                     $user->save();
                 }
 
                 auth()->login($user, TRUE);
 
-                if(Auth::user()){
+                if (Auth::user()) {
                     return redirect()->route('home');
-                }
-                else {
+                } else {
                     return "error!";
                 }
-            }
-            catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
-                exit('ERROR getting tokens: '.$e->getMessage());
+            } catch (League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+                exit('ERROR getting tokens: ' . $e->getMessage());
             }
             exit();
-        }
-        elseif (isset($_GET['error'])) {
-            exit('ERROR: '.$_GET['error'].' - '.$_GET['error_description']);
+        } elseif (isset($_GET['error'])) {
+            exit('ERROR: ' . $_GET['error'] . ' - ' . $_GET['error_description']);
         }
     }
 
