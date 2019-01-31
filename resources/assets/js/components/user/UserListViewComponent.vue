@@ -1,11 +1,11 @@
 <template>
     <div>
         <a v-bind:href="'/user/' + user.id" class="profile-view__link"></a>
-        <div class="profile-view__action">
-            <a href="#" class="btn btn-success m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+       <!-- <div class="profile-view__action">
+            <a href="#" class="btn btn-success m-btn m-btn&#45;&#45;icon btn-sm m-btn&#45;&#45;icon-only m-btn&#45;&#45;pill">
                 <i class="la la-plus"></i>
             </a>
-        </div>
+        </div>-->
         <div class="profile-view__check--wrapper">
             <div class="profile-view__check">
             </div>
@@ -13,7 +13,7 @@
                 <i class="la la-check"></i>
             </div>
         </div>
-        <div class="profile-view__photo"><img alt="" :src="user.image"/></div>
+        <div class="profile-view__photo"><img alt="" :src="userImage"/></div>
         <div class="profile-view__content">
             <div class="profile-view__name">
                 {{ user.name }}
@@ -40,7 +40,21 @@
     export default {
 
         props: ['user'],
+        data() {
+            return {
+                userImage: this.user['image'],
+        }
+        },
+
+        mounted() {
+
+            if (!this.userImage) {
+                this.userImage = './assets/default/avatar.png';
+            }
+        }
     }
+
+
 </script>
 <style scoped>
     .remove-tag:link {

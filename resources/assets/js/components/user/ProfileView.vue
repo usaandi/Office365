@@ -188,7 +188,6 @@
             </div>
         </div>
     </div>
-    </div>
 </template>
 
 
@@ -202,7 +201,7 @@
         name: "ProfileView",
         components: {EditableInputComponent},
         props: ['user', 'image'],
-        data: function () {
+        data() {
             return {
                 edit: false,
                 userdata: '',
@@ -216,6 +215,7 @@
                 noStrengths: false,
                 userStrengths: [],
                 userBirthday: this.user.birthday,
+                userPhoneNumber: this.user['phone'],
 
 
             }
@@ -232,6 +232,7 @@
                 this.canedit = true;
             }
         },
+
 
         methods: {
 
@@ -286,7 +287,7 @@
                 let months = (currentDate.getMonth() + 1) - (admDate.getMonth() + 1);
 
                 return years + "y" + months + "m";
-            }
+            },
 
         }
     }

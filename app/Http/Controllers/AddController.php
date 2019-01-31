@@ -41,9 +41,6 @@ class AddController extends Controller
 
                     'name' => 'required',
                     'email' => 'required|email',
-                    'phone' => 'nullable|int',
-                    'birthday' => 'nullable|date',
-                    'skype' => 'nullable',
                     'ADMsince' => 'nullable|date',
                     'department' => 'nullable',
                     'role' => 'required',
@@ -51,9 +48,6 @@ class AddController extends Controller
             );
             $name = $request->input('name');
             $email = $request->input('email');
-            $phone = $request->input('phone');
-            $birthday = $request->input('birthday');
-            $skype = $request->input('skype');
             $ADMsince = $request->input('ADMsince');
             $departmentId = $request->input('department');
 
@@ -62,8 +56,7 @@ class AddController extends Controller
 
             if ($user === null) {
 
-                $userId = User::create(['email' => $email, 'name' => $name, 'token' => null, 'phone' => $phone,
-                    'birthday' => $birthday, 'skype' => $skype, 'ADMsince' => $ADMsince])->id;
+                $userId = User::create(['email' => $email, 'name' => $name, 'token' => null, 'ADMsince' => $ADMsince])->id;
 
                 $userFind = User::findOrFail($userId);
 
