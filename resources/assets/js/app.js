@@ -29,6 +29,8 @@ Vue.component('modal', {}.default);
 
 Vue.use(ChecksPrivileges);
 
+Vue.component('alert-view', require('./components/AlertView'));
+
 //Career Notes
 Vue.component('career-notes', require('./components/career/CareerNotes'));
 Vue.component('career-note', require('./components/career/CareerNote'));
