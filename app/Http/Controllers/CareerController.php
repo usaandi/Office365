@@ -70,7 +70,8 @@ class CareerController extends Controller
                         foreach ($data['milestonesList'] as $milestone) {
                             CareerRoleMilestone::create([
                                 'task' => $milestone,
-                                'career_role_id' => $career->id
+                                'career_role_id' => $career->id,
+                                'description' => null
                             ]);
                         }
                         unset($milestone);
@@ -168,6 +169,7 @@ class CareerController extends Controller
                     'assigned_username' => $careerMilestone->assignee->name,
                     'assigned_image' => $careerMilestone->assignee->image,
                     'task' => $careerMilestone->task,
+                    'description' => $careerMilestone->description,
                     'reminder' => $careerMilestone->reminder,
                     'completed' => $careerMilestone->completed,
                 ];
@@ -303,6 +305,7 @@ class CareerController extends Controller
                         'assigned_username' => $authUser->name,
                         'user_career_role_id' => $userCareerRole->id,
                         'task' => $milestone->task,
+                        'description' => $milestone->description,
                         'reminder' => null,
                         'completed' => 0,
                     ]);
@@ -315,6 +318,7 @@ class CareerController extends Controller
                         'assigned_username' => $authUser->name,
                         'user_career_role_id' => $userCareerRole->id,
                         'task' => $milestone->task,
+                        'description' => $milestone->description,
                         'reminder' => null,
                         'completed' => 0,
                     ];
