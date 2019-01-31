@@ -23,8 +23,8 @@ class ProjectsController extends Controller
     {
         try {
 
-            $clients = Client::getClientsName();
-            $positions = Position::getPositionsName();
+            $clients = Client::getClientsNames();
+            $positions = Position::getPositionsNames();
             return view('project.projectCreate')->with('clients', $clients)->with('positions', $positions);
 
         } catch (\Exception $e) {
@@ -34,6 +34,7 @@ class ProjectsController extends Controller
     public function createProject(Request $request)
     {
         try {
+            return response('coming soon');
             $data = $request->all();
             $rules = [
                 'projectTitle' => 'required',
@@ -41,11 +42,13 @@ class ProjectsController extends Controller
                 'startDate' => 'required|date',
                 'endDate' => 'nullable|date',
                 'clientName' => 'required',
+                'projectUsers.*.technologies' => 'nullable|array',
+                'projectUsers.*.technologies.*.technologyName' => 'nullable',
 
                 'projectUsers' => 'nullable|array',
                 'projectUsers.*.name' => 'required',
                 'projectUsers.*.id' => 'required',
-                'projectUsers.*.position' => 'nullable'
+                'projectUsers.*.position' => 'nullable',
             ];
 
             $validator = Validator::make($data, $rules);
@@ -54,14 +57,21 @@ class ProjectsController extends Controller
 
                 $clientName = ucfirst(strtolower($data['clientName']));
 
-                $clientId = Client::getClientId($clientName);
-                if($clientId === null){
-                    Client::createClient($clientName);
-                }
+                $clientId = $this->getClientId($clientName);
+
 
             }
         } catch (\Exception $e) {
         }
+    }
+
+    private function getClientId($name)
+    {
+        $client = Client::getClientObjectByName($name);
+        if ($client === null) {
+            $client = Client::createClient($name);
+        }
+        return $clientId = $client->id;
     }
 
 

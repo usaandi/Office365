@@ -10,6 +10,7 @@ class UserCareerRoleMilestone extends Model
 
      protected $fillable=[
          'milestone_id',
+         'description',
          'user_id',
          'assigned_id',
          'task',

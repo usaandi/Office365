@@ -8,7 +8,7 @@ class Position extends Model
 {
     protected $fillable = ['position_name'];
 
-    public static function getPositionsName()
+    public static function getPositionsNames()
     {
         return Position::get(['position_name']);
     }

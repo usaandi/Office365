@@ -8,18 +8,19 @@ class Client extends Model
 {
     protected $fillable = ['client_name'];
 
-    public static function getClientsName()
+    public static function getClientsNames()
     {
         return Client::get(['client_name']);
     }
 
-    public static function getClientId($clientName)
+    public static function getClientObjectByName($clientName)
     {
-         client::where('client_name', $clientName)->first();
+        return $client = Client::where('client_name', $clientName)->first();
+
     }
 
     public static function createClient($clientName)
     {
-        $a = $clientName;
+       return $client = Client::create(['client_name' => $clientName]);
     }
 }

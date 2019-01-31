@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CareerRoleMilestone extends Model
 {
     protected $table = 'career_roles_milestones';
-    protected $fillable = ['task','career_role_id'];
+    protected $fillable = ['task','career_role_id','description'];
 
     public function careerRole()
     {

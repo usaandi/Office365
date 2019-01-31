@@ -30,7 +30,8 @@ class AdminCareerTemplateManager extends Controller
                 foreach ($careerRole->careerRoleMilestones()->get() as $careerRoleMilestone) {
                     $array[$key]['milestones'][] = [
                         'task' => $careerRoleMilestone->task,
-                        'careerRoleMilestoneId' => $careerRoleMilestone->id
+                        'careerRoleMilestoneId' => $careerRoleMilestone->id,
+                        'description' => $careerRoleMilestone->description
 
                     ];
                 }
@@ -55,7 +56,7 @@ class AdminCareerTemplateManager extends Controller
 
             $validator = Validator::make($data, $rules);
 
-            if($validator->fails()){
+            if ($validator->fails()) {
                 return response('Bad Request', 400);
             }
 
@@ -96,7 +97,7 @@ class AdminCareerTemplateManager extends Controller
 
             if ($validator->passes()) {
                 $careerRoleMilestone = CareerRoleMilestone::findOrFail($data['careerMilestoneId']);
-                 $careerRoleMilestone->delete();
+                $careerRoleMilestone->delete();
 
                 return response('success', 200);
 
@@ -115,21 +116,23 @@ class AdminCareerTemplateManager extends Controller
             $data = $request->all();
             $rules = [
                 'careerMilestoneTask' => 'required|string|max:20',
+                'careerMilestoneDescription' => 'required|string'
             ];
 
             $validator = Validator::make($data, $rules);
 
             if ($validator->passes()) {
                 $careerMilestoneTask = $data['careerMilestoneTask'];
+                $careerMilestoneDescription = $data['careerMilestoneDescription'];
 
                 $sanitizeTask = ucfirst(strtolower($careerMilestoneTask));
 
                 $careerRole = CareerRoleMilestone::where('id', $careerMilestoneId)->update([
-                    'task' => $sanitizeTask]);
+                    'task' => $sanitizeTask, 'description' => $careerMilestoneDescription]);
 
 
                 $careerRoleNew = CareerRoleMilestone::where('id', $careerMilestoneId)
-                    ->first(['task']);
+                    ->first(['task', 'description']);
 
                 return response(json_encode($careerRoleNew), 200);
             }
@@ -151,7 +154,7 @@ class AdminCareerTemplateManager extends Controller
 
             if ($validator->passes()) {
                 $careerRole = CareerRole::findOrFail($data['careerId']);
-                 $careerRole->delete();
+                $careerRole->delete();
 
                 return response('success', 200);
 
@@ -168,6 +171,7 @@ class AdminCareerTemplateManager extends Controller
             $data = $request->all();
             $rules = [
                 'careerMilestoneTask' => 'required|string'
+
             ];
 
             $validator = Validator::make($data, $rules);
@@ -177,11 +181,12 @@ class AdminCareerTemplateManager extends Controller
                 $existsCareerMilestone = CareerRoleMilestone::where('career_role_id', $careerId)->where('task', $careerMilestoneTask)->get();
 
                 if ($existsCareerMilestone->isEmpty()) {
-                    $newCareerMilestone = CareerRoleMilestone::create(['task' => $careerMilestoneTask, 'career_role_id' => $careerId]);
+                    $newCareerMilestone = CareerRoleMilestone::create(['task' => $careerMilestoneTask, 'career_role_id' => $careerId, 'description' => null]);
 
                     $jsonObject = [
                         'careerRoleMilestoneId' => $newCareerMilestone->id,
                         'task' => $newCareerMilestone->task,
+                        'description' => $newCareerMilestone->description,
                     ];
 
                     return response(json_encode($jsonObject), 200);
@@ -193,6 +198,7 @@ class AdminCareerTemplateManager extends Controller
             }
 
         } catch (\Exception $e) {
+            return response('Error');
         }
     }
 }
