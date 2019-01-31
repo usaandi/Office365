@@ -205,7 +205,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="m-nav__item">
-                                                            <a href="profile.html" class="m-nav__link">
+                                                            <a href="{{route('home')}}" class="m-nav__link">
                                                                 <i class="m-nav__link-icon la la-map"></i>
                                                                 <span class="m-nav__link-text">
 																				Lorem
