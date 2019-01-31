@@ -13,7 +13,7 @@
 @section('content-body')
 
     <div id="app">
-        <project-create-view></project-create-view>
+        <project-create-view :clients="{{json_encode($clients)}}" :positions="{{json_encode($positions)}}"></project-create-view>
     </div>
 
 @endsection

@@ -121,6 +121,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Projects view
     Route::get('/adm/projects', 'ProjectsController@index')->name('projectIndex');
     Route::get('/admin/project-create', 'ProjectsController@indexCreate')->name('adminProjectCreateIndex');
+    Route::post('/admin/project-create', 'ProjectsController@createProject')->name('adminProjectCreate');
     //
 
 
@@ -149,11 +150,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/note/delete', 'NoteController@delete')->name('deleteNote');
 
 
-    Route::get('/note/count/{id}','NoteController@count')->name('noteCount');
+    Route::get('/note/count/{id}', 'NoteController@count')->name('noteCount');
     //End notes
-
-
-
 
 
     /*Will be deleted
