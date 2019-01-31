@@ -30,8 +30,12 @@
                     </div>
                     <div class="row form-group">
                         <label class="col-xs-12 m--font-brand">Technology List</label>
-                        <ul class="list-unstyled list-group-item col-lg-6 col-xs-12" >
-                            <li :key="index" v-for="(technology, index) in technologiesList">{{technology}}</li>
+                        <ul class="list-unstyled list-group-item col-lg-6 col-xs-12">
+                            <li :key="index" v-for="(technology, index) in technologiesList" class="list-inline-item">
+                                {{technology['technologyName']}}
+                                <span style="display: inline-block;" @click="deleteTechnology(index)"><i
+                                        class="fa fa-trash m--margin-left-10"></i></span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -281,8 +285,15 @@
             }
         },
         methods: {
+
+            deleteTechnology(index) {
+                this.selectedUserTechnologies.splice(index, 1);
+            },
+
             addTechnology(technology) {
                 this.selectedUserTechnologies.push({technologyName: technology});
+
+                this.technologyName = null;
 
             },
             closeSearch() {

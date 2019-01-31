@@ -102,6 +102,16 @@
                                                                         maxlength="30"
                                                                         class="form-control m-input"></div>
                             </div>
+                            <div class="form-group m-form__group row m--margin-top-15"><label
+                                    for="updateMilestoneDescription"
+                                    class="col-sm-3 col-xs-12  col-form-label">Update milestone
+                                description</label>
+                                <div class="col-sm-9 col-xs-12 "> <textarea v-model="updateMilestoneDescription"
+                                                                            id="updateMilestoneDescription" rows="10"
+                                                                            name="career_description"
+                                                                            class="form-control m-input"></textarea>
+                                </div>
+                            </div>
                         </div>
                         <div class="m-portlet__foot m-portlet__foot--fit">
                             <div class="m-form__actions">
@@ -222,6 +232,7 @@
 
                 newMilestoneName: null,
                 updateMilestoneName: null,
+                updateMilestoneDescription: null,
                 currentMilestoneIndex: null,
                 currentCareerRoleMilestoneId: null
 
@@ -235,13 +246,15 @@
                 if (this.updateMilestoneName) {
 
                     const data = {
-                        careerMilestoneTask: this.updateMilestoneName
+                        careerMilestoneTask: this.updateMilestoneName,
+                        careerMilestoneDescription: this.updateMilestoneDescription,
                     };
 
                     axios.patch('admin/career-template/list/milestone/' + this.currentCareerRoleMilestoneId, data).then(response => {
                         if (response.status === 200) {
 
                             this.careers[this.currentIndex]['milestones'][this.currentMilestoneIndex].task = response.data.task;
+                            this.careers[this.currentIndex]['milestones'][this.currentMilestoneIndex].description = response.data.description;
                             this.cancelMilestoneEdit();
                         }
                     });
@@ -261,6 +274,7 @@
             cancelMilestoneEdit() {
                 this.updatingMilestone = false;
                 this.updateMilestoneName = null;
+                this.updateMilestoneDescription = null;
                 this.currentCareerRoleMilestoneId = null;
                 this.currentMilestoneIndex = null;
             },
@@ -270,6 +284,7 @@
                 this.currentMilestoneIndex = index;
                 this.updatingMilestone = true;
                 this.updateMilestoneName = milestone.task;
+                this.updateMilestoneDescription = milestone.description;
                 this.currentCareerRoleMilestoneId = milestone.careerRoleMilestoneId;
             },
 
@@ -278,7 +293,7 @@
 
                 let confirmation = confirm("Are you sure you want to delete this Career Template?");
 
-                if(confirmation){
+                if (confirmation) {
 
                     axios.delete('admin/career-template/list/', {params: {careerId: careerId}}).then(response => {
                         if (response.status === 200) {
@@ -322,6 +337,7 @@
                 if (this.showModal) {
                     this.currentCareerRoleMilestoneId = null;
                     this.updateMilestoneName = null;
+                    this.updateMilestoneDescription = null;
                     this.careerTaskTitle = null;
                     this.careerDescription = null;
                     this.careerMilestones = null;
