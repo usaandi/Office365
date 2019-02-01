@@ -1,19 +1,21 @@
 <template>
-    <div  class="profile-timeline__form" >
+    <div class="profile-timeline__form">
         <form class="m-form">
             <div class="m-portlet__body">
                 <div class="form-group m-form__group row">
                     <label for="Task" class="col-3 col-form-label">Task</label>
-                    <div class="col-9" >
-                        <input @change="thisChanged" id="Task" :class="{'border border-danger': this.errorTask}" class="form-control m-input" placeholder="Task"  v-model="task">
+                    <div class="col-9">
+                        <input @change="thisChanged" id="Task" :class="{'border border-danger': this.errorTask}"
+                               class="form-control m-input" placeholder="Task" v-model="task">
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label for="Assign" class="col-3 col-form-label">Assign</label>
                     <div class="col-9">
-                        <select class="form-control m-input" @change="thisChanged" :class="{'border border-danger': this.errorSelected}" id="Assign" v-model="selected">
+                        <select class="form-control m-input" @change="thisChanged"
+                                :class="{'border border-danger': this.errorSelected}" id="Assign" v-model="selected">
                             <option></option>
-                            <option  v-for="user in users" :value="user"
+                            <option v-for="user in users" :value="user"
                             >
                                 {{user.name}}
                             </option>
@@ -22,9 +24,18 @@
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
+                    <label for="description" class="col-3 col-form-label">Description</label>
+                    <div class="col-9">
+                        <textarea rows="5" id="description" required class="form-control m-input" placeholder="description"
+                                  v-model="description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
                     <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
                     <div class="col-9">
-                        <input v-model="reminder" @change="thisChanged" :class="{'border border-danger': this.errorReminder}"  type="date" id="Reminder" class="form-control m-input" placeholder="Task">
+                        <input v-model="reminder" @change="thisChanged"
+                               :class="{'border border-danger': this.errorReminder}" type="date" id="Reminder"
+                               class="form-control m-input" placeholder="Task">
                     </div>
                 </div>
             </div>
@@ -35,8 +46,13 @@
                         </div>
                         <div class="col-sm-9 col-xs-12">
                             <div class="profile-timeline__action">
-                                <button  @click="clear()" type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Close</button>
-                                <button type="button"  class="btn m-btn--pill btn-success m-btn m-btn--custom" @click="submit()">Save</button></div>
+                                <button @click="clear()" type="button"
+                                        class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">Close
+                                </button>
+                                <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
+                                        @click="submit()">Save
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,14 +69,15 @@
         name: "CareerMilestoneForm",
         data() {
             return {
-                hasError:false,
+                hasError: false,
 
 
                 show: false,
-                errorTask:false,
-                errorReminder:false,
-                errorSelected:false,
-                selected:'',
+                errorTask: false,
+                errorReminder: false,
+                errorSelected: false,
+                description:null,
+                selected: '',
                 task: '',
                 reminder: '',
                 assignerUserId: '',
@@ -74,9 +91,7 @@
             this.users = this.usersList;
         },
 
-        computed:{
-
-        },
+        computed: {},
         watch: {
             usersList(newValue) {
                 this.users = newValue;
@@ -85,30 +100,30 @@
         },
 
         methods: {
-            clear(){
+            clear() {
                 this.task = '';
                 this.reminder = '';
                 this.selected = '';
-                this.errorTask=false;
-                this.errorReminder=false;
-                this.errorSelected=false;
+                this.errorTask = false;
+                this.errorReminder = false;
+                this.errorSelected = false;
                 this.$emit('close');
 
             },
-            thisChanged(){
+            thisChanged() {
 
 
-                if (this.hasError){
+                if (this.hasError) {
                     this.hasError = false;
                 }
-                if (this.task !== ''){
-                    this.errorTask=false;
+                if (this.task !== '') {
+                    this.errorTask = false;
                 }
-                if (this.selected !== ''){
-                    this.errorSelected=false;
+                if (this.selected !== '') {
+                    this.errorSelected = false;
                 }
-                if (this.reminder !== ''){
-                    this.errorReminder=false;
+                if (this.reminder !== '') {
+                    this.errorReminder = false;
                 }
             },
 
@@ -122,39 +137,39 @@
                 this.reminder === '' ? this.errorReminder = true : this.errorReminder = false;
 
 
-                if( this.task !== '' && this.selected !== '' && this.reminder !== '' ){
-                    this.hasError=false;
+                if (this.task !== '' && this.selected !== '' && this.reminder !== '') {
+                    this.hasError = false;
 
 
+                    const data = [{
+                        taskName: this.task,
+                        reminder: this.reminder,
+                        assignerUserId: this.selected.id,
+                        description: this.description,
+                        CareerRoleId: this.careerRoleId,
+                    }];
 
-                        const data = [{
-                            taskName: this.task,
-                            reminder: this.reminder,
-                            assignerUserId: this.selected.id,
-                            CareerRoleId: this.careerRoleId,
-                        }];
+                    this.task = '';
+                    this.reminder = '';
+                    this.assignerUserId = '';
+                    this.selected = {};
 
-                        this.task = '';
-                        this.reminder = '';
-                        this.assignerUserId = '';
-                        this.selected = {};
+                    let vm = this;
+                    axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data)
+                        .then(response => {
 
-                        let vm = this;
-                        axios.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data)
-                            .then(response => {
-
-                               this.$emit('addToMilestones',response.data);
-                               vm.$emit('close');
+                            this.$emit('addToMilestones', response.data);
+                            vm.$emit('close');
 
 
-                            }).catch(error => {
+                        }).catch(error => {
 
-                        });
+                    });
 
 
                 }
                 else {
-                    this.hasError=true;
+                    this.hasError = true;
 
                 }
             },
