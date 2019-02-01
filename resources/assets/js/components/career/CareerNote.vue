@@ -15,18 +15,26 @@
                         <p class="profile-timeline__text">{{note.description}}</p>
                     </div>
                 </div>
+
             </div>
+
         </div>
         <div class="profile-timeline__action m--margin-15">
+            <label v-show="canEditState()" class="m-checkbox m-checkbox--air m-checkbox--state-success">Public<input
+                    type="checkbox" @change="setPublicState(note.is_public)" v-model="note.is_public">
+                <span></span></label>
             <button class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10" v-show="canEdit()"
                     @click="emitEdit(index)"
             >Edit
             </button>
+
         </div>
     </div>
 </template>
 
 <script>
+
+    import axios from 'axios';
 
     export default {
         props: {
@@ -36,6 +44,7 @@
             index: {
                 required: true
             },
+
         },
         name: "CareerNote",
         data() {
@@ -46,16 +55,34 @@
 
             }
         },
+        watch: {},
         methods: {
             emitEdit(index) {
                 this.$emit('update', index);
             },
+            canEditState() {
+                if (this.note.assigner_id === this.authUserId) {
+                    return true
+                }
+                return false
+            },
+
             canEdit() {
-                if (this.note.assigner_id === this.authUserId || this.admin) {
+                if (this.note.assigner_id === this.authUserId) {
                     return true;
                 }
                 return false;
             },
+
+            setPublicState(state) {
+
+                const data = {is_public: state};
+
+                axios.patch('/note/update-status/' + this.note.id, data).then(response => {
+                    console.log(response);
+                })
+
+            }
         }
     }
 </script>

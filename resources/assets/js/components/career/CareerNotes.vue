@@ -91,7 +91,9 @@
     export default {
         props: {
             notes: {
-                required: true
+                required: true,
+                type: Array,
+                default: () => []
             },
             careerId: {
                 required: true,
@@ -119,7 +121,6 @@
         computed: {},
         watch: {
             activeNote() {
-
             }
         },
 
@@ -133,6 +134,7 @@
                 if (confirmation) {
                     axios.delete('/note/delete', {params: {id: this.noteId}}).then(response => {
                         if (response.status === 200) {
+
                             this.notesList.splice(this.index, 1);
                             this.closeNoteView();
                             this.success = true;
@@ -161,10 +163,10 @@
                         noteDescription: this.noteDescription,
                         noteTitle: this.noteTitle
                     };
-
                     axios.post('/career/note/' + this.careerId, data).then(response => {
                         if (response.status === 200) {
-                            this.notesList.push(response.data);
+
+                            this.pushToNoteList(response.data);
                             this.closeNoteView();
                             this.success = true;
                         }
@@ -182,6 +184,11 @@
                 this.noteId = null;
                 this.index = null;
 
+            },
+
+            pushToNoteList(data) {
+                console.log(data);
+                this.notesList.push(data);
             },
             startUpdate(index) {
 
