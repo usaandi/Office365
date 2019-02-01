@@ -25,7 +25,7 @@ class NoteController extends Controller
 
             $user = User::findOrFail($id);
             $this->authorize('updateCareer', $user);
-            $notes = $this->noteInfo($roleId);
+            $notes = (array)$this->noteInfo($roleId);
 
 
             return view('career.notes')->with('notes', $notes)->with('careerId', $roleId);
@@ -57,6 +57,7 @@ class NoteController extends Controller
                 'created_at' => $createNote->created_at->toDateString(),
                 'description' => $createNote['description'],
                 'title' => $createNote['title'],
+                'is_public' => $createNote['is_public'],
             ];
             return response($array, 200);
 
@@ -107,6 +108,21 @@ class NoteController extends Controller
 
     }
 
+    public function state(Request $request, $id)
+    {
+        try {
+
+            $validateData = $this->validate($request, [
+                'is_public' => 'required|boolean'
+            ]);
+
+            $note = Note::notePublicState($id, $validateData);
+
+
+        } catch (\Exception $e) {
+        }
+    }
+
     protected function noteInfo($careerRoleId)
     {
         try {
@@ -117,10 +133,10 @@ class NoteController extends Controller
 
             foreach ($notes as $key => $note) {
 
-                if ($note->assigner_id === auth::user()['id']) {
-
+                if ($note->assigner_id === auth::user()['id'] || $note['is_public']) {
                     $assignerId = $note['assigner_id'];
                     $array[$key]['id'] = $note->id;
+                    $array[$key]['is_public'] = $note['is_public'];
                     $array[$key]['title'] = $note->title;
                     $array[$key]['description'] = $note->description;
                     $array[$key]['assigner_id'] = $note->assigner_id;
