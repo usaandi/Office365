@@ -14,7 +14,7 @@ class NoteController extends Controller
 
     public function count($id)
     {
-        $Count = Note::where('user_career_role_id',$id)->get()->toArray();
+        $Count = Note::where('user_career_role_id', $id)->get()->toArray();
 
         return count($Count);
     }
@@ -117,14 +117,16 @@ class NoteController extends Controller
 
             foreach ($notes as $key => $note) {
 
-                $assignerId = $note['assigner_id'];
-                $array[$key]['id'] = $note->id;
-                $array[$key]['title'] = $note->title;
-                $array[$key]['description'] = $note->description;
-                $array[$key]['assigner_id'] = $note->assigner_id;
-                $array[$key]['assigner_name'] = $note->getNameByUserId($assignerId);
-                $array[$key]['created_at'] = $note->created_at->toDateString();
+                if ($note->assigner_id === auth::user()['id']) {
 
+                    $assignerId = $note['assigner_id'];
+                    $array[$key]['id'] = $note->id;
+                    $array[$key]['title'] = $note->title;
+                    $array[$key]['description'] = $note->description;
+                    $array[$key]['assigner_id'] = $note->assigner_id;
+                    $array[$key]['assigner_name'] = $note->getNameByUserId($assignerId);
+                    $array[$key]['created_at'] = $note->created_at->toDateString();
+                }
             }
             return $array;
 
