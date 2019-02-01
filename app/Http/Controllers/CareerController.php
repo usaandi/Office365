@@ -452,6 +452,7 @@ class CareerController extends Controller
             $rules = [
                 'taskName' => 'required|string|max:30',
                 'reminder' => 'required|',
+                'description' => 'nullable',
                 'assignerUserId' => 'required|',
                 'CareerRoleId' => 'required|'
             ];
@@ -460,8 +461,8 @@ class CareerController extends Controller
 
             if ($validator->passes()) {
 
-
                 $taskName = $data['taskName'];
+                $description = $data['description'];
                 $reminder = $data['reminder'];
                 $assignerUserId = $data['assignerUserId'];
                 $careerRoleId = $data['CareerRoleId'];
@@ -485,6 +486,7 @@ class CareerController extends Controller
                         'assigned_id' => $assignerUserId,
                         'user_career_role_id' => $careerRoleId,
                         'task' => $capitalizeTaskName,
+                        'description' => $description,
                         'reminder' => $reminder,
                         'completed' => 0,
                         //TODO
@@ -493,12 +495,14 @@ class CareerController extends Controller
                     ]);
 
                     $assignedUserName = User::find($assignerUserId)->name;
+
                     $data = array([
                         'user_id' => $id,
                         'assigned_id' => $assignerUserId,
                         'assigned_username' => $assignedUserName,
                         'user_career_role_id' => $careerRoleId,
                         'task' => $capitalizeTaskName,
+                        'description' => $description,
                         'reminder' => $reminder,
                         'completed' => 0,
                         'id' => $userCareerMilestone->id,
@@ -527,6 +531,7 @@ class CareerController extends Controller
             $rules = [
 
                 'id' => 'required',
+                'description' =>'nullable',
                 'reminder' => 'nullable',
                 'task' => 'required',
                 'selected.id' => 'required',
@@ -538,20 +543,21 @@ class CareerController extends Controller
             $validator = Validator::make($data, $rules);
 
             if ($validator->passes()) {
-
+                $description = $data['description'];
                 $task = ucfirst(strtolower($data['task']));
                 $update = $user->userCareerRoleMilestones()->where('id', $data['id'])
                     ->where('user_career_role_id', $data['userCareerRoleId'])
                     ->where('user_id', $id)
                     ->update([
                         'task' => $task,
+                        'description' => $description,
                         'reminder' => $data['reminder'],
                         'assigned_id' => $data['selected']['id'],
                     ]);
                 if ($update === 1) {
                     $jsonData = $user->userCareerRoleMilestones()->where('id', $data['id'])
                         ->where('user_career_role_id', $data['userCareerRoleId'])
-                        ->where('user_id', $id)->first(['id', 'assigned_id', 'task', 'reminder']);
+                        ->where('user_id', $id)->first(['id', 'assigned_id', 'task', 'reminder','description']);
                     return response(json_encode($jsonData), 200);
                 }
 

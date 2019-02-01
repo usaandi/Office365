@@ -30,6 +30,13 @@
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
+                            <label for="description" class="col-3 col-form-label">Description</label>
+                            <div class="col-9">
+                        <textarea id="description" required class="form-control m-input" placeholder="description"
+                                  v-model="description" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
                             <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
                             <div class="col-9">
                                 <input class="form-control m-input" id="Reminder" type="date" @focus="checkError"
@@ -44,7 +51,7 @@
                             <div class="row">
                                 <div class="col-sm-3 col-xs-12">
                                          <span @click="removeMilestone()"><span style="cursor: pointer"
-                                                                       class="icon flaticon-delete-1"></span></span>
+                                                                                class="icon flaticon-delete-1"></span></span>
                                 </div>
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
@@ -90,12 +97,16 @@
                     <div class="profile-timeline__milestones--date">
                         {{milestone.reminder}}
                     </div>
+
                     <div class="profile-timeline__milestones--action">
                         <a tabindex="" @click="show=true"
                            class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill">
                             <i class="la la-pencil-square"></i>
                         </a>
                     </div>
+                </div>
+                <div class="profile-timeline__milestones--name">
+                    {{milestone.description}}
                 </div>
             </div>
         </div>
@@ -119,6 +130,7 @@
                     'name': this.milestoneInfo['assigned_username'],
                 },
                 reminder: this.milestoneInfo['reminder'],
+                description: this.milestoneInfo['description'],
                 milestone: [],
                 editField: '',
                 show: false,
@@ -156,6 +168,7 @@
                     'name': this.milestoneInfo['assigned_username'],
                 };
                 this.reminder = this.milestoneInfo['reminder'];
+                this.description = this.milestoneInfo['description'];
                 this.show = false;
             },
 
@@ -170,6 +183,7 @@
                         const data = {
                             id: this.milestone.id,
                             reminder: this.reminder,
+                            description: this.description,
                             task: this.taskName,
                             selected: this.assigned,
                             userCareerRoleId: this.milestone.user_career_role_id,
@@ -180,6 +194,7 @@
                                 if (response.status === 200) {
                                     this.milestone.reminder = response.data['reminder'];
                                     this.milestone.task = response.data['task'];
+                                    this.milestone.description = response.data['description'];
                                     this.show = false;
                                     for (let i = 0; i < this.usersList.length; i++) {
                                         if (this.usersList[i].id === response.data.assigned_id) {
@@ -216,19 +231,20 @@
                 this.assigned === '' ? this.errorSelected = true : this.errorSelected = false;
                 this.reminder === '' ? this.errorDate = true : this.errorDate = false;
 
+
                 if (this.errorDate || this.errorSelected || this.errorTask) {
+
                     return false;
                 }
 
                 else {
-                    if (this.taskName !== this.milestoneInfo['task'] ||
+                    if (this.taskName !== this.milestoneInfo['task'] || this.description !== this.milestoneInfo['description'] ||
                         this.reminder !== this.milestoneInfo['reminder'] || this.assigned['id'] !== this.milestoneInfo['assigned_id']) {
                         return true;
                     }
                 }
             },
             removeMilestone() {
-                console.log('here');
 
                 if (this.canEdit) {
                     this.show = false;
@@ -240,8 +256,6 @@
             },
 
         },
-
-
 
 
     }
