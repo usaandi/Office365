@@ -152,9 +152,6 @@
                 this.image = './assets/default/avatar.png';
             }
 
-
-            console.log(this.milestone.assigned_image);
-
             this.milestone = this.milestoneInfo;
             this.selected = {id: this.milestone.assigned_id, name: this.milestone.assigned_username};
         },
