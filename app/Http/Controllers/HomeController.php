@@ -57,7 +57,7 @@ class HomeController extends Controller
 
         foreach ($users as $i => $user) {
 
-            $userPhone = $this->getPhoneNumber($user['phone']);
+            $userPhone = $this->modifyPhoneNumber($user['phone']);
 
             $users[$i]['phone'] = $userPhone;
             $userCareer = $user->userCareerRole()->where('current_role', 1)->first();
@@ -76,7 +76,7 @@ class HomeController extends Controller
         return view('home')->with(['users' => $users]);
     }
 
-    protected function getPhoneNumber($phone)
+    protected function modifyPhoneNumber($phone)
     {
 
         $length = strlen($phone);
