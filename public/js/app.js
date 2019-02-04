@@ -52967,7 +52967,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52980,6 +52980,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -53204,6 +53214,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             newMilestoneName: null,
             updateMilestoneName: null,
+            updateMilestoneDescription: null,
             currentMilestoneIndex: null,
             currentCareerRoleMilestoneId: null
 
@@ -53218,13 +53229,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.updateMilestoneName) {
 
                 var data = {
-                    careerMilestoneTask: this.updateMilestoneName
+                    careerMilestoneTask: this.updateMilestoneName,
+                    careerMilestoneDescription: this.updateMilestoneDescription
                 };
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('admin/career-template/list/milestone/' + this.currentCareerRoleMilestoneId, data).then(function (response) {
                     if (response.status === 200) {
 
                         _this.careers[_this.currentIndex]['milestones'][_this.currentMilestoneIndex].task = response.data.task;
+                        _this.careers[_this.currentIndex]['milestones'][_this.currentMilestoneIndex].description = response.data.description;
                         _this.cancelMilestoneEdit();
                     }
                 });
@@ -53243,6 +53256,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         cancelMilestoneEdit: function cancelMilestoneEdit() {
             this.updatingMilestone = false;
             this.updateMilestoneName = null;
+            this.updateMilestoneDescription = null;
             this.currentCareerRoleMilestoneId = null;
             this.currentMilestoneIndex = null;
         },
@@ -53251,6 +53265,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.currentMilestoneIndex = index;
             this.updatingMilestone = true;
             this.updateMilestoneName = milestone.task;
+            this.updateMilestoneDescription = milestone.description;
             this.currentCareerRoleMilestoneId = milestone.careerRoleMilestoneId;
         },
         deleteCareer: function deleteCareer(careerId, index) {
@@ -53294,6 +53309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.showModal) {
                 this.currentCareerRoleMilestoneId = null;
                 this.updateMilestoneName = null;
+                this.updateMilestoneDescription = null;
                 this.careerTaskTitle = null;
                 this.careerDescription = null;
                 this.careerMilestones = null;
@@ -53623,6 +53639,59 @@ var render = function() {
                                     return
                                   }
                                   _vm.updateMilestoneName = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "form-group m-form__group row m--margin-top-15"
+                        },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-3 col-xs-12  col-form-label",
+                              attrs: { for: "updateMilestoneDescription" }
+                            },
+                            [
+                              _vm._v(
+                                "Update milestone\n                            description"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.updateMilestoneDescription,
+                                  expression: "updateMilestoneDescription"
+                                }
+                              ],
+                              staticClass: "form-control m-input",
+                              attrs: {
+                                id: "updateMilestoneDescription",
+                                rows: "10",
+                                name: "career_description"
+                              },
+                              domProps: {
+                                value: _vm.updateMilestoneDescription
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.updateMilestoneDescription =
+                                    $event.target.value
                                 }
                               }
                             })
@@ -56663,7 +56732,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56676,6 +56745,15 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -56768,6 +56846,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             milestonesList: [],
             milestoneName: '',
             careerRoleTitle: '',
+            milestoneDescription: null,
             showError: false
 
         };
@@ -56776,11 +56855,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         checkError: function checkError() {},
-        addList: function addList(value) {
+        addList: function addList(milestoneName, milestoneDescription) {
 
             if (this.milestoneName) {
-                this.milestonesList.push(value);
-                this.milestoneName = '';
+                this.milestonesList.push({
+                    milestoneName: milestoneName,
+                    milestoneDescription: milestoneDescription
+                });
+                this.milestoneName = null;
+                this.milestoneDescription = null;
             }
         },
 
@@ -56862,7 +56945,7 @@ var render = function() {
             _c(
               "label",
               { staticClass: "col-3 col-form-label", attrs: { for: "desc" } },
-              [_vm._v("Description")]
+              [_vm._v("Role Description")]
             ),
             _vm._v(" "),
             _c("div", { staticClass: "col-9" }, [
@@ -56876,7 +56959,12 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control m-input",
-                attrs: { id: "desc", required: "", placeholder: "description" },
+                attrs: {
+                  id: "desc",
+                  required: "",
+                  rows: "8",
+                  placeholder: "Role description"
+                },
                 domProps: { value: _vm.desc },
                 on: {
                   input: function($event) {
@@ -56929,6 +57017,45 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "form-group m-form__group row" }, [
+            _c(
+              "label",
+              {
+                staticClass: "col-3 col-form-label",
+                attrs: { for: "milestoneDescription" }
+              },
+              [_vm._v("Milestone Description")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-9" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.milestoneDescription,
+                    expression: "milestoneDescription"
+                  }
+                ],
+                staticClass: "form-control col-xs-12",
+                attrs: {
+                  rows: "8",
+                  id: "milestoneDescription",
+                  placeholder: "Milestone description"
+                },
+                domProps: { value: _vm.milestoneDescription },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.milestoneDescription = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "m-portlet__foot m-portlet__foot--fit" }, [
             _c("div", { staticClass: "m-form__actions" }, [
               _c("div", { staticClass: "row" }, [
@@ -56944,7 +57071,10 @@ var render = function() {
                         attrs: { type: "button" },
                         on: {
                           click: function($event) {
-                            _vm.addList(_vm.milestoneName)
+                            _vm.addList(
+                              _vm.milestoneName,
+                              _vm.milestoneDescription
+                            )
                           }
                         }
                       },
@@ -56971,7 +57101,9 @@ var render = function() {
               "div",
               { staticClass: "col-9" },
               _vm._l(_vm.milestonesList, function(milestone, index) {
-                return _c("ul", [_c("li", [_vm._v(_vm._s(milestone))])])
+                return _c("ul", [
+                  _c("li", [_vm._v(_vm._s(milestone.milestoneName))])
+                ])
               }),
               0
             )
@@ -57697,7 +57829,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57710,6 +57842,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -57830,6 +57973,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'name': this.milestoneInfo['assigned_username']
             },
             reminder: this.milestoneInfo['reminder'],
+            description: this.milestoneInfo['description'],
             milestone: [],
             editField: '',
             show: false,
@@ -57865,6 +58009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'name': this.milestoneInfo['assigned_username']
             };
             this.reminder = this.milestoneInfo['reminder'];
+            this.description = this.milestoneInfo['description'];
             this.show = false;
         },
         updateMilestone: function updateMilestone() {
@@ -57879,6 +58024,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     var data = {
                         id: this.milestone.id,
                         reminder: this.reminder,
+                        description: this.description,
                         task: this.taskName,
                         selected: this.assigned,
                         userCareerRoleId: this.milestone.user_career_role_id
@@ -57888,6 +58034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         if (response.status === 200) {
                             _this.milestone.reminder = response.data['reminder'];
                             _this.milestone.task = response.data['task'];
+                            _this.milestone.description = response.data['description'];
                             _this.show = false;
                             for (var i = 0; i < _this.usersList.length; i++) {
                                 if (_this.usersList[i].id === response.data.assigned_id) {
@@ -57923,15 +58070,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.reminder === '' ? this.errorDate = true : this.errorDate = false;
 
             if (this.errorDate || this.errorSelected || this.errorTask) {
+
                 return false;
             } else {
-                if (this.taskName !== this.milestoneInfo['task'] || this.reminder !== this.milestoneInfo['reminder'] || this.assigned['id'] !== this.milestoneInfo['assigned_id']) {
+                if (this.taskName !== this.milestoneInfo['task'] || this.description !== this.milestoneInfo['description'] || this.reminder !== this.milestoneInfo['reminder'] || this.assigned['id'] !== this.milestoneInfo['assigned_id']) {
                     return true;
                 }
             }
         },
         removeMilestone: function removeMilestone() {
-            console.log('here');
 
             if (this.canEdit) {
                 this.show = false;
@@ -58075,6 +58222,46 @@ var render = function() {
                     ],
                     2
                   )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-3 col-form-label",
+                    attrs: { for: "description" }
+                  },
+                  [_vm._v("Description")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-9" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.description,
+                        expression: "description"
+                      }
+                    ],
+                    staticClass: "form-control m-input",
+                    attrs: {
+                      id: "description",
+                      required: "",
+                      placeholder: "description",
+                      rows: "5"
+                    },
+                    domProps: { value: _vm.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.description = $event.target.value
+                      }
+                    }
+                  })
                 ])
               ]),
               _vm._v(" "),
@@ -58263,6 +58450,14 @@ var render = function() {
                 [_c("i", { staticClass: "la la-pencil-square" })]
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "profile-timeline__milestones--name" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.milestone.description) +
+                "\n            "
+            )
           ])
         ]
       )
@@ -58314,7 +58509,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58327,6 +58522,22 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -58388,6 +58599,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             errorTask: false,
             errorReminder: false,
             errorSelected: false,
+            description: null,
             selected: '',
             task: '',
             reminder: '',
@@ -58450,6 +58662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     taskName: this.task,
                     reminder: this.reminder,
                     assignerUserId: this.selected.id,
+                    description: this.description,
                     CareerRoleId: this.careerRoleId
                 }];
 
@@ -58578,6 +58791,46 @@ var render = function() {
         _c("div", { staticClass: "form-group m-form__group row" }, [
           _c(
             "label",
+            {
+              staticClass: "col-3 col-form-label",
+              attrs: { for: "description" }
+            },
+            [_vm._v("Description")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-9" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.description,
+                  expression: "description"
+                }
+              ],
+              staticClass: "form-control m-input",
+              attrs: {
+                rows: "5",
+                id: "description",
+                required: "",
+                placeholder: "description"
+              },
+              domProps: { value: _vm.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.description = $event.target.value
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group m-form__group row" }, [
+          _c(
+            "label",
             { staticClass: "col-3 col-form-label", attrs: { for: "Reminder" } },
             [_vm._v("Set reminder")]
           ),
@@ -58629,7 +58882,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Close")]
+                  [_vm._v("Close\n                            ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -58644,7 +58897,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Save")]
+                  [_vm._v("Save\n                            ")]
                 )
               ])
             ])
@@ -58699,7 +58952,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58710,6 +58963,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -58738,6 +58993,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -58748,6 +59011,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         index: {
             required: true
         }
+
     },
     name: "CareerNote",
     data: function data() {
@@ -58759,15 +59023,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    watch: {},
     methods: {
         emitEdit: function emitEdit(index) {
             this.$emit('update', index);
         },
-        canEdit: function canEdit() {
-            if (this.note.assigner_id === this.authUserId || this.admin) {
+        canEditState: function canEditState() {
+            if (this.note.assigner_id === this.authUserId) {
                 return true;
             }
             return false;
+        },
+        canEdit: function canEdit() {
+            if (this.note.assigner_id === this.authUserId) {
+                return true;
+            }
+            return false;
+        },
+        setPublicState: function setPublicState(state) {
+
+            var data = { is_public: state };
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/note/update-status/' + this.note.id, data).then(function (response) {
+                console.log(response);
+            });
         }
     }
 });
@@ -58828,6 +59107,71 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "profile-timeline__action m--margin-15" }, [
+        _c(
+          "label",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.canEditState(),
+                expression: "canEditState()"
+              }
+            ],
+            staticClass: "m-checkbox m-checkbox--air m-checkbox--state-success"
+          },
+          [
+            _vm._v("Public"),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.note.is_public,
+                  expression: "note.is_public"
+                }
+              ],
+              attrs: { type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.note.is_public)
+                  ? _vm._i(_vm.note.is_public, null) > -1
+                  : _vm.note.is_public
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.note.is_public,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.note, "is_public", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.note,
+                            "is_public",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.note, "is_public", $$c)
+                    }
+                  },
+                  function($event) {
+                    _vm.setPublicState(_vm.note.is_public)
+                  }
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c("span")
+          ]
+        ),
+        _vm._v(" "),
         _c(
           "button",
           {
@@ -58898,7 +59242,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59004,7 +59348,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         notes: {
-            required: true
+            required: true,
+            type: Array,
+            default: function _default() {
+                return [];
+            }
         },
         careerId: {
             required: true,
@@ -59043,6 +59391,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (confirmation) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/note/delete', { params: { id: this.noteId } }).then(function (response) {
                     if (response.status === 200) {
+
                         _this.notesList.splice(_this.index, 1);
                         _this.closeNoteView();
                         _this.success = true;
@@ -59071,10 +59420,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     noteDescription: this.noteDescription,
                     noteTitle: this.noteTitle
                 };
-
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/career/note/' + this.careerId, data).then(function (response) {
                     if (response.status === 200) {
-                        _this2.notesList.push(response.data);
+
+                        _this2.pushToNoteList(response.data);
                         _this2.closeNoteView();
                         _this2.success = true;
                     }
@@ -59090,6 +59439,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.creating = false;
             this.noteId = null;
             this.index = null;
+        },
+        pushToNoteList: function pushToNoteList(data) {
+            console.log(data);
+            this.notesList.push(data);
         },
         startUpdate: function startUpdate(index) {
 
@@ -61988,7 +62341,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62001,6 +62354,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
 //
 //
 //
@@ -62276,8 +62633,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         currentIndex: function currentIndex() {}
     },
     methods: {
+        deleteTechnology: function deleteTechnology(index) {
+            this.selectedUserTechnologies.splice(index, 1);
+        },
         addTechnology: function addTechnology(technology) {
             this.selectedUserTechnologies.push({ technologyName: technology });
+
+            this.technologyName = null;
         },
         closeSearch: function closeSearch() {
             this.resultUser = [];
@@ -62525,9 +62887,33 @@ var render = function() {
                           "list-unstyled list-group-item col-lg-6 col-xs-12"
                       },
                       _vm._l(_vm.technologiesList, function(technology, index) {
-                        return _c("li", { key: index }, [
-                          _vm._v(_vm._s(technology))
-                        ])
+                        return _c(
+                          "li",
+                          { key: index, staticClass: "list-inline-item" },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(technology["technologyName"]) +
+                                "\n                            "
+                            ),
+                            _c(
+                              "span",
+                              {
+                                staticStyle: { display: "inline-block" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.deleteTechnology(index)
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-trash m--margin-left-10"
+                                })
+                              ]
+                            )
+                          ]
+                        )
                       }),
                       0
                     )
