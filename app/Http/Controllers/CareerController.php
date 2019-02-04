@@ -69,9 +69,9 @@ class CareerController extends Controller
 
                         foreach ($data['milestonesList'] as $milestone) {
                             CareerRoleMilestone::create([
-                                'task' => $milestone,
+                                'task' => $milestone['milestoneName'],
                                 'career_role_id' => $career->id,
-                                'description' => null
+                                'description' => $milestone['milestoneDescription']
                             ]);
                         }
                         unset($milestone);
@@ -531,7 +531,7 @@ class CareerController extends Controller
             $rules = [
 
                 'id' => 'required',
-                'description' =>'nullable',
+                'description' => 'nullable',
                 'reminder' => 'nullable',
                 'task' => 'required',
                 'selected.id' => 'required',
@@ -557,7 +557,7 @@ class CareerController extends Controller
                 if ($update === 1) {
                     $jsonData = $user->userCareerRoleMilestones()->where('id', $data['id'])
                         ->where('user_career_role_id', $data['userCareerRoleId'])
-                        ->where('user_id', $id)->first(['id', 'assigned_id', 'task', 'reminder','description']);
+                        ->where('user_id', $id)->first(['id', 'assigned_id', 'task', 'reminder', 'description']);
                     return response(json_encode($jsonData), 200);
                 }
 
