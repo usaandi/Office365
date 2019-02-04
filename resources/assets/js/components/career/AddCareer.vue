@@ -11,9 +11,9 @@
                     </div>
 
                     <div class="form-group m-form__group row">
-                        <label for="desc" class="col-3 col-form-label">Description</label>
+                        <label for="desc" class="col-3 col-form-label">Role Description</label>
                         <div class="col-9">
-                            <textarea id="desc" required class="form-control m-input" placeholder="description"
+                            <textarea id="desc" required class="form-control m-input" rows="8" placeholder="Role description"
                                       v-model="desc"></textarea>
                         </div>
                     </div>
@@ -27,13 +27,22 @@
                                     placeholder="Milestone Name">
                         </div>
                     </div>
+                    <div class="form-group m-form__group row">
+                        <label for="milestoneDescription" class="col-3 col-form-label">Milestone Description</label>
+                        <div class="col-9">
+                            <textarea
+                                    v-model="milestoneDescription" rows="8"
+                                    id="milestoneDescription" class="form-control col-xs-12"
+                                    placeholder="Milestone description"></textarea>
+                        </div>
+                    </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
                         <div class="m-form__actions">
                             <div class="row">
                                 <div class="col-sm-3 col-xs-12"></div>
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
-                                        <button @click="addList(milestoneName)" type="button"
+                                        <button @click="addList(milestoneName,milestoneDescription)" type="button"
                                                 class="btn m-btn--pill btn-success m-btn m-btn--custom">New Milestone
                                         </button>
                                     </div>
@@ -46,7 +55,7 @@
                         <label for="desc" class="col-3 col-form-label">Milestones:</label>
                         <div class="col-9">
                             <ul v-for="(milestone, index) in milestonesList">
-                                <li>{{milestone}}</li>
+                                <li>{{milestone.milestoneName}}</li>
                             </ul>
                         </div>
                     </div>
@@ -90,6 +99,7 @@
                 milestonesList: [],
                 milestoneName: '',
                 careerRoleTitle: '',
+                milestoneDescription: null,
                 showError: false,
 
 
@@ -103,14 +113,16 @@
 
             },
 
-            addList(value) {
+            addList(milestoneName, milestoneDescription) {
 
                 if (this.milestoneName) {
-                    this.milestonesList.push(value);
-                    this.milestoneName = '';
+                    this.milestonesList.push({
+                        milestoneName: milestoneName,
+                        milestoneDescription: milestoneDescription
+                    });
+                    this.milestoneName = null;
+                    this.milestoneDescription = null;
                 }
-
-
             },
 
             clear: function () {
