@@ -291,8 +291,9 @@
             },
 
             addTechnology(technology) {
-                this.selectedUserTechnologies.push({technologyName: technology});
-
+                if (technology) {
+                    this.selectedUserTechnologies.push({technologyName: technology});
+                }
                 this.technologyName = null;
 
             },
