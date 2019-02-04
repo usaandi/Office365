@@ -79,7 +79,6 @@
                 const data = {is_public: state};
 
                 axios.patch('/note/update-status/' + this.note.id, data).then(response => {
-                    console.log(response);
                 })
 
             }
