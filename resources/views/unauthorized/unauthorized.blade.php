@@ -2,10 +2,10 @@
     <p>Something went wrong! Contact Admin.</p>
     @isset($error)
         <p>{{$error}}</p>
-        @endisset
+    @endisset
     <div class="col-xs-9">
         <div class="profile__details--info">
-            <a href="/home"><span><button
+            <a href="{{route('home')}}"><span><button
                             class="btn btn-success">Main Page</button></span></a>
         </div>
     </div>
