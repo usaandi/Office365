@@ -89,7 +89,7 @@
 
 
                         <div class="m-list-pics m-list-pics--sm">
-                            <a :href="'user/'+milestone.assigned_id"><img :src="milestone.assigned_image" title=""></a>
+                            <a :href="'user/'+milestone.assigned_id"><img :src="image" title=""></a>
 
                             {{milestone.assigned_username}}
                         </div>
@@ -133,6 +133,7 @@
                 description: this.milestoneInfo['description'],
                 milestone: [],
                 editField: '',
+                image: this.milestoneInfo['assigned_image'],
                 show: false,
                 assignerId: '',
                 id: '',
@@ -146,6 +147,13 @@
         },
 
         mounted() {
+            if (this.image) {
+            }else {
+                this.image = './assets/default/avatar.png';
+            }
+
+
+            console.log(this.milestone.assigned_image);
 
             this.milestone = this.milestoneInfo;
             this.selected = {id: this.milestone.assigned_id, name: this.milestone.assigned_username};
