@@ -357,7 +357,7 @@
                     errors.push({errorMessage: 'Client name is missing!', showAlert: true,});
                 }
                 if (!this.startDate) {
-                    errors.push({errorMessage: 'Start date is missing!', showAlert: true,});
+                    errors.push({errorMessage: 'Begin date is missing!', showAlert: true,});
                 }
 
                 if (errors.length === 0) {
