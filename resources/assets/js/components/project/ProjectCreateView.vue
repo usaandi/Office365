@@ -55,9 +55,9 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-sm-12 col-xs-12" v-for="(error, index) in errorsList " v-show="hideError">
+                <div class="col-sm-12 col-xs-12" v-for="(error, index) in errorsList " v-show="error.showAlert">
                     <div class="alert alert-danger alert-dismissible text-center" style="" :key="index"><a
-                            @click="hideError=!hideError" class="close"></a> <strong>{{error.errorMessage}}</strong>
+                            @click="error.showAlert=false" class="close"></a> <strong>{{error.errorMessage}}</strong>
                     </div>
                 </div>
             </div>
@@ -348,16 +348,16 @@
                 let errors = [];
 
                 if (!this.projectTitle) {
-                    errors.push({errorMessage: 'Title is missing!'});
+                    errors.push({errorMessage: 'Title is missing!', showAlert: true,});
                 }
                 if (!this.projectDescription) {
-                    errors.push({errorMessage: 'Description is missing!'});
+                    errors.push({errorMessage: 'Description is missing!', showAlert: true,});
                 }
                 if (!this.clientName) {
-                    errors.push({errorMessage: 'Client name is missing!'});
+                    errors.push({errorMessage: 'Client name is missing!', showAlert: true,});
                 }
                 if (!this.startDate) {
-                    errors.push({errorMessage: 'Start date is missing!'});
+                    errors.push({errorMessage: 'Start date is missing!', showAlert: true,});
                 }
 
                 if (errors.length === 0) {
