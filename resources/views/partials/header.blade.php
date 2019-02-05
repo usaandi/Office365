@@ -295,13 +295,13 @@
                                                 <span class="m-menu__link-text">Strengths</span>
                                             </a>
                                         </li>
-                                        {{--<li class="m-menu__item " aria-haspopup="true">
+                                       <li class="m-menu__item " aria-haspopup="true">
                                             <a href="{{route('projectIndex')}}"
                                                class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Projects</span>
                                             </a>
-                                        </li>--}}
+                                        </li>
 
                                     </ul>
                                 </div>
@@ -344,12 +344,12 @@
                                                     class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Manage Career Template</span></a></li>
-                                       {{-- <li
+                                        <li
                                                 class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('adminProjectCreateIndex')}}"
                                                     class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
-                                                        class="m-menu__link-text">Projects</span></a></li>--}}
+                                                        class="m-menu__link-text">Projects</span></a></li>
                                     </ul>
                                 </div>
                             </li>
