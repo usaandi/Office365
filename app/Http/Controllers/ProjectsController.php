@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Position;
+use App\Project;
+use App\ProjectUserPosition;
 use Illuminate\Http\Request;
 use App\Client;
 use Validator;
@@ -34,7 +36,6 @@ class ProjectsController extends Controller
     public function createProject(Request $request)
     {
         try {
-            return response('coming soon');
             $data = $request->all();
             $rules = [
                 'projectTitle' => 'required',
@@ -55,13 +56,34 @@ class ProjectsController extends Controller
 
             if ($validator->passes()) {
 
-                $clientName = ucfirst(strtolower($data['clientName']));
 
+                $clientName = ucfirst(strtolower($data['clientName']));
                 $clientId = $this->getClientId($clientName);
 
+                $projectData = [
+                    'projectTitle' => $data['projectTitle'],
+                    'projectDescription' => $data['projectDescription'],
+                    'startDate' => $data['startDate'],
+                    'endDate' => $data['endDate'],
+                    'clientId' => $clientId,
+                ];
+
+                $projectId = Project::createProject($projectData);
+
+                $projectUsers = $data['projectUsers'];
+
+                foreach ($projectUsers as $key => $user) {
+                    $currentUserId = $user['id'];
+                    $positionName = $user['position'];
+                    $userTechnologies = $user['technologies'];
+                    $positionId = $this->getPositionIdByName($positionName);
+
+                    $status = $this->createProjectUserPosition($projectId, $currentUserId, $positionId);
+                }
 
             }
         } catch (\Exception $e) {
+            return response('Something went wrong', 200);
         }
     }
 
@@ -72,6 +94,25 @@ class ProjectsController extends Controller
             $client = Client::createClient($name);
         }
         return $clientId = $client->id;
+    }
+
+    private function getPositionIdByName($positionName)
+    {
+        $position = Position::getPositionObjectByName($positionName);
+        if ($position === null) {
+            $position = Position::createPosition($positionName);
+        }
+        return $positionId = $position->id;
+    }
+
+    private function createProjectUserPosition($projectId, $userId, $positionId)
+    {
+        $pup = ProjectUserPosition::create([
+            'user_id' => $userId,
+            'project_id' => $projectId,
+            'position_id' => $positionId
+        ]);
+        return $pup;
     }
 
 
