@@ -12,4 +12,14 @@ class Position extends Model
     {
         return Position::get(['position_name']);
     }
+
+    public static function getPositionObjectByName($name)
+    {
+        return $position = Position::where('position_name', $name)->first();
+    }
+
+    public static function createPosition($name)
+    {
+        return $position = Position::create(['position_name' => $name]);
+    }
 }
