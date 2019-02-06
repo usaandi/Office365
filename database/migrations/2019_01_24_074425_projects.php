@@ -19,7 +19,7 @@ class Projects extends Migration
             $table->string('project_title');
             $table->text('description');
             $table->date('begin_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
             $table->timestamps();
 
         });
