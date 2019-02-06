@@ -26,7 +26,8 @@
                 <div class="form-group m-form__group row">
                     <label for="description" class="col-3 col-form-label">Description</label>
                     <div class="col-9">
-                        <textarea rows="5" id="description" required class="form-control m-input" placeholder="description"
+                        <textarea rows="5" id="description" required class="form-control m-input"
+                                  placeholder="description"
                                   v-model="description"></textarea>
                     </div>
                 </div>
@@ -76,7 +77,7 @@
                 errorTask: false,
                 errorReminder: false,
                 errorSelected: false,
-                description:null,
+                description: null,
                 selected: '',
                 task: '',
                 reminder: '',
@@ -149,6 +150,7 @@
                         CareerRoleId: this.careerRoleId,
                     }];
 
+                    this.description = null;
                     this.task = '';
                     this.reminder = '';
                     this.assignerUserId = '';
@@ -167,8 +169,7 @@
                     });
 
 
-                }
-                else {
+                } else {
                     this.hasError = true;
 
                 }
