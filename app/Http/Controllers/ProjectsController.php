@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Position;
 use App\Project;
+use App\ProjectTechnologyUser;
 use App\ProjectUserPosition;
+use App\Technology;
+use App\TechnologyUser;
 use Illuminate\Http\Request;
 use App\Client;
 use Validator;
@@ -75,16 +78,55 @@ class ProjectsController extends Controller
                 foreach ($projectUsers as $key => $user) {
                     $currentUserId = $user['id'];
                     $positionName = $user['position'];
+
                     $userTechnologies = $user['technologies'];
+                    $this->technologyArrayUserProject($userTechnologies, $currentUserId, $projectId);
                     $positionId = $this->getPositionIdByName($positionName);
 
                     $status = $this->createProjectUserPosition($projectId, $currentUserId, $positionId);
                 }
+                return response('Success', 200);
 
             }
         } catch (\Exception $e) {
-            return response('Something went wrong', 200);
+            return response('Something went wrong', 403);
         }
+    }
+
+    protected function checkTechnologyUser($userId, $technologyId)
+    {
+        $userTechnology = TechnologyUser::where('user_id', $userId)->where('technology_id', $technologyId)->first();
+
+        if ($userTechnology === null) {
+            TechnologyUser::create([
+                'user_id' => $userId,
+                'technology_id' => $technologyId,
+            ]);
+        }
+
+    }
+
+    protected function createTechnologyUserProject($technologyId, $userId, $projectId)
+    {
+        ProjectTechnologyUser::create([
+            'user_id' => $userId,
+            'project_id' => $projectId,
+            'technologies_id' => $technologyId
+        ]);
+    }
+
+    protected function technologyArrayUserProject($technologyNamesArray, $userId, $projectId)
+    {
+        foreach ($technologyNamesArray as $technology) {
+            $technologyGet = Technology::getTechnologyObjectByName($technology['technologyName']);
+            if ($technologyGet === null) {
+                $technologyGet = Technology::createTechnology($technology['technologyName']);
+            }
+            $technologyId = $technologyGet->id;
+            $this->checkTechnologyUser($userId, $technologyId);
+            $status = $this->createTechnologyUserProject($technologyId, $userId, $projectId);
+        }
+        return true;
     }
 
     protected function getClientId($name)
