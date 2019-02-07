@@ -80,7 +80,10 @@ class ProjectsController extends Controller
                     $positionName = $user['position'];
 
                     $userTechnologies = $user['technologies'];
-                    $this->technologyArrayUserProject($userTechnologies, $currentUserId, $projectId);
+                    if($userTechnologies){
+                        $this->technologyArrayUserProject($userTechnologies, $currentUserId, $projectId);
+
+                    }
                     $positionId = $this->getPositionIdByName($positionName);
 
                     $status = $this->createProjectUserPosition($projectId, $currentUserId, $positionId);
