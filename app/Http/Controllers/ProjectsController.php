@@ -87,7 +87,7 @@ class ProjectsController extends Controller
         }
     }
 
-    private function getClientId($name)
+    protected function getClientId($name)
     {
         $client = Client::getClientObjectByName($name);
         if ($client === null) {
@@ -96,7 +96,7 @@ class ProjectsController extends Controller
         return $clientId = $client->id;
     }
 
-    private function getPositionIdByName($positionName)
+    protected function getPositionIdByName($positionName)
     {
         $position = Position::getPositionObjectByName($positionName);
         if ($position === null) {
@@ -105,7 +105,7 @@ class ProjectsController extends Controller
         return $positionId = $position->id;
     }
 
-    private function createProjectUserPosition($projectId, $userId, $positionId)
+    protected function createProjectUserPosition($projectId, $userId, $positionId)
     {
         $pup = ProjectUserPosition::create([
             'user_id' => $userId,

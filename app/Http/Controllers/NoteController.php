@@ -25,7 +25,7 @@ class NoteController extends Controller
 
             $user = User::findOrFail($id);
             $this->authorize('updateCareer', $user);
-            $notes = (array)$this->noteInfo($roleId);
+            $notes = (array)$this->noteInfoByCareerId($roleId);
 
 
             return view('career.notes')->with('notes', $notes)->with('careerId', $roleId);
@@ -123,7 +123,7 @@ class NoteController extends Controller
         }
     }
 
-    protected function noteInfo($careerRoleId)
+    protected function noteInfoByCareerId($careerRoleId)
     {
         try {
 
