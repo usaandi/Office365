@@ -63,7 +63,7 @@
                     Projektijuht
                     <div class="user-list__wrapper">
                         <div class="profile-view">
-                            <div class="profile-view__photo"><img alt=""
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
                                                                   src="http://localhost/storage/image_1547023513.png">
                             </div>
                             <div class="profile-view__content position-relative">
@@ -81,19 +81,7 @@
                     Arendaja
                     <div class="user-list__wrapper">
                         <div class="profile-view">
-                            <div class="profile-view__photo"><img alt=""
-                                                                  src="http://localhost/storage/image_1547023513.png">
-                            </div>
-                            <div class="profile-view__content position-relative">
-                                <div class="profile-view__name">
-                                    Krister-Joona Kalamägi
-                                </div>
-                                <div class="project__arrow">
-                                    <i class="fas fa-arrow-down fa-2x m--margin-right-10"></i>
-                                </div>
-                            </div>
-                        </div><div class="profile-view">
-                            <div class="profile-view__photo"><img alt=""
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
                                                                   src="http://localhost/storage/image_1547023513.png">
                             </div>
                             <div class="profile-view__content position-relative">
@@ -106,7 +94,20 @@
                             </div>
                         </div>
                         <div class="profile-view">
-                            <div class="profile-view__photo"><img alt=""
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
+                                                                  src="http://localhost/storage/image_1547023513.png">
+                            </div>
+                            <div class="profile-view__content position-relative">
+                                <div class="profile-view__name">
+                                    Kaur-Joonas Usai
+                                </div>
+                                <div class="project__arrow">
+                                    <i class="fas fa-arrow-down fa-2x m--margin-right-10"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-view">
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
                                                                   src="http://localhost/storage/image_1547023513.png">
                             </div>
                             <div class="profile-view__content position-relative">
@@ -135,8 +136,6 @@
 </script>
 
 <style scoped>
-
-
 
 
 </style>
