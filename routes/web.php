@@ -124,6 +124,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/project-create', 'ProjectsController@createProject')->name('adminProjectCreate');
     //
 
+    Route::get('testing/projects', 'ProjectsController@getProjectsInfo')->name('testing');
 
     //api
     Route::get('adm/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
