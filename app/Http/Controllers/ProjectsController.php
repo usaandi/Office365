@@ -80,7 +80,7 @@ class ProjectsController extends Controller
                     $positionName = $user['position'];
 
                     $userTechnologies = $user['technologies'];
-                    if($userTechnologies){
+                    if ($userTechnologies) {
                         $this->technologyArrayUserProject($userTechnologies, $currentUserId, $projectId);
 
                     }
@@ -114,7 +114,7 @@ class ProjectsController extends Controller
         ProjectTechnologyUser::create([
             'user_id' => $userId,
             'project_id' => $projectId,
-            'technologies_id' => $technologyId
+            'technology_id' => $technologyId
         ]);
     }
 
@@ -160,5 +160,10 @@ class ProjectsController extends Controller
         return $pup;
     }
 
+    public function getProjectsInfo()
+    {
+        return $project = Project::with(['client', 'technologies'])->get();
+
+    }
 
 }
