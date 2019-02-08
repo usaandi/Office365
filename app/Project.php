@@ -40,6 +40,12 @@ class Project extends Model
     public function technologies()
     {
         return $this->belongsToMany(Technology::class,
-            'projects_technologies_users')->withPivot('technology_id');
+            'projects_technologies_users');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'projects_technologies_users');
+    }
+
 }

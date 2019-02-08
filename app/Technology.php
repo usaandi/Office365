@@ -23,4 +23,11 @@ class Technology extends Model
 
         return $technology;
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,
+            'projects_technologies_users')->withPivot('project_id');
+
+    }
 }
