@@ -31,4 +31,15 @@ class Project extends Model
         ]);
         return $projectCreate->id;
     }
+
+    public function client()
+    {
+        return $this->hasMany(Client::class, 'id', 'client_id');
+    }
+
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class,
+            'projects_technologies_users')->withPivot('technology_id');
+    }
 }
