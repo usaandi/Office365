@@ -14,7 +14,7 @@ class NoteController extends Controller
 
     public function count($id)
     {
-        $Count = Note::where('user_career_role_id', $id)->get()->toArray();
+        $Count = Note::where('user_career_role_id', $id)->get();
 
         return count($Count);
     }
@@ -25,7 +25,7 @@ class NoteController extends Controller
 
             $user = User::findOrFail($id);
             $this->authorize('updateCareer', $user);
-            $notes = (array)$this->noteInfoByCareerId($roleId);
+            $notes = $this->noteInfoByCareerId($roleId);
 
 
             return view('career.notes')->with('notes', $notes)->with('careerId', $roleId);
@@ -129,7 +129,7 @@ class NoteController extends Controller
 
             $array = [];
             $careers = UserCareerRole::with('careerNotes')->where('id', $careerRoleId)->first();
-            $notes = $careers->careerNotes;
+            $notes = $careers->careerNotes()->orderByDesc('created_at')->get();
 
             foreach ($notes as $key => $note) {
 
@@ -144,7 +144,7 @@ class NoteController extends Controller
                     $array[$key]['created_at'] = $note->created_at->toDateString();
                 }
             }
-            return $array;
+            return array_values($array);
 
         } catch (\Exception $e) {
         }

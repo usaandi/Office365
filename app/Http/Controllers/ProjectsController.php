@@ -162,18 +162,20 @@ class ProjectsController extends Controller
 
     public function getProjectsInfo()
     {
-        $projects = Project::with(['client', 'technologies','users'])->get();
+        $projects = Project::with(['client', 'technologies'])->get();
         $array = null;
         foreach ($projects as $key => $project) {
             $currentProjectId = $project->id;
 
+            $currentProjectUsers = ProjectTechnologyUser::userTechnologies($currentProjectId);
             $array['projects'][] = [
                 'projectTitle' => $project->project_title,
                 'projectDescription' => $project->description,
                 'projectStartDate' => $project->begin_date,
                 'projectEndDate' => $project->end_date,
-                'projectClient' => $project->client[0]->client_name,
+                'projectClient' => $project->client->client_name,
                 'projectTechnologies' => $this->returnTechnologies($project->technologies),
+
             ];
 
 
@@ -189,7 +191,14 @@ class ProjectsController extends Controller
     {
         $array = [];
         foreach ($technologies as $technology) {
-            $array[] = ['technologyName' => $technology->technology_name];
+            $array[] = ['technologyName' => $technology->technology_name,
+                'users' => [
+                    'name' => 'fdasf',
+                    'name' => 'hsgfhfsg'
+                ]
+
+
+            ];
         }
         return $array;
     }

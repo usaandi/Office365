@@ -34,7 +34,7 @@ class Project extends Model
 
     public function client()
     {
-        return $this->hasMany(Client::class, 'id', 'client_id');
+        return $this->hasOne(Client::class, 'id', 'client_id');
     }
 
     public function technologies()
@@ -45,7 +45,7 @@ class Project extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'projects_technologies_users');
+        return $this->belongsToMany(User::class, 'projects_technologies_users')->with('userTechnologies');
     }
 
 }

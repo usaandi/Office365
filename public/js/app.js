@@ -58509,7 +58509,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58522,6 +58522,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -58666,6 +58667,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     CareerRoleId: this.careerRoleId
                 }];
 
+                this.description = null;
                 this.task = '';
                 this.reminder = '';
                 this.assignerUserId = '';
@@ -63524,7 +63526,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63535,6 +63537,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -63790,6 +63793,11 @@ var staticRenderFns = [
                   _c("div", { staticClass: "profile-view" }, [
                     _c("div", { staticClass: "profile-view__photo" }, [
                       _c("img", {
+                        staticStyle: {
+                          width: "50px",
+                          height: "50px",
+                          "border-radius": "30%"
+                        },
                         attrs: {
                           alt: "",
                           src: "http://localhost/storage/image_1547023513.png"
@@ -63834,37 +63842,11 @@ var staticRenderFns = [
                   _c("div", { staticClass: "profile-view" }, [
                     _c("div", { staticClass: "profile-view__photo" }, [
                       _c("img", {
-                        attrs: {
-                          alt: "",
-                          src: "http://localhost/storage/image_1547023513.png"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "profile-view__content position-relative"
-                      },
-                      [
-                        _c("div", { staticClass: "profile-view__name" }, [
-                          _vm._v(
-                            "\n                                Krister-Joona Kalamägi\n                            "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "project__arrow" }, [
-                          _c("i", {
-                            staticClass:
-                              "fas fa-arrow-down fa-2x m--margin-right-10"
-                          })
-                        ])
-                      ]
-                    )
-                  ]),
-                  _c("div", { staticClass: "profile-view" }, [
-                    _c("div", { staticClass: "profile-view__photo" }, [
-                      _c("img", {
+                        staticStyle: {
+                          width: "50px",
+                          height: "50px",
+                          "border-radius": "30%"
+                        },
                         attrs: {
                           alt: "",
                           src: "http://localhost/storage/image_1547023513.png"
@@ -63897,6 +63879,48 @@ var staticRenderFns = [
                   _c("div", { staticClass: "profile-view" }, [
                     _c("div", { staticClass: "profile-view__photo" }, [
                       _c("img", {
+                        staticStyle: {
+                          width: "50px",
+                          height: "50px",
+                          "border-radius": "30%"
+                        },
+                        attrs: {
+                          alt: "",
+                          src: "http://localhost/storage/image_1547023513.png"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "profile-view__content position-relative"
+                      },
+                      [
+                        _c("div", { staticClass: "profile-view__name" }, [
+                          _vm._v(
+                            "\n                                Kaur-Joonas Usai\n                            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "project__arrow" }, [
+                          _c("i", {
+                            staticClass:
+                              "fas fa-arrow-down fa-2x m--margin-right-10"
+                          })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "profile-view" }, [
+                    _c("div", { staticClass: "profile-view__photo" }, [
+                      _c("img", {
+                        staticStyle: {
+                          width: "50px",
+                          height: "50px",
+                          "border-radius": "30%"
+                        },
                         attrs: {
                           alt: "",
                           src: "http://localhost/storage/image_1547023513.png"
