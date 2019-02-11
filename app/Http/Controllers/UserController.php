@@ -8,6 +8,7 @@ use App\UserDepartment;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
+use Carbon\Carbon;
 use auth;
 use Validator;
 use Spatie\Permission\Models\Role;
@@ -114,19 +115,24 @@ class UserController extends Controller
 
             $userModel = User::findOrFail($id);
             $this->authorize('update', $userModel);
+            $data = $request->all();
 
             $request->validate([
                 'name' => 'required',
                 'phone' => 'numeric|nullable',
-                'birthday' => 'date|nullable',
+                'birthday' => 'nullable',
                 'skype' => 'nullable',
                 'ADMsince' => 'date|nullable',
                 'role' => 'nullable',
                 'department' => 'nullable'
             ]);
+
+            $birthday = $data['birthday'];
+
+            $realBirthday = Carbon::parse($birthday)->toDateTimeString();
+
             $name = $request->input('name');
             $phone = $request->input('phone');
-            $birthday = $request->input('birthday');
             $skype = $request->input('skype');
             $ADMsince = $request->input('ADMsince');
             $role = $request->input('role');
@@ -173,7 +179,7 @@ class UserController extends Controller
             }
 
             $user->update(['name' => $name, 'phone' => $phone,
-                'birthday' => $birthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
+                'birthday' => $realBirthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
             $user->save();
 
             return redirect()->back()->with('success', true);
