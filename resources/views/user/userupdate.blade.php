@@ -40,14 +40,13 @@
                                                             placeholder="Enter Phone"
 
 
-
                                                             name="phone" class="form-control m-input"></div>
                 </div>
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->birthday}}" type="date"
-                                                            placeholder="Enter Birthday"
+                    <div class="col-sm-9 col-xs-12 "><input id="birthday" type="text"
+                                                            placeholder="Enter Birthday" readonly
                                                             name="birthday" class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
@@ -146,13 +145,21 @@
     @endhasanyrole
 
     <script>
+
+        $('#birthday').datepicker({
+            format: 'dd-mm-yyyy',
+            orientation: "top auto",
+            autoclose: true,
+        }).on('changeDate', event => {
+
+
+        });
         $('#form').submit(e => {
             let phone = $('#phoneNumber');
             if (phone.val().length > 11) {
                 phone.addClass('border border-danger');
                 return false;
-            }
-            else {
+            } else {
                 phone.removeClass('border border-danger')
                 return true;
             }
