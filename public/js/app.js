@@ -68040,11 +68040,15 @@ var render = function() {
                         [
                           _vm.user.phone
                             ? _c("span", [
-                                _c("a", {
-                                  attrs: {
-                                    href: "tel:" + _vm.user.phone + ";1"
-                                  }
-                                }),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href: "tel:" + _vm.user.phone + ";1"
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-phone" })]
+                                ),
                                 _vm._v(
                                   "\n                            " +
                                     _vm._s(_vm.user.phone) +
