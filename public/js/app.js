@@ -67730,6 +67730,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -68039,6 +68040,11 @@ var render = function() {
                         [
                           _vm.user.phone
                             ? _c("span", [
+                                _c("a", {
+                                  attrs: {
+                                    href: "tel:" + _vm.user.phone + ";1"
+                                  }
+                                }),
                                 _vm._v(
                                   "\n                            " +
                                     _vm._s(_vm.user.phone) +

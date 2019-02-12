@@ -95,6 +95,7 @@
                             <div class="profile__details--info" v-if="editphone === false"
                                  @dblclick="changeText('phone')">
                                <span v-if="user.phone">
+                                   <a :href="'tel:'+user.phone+';1'"></a>
                                 {{user.phone}}
                                 </span>
                                 <span v-else>Enter Phone number</span>
