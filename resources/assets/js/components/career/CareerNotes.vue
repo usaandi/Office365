@@ -45,6 +45,13 @@
                                 class="form-control m-input" v-model.trim="noteDescription"></textarea>
                         </div>
                     </div>
+                    <div class="form-group m-form__group row"><label
+                            for="hidden"
+                            class="col-form-label col-1 col-xs-12">Set Public</label>
+                        <input id="hidden" type="checkbox" class="m--margin-left-15"
+                               name="title"
+                               v-model="setPublicState">
+                    </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions">
@@ -114,6 +121,7 @@
                 noteId: null,
                 index: null,
                 success: false,
+                setPublicState: false,
 
 
             }
@@ -161,7 +169,8 @@
                 if (this.checkIfEmpty()) {
                     const data = {
                         noteDescription: this.noteDescription,
-                        noteTitle: this.noteTitle
+                        noteTitle: this.noteTitle,
+                        public: this.setPublicState,
                     };
                     axios.post('/career/note/' + this.careerId, data).then(response => {
                         if (response.status === 200) {
@@ -181,13 +190,13 @@
                 this.noteTitle = null;
                 this.assignerId = null;
                 this.creating = false;
+                this.setPublicState = false;
                 this.noteId = null;
                 this.index = null;
 
             },
 
             pushToNoteList(data) {
-                console.log(data);
                 this.notesList.push(data);
             },
             startUpdate(index) {

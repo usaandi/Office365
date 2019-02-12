@@ -19,10 +19,17 @@
             </div>
 
         </div>
-        <div class="profile-timeline__action m--margin-15">
-            <label v-show="canEditState()" class="m-checkbox m-checkbox--air m-checkbox--state-success">Public<input
-                    type="checkbox" @change="setPublicState(note.is_public)" v-model="note.is_public">
-                <span></span></label>
+        <div class="profile-timeline__action m--margin-15 career__note--control">
+            <label v-show="canEditState()" style="position:relative " class="hover-over">
+                <div class="myStyle">{{textBox}}</div>
+                <i
+                        class="fas fa-2x icon-style" :class="lockType"> </i>
+
+                <input @change="setPublicState(note.is_public)"
+                       v-model="note.is_public"
+                       type="checkbox" class="m--hide">
+            </label>
+
             <button class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10" v-show="canEdit()"
                     @click="emitEdit(index)"
             >Edit
@@ -52,8 +59,25 @@
                 note: this.propNote,
                 admin: isAdmin,
                 authUserId: authUser['id'],
+                textBoxText: null,
 
             }
+        },
+        computed: {
+            lockType() {
+                return {
+                    'fa-lock': !this.note.is_public,
+                    'fa-lock-open': this.note.is_public
+                }
+            },
+            textBox() {
+                if (this.note.is_public) {
+                    return this.textBoxText = 'Public';
+                }
+                else {
+                    return this.textBoxText = 'Only I can see this note';
+                }
+            },
         },
         watch: {},
         methods: {
@@ -75,7 +99,6 @@
             },
 
             setPublicState(state) {
-
                 const data = {is_public: state};
 
                 axios.patch('/note/update-status/' + this.note.id, data).then(response => {
@@ -87,5 +110,8 @@
 </script>
 
 <style scoped>
+
+
+
 
 </style>

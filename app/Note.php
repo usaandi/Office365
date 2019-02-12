@@ -34,10 +34,10 @@ class Note extends Model
 
     public static function createNote($careerId, $data)
     {
-        $title = strtolower($data['noteTitle']);
+        $title = ucfirst(strtolower($data['noteTitle']));
         $userId = Auth::user()['id'];
         $newNote = Note::create([
-            'is_public' => false,
+            'is_public' => $data['public'],
             'title' => $title,
             'description' => $data['noteDescription'],
             'user_career_role_id' => $careerId,

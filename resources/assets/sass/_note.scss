@@ -35,3 +35,29 @@
   text-transform: uppercase;
   padding-top: calc(.65rem + 2px);
 }
+
+.career__note--control {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hover-over .myStyle {
+  visibility: hidden;
+}
+
+.hover-over:hover .myStyle {
+  visibility: visible;
+}
+
+.myStyle {
+  margin-left: 35px;
+}
+
+.icon-style {
+  position: absolute;
+  color: #009eed;
+  top: 0;
+  left: 1px;
+  cursor: pointer;
+}

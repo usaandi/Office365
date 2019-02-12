@@ -43,7 +43,8 @@ class NoteController extends Controller
 
             $validateData = $this->validate($request, [
                 'noteDescription' => 'required|string',
-                'noteTitle' => 'required|string'
+                'noteTitle' => 'required|string',
+                'public' => 'required|bool'
             ]);
 
             $createNote = Note::createNote($careerId, $validateData);
@@ -92,7 +93,8 @@ class NoteController extends Controller
 
             $validateData = $this->validate($request, [
                 'noteDescription' => 'required|string',
-                'noteTitle' => 'required|string'
+                'noteTitle' => 'required|string',
+
             ]);
 
             $update = Note::updateNote($noteId, $validateData);
@@ -129,7 +131,7 @@ class NoteController extends Controller
 
             $array = [];
             $careers = UserCareerRole::with('careerNotes')->where('id', $careerRoleId)->first();
-            $notes = $careers->careerNotes()->orderByDesc('created_at')->get();
+            $notes = $careers->careerNotes()->orderByDesc('id')->get();
 
             foreach ($notes as $key => $note) {
 

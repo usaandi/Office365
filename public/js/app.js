@@ -58954,7 +58954,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58967,6 +58967,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59020,11 +59027,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             note: this.propNote,
             admin: isAdmin,
-            authUserId: authUser['id']
+            authUserId: authUser['id'],
+            textBoxText: null
 
         };
     },
 
+    computed: {
+        lockType: function lockType() {
+            return {
+                'fa-lock': !this.note.is_public,
+                'fa-lock-open': this.note.is_public
+            };
+        },
+        textBox: function textBox() {
+            if (this.note.is_public) {
+                return this.textBoxText = 'Public';
+            } else {
+                return this.textBoxText = 'Only I can see this note';
+            }
+        }
+    },
     watch: {},
     methods: {
         emitEdit: function emitEdit(index) {
@@ -59043,7 +59066,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return false;
         },
         setPublicState: function setPublicState(state) {
-
             var data = { is_public: state };
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/note/update-status/' + this.note.id, data).then(function (response) {});
@@ -59106,94 +59128,109 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "profile-timeline__action m--margin-15" }, [
-        _c(
-          "label",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.canEditState(),
-                expression: "canEditState()"
-              }
-            ],
-            staticClass: "m-checkbox m-checkbox--air m-checkbox--state-success"
-          },
-          [
-            _vm._v("Public"),
-            _c("input", {
+      _c(
+        "div",
+        {
+          staticClass:
+            "profile-timeline__action m--margin-15 career__note--control"
+        },
+        [
+          _c(
+            "label",
+            {
               directives: [
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.note.is_public,
-                  expression: "note.is_public"
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.canEditState(),
+                  expression: "canEditState()"
                 }
               ],
-              attrs: { type: "checkbox" },
-              domProps: {
-                checked: Array.isArray(_vm.note.is_public)
-                  ? _vm._i(_vm.note.is_public, null) > -1
-                  : _vm.note.is_public
-              },
-              on: {
-                change: [
-                  function($event) {
-                    var $$a = _vm.note.is_public,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 &&
-                          _vm.$set(_vm.note, "is_public", $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          _vm.$set(
-                            _vm.note,
-                            "is_public",
-                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                          )
-                      }
-                    } else {
-                      _vm.$set(_vm.note, "is_public", $$c)
-                    }
-                  },
-                  function($event) {
-                    _vm.setPublicState(_vm.note.is_public)
+              staticClass: "hover-over",
+              staticStyle: { position: "relative" }
+            },
+            [
+              _c("div", { staticClass: "myStyle" }, [
+                _vm._v(_vm._s(_vm.textBox))
+              ]),
+              _vm._v(" "),
+              _c("i", {
+                staticClass: "fas fa-2x icon-style",
+                class: _vm.lockType
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.note.is_public,
+                    expression: "note.is_public"
                   }
-                ]
+                ],
+                staticClass: "m--hide",
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.note.is_public)
+                    ? _vm._i(_vm.note.is_public, null) > -1
+                    : _vm.note.is_public
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = _vm.note.is_public,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(_vm.note, "is_public", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.note,
+                              "is_public",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.note, "is_public", $$c)
+                      }
+                    },
+                    function($event) {
+                      _vm.setPublicState(_vm.note.is_public)
+                    }
+                  ]
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.canEdit(),
+                  expression: "canEdit()"
+                }
+              ],
+              staticClass:
+                "btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10",
+              on: {
+                click: function($event) {
+                  _vm.emitEdit(_vm.index)
+                }
               }
-            }),
-            _vm._v(" "),
-            _c("span")
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.canEdit(),
-                expression: "canEdit()"
-              }
-            ],
-            staticClass:
-              "btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-10",
-            on: {
-              click: function($event) {
-                _vm.emitEdit(_vm.index)
-              }
-            }
-          },
-          [_vm._v("Edit\n        ")]
-        )
-      ])
+            },
+            [_vm._v("Edit\n        ")]
+          )
+        ]
+      )
     ]
   )
 }
@@ -59242,7 +59279,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59255,6 +59292,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59372,7 +59416,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             assignerId: null,
             noteId: null,
             index: null,
-            success: false
+            success: false,
+            setPublicState: false
 
         };
     },
@@ -59418,7 +59463,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.checkIfEmpty()) {
                 var data = {
                     noteDescription: this.noteDescription,
-                    noteTitle: this.noteTitle
+                    noteTitle: this.noteTitle,
+                    public: this.setPublicState
                 };
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/career/note/' + this.careerId, data).then(function (response) {
                     if (response.status === 200) {
@@ -59437,11 +59483,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.noteTitle = null;
             this.assignerId = null;
             this.creating = false;
+            this.setPublicState = false;
             this.noteId = null;
             this.index = null;
         },
         pushToNoteList: function pushToNoteList(data) {
-            console.log(data);
             this.notesList.push(data);
         },
         startUpdate: function startUpdate(index) {
@@ -59672,6 +59718,56 @@ var render = function() {
                     }
                   })
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group m-form__group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label col-1 col-xs-12",
+                    attrs: { for: "hidden" }
+                  },
+                  [_vm._v("Set Public")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.setPublicState,
+                      expression: "setPublicState"
+                    }
+                  ],
+                  staticClass: "m--margin-left-15",
+                  attrs: { id: "hidden", type: "checkbox", name: "title" },
+                  domProps: {
+                    checked: Array.isArray(_vm.setPublicState)
+                      ? _vm._i(_vm.setPublicState, null) > -1
+                      : _vm.setPublicState
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.setPublicState,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.setPublicState = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.setPublicState = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.setPublicState = $$c
+                      }
+                    }
+                  }
+                })
               ])
             ]),
             _vm._v(" "),
