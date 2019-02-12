@@ -63,7 +63,6 @@
                             {{$currentDepartment[0]->department_name}} @endisset</label>
 
                     <div class="col-sm-9 col-xs-12 "><select required name="department" class="form-control m-input">
-                            <option></option>
                             @foreach($departments as $department)
                                 <option value="{{$department->id}}"
                                         @isset($currentDepartment)
