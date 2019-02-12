@@ -172,7 +172,8 @@
                             <label for="Milestones" class="col-3 col-form-label">Milestones:</label>
                             <div class="col-9" id="Milestones">
                                 <ul :style="'listStyleType:none'">
-                                    <li v-for="(milestone, index) in careerMilestones" :key="index" :index="index">
+                                    <li v-for="(milestone, index) in careerMilestones" :key="index" :index="index"
+                                        class="m--margin-bottom-15">
 
                                         <span>{{milestone.task}}</span>
 
@@ -181,6 +182,7 @@
                                                class="btn btn-info m-btn m-btn--icon btn-sm m-btn--icon-only  m-btn--pill m--margin-left-10">
                                                 <i class="la la-pencil-square"></i></a>
                                         </div>
+                                        <div>{{milestone.description}}</div>
 
 
                                     </li>
