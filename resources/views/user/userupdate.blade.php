@@ -35,7 +35,7 @@
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Phone</label>
-                    <div class="col-sm-9 col-xs-12 "><input id="phoneNumber" value="{{$user->phone}}" type="number"
+                    <div class="col-sm-9 col-xs-12 "><input id="phoneNumber" value="{{$user->phone}}" type="text"
                                                             maxlength="12"
                                                             placeholder="Enter Phone"
 
@@ -155,7 +155,7 @@
         });
         $('#form').submit(e => {
             let phone = $('#phoneNumber');
-            if (phone.val().length > 11) {
+            if (phone.val().length > 15) {
                 phone.addClass('border border-danger');
                 return false;
             } else {
