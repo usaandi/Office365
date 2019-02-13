@@ -1,11 +1,11 @@
 <template>
     <div>
         <a v-bind:href="'/user/' + user.id" class="profile-view__link"></a>
-       <!-- <div class="profile-view__action">
-            <a href="#" class="btn btn-success m-btn m-btn&#45;&#45;icon btn-sm m-btn&#45;&#45;icon-only m-btn&#45;&#45;pill">
-                <i class="la la-plus"></i>
-            </a>
-        </div>-->
+        <!-- <div class="profile-view__action">
+             <a href="#" class="btn btn-success m-btn m-btn icon btn-sm m-btn icon-only m-btn pill">
+                 <i class="la la-plus"></i>
+             </a>
+         </div>-->
         <div class="profile-view__check--wrapper">
             <div class="profile-view__check">
             </div>
@@ -20,8 +20,14 @@
             </div>
             <div class="profile-view__team">{{user.current_department}}</div>
             <div class="profile-view__role">{{user.current_role}}</div>
-            <div class="profile-view__phone"><i class="la la-phone"></i>{{user.phone}}</div>
-            <div class="profile-view__email"><i class="la la-envelope"></i>{{user.email}}</div>
+            <div class="profile-view__phone " :style="{position: this.relative}">
+                <a :href="'tel:'+userNumber">
+                    <i class="la la-phone"></i>
+                    {{user.phone}}
+                </a>
+            </div>
+            <div class="profile-view__email" :style="{position: this.relative}"><a :href="'mailto:'+user.email"><i
+                    class="la la-envelope"></i>{{user.email}}</a></div>
         </div>
 
 
@@ -43,13 +49,19 @@
         data() {
             return {
                 userImage: this.user['image'],
-        }
+                relative: 'relative',
+            }
         },
 
         mounted() {
 
             if (!this.userImage) {
                 this.userImage = './assets/default/avatar.png';
+            }
+        },
+        computed: {
+            userNumber() {
+                return this.user.phone.split(' ').join('');
             }
         }
     }

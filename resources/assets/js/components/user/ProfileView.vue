@@ -110,6 +110,7 @@
                         </div>
                         <div class="col-xs-9">
                             <div class="profile__details--info">
+                                <a :href="'mailto:'+user.email"><i class="fas fa-envelope"></i></a>
                                 {{user.email}}
                             </div>
                         </div>
