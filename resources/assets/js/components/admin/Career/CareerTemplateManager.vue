@@ -153,15 +153,26 @@
                                                                     id="milestoneName"
                                                                     class="form-control m-input"></div>
                         </div>
+                        <div class="form-group m-form__group row m--margin-top-15"><label
+                                for="milestoneDescription"
+                                class="col-sm-3 col-xs-12  col-form-label">Milestone
+                            description</label>
+                            <div class="col-sm-9 col-xs-12 "> <textarea v-model="newMilestoneDescription"
+                                                                        id="milestoneDescription" rows="10"
+                                                                        name="career_description"
+                                                                        class="form-control m-input"></textarea>
+                            </div>
+                        </div>
                         <div class="m-portlet__foot m-portlet__foot--fit">
                             <div class="m-form__actions">
                                 <div class="row">
                                     <div class="col-sm-3 col-xs-12"></div>
                                     <div class="col-sm-9 col-xs-12">
                                         <div class="profile-timeline__action">
-                                            <button @click="createMilestone(newMilestoneName)" type="button"
-                                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">New
-                                                Milestone
+                                            <button @click="createMilestone(newMilestoneName,newMilestoneDescription)"
+                                                    type="button"
+                                                    class="btn m-btn--pill btn-success m-btn m-btn--custom">Add
+                                                milestone
                                             </button>
                                         </div>
                                     </div>
@@ -198,7 +209,7 @@
                     <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-5"
                             @click="clearModalData">Cancel
                     </button>
-                    <button type="submit" class="btn m-btn--pill btn-success m--margin-5" @click="updateCareer">Submit
+                    <button type="submit" class="btn m-btn--pill btn-success m--margin-5" @click="updateCareer">Save
                     </button>
                 </div>
             </div>
@@ -224,6 +235,7 @@
                 success: false,
                 showModal: false,
 
+                newMilestoneDescription: null,
                 careerTaskTitle: null,
                 careerDescription: null,
                 careerMilestones: null,
@@ -311,15 +323,18 @@
             createMilestone() {
                 if (this.newMilestoneName) {
                     const data = {
-                        careerMilestoneTask: this.newMilestoneName
+                        careerMilestoneTask: this.newMilestoneName,
+                        careerMilestoneDescription: this.newMilestoneDescription
                     };
                     this.newMilestoneName = null;
+                    this.newMilestoneDescription = null;
 
                     axios.post('admin/career-template/list/milestone/' + this.careerRoleId, data).then(response => {
                         if (response.status === 200) {
                             this.careers[this.currentIndex]['milestones'].push({
                                 careerRoleMilestoneId: response.data.careerRoleMilestoneId,
-                                task: response.data.task
+                                task: response.data.task,
+                                description: response.data.description
                             });
 
 

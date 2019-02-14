@@ -43,7 +43,7 @@
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
                                         <button @click="addList(milestoneName,milestoneDescription)" type="button"
-                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">New Milestone
+                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Add Milestone
                                         </button>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
                                         <button @click="clear()" type="button"
-                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Clear Milestones
+                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Clear All Milestones
                                         </button>
                                         <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
                                                 @click="submit()">Submit

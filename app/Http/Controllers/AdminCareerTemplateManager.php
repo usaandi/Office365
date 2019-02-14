@@ -170,18 +170,20 @@ class AdminCareerTemplateManager extends Controller
             $this->authorize('admin', $auth);
             $data = $request->all();
             $rules = [
-                'careerMilestoneTask' => 'required|string'
+                'careerMilestoneTask' => 'required|string',
+                'careerMilestoneDescription' => 'nullable|string'
 
             ];
 
             $validator = Validator::make($data, $rules);
             if ($validator->passes()) {
                 $task = $data['careerMilestoneTask'];
+                $description = $data['careerMilestoneDescription'];
                 $careerMilestoneTask = ucfirst(strtolower($task));
                 $existsCareerMilestone = CareerRoleMilestone::where('career_role_id', $careerId)->where('task', $careerMilestoneTask)->get();
 
                 if ($existsCareerMilestone->isEmpty()) {
-                    $newCareerMilestone = CareerRoleMilestone::create(['task' => $careerMilestoneTask, 'career_role_id' => $careerId, 'description' => null]);
+                    $newCareerMilestone = CareerRoleMilestone::create(['task' => $careerMilestoneTask, 'career_role_id' => $careerId, 'description' => $description]);
 
                     $jsonObject = [
                         'careerRoleMilestoneId' => $newCareerMilestone->id,
@@ -198,7 +200,7 @@ class AdminCareerTemplateManager extends Controller
             }
 
         } catch (\Exception $e) {
-            return response('Error');
+            return response('Error',400);
         }
     }
 }

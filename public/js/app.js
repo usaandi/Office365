@@ -52967,7 +52967,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52980,6 +52980,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -53206,6 +53217,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             success: false,
             showModal: false,
 
+            newMilestoneDescription: null,
             careerTaskTitle: null,
             careerDescription: null,
             careerMilestones: null,
@@ -53290,15 +53302,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.newMilestoneName) {
                 var data = {
-                    careerMilestoneTask: this.newMilestoneName
+                    careerMilestoneTask: this.newMilestoneName,
+                    careerMilestoneDescription: this.newMilestoneDescription
                 };
                 this.newMilestoneName = null;
+                this.newMilestoneDescription = null;
 
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/career-template/list/milestone/' + this.careerRoleId, data).then(function (response) {
                     if (response.status === 200) {
                         _this4.careers[_this4.currentIndex]['milestones'].push({
                             careerRoleMilestoneId: response.data.careerRoleMilestoneId,
-                            task: response.data.task
+                            task: response.data.task,
+                            description: response.data.description
                         });
                     }
                 }).catch(function (response) {});
@@ -53838,6 +53853,57 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
+                      {
+                        staticClass:
+                          "form-group m-form__group row m--margin-top-15"
+                      },
+                      [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "col-sm-3 col-xs-12  col-form-label",
+                            attrs: { for: "milestoneDescription" }
+                          },
+                          [
+                            _vm._v(
+                              "Milestone\n                        description"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-sm-9 col-xs-12 " }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newMilestoneDescription,
+                                expression: "newMilestoneDescription"
+                              }
+                            ],
+                            staticClass: "form-control m-input",
+                            attrs: {
+                              id: "milestoneDescription",
+                              rows: "10",
+                              name: "career_description"
+                            },
+                            domProps: { value: _vm.newMilestoneDescription },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.newMilestoneDescription =
+                                  $event.target.value
+                              }
+                            }
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
                       { staticClass: "m-portlet__foot m-portlet__foot--fit" },
                       [
                         _c("div", { staticClass: "m-form__actions" }, [
@@ -53858,14 +53924,15 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           _vm.createMilestone(
-                                            _vm.newMilestoneName
+                                            _vm.newMilestoneName,
+                                            _vm.newMilestoneDescription
                                           )
                                         }
                                       }
                                     },
                                     [
                                       _vm._v(
-                                        "New\n                                            Milestone\n                                        "
+                                        "Add\n                                            milestone\n                                        "
                                       )
                                     ]
                                   )
@@ -53995,7 +54062,7 @@ var render = function() {
                         attrs: { type: "submit" },
                         on: { click: _vm.updateCareer }
                       },
-                      [_vm._v("Submit\n                ")]
+                      [_vm._v("Save\n                ")]
                     )
                   ]
                 )
@@ -57090,7 +57157,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "New Milestone\n                                    "
+                          "Add Milestone\n                                    "
                         )
                       ]
                     )
@@ -57146,7 +57213,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "Clear Milestones\n                                    "
+                            "Clear All Milestones\n                                    "
                           )
                         ]
                       ),
@@ -69996,7 +70063,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -70064,7 +70130,7 @@ var render = function() {
           _c("a", { attrs: { href: "tel:" + _vm.userNumber } }, [
             _c("i", { staticClass: "la la-phone" })
           ]),
-          _vm._v("\n                " + _vm._s(_vm.user.phone) + "\n\n        ")
+          _vm._v("\n                " + _vm._s(_vm.user.phone) + "\n        ")
         ]
       ),
       _vm._v(" "),

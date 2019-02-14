@@ -15,6 +15,10 @@ class UserCareerRole extends Model
         'description',
         'current_role',
     ];
+    protected $casts = [
+        'current_role' => 'integer',
+    ];
+
 
     public function user(){
         return $this->hasOne(User::class);

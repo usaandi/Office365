@@ -24,7 +24,6 @@
                 <a :href="'tel:'+userNumber">
                     <i class="la la-phone"></i> </a>
                     {{user.phone}}
-
             </div>
             <div class="profile-view__email" :style="{position: this.relative}"><a :href="'mailto:'+user.email"><i
                     class="la la-envelope"></i></a>{{user.email}}</div>
