@@ -39,7 +39,7 @@
                         <div class="form-group m-form__group row">
                             <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
                             <div class="col-9">
-                                <input class="form-control m-input" id="Reminder" type="date" @focus="checkError"
+                                <input class="form-control m-input" :id="'reminderMilestone'+this.milestoneInfo.id" readonly type="text" @focus="checkError"
                                        @change="checkError"
                                        :class="{'border border-danger': this.errorDate}"
                                        v-model="reminder">
@@ -147,6 +147,16 @@
         },
 
         mounted() {
+            let id = this.milestoneInfo.id;
+
+            $('#reminderMilestone' + id).datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+            }).on('changeDate', event => {
+
+                this.reminder = event.target.value;
+            });
+
             if (this.image) {
             }else {
                 this.image = './assets/default/avatar.png';

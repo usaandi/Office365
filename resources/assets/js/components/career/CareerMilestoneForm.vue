@@ -32,11 +32,12 @@
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
-                    <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
+                    <label for="milestoneReminder" class="col-3 col-form-label">Set reminder</label>
                     <div class="col-9">
                         <input v-model="reminder" @change="thisChanged"
-                               :class="{'border border-danger': this.errorReminder}" type="date" id="Reminder"
-                               class="form-control m-input" placeholder="Task">
+                               :class="{'border border-danger': this.errorReminder}" type="text" readonly
+                               :id="'milestoneReminder'+this.careerRoleId"
+                               class="form-control m-input" placeholder="Reminder">
                     </div>
                 </div>
             </div>
@@ -89,6 +90,15 @@
 
         mounted() {
 
+            let id = this.careerRoleId;
+
+            $('#milestoneReminder' + id).datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+            }).on('changeDate', event => {
+
+                this.reminder = event.target.value;
+            });
             this.users = this.usersList;
         },
 

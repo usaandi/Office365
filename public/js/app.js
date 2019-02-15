@@ -57906,7 +57906,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58066,6 +58066,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
+        var _this = this;
+
+        var id = this.milestoneInfo.id;
+
+        $('#reminderMilestone' + id).datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        }).on('changeDate', function (event) {
+
+            _this.reminder = event.target.value;
+        });
+
         if (this.image) {} else {
             this.image = './assets/default/avatar.png';
         }
@@ -58094,7 +58106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.show = false;
         },
         updateMilestone: function updateMilestone() {
-            var _this = this;
+            var _this2 = this;
 
             if (this.canEdit) {
 
@@ -58113,17 +58125,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/update', data).then(function (response) {
                         if (response.status === 200) {
-                            _this.milestone.reminder = response.data['reminder'];
-                            _this.milestone.task = response.data['task'];
-                            _this.milestone.description = response.data['description'];
-                            _this.show = false;
-                            for (var i = 0; i < _this.usersList.length; i++) {
-                                if (_this.usersList[i].id === response.data.assigned_id) {
-                                    _this.milestone.assigned_username = _this.usersList[i].name;
-                                    _this.milestone.assigned_id = _this.usersList[i].id;
+                            _this2.milestone.reminder = response.data['reminder'];
+                            _this2.milestone.task = response.data['task'];
+                            _this2.milestone.description = response.data['description'];
+                            _this2.show = false;
+                            for (var i = 0; i < _this2.usersList.length; i++) {
+                                if (_this2.usersList[i].id === response.data.assigned_id) {
+                                    _this2.milestone.assigned_username = _this2.usersList[i].name;
+                                    _this2.milestone.assigned_id = _this2.usersList[i].id;
                                 }
                             }
-                            _this.show = false;
+                            _this2.show = false;
                         }
                     });
                 }
@@ -58368,7 +58380,11 @@ var render = function() {
                     ],
                     staticClass: "form-control m-input",
                     class: { "border border-danger": this.errorDate },
-                    attrs: { id: "Reminder", type: "date" },
+                    attrs: {
+                      id: "reminderMilestone" + this.milestoneInfo.id,
+                      readonly: "",
+                      type: "text"
+                    },
                     domProps: { value: _vm.reminder },
                     on: {
                       focus: _vm.checkError,
@@ -58586,7 +58602,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58599,6 +58615,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -58687,7 +58704,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
+        var _this = this;
 
+        var id = this.careerRoleId;
+
+        $('#milestoneReminder' + id).datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        }).on('changeDate', function (event) {
+
+            _this.reminder = event.target.value;
+        });
         this.users = this.usersList;
     },
 
@@ -58725,7 +58752,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         submit: function submit() {
-            var _this = this;
+            var _this2 = this;
 
             this.task === '' ? this.errorTask = true : this.errorTask = false;
 
@@ -58753,7 +58780,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var vm = this;
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/create', data).then(function (response) {
 
-                    _this.$emit('addToMilestones', response.data);
+                    _this2.$emit('addToMilestones', response.data);
                     vm.$emit('close');
                 }).catch(function (error) {});
             } else {
@@ -58910,7 +58937,10 @@ var render = function() {
         _c("div", { staticClass: "form-group m-form__group row" }, [
           _c(
             "label",
-            { staticClass: "col-3 col-form-label", attrs: { for: "Reminder" } },
+            {
+              staticClass: "col-3 col-form-label",
+              attrs: { for: "milestoneReminder" }
+            },
             [_vm._v("Set reminder")]
           ),
           _vm._v(" "),
@@ -58926,7 +58956,12 @@ var render = function() {
               ],
               staticClass: "form-control m-input",
               class: { "border border-danger": this.errorReminder },
-              attrs: { type: "date", id: "Reminder", placeholder: "Task" },
+              attrs: {
+                type: "text",
+                readonly: "",
+                id: "milestoneReminder" + this.careerRoleId,
+                placeholder: "Reminder"
+              },
               domProps: { value: _vm.reminder },
               on: {
                 change: _vm.thisChanged,
