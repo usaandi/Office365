@@ -129,7 +129,9 @@ class UserController extends Controller
 
             $birthday = $data['birthday'];
 
+
             $realBirthday = Carbon::parse($birthday)->toDateTimeString();
+            $realAdmSince = Carbon::parse($data['ADMsince'])->toDateTimeString();
 
             $name = $request->input('name');
             $phone = $request->input('phone');
@@ -179,7 +181,7 @@ class UserController extends Controller
             }
 
             $user->update(['name' => $name, 'phone' => $phone,
-                'birthday' => $realBirthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
+                'birthday' => $realBirthday, 'skype' => $skype, 'ADMsince' => $realAdmSince]);
             $user->save();
 
             return redirect()->back()->with('success', true);

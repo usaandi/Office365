@@ -46,7 +46,7 @@
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
                     <div class="col-sm-9 col-xs-12 "><input id="birthday" type="text"
-                                                            placeholder="Enter Birthday" readonly
+                                                            placeholder="Enter Birthday" readonly value="{{$user->birthday}}"
                                                             name="birthday" class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
@@ -107,11 +107,11 @@
                     </div>
                 </div>
                 @endhasrole
-                <div class="form-group m-form__group row"><label for="example-text-input"
+                <div class="form-group m-form__group row"><label for="ADMsince"
                                                                  class="col-sm-3 col-xs-12  col-form-label">ADM
                         since</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" type="date"
-                                                            placeholder="Enter Join date"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" type="text" readonly placeholder="Joined ADM"
+                                                            id="ADMsince"
                                                             name="ADMsince" class="form-control m-input"></div>
                 </div>
             </div>
@@ -146,13 +146,20 @@
     <script>
 
         $('#birthday').datepicker({
-            format: 'dd-mm-yyyy',
+            format: 'yyyy-mm-dd',
             orientation: "top auto",
             autoclose: true,
         }).on('changeDate', event => {
 
+        });
+        $('#ADMsince').datepicker({
+            format: 'yyyy-mm-dd',
+            orientation: "top auto",
+            autoclose: true,
+        }).on('changeDate', event => {
 
         });
+
         $('#form').submit(e => {
             let phone = $('#phoneNumber');
             if (phone.val().length > 15) {
