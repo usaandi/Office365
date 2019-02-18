@@ -59205,7 +59205,7 @@ var render = function() {
           _c("div", { staticClass: "m--margin-20" }, [
             _c("div", [
               _c("div", { staticClass: "career__note--title" }, [
-                _vm._v(_vm._s(_vm.note.title))
+                _vm._v(_vm._s(_vm.propNote.title))
               ]),
               _vm._v(" "),
               _c(
@@ -59220,20 +59220,20 @@ var render = function() {
                     [
                       _vm._v(
                         "\n                            " +
-                          _vm._s(_vm.note.created_at) +
+                          _vm._s(_vm.propNote.created_at) +
                           "\n                        "
                       )
                     ]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "career__note--info__assigner" }, [
-                    _vm._v(_vm._s(_vm.note.assigner_name))
+                    _vm._v(_vm._s(_vm.propNote.assigner_name))
                   ])
                 ]
               ),
               _vm._v(" "),
               _c("p", { staticClass: "profile-timeline__text" }, [
-                _vm._v(_vm._s(_vm.note.description))
+                _vm._v(_vm._s(_vm.propNote.description))
               ])
             ])
           ])
@@ -59276,21 +59276,21 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.note.is_public,
-                    expression: "note.is_public"
+                    value: _vm.propNote.is_public,
+                    expression: "propNote.is_public"
                   }
                 ],
                 staticClass: "m--hide",
                 attrs: { type: "checkbox" },
                 domProps: {
-                  checked: Array.isArray(_vm.note.is_public)
-                    ? _vm._i(_vm.note.is_public, null) > -1
-                    : _vm.note.is_public
+                  checked: Array.isArray(_vm.propNote.is_public)
+                    ? _vm._i(_vm.propNote.is_public, null) > -1
+                    : _vm.propNote.is_public
                 },
                 on: {
                   change: [
                     function($event) {
-                      var $$a = _vm.note.is_public,
+                      var $$a = _vm.propNote.is_public,
                         $$el = $event.target,
                         $$c = $$el.checked ? true : false
                       if (Array.isArray($$a)) {
@@ -59298,21 +59298,25 @@ var render = function() {
                           $$i = _vm._i($$a, $$v)
                         if ($$el.checked) {
                           $$i < 0 &&
-                            _vm.$set(_vm.note, "is_public", $$a.concat([$$v]))
+                            _vm.$set(
+                              _vm.propNote,
+                              "is_public",
+                              $$a.concat([$$v])
+                            )
                         } else {
                           $$i > -1 &&
                             _vm.$set(
-                              _vm.note,
+                              _vm.propNote,
                               "is_public",
                               $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                             )
                         }
                       } else {
-                        _vm.$set(_vm.note, "is_public", $$c)
+                        _vm.$set(_vm.propNote, "is_public", $$c)
                       }
                     },
                     function($event) {
-                      _vm.setPublicState(_vm.note.is_public)
+                      _vm.setPublicState(_vm.propNote.is_public)
                     }
                   ]
                 }
@@ -59391,7 +59395,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59505,10 +59509,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         notes: {
             required: true,
-            type: Array,
-            default: function _default() {
-                return [];
-            }
+            type: Array
         },
         careerId: {
             required: true,
@@ -59534,10 +59535,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    computed: {},
+    computed: {
+        noteList: function noteList() {
+            return this.notesList;
+        }
+    },
     watch: {
         activeNote: function activeNote() {}
     },
+    mounted: function mounted() {},
+
 
     methods: {
         noteDelete: function noteDelete() {
@@ -59548,14 +59555,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (confirmation) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/note/delete', { params: { id: this.noteId } }).then(function (response) {
                     if (response.status === 200) {
-
-                        _this.notesList.splice(_this.index, 1);
+                        /*let index = this.notesList.map(note => note.id).indexOf(this.noteId);*/
+                        var tmpList = _this.notesList;
+                        _this.notesList = [];
+                        tmpList.splice(_this.index, 1);
+                        _this.notesList = tmpList;
                         _this.closeNoteView();
                         _this.success = true;
                     }
                 });
             }
-
             if (!confirmation) {
                 this.closeNoteView();
             }
@@ -59679,7 +59688,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("strong", [_vm._v("Everything is done! Success!")])
+                  _c("strong", [_vm._v("Success!")])
                 ]
               )
             ]
@@ -59710,7 +59719,7 @@ var render = function() {
       "div",
       { staticClass: "m-portlet__body" },
       [
-        _vm._l(_vm.notesList, function(note, index) {
+        _vm._l(_vm.noteList, function(note, index) {
           return _c("career-note", {
             directives: [
               {
@@ -59720,7 +59729,7 @@ var render = function() {
                 expression: "!show"
               }
             ],
-            key: index,
+            key: note.id,
             attrs: { propNote: note, index: index },
             on: {
               update: function($event) {
@@ -59844,6 +59853,12 @@ var render = function() {
                 _vm._v(" "),
                 _c("input", {
                   directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: false,
+                      expression: "false"
+                    },
                     {
                       name: "model",
                       rawName: "v-model",

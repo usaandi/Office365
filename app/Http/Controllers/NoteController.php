@@ -80,6 +80,7 @@ class NoteController extends Controller
             return response('Success', 200);
 
         } catch (\Exception $e) {
+            return response ($e->getMessage(),403);
         }
 
     }

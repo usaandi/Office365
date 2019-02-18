@@ -6,7 +6,7 @@
                     <div class="col-sm-12 col-xs-12" v-show="success">
                         <div class="alert alert-success alert-dismissible text-center" style=""><a
                                 @click="success=!success"
-                                class="close"></a> <strong>Everything is done! Success!</strong></div>
+                                class="close"></a> <strong>Success!</strong></div>
                     </div>
                     <div class="col-sm-12 col-xs-12">
                         <div class="profile-timeline__action "><a
@@ -20,9 +20,9 @@
             </div>
         </div>
         <div class="m-portlet__body">
-            <career-note v-show="!show" v-for="(note, index) in notesList"
+            <career-note v-show="!show" v-for="(note, index) in noteList"
                          :propNote="note"
-                         :key="index"
+                         :key="note.id"
                          :index="index"
                          @update="startUpdate($event)"
             ></career-note>
@@ -48,7 +48,7 @@
                     <div class="form-group m-form__group row"><label
                             for="hidden"
                             class="col-form-label col-1 col-xs-12">Set Public</label>
-                        <input id="hidden" type="checkbox" class="m--margin-left-15"
+                        <input id="hidden" type="checkbox" class="m--margin-left-15" v-show="false"
                                name="title"
                                v-model="setPublicState">
                     </div>
@@ -100,7 +100,6 @@
             notes: {
                 required: true,
                 type: Array,
-                default: () => []
             },
             careerId: {
                 required: true,
@@ -126,10 +125,18 @@
 
             }
         },
-        computed: {},
+        computed: {
+
+            noteList() {
+                return this.notesList;
+            },
+
+        },
         watch: {
             activeNote() {
             }
+        },
+        mounted() {
         },
 
 
@@ -138,19 +145,20 @@
                 let confirmation = confirm('Are you sure? ' +
                     'you want to delete Note?');
 
-
                 if (confirmation) {
                     axios.delete('/note/delete', {params: {id: this.noteId}}).then(response => {
                         if (response.status === 200) {
-
-                            this.notesList.splice(this.index, 1);
+                            /*let index = this.notesList.map(note => note.id).indexOf(this.noteId);*/
+                            let tmpList = this.notesList;
+                            this.notesList = [];
+                            tmpList.splice(this.index, 1);
+                            this.notesList = tmpList;
                             this.closeNoteView();
                             this.success = true;
                         }
 
                     })
                 }
-
                 if (!confirmation) {
                     this.closeNoteView();
                 }

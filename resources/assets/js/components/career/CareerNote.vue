@@ -4,15 +4,15 @@
             <div class="col-lg-12 col-sm-12">
                 <div class="m--margin-20">
                     <div>
-                        <div class="career__note--title">{{note.title}}</div>
+                        <div class="career__note--title">{{propNote.title}}</div>
                         <div class="m--margin-bottom-5 career__note--info">
                             <div class="career__note--info__date m--margin-right-10">
-                                {{note.created_at}}
+                                {{propNote.created_at}}
                             </div>
-                            <div class="career__note--info__assigner">{{note.assigner_name}}</div>
+                            <div class="career__note--info__assigner">{{propNote.assigner_name}}</div>
                         </div>
 
-                        <p class="profile-timeline__text">{{note.description}}</p>
+                        <p class="profile-timeline__text">{{propNote.description}}</p>
                     </div>
                 </div>
 
@@ -25,8 +25,8 @@
                 <i
                         class="fas fa-2x icon-style" :class="lockType"> </i>
 
-                <input @change="setPublicState(note.is_public)"
-                       v-model="note.is_public"
+                <input @change="setPublicState(propNote.is_public)"
+                       v-model="propNote.is_public"
                        type="checkbox" class="m--hide">
             </label>
 
