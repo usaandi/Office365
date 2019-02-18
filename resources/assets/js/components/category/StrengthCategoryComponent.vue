@@ -8,7 +8,7 @@
         </td>
         <td class="text-left">
             <span  v-show="!show"> {{strength.strength_description}}</span>
-            <textarea class="form-control m-input" @change="hasChanged(strength.strength_description)"
+            <textarea class="form-control m-input" rows="10" @change="hasChanged(strength.strength_description)"
                       v-show="show" v-model="strengthDescription" ></textarea>
         </td>
         <td :value="strength.category_id">

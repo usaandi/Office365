@@ -7,7 +7,7 @@
         </td>
         <td class="text-left">
             <span v-show="!show">{{category.category_description}}</span>
-            <textarea class="form-control m-input" @change="hasChanged(category.category_description)" type="text" v-model="categoryDescription"
+            <textarea class="form-control m-input" rows="10" @change="hasChanged(category.category_description)" v-model="categoryDescription"
                       v-show="show">
             </textarea>
         </td>

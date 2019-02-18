@@ -61338,7 +61338,7 @@ var render = function() {
           }
         ],
         staticClass: "form-control m-input",
-        attrs: { type: "text" },
+        attrs: { rows: "10" },
         domProps: { value: _vm.categoryDescription },
         on: {
           change: function($event) {
@@ -61996,6 +61996,7 @@ var render = function() {
           }
         ],
         staticClass: "form-control m-input",
+        attrs: { rows: "10" },
         domProps: { value: _vm.strengthDescription },
         on: {
           change: function($event) {
