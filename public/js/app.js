@@ -59073,7 +59073,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59146,7 +59146,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             note: this.propNote,
             admin: isAdmin,
-            authUserId: authUser['id'],
+            authUserId: authUser.id,
             textBoxText: null
 
         };
@@ -59179,6 +59179,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return false;
         },
         canEdit: function canEdit() {
+            console.log(this.note.assigner_id + ' Note id');
+            console.log(this.authUserId + ' user-id');
+            console.log(this.note.assigner_id === this.authUserId);
+            console.log(this.note.assigner_id == this.authUserId);
             if (this.note.assigner_id === this.authUserId) {
                 return true;
             }

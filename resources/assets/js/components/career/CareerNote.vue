@@ -58,7 +58,7 @@
             return {
                 note: this.propNote,
                 admin: isAdmin,
-                authUserId: authUser['id'],
+                authUserId: authUser.id,
                 textBoxText: null,
 
             }
@@ -92,6 +92,10 @@
             },
 
             canEdit() {
+                console.log(this.note.assigner_id + ' Note id');
+                console.log(this.authUserId + ' user-id');
+                console.log(this.note.assigner_id === this.authUserId);
+                console.log(this.note.assigner_id == this.authUserId);
                 if (this.note.assigner_id === this.authUserId) {
                     return true;
                 }
@@ -110,8 +114,6 @@
 </script>
 
 <style scoped>
-
-
 
 
 </style>
