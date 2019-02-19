@@ -87,10 +87,7 @@
             },
 
             canEdit() {
-                console.log(this.note.assigner_id + ' Note id');
-                console.log(this.authUserId + ' user-id');
-                console.log(this.note.assigner_id === this.authUserId);
-                console.log(this.note.assigner_id == this.authUserId);
+
                 if (this.note.assigner_id === this.authUserId) {
                     return true;
                 }
