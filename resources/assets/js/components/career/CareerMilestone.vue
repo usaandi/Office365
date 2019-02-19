@@ -39,7 +39,8 @@
                         <div class="form-group m-form__group row">
                             <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
                             <div class="col-9">
-                                <input class="form-control m-input" :id="'reminderMilestone'+this.milestoneInfo.id" readonly type="text" @focus="checkError"
+                                <input class="form-control m-input" :id="'reminderMilestone'+this.milestoneInfo.id"
+                                       readonly type="text" @focus="checkError"
                                        @change="checkError"
                                        :class="{'border border-danger': this.errorDate}"
                                        v-model="reminder">
@@ -90,8 +91,7 @@
 
                         <div class="m-list-pics m-list-pics--sm">
                             <a :href="'user/'+milestone.assigned_id"><img :src="image" title=""></a>
-
-                            {{milestone.assigned_username}}
+                            {{setName}}
                         </div>
                     </div>
                     <div class="profile-timeline__milestones--date">
@@ -120,7 +120,9 @@
     export default {
 
         name: "CareerMilestone",
-        props: ['milestoneInfo', 'usersList', 'selectedUserProfileId', 'canEdit', 'hasMilestoneError', 'careerRoleMilestoneIndex'],
+        props: ['milestoneInfo', 'usersList',
+            'selectedUserProfileId', 'canEdit',
+            'hasMilestoneError', 'careerRoleMilestoneIndex'],
         data() {
             return {
                 selected: '',
@@ -148,7 +150,6 @@
 
         mounted() {
             let id = this.milestoneInfo.id;
-
             $('#reminderMilestone' + id).datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true,
@@ -158,7 +159,7 @@
             });
 
             if (this.image) {
-            }else {
+            } else {
                 this.image = './assets/default/avatar.png';
             }
 
@@ -171,6 +172,13 @@
             milestoneInfo(value) {
                 this.milestoneInfo = value;
                 this.milestone = value;
+            }
+        },
+        computed: {
+
+            setName() {
+                return this.selectedUserProfileId === this.milestone.assigned_id ? 'Me' : this.milestone.assigned_username;
+
             }
         },
 
