@@ -166,6 +166,12 @@ $half: round($loops / 2);
       display: inline-block;
       vertical-align: middle;
       margin-right: 20px;
+      a {
+        color:#212529;
+      }
+      i {
+        color: $green;
+      }
     }
     &--pills {
       margin: 15px 0;
