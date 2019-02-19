@@ -447,6 +447,11 @@ a:focus {
   margin-right: 5px;
 }
 
+.profile-view__phone a,
+.profile-view__email a {
+  color: #212529;
+}
+
 .profile-view__phone {
   margin-top: 5px;
 }
@@ -1239,6 +1244,14 @@ a:focus {
   display: inline-block;
   vertical-align: middle;
   margin-right: 20px;
+}
+
+.profile__details--info a {
+  color: #212529;
+}
+
+.profile__details--info i {
+  color: #34bfa3;
 }
 
 .profile__details--pills {

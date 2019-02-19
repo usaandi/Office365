@@ -56809,7 +56809,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56822,6 +56822,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
 //
 //
 //
@@ -57179,7 +57180,9 @@ var render = function() {
               { staticClass: "col-9" },
               _vm._l(_vm.milestonesList, function(milestone, index) {
                 return _c("ul", [
-                  _c("li", [_vm._v(_vm._s(milestone.milestoneName))])
+                  _c("li", [_vm._v(_vm._s(milestone.milestoneName))]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v(_vm._s(milestone.milestoneDescription))])
                 ])
               }),
               0
@@ -57906,7 +57909,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58069,7 +58072,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         var id = this.milestoneInfo.id;
-
         $('#reminderMilestone' + id).datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true
@@ -58091,6 +58093,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         milestoneInfo: function milestoneInfo(value) {
             this.milestoneInfo = value;
             this.milestone = value;
+        }
+    },
+    computed: {
+        setName: function setName() {
+            return this.selectedUserProfileId === this.milestone.assigned_id ? 'Me' : this.milestone.assigned_username;
         }
     },
 
@@ -58512,8 +58519,8 @@ var render = function() {
                   [_c("img", { attrs: { src: _vm.image, title: "" } })]
                 ),
                 _vm._v(
-                  "\n\n                        " +
-                    _vm._s(_vm.milestone.assigned_username) +
+                  "\n                        " +
+                    _vm._s(_vm.setName) +
                     "\n                    "
                 )
               ])
@@ -59854,12 +59861,6 @@ var render = function() {
                 _c("input", {
                   directives: [
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value: false,
-                      expression: "false"
-                    },
-                    {
                       name: "model",
                       rawName: "v-model",
                       value: _vm.setPublicState,
@@ -60098,7 +60099,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60334,6 +60335,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        listNames: function listNames() {
+            var _this2 = this;
+
+            this.usersList.map(function (u) {
+                return _this2.selectedUserProfileId === u.id ? u.name = 'Me' : u.name;
+            });
+        },
         sortArray: function sortArray(array) {},
         returnDate: function returnDate() {
 
@@ -60348,7 +60356,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         deleteRequest: function deleteRequest() {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.canEdit) {
                 var confirmation = confirm("Are you sure you want to delete this Career: " + this.userRoleInfo.title);
@@ -60356,8 +60364,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (confirmation) {
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/user/' + this.selectedUserProfileId + '/career/delete', { params: { careerId: this.userRoleInfo.id } }).then(function (response) {
                         var data = response.data;
-                        _this2.$emit('deleteRole', data);
-                        _this2.success = true;
+                        _this3.$emit('deleteRole', data);
+                        _this3.success = true;
                     });
                 }
             }
@@ -60370,7 +60378,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         submitChanges: function submitChanges() {
-            var _this3 = this;
+            var _this4 = this;
 
             if (this.canEdit) {
                 if (this.descriptionValue || this.roleValue || this.dateValue) {
@@ -60385,14 +60393,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(function (response) {
                         if (response.status === 200) {
-                            _this3.userRoleInfo = response.data;
+                            _this4.userRoleInfo = response.data;
 
-                            _this3.createdDate = response.data.creation_date;
-                            _this3.isEditing = false;
-                            _this3.roleValue = null;
-                            _this3.dateValue = null;
-                            _this3.descriptionValue = null;
-                            _this3.success = true;
+                            _this4.createdDate = response.data.creation_date;
+                            _this4.isEditing = false;
+                            _this4.roleValue = null;
+                            _this4.dateValue = null;
+                            _this4.descriptionValue = null;
+                            _this4.success = true;
                         }
                     });
                 }
@@ -60445,15 +60453,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         deleteMilestone: function deleteMilestone(value) {
-            var _this4 = this;
+            var _this5 = this;
 
             if (this.canEdit === true) {
 
                 var data = this.userMilestones[value];
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/user/' + this.selectedUserProfileId + '/career/milestone/delete', data).then(function (response) {
                     if (response.status === 200) {
-                        _this4.userMilestones.splice(value, 1);
-                        _this4.show = false;
+                        _this5.userMilestones.splice(value, 1);
+                        _this5.show = false;
                     }
                 });
             }
@@ -67850,6 +67858,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -68166,12 +68176,13 @@ var render = function() {
                                       href: "tel:" + _vm.user.phone + ";1"
                                     }
                                   },
-                                  [_c("i", { staticClass: "fas fa-phone" })]
-                                ),
-                                _vm._v(
-                                  "\n                            " +
-                                    _vm._s(_vm.user.phone) +
-                                    "\n                            "
+                                  [
+                                    _c("i", { staticClass: "fas fa-phone" }),
+                                    _vm._v(
+                                      "\n                            " +
+                                        _vm._s(_vm.user.phone)
+                                    )
+                                  ]
                                 )
                               ])
                             : _c("span", [_vm._v("Enter Phone number")])
@@ -68189,13 +68200,12 @@ var render = function() {
               _c("div", { staticClass: "col-xs-9" }, [
                 _c("div", { staticClass: "profile__details--info" }, [
                   _c("a", { attrs: { href: "mailto:" + _vm.user.email } }, [
-                    _c("i", { staticClass: "fas fa-envelope" })
-                  ]),
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.user.email) +
-                      "\n                        "
-                  )
+                    _c("i", { staticClass: "fas fa-envelope" }),
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(_vm.user.email)
+                    )
+                  ])
                 ])
               ])
             ]),
@@ -68239,10 +68249,18 @@ var render = function() {
                         [
                           _vm.user.skype
                             ? _c("span", [
-                                _vm._v(
-                                  "\n                            " +
-                                    _vm._s(_vm.user.skype) +
-                                    "\n                            "
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "skype:" + _vm.user.skype }
+                                  },
+                                  [
+                                    _c("i", { staticClass: "fab fa-skype" }),
+                                    _vm._v(
+                                      "\n                             " +
+                                        _vm._s(_vm.user.skype)
+                                    )
+                                  ]
                                 )
                               ])
                             : _c("span", [_vm._v("Enter Skype")])
@@ -70114,6 +70132,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -70133,7 +70155,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         userNumber: function userNumber() {
-            return this.user.phone.split(' ').join('');
+            if (this.user.phone) {
+                return this.user.phone.split(' ').join('');
+            }
         }
     }
 });
@@ -70179,9 +70203,11 @@ var render = function() {
         },
         [
           _c("a", { attrs: { href: "tel:" + _vm.userNumber } }, [
-            _c("i", { staticClass: "la la-phone" })
-          ]),
-          _vm._v("\n                " + _vm._s(_vm.user.phone) + "\n        ")
+            _c("i", { staticClass: "la la-phone" }),
+            _vm._v(
+              "\n                " + _vm._s(_vm.user.phone) + "\n            "
+            )
+          ])
         ]
       ),
       _vm._v(" "),
@@ -70193,9 +70219,9 @@ var render = function() {
         },
         [
           _c("a", { attrs: { href: "mailto:" + _vm.user.email } }, [
-            _c("i", { staticClass: "la la-envelope" })
-          ]),
-          _vm._v(_vm._s(_vm.user.email))
+            _c("i", { staticClass: "la la-envelope" }),
+            _vm._v(_vm._s(_vm.user.email) + "\n            ")
+          ])
         ]
       )
     ])
