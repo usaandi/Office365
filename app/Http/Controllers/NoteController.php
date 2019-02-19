@@ -135,12 +135,13 @@ class NoteController extends Controller
         try {
 
             $array = [];
+            $userId = Auth::user()->id;
             $careers = UserCareerRole::with('careerNotes')->where('id', $careerRoleId)->first();
             $notes = $careers->careerNotes()->orderByDesc('id')->get();
 
             foreach ($notes as $key => $note) {
 
-                if ($note->assigner_id === auth::user()['id'] || $note['is_public']) {
+                if ($note->assigner_id === $userId || $note['is_public']) {
                     $assignerId = $note['assigner_id'];
                     $array[$key]['id'] = $note->id;
                     $array[$key]['is_public'] = $note['is_public'];

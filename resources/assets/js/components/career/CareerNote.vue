@@ -22,8 +22,8 @@
         <div class="profile-timeline__action m--margin-15 career__note--control">
             <label v-show="canEditState()" style="position:relative " class="hover-over">
                 <div class="myStyle">{{textBox}}</div>
-                <i
-                        class="fas fa-2x icon-style" :class="lockType"> </i>
+                <i class="fas fa-2x icon-style" :class="lockType">
+                </i>
 
                 <input @change="setPublicState(propNote.is_public)"
                        v-model="propNote.is_public"
@@ -71,12 +71,7 @@
                 }
             },
             textBox() {
-                if (this.note.is_public) {
-                    return this.textBoxText = 'Public';
-                }
-                else {
-                    return this.textBoxText = 'Only I can see this note';
-                }
+                return this.note.is_public ? this.textBoxText = 'Public' : this.textBoxText = 'Only i can see this note';
             },
         },
         watch: {},
