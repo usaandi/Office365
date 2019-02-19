@@ -14,9 +14,13 @@ class NoteController extends Controller
 
     public function count($id)
     {
-        $Count = Note::where('user_career_role_id', $id)->get();
+        $userId = Auth::user()->id;
+        $count = Note::where('user_career_role_id', $id)->where('assigner_id', $userId)->orWhere(function ($q) use($id){
+            $q->where('user_career_role_id',$id)->where('is_public',true);
 
-        return count($Count);
+        })->count();
+
+        return $count;
     }
 
     public function index($id, $roleId)
@@ -80,7 +84,7 @@ class NoteController extends Controller
             return response('Success', 200);
 
         } catch (\Exception $e) {
-            return response ($e->getMessage(),403);
+            return response($e->getMessage(), 403);
         }
 
     }
@@ -147,7 +151,7 @@ class NoteController extends Controller
                     $array[$key]['created_at'] = $note->created_at->toDateString();
                 }
             }
-            return array_values($array);
+            return $array;
 
         } catch (\Exception $e) {
         }
