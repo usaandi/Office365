@@ -95,8 +95,8 @@
                             <div class="profile__details--info" v-if="editphone === false"
                                  @dblclick="changeText('phone')">
                                <span v-if="user.phone">
-                                   <a :href="'tel:'+user.phone+';1'"><i class="fas fa-phone"></i></a>
-                                {{user.phone}}
+                                   <a :href="'tel:'+user.phone+';1'"><i class="fas fa-phone"></i>
+                                {{user.phone}}</a>
                                 </span>
                                 <span v-else>Enter Phone number</span>
 
@@ -110,8 +110,8 @@
                         </div>
                         <div class="col-xs-9">
                             <div class="profile__details--info">
-                                <a :href="'mailto:'+user.email"><i class="fas fa-envelope"></i></a>
-                                {{user.email}}
+                                <a :href="'mailto:'+user.email"><i class="fas fa-envelope"></i>
+                                    {{user.email}}</a>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,9 @@
                             <div class="profile__details--info" v-if="editskype === false"
                                  @dblclick="changeText('skype')">
                             <span v-if="user.skype">
-                                {{user.skype}}
+                               <a :href="'skype:'+user.skype" ><i class="fab fa-skype"></i>
+                                 {{user.skype}}</a>
+
                                 </span>
                                 <span v-else>Enter Skype</span>
 

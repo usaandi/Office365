@@ -22,11 +22,15 @@
             <div class="profile-view__role">{{user.current_role}}</div>
             <div class="profile-view__phone " :style="{position: this.relative}">
                 <a :href="'tel:'+userNumber">
-                    <i class="la la-phone"></i> </a>
+                    <i class="la la-phone"></i>
                     {{user.phone}}
+                </a>
             </div>
-            <div class="profile-view__email" :style="{position: this.relative}"><a :href="'mailto:'+user.email"><i
-                    class="la la-envelope"></i></a>{{user.email}}</div>
+            <div class="profile-view__email" :style="{position: this.relative}">
+                <a :href="'mailto:'+user.email"><i
+                        class="la la-envelope"></i>{{user.email}}
+                </a>
+            </div>
         </div>
 
 
@@ -60,7 +64,9 @@
         },
         computed: {
             userNumber() {
-                return this.user.phone.split(' ').join('');
+                if (this.user.phone) {
+                    return this.user.phone.split(' ').join('');
+                }
             }
         }
     }
