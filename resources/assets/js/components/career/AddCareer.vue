@@ -56,6 +56,7 @@
                         <div class="col-9">
                             <ul v-for="(milestone, index) in milestonesList">
                                 <li>{{milestone.milestoneName}}</li>
+                                <div>{{milestone.milestoneDescription}}</div>
                             </ul>
                         </div>
                     </div>
