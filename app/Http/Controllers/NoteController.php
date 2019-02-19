@@ -152,7 +152,7 @@ class NoteController extends Controller
                     $array[$key]['created_at'] = $note->created_at->toDateString();
                 }
             }
-            return $array;
+            return array_values($array);
 
         } catch (\Exception $e) {
         }
