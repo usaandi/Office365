@@ -9,7 +9,11 @@ class Note extends Model
 {
     protected $fillable = ['title', 'description', 'user_career_role_id', 'assigner_id', 'is_public'];
     protected $table = 'notes';
-
+    protected $casts = [
+        'user_career_role_id' => 'integer',
+        'assigner_id' => 'integer',
+        'is_public' => 'integer',
+    ];
 
     public function career()
     {
