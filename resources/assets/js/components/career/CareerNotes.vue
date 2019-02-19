@@ -48,7 +48,7 @@
                     <div class="form-group m-form__group row"><label
                             for="hidden"
                             class="col-form-label col-1 col-xs-12">Set Public</label>
-                        <input id="hidden" type="checkbox" class="m--margin-left-15" v-show="false"
+                        <input id="hidden" type="checkbox" class="m--margin-left-15"
                                name="title"
                                v-model="setPublicState">
                     </div>

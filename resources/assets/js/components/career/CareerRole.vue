@@ -224,6 +224,13 @@
         },
         computed: {
 
+            listNames() {
+                this.usersList.map(u => {
+                    return this.selectedUserProfileId === u.id ? u.name = 'Me' : u.name;
+                });
+
+            },
+
 
             sortArray(array) {
 
