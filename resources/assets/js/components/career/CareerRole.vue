@@ -9,7 +9,8 @@
         </div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
 
-            <div v-show="success" class="alert alert-success alert-dismissible">
+            <div v-show="success" class="text-center alert alert-success alert-dismissible"
+                 :id="'alert'+userRoleInfo.id">
                 <a class="close" @click="success=!success"></a>
                 <strong>Success!</strong>
             </div>
@@ -41,26 +42,31 @@
                                 <label for="title" class="col-lg-2 col-form-label">Role</label>
 
                                 <div class="col-lg-10"><input id="title" v-model="roleValue" type="text" name="title"
-                                                          placeholder="Role"
-                                                          class="form-control m-input">
+                                                              placeholder="Role"
+                                                              class="form-control m-input">
                                 </div>
                             </div>
 
 
                             <div class="form-group m-form__group row">
                                 <label for="description" class="col-lg-2 col-form-label">Description</label>
-                                <div class="col-sm-9 col-xs-12 col-lg-10"><textarea v-model="descriptionValue"
-                                                                          id="description" rows="10"
-                                                                          class="form-control m-input"
-                                                                          name="career_description"></textarea>
+                                <div class=" col-xs-12 col-lg-10"><textarea v-model="descriptionValue"
+                                                                            id="description" rows="10"
+                                                                            class="form-control m-input"
+                                                                            name="career_description"
+                                                                            :maxlength="max"
+
+
+                                ></textarea>
+                                    <div :style="styleObject">{{max-descriptionValue.length}}</div>
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">
                                 <label for="description" class="col-lg-2 col-form-label">Date</label>
                                 <div class="col-sm-9 col-xs-12 col-lg-10"><input type="date" v-model="dateValue"
-                                                                       id="date"
-                                                                       class="form-control m-input"
-                                                                       name="career_description">
+                                                                                 id="date"
+                                                                                 class="form-control m-input"
+                                                                                 name="career_description">
                                 </div>
                             </div>
 
@@ -175,7 +181,11 @@
 
         data() {
             return {
-
+                styleObject: {
+                    display: 'flex',
+                    justifyContent: 'flex-end'
+                },
+                max: 5000,
                 userId: '',
                 userRoleInfo: this.userdata,
                 milestoneInfo: this.userInfo,
@@ -191,7 +201,7 @@
                 createdDate: this.userdata.creation_date,
                 editField: '',
                 isUpdate: false,
-                descriptionValue: null,
+                descriptionValue: '',
                 roleValue: null,
                 success: false,
                 dateValue: null,
@@ -220,6 +230,8 @@
 
         },
         mounted() {
+            let id = this.userRoleInfo.id;
+
             this.currentlySelected();
         },
         computed: {
@@ -228,6 +240,9 @@
                 this.usersList.map(u => {
                     return this.selectedUserProfileId === u.id ? u.name = 'Me' : u.name;
                 });
+
+            },
+            textLimit() {
 
             },
 
@@ -262,8 +277,11 @@
                                 const data = response.data;
                                 this.$emit('deleteRole', data);
                                 this.success = true;
-                            })
+                            });
+
+
                     }
+
                 }
             },
             selectRole(value) {
@@ -275,6 +293,7 @@
 
 
             },
+
             submitChanges() {
                 if (this.canEdit) {
                     if (this.descriptionValue || this.roleValue || this.dateValue) {
@@ -319,7 +338,7 @@
 
                     this.roleValue = null;
                     this.dateValue = null;
-                    this.descriptionValue = null;
+                    this.descriptionValue = '';
                     this.isEditing = false;
 
 
