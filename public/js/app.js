@@ -60638,7 +60638,8 @@ var render = function() {
                             id: "title",
                             type: "text",
                             name: "title",
-                            placeholder: "Role"
+                            placeholder: "Role",
+                            maxlength: 100
                           },
                           domProps: { value: _vm.roleValue },
                           on: {

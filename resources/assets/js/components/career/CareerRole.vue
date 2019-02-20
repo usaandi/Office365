@@ -43,7 +43,7 @@
 
                                 <div class="col-lg-10"><input id="title" v-model="roleValue" type="text" name="title"
                                                               placeholder="Role"
-                                                              class="form-control m-input">
+                                                              class="form-control m-input" :maxlength="100">
                                 </div>
                             </div>
 
