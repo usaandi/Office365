@@ -4,7 +4,8 @@
             <div class="profile__avatar--action"><span class="btn m-btn--pill btn-success fileinput-button"><i
                     class="la la-plus"></i> <span> Add image... </span> <input id="imageChoose" type="file"
                                                                                v-on:change="onFileChange"></span>
-                <button @click="deleteImage" type="submit" class="btn m-btn--pill btn-info"><i class="la la-upload"></i>
+                <button v-if="image" @click="deleteImage" type="submit" class="btn m-btn--pill btn-info"><i
+                        class="la la-upload"></i>
                     <span> Delete image </span></button>
             </div>
         </div>
@@ -17,10 +18,10 @@
 
     export default {
         name: "FileUpload",
-        props: ['endpoint', 'userId'],
+        props: ['endpoint', 'userId', 'currentImage'],
         data() {
             return {
-                image: ''
+                image: this.currentImage,
             }
         },
         methods: {
@@ -53,6 +54,7 @@
             deleteImage() {
 
                 let vm = this;
+                this.image = '';
                 axios.patch('adm/user/image/' + vm.userId).then(response => {
                     vm.$emit('imageDelete', response);
 

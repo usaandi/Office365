@@ -63,8 +63,9 @@
                             </div>
                             <div class="form-group m-form__group row">
                                 <label for="description" class="col-lg-2 col-form-label">Date</label>
-                                <div class="col-sm-9 col-xs-12 col-lg-10"><input type="date" v-model="dateValue"
-                                                                                 id="date"
+                                <div class="col-sm-9 col-xs-12 col-lg-10"><input readonly type="text"
+                                                                                 v-model="dateValue"
+                                                                                 :id="'dateEdit'+userRoleInfo.id"
                                                                                  class="form-control m-input"
                                                                                  name="career_description">
                                 </div>
@@ -182,7 +183,7 @@
         data() {
             return {
                 styleObject: {
-                    display: 'flex',
+                    display: ['flex', '-webkit-flex', '-ms-flexbox'],
                     justifyContent: 'flex-end'
                 },
                 max: 5000,
@@ -231,6 +232,13 @@
         },
         mounted() {
             let id = this.userRoleInfo.id;
+            $('#dateEdit' + id).datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+            }).on('changeDate', event => {
+
+                this.dateValue = event.target.value;
+            });
 
             this.currentlySelected();
         },
@@ -296,7 +304,7 @@
 
             submitChanges() {
                 if (this.canEdit) {
-                    if (this.descriptionValue || this.roleValue || this.dateValue) {
+                    if (this.descriptionValue && this.descriptionValue !== '' && this.roleValue && this.dateValue) {
 
                         const data = {
                             roleTitle: this.roleValue,
@@ -304,7 +312,6 @@
                             careerId: this.userRoleInfo.id,
                             creationDate: this.dateValue,
                         };
-                        let vm = this;
 
                         axios.patch('user/' + this.selectedUserProfileId + '/career/update', data).then(response => {
                             if (response.status === 200) {
@@ -314,7 +321,7 @@
                                 this.isEditing = false;
                                 this.roleValue = null;
                                 this.dateValue = null;
-                                this.descriptionValue = null;
+                                this.descriptionValue = '';
                                 this.success = true;
 
                             }

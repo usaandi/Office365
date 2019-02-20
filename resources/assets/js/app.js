@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 import Vue from 'vue';
+import moment from 'moment';
 import ChecksPrivileges from './services/ChecksPrivileges'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueSelect from 'vue-select'
@@ -26,8 +27,7 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 Vue.component('v-select', VueSelect);
 
 Vue.component('modal', {}.default);
-
-Vue.use(ChecksPrivileges);
+Vue.use(ChecksPrivileges, moment);
 
 Vue.component('alert-view', require('./components/AlertView'));
 

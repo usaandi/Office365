@@ -131,7 +131,7 @@
                             <div class="profile__details--info" v-if="editskype === false"
                                  @dblclick="changeText('skype')">
                             <span v-if="user.skype">
-                               <a :href="'skype:'+user.skype" ><i class="fab fa-skype"></i>
+                               <a :href="'skype:'+user.skype"><i class="fab fa-skype"></i>
                                  {{user.skype}}</a>
 
                                 </span>
@@ -199,7 +199,6 @@
     import EditableInputComponent from '../EditableInputComponent';
     import axios from 'axios';
     import Vue from 'vue';
-
 
     export default {
         name: "ProfileView",
@@ -283,14 +282,32 @@
 
             },
             admSince() {
+
                 let vm = this;
+                let admDate = moment(vm.user.ADMsince);
+                let currentDate = moment();
+                let month = moment(currentDate - admDate).format('M');
+                let year = currentDate.diff(admDate, 'year');
 
-                let admDate = new Date(vm.user.ADMsince);
-                let currentDate = new Date();
-                let years = currentDate.getUTCFullYear() - admDate.getUTCFullYear();
-                let months = (currentDate.getMonth() + 1) - (admDate.getMonth() + 1);
+                return year + 'y | ' + month + ' m';
 
-                return years + "y" + months + "m";
+                /*
+                  Kui katki peaks minema midagi kasutada alumist koodi.
+                  let admDate = new Date(vm.user.ADMsince);
+
+                  let currentDate = new Date();
+
+                  let years = currentDate.getUTCFullYear() - admDate.getUTCFullYear();
+
+                  let months = (currentDate.getMonth() + 1) - (admDate.getMonth() + 1);
+                  if (months <= 0) {
+                      months = (currentDate.getMonth() + 1) + (admDate.getMonth() + 1) - 12;
+                      if (months <= 0) {
+                          months = 0;
+                      }
+                  }
+
+                  return years + "y | " + months + " m";*/
             },
 
         }

@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="profile__avatar p-50">
+        <div class="profile__avatar p-0">
             <img class="profile__avatar--image" @click="changeImage" :src="avatarImage" alt="">
         </div>
-        <div class="profile__avatar--level">
-            <div class="profile__pill profile__pill--small">LVL Black Belt</div>
-        </div>
-        <file-upload @close="closeEdit($event)" v-show="edit" :userId="userId" :endpoint="'/upload/' + userId"
+        <!--<div class="profile__avatar&#45;&#45;level">
+            <div class="profile__pill profile__pill&#45;&#45;small">LVL Black Belt</div>
+        </div>-->
+        <file-upload @close="closeEdit($event)" v-show="edit" :userId="userId" :endpoint="'/upload/' + userId" :currentImage="image"
                      @file-uploaded="fileUploaded" @imageDelete="deleteImage"></file-upload>
     </div>
 </template>

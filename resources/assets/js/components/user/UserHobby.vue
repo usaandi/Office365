@@ -77,7 +77,6 @@
                                 id: response.data[0].id,
                                 name: response.data[0].name,
                             });
-                            vm.edit = false;
                         }).catch(error => {
                     });
                 }
