@@ -9,7 +9,8 @@
                             <div class="career__note--info__date m--margin-right-10">
                                 {{propNote.created_at}}
                             </div>
-                            <div class="career__note--info__assigner">{{propNote.assigner_name}}</div>
+                            <div class="career__note--info__assigner"><a :href="'user/'+note.assigner_id">{{propNote.assigner_name}}</a>
+                            </div>
                         </div>
 
                         <p class="profile-timeline__text">{{propNote.description}}</p>

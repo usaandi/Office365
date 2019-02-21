@@ -8,7 +8,7 @@
                                 @click="success=!success"
                                 class="close"></a> <strong>Success!</strong></div>
                     </div>
-                    <div class="col-sm-12 col-xs-12">
+                    <div class="col-sm-12 col-xs-12" v-show="!isEditing">
                         <div class="profile-timeline__action "><a
                                 tabindex="0"
                                 @click="noteCreate()"
@@ -119,6 +119,7 @@
                 assignerId: null,
                 noteId: null,
                 index: null,
+                isEditing: false,
                 success: false,
                 setPublicState: false,
 
@@ -199,6 +200,7 @@
                 this.assignerId = null;
                 this.creating = false;
                 this.setPublicState = false;
+                this.isEditing = false;
                 this.noteId = null;
                 this.index = null;
 
@@ -209,12 +211,14 @@
             },
             startUpdate(index) {
 
+                this.isEditing = true;
                 this.index = index;
 
                 this.activeNote = this.notesList[index];
                 this.assignerId = this.activeNote['assigner_id'];
                 this.noteDescription = this.activeNote.description;
                 this.noteTitle = this.activeNote.title;
+                this.setPublicState = this.activeNote.is_public;
                 this.noteId = this.activeNote.id;
 
                 this.show = true;
@@ -227,12 +231,14 @@
 
                     const data = {
                         noteDescription: this.noteDescription,
-                        noteTitle: this.noteTitle
+                        noteTitle: this.noteTitle,
+                        publicState: this.setPublicState,
                     };
                     axios.patch(this.activeNote.id, data).then(response => {
                         if (response.status === 200) {
                             this.notesList[this.index].title = response.data.title;
                             this.notesList[this.index].description = response.data.description;
+                            this.notesList[this.index].is_public = response.data.is_public;
                             this.closeNoteView();
                             this.success = true;
                         }
