@@ -87,38 +87,26 @@ class CareerController extends Controller
     public function completeMilestone(Request $request, $id)
     {
         try {
-            $authUser = \Auth::user();
             $user = User::findOrFail($id);
             $this->authorize('updateMilestone', $user);
 
             $data = $request->all();
             $rules = [
-                'milestoneId' => 'required'
+                'milestoneId' => 'required',
+                'status' => 'required',
             ];
             $validator = Validator::make($data, $rules);
             if ($validator->passes()) {
 
                 $userMilestoneId = $data['milestoneId'];
                 $userCareermilestone = UserCareerRoleMilestone::where('id', $userMilestoneId)->first();
+                $userCareermilestone->update(['completed' => $data['status']]);
+                $newValue = $userCareermilestone->completed;
+                $dataArray = [
+                    'value' => $newValue,
+                ];
+                return response(json_encode($dataArray), 200);
 
-                if ($userCareermilestone->completed === 0) {
-                    $userCareermilestone->update(['completed' => 1]);
-                    $newValue = $userCareermilestone->completed;
-                    $dataArray = [
-                        'value' => $newValue,
-                    ];
-                    return response(json_encode($dataArray), 200);
-
-                } else if ($userCareermilestone->completed === 1) {
-                    $userCareermilestone->update(['completed' => 0]);
-                    $newValue = $userCareermilestone->completed;
-
-                    $dataArray = [
-                        'value' => $newValue,
-                    ];
-
-                    return response(json_encode($dataArray), 200);
-                }
             }
 
 
