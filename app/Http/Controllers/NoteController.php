@@ -99,13 +99,14 @@ class NoteController extends Controller
             $validateData = $this->validate($request, [
                 'noteDescription' => 'required|string',
                 'noteTitle' => 'required|string',
+                'publicState' => 'required|bool'
 
             ]);
 
             $update = Note::updateNote($noteId, $validateData);
 
             if ($update) {
-                $note = Note::where('id', $noteId)->first(['title', 'description'])->toArray(['description', 'title']);
+                $note = Note::where('id', $noteId)->first(['title', 'description','is_public'])->toArray(['description', 'title','is_public']);
                 return response($note, 200);
 
             }
