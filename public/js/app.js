@@ -75245,9 +75245,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.canEdit === true) {
 
                 var vm = this;
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('update/milestone/' + this.selectedUserProfileId, {
-                    milestoneId: this.milestone.id,
-                    status: this.isCompleted
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('update/milestone/' + vm.selectedUserProfileId, {
+                    milestoneId: vm.milestone.id,
+                    status: vm.isCompleted
                 }).then(function (response) {
                     if (response.status === 200) {
                         vm.milestone.completed = response.data.value;

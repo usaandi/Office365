@@ -240,9 +240,9 @@
                 if (this.canEdit === true) {
 
                     let vm = this;
-                    axios.post('update/milestone/' + this.selectedUserProfileId, {
-                        milestoneId: this.milestone.id,
-                        status: this.isCompleted
+                    axios.post('update/milestone/' + vm.selectedUserProfileId, {
+                        milestoneId: vm.milestone.id,
+                        status: vm.isCompleted
                     }).then(response => {
                         if (response.status === 200) {
                             vm.milestone.completed = response.data.value;

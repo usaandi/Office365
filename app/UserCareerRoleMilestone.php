@@ -18,6 +18,9 @@ class UserCareerRoleMilestone extends Model
          'completed',
          'user_career_role_id',
      ];
+    protected $casts = [
+        'completed' => 'integer',
+    ];
 
      public function user(){
          return $this->hasOne(User::class);
