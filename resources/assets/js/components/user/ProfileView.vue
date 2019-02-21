@@ -169,7 +169,7 @@
                     </user-strenght>
                 </div>
 
-                <user-children :canedit="canedit" :userid="user.id"></user-children>
+               <!-- <user-children :canedit="canedit" :userid="user.id"></user-children>-->
 
                 <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
 
