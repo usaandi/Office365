@@ -93,7 +93,7 @@ class CareerController extends Controller
 
             $data = $request->all();
             $rules = [
-                'milestoneId' => 'required|int'
+                'milestoneId' => 'required'
             ];
             $validator = Validator::make($data, $rules);
             if ($validator->passes()) {
