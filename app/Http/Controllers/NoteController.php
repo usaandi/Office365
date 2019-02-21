@@ -15,8 +15,8 @@ class NoteController extends Controller
     public function count($id)
     {
         $userId = Auth::user()->id;
-        $count = Note::where('user_career_role_id', $id)->where('assigner_id', $userId)->orWhere(function ($q) use($id){
-            $q->where('user_career_role_id',$id)->where('is_public',true);
+        $count = Note::where('user_career_role_id', $id)->where('assigner_id', $userId)->orWhere(function ($q) use ($id) {
+            $q->where('user_career_role_id', $id)->where('is_public', true);
 
         })->count();
 
@@ -48,7 +48,8 @@ class NoteController extends Controller
             $validateData = $this->validate($request, [
                 'noteDescription' => 'required|string',
                 'noteTitle' => 'required|string',
-                'public' => 'required|bool'
+                'public' => 'required|bool',
+                'adminState' => 'required|bool'
             ]);
 
             $createNote = Note::createNote($careerId, $validateData);
@@ -63,6 +64,7 @@ class NoteController extends Controller
                 'description' => $createNote['description'],
                 'title' => $createNote['title'],
                 'is_public' => $createNote['is_public'],
+                'admin_can_see' => $createNote['admin_can_see'],
             ];
             return response($array, 200);
 
@@ -99,14 +101,15 @@ class NoteController extends Controller
             $validateData = $this->validate($request, [
                 'noteDescription' => 'required|string',
                 'noteTitle' => 'required|string',
-                'publicState' => 'required|bool'
+                'publicState' => 'required|bool',
+                'adminState' => 'required|bool'
 
             ]);
 
             $update = Note::updateNote($noteId, $validateData);
 
             if ($update) {
-                $note = Note::where('id', $noteId)->first(['title', 'description','is_public'])->toArray(['description', 'title','is_public']);
+                $note = Note::where('id', $noteId)->first(['title', 'description', 'is_public', 'admin_can_see'])->toArray(['description', 'title', 'is_public', 'admin_can_see']);
                 return response($note, 200);
 
             }
@@ -136,15 +139,18 @@ class NoteController extends Controller
         try {
 
             $array = [];
-            $userId = Auth::user()->id;
+            $authUser = Auth::User();
+            $userId = $authUser->id;
+            $hasRoleAdmin = $authUser->hasRole('Admin');
             $careers = UserCareerRole::with('careerNotes')->where('id', $careerRoleId)->first();
             $notes = $careers->careerNotes()->orderByDesc('id')->get();
 
             foreach ($notes as $key => $note) {
 
-                if ($note->assigner_id === $userId || $note['is_public']) {
+                if ($note->assigner_id === $userId || $note['is_public'] || $note['admin_can_see'] == $hasRoleAdmin) {
                     $assignerId = $note['assigner_id'];
                     $array[$key]['id'] = $note->id;
+                    $array[$key]['admin_can_see'] = $note->admin_can_see;
                     $array[$key]['is_public'] = $note['is_public'];
                     $array[$key]['title'] = $note->title;
                     $array[$key]['description'] = $note->description;

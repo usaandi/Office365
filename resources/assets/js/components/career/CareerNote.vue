@@ -72,7 +72,11 @@
                 }
             },
             textBox() {
-                return this.note.is_public ? this.textBoxText = 'Public' : this.textBoxText = 'Only i can see this note';
+                let text = '';
+                if (this.note.admin_can_see) {
+                    text = ' and Admin';
+                }
+                return this.note.is_public ? this.textBoxText = 'Public' : this.textBoxText = 'I can see this note' + text;
             },
         },
         watch: {},

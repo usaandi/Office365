@@ -52,6 +52,14 @@
                                name="title"
                                v-model="setPublicState">
                     </div>
+                    <div class="form-group m-form__group row"><label
+                            for="hidden"
+                            class="col-form-label col-1 col-xs-12">Admin can see</label>
+                        <input id="hidden" type="checkbox" class="m--margin-left-15"
+                               name="title"
+                               v-model="setAdminState"
+                        >
+                    </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions">
@@ -121,6 +129,7 @@
                 index: null,
                 isEditing: false,
                 success: false,
+                setAdminState: false,
                 setPublicState: false,
 
 
@@ -180,6 +189,7 @@
                         noteDescription: this.noteDescription,
                         noteTitle: this.noteTitle,
                         public: this.setPublicState,
+                        adminState: this.setAdminState
                     };
                     axios.post('/career/note/' + this.careerId, data).then(response => {
                         if (response.status === 200) {
@@ -199,6 +209,7 @@
                 this.noteTitle = null;
                 this.assignerId = null;
                 this.creating = false;
+                this.setAdminState = false;
                 this.setPublicState = false;
                 this.isEditing = false;
                 this.noteId = null;
@@ -219,6 +230,7 @@
                 this.noteDescription = this.activeNote.description;
                 this.noteTitle = this.activeNote.title;
                 this.setPublicState = this.activeNote.is_public;
+                this.setAdminState = this.activeNote.admin_can_see;
                 this.noteId = this.activeNote.id;
 
                 this.show = true;
@@ -233,12 +245,14 @@
                         noteDescription: this.noteDescription,
                         noteTitle: this.noteTitle,
                         publicState: this.setPublicState,
+                        adminState: this.setAdminState,
                     };
                     axios.patch(this.activeNote.id, data).then(response => {
                         if (response.status === 200) {
                             this.notesList[this.index].title = response.data.title;
                             this.notesList[this.index].description = response.data.description;
                             this.notesList[this.index].is_public = response.data.is_public;
+                            this.notesList[this.index].admin_can_see = response.data.admin_can_see;
                             this.closeNoteView();
                             this.success = true;
                         }
