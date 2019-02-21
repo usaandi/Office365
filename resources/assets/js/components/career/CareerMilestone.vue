@@ -75,7 +75,7 @@
                 <div class="m-checkbox-list">
                     <label :value="milestone.id"
                            class="m-checkbox m-checkbox--air m-checkbox--state-success">
-                        <input type="checkbox" @click="submitChange" :checked="milestone.completed === 1">
+                        <input type="checkbox" @change="submitChange" v-model="isCompleted">
                         <div
                                 class="profile-timeline__milestones--label"
                                 style=""
@@ -139,8 +139,7 @@
                 show: false,
                 assignerId: '',
                 id: '',
-                isCompleted: false,
-
+                isCompleted: this.milestoneInfo['completed'],
                 errors: false,
                 errorTask: false,
                 errorDate: false,
@@ -239,8 +238,12 @@
 
             changeValue() {
                 if (this.canEdit === true) {
+
                     let vm = this;
-                    axios.post('update/milestone/' + this.selectedUserProfileId, {milestoneId: this.milestone.id}).then(response => {
+                    axios.post('update/milestone/' + this.selectedUserProfileId, {
+                        milestoneId: this.milestone.id,
+                        status: this.isCompleted
+                    }).then(response => {
                         if (response.status === 200) {
                             vm.milestone.completed = response.data.value;
                         }
