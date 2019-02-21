@@ -61,3 +61,15 @@
   left: 1px;
   cursor: pointer;
 }
+
+.career__note--info__assigner a {
+  text-decoration: none;
+  color: #009eed;
+
+}
+
+.career__note--info__assigner a:hover {
+  text-decoration: underline;
+  color: #67c3f1;
+
+}
