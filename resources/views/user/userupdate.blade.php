@@ -46,7 +46,8 @@
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
                     <div class="col-sm-9 col-xs-12 "><input id="birthday" type="text"
-                                                            placeholder="Enter Birthday" readonly value="{{$user->birthday}}"
+                                                            placeholder="Enter Birthday" readonly
+                                                            value="{{$user->birthday}}"
                                                             name="birthday" class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
@@ -57,20 +58,38 @@
                 </div>
 
 
-                <div class="form-group m-form__group row"><label for="example-text-input"
+                <div class="form-group m-form__group row"><label for="departmentInput"
                                                                  class="col-sm-3 col-xs-12  col-form-label">
-                        Department: @isset($currentDepartment)
-                            {{$currentDepartment[0]->department_name}} @endisset</label>
+                        Department: </label>
 
-                    <div class="col-sm-9 col-xs-12 "><select required name="department" class="form-control m-input">
+                    <div class="col-sm-9 col-xs-12 "><select required name="department" id="departmentInput"
+                                                             class="form-control m-input">
                             @foreach($departments as $department)
                                 <option value="{{$department->id}}"
-                                        @isset($currentDepartment)
-                                        @if($department->id === $currentDepartment[0]->id)
+                                        @isset($userDepartment)
+                                        @if($department->id === $userDepartment->id)
                                         selected="selected"
                                         @endif
                                         @endisset
                                 >{{$department->department_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group m-form__group row"><label for="teamInput"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">
+                        Team: </label>
+
+                    <div class="col-sm-9 col-xs-12 "><select name="team" id="teamInput" class="form-control m-input">
+                            <option></option>
+                            @foreach($teams as $team)
+                                <option value="{{$team->team_id}}"
+                                        @isset($userTeam)
+                                        @if($team->team_id === $userTeam->id)
+                                        selected="selected"
+                                        @endif
+                                        @endisset
+                                >{{$team->team_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -110,7 +129,8 @@
                 <div class="form-group m-form__group row"><label for="ADMsince"
                                                                  class="col-sm-3 col-xs-12  col-form-label">ADM
                         since</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" type="text" readonly placeholder="Joined ADM"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" type="text" readonly
+                                                            placeholder="Joined ADM"
                                                             id="ADMsince"
                                                             name="ADMsince" class="form-control m-input"></div>
                 </div>

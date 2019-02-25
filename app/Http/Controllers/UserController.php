@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Team;
 use App\UserDepartment;
+use App\UserTeam;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
@@ -63,18 +64,14 @@ class UserController extends Controller
             $this->authorize('update', $userModel);
 
             $user = User::findorFail($id);
-            $userDepartment = UserDepartment::where('user_id', $id)->get(['department_id']);
 
-            if ($userDepartment->isEmpty()) {
-                $currentDepartment = null;
-            } else {
-                $departmentId = $userDepartment[0]->department_id;
-                $currentDepartment = Department::where('id', $departmentId)->get(['id', 'department_name']);
-            }
+            $userTeam = $user->userTeam()->first();
+            $userDepartment = $user->userDepartment()->first();
 
             $roles = Role::all();
             $departments = Department::all();
-            return view('user.userupdate', compact(['user', 'roles', 'departments', 'currentDepartment']));
+            $teams = Team::get(['id as team_id', 'team_name']);
+            return view('user.userupdate', compact(['user', 'roles', 'departments', 'userDepartment', 'teams', 'userTeam']));
         } catch (\Exception $e) {
             return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
         }
@@ -124,7 +121,8 @@ class UserController extends Controller
                 'skype' => 'nullable',
                 'ADMsince' => 'date|nullable',
                 'role' => 'nullable',
-                'department' => 'nullable'
+                'department' => 'nullable',
+                'team' => 'nullable'
             ]);
 
             $birthday = $data['birthday'];
@@ -139,11 +137,23 @@ class UserController extends Controller
             $ADMsince = $request->input('ADMsince');
             $role = $request->input('role');
             $departmentId = $request->input('department');
+            $teamId = $request->input('team');
             if ($role === null) {
                 $role = 'User';
             }
 
             $userDepartment = UserDepartment::where('user_id', $id)->get();
+            $userTeam = UserTeam::where('user_id', $id)->first();
+
+            if ($userTeam === null) {
+                userTeam::create([
+                    'user_id' => $id,
+                    'team_id' => $teamId
+                ]);
+            } else {
+                $userTeam->update(['team_id' => $teamId]);
+
+            }
 
             if ($userDepartment->isEmpty()) {
 
@@ -168,10 +178,8 @@ class UserController extends Controller
             if ($authUser->hasRole('Admin')) {
                 $return = $this->removeRoles($user);
                 $userRole = Role::findByName($role);
+                $user->assignRole($userRole);
 
-                if (!$user->hasRole($userRole)) {
-                    $user->assignRole($userRole);
-                }
 
             }
 

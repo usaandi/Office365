@@ -43,7 +43,6 @@ class User extends Authenticatable
     }
 
 
-
     public function strengths()
     {
         return $this->hasMany(UserStrength::class);
@@ -67,6 +66,16 @@ class User extends Authenticatable
     public function team()
     {
         return $this->hasOne('App\UserTeam', 'user_id');
+    }
+
+    public function userTeam()
+    {
+        return $this->belongsToMany(Team::class, 'users_teams');
+    }
+
+    public function userDepartment()
+    {
+        return $this->belongsToMany(Department::class, 'users_departments');
     }
 
     public function hobbies()
