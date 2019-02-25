@@ -164,18 +164,13 @@ class UserController extends Controller
 
             $authUser = \Auth::user();
 
+
             if ($authUser->hasRole('Admin')) {
+                $return = $this->removeRoles($user);
                 $userRole = Role::findByName($role);
 
                 if (!$user->hasRole($userRole)) {
                     $user->assignRole($userRole);
-                    if ($user->hasRole('Admin')) {
-                        $user->assignRole($userRole);
-                    } else {
-                        $user->removeRole($user->roles()->first()->name);
-                        $user->assignRole($userRole);
-                    }
-
                 }
 
             }
@@ -190,6 +185,16 @@ class UserController extends Controller
 
             return view('unauthorized.unauthorized', with(['error' => 'Something went Wrong']));
         }
+
+    }
+
+    protected function removeRoles($user)
+    {
+        $roles = $user->getRoleNames();
+        foreach ($roles as $role) {
+            $user->removeRole($role);
+        }
+        return true;
 
     }
 
