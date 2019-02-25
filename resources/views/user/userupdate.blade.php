@@ -79,7 +79,7 @@
                 <div class="form-group m-form__group row"><label for="teamInput"
                                                                  class="col-sm-3 col-xs-12  col-form-label">
                         Team: </label>
-                    <div class="col-sm-9 col-xs-12 "><select required name="team" id="teamInput" class="form-control m-input">
+                    <div class="col-sm-9 col-xs-12 "><select name="team" id="teamInput" class="form-control m-input">
                             <option></option>
                             @foreach($teams as $team)
                                 <option value="{{$team->team_id}}"

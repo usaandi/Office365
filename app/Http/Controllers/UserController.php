@@ -143,17 +143,21 @@ class UserController extends Controller
             }
 
             $userDepartment = UserDepartment::where('user_id', $id)->get();
-            $userTeam = UserTeam::where('user_id', $id)->first();
 
-            if ($userTeam === null) {
-                userTeam::create([
-                    'user_id' => $id,
-                    'team_id' => $teamId
-                ]);
-            } else {
-                $userTeam->update(['team_id' => $teamId]);
+
+            if (isset($teamId)) {
+                $userTeam = UserTeam::where('user_id', $id)->first();
+                if ($userTeam === null) {
+                    userTeam::create([
+                        'user_id' => $id,
+                        'team_id' => $teamId
+                    ]);
+                } else {
+                    $userTeam->update(['team_id' => $teamId]);
+                }
 
             }
+
 
             if ($userDepartment->isEmpty()) {
 
