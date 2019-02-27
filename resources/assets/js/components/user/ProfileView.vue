@@ -169,7 +169,7 @@
                     </user-strenght>
                 </div>
 
-               <!-- <user-children :canedit="canedit" :userid="user.id"></user-children>-->
+                <!-- <user-children :canedit="canedit" :userid="user.id"></user-children>-->
 
                 <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
 
@@ -227,7 +227,6 @@
         mounted() {
             this.userdata = this.user;
             this.fetchUserStrength();
-
             if (authUser.id === this.user.id
                 || Vue.$isAdmin()
                 || Vue.$canModerateTeam(this.userdata.team_id)) {
@@ -269,7 +268,6 @@
             },
         },
         computed: {
-
             birthdayNew() {
 
                 let date = new Date(this.user.birthday);
