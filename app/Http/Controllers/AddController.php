@@ -8,6 +8,7 @@ use App\UserDepartment;
 use Illuminate\Http\Request;
 use App\User;
 use auth;
+use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -50,13 +51,14 @@ class AddController extends Controller
             $email = $request->input('email');
             $ADMsince = $request->input('ADMsince');
             $departmentId = $request->input('department');
+            $admJoinDate = Carbon::parse($ADMsince)->toDateTimeString();
 
 
             $user = User::where('email', '=', $email)->first();
 
             if ($user === null) {
 
-                $userId = User::create(['email' => $email, 'name' => $name, 'token' => null, 'ADMsince' => $ADMsince])->id;
+                $userId = User::create(['email' => $email, 'name' => $name, 'token' => null, 'ADMsince' => $admJoinDate])->id;
 
                 $userFind = User::findOrFail($userId);
 

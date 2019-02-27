@@ -29,7 +29,7 @@
             @foreach($errors as $error)
                 <div class="alert alert-danger alert-dismissible text-center">
                     <a href="" class="close " data-dismiss="alert" aria-label="close"></a>
-                    <strong>{{$error}}: on juba lisatud</strong>
+                    <strong>{{$error}}: Viga</strong>
                 </div>
             @endforeach
         @endif
@@ -80,29 +80,34 @@
                     </div>
                 </div>
 
-                </div>
-                <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">ADM
-                        Since</label>
-                    <div class="col-sm-9 col-xs-12 "><input name="ADMsince" type="date"
-
-                                                            class="form-control m-input"></div>
-                </div>
             </div>
-            <div class="m-portlet__foot m-portlet__foot--fit">
-                <div class="m-form__actions">
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-12"></div>
-                        <div class="col-sm-9 col-xs-12">
-                            <div class="profile-timeline__action">
-                                <button type="submit" class="btn btn-success m-btn m-btn--pill">
-                                    <span><span>Submit</span></span></button>
-                            </div>
-                        </div>
+            <div class="form-group m-form__group row"><label for="example-text-input"
+                                                             class="col-sm-3 col-xs-12  col-form-label">ADM
+                    Since</label>
+                <div class="col-sm-9 col-xs-12 "><input name="ADMsince" id="ADMsince" type="text" readonly
+
+                                                        class="form-control m-input"></div>
+            </div>
+    </div>
+    <div class="m-portlet__foot m-portlet__foot--fit">
+        <div class="m-form__actions">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12"></div>
+                <div class="col-sm-9 col-xs-12">
+                    <div class="profile-timeline__action">
+                        <button type="submit" class="btn btn-success m-btn m-btn--pill">
+                            <span><span>Submit</span></span></button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+    </div>
+    <script>$('#ADMsince').datepicker({
+            format: 'dd-mm-yyyy',
+            orientation: "bottom auto",
+            autoclose: true,
+        })</script>
+    </form>
     </div>
 
 @endsection
