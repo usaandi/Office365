@@ -128,7 +128,7 @@
 
                                             <button @click="cancelMilestoneEdit" type="button"
                                                     class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
-                                                Cancel
+                                                Close
                                             </button>
                                             <button type="submit"
                                                     @click="editCareerMilestone()"
