@@ -40,7 +40,7 @@ Vue.component('career-note', require('./components/career/CareerNote'));
 Vue.component('project-view', require('./components/project/ProjectView'));
 Vue.component('project-create-view', require('./components/project/ProjectCreateView'));
 //End Project
-
+Vue.component('user-filter', require('./components/UserFilter'));
 Vue.component('user-career', require('./components/career/CareerComponent'));
 Vue.component('user-list', require('./components/user/UsersListComponent.vue'));
 Vue.component('user-list-view', require('./components/user/UserListViewComponent'));
