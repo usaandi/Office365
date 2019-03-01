@@ -13,7 +13,8 @@
                     <div class="form-group m-form__group row">
                         <label for="desc" class="col-3 col-form-label">Role Description</label>
                         <div class="col-9">
-                            <textarea id="desc" required class="form-control m-input" rows="8" placeholder="Role description"
+                            <textarea id="desc" required class="form-control m-input" rows="8"
+                                      placeholder="Role description"
                                       v-model="desc"></textarea>
                         </div>
                     </div>
@@ -54,9 +55,14 @@
                     <div class="form-group m-form__group row">
                         <label for="desc" class="col-3 col-form-label">Milestones:</label>
                         <div class="col-9">
-                            <ul v-for="(milestone, index) in milestonesList">
-                                <li>{{milestone.milestoneName}}</li>
-                                <div>{{milestone.milestoneDescription}}</div>
+                            <ul>
+                                <div v-for="(milestone, index) in milestonesList">
+                                    <li class="list-inline-item">{{milestone.milestoneName}}</li>
+                                    <button @click="deleteMilestone($event,index)"
+                                            class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+                                        <i class="icon flaticon-delete-1"></i></button>
+                                    <div>{{milestone.milestoneDescription}}</div>
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -67,7 +73,7 @@
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
                                         <button @click="clear()" type="button"
-                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Clear All Milestones
+                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Clear All
                                         </button>
                                         <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
                                                 @click="submit()">Submit
@@ -112,6 +118,10 @@
         methods: {
             checkError() {
 
+            },
+            deleteMilestone(e, index) {
+                e.preventDefault();
+                this.milestonesList.splice(index, 1);
             },
 
             addList(milestoneName, milestoneDescription) {
