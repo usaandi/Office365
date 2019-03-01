@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid overlay-wrapper">
         <div class="row project__border m--margin-bottom-40 ">
             <div class="col-lg-12" style="padding: 1%">
                 <div class="row ">
@@ -63,7 +63,7 @@
                     Projektijuht
                     <div class="user-list__wrapper">
                         <div class="profile-view">
-                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 50%"
                                                                   src="http://localhost/storage/image_1547023513.png">
                             </div>
                             <div class="profile-view__content position-relative">
@@ -81,7 +81,7 @@
                     Arendaja
                     <div class="user-list__wrapper">
                         <div class="profile-view">
-                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 50%"
                                                                   src="http://localhost/storage/image_1547023513.png">
                             </div>
                             <div class="profile-view__content position-relative">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                         <div class="profile-view">
-                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 50%"
                                                                   src="http://localhost/storage/image_1547023513.png">
                             </div>
                             <div class="profile-view__content position-relative">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="profile-view">
-                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 30%"
+                            <div class="profile-view__photo"><img alt="" style="width: 50px; height: 50px; border-radius: 50%"
                                                                   src="http://localhost/storage/image_1547023513.png">
                             </div>
                             <div class="profile-view__content position-relative">
