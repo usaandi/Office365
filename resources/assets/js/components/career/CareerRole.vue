@@ -9,12 +9,13 @@
         </div>
         <div class="m-timeline-2__item-text  m--padding-top-5 ">
 
-            <div v-show="success" class="text-center alert alert-success alert-dismissible"
-                 :id="'alert'+userRoleInfo.id">
-                <a class="close" @click="success=!success"></a>
-                <strong>Success!</strong>
-            </div>
-
+            <transition name="slide-fade">
+                <div v-show="success" class="text-center alert alert-success alert-dismissible"
+                     :id="'alert'+userRoleInfo.id">
+                    <a class="close" @click="success=!success"></a>
+                    <strong>Success!</strong>
+                </div>
+            </transition>
             <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]">
                 <div v-if="isActive === 1" class="profile-timeline__check--wrapper">
                     <div class="profile-timeline__check"></div>
@@ -169,7 +170,19 @@
         </div>
     </div>
 </template>
-
+<style scoped>
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+</style>
 <script>
 
     import axios from 'axios';
@@ -212,7 +225,10 @@
         },
         watch: {
 
-            milestone() {
+            success(value) {
+                if (value) {
+                    setTimeout(() => this.success = false, 1500)
+                }
 
             },
             userdata(newVal) {
@@ -244,13 +260,11 @@
         },
         computed: {
 
+
             listNames() {
                 this.usersList.map(u => {
                     return this.selectedUserProfileId === u.id ? u.name = 'Me' : u.name;
                 });
-
-            },
-            textLimit() {
 
             },
 
