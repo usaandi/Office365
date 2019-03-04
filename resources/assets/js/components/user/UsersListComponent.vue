@@ -1,6 +1,5 @@
 <template>
     <div>
-        <user-filter></user-filter>
         <div class="user-list__wrapper">
             <div v-for="user in users" class="profile-view">
                 <user-list-view v-bind:user="user"></user-list-view>
