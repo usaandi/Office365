@@ -38,10 +38,10 @@
                         </div>
                     </div>
                     <div class="row" v-show="canedit">
-                        <div class="col-xs-12 col-md-12 col-lg-3">
+                        <div class="col-xs-3 col-md-12 col-lg-3">
                             <div class="profile__details--title">User Update</div>
                         </div>
-                        <div class="col-xs-12 col-md-12 col-lg-9">
+                        <div class="col-xs-9 col-md-12 col-lg-9">
                             <div class="profile__details--info">
                                 <a :href="'user/'+user.id+'/update'"><span><button
                                         class="btn btn-success">Update</button></span></a>
