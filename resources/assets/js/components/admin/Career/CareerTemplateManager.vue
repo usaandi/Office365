@@ -207,7 +207,7 @@
             <div slot="footer" class="m-portlet__foot m-portlet__foot--fit m--margin-top-10">
                 <div v-show="!updatingMilestone">
                     <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom m--margin-5"
-                            @click="clearModalData">Cancel
+                            @click="clearModalData">Close
                     </button>
                     <button type="submit" class="btn m-btn--pill btn-success m--margin-5" @click="updateCareer">Save
                     </button>

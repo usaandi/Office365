@@ -14,9 +14,14 @@ class NoteController extends Controller
 
     public function count($id)
     {
-        $userId = Auth::user()->id;
-        $count = Note::where('user_career_role_id', $id)->where('assigner_id', $userId)->orWhere(function ($q) use ($id) {
+        $user = Auth::user();
+        $count = Note::where('user_career_role_id', $id)->where('assigner_id', $user->id)->orWhere(function ($q) use ($id) {
             $q->where('user_career_role_id', $id)->where('is_public', true);
+
+        })->orWhere(function ($q) use ($id, $user) {
+            if ($user->hasRole('Admin')) {
+                $q->where('user_career_role_id', $id)->where('admin_can_see', true);
+            }
 
         })->count();
 
