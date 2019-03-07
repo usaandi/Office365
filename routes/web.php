@@ -124,8 +124,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/project-create', 'ProjectsController@createProject')->name('adminProjectCreate');
     //
 
-   // Route::get('testing/projects', 'ProjectsController@getProjectsInfo')->name('testing');
+    // Route::get('testing/projects', 'ProjectsController@getProjectsInfo')->name('testing');
 
+    //Excel
+    Route::get('adm/excel', 'ExcelController@view')->name('excelView');
+    Route::get('adm/downloadExcel', 'ExcelController@downloadExcel')->name("downloadExcel");
+    Route::post('adm/importExcel', 'ExcelController@importExcel')->name("importExcel");
     //api
     Route::get('adm/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
     //end api
@@ -143,6 +147,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Image Delete
     Route::patch('adm/user/image/{id}', 'ImageController@delete')->name('imageDelete');
     //End Image
+
 
     //Notes
     Route::get('/user/{id}/career/note/{roleId}', 'NoteController@index')->name('userNote');
