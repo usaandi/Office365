@@ -1,6 +1,16 @@
 <template>
     <div>
-        <div class="d-flex align-items-center">
+        <div class="media border-bottom">
+            <a :href="'user/'+currentUserId" :title="'Back to '+userModel.name">
+                <img :src="userImage" width="64px" height="64px"
+                     class="align-self-center mr-3 rounded-circle"
+                     :alt="'./assets/default/avatar.png'">
+            </a>
+            <div class="media-body media-middle">
+                <h5 class="mt-0">{{userModel.name}}</h5>
+            </div>
+        </div>
+        <div class="d-flex align-items-center mt-4">
 
             <div class="mr-auto">
                 <div class="m-subheader ">
@@ -80,7 +90,7 @@
                 userDatas: null,
                 careerRoleId: '',
                 show: false,
-
+                img: '',
                 users: null,
                 userModel: '',
                 hasMilestoneError: null,
@@ -94,13 +104,24 @@
             this.fetchData();
             this.usersList();
             this.fetchUserInfo();
+
         },
         watch: {
             userDatas(value) {
                 this.userDatas = value;
             }
         },
+        computed: {
+            userImage() {
+                if (this.userModel.image) {
+                    return this.img = this.userModel.image;
+                } else {
+                    return this.img = './assets/default/avatar.png';
+                }
+            }
+        },
         methods: {
+
             deleteRole(id) {
 
                 for (let i = 0; i < this.userDatas.length; i++) {
