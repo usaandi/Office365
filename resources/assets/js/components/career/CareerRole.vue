@@ -16,6 +16,19 @@
                     <strong>Success!</strong>
                 </div>
             </transition>
+
+            <transition-group name="slide-fade">
+                <div
+                        class="text-center alert alert-danger alert-dismissible"
+                        :key="index + 0"
+                        v-for="(error,index) in roleErrors"
+                        v-show="error.error"
+                        :id="index"
+                >
+                    <a class="close"></a>
+                    <strong>{{error.errorDescription}}</strong>
+                </div>
+            </transition-group>
             <div class="profile-timeline__content " :class="[{'border border-success': isActive === 1}]">
                 <div v-if="isActive === 1" class="profile-timeline__check--wrapper">
                     <div class="profile-timeline__check"></div>
@@ -35,68 +48,66 @@
                     </div>
                 </div>
 
-                <div v-show="isEditing">
-                    <div class="" style="padding:30px 30px 0; margin-top: 30px">
-                        <div class="m-portlet__body">
+                <div v-show="isEditing" style="padding:30px 30px 0; margin-top: 30px">
+                    <div class="m-portlet__body">
 
-                            <div class="form-group m-form__group row">
-                                <label for="title" class="col-lg-2 col-form-label">Role</label>
+                        <div class="form-group m-form__group row">
+                            <label for="title" class="col-lg-2 col-form-label">Role</label>
 
-                                <div class="col-lg-10"><input id="title" v-model="roleValue" type="text" name="title"
-                                                              placeholder="Role"
-                                                              class="form-control m-input" :maxlength="100">
-                                </div>
+                            <div class="col-lg-10"><input id="title" v-model="roleValue" type="text" name="title"
+                                                          placeholder="Role"
+                                                          class="form-control m-input" :maxlength="100">
                             </div>
-
-
-                            <div class="form-group m-form__group row">
-                                <label for="description" class="col-lg-2 col-form-label">Description</label>
-                                <div class=" col-xs-12 col-lg-10"><textarea v-model="descriptionValue"
-                                                                            id="description" rows="10"
-                                                                            class="form-control m-input"
-                                                                            name="career_description"
-                                                                            :maxlength="max"
-
-
-                                ></textarea>
-                                    <div :style="styleObject">{{max-descriptionValue.length}}</div>
-                                </div>
-                            </div>
-                            <div class="form-group m-form__group row">
-                                <label for="description" class="col-lg-2 col-form-label">Date</label>
-                                <div class="col-sm-9 col-xs-12 col-lg-10"><input readonly type="text"
-                                                                                 v-model="dateValue"
-                                                                                 :id="'dateEdit'+userRoleInfo.id"
-                                                                                 class="form-control m-input"
-                                                                                 name="career_description">
-                                </div>
-                            </div>
-
                         </div>
-                        <div class="m-portlet__foot m-portlet__foot--fit">
-                            <div class="m-form__actions">
-                                <div class="row">
-                                    <div class="col-sm-3 col-xs-12">
-                                        <button @click="deleteRequest()"
-                                                class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
-                                            <i
-                                                    class="icon flaticon-delete-1"></i></button>
+
+
+                        <div class="form-group m-form__group row">
+                            <label for="description" class="col-lg-2 col-form-label">Description</label>
+                            <div class=" col-xs-12 col-lg-10"><textarea v-model="descriptionValue"
+                                                                        id="description" rows="10"
+                                                                        class="form-control m-input"
+                                                                        name="career_description"
+                                                                        :maxlength="max"
+
+
+                            ></textarea>
+                                <div :style="styleObject">{{max-descriptionValue.length}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group m-form__group row">
+                            <label for="description" class="col-lg-2 col-form-label">Date</label>
+                            <div class="col-sm-9 col-xs-12 col-lg-10"><input readonly type="text"
+                                                                             v-model="dateValue"
+                                                                             :id="'dateEdit'+userRoleInfo.id"
+                                                                             class="form-control m-input"
+                                                                             name="career_description">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="m-portlet__foot m-portlet__foot--fit">
+                        <div class="m-form__actions">
+                            <div class="row">
+                                <div class="col-sm-3 col-xs-12">
+                                    <button @click="deleteRequest()"
+                                            class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+                                        <i
+                                                class="icon flaticon-delete-1"></i></button>
+                                </div>
+                                <div class="col-sm-9 col-xs-12">
+                                    <div class="profile-timeline__action">
+
+                                        <button @click="clear()" type="button"
+                                                class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
+                                            Close
+                                        </button>
+                                        <button type="submit" @click="submitChanges"
+                                                class="btn btn-success m-btn m-btn--pill">
+                                            <span><span>Submit</span></span></button>
+
+
                                     </div>
-                                    <div class="col-sm-9 col-xs-12">
-                                        <div class="profile-timeline__action">
 
-                                            <button @click="clear()" type="button"
-                                                    class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
-                                                Close
-                                            </button>
-                                            <button type="submit" @click="submitChanges"
-                                                    class="btn btn-success m-btn m-btn--pill">
-                                                <span><span>Submit</span></span></button>
-
-
-                                        </div>
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +185,14 @@
     .slide-fade-enter-active {
         transition: all .3s ease;
     }
+
     .slide-fade-leave-active {
         transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
+
     .slide-fade-enter, .slide-fade-leave-to
-        /* .slide-fade-leave-active below version 2.1.8 */ {
+        /* .slide-fade-leave-active below version 2.1.8 */
+    {
         transform: translateX(10px);
         opacity: 0;
     }
@@ -221,6 +235,7 @@
                 dateValue: null,
                 noteRoute: '/user/' + this.selectedUserProfileId + '/career/note/' + this.userdata.id,
                 notesCount: null,
+                roleErrors: []
             }
         },
         watch: {
@@ -236,6 +251,13 @@
             },
             isActive(value) {
                 this.isActive = value;
+            },
+            roleErrors(val) {
+                if (val) {
+                    this.roleErrors.forEach(error => {
+                        setTimeout(() => error.error = false, 1500)
+                    });
+                }
             }
         },
 
@@ -309,16 +331,31 @@
             selectRole(value) {
 
                 if (this.canEdit) {
-
                     this.$emit('selectActive', value);
                 }
+            },
+            checkErros() {
 
+                if (this.descriptionValue && this.roleValue && this.dateValue) {
+                    return true;
+                }
+                this.roleErrors = [];
 
+                if (!this.descriptionValue) {
+                    this.roleErrors.push({errorDescription: 'Description is required.', error: true});
+                }
+                if (!this.roleValue) {
+                    this.roleErrors.push({errorDescription: 'Role title is required.', error: true});
+
+                }
+                if (!this.dateValue) {
+                    this.roleErrors.push({errorDescription: 'Date is required.', error: true});
+                }
             },
 
             submitChanges() {
                 if (this.canEdit) {
-                    if (this.descriptionValue && this.descriptionValue !== '' && this.roleValue && this.dateValue) {
+                    if (this.checkErros()) {
 
                         const data = {
                             roleTitle: this.roleValue,
