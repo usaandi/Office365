@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-xs-12 col-md-12 col-lg-9">
                             <div class="profile__details--info">
-                                <a :href="'user/'+user.id+'/career'"><span><button
+                                <a :href="'adm/user/'+user.id+'/career'"><span><button
                                         class="btn btn-success">Development</button></span></a>
                             </div>
                         </div>
