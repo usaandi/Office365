@@ -82,7 +82,7 @@
 																			Section
 																		</span>
                                                         </li>
-                                                        <li class="m-nav__item">
+                                                        <li class="m-nav__item {{ Request::is('user/*/') ? 'm-menu__item--hover' : ''}}">
                                                             <a href="{{route('profile',['id'=>auth()->user()])}}"
                                                                class="m-nav__link">
                                                                 <i class="m-nav__link-icon flaticon-profile-1"></i>
@@ -251,8 +251,8 @@
                                 </a>
                                 <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
                                     <span class="m-menu__arrow m-menu__arrow--adjust"></span>
-                                    <ul class="m-menu__subnav">
-                                        <li class="m-menu__item " aria-haspopup="true">
+                                    <ul class="m-menu__subnav ">
+                                        <li class="m-menu__item {{ Request::is('user/*') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
                                             <a href="{{route('profile',['id' => auth()->user()])}}"
                                                class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
@@ -282,20 +282,20 @@
                                 <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
                                     <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                     <ul class="m-menu__subnav">
-                                        <li class="m-menu__item " aria-haspopup="true">
+                                        <li class="m-menu__item {{ Request::is('adm/people') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
                                             <a href="{{route('home')}}"
                                                class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
-                                                <span class="m-menu__link-text">People</span>
+                                                <span class="m-menu__link-text ">People</span>
                                             </a>
                                         </li>
-                                        <li class="m-menu__item " aria-haspopup="true">
+                                        <li class="m-menu__item {{ Request::is('adm/view/*') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
                                             <a href="{{route('departmentStrengths')}}" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
                                                 <span class="m-menu__link-text">Strengths</span>
                                             </a>
                                         </li>
-                                       <li class="m-menu__item " aria-haspopup="true">
+                                       <li class="m-menu__item {{ Request::is('adm/projects') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
                                             <a href="{{route('projectIndex')}}"
                                                class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
@@ -317,35 +317,35 @@
                                 <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
                                     <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 54.5px;"></span>
                                     <ul class="m-menu__subnav">
-                                        <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                        <li class="m-menu__item {{ Request::is('admin/department/*') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('adminDepartmentView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-analytics"></i><span
                                                         class="m-menu__link-text">Department List</span></a></li>
 
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/category/list') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnCategoryStrengthView')}}"
                                                     class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Strength & Category</span></a></li>
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/users/*') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnAdminUserList')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">User list</span></a></li>
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/team/*') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('viewAdminTeam')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Team List</span></a></li>
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/career-template/list') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('adminCareerTemplateManagerView')}}"
                                                     class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Manage Career Template</span></a></li>
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/project-create') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('adminProjectCreateIndex')}}"
                                                     class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
