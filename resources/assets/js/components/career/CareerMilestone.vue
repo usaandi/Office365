@@ -8,7 +8,7 @@
                         <div class="form-group m-form__group row">
                             <label for="Task" class="col-3 col-form-label">Task</label>
                             <div class="col-9">
-                                <input v-model.trim="taskName" class="form-control m-input"
+                                <input v-model.trim="taskName" class="form-control m-input" id="Task"
                                        @focus="checkError" @change="checkError" type="text"
                                        :class="{'border border-danger': this.errorTask}">
                             </div>
@@ -16,7 +16,7 @@
                         <div class="form-group m-form__group row">
                             <label for="Assign" class="col-3 col-form-label">Assign</label>
                             <div class="col-9">
-                                <select class="form-control m-input" @focus="checkError" v-model="assigned"
+                                <select class="form-control m-input" @focus="checkError" v-model="assigned" id="Assign"
                                         @change="checkError"
                                         :class="{'border border-danger': this.errorSelected}">
                                     <option disabled>Current {{milestoneInfo['assigned_username']}}</option>
@@ -37,7 +37,8 @@
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
-                            <label for="Reminder" class="col-3 col-form-label">Set reminder</label>
+                            <label :for="'reminderMilestone'+this.milestoneInfo.id" class="col-3 col-form-label">Set
+                                reminder</label>
                             <div class="col-9">
                                 <input class="form-control m-input" :id="'reminderMilestone'+this.milestoneInfo.id"
                                        readonly type="text" @focus="checkError"
