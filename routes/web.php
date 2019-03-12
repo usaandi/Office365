@@ -73,7 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}/department', 'TeamsController@updateDepartment')->name('updateDepartment');
     Route::post('/user/{id}/team', 'TeamsController@updateUserTeam')->name('updateUserTeam');
 
-    Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
+    Route::get('/adm/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
     Route::get('admin/career/add', 'CareerController@show')->name('addCareer');
 
     Route::post('admin/career/add', 'CareerController@create')->name('addCareer');
