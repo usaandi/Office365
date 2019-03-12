@@ -53,7 +53,7 @@ class HomeController extends Controller
         $trash=DB::table('users')
             ->whereNotNull('deleted_at')
             ->get();*/
-        $users = User::get();
+        $users = User::orderBy('name')->get();
 
         foreach ($users as $i => $user) {
 

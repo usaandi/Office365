@@ -10,6 +10,7 @@ use App\UserDepartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Spatie\Permission\Traits\HasRoles;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Role;
 
@@ -42,7 +43,8 @@ class ExcelController extends Controller
         $phone = null;
         $role = null;
         $users = Excel::toCollection(new UsersImport(), $request->file('import_file'));
-        foreach ($users[0]->slice(1, count($users[0])) as $user) {
+        $cutUserList = $users[0]->slice(1, count($users[0]));
+        foreach ($cutUserList as $user) {
             $email = $user[0];
             $firstName = $user[1];
             $lastName = $user[2];
@@ -57,6 +59,13 @@ class ExcelController extends Controller
                 $this->removeRoles($createUser);
                 $userRole = Role::findByName($role);
                 $createUser->assignRole($userRole);
+                $createUser->update([
+                    'email' => $email,
+                    'phone' => $phone,
+                    'name' => $firstName . " " . $lastName,
+                    'birthday' => $birthday,
+                    'ADMsince' => $admSince,
+                ]);
 
             } else {
                 $createUser = User::create([
@@ -69,12 +78,9 @@ class ExcelController extends Controller
                 ]);
                 $userRole = Role::findByName($role);
                 $createUser->assignRole($userRole);
-
             }
-
             $department = Department::where('department_name', $departmentName)->first();
             if ($department) {
-
 
             } else {
                 $department = Department::create([
@@ -96,10 +102,8 @@ class ExcelController extends Controller
                     'user_id' => $createUser->id
                 ]);
             }
-
         }
         return redirect()->route('home');
-
     }
 
     protected function removeRoles($user)
