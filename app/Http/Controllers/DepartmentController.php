@@ -91,6 +91,9 @@ class DepartmentController extends Controller
                 ]);
                 return response(json_encode($department), 200);
             }
+            if($validator->fails()){
+                return response('Something went wrong',400);
+            }
 
         } catch (\Exception $e) {
 
@@ -139,8 +142,8 @@ class DepartmentController extends Controller
 
             $data = $request->all();
             $rules = [
-                'departmentName' => 'required|string|min:3|max:255',
-                'departmentAbbr' => 'required|string|min:3|max:10',
+                'departmentName' => 'required|string|max:255',
+                'departmentAbbr' => 'required|string|max:10',
                 'description' => 'required|string|min:3|max:2000',
             ];
 
@@ -160,6 +163,7 @@ class DepartmentController extends Controller
 
                     $newDepartment = Department::create(['department_name' => $departmentName,
                         'department_abbr' => $departmentAbbr, 'department_info' => $description]);
+
                     return redirect('admin/department/list');
                 }
                 return view('team.departmentAdd', with(['error' => $department->department_name]));

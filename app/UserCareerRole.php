@@ -15,6 +15,10 @@ class UserCareerRole extends Model
         'description',
         'current_role',
     ];
+    protected $casts = [
+        'current_role' => 'integer',
+    ];
+
 
     public function user(){
         return $this->hasOne(User::class);
@@ -28,5 +32,11 @@ class UserCareerRole extends Model
     public function careerRoleMilestone()
     {
         return $this->hasMany(UserCareerRoleMilestone::class, 'user_career_role_id');
+    }
+
+    public function careerNotes()
+    {
+        return $this->hasMany(Note::class,'user_career_role_id');
+
     }
 }

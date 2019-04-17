@@ -1,0 +1,75 @@
+
+.career__note--border {
+  border: 1px solid #ebedf2;
+  box-shadow: 0px 1px 15px 1px rgba(81, 77, 92, 0.08);
+  -webkit-box-shadow: 0px 1px 15px 1px rgba(81, 77, 92, 0.08);
+  border-radius: 5px;
+}
+
+.career__note--info__date {
+  display: inline;
+  color: #808080;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+
+}
+
+.career__note--info__assigner {
+  display: inline;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  color: #009eed;
+
+}
+
+.career__note--info {
+  padding-bottom: calc(.65rem + 1px);
+
+}
+
+.career__note--title {
+  font-weight: 500;
+  font-size: 20px;
+  text-transform: uppercase;
+  padding-top: calc(.65rem + 2px);
+}
+
+.career__note--control {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hover-over .myStyle {
+  visibility: hidden;
+}
+
+.hover-over:hover .myStyle {
+  visibility: visible;
+}
+
+.myStyle {
+  margin-left: 35px;
+}
+
+.icon-style {
+  position: absolute;
+  color: #009eed;
+  top: 0;
+  left: 1px;
+  cursor: pointer;
+}
+
+.career__note--info__assigner a {
+  text-decoration: none;
+  color: #009eed;
+
+}
+
+.career__note--info__assigner a:hover {
+  text-decoration: underline;
+  color: #67c3f1;
+
+}

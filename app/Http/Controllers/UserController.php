@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Team;
 use App\UserDepartment;
+use App\UserTeam;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
+use Carbon\Carbon;
 use auth;
 use Validator;
 use Spatie\Permission\Models\Role;
@@ -62,18 +64,14 @@ class UserController extends Controller
             $this->authorize('update', $userModel);
 
             $user = User::findorFail($id);
-            $userDepartment = UserDepartment::where('user_id', $id)->get(['department_id']);
 
-            if ($userDepartment->isEmpty()) {
-                $currentDepartment = null;
-            } else {
-                $departmentId = $userDepartment[0]->department_id;
-                $currentDepartment = Department::where('id', $departmentId)->get(['id', 'department_name']);
-            }
+            $userTeam = $user->userTeam()->first();
+            $userDepartment = $user->userDepartment()->first();
 
             $roles = Role::all();
             $departments = Department::all();
-            return view('user.userupdate', compact(['user', 'roles', 'departments', 'currentDepartment']));
+            $teams = Team::get(['id as team_id', 'team_name']);
+            return view('user.userupdate', compact(['user', 'roles', 'departments', 'userDepartment', 'teams', 'userTeam']));
         } catch (\Exception $e) {
             return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
         }
@@ -114,25 +112,52 @@ class UserController extends Controller
 
             $userModel = User::findOrFail($id);
             $this->authorize('update', $userModel);
+            $data = $request->all();
 
             $request->validate([
-                'name' => 'nullable',
-                'phone' => 'int|nullable',
-                'birthday' => 'date|nullable',
+                'name' => 'required',
+                'phone' => 'numeric|nullable',
+                'birthday' => 'nullable',
                 'skype' => 'nullable',
                 'ADMsince' => 'date|nullable',
                 'role' => 'nullable',
-                'department' => 'nullable'
+                'department' => 'nullable',
+                'team' => 'nullable'
             ]);
+
+            $birthday = $data['birthday'];
+
+
+            $realBirthday = Carbon::parse($birthday)->toDateTimeString();
+            $realAdmSince = Carbon::parse($data['ADMsince'])->toDateTimeString();
+
             $name = $request->input('name');
             $phone = $request->input('phone');
-            $birthday = $request->input('birthday');
             $skype = $request->input('skype');
             $ADMsince = $request->input('ADMsince');
             $role = $request->input('role');
             $departmentId = $request->input('department');
+            $teamId = $request->input('team');
+            if ($role === null) {
+                $role = 'User';
+            }
 
             $userDepartment = UserDepartment::where('user_id', $id)->get();
+
+
+            if (isset($teamId)) {
+                $userTeam = UserTeam::where('user_id', $id)->first();
+                if ($userTeam === null) {
+                    userTeam::create([
+                        'user_id' => $id,
+                        'team_id' => $teamId
+                    ]);
+                } else {
+                    $userTeam->update(['team_id' => $teamId]);
+                }
+
+            }
+
 
             if ($userDepartment->isEmpty()) {
 
@@ -153,32 +178,35 @@ class UserController extends Controller
 
             $authUser = \Auth::user();
 
+
             if ($authUser->hasRole('Admin')) {
+                $return = $this->removeRoles($user);
                 $userRole = Role::findByName($role);
+                $user->assignRole($userRole);
 
-                if (!$user->hasRole($userRole)) {
-
-                    if ($user->hasRole('Admin')) {
-                        $user->assignRole($userRole);
-                    } else {
-                        $user->removeRole($user->roles()->first()->name);
-                        $user->assignRole($userRole);
-                    }
-
-                }
 
             }
 
             $user->update(['name' => $name, 'phone' => $phone,
-                'birthday' => $birthday, 'skype' => $skype, 'ADMsince' => $ADMsince]);
+                'birthday' => $realBirthday, 'skype' => $skype, 'ADMsince' => $realAdmSince]);
             $user->save();
 
-            return redirect()->back();
+            return redirect()->back()->with('success', true);
         } catch (\Exception $e) {
 
 
-            return view('unauthorized.unauthorized', with(['error' => $e->getMessage()]));
+            return view('unauthorized.unauthorized', with(['error' => 'Something went Wrong']));
         }
+
+    }
+
+    protected function removeRoles($user)
+    {
+        $roles = $user->getRoleNames();
+        foreach ($roles as $role) {
+            $user->removeRole($role);
+        }
+        return true;
 
     }
 
@@ -212,12 +240,11 @@ class UserController extends Controller
             // Validate that the current user is authorized to do this update.
             // authorize will automatically kill the request if auth fails.
 
-
             $user = User::findOrFail($id);
             $this->authorize('update', $user);
 
             $request->validate([
-                'data' => 'required:'
+                'data' => 'required|max:15'
             ]);
 
             $phone = $request->data;
@@ -229,7 +256,7 @@ class UserController extends Controller
                 ->header('Content-Type', 'application/json');
 
         } catch (\Exception $e) {
-            return response($e->getMessage(), 400)
+            return response('Invalid number', 400)
                 ->header('Content-Type', 'application/json');
         }
 

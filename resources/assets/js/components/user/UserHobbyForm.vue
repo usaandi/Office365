@@ -18,13 +18,11 @@
                         <div class="col-sm-3 col-xs-12"></div>
                         <div class="col-sm-9 col-xs-12">
                             <div class="profile-timeline__action">
-                                <a @click="$emit('close')" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
-                                    <span>
-                                        <i class="la la-plus"></i>
-                                        <span>Close</span>
-                                    </span>
-                                </a>
-                                <a @click="submit()" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                                <button @click="$emit('close')"
+                                        class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
+                                    Close
+                                </button>
+                                <a @click="submit()" tabindex="" class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                     <span>
                                         <i class="la la-plus"></i>
                                         <span>Add new</span>

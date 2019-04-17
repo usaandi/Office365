@@ -37,6 +37,8 @@
             </tr>
             </tbody>
         </table>
+
+
     </div>
 </template>
 
@@ -44,13 +46,17 @@
     import axios from 'axios';
 
     export default {
+        props: {
+            'user': {required: true},
+            'category': {require: true}
+        },
         name: "department",
         data() {
 
 
             return {
-                categories: '',
-                departments: '',
+                categories: this.category,
+                departments: this.user,
                 strengths: [],
                 styleText: {
                     color: 'white',
@@ -63,37 +69,45 @@
             }
         },
         mounted() {
-            this.fetchCategories();
-            this.fetchDepartment();
+
+            /*        this.fetchCategories();
+                    this.fetchDepartment();*/
+            this.loopThrough(this.categories);
+            this.sortArray();
+
         },
         computed: {},
         methods: {
 
             backGroundColor(strength, userStrengths) {
 
-                if (userStrengths.length > 0) {
-                    for (let i = 0; i < userStrengths.length; i++) {
+                let length = userStrengths.length;
+
+                if (length > 0) {
+                    for (let i = 0; i < length; i++) {
                         if (strength.strength_id === userStrengths[i].strength_id) {
                             if (userStrengths[i].strength_rank < 6) {
                                 return this.styleBackground;
                             }
                         }
                     }
-                    return ''
+                    return '';
                 }
 
             },
             strengthColor(strength, userStrengths) {
 
-                if (userStrengths.length > 0) {
-                    for (let i = 0; i < userStrengths.length; i++) {
+                let length = userStrengths.length;
+
+                if (length > 0) {
+                    for (let i = 0; i < length; i++) {
                         if (strength.strength_id === userStrengths[i].strength_id) {
                             if (userStrengths[i].strength_rank < 6) {
                                 return this.styleText;
                             }
                         }
                     }
-                    return ''
+                    return '';
                 }
 
             },
@@ -135,6 +149,7 @@
             },
 
             fetchCategories() {
+
                 axios.get('categories').then(response => {
                     this.categories = response.data;
                     this.loopThrough(this.categories);
@@ -160,10 +175,12 @@
             checkStrength(strength, userStrengths) {
                 for (let i = 0; i < userStrengths.length; i++) {
                     if (strength.strength_id === userStrengths[i].strength_id) {
-                        return userStrengths[i].strength_rank;
+                        return userStrengths[i]['strength_rank'];
                     }
+
                 }
                 return '';
+
             },
         }
     }

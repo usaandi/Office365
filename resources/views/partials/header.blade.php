@@ -7,7 +7,7 @@
                 <div class="m-stack__item m-brand m-stack__item--left">
                     <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
                         <div class="m-stack__item m-stack__item--middle m-brand__logo">
-                            <a href="/" class="m-brand__logo-wrapper">
+                            <a href="{{route('home')}}" class="m-brand__logo-wrapper">
                                 <img alt="" src="{{asset('assets/demo/demo8/media/img/logo/logo.png')}}"
                                      class="m-brand__logo-default"/>
                                 <img alt="" src="{{asset('assets/demo/demo8/media/img/logo/logo_inverse.png')}}"
@@ -68,10 +68,8 @@
                                                     </div>
                                                     <div class="m-card-user__details">
                               <span class="m-card-user__name m--font-weight-500">
-																		Mark Andre
 																	</span>
                                                         <a href="" class="m-card-user__email m--font-weight-300 m-link">
-                                                            mark.andre@gmail.com
                                                         </a>
                                                     </div>
                                                 </div>
@@ -84,7 +82,7 @@
 																			Section
 																		</span>
                                                         </li>
-                                                        <li class="m-nav__item">
+                                                        <li class="m-nav__item {{ Request::is('user/*/') ? 'm-menu__item--hover' : ''}}">
                                                             <a href="{{route('profile',['id'=>auth()->user()])}}"
                                                                class="m-nav__link">
                                                                 <i class="m-nav__link-icon flaticon-profile-1"></i>
@@ -207,7 +205,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="m-nav__item">
-                                                            <a href="profile.html" class="m-nav__link">
+                                                            <a href="{{route('home')}}" class="m-nav__link">
                                                                 <i class="m-nav__link-icon la la-map"></i>
                                                                 <span class="m-nav__link-text">
 																				Lorem
@@ -240,20 +238,21 @@
                     <div id="m_header_menu"
                          class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
                         <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
-                            <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown {{ Request::is('admin/*') ? '' : 'm-menu__item--hover'}}"
+
+                            <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown {{ Request::is('user/*') ? 'm-menu__item--hover' : ''}}"
                                 m-menu-submenu-toggle="tab" aria-haspopup="true">
 
-                                <a href="/" class="m-menu__link m-menu__toggle">
+                                <a href="javascript:" class="m-menu__link m-menu__toggle">
 												<span class="m-menu__link-text">
-													Dashboard
+													{{auth()->user()->name}}
 												</span>
                                     <i class="m-menu__hor-arrow la la-angle-down"></i>
                                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                                 </a>
                                 <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
                                     <span class="m-menu__arrow m-menu__arrow--adjust"></span>
-                                    <ul class="m-menu__subnav">
-                                        <li class="m-menu__item " aria-haspopup="true">
+                                    <ul class="m-menu__subnav ">
+                                        <li class="m-menu__item {{ Request::is('user/*') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
                                             <a href="{{route('profile',['id' => auth()->user()])}}"
                                                class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
@@ -267,12 +266,43 @@
                                                 <span class="m-menu__link-text">Development</span>
                                             </a>
                                         </li>
-                                        <li class="m-menu__item " aria-haspopup="true">
-                                            <a href="{{route('departmentStrengths')}}" class="m-menu__link ">
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="m-menu__item m-menu__item--submenu m-menu__item--tabs m-menu__item--open-dropdown {{ Request::is('adm/*') ? 'm-menu__item--hover' : ''}}"
+                                m-menu-submenu-toggle="tab" aria-haspopup="true">
+
+                                <a href="javascript:" class="m-menu__link m-menu__toggle">
+												<span class="m-menu__link-text">
+													ADM
+												</span>
+                                    <i class="m-menu__hor-arrow la la-angle-down"></i>
+                                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                                </a>
+                                <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
+                                    <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                                    <ul class="m-menu__subnav">
+                                        <li class="m-menu__item {{ Request::is('adm/people') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
+                                            <a href="{{route('home')}}"
+                                               class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-file"></i>
-                                                <span class="m-menu__link-text">Departments strengths</span>
+                                                <span class="m-menu__link-text ">People</span>
                                             </a>
                                         </li>
+                                        <li class="m-menu__item {{ Request::is('adm/view/*') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
+                                            <a href="{{route('departmentStrengths')}}" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">Strengths</span>
+                                            </a>
+                                        </li>
+                                       <li class="m-menu__item {{ Request::is('adm/projects') ? 'm-menu__item--hover' : ''}}" aria-haspopup="true">
+                                            <a href="{{route('projectIndex')}}"
+                                               class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-file"></i>
+                                                <span class="m-menu__link-text">Projects</span>
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
@@ -287,35 +317,43 @@
                                 <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs">
                                     <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 54.5px;"></span>
                                     <ul class="m-menu__subnav">
-                                        <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                        <li class="m-menu__item {{ Request::is('admin/department/*') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('adminDepartmentView')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-analytics"></i><span
                                                         class="m-menu__link-text">Department List</span></a></li>
 
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/category/list') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnCategoryStrengthView')}}"
                                                     class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Strength & Category</span></a></li>
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/users/*') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('returnAdminUserList')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">User list</span></a></li>
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                class="m-menu__item {{ Request::is('admin/team/*') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
                                                     href="{{route('viewAdminTeam')}}" class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Team List</span></a></li>
                                         <li
-                                                class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                    href="{{route('adminCareerTemplateManagerView')}}" class="m-menu__link "><i
+                                                class="m-menu__item {{ Request::is('admin/career-template/list') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                    href="{{route('adminCareerTemplateManagerView')}}"
+                                                    class="m-menu__link "><i
                                                         class="m-menu__link-icon flaticon-alarm-1"></i><span
                                                         class="m-menu__link-text">Manage Career Template</span></a></li>
+                                        <li
+                                                class="m-menu__item {{ Request::is('admin/project-create') ? 'm-menu__item--hover' : ''}}" m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                    href="{{route('adminProjectCreateIndex')}}"
+                                                    class="m-menu__link "><i
+                                                        class="m-menu__link-icon flaticon-alarm-1"></i><span
+                                                        class="m-menu__link-text">Projects</span></a></li>
                                     </ul>
                                 </div>
                             </li>
+
                             @endhasanyrole
                         </ul>
                     </div>

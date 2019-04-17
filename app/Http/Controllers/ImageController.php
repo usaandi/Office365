@@ -35,18 +35,17 @@ class ImageController extends Controller
                 $storageDisk = Storage::disk('public');
                 $storageDisk->put($fileName, $imageData);
 
-               // $appPort = .env('APP_PORT');
+                // $appPort = .env('APP_PORT');
 
                 $url = $storageDisk->url($fileName);
                 $selectedUser->image = $url;
                 $selectedUser->save();
 
                 // Save the image URL also to DB.
-            /*    if($appPort !== null){
-                    $url =':'.$appPort.'/'.$url;
+                /*    if($appPort !== null){
+                        $url =':'.$appPort.'/'.$url;
 
-                }*/
-
+                    }*/
 
 
                 return response($url, 200)
@@ -62,5 +61,13 @@ class ImageController extends Controller
     public function show()
     {
         return view('upload');
+    }
+
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->update(['image' => null]);
+
+        return response('success', 200);
     }
 }

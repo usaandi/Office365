@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\UserStrength;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -19,44 +20,45 @@ class UserStrengthController extends Controller
                 '*.strength_index' => 'required|integer',
             ];
 
+
             $validator = Validator::make($strengths, $rules);
+            $user = User::find($id);
+
 
             if ($validator->passes()) {
+                $userStrengths = $user->strengths()->get();
 
-                $user = User::findOrFail($id);
 
-                $userStrength = $user->userStrength()->get();
+                foreach ($userStrengths as $userStrength) {
+                    $userStrength->delete();
+                }
 
-                if ($userStrength->isEmpty()) {
-                    foreach ($strengths as $strength) {
-                        $user->userStrength()->create([
-                            'user_id' => $id,
-                            'strength_id' => $strength['strength_id'],
-                            'rank' => $strength['strength_index'],
-                        ]);
-                    }
-                    return response($user->name . 'updated', 200);
-                } else {
 
-                    $userStrengths = $user->userStrength()->get();
-                    for ($i = 0; $i < count($userStrengths); $i++) {
-                        $userStrengths[$i]->update([
-                            'strength_id' => $strengths[$i]['strength_id'],
-                            'user_id' => $id,
-                            'rank' => $strengths[$i]['strength_index'],
-                        ]);
-                    }
-                    return response($user->name . 'updated', 200);
+                foreach ($strengths as $strength) {
+
+                    $createStrengths = UserStrength::updateOrCreate(
+                        ['user_id' => $id, 'strength_id' => $strength['strength_id']],
+                        ['rank' => $strength['strength_index']]
+                    );
 
                 }
 
+
+                return response($user->name . ' updated', 200);
+
+
             }
 
-        } catch (\Exception $e) {
+
+        } catch (\Exception $exception) {
+
         }
+
+
     }
 
-    public function fetchUserStrength($id)
+    public
+    function fetchUserStrength($id)
     {
         try {
 

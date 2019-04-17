@@ -27,21 +27,21 @@
                 <h3 class="profile__subtitle">Profile</h3>
                 <div class="profile__details">
                     <div class="row" v-show="canedit">
-                        <div class="col-xs-3">
+                        <div class="col-xs-12  col-md-12 col-lg-3">
                             <div class="profile__details--title">User development</div>
                         </div>
-                        <div class="col-xs-9">
+                        <div class="col-xs-12 col-md-12 col-lg-9">
                             <div class="profile__details--info">
-                                <a :href="'user/'+user.id+'/career'"><span><button
+                                <a :href="'adm/user/'+user.id+'/career'"><span><button
                                         class="btn btn-success">Development</button></span></a>
                             </div>
                         </div>
                     </div>
                     <div class="row" v-show="canedit">
-                        <div class="col-xs-3">
+                        <div class="col-xs-3 col-md-12 col-lg-3">
                             <div class="profile__details--title">User Update</div>
                         </div>
-                        <div class="col-xs-9">
+                        <div class="col-xs-9 col-md-12 col-lg-9">
                             <div class="profile__details--info">
                                 <a :href="'user/'+user.id+'/update'"><span><button
                                         class="btn btn-success">Update</button></span></a>
@@ -50,10 +50,10 @@
                     </div>
                     <div class="row">
 
-                        <div class="col-xs-3">
+                        <div class="col-xs-3 col-md-12 col-lg-3 ">
                             <div class="profile__details--title">Department:</div>
                         </div>
-                        <div class="col-xs-9">
+                        <div class="col-xs-9 col-md-12 col-lg-9">
                             <div class="profile__details--info"
                                  @click="changeText('department')"
                             >
@@ -95,7 +95,8 @@
                             <div class="profile__details--info" v-if="editphone === false"
                                  @dblclick="changeText('phone')">
                                <span v-if="user.phone">
-                                {{user.phone}}
+                                   <a :href="'tel:'+user.phone+';1'"><i class="fas fa-phone"></i>
+                                {{user.phone}}</a>
                                 </span>
                                 <span v-else>Enter Phone number</span>
 
@@ -109,7 +110,8 @@
                         </div>
                         <div class="col-xs-9">
                             <div class="profile__details--info">
-                                {{user.email}}
+                                <a :href="'mailto:'+user.email"><i class="fas fa-envelope"></i>
+                                    {{user.email}}</a>
                             </div>
                         </div>
                     </div>
@@ -129,7 +131,9 @@
                             <div class="profile__details--info" v-if="editskype === false"
                                  @dblclick="changeText('skype')">
                             <span v-if="user.skype">
-                                {{user.skype}}
+                               <a :href="'skype:'+user.skype"><i class="fab fa-skype"></i>
+                                 {{user.skype}}</a>
+
                                 </span>
                                 <span v-else>Enter Skype</span>
 
@@ -165,7 +169,7 @@
                     </user-strenght>
                 </div>
 
-                <user-children :canedit="canedit" :userid="user.id"></user-children>
+                <!-- <user-children :canedit="canedit" :userid="user.id"></user-children>-->
 
                 <user-hobbies :canedit="canedit" :userid="user.id"></user-hobbies>
 
@@ -188,20 +192,19 @@
             </div>
         </div>
     </div>
-    </div>
 </template>
 
 
 <script>
     import EditableInputComponent from '../EditableInputComponent';
     import axios from 'axios';
-
+    import Vue from 'vue';
 
     export default {
         name: "ProfileView",
         components: {EditableInputComponent},
         props: ['user', 'image'],
-        data: function () {
+        data() {
             return {
                 edit: false,
                 userdata: '',
@@ -215,16 +218,14 @@
                 noStrengths: false,
                 userStrengths: [],
                 userBirthday: this.user.birthday,
+                userPhoneNumber: this.user['phone'],
 
 
             }
         },
+
         mounted() {
-
-
             this.userdata = this.user;
-
-
             this.fetchUserStrength();
             if (authUser.id === this.user.id
                 || Vue.$isAdmin()
@@ -232,14 +233,13 @@
 
                 this.canedit = true;
             }
-
-
         },
+
 
         methods: {
 
             fetchUserStrength() {
-                axios.get('/user/' + this.user.id + '/strengths').then(response => {
+                axios.get('/user/' + this.user.id + '/strengths').then((response) => {
                     this.userStrengths = response.data;
                     if (response.data.length === 0) {
                         this.noStrengths = true;
@@ -268,7 +268,6 @@
             },
         },
         computed: {
-
             birthdayNew() {
 
                 let date = new Date(this.user.birthday);
@@ -281,15 +280,33 @@
 
             },
             admSince() {
+
                 let vm = this;
+                let admDate = moment(vm.user.ADMsince);
+                let currentDate = moment();
+                let month = moment(currentDate - admDate).format('M');
+                let year = currentDate.diff(admDate, 'year');
 
-                let admDate = new Date(vm.user.ADMsince);
-                let currentDate = new Date();
-                let years = currentDate.getUTCFullYear() - admDate.getUTCFullYear();
-                let months = (currentDate.getMonth() + 1) - (admDate.getMonth() + 1);
+                return year + 'y | ' + month + ' m';
 
-                return years + "y" + months + "m";
-            }
+                /*
+                  Kui katki peaks minema midagi kasutada alumist koodi.
+                  let admDate = new Date(vm.user.ADMsince);
+
+                  let currentDate = new Date();
+
+                  let years = currentDate.getUTCFullYear() - admDate.getUTCFullYear();
+
+                  let months = (currentDate.getMonth() + 1) - (admDate.getMonth() + 1);
+                  if (months <= 0) {
+                      months = (currentDate.getMonth() + 1) + (admDate.getMonth() + 1) - 12;
+                      if (months <= 0) {
+                          months = 0;
+                      }
+                  }
+
+                  return years + "y | " + months + " m";*/
+            },
 
         }
     }

@@ -11,9 +11,11 @@
                     </div>
 
                     <div class="form-group m-form__group row">
-                        <label for="desc" class="col-3 col-form-label">Description</label>
+                        <label for="desc" class="col-3 col-form-label">Role Description</label>
                         <div class="col-9">
-                            <textarea id="desc" required class="form-control m-input" placeholder="description" v-model="desc"></textarea>
+                            <textarea id="desc" required class="form-control m-input" rows="8"
+                                      placeholder="Role description"
+                                      v-model="desc"></textarea>
                         </div>
                     </div>
 
@@ -26,14 +28,23 @@
                                     placeholder="Milestone Name">
                         </div>
                     </div>
+                    <div class="form-group m-form__group row">
+                        <label for="milestoneDescription" class="col-3 col-form-label">Milestone Description</label>
+                        <div class="col-9">
+                            <textarea
+                                    v-model="milestoneDescription" rows="8"
+                                    id="milestoneDescription" class="form-control col-xs-12"
+                                    placeholder="Milestone description"></textarea>
+                        </div>
+                    </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
                         <div class="m-form__actions">
                             <div class="row">
                                 <div class="col-sm-3 col-xs-12"></div>
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
-                                        <button @click="addList(milestoneName)" type="button"
-                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">New Milestone
+                                        <button @click="addList(milestoneName,milestoneDescription)" type="button"
+                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Add Milestone
                                         </button>
                                     </div>
                                 </div>
@@ -44,8 +55,14 @@
                     <div class="form-group m-form__group row">
                         <label for="desc" class="col-3 col-form-label">Milestones:</label>
                         <div class="col-9">
-                            <ul v-for="(milestone, index) in milestonesList">
-                                <li>{{milestone}}</li>
+                            <ul>
+                                <div v-for="(milestone, index) in milestonesList">
+                                    <li class="list-inline-item">{{milestone.milestoneName}}</li>
+                                    <button @click="deleteMilestone($event,index)"
+                                            class="btn btn-danger m-btn m-btn--icon btn-sm m-btn--icon-only m-btn--pill">
+                                        <i class="icon flaticon-delete-1"></i></button>
+                                    <div>{{milestone.milestoneDescription}}</div>
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -56,7 +73,7 @@
                                 <div class="col-sm-9 col-xs-12">
                                     <div class="profile-timeline__action">
                                         <button @click="clear()" type="button"
-                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Clear Milestones
+                                                class="btn m-btn--pill btn-success m-btn m-btn--custom">Clear All
                                         </button>
                                         <button type="button" class="btn m-btn--pill btn-success m-btn m-btn--custom"
                                                 @click="submit()">Submit
@@ -86,10 +103,10 @@
                 title: '',
                 showDismissibleAlert: false,
                 selected: [],
-                careerRoles: [],
                 milestonesList: [],
                 milestoneName: '',
                 careerRoleTitle: '',
+                milestoneDescription: null,
                 showError: false,
 
 
@@ -97,39 +114,27 @@
         },
         mounted() {
 
-            this.fetchData();
         },
         methods: {
             checkError() {
 
             },
+            deleteMilestone(e, index) {
+                e.preventDefault();
+                this.milestonesList.splice(index, 1);
+            },
 
-            addList(value) {
+            addList(milestoneName, milestoneDescription) {
 
                 if (this.milestoneName) {
-                    this.milestonesList.push(value);
-                    this.milestoneName = '';
-                }
-
-
-            },
-
-
-            fetchData: function () {
-                axios.get('/career/roles')
-                    .then(response => {
-                        let careerRole = [];
-                        for (let i = 0; i < response.data.length; i++) {
-                            const data = response.data[i];
-                            careerRole[careerRole.length] = {
-                                label: data.title,
-                                value: data.id,
-                            }
-                        }
-                        this.careerRoles = careerRole;
+                    this.milestonesList.push({
+                        milestoneName: milestoneName,
+                        milestoneDescription: milestoneDescription
                     });
+                    this.milestoneName = null;
+                    this.milestoneDescription = null;
+                }
             },
-
 
             clear: function () {
                 this.desc = '';
@@ -147,15 +152,12 @@
                         milestonesList: this.milestonesList
                     }];
 
-                    this.desc = '';
-                    this.title = '';
-                    this.milestonesList = '';
+                    this.clear();
                     let vm = this;
                     axios.post('admin/career/add', data)
                         .then(response => {
                             if (response.status === 200) {
-
-                                this.showDismissibleAlert = true;
+                                window.location.href = "/admin/career-template/list";
                             }
                         }).catch(error => {
 

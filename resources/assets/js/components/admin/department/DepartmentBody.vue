@@ -2,7 +2,7 @@
     <tr>
         <td><span>{{department.id}}</span></td>
         <td><span>{{department.department_name}}</span></td>
-        <td><span>{{department.department_info}}</span></td>
+        <td class="text-left"><span>{{department.department_info}}</span></td>
 
         <td><span>{{department.department_abbr}}</span></td>
         <td><span class="btn btn-success" @click="edit"> Edit Department</span></td>

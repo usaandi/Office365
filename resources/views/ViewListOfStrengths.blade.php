@@ -18,7 +18,7 @@
     {{csrf_field()}}
 
     <div id="app">
-        <department-user-strength-category></department-user-strength-category>
+        <department-user-strength-category :user='@json($user)' :category='@json($category)'></department-user-strength-category>
     </div>
 
 

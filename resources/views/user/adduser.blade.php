@@ -20,10 +20,18 @@
 
     <div class="admin__form admin__form--clear"><h4>Create account</h4>
         @if(session()->has('success'))
-            <div class="alert alert-success alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
+            <div class="alert alert-success alert-dismissible text-center">
+                <a href="" class="close " data-dismiss="alert" aria-label="close"></a>
                 <strong>User Created!</strong>
             </div>
+        @endif
+        @if($errors)
+            @foreach($errors as $error)
+                <div class="alert alert-danger alert-dismissible text-center">
+                    <a href="" class="close " data-dismiss="alert" aria-label="close"></a>
+                    <strong>{{$error}}: Viga</strong>
+                </div>
+            @endforeach
         @endif
         <form name="form" class="m-form" action="{{route('userAdd')}}" method="post">
             @csrf
@@ -39,18 +47,6 @@
                                                                  class="col-sm-3 col-xs-12  col-form-label">E-mail</label>
                     <div class="col-sm-9 col-xs-12 "><input required type="email" placeholder="Enter E-mail"
                                                             name="email" class="form-control m-input"></div>
-                </div>
-
-                <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Phone</label>
-                    <div class="col-sm-9 col-xs-12 "><input required type="text" placeholder="Enter Phone"
-                                                            name="phone" class="form-control m-input"></div>
-                </div>
-
-                <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
-                    <div class="col-sm-9 col-xs-12 "><input required type="date" placeholder="Enter Skype"
-                                                            name="birthday" class="form-control m-input"></div>
                 </div>
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
@@ -71,7 +67,7 @@
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">User
                         Department</label>
-                    <div class="col-sm-9 col-xs-12 "><select required name="department" class="form-control m-input">
+                    <div class="col-sm-9 col-xs-12 "><select name="department" class="form-control m-input">
                             <option></option>
                             @foreach($departments as $department)
 
@@ -84,33 +80,34 @@
                     </div>
                 </div>
 
-                <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">Skype</label>
-                    <div class="col-sm-9 col-xs-12 "><input required name="skype" type="text" placeholder="Enter Skype"
-                                                            class="form-control m-input"></div>
-                </div>
-                <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">ADM
-                        Since</label>
-                    <div class="col-sm-9 col-xs-12 "><input required name="ADMsince" type="date"
-                                                            placeholder="Enter Skype"
-                                                            class="form-control m-input"></div>
-                </div>
             </div>
-            <div class="m-portlet__foot m-portlet__foot--fit">
-                <div class="m-form__actions">
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-12"></div>
-                        <div class="col-sm-9 col-xs-12">
-                            <div class="profile-timeline__action">
-                                <button type="submit" class="btn btn-success m-btn m-btn--pill">
-                                    <span><span>Submit</span></span></button>
-                            </div>
-                        </div>
+            <div class="form-group m-form__group row"><label for="example-text-input"
+                                                             class="col-sm-3 col-xs-12  col-form-label">ADM
+                    Since</label>
+                <div class="col-sm-9 col-xs-12 "><input name="ADMsince" id="ADMsince" type="text" readonly
+
+                                                        class="form-control m-input"></div>
+            </div>
+    </div>
+    <div class="m-portlet__foot m-portlet__foot--fit">
+        <div class="m-form__actions">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12"></div>
+                <div class="col-sm-9 col-xs-12">
+                    <div class="profile-timeline__action">
+                        <button type="submit" class="btn btn-success m-btn m-btn--pill">
+                            <span><span>Submit</span></span></button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+    </div>
+    <script>$('#ADMsince').datepicker({
+            format: 'dd-mm-yyyy',
+            orientation: "bottom auto",
+            autoclose: true,
+        })</script>
+    </form>
     </div>
 
 @endsection

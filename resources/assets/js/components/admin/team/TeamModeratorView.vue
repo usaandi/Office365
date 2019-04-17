@@ -30,9 +30,9 @@
             <div slot="footer">
                 <button type="button" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom"
                         @click="cancel">
-                    CANCEL
+                    Cancel
                 </button>
-                <button type="submit" class="btn m-btn--pill btn-success" @click="submit">SUBMIT</button>
+                <button type="submit" class="btn m-btn--pill btn-success" @click="submit">Submit</button>
             </div>
         </modal>
         <div class="m-portlet__foot m-portlet__foot--fit">

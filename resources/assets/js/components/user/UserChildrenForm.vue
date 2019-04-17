@@ -7,7 +7,9 @@
                     <div class="form-group m-form__group row"><label class="col-3 col-form-label">Year born</label>
                         <div class="col-9">
                             <div class="input-group date">
-                                <input class="form-control m-input"  :class="{'border border-danger':!this.dateBorn,'border border-success': this.dateBorn }" required type="date" v-model="dateBorn">
+                                <input class="form-control m-input" @input="inputChange($event)"
+                                       :class="{'border border-danger':this.dateBornError }"
+                                       required type="date" v-model="dateBorn">
                                 <div class="input-group-append">
                                               <span class="input-group-text">
                                    <i class="la la-calendar-check-o"></i>
@@ -17,9 +19,11 @@
                         </div>
                     </div>
                     <div class="form-group m-form__group row"><label class="col-3 col-form-label">Child name</label>
-                        <div class="col-9"><input :class="{'border border-danger':!this.childName,'border border-success': this.childName }" v-model="childName" required type="text"
-                                                  placeholder="Child name"
-                                                  class="form-control m-input"></div>
+                        <div class="col-9"><input @input="inputChange($event)"
+                                :class="{'border border-danger':this.childNameError}"
+                                v-model="childName" required type="text"
+                                placeholder="Child name"
+                                class="form-control m-input"></div>
                     </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
@@ -28,16 +32,16 @@
                             <div class="col-sm-3 col-xs-12"></div>
                             <div class="col-sm-9 col-xs-12">
                                 <div class="profile-timeline__action">
-                                    <a @click="closeForm()" class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
-                                            <span>
-                                          <i class="la la-minus"></i>
-                                          <span>Close</span>
-                                    </span>
-                                    </a>
-                                    <a @click="checkError()" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+                                    <button @click="closeForm()"
+                                            class="btn m-btn--pill btn-outline-success m-btn m-btn--custom">
+                                        Cancel
+                                    </button>
+
+                                    <a @click="checkError()" tabindex=""
+                                       class="btn btn-success m-btn m-btn--icon m-btn--pill">
                                             <span>
                                           <i class="la la-plus"></i>
-                                          <span>Add new</span>
+                                          <span>Save</span>
                                     </span>
                                     </a>
 
@@ -53,28 +57,45 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         name: "UserChildrenForm",
         props: ['userId'],
         data() {
             return {
                 dateBorn: null,
-
                 childName: null,
-
+                dateBornError: false,
+                childNameError: false,
             }
 
         },
         methods: {
-            closeForm(){
-              this.dateBorn=null;
-              this.childName=null;
-              this.$emit('close');
-            },
-            checkError(){
-                if(this.dateBorn && this.childName){
 
+            inputChange(e){
+              console.log(e);
+                if (this.dateBorn) {
+                    this.dateBornError = false;
+                }
+                if (this.childName) {
+                    this.childNameError = false;
+                }
+            },
+            closeForm() {
+                this.dateBorn = null;
+                this.childName = null;
+                this.$emit('close');
+            },
+            checkError() {
+                if (this.dateBorn && this.childName) {
                     this.upload();
+                }
+                if (!this.dateBorn) {
+                    this.dateBornError = true;
+                }
+                if (!this.childName) {
+                    this.childNameError = true;
                 }
 
             },
@@ -93,14 +114,12 @@
                 axios.post('/user/' + vm.userId + '/update/child', data)
                     .then(response => {
                         vm.childName = null;
-                        vm.errors=null;
+                        vm.errors = null;
 
                         vm.dateBorn = null;
-                        if (vm.name !== null) {
-                            let data = response.data;
-                            vm.$emit('update', data)
 
-                        }
+                        let data = response.data;
+                        vm.$emit('update', data)
 
 
                     }).catch(error => {

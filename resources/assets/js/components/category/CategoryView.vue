@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Table Category</h3>
-        <span class="float-right m--margin-bottom-5"><a :href="'/admin/strength'" class="btn btn-success m-btn m-btn--icon m-btn--pill">
+        <span class="float-right m--margin-bottom-5"><a tabindex="" :href="'/admin/strength'" class="btn btn-success m-btn m-btn--icon m-btn--pill">
         <span>Add Category</span></a></span>
         <div class="table-responsive">
             <table class="table table-bordered text-center">

@@ -1,8 +1,8 @@
 <template>
     <div class="m-portlet__body">
-        <div v-show="success" class="alert alert-success alert-dismissible">
+        <div v-show="success" class="alert alert-success alert-dismissible text-center">
             <a class="close" @click="success=!success"></a>
-            <strong>You have been successful!</strong>
+            <strong>Success!</strong>
         </div>
         <h1>User Strength</h1>
         <admin-user-strength v-for="(strength,index) in strengthCount"
@@ -37,13 +37,13 @@
         name: "UserStrengthView",
         data() {
             return {
-                strengthCount: 12,
+                strengthCount: 10,
                 categories: null,
                 selectedStrength: [],
                 isNew: false,
                 showMessage: false,
                 message: null,
-                success:false,
+                success: false,
 
             }
         },
@@ -74,17 +74,15 @@
 
             },
             submit() {
-                if (this.selectedStrength.length === 12) {
-                    let data = this.selectedStrength;
-                    let vm = this;
-                    axios.post('/user/' + this.userId + '/update/strength', data).then(response => {
-                        if (response.status === 200) {
-                            vm.showMessage = true;
-                            vm.message = response.data;
-                            vm.success=true;
-                        }
-                    })
-                }
+                let data = this.selectedStrength;
+                axios.patch('/user/' + this.userId + '/update/strength', data).then(response => {
+                    if (response.status === 200) {
+                        this.showMessage = true;
+                        this.message = response.data;
+                        this.success = true;
+                    }
+                })
+
             },
         }
 

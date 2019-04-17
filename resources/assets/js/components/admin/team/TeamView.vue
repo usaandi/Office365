@@ -20,8 +20,8 @@
 
             </div>
             <div slot="footer">
-                <button type="button" class="btn btn-success" @click="close">CANCEL</button>
-                <button type="submit" class="btn btn-danger" @click="submit">SUBMIT</button>
+                <button type="button" class="btn btn-success" @click="close">Cancel</button>
+                <button type="submit" class="btn btn-danger" @click="submit">Submit</button>
             </div>
         </modal>
 

@@ -21,7 +21,6 @@ Route::resource('strengths', 'StrengthController')
 ning oleks palju vähem messi ja kood oleks arusaadavam. ning lihtsam grupeerida neid.
 */
 
-
 Route::get('/', 'AuthController@signin');
 Route::get('/authorize', 'AuthController@gettoken');
 Route::get('/unauthorized', function () {
@@ -44,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/admin/department/delete', 'DepartmentController@delete')->name('deleteDepartment');
 
     });
-    Route::post('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
+    Route::patch('/user/{id}/update/strength', 'UserStrengthController@userStrength')->name('updateUserStrength');
     Route::get('/users', 'UserController@userIdName')->name('usersIdName');
     Route::post('/user/{id}/update', 'UserController@update')->name('update');
     Route::get('/strength/list', 'StrengthController@returnStrengthName')->name('strengthsName');
@@ -74,7 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/{id}/department', 'TeamsController@updateDepartment')->name('updateDepartment');
     Route::post('/user/{id}/team', 'TeamsController@updateUserTeam')->name('updateUserTeam');
 
-    Route::get('/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
+    Route::get('/adm/user/{id}/career', 'PersonalDevelopmentController@userDevelopment')->name('career');
     Route::get('admin/career/add', 'CareerController@show')->name('addCareer');
 
     Route::post('admin/career/add', 'CareerController@create')->name('addCareer');
@@ -91,10 +90,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('user/{id}/delete/hobby', 'HobbyController@deleteUserHobby')->name('deleteUserHobby');
     Route::get('/user/{id}', 'UserController@show')->name('profile');
     Route::get('user/{id}/career/info', 'CareerController@returnUserData')->name('careerInfo');
-
-    Route::get('/home', 'HomeController@index')->name('home');
+    //Main page
+    Route::get('adm/people', 'HomeController@index')->name('home');
+    //End Main Page
     Route::get('/usersDepartment', 'HomeController@userNoDepartment')->name('users');
-    Route::get('department/add', 'DepartmentController@view')->name('departmentadd');
+    Route::get('/admin/department/add', 'DepartmentController@view')->name('departmentadd');
     Route::post('department/store', 'DepartmentController@store')->name('store');
     Route::post('update/milestone/{id}', 'CareerController@completeMilestone')->name('updateMilestone');
 
@@ -110,15 +110,29 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/users/list/', 'UserController@AdminUsersListView')->name('returnAdminUserList');
     Route::get('admin/team/create', 'TeamsController@teamView')->name('returnTeam');
     Route::post('admin/team/create', 'TeamsController@createTeam')->name('createTeam');
-    Route::get('/users', 'UserController@users')->name('usersInfo');
-
+    /*Route::get('/users', 'UserController@users')->name('usersInfo');
+        Võibolla vaja see ära kustada (See annab kõigi kasutajate kõik andmed tabelist users)
+    */
     Route::put('/admin/team/{id}/update', 'TeamsController@update')->name('updateTeam');
     Route::delete('/admin/team/{id}/delete', 'TeamsController@delete')->name('deleteTeam');
 
+    Route::get('adm/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
 
-    Route::get('/view/department', 'DepartmentUserCategoryStrengthController@view')->name('departmentStrengths');
+    //Projects view
+    Route::get('/adm/projects', 'ProjectsController@index')->name('projectIndex');
+    Route::get('/admin/project-create', 'ProjectsController@indexCreate')->name('adminProjectCreateIndex');
+    Route::post('/admin/project-create', 'ProjectsController@createProject')->name('adminProjectCreate');
+    //
 
-    Route::get('/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
+    // Route::get('testing/projects', 'ProjectsController@getProjectsInfo')->name('testing');
+
+    //Excel
+    Route::get('adm/excel', 'ExcelController@view')->name('excelView');
+    Route::get('adm/downloadExcel', 'ExcelController@downloadExcel')->name("downloadExcel");
+    Route::post('adm/importExcel', 'ExcelController@importExcel')->name("importExcel");
+    //api
+    Route::get('adm/departments', 'DepartmentUserCategoryStrengthController@departmentUserStrength')->name('departmentUserStrength');
+    //end api
     Route::get('/categories', 'DepartmentUserCategoryStrengthController@categoryStrength')->name('categoryStrength');
     Route::get('/user/{id}/strengths', 'UserStrengthController@fetchUserStrength')->name('userStrengths');
     Route::get('/admin/team/list/{id}', 'AdminTeamController@index')->name('adminTeamView');
@@ -130,5 +144,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('admin/career-template/list/milestone', 'AdminCareerTemplateManager@deleteCareerMilestone')->name('adminCareerTemplateManagerDeleteCareerMilestone');
     Route::patch('/admin/team/list/{id}', 'AdminTeamController@updateTeamUser')->name('adminTeamView');
 
+    //Image Delete
+    Route::patch('adm/user/image/{id}', 'ImageController@delete')->name('imageDelete');
+    //End Image
 
+
+    //Notes
+    Route::get('/user/{id}/career/note/{roleId}', 'NoteController@index')->name('userNote');
+    Route::patch('/{roleId}', 'NoteController@update')->name('updateNote');
+    Route::post('/career/note/{id}', 'NoteController@create')->name('createNote');
+    Route::delete('/note/delete', 'NoteController@delete')->name('deleteNote');
+
+    Route::patch('note/update-status/{id}', 'NoteController@state')->name('noteState');
+    Route::get('/note/count/{id}', 'NoteController@count')->name('noteCount');
+    //End notes
+
+
+    /*Will be deleted
+    Route::get('/user/career/note/{roleId}/test', 'NoteController@noteInfo')->name('userNote');*/
+
+    Route::post('/search', 'PeopleSearchController@search')->name('search');
 });

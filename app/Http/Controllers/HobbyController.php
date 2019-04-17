@@ -9,13 +9,15 @@ use App\User;
 
 class HobbyController extends Controller
 {
-    public function hobby(){
+    public function hobby()
+    {
 
         $hobbies = Hobby::get(['name']);
 
         return $hobbies;
 
     }
+
     public function updateHobby(Request $request, $id)
     {
         try {
@@ -24,17 +26,19 @@ class HobbyController extends Controller
                 'data' => 'string|max:30'
             ]);
             $user = User::findOrFail($id);
+            $replaceLetters= ['.','_'];
 
             $hobbyName = $request->data;
             $capitalizeHobby = ucfirst(strtolower($hobbyName));
+            $capitalizeHobby = str_replace($replaceLetters, ' ', $capitalizeHobby);
             $hobby = Hobby::where('name', $capitalizeHobby)->first();
 
-            if($hobby === NULL) {
+            if ($hobby === NULL) {
                 $hobby = Hobby::create(['name' => $capitalizeHobby]);
             }
             $userHobby = UserHobby::where('user_id', $id)->where('hobby_id', $hobby->id)->first();
 
-            if ($userHobby === NULL){
+            if ($userHobby === NULL) {
                 $userHobby = UserHobby::create(['user_id' => $user->id, 'hobby_id' => $hobby->id]);
 
                 $data = array([
@@ -42,15 +46,16 @@ class HobbyController extends Controller
                     'id' => $userHobby->id,
                 ]);
 
-               $jsonData = json_encode($data);
-                return response($jsonData,200)
+                $jsonData = json_encode($data);
+                return response($jsonData, 200)
                     ->header('Content-Type', 'application/json');
             }
 
+        } catch (\Exception $e) {
         }
-        catch(\Exception $e) {}
 
     }
+
     public function deleteUserHobby(Request $request, $id)
     {
         try {
@@ -69,8 +74,7 @@ class HobbyController extends Controller
 
             return response('success', 200)
                 ->header('Content-Type', 'application/json');
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
 
         }
         return response('Error Deleting Hobby', 400)

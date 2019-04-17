@@ -17,7 +17,7 @@ class UserList extends Migration
 
             $table->increments('id');
             $table->string('email')->unique();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->string('name');
             $table->date('birthday')->nullable();
             $table->string('skype')->nullable();

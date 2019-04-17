@@ -14,11 +14,14 @@
 @endsection
 
 @section('content-body')
-    <style>
-
-    </style>
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible text-center">
+            <a href="" class="close " data-dismiss="alert" aria-label="close"></a>
+            <strong>User updated</strong>
+        </div>
+    @endif
     <div class="admin__form admin__form--clear"><h4>Update user: {{$user->name}}</h4>
-        <form name="form" class="m-form" action="{{route('update',$user)}}" method="post">
+        <form id="form" name="form" class="m-form" action="{{route('update',$user)}}" method="post">
             @csrf
 
 
@@ -31,40 +34,40 @@
                 </div>
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
-                                                                 class="col-sm-3 col-xs-12  col-form-label">phone</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->phone}}" required type="text"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">Phone</label>
+                    <div class="col-sm-9 col-xs-12 "><input id="phoneNumber" value="{{$user->phone}}" type="text"
+                                                            maxlength="12"
                                                             placeholder="Enter Phone"
+
+
                                                             name="phone" class="form-control m-input"></div>
                 </div>
 
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Birthday</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->birthday}}" required type="date"
-                                                            placeholder="Enter Birthday"
+                    <div class="col-sm-9 col-xs-12 "><input id="birthday" type="text"
+                                                            placeholder="Enter Birthday" readonly
+                                                            value="{{$user->birthday}}"
                                                             name="birthday" class="form-control m-input"></div>
                 </div>
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Skype</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->skype}}" required type="text"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->skype}}" type="text"
                                                             placeholder="Enter Skype"
                                                             name="skype" class="form-control m-input"></div>
                 </div>
 
 
-
-
-
-                <div class="form-group m-form__group row"><label for="example-text-input"
+                <div class="form-group m-form__group row"><label for="departmentInput"
                                                                  class="col-sm-3 col-xs-12  col-form-label">
-                        Department: @isset($currentDepartment)
-                            {{$currentDepartment[0]->department_name}} @endisset</label>
+                        Department: </label>
 
-                    <div class="col-sm-9 col-xs-12 "><select required name="department" class="form-control m-input">
-                            <option></option>
+                    <div class="col-sm-9 col-xs-12 "><select required name="department" id="departmentInput"
+                                                             class="form-control m-input">
                             @foreach($departments as $department)
                                 <option value="{{$department->id}}"
-                                        @isset($currentDepartment)
-                                        @if($department->id === $currentDepartment[0]->id)
+                                        @isset($userDepartment)
+                                        @if($department->id === $userDepartment->id)
                                         selected="selected"
                                         @endif
                                         @endisset
@@ -73,13 +76,30 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group m-form__group row"><label for="teamInput"
+                                                                 class="col-sm-3 col-xs-12  col-form-label">
+                        Team: </label>
+                    <div class="col-sm-9 col-xs-12 "><select name="team" id="teamInput" class="form-control m-input">
+                            <option></option>
+                            @foreach($teams as $team)
+                                <option value="{{$team->team_id}}"
+                                        @isset($userTeam)
+                                        @if($team->team_id === $userTeam->id)
+                                        selected="selected"
+                                        @endif
+                                        @endisset
+                                >{{$team->team_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 @hasrole('Admin')
                 <div class="form-group m-form__group row"><label for="example-text-input"
                                                                  class="col-sm-3 col-xs-12  col-form-label">Current
-                        Roles: @if($user->hasRole('Moderator'))
-                                 Moderator
-                              @endif
+                        Role: @if($user->hasRole('Moderator'))
+                            Moderator
+                        @endif
                         @if($user->hasRole('User'))
                             User
                         @endif
@@ -88,12 +108,14 @@
                         @endif
 
                     </label>
-                    <div class="col-sm-9 col-xs-12 "><select required name="role" class="form-control m-input">
+                    <div class="col-sm-9 col-xs-12 "><select name="role" class="form-control m-input">
                             <option></option>
                             @foreach($roles as $role)
                                 <option value="{{ $role->name }}"
+                                        @if(isset($user->roles()->first()->id))
                                         @if ($user->roles()->first()->id === $role->id)
                                         selected="selected"
+                                        @endif
                                         @endif
                                 >
                                     {{ $role->name }}
@@ -103,11 +125,12 @@
                     </div>
                 </div>
                 @endhasrole
-                <div class="form-group m-form__group row"><label for="example-text-input"
+                <div class="form-group m-form__group row"><label for="ADMsince"
                                                                  class="col-sm-3 col-xs-12  col-form-label">ADM
                         since</label>
-                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" required type="date"
-                                                            placeholder="Enter Join date"
+                    <div class="col-sm-9 col-xs-12 "><input value="{{$user->ADMsince}}" type="text" readonly
+                                                            placeholder="Joined ADM"
+                                                            id="ADMsince"
                                                             name="ADMsince" class="form-control m-input"></div>
                 </div>
             </div>
@@ -139,4 +162,32 @@
     </div>
     @endhasanyrole
 
+    <script>
+
+        $('#birthday').datepicker({
+            format: 'yyyy-mm-dd',
+            orientation: "top auto",
+            autoclose: true,
+        }).on('changeDate', event => {
+
+        });
+        $('#ADMsince').datepicker({
+            format: 'yyyy-mm-dd',
+            orientation: "top auto",
+            autoclose: true,
+        }).on('changeDate', event => {
+
+        });
+
+        $('#form').submit(e => {
+            let phone = $('#phoneNumber');
+            if (phone.val().length > 15) {
+                phone.addClass('border border-danger');
+                return false;
+            } else {
+                phone.removeClass('border border-danger')
+                return true;
+            }
+        })
+    </script>
 @endsection

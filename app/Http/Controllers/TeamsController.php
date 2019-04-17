@@ -118,7 +118,7 @@ class TeamsController extends Controller
 
         } catch (\Exception $e) {
 
-            var_dump($e->getMessage());
+
         }
     }
 

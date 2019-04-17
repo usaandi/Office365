@@ -18,8 +18,8 @@
                        class="border " type="text" v-model="confirmationText">
             </div>
             <div slot="footer">
-                <button type="button" class="btn btn-success" @click="cancelDeletion">CANCEL</button>
-                <button type="submit" class="btn btn-danger" @click="confirmDeletion(userObject.id)">DELETE</button>
+                <button type="button" class="btn btn-success" @click="cancelDeletion">Cancel</button>
+                <button type="submit" class="btn btn-danger" @click="confirmDeletion(userObject.id)">Delete</button>
             </div>
         </modal>
         <div class="m-portlet__foot m-portlet__foot--fit">
